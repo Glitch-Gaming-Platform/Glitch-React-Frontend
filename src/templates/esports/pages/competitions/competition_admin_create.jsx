@@ -27,6 +27,7 @@ class CompetitionsCreatePage extends Component {
             errors: {},
             isLoading: false,
         };
+        this.state.data.competitors_per_match = 2;
 
         if (!Session.isLoggedIn()) {
             window.location = Navigate.authLogin();

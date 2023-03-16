@@ -22,7 +22,7 @@ export default function RoundFormBasicInfo({ roundValue, roundOnChange, titleVal
 
             <div className="form-group text-left">
                 <label>Title (Optional)</label>
-                <Input type="number" name="name" value={titleValue} onChange={titleOnChange} />
+                <Input type="text" name="name" value={titleValue} onChange={titleOnChange} />
                 <p className="small">Give the round an optional title.</p>
                 {errors && errors.title && errors.title.map(function (name, index) {
                     return <Danger message={name} key={index} />;

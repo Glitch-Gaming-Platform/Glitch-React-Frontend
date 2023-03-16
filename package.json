@@ -37,7 +37,7 @@
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.8",
     "react-share": "^4.4.1",
-    "sweetalert2": "^11.6.9",
+    "sweetalert2": "^11.4.8",
     "sweetalert2-react-content": "^5.0.7",
     "swiper": "^8.4.5",
     "uuid": "^9.0.0",
