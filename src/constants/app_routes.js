@@ -34,6 +34,22 @@
     account_update : '/accounts/update',
     acount_register_page_2 : '/accounts/register/step2',
 
+    //Communities
+    communities : '/communities',
+    communities_create : '/communities/create',
+    
+    communities_view : '/communities/:id/view',
+    communities_delete : '/communities/:id/delete',
+
+    communities_overview : '/communities/:id/overview',
+    communities_manage : '/communities/:id/manage',
+    communities_update : '/communities/:id/update',
+    communities_features : '/communities/:id/features',
+    communities_accessibility : '/communities/:id/accessibility',
+    communities_cname : '/communities/:id/cname',
+    communities_social : '/communities/:id/social',
+    
+
     //streams route
     streams : '/streams',
     streams_create : '/streams/create',

@@ -1,33 +1,87 @@
-//import Template from "./templates/esports";
-import React from "react";
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import ReactGA from 'react-ga';
-import { lazy } from "react";
+import Glitch from 'glitch-javascript-sdk';
+import ReactDOM from 'react-dom/client';
 
-let Template = null;
+const App = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [template, setTemplate] = useState(null);
 
-let template_dir = process.env.REACT_APP_TEMPLATE_DIRECTORY;
+  useEffect(() => {
+    const fetchData = async () => {
+      
+      try {
+        const domain = getDomain();
+        const response = await Glitch.api.Communities.findByDomain(domain);
 
-if (template_dir) {
+        setData(response.data.data);
+        let community = response.data.data;
+        let templateDir = community?.template?.directory + community?.template?.entry_point_file;
 
-  Template  = React.lazy(() => import(`${template_dir}`));
+        loadSite(templateDir);
 
-} else {
-  Template = require('./templates/error').default;
-}
+      } catch (error) {
 
-if(process.env.REACT_APP_GA_TRACKING_ID) {
-    ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
-    ReactGA.pageview(window.location.pathname + window.location.search);
-}
+        let templateDir = process.env.REACT_APP_TEMPLATE_DIRECTORY;
+        loadSite(templateDir);
+        setData({});
+      }
+      setLoading(false);
+    };
 
-function App() {
+    fetchData();
 
-  return (
-    <>
-      <Template />
-    </>
+  }, []);
 
-  );
-}
+  async function loadSite(templateDir) {
+
+    if (templateDir) {
+      try {
+        const loaded = await import(`${templateDir}`);
+        setTemplate(loaded);
+        
+      } catch (error) {
+        
+        const loaded = await import(`./templates/error/index.js`);
+        setTemplate(loaded); // Use a default error template if loading fails
+      }
+    } else {
+      const loaded = await import(`./templates/error/index.js`);
+      setTemplate(loaded); // Use a default error template if template directory is not defined
+    }
+
+    if (process.env.REACT_APP_GA_TRACKING_ID) {
+      ReactGA.initialize(process.env.REACT_APP_GA_TRACKING_ID);
+      ReactGA.pageview(window.location.pathname + window.location.search);
+    }
+
+  }
+
+  function getDomain() {
+    const currentDomain = window.location.hostname;
+
+    console.log(currentDomain);
+
+    if (currentDomain === 'glitch.local' || currentDomain.endsWith('.glitch.local')) {
+      const subdomain = currentDomain.split('.')[0];
+      return subdomain;
+    } else {
+      return currentDomain;
+    }
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (template) {
+    return (
+      <Suspense fallback={<div>Loading template...</div>}>
+        <template.default />
+      </Suspense>
+    );
+  }
+};
 
 export default App;

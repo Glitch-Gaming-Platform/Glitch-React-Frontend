@@ -5,9 +5,15 @@ import App from './App';
 
 import { BrowserRouter } from "react-router-dom";
 
-
-
 import reportWebVitals from './reportWebVitals';
+
+import Glitch from 'glitch-javascript-sdk';
+import Storage from './util/Storage';
+
+
+Glitch.config.Config.setBaseUrl("https://api.glitch.local/api", true);
+
+Glitch.config.Config.setAuthToken(Storage.getAuthToken());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

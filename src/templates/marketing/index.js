@@ -23,6 +23,18 @@ import DataRemovalPage from "./pages/misc/dataremoval";
 import GDPRPage from "./pages/misc/gdpr";
 import AccessDeniedPage from "./pages/misc/accessdenied";
 
+//Auth
+import LogIn from './pages/auth/login';
+import SignUp from './pages/auth/signup';
+
+//Communities
+import CommunitiesList from './pages/communities/CommunitiesList';
+import CommunitiesCreate from './pages/communities/CommunitiesCreate';
+import CommunitiesView from './pages/communities/CommunitiesView';
+import CommunitiesManage from './pages/communities/CommunitiesManage';
+import CommunitiesUpdate from './pages/communities/CommunitiesUpdate';
+
+
 
 import Navigate from "../../util/Navigate";
 import MarketingPage from './pages/misc/marketing';
@@ -34,9 +46,6 @@ import InstallationPage from './pages/misc/installation';
 function Template() {
   
 	return (
-		// <div className="App">
-		// 	<ShopPage />
-		// </div>
       <>
         <ScrollToTop />
         <Routes>
@@ -53,6 +62,16 @@ function Template() {
           <Route path={Navigate.revenuePage()} element={<RevenuePage />} />
           <Route path={Navigate.featuresPage()} element={<FeaturesPage />} />
           <Route path={Navigate.installationPage()} element={<InstallationPage />} />
+
+
+          <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />
+          <Route path={Navigate.communitiesCreatePage()} element={<CommunitiesCreate />} />
+          <Route path={Navigate.communitiesViewPage()} element={<CommunitiesView />} />
+          <Route path={Navigate.communitiesOverviewPage()} element={<CommunitiesManage />} />
+          <Route path={Navigate.communitiesUpdatePage()} element={<CommunitiesUpdate />} />
+
+          <Route path={Navigate.authLogin()} element={<LogIn />} />
+          <Route path={Navigate.authRegister()} element={<SignUp />} />
           
           <Route path="*" element={<ErrorPage />} />
 
