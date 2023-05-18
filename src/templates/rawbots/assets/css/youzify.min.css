@@ -1,0 +1,5897 @@
+.youzify-page-main-content {
+    margin: auto;
+    padding: 35px 0 0;
+    max-width: 1170px;
+    position: relative;
+    z-index: 0;
+    min-height: initial
+}
+
+.youzify-vertical-layout header + .youzify-page-main-content {
+    padding-top: 0
+}
+
+#youzify-profile-navmenu .youzify-inner-content,
+.youzify .wild-content,
+.youzify .youzify-boxed-navbar,
+.youzify-cover-content,
+.youzify-header-content,
+.youzify-page-main-content,
+.youzify-vertical-layout .youzify-content {
+    max-width: 1170px
+}
+
+.youzify * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible
+}
+
+.youzify :active,
+.youzify :focus {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent
+}
+
+.youzify:before {
+    content: "";
+    clear: both;
+    display: table
+}
+
+.youzify ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.youzify li {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.youzify h1,
+.youzify h2,
+.youzify h3,
+.youzify h4,
+.youzify h5,
+.youzify h6 {
+    margin: 0;
+    padding: 0;
+    line-height: 24px;
+    letter-spacing: initial
+}
+
+.youzify h2:before {
+    display: none
+}
+
+.youzify button {
+    background-image: initial;
+    box-shadow: none
+}
+
+.youzify form,
+body #youzify form {
+    text-align: initial;
+    margin: 0
+}
+
+.youzify .radio {
+    width: initial;
+    height: initial
+}
+
+.youzify a {
+    letter-spacing: 0;
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent
+}
+
+#youzify a.loading {
+    opacity: 1
+}
+
+#youzify a.remove {
+    text-indent: 0
+}
+
+.youzify a:active,
+.youzify a:focus,
+.youzify a:hover,
+.youzify a:visited {
+    outline: 0;
+    text-decoration: none
+}
+
+.youzify i {
+    height: initial;
+    opacity: 1;
+    top: initial;
+    font-size: initial
+}
+
+.youzify textarea {
+    resize: none
+}
+
+.youzify button[disabled],
+.youzify input[disabled],
+.youzify textarea[disabled] {
+    cursor: default
+}
+
+.youzify button:focus,
+.youzify input:focus,
+.youzify select:focus,
+.youzify textarea:focus {
+    outline: 0;
+    box-shadow: none
+}
+
+.youzify header,
+.youzify-membership header {
+    float: none
+}
+
+.youzify #content {
+    margin: 0;
+    padding: 0
+}
+
+.youzify-author-box-widget,
+.youzify-login-widget,
+.youzify-register-widget {
+    display: none
+}
+
+.youzify-page {
+    background-color: #eaeaea
+}
+
+.youzify img {
+    color: #898989;
+    font-size: 8px;
+    display: block
+}
+
+.youzify abbr,
+.youzify label abbr {
+    border: none;
+    text-decoration: none
+}
+
+.youzify ins {
+    text-decoration: initial;
+    background-color: transparent
+}
+
+.youzify a.button i,
+.youzify button i {
+    position: initial
+}
+
+.youzify img.emoji {
+    font-size: 18px
+}
+
+.youzify blockquote {
+    display: block
+}
+
+.youzify blockquote:before {
+    content: '';
+    font-family: initial !important;
+    background: initial;
+    box-shadow: none
+}
+
+#youzify select:not([multiple]),
+html.touch #youzify select {
+    background: initial;
+    display: none
+}
+
+.youzify table {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    margin-bottom: 35px;
+    background-color: #fff;
+    border-collapse: collapse
+}
+
+.youzify table tfoot,
+.youzify table thead {
+    border: none
+}
+
+.youzify table tfoot tr,
+.youzify table thead tr {
+    background-color: #f9f9f9;
+    color: #828282
+}
+
+.youzify table tfoot tr th,
+.youzify table thead tr th {
+    border: none;
+    color: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 14px;
+    padding: 15px 5px;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: initial;
+    text-transform: initial
+}
+
+.youzify table tbody tr {
+    text-align: center;
+    border-bottom: 1px solid #f6f6f6
+}
+
+.youzify table tbody td {
+    padding: 20px 5px;
+    color: #7c838a;
+    font-size: 13px;
+    font-weight: 400;
+    border: none
+}
+
+.youzify table tbody td a {
+    color: #7c838a;
+    font-size: 13px;
+    font-weight: 600
+}
+
+.youzify textarea::placeholder {
+    font-family: 'Open Sans', sans-serif
+}
+
+.youzify ::-webkit-input-placeholder {
+    font-family: 'Open Sans', sans-serif
+}
+
+.youzify ::-moz-placeholder {
+    font-family: 'Open Sans', sans-serif
+}
+
+.youzify :-ms-input-placeholder {
+    font-family: 'Open Sans', sans-serif
+}
+
+.youzify :-moz-placeholder {
+    font-family: 'Open Sans', sans-serif
+}
+
+.youzify .members {
+    overflow: visible
+}
+
+.youzify input {
+    box-shadow: none !important
+}
+
+.youzify input[type=checkbox],
+.youzify input[type=radio] {
+    margin: 0;
+    padding: 0
+}
+
+.youzify .radio input[type=radio] {
+    opacity: 1;
+    width: initial;
+    height: initial;
+    position: relative
+}
+
+.rtl .youzify input[type=checkbox],
+.rtl .youzify input[type=radio] {
+    margin-right: 0;
+    margin-left: .4375em
+}
+
+.youzify .input-group,
+.youzify .input-group-btn {
+    display: initial
+}
+
+.youzify-cover img {
+    width: 100%;
+    height: 150px;
+    display: block;
+    object-fit: cover
+}
+
+#sitewide-notice,
+#youzify div textarea,
+.widget.buddypress,
+.widget_bp_core_members_widget .item-options a,
+.widget_bp_core_sitewide_messages .bp-site-wide-message button,
+.widget_bp_groups_widget .item-options a,
+.youzify a,
+.youzify a.button,
+.youzify input,
+.youzify p,
+.youzify select,
+.youzify textarea,
+.youzify-dialog,
+.youzify-dialog-desc,
+.youzify-items-list-widget,
+.youzify-modal-actions a,
+.youzify-modal-actions button,
+.youzify-my-account-widget,
+.youzify-tool-btn .youzify-tool-name,
+.youzify-tooltip:after,
+.youzify-wp-widget,
+[data-youzify-tooltip]:after {
+    font-family: 'Open Sans', sans-serif
+}
+
+.youzify-primary-nav-area {
+    display: inline-block
+}
+
+.youzify-primary-nav-img {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    vertical-align: middle;
+    background-size: cover;
+    background-color: #f5f5f5;
+    background-position: center;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%
+}
+
+.youzify-tool-btn.youzify-review-btn {
+    background-color: #f9c321
+}
+
+.youzify-tool-btn.youzify-report-btn {
+    background-color: #f44336
+}
+
+.youzify-tool-btn.youzify-social-share-btn {
+    background-color: #8bc34a
+}
+
+.youzify-left-sidebar-layout,
+.youzify-right-sidebar-layout {
+    display: grid;
+    grid-gap: 35px
+}
+
+.youzify-right-sidebar-layout {
+    grid-template-columns: calc(72% - 35px) 28%
+}
+
+.youzify-left-sidebar-layout {
+    grid-template-columns: 28% calc(72% - 35px)
+}
+
+.youzify-3columns-layout {
+    display: grid;
+    grid-gap: 25px;
+    grid-template-columns: 23% calc(56% - 70px) 23%
+}
+
+.youzify-3columns-layout .youzify-main-column {
+    order: 2
+}
+
+.youzify-3columns-layout .youzify-left-sidebar {
+    order: 1
+}
+
+.youzify-3columns-layout .youzify-right-sidebar {
+    order: 3
+}
+
+.youzify-left-sidebar-layout .youzify-main-column {
+    order: 2
+}
+
+.youzify-left-sidebar-layout .youzify-sidebar-column {
+    order: 1
+}
+
+i.youzify-big-verified-icon {
+    width: 23px;
+    height: 23px;
+    font-size: 15px;
+    margin-left: 8px;
+    line-height: 24px
+}
+
+.rtl i.youzify-big-verified-icon {
+    margin: 0 8px 0 0
+}
+
+i.youzify-medium-verified-icon {
+    width: 19px;
+    height: 19px;
+    font-size: 11px;
+    margin-left: 5px;
+    line-height: 19px
+}
+
+.rtl i.youzify-medium-verified-icon {
+    margin: 0 5px 0 0
+}
+
+i.youzify-small-verified-icon {
+    width: 17px;
+    height: 17px;
+    font-size: 10px;
+    line-height: 16px;
+    margin: 0 2px 0 5px
+}
+
+.rtl i.youzify-small-verified-icon {
+    margin: 0 5px 0 2px
+}
+
+.youzify-account-verified {
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    background-color: #4fc1e9;
+    vertical-align: text-bottom
+}
+
+.youzify-tools {
+    top: 0;
+    right: 0;
+    z-index: 9;
+    opacity: 0;
+    position: absolute;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out
+}
+
+#youzify-group-header:hover .youzify-tools,
+#youzify-groups-list li:hover .youzify-tools,
+#youzify-members-list li:hover .youzify-tools,
+#youzify-profile-header:hover .youzify-tools,
+.youzify-author:hover .youzify-tools {
+    opacity: 1
+}
+
+.youzify-tools-full-btns {
+    padding: 10px 5px
+}
+
+.youzify-tools-only-icons {
+    padding: 8px 4px
+}
+
+.youzify-tool-btn {
+    cursor: pointer;
+    background-color: #00bcd4
+}
+
+.youzify-tools-full-btns .youzify-tool-btn {
+    margin: 0 4px;
+    overflow: hidden
+}
+
+.youzify-tools-only-icons .youzify-tool-btn {
+    float: left;
+    margin: 0 3px
+}
+
+.youzify-tool-btn .youzify-tool-icon {
+    margin: 0;
+    padding: 0;
+    text-align: center
+}
+
+.youzify-tools-only-icons .youzify-tool-btn .youzify-tool-icon {
+    width: 25px;
+    height: 25px;
+    line-height: 23px
+}
+
+.youzify-tools-full-btns .youzify-tool-btn .youzify-tool-icon {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    background-color: #fff
+}
+
+.youzify-tools-only-icons .youzify-tool-btn .youzify-tool-icon i {
+    color: #fff;
+    font-size: 13px
+}
+
+.youzify-tools-full-btns .youzify-tool-btn .youzify-tool-icon i {
+    color: #848b92;
+    font-size: 16px
+}
+
+.youzify-tool-btn .youzify-tool-name {
+    color: #fff;
+    padding: 0 15px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center
+}
+
+.youzify-tool-btn .youzify-tool-icon,
+.youzify-tool-btn .youzify-tool-name,
+.youzify-tools-full-btns .youzify-tool-btn {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.rtl .youzify .emojionearea .emojionearea-editor {
+    text-align: right;
+    direction: rtl
+}
+
+.rtl .youzify .emojionearea .emojionearea-button {
+    right: initial;
+    left: 5px
+}
+
+.youzify-media-filter .youzify-filter-item .youzify-filter-content.loading i:before,
+.youzify-product-action-button.youzify-addtocart.loading i:before,
+.youzify-tool-btn.loading .youzify-tool-icon i:before {
+    font-weight: 700;
+    content: "\f110" !important;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+.youzify-media-filter .youzify-filter-item .youzify-filter-content.loading i,
+.youzify-product-action-button.youzify-addtocart.loading i,
+.youzify-tool-btn.loading .youzify-tool-icon i {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear
+}
+
+.youzify-default-subnav li a i {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+    margin-right: 8px;
+    line-height: 32px;
+    text-align: center
+}
+
+.youzify-tabs-list-gradient #directory-show-filter a:before,
+.youzify-tabs-list-gradient #directory-show-search a:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li a i,
+.youzify-tabs-list-gradient div.item-list-tabs a i,
+.youzify-tabs-list-gradient div.item-list-tabs a:before {
+    color: #fff
+}
+
+.youzify-tabs-list-gradient #activity-all a:before,
+.youzify-tabs-list-gradient #groups-all a:before,
+.youzify-tabs-list-gradient #members-all a:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(1) a i,
+.youzify-tabs-list-gradient a#edit-details:before,
+.youzify-tabs-list-gradient a#friends-my-friends i,
+.youzify-tabs-list-gradient a#groups-my-groups i,
+.youzify-tabs-list-gradient a#inbox i,
+.youzify-tabs-list-gradient a#just-me i,
+.youzify-tabs-list-gradient a#read i,
+.youzify-tabs-list-gradient div.item-list-tabs li:nth-child(1) a:before,
+.youzify-tabs-list-gradient li#followers-personal-li a:before,
+.youzify-tabs-list-gradient li#invitations-send-invites-personal-li a i {
+    background: #32a0ff;
+}
+
+.youzify-tabs-list-gradient #subnav a#membership-requests:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(8) a i {
+    background: #66c2ee;
+}
+
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(9) a i {
+    background: #fd8bd9;
+}
+
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(9) a i {
+    background: #fd8bd9
+}
+
+.youzify div.item-list-tabs li a#media-setting:before,
+.youzify div.item-list-tabs li a#notifications:before,
+.youzify-tabs-list-gradient #directory-show-filter a:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(10) a i {
+    background: #ff2f20;
+}
+
+.youzify-tabs-list-colorful #directory-show-filter a:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(9) a i {
+    background: #fd8bd9
+}
+
+.youzify-tabs-list-gradient #activity-following a:before,
+.youzify-tabs-list-gradient #groups-personal a:before,
+.youzify-tabs-list-gradient #members-personal a:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(4) a i,
+.youzify-tabs-list-gradient a#activity-mentions i,
+.youzify-tabs-list-gradient a#forum:before,
+.youzify-tabs-list-gradient a#group-events i,
+.youzify-tabs-list-gradient a#sentbox i,
+.youzify-tabs-list-gradient div.item-list-tabs li:nth-child(4) a:before {
+    background: #96e24c;
+}
+
+.youzify-tabs-list-gradient #activity-favorites a:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(2) a i,
+.youzify-tabs-list-gradient a#activity-favs i,
+.youzify-tabs-list-gradient a#group-settings:before,
+.youzify-tabs-list-gradient a#notices i,
+.youzify-tabs-list-gradient a#requests i,
+.youzify-tabs-list-gradient div.item-list-tabs li:nth-child(2) a:before,
+.youzify-tabs-list-gradient li#following-personal-li a:before {
+    background: #ff7376;
+}
+
+.youzify-tabs-list-gradient #activity-friends a:before,
+.youzify-tabs-list-gradient #group-create-nav a:before,
+.youzify-tabs-list-gradient #members-following a:before,
+.youzify-tabs-list-gradient .feed a:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(3) a i,
+.youzify-tabs-list-gradient a#activity-friends i,
+.youzify-tabs-list-gradient a#group-avatar:before,
+.youzify-tabs-list-gradient a#invites i,
+.youzify-tabs-list-gradient a#notifications-my-notifications i,
+.youzify-tabs-list-gradient a#starred i,
+.youzify-tabs-list-gradient div.item-list-tabs li:nth-child(3) a:before,
+.youzify-tabs-list-gradient li#invitations-list-invites-personal-li a i {
+    background: #ffca6e;
+}
+
+.youzify-tabs-list-gradient #activity-mentions a:before,
+.youzify-tabs-list-gradient #directory-show-search a:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(6) a i,
+.youzify-tabs-list-gradient a#activity-groups i,
+.youzify-tabs-list-gradient a#manage-members:before,
+.youzify-tabs-list-gradient a.youzify-msg-show-search i,
+.youzify-tabs-list-gradient div.item-list-tabs li:nth-child(6) a:before {
+    background: #24cbbb;
+}
+
+.youzify-tabs-list-gradient #activity-groups a:before,
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(5) a i,
+.youzify-tabs-list-gradient a#activity-following i,
+.youzify-tabs-list-gradient a#compose i,
+.youzify-tabs-list-gradient a#group-cover-image:before,
+.youzify-tabs-list-gradient div.item-list-tabs li:nth-child(5) a:before {
+    background: #c154fe;
+}
+
+.youzify-tabs-list-gradient .youzify-default-subnav li:nth-child(7) a i,
+.youzify-tabs-list-gradient a#delete-group:before,
+.youzify-tabs-list-gradient div.item-list-tabs li:nth-child(7) a:before {
+    background: #a4a3a3;
+}
+
+.youzify-tabs-list-colorful #directory-show-filter a:before,
+.youzify-tabs-list-colorful #directory-show-search a:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li a i,
+.youzify-tabs-list-colorful div.item-list-tabs a i,
+.youzify-tabs-list-colorful div.item-list-tabs a:before {
+    color: #fff
+}
+
+.youzify-tabs-list-colorful #activity-all a:before,
+.youzify-tabs-list-colorful #groups-all a:before,
+.youzify-tabs-list-colorful #members-all a:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(1) a i,
+.youzify-tabs-list-colorful a#edit-details:before,
+.youzify-tabs-list-colorful a#friends-my-friends i,
+.youzify-tabs-list-colorful a#groups-my-groups i,
+.youzify-tabs-list-colorful a#inbox i,
+.youzify-tabs-list-colorful a#just-me i,
+.youzify-tabs-list-colorful li#followers-personal-li a:before,
+.youzify-tabs-list-colorful li#invitations-send-invites-personal-li a i {
+    background-color: #32a0ff
+}
+
+.youzify-tabs-list-colorful #subnav a#membership-requests:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(8) a i {
+    background-color: #66c2ee
+}
+
+.youzify-tabs-list-colorful #activity-following a:before,
+.youzify-tabs-list-colorful #groups-personal a:before,
+.youzify-tabs-list-colorful #members-personal a:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(4) a i,
+.youzify-tabs-list-colorful a#activity-mentions i,
+.youzify-tabs-list-colorful a#forum:before,
+.youzify-tabs-list-colorful a#sentbox i,
+.youzify-tabs-list-gradient div.item-list-tabs li:nth-child(1) a:before {
+    background-color: #96e24c
+}
+
+.youzify-tabs-list-colorful #activity-favorites a:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(2) a i,
+.youzify-tabs-list-colorful a#activity-favs i,
+.youzify-tabs-list-colorful a#group-settings:before,
+.youzify-tabs-list-colorful a#notices i,
+.youzify-tabs-list-colorful a#read i,
+.youzify-tabs-list-colorful a#requests i,
+.youzify-tabs-list-colorful li#following-personal-li a:before {
+    background-color: #ff7376
+}
+
+.youzify-tabs-list-colorful #activity-friends a:before,
+.youzify-tabs-list-colorful #group-create-nav a:before,
+.youzify-tabs-list-colorful .feed a:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(3) a i,
+.youzify-tabs-list-colorful a#activity-friends i,
+.youzify-tabs-list-colorful a#group-avatar:before,
+.youzify-tabs-list-colorful a#invites i,
+.youzify-tabs-list-colorful a#notifications-my-notifications i,
+.youzify-tabs-list-colorful a#starred i,
+.youzify-tabs-list-colorful li#invitations-list-invites-personal-li a i {
+    background-color: #ffc107
+}
+
+.youzify-tabs-list-colorful #activity-mentions a:before,
+.youzify-tabs-list-colorful #directory-show-search a:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(6) a i,
+.youzify-tabs-list-colorful a#activity-groups i,
+.youzify-tabs-list-colorful a#manage-members:before,
+.youzify-tabs-list-colorful a.youzify-msg-show-search i {
+    background: #24cbbb
+}
+
+.youzify-tabs-list-colorful #activity-groups a:before,
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(5) a i,
+.youzify-tabs-list-colorful a#activity-following i,
+.youzify-tabs-list-colorful a#compose i,
+.youzify-tabs-list-colorful a#group-cover-image:before {
+    background-color: #c154fe
+}
+
+.youzify-tabs-list-colorful .youzify-default-subnav li:nth-child(7) a i,
+.youzify-tabs-list-colorful a#delete-group:before {
+    background: #a4a3a3
+}
+
+.youzify-tabs-list-gray #directory-show-filter a:before,
+.youzify-tabs-list-gray #directory-show-search a:before,
+.youzify-tabs-list-gray .youzify-default-subnav li a i,
+.youzify-tabs-list-gray div.item-list-tabs a i,
+.youzify-tabs-list-gray div.item-list-tabs a:before {
+    color: #fff;
+    background-color: #a3a3a3
+}
+
+.youzify-tabs-list-silver #directory-show-filter a:before,
+.youzify-tabs-list-silver #directory-show-search a:before,
+.youzify-tabs-list-silver .youzify-default-subnav li a i,
+.youzify-tabs-list-silver div.item-list-tabs a i,
+.youzify-tabs-list-silver div.item-list-tabs a:before {
+    color: #909194;
+    background-color: #eee
+}
+
+.youzify-tabs-list-white #directory-show-search a:before,
+.youzify-tabs-list-white .youzify-default-subnav li a i,
+.youzify-tabs-list-white div.item-list-tabs a i,
+.youzify-tabs-list-white div.item-list-tabs a:before {
+    color: #a4a4a4;
+    background-color: #fff;
+    border: 1px solid #eaeaea;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+.youzify-social-buttons a {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+.button.reject,
+.group-button.leave-group {
+    color: #8a8a8a;
+    min-width: 170px;
+    border: 1px solid #eee;
+    background-color: transparent
+}
+
+.button.accept:before {
+    content: '\f4fc'
+}
+
+.button.reject:before {
+    content: '\f235'
+}
+
+body div.widget.buddypress.widget_bp_core_members_widget div.item-options a,
+body div.widget.buddypress.widget_bp_groups_widget div.item-options a {
+    color: #fff !important;
+    font-size: 10px;
+    box-shadow: none;
+    font-weight: 600;
+    padding: 6px 12px;
+    text-shadow: none;
+    margin: 10px 8px 0 0;
+    display: inline-block;
+    text-decoration: none;
+    letter-spacing: .05em;
+    border: none !important;
+    background-color: #898989;
+    text-transform: uppercase
+}
+
+.widget_bp_core_members_widget .item-options a#recently-active-members,
+.widget_bp_groups_widget .item-options a#recently-active-groups {
+    background-color: #ffc107
+}
+
+.widget_bp_core_members_widget .item-options a#popular-members,
+.widget_bp_groups_widget .item-options a#popular-groups {
+    background-color: #ff5c50
+}
+
+.widget_bp_core_members_widget .item-options a#newest-members,
+.widget_bp_groups_widget .item-options a#newest-groups {
+    background-color: #32a0ff
+}
+
+.widget_bp_groups_widget .item-options a#alphabetical-groups {
+    background-color: #51d9cc
+}
+
+.widget_bp_core_members_widget .item-options .bp-separator,
+.widget_bp_groups_widget .item-options .bp-separator {
+    display: none
+}
+
+.widget_bp_core_members_widget #members-list .vcard,
+.widget_bp_groups_widget #groups-list li {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    overflow: hidden;
+    margin: 25px 0 0 0;
+    list-style-type: none
+}
+
+.widget_bp_core_members_widget #members-list li .item,
+.widget_bp_groups_widget #groups-list li .item {
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 70px)
+}
+
+.widget_bp_core_members_widget #members-list .vcard .item-avatar,
+.widget_bp_groups_widget #groups-list li .item-avatar {
+    margin-right: 12px;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.rtl .widget_bp_core_members_widget #members-list .vcard .item-avatar,
+.rtl .widget_bp_groups_widget #groups-list li .item-avatar,
+.rtl .youzify-my-account-widget .youzify-menu-links .youzify-link-item i,
+.rtl .youzify-notifications-widget .youzify-notif-item .youzify-notif-icon {
+    margin: 0 0 0 12px
+}
+
+.widget_bp_core_members_widget #members-list .vcard .item-title a,
+.widget_bp_groups_widget #groups-list li .item-title a {
+    border: none;
+    color: #7c838a;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize
+}
+
+.widget_bp_core_members_widget #members-list .vcard .item-meta .activity,
+.widget_bp_groups_widget #groups-list li .item-meta .activity {
+    color: #8a8a8a;
+    display: block;
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    text-transform: uppercase
+}
+
+.logged-in .widget_bp_core_login_widget {
+    overflow: hidden
+}
+
+.widget_bp_core_login_widget .bp-login-widget-user-avatar,
+.widget_bp_core_login_widget .bp-login-widget-user-link {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px
+}
+
+.widget_bp_core_login_widget .bp-login-widget-user-link a {
+    color: #7c838a;
+    font-size: 14px;
+    box-shadow: none
+}
+
+.widget_bp_core_login_widget .bp-login-widget-user-logout {
+    text-align: center
+}
+
+.widget_bp_core_login_widget .bp-login-widget-user-logout a {
+    font-size: 11px;
+    font-weight: 600;
+    box-shadow: none;
+    padding: 12px 35px;
+    display: inline-block;
+    color: #fff !important;
+    background-color: #ff5c50;
+    text-transform: uppercase
+}
+
+.widget_bp_core_login_widget .bp-login-widget-user-logout a:before {
+    opacity: 1;
+    content: "\f011";
+    font-weight: 700 !important
+}
+
+.bbp-login-form .bbp-email,
+.bbp-login-form .bbp-password,
+.bbp-login-form .bbp-remember-me,
+.bbp-login-form .bbp-username {
+    margin-bottom: 15px
+}
+
+#bp-login-widget-form > input,
+#bp-login-widget-form > label {
+    display: block;
+    margin-bottom: 10px
+}
+
+.bbp_widget_login .bbp-login-form fieldset {
+    border: none;
+    padding: 25px
+}
+
+.bbp_widget_login .bbp-login-form .bbp-remember-me label {
+    margin: 0
+}
+
+.bbp_widget_login .bbp-login-form .bbp-remember-me input,
+.bbp_widget_login .bbp-login-form .bbp-remember-me label {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.bbp_widget_login .bbp-login-form label {
+    margin-bottom: 10px
+}
+
+body #bp-login-widget-form label,
+body .bbp_widget_login .bbp-login-form label {
+    color: #7c838a;
+    font-size: 14px;
+    font-weight: 600
+}
+
+#bp-login-widget-form > input,
+.bbp_widget_login .bbp-login-form .bbp-password input,
+.bbp_widget_login .bbp-login-form .bbp-username input {
+    width: 100%;
+    height: 40px;
+    color: #898989;
+    font-size: 13px;
+    padding: 8px 12px;
+    border: 1px solid #eee
+}
+
+#bp-login-widget-form .forgetmenot {
+    margin-top: 15px
+}
+
+#bp-login-widget-form #bp-login-widget-submit,
+#bp-login-widget-form .bp-login-widget-register-link a {
+    width: 100%;
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: center;
+    letter-spacing: .03em;
+    text-transform: uppercase
+}
+
+#bp-login-widget-form #bp-login-widget-submit {
+    margin-top: 15px;
+    background-color: #32a0ff
+}
+
+#bp-login-widget-form .bp-login-widget-register-link a {
+    background-color: #8bc34a
+}
+
+.widget_bp_core_recently_active_widget .avatar-block,
+.widget_bp_core_whos_online_widget .avatar-block,
+.widget_bp_follow_following_widget .avatar-block {
+    text-align: center
+}
+
+.widget_bp_core_recently_active_widget .item-avatar,
+.widget_bp_core_whos_online_widget .item-avatar,
+.widget_bp_follow_following_widget .item-avatar {
+    margin: 8px;
+    display: inline-block
+}
+
+.bp-site-wide-message #message {
+    margin: 0;
+    padding: 0;
+    border: none !important
+}
+
+.widget_bp_core_sitewide_messages .bp-site-wide-message #message {
+    padding: 25px
+}
+
+.widget_bp_core_sitewide_messages .bp-site-wide-message #message p {
+    margin-top: 0;
+    color: #8a8a8a;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    position: relative;
+    text-decoration: none;
+    background-color: #fff
+}
+
+.widget_bp_core_sitewide_messages .bp-site-wide-message button {
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    border: none;
+    color: #9c9b9b;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 25px;
+    position: absolute;
+    text-align: center;
+    background-color: #eee
+}
+
+.widget_bp_core_sitewide_messages .bp-site-wide-message strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 15px
+}
+
+.widget_bp_core_sitewide_messages .bp-site-wide-message strong:before {
+    width: 45px;
+    height: 45px;
+    color: #fefefe;
+    display: block;
+    font-size: 18px;
+    content: '\f0a1';
+    line-height: 45px;
+    text-align: center;
+    margin: 0 auto 20px;
+    background-color: #ff8eb4
+}
+
+.widget_bp_core_sitewide_messages .bp-site-wide-message br {
+    display: none
+}
+
+.youzify-my-account-widget {
+    margin-bottom: 35px;
+    background-color: #fff
+}
+
+.youzify-my-account-widget .youzify-widget-header {
+    padding: 25px
+}
+
+.youzify-my-account-widget .youzify-widget-header .youzify-head-avatar {
+    margin-right: 15px
+}
+
+.rtl .youzify-my-account-widget .youzify-widget-header .youzify-head-avatar {
+    margin: 0 0 0 15px
+}
+
+.youzify-my-account-widget .youzify-widget-header .youzify-head-avatar img {
+    display: block;
+    width: 60px;
+    height: 60px
+}
+
+.youzify-my-account-widget .youzify-widget-header .youzify-widget-head .youzify-hello {
+    display: block;
+    color: #969696;
+    font-size: 13px;
+    margin-bottom: 10px
+}
+
+.youzify-my-account-widget .youzify-widget-header .youzify-widget-head .youzify-user-name {
+    display: block;
+    color: #7c838a;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    text-transform: capitalize
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-links-section:first-of-type {
+    padding-top: 24px;
+    border-top: 1px solid #f6f6f6
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-links-section:last-of-type {
+    margin-bottom: 12px
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-links-section {
+    padding: 12px 0 0
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-section-title {
+    display: block;
+    color: #969696;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    padding: 0 25px 8px;
+    text-transform: uppercase
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-link-item {
+    display: block;
+    padding: 12px 25px
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-link-item .youzify-link-title {
+    color: #7c838a;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    display: inline-block
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-link-item .youzify-link-title .youzify-link-count {
+    font-size: 11px;
+    min-width: 22px;
+    margin-left: 8px;
+    padding: 2px 6px;
+    text-align: center;
+    display: inline-block;
+    background-color: #eee
+}
+
+.rtl .youzify-my-account-widget .youzify-menu-links .youzify-link-item .youzify-link-title .youzify-link-count {
+    margin: 0 8px 0 0
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-link-item i {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: center;
+    margin-right: 12px
+}
+
+.youzify-my-account-widget .youzify-menu-icon-silver .youzify-link-item i {
+    color: #898989;
+    background-color: #f5f5f5
+}
+
+.youzify-my-account-widget .youzify-menu-icon-no-bg .youzify-link-item i {
+    color: #898989;
+    border: 1px solid #eee
+}
+
+.youzify-my-account-widget .youzify-menu-icon-colorful .youzify-link-item i {
+    color: #fff
+}
+
+.youzify-my-account-widget .youzify-menu-icon-colorful .youzify-link-profile-settings i {
+    background-color: #9dd958
+}
+
+.youzify-my-account-widget .youzify-menu-icon-colorful .youzify-link-widgets-settings i {
+    background-color: #707dc3
+}
+
+.youzify-my-account-widget .youzify-menu-icon-colorful .youzify-link-inbox i {
+    background-color: #5ac6ed
+}
+
+.youzify-my-account-widget .youzify-menu-icon-colorful .youzify-link-notifications i {
+    background-color: #ffc107
+}
+
+.youzify-my-account-widget .youzify-menu-icon-colorful .youzify-link-friendship-requests i {
+    background-color: #fd4e96
+}
+
+.youzify-my-account-widget .youzify-menu-icon-colorful .youzify-link-account-settings i {
+    background-color: #24cbbb
+}
+
+.youzify-my-account-widget .youzify-menu-links .youzify-link-logout {
+    padding: 15px 25px;
+    border-top: 1px solid #f2f2f2
+}
+
+.youzify-my-account-widget .youzify-menu-icon-colorful .youzify-link-logout i {
+    background-color: #9e9e9e
+}
+
+.youzify-my-account-widget .youzify-widget-header .youzify-head-avatar,
+.youzify-my-account-widget .youzify-widget-header .youzify-widget-head {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.youzify-notifications-widget .youzify-more-items a {
+    color: #969696;
+    display: block;
+    font-size: 13px;
+    margin-top: 10px;
+    font-weight: 600;
+    padding-top: 20px;
+    text-align: center;
+    border-top: 1px solid #f5f5f5
+}
+
+.youzify-notifications-widget .youzify-more-items a i {
+    font-size: 14px;
+    margin-right: 10px
+}
+
+.youzify-notifications-widget .youzify-notif-item {
+    padding: 15px 0;
+    overflow: hidden
+}
+
+.youzify-notif-item .display-name {
+    font-weight: 600;
+    text-transform: capitalize
+}
+
+.youzify-notif-item .youzify-notif-content {
+    text-align: left;
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(100% - 60px)
+}
+
+.rtl .youzify-notif-item .youzify-notif-content {
+    text-align: right
+}
+
+.youzify-notif-item .youzify-notif-icon {
+    margin-right: 12px;
+    display: inline-block
+}
+
+.youzify-notif-item .youzify-notif-content .youzify-notif-desc:first-letter {
+    text-transform: uppercase
+}
+
+.youzify-notifications-widget .youzify-notif-item .youzify-notif-content .youzify-notif-desc {
+    font-weight: 600
+}
+
+.youzify-notif-item .youzify-notif-content .youzify-notif-desc {
+    color: #6f757b;
+    display: block;
+    font-size: 13px;
+    line-height: 24px
+}
+
+.youzify-notif-item .youzify-notif-content .youzify-notif-time i {
+    margin-right: 5px;
+    font-size: 13px
+}
+
+.youzify-notif-item .youzify-notif-content .youzify-notif-time .youzify-notif-date,
+.youzify-notif-item .youzify-notif-content .youzify-notif-time i {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.rtl .youzify-notif-item .youzify-notif-content .youzify-notif-time i {
+    margin: 0 0 0 5px
+}
+
+.youzify-notif-item .youzify-notif-content .youzify-notif-time {
+    color: #969696;
+    margin-top: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    display: inline-block;
+    letter-spacing: .05em;
+    text-transform: uppercase
+}
+
+.youzify-notif-item .youzify-notif-icon i {
+    width: 40px;
+    height: 40px;
+    color: #898989;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #f2f2f2
+}
+
+.youzify-notif-icons-no-bg .youzify-notif-item .youzify-notif-icon i {
+    color: #898989;
+    border: 1px solid #eee;
+    background-color: transparent
+}
+
+.youzify-notif-icons-silver .youzify-notif-item .youzify-notif-icon i {
+    color: #898989;
+    background-color: #f2f2f2
+}
+
+.youzify-notif-icons-colorful .youzify-notif-item .youzify-notif-icon i {
+    color: #fff
+}
+
+.youzify-notif-icons-colorful .youzify-notif-comment_reply .youzify-notif-icon i {
+    background-color: #2cca90
+}
+
+.youzify-notif-icons-colorful .youzify-notif-update_reply .youzify-notif-icon i {
+    background-color: #03a9f4
+}
+
+.youzify-notif-icons-colorful .youzify-notif-new_follow .youzify-notif-icon i,
+.youzify-notif-icons-colorful .youzify-notif-new_message .youzify-notif-icon i {
+    background-color: #ffc107
+}
+
+.youzify-notif-icons-colorful .youzify-notif-new_message .youzify-notif-icon i,
+.youzify-notif-icons-colorful .youzify-notif-youzify_new_tag .youzify-notif-icon i {
+    background-color: #ffc107
+}
+
+.youzify-notif-icons-colorful .youzify-notif-bbp_new_reply .youzify-notif-icon i,
+.youzify-notif-icons-colorful .youzify-notif-friendship_accepted .youzify-notif-icon i {
+    background-color: #707dc3
+}
+
+.youzify-notif-icons-colorful .youzify-notif-friendship_request .youzify-notif-icon i {
+    background-color: #fd4e96
+}
+
+.youzify-notif-icons-colorful .youzify-notif-new_at_mention .youzify-notif-icon i {
+    background-color: #e368f8
+}
+
+.youzify-notif-icons-colorful .youzify-notif-membership_request_rejected .youzify-notif-icon i {
+    background-color: #f44336
+}
+
+.youzify-notif-icons-colorful .youzify-notif-membership_request_accepted .youzify-notif-icon i {
+    background-color: #8bc34a
+}
+
+.youzify-notif-icons-colorful .youzify-notif-member_promoted_to_admin .youzify-notif-icon i {
+    background-color: #ff5722
+}
+
+.youzify-notif-icons-colorful .youzify-notif-member_promoted_to_mod .youzify-notif-icon i {
+    background-color: #5668c9
+}
+
+.youzify-notif-icons-colorful .youzify-notif-new_membership_request .youzify-notif-icon i {
+    background-color: #6d8d9d
+}
+
+.youzify-notif-icons-colorful .youzify-notif-group_invite .youzify-notif-icon i {
+    background-color: #ff1263
+}
+
+.youzify-notif-icons-colorful .youzify-notif-youzify_new_like .youzify-notif-icon i {
+    background-color: #ff4a87
+}
+
+.youzify-notif-icons-colorful .youzify-notif-youzify_new_reaction .youzify-notif-icon i {
+    background-color: #ffeb3b
+}
+
+.youzify-notif-icons-colorful .youzify-notif-youzify_new_share .youzify-notif-icon i {
+    background-color: #5c70dc
+}
+
+.youzify-follow-message-button {
+    margin-left: 5px;
+    background-color: #f6f6f6
+}
+
+.youzify-page-btns-border-oval .youzify-follow-message-button {
+    border-radius: 100px
+}
+
+.youzify-page-btns-border-radius .youzify-follow-message-button {
+    border-radius: 3px
+}
+
+.youzify-page-btns-border-flat .youzify-social-buttons .youzify-follow-message-button .youzify-send-message,
+.youzify-page-btns-border-radius .youzify-social-buttons .youzify-follow-message-button .youzify-send-message {
+    border: none;
+    border-left: 1px solid #eee
+}
+
+.rtl .youzify-follow-message-button {
+    margin-left: 0;
+    margin-right: 5px
+}
+
+.youzify-follow-message-button div {
+    float: left
+}
+
+.youzify-social-buttons .youzify-follow-message-button .follow-button a {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 12px 15px 12px 25px;
+    background-color: transparent
+}
+
+.youzify-social-buttons .youzify-follow-message-button .follow-button a,
+.youzify-social-buttons .youzify-follow-message-button .youzify-send-message {
+    border: none;
+    min-width: initial
+}
+
+.youzify-social-buttons .youzify-follow-message-button .youzify-send-message span {
+    display: none
+}
+
+.youzify-social-buttons .youzify-follow-message-button .youzify-send-message {
+    margin: 0;
+    padding: 0;
+    background: #eaeaea
+}
+
+.youzify-social-buttons .youzify-follow-message-button .youzify-send-message:before {
+    margin: 0;
+    padding: 0;
+    width: 46px;
+    height: 46px;
+    line-height: 46px
+}
+
+.follow-button .follow:before {
+    content: "\f09e"
+}
+
+.follow-button .unfollow:before {
+    content: "\f00d"
+}
+
+.friendship-button .add:before {
+    content: "\f234"
+}
+
+.block-button:before {
+    content: "\f05e"
+}
+
+.message-button .youzify-send-message:before {
+    content: "\f658"
+}
+
+.friendship-button .pending_friend:before,
+.friendship-button .remove:before {
+    content: "\f235"
+}
+
+.friendship-button .awaiting_response_friend:before {
+    content: '\f2b5'
+}
+
+.widget-error {
+    padding: 25px;
+    color: #898989;
+    font-size: 13px
+}
+
+.group-button a.join-group:before {
+    content: '\f2f6'
+}
+
+.group-button a.leave-group:before {
+    content: '\f2f5'
+}
+
+.group-button .accept-invite:before {
+    content: '\f00c'
+}
+
+.group-button a.request-membership:before {
+    content: '\f2b5'
+}
+
+.group-button a.membership-requested:before {
+    content: '\f1d8'
+}
+
+#message {
+    padding: 15px 25px;
+    margin-bottom: 35px;
+    background-color: #fff
+}
+
+#youzify #message p {
+    margin: 0;
+    padding: 0;
+    color: #898989;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 28px
+}
+
+#message p a {
+    color: #89afc1
+}
+
+#message p code {
+    font-family: open sans, sans-serif;
+    font-size: 13px;
+    color: #89afc1;
+    text-transform: initial
+}
+
+#message.error {
+    border-left: 6px solid #f44336
+}
+
+.rtl #message.error {
+    border-left: none;
+    border-right: 6px solid #f44336
+}
+
+#message.updated {
+    display: block;
+    border-left: 6px solid #afe371
+}
+
+.rtl #message.updated {
+    border-left: none;
+    border-right: 6px solid #afe371
+}
+
+#message.info,
+div#message.info {
+    background: #fff;
+    border-left: 6px solid #9e9e9e
+}
+
+.rtl #message.info,
+.rtl div#message.info {
+    border-left: none;
+    border-right: 6px solid #9e9e9e
+}
+
+.youzify-sidebar .widget {
+    margin: 0;
+    padding: 0;
+    border: none
+}
+
+.youzify-sidebar .widget-content {
+    margin-bottom: 35px;
+    border-radius: 3px;
+    background-color: #fff
+}
+
+.youzify-sidebar .widget-content .widget-title:empty {
+    display: none
+}
+
+.youzify-sidebar .widget-content .widget-title {
+    margin: 0;
+    border: none;
+    color: #858f94;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 0;
+    padding: 15px 25px;
+    border-bottom: 1px solid #f2f2f2
+}
+
+.youzify-sidebar .widget-content .widget-title:after,
+.youzify-sidebar .widget-content .widget-title:before {
+    border: none;
+    position: initial
+}
+
+.youzify-sidebar .widget-content .widget-title:before {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    margin-right: 10px;
+    text-align: center;
+    background-color: #f2f2f2
+}
+
+body .youzify-sidebar .buddypress div.item-options {
+    margin-top: 15px
+}
+
+.youzify-sidebar .item-list {
+    padding-bottom: 25px !important
+}
+
+body .buddypress.widget .item-list,
+body .buddypress.widget .item-options {
+    padding: 0 25px !important;
+    float: initial !important;
+    border: none
+}
+
+body .buddypress.widget .item-list {
+    padding-bottom: 25px !important
+}
+
+.youzify-sidebar .youzify-items-list-widget {
+    padding: 0 25px 25px
+}
+
+.youzify-sidebar .widget_youzify_notifications_widget .youzify-notifications-widget .youzify-notif-item {
+    padding: 22px 25px;
+    border-bottom: 1px solid #f5f5f5
+}
+
+.youzify-sidebar .widget_youzify_notifications_widget .youzify-notifications-widget .youzify-more-items a {
+    margin-top: 0;
+    border-top: 0;
+    padding: 20px 25px
+}
+
+.youzify-sidebar .widget_bp_core_recently_active_widget .avatar-block,
+.youzify-sidebar .widget_bp_core_whos_online_widget .avatar-block,
+.youzify-sidebar .widget_bp_follow_following_widget .avatar-block {
+    padding: 17px 0
+}
+
+.youzify-sidebar .widget_youzify_media .widget-title:before {
+    content: "\f87c"
+}
+
+.youzify-sidebar .widget_youzify_notifications_widget .widget-title:before {
+    content: "\f0f3";
+    font-weight: 200
+}
+
+.youzify-sidebar .widget_display_stats .widget-title:before {
+    content: "\f080"
+}
+
+.youzify-sidebar .widget_display_search .widget-title:before {
+    content: "\f002"
+}
+
+.youzify-sidebar .widget_display_topics .widget-title:before {
+    content: "\f1da"
+}
+
+.youzify-sidebar .widget_youzify_community_hashtags .widget-title:before {
+    content: "\f292"
+}
+
+.youzify-sidebar .widget_youzify_hashtags .widget-title:before {
+    content: "\f682"
+}
+
+.youzify-sidebar .widget_display_views .widget-title:before {
+    content: "\f15b"
+}
+
+.youzify .widget_display_views li:before {
+    content: ""
+}
+
+.youzify-sidebar .widget_display_replies .widget-title:before {
+    content: "\f27a"
+}
+
+.youzify-sidebar .bbp_widget_login .widget-title:before {
+    content: "\f007"
+}
+
+.youzify-sidebar .widget_display_forums .widget-title:before {
+    content: "\f086"
+}
+
+.youzify-sidebar .widget_bp_follow_following_widget .widget-title:before {
+    content: "\f09e"
+}
+
+.youzify-sidebar .widget_youzify_friend_suggestions_widget .widget-title:before {
+    content: "\f234"
+}
+
+.youzify-sidebar .widget_youzify_group_suggestions_widget .widget-title:before {
+    content: "\f0c0"
+}
+
+.youzify-sidebar .widget_youzify_group_administrators_widget .widget-title:before {
+    content: "\f21b"
+}
+
+.youzify-sidebar .widget_youzify_group_moderators_widget .widget-title:before {
+    content: "\f3ed"
+}
+
+.youzify-sidebar .widget_bp_core_whos_online_widget .widget-title:before {
+    content: "\f2ce"
+}
+
+.youzify-sidebar .widget-my-cred .widget-title:before {
+    content: "\f3a5"
+}
+
+.youzify-sidebar .myCRED-widget-history .widget-title:before {
+    content: "\f1da"
+}
+
+.youzify-sidebar .widget-mycred-list .widget-title:before {
+    content: "\f160"
+}
+
+.youzify-sidebar .widget_bp_core_recently_active_widget .widget-title:before {
+    content: "\f06d"
+}
+
+.youzify-sidebar .widget_bp_core_members_widget .widget-title:before {
+    content: "\f00b"
+}
+
+.youzify-sidebar .widget_bp_groups_widget .widget-title:before {
+    content: "\f022"
+}
+
+.youzify-sidebar .widget_bp_core_sitewide_messages .widget-title:before {
+    content: '\f0a1'
+}
+
+.youzify-sidebar .widget_bp_core_login_widget .widget-title:before {
+    content: '\f2bd'
+}
+
+.youzify-sidebar .widget_bp_core_login_widget form {
+    padding: 35px
+}
+
+.youzify-sidebar .widget_bp_core_login_widget .bp-login-widget-user-avatar {
+    margin-top: 35px
+}
+
+.youzify-sidebar .widget_bp_core_login_widget .bp-login-widget-user-links {
+    margin-bottom: 35px
+}
+
+.youzify-sidebar .widget_bp_core_login_widget .bp-login-widget-user-avatar img {
+    margin: 0 auto
+}
+
+.youzify-wp-widget .youzify-no-items-found {
+    text-align: center;
+    padding: 25px 15px;
+    font-weight: 600;
+    color: #898989;
+    font-size: 13px
+}
+
+.youzify-wp-widget-box a {
+    color: #fff;
+    outline: 0;
+    display: block;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    overflow: hidden;
+    position: relative
+}
+
+.rtl .youzify-wp-widget-box a {
+    text-align: right
+}
+
+.youzify-wp-widget-box a:before {
+    top: 34px;
+    right: 0;
+    width: 25%;
+    z-index: 999;
+    height: 90px;
+    font-size: 22px;
+    content: "\f2f6";
+    text-align: center;
+    position: absolute;
+    text-rendering: auto;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Font Awesome 5 Free" !important
+}
+
+.rtl .youzify-wp-widget-box a:before {
+    right: initial;
+    left: 0
+}
+
+.rtl .youzify-wp-widget-box a:after {
+    right: initial;
+    left: -35px
+}
+
+.youzify-wp-widget-box a:after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    width: 30%;
+    height: 200%;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    margin: -5px 0 0 -5px;
+    background: rgba(255, 255, 255, .1);
+    -webkit-transform-origin: 0 0;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform-origin: 0 0;
+    -moz-transform: rotate(-20deg);
+    -ms-transform-origin: 0 0;
+    -ms-transform: rotate(-20deg);
+    transform-origin: 0 0;
+    transform: rotate(-20deg);
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out
+}
+
+.youzify-wp-widget-box a:hover {
+    color: #fff
+}
+
+.youzify-wp-widget-box a:hover:after {
+    width: 40%
+}
+
+.youzify-wp-widget-box a {
+    margin-bottom: 35px;
+    padding: 15px 25px 13px;
+    background-color: #24c6dc;
+}
+
+.youzify-wp-rss-box a {
+    background: #ff5722;
+}
+
+.youzify-wp-widget-box a i {
+    color: #fff;
+    display: block;
+    font-size: 22px;
+    text-align: inherit;
+    margin-bottom: 20px
+}
+
+#youzify .youzify-sidebar .widget-content .textwidget {
+    color: #858f94;
+    font-size: 13px;
+    line-height: 18px;
+    padding: 15px 25px
+}
+
+.nice-select,
+.youzify div.item-list-tabs .youzify-bar-select {
+    -webkit-tap-highlight-color: transparent;
+    background-color: #f6f6f6;
+    box-sizing: border-box;
+    clear: both;
+    cursor: pointer;
+    display: inline-block;
+    float: none;
+    font-family: inherit;
+    font-size: 14px;
+    min-height: 38px;
+    line-height: 39px;
+    outline: 0;
+    padding-left: 18px;
+    padding-right: 35px;
+    position: relative;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: auto;
+    vertical-align: middle;
+    text-align: left !important
+}
+
+.rtl .nice-select,
+.rtl .youzify div.item-list-tabs .youzify-bar-select {
+    padding-left: 30px;
+    padding-right: 18px
+}
+
+.rtl .nice-select,
+.rtl .youzify div.item-list-tabs .youzify-bar-select {
+    text-align: right !important
+}
+
+.nice-select:hover {
+    border-color: #eee
+}
+
+.nice-select.open,
+.nice-select:active,
+.nice-select:focus {
+    border-color: #eee
+}
+
+.nice-select:after,
+.youzify div.item-list-tabs .youzify-bar-select:after {
+    border-bottom: 2px solid #898989;
+    border-right: 2px solid #898989;
+    content: '';
+    display: block;
+    height: 5px;
+    margin-top: -5px;
+    pointer-events: none;
+    position: absolute;
+    top: 50%;
+    -webkit-transform-origin: 66% 66%;
+    -ms-transform-origin: 66% 66%;
+    transform-origin: 66% 66%;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    -webkit-transition: all .15s ease-in-out;
+    transition: all .15s ease-in-out;
+    width: 5px;
+    right: 15px
+}
+
+.rtl .nice-select:after,
+.rtl .youzify div.item-list-tabs .youzify-bar-select:after {
+    right: initial;
+    left: 12px
+}
+
+
+
+.nice-select.open:after {
+    -webkit-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    transform: rotate(-135deg)
+}
+
+.nice-select.open .list {
+    opacity: 1;
+    overflow: auto;
+    max-height: 400px;
+    pointer-events: auto;
+    -webkit-transform: scale(1) translateY(0);
+    -ms-transform: scale(1) translateY(0);
+    transform: scale(1) translateY(0)
+}
+
+.nice-select.disabled {
+    border-color: #ededed;
+    color: #999;
+    pointer-events: none
+}
+
+.nice-select.disabled:after {
+    border-color: #ccc
+}
+
+.nice-select.wide {
+    width: 100%
+}
+
+.nice-select.wide .list {
+    left: 0 !important;
+    right: 0 !important
+}
+
+.nice-select.right {
+    float: right
+}
+
+.nice-select.right .list {
+    left: auto;
+    right: 0
+}
+
+.nice-select.small {
+    font-size: 12px;
+    height: 36px;
+    line-height: 34px
+}
+
+.nice-select.small:after {
+    height: 4px;
+    width: 4px
+}
+
+.nice-select.small .option {
+    line-height: 34px;
+    min-height: 34px
+}
+
+.nice-select .list li {
+    display: block
+}
+
+.nice-select .list {
+    background-color: #fff;
+    box-shadow: 0 0 0 1px rgba(68, 68, 68, .08);
+    box-sizing: border-box;
+    margin-top: 8px;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    max-height: 400px;
+    -webkit-transform-origin: 50% 0;
+    -ms-transform-origin: 50% 0;
+    transform-origin: 50% 0;
+    -webkit-transform: scale(.75) translateY(-21px);
+    -ms-transform: scale(.75) translateY(-21px);
+    transform: scale(.75) translateY(-21px);
+    -webkit-transition: all .2s cubic-bezier(.5, 0, 0, 1.25), opacity .15s ease-out;
+    transition: all .2s cubic-bezier(.5, 0, 0, 1.25), opacity .15s ease-out;
+    z-index: 9
+}
+
+.nice-select .list:hover .option:not(:hover) {
+    background-color: transparent !important
+}
+
+.nice-select .option {
+    cursor: pointer;
+    font-weight: 400;
+    line-height: 40px;
+    list-style: none;
+    font-size: 13px;
+    min-height: 40px;
+    color: #8a8a8a;
+    outline: 0;
+    padding-left: 18px;
+    padding-right: 29px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    text-align: left
+}
+
+.rtl .nice-select .option {
+    text-align: right
+}
+
+.nice-select .option.focus,
+.nice-select .option.selected.focus,
+.nice-select .option:hover {
+    background-color: #f6f6f6
+}
+
+
+
+.nice-select .option.disabled {
+    color: #999;
+    cursor: default;
+    background-color: transparent
+}
+
+.no-csspointerevents .nice-select .list {
+    display: none
+}
+
+.no-csspointerevents .nice-select.open .list {
+    display: block
+}
+
+.rtl #youzify-wall-nav .nice-select,
+.rtl .youzify div.item-list-tabs .nice-select,
+.rtl .youzify div.item-list-tabs .youzify-bar-select {
+    padding-left: 30px;
+    padding-right: 18px
+}
+
+#youzify-wall-nav .nice-select:after,
+.youzify div.item-list-tabs .youzify-bar-select:after {
+    right: 16px
+}
+
+.rtl #youzify-wall-nav .nice-select:after,
+.rtl .youzify div.item-list-tabs .youzify-bar-select:after {
+    right: initial;
+    left: 16px
+}
+
+#whats-new-post-in-box label i {
+    font-size: 14px;
+    margin-right: 8px
+}
+
+#whats-new-post-in-box .nice-select {
+    height: 40px;
+    margin-left: 5px;
+    min-width: 100px;
+    line-height: 40px;
+    padding-right: 30px;
+    border: 1px solid #eee;
+    background-color: transparent
+}
+
+.rtl #whats-new-post-in-box .nice-select {
+    padding-right: 18px
+}
+
+.rtl #whats-new-post-in-box .nice-select {
+    margin: 0 5px 0 0
+}
+
+#whats-new-post-in-box .nice-select:after {
+    right: 15px;
+    margin-top: -3px
+}
+
+.rtl #whats-new-post-in-box .nice-select:after {
+    right: initial;
+    left: 15px
+}
+
+#whats-new-post-in-box .nice-select .current {
+    font-size: 11px;
+    line-height: 38px
+}
+
+#whats-new-post-in-box select {
+    opacity: 0;
+    height: 39px
+}
+
+.youzify div.item-list-tabs .youzify-bar-select {
+    width: 151px;
+    color: #8a8a8a;
+    font-size: 13px;
+    font-weight: 600;
+    padding-right: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.youzify .youzify-btn-loading:before {
+    content: "\f110" !important;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear
+}
+
+.youzify-dialog {
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999999;
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, .3);
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s
+}
+
+.youzify-dialog.youzify-is-visible,
+.youzify-modal.youzify-is-visible,
+.youzify-popup-login.youzify-is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s
+}
+
+.youzify-dialog-container {
+    width: 90%;
+    margin: 4em auto;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    background-color: #fff
+}
+
+.youzify-dialog-static .youzify-dialog-container {
+    max-width: 500px
+}
+
+.youzify-modal .youzify-dialog-container {
+    max-width: 600px
+}
+
+.youzify-dialog .youzify-dialog-container {
+    max-width: 400px
+}
+
+.youzify-dialog .youzify-dialog-container,
+.youzify-modal .youzify-dialog-container {
+    box-shadow: 0 15px 50px rgba(0, 0, 0, .15);
+    -webkit-transform: translateY(-40px);
+    -moz-transform: translateY(-40px);
+    -ms-transform: translateY(-40px);
+    -o-transform: translateY(-40px);
+    transform: translateY(-40px);
+    -webkit-transition-property: -webkit-transform;
+    -moz-transition-property: -moz-transform;
+    transition-property: transform;
+    -webkit-transition-duration: .3s;
+    -moz-transition-duration: .3s;
+    transition-duration: .3s
+}
+
+.youzify-dialog-container .youzify-dialog-buttons {
+    margin: 0;
+    padding: 0
+}
+
+#youzify-modal .youzify-modal-2rows:after,
+.youzify-dialog-container .youzify-dialog-buttons:after,
+.youzify-media .youzify-media-group:after,
+.youzify-page-main-content:after,
+.youzify-wall-actions:after {
+    content: "";
+    clear: both;
+    display: table
+}
+
+.youzify-dialog-container .youzify-dialog-buttons li {
+    display: inline-block
+}
+
+.youzify-dialog-container .youzify-dialog-buttons a {
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 8px 25px;
+    margin-bottom: 35px;
+    display: inline-block;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out
+}
+
+.youzify-dialog-container .youzify-dialog-buttons a.youzify-close-dialog {
+    color: #909090;
+    border: 2px solid #eee
+}
+
+.youzify-dialog-container .youzify-dialog-buttons a.youzify-confirm-dialog {
+    color: #fff;
+    margin-right: 8px;
+    background-color: #55d1e1
+}
+
+.youzify-dialog-container .youzify-dialog-buttons a:hover {
+    border-color: #d0d0d0;
+    text-decoration: none
+}
+
+.youzify-is-visible .youzify-dialog-container {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0)
+}
+
+.youzify-dialog-header {
+    padding: 35px 0
+}
+
+.youzify-modal .youzify-dialog-header {
+    padding: 20px;
+    font-size: 14px
+}
+
+.youzify-modal .youzify-dialog-header i {
+    width: 35px;
+    color: #fff;
+    height: 35px;
+    display: block;
+    font-size: 18px;
+    line-height: 35px;
+    margin: 0 auto 15px;
+    background-color: rgba(255, 255, 255, .15)
+}
+
+.youzify-dialog-header:empty {
+    display: none
+}
+
+.youzify-dialog-header i {
+    color: #fff;
+    font-size: 30px
+}
+
+.youzify-dialog-desc .youzify-dialog-title {
+    display: block;
+    color: #6e7071;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 15px
+}
+
+.youzify-dialog-desc {
+    color: #8f9293;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 26px;
+    padding: 30px 25px
+}
+
+.youzify-dialog-desc a,
+.youzify-dialog-desc strong {
+    color: #888;
+    font-weight: 600
+}
+
+.youzify-error-dialog .youzify-dialog-header {
+    background-color: #f64d4d
+}
+
+.youzify-info-dialog .youzify-dialog-header {
+    background-color: #55d1e1
+}
+
+.youzify-success-dialog .youzify-dialog-header {
+    background-color: #8bc34a
+}
+
+.youzify i.far {
+    font-family: "Font Awesome 5 Free" !important
+}
+
+.youzify [data-icon]:before,
+.youzify i.fas {
+    font-family: "Font Awesome 5 Free" !important;
+    font-weight: 700
+}
+
+.youzify i.fab {
+    font-family: "Font Awesome 5 Brands" !important;
+    top: initial
+}
+
+.block-button:before,
+.bp-site-wide-message strong:before,
+.follow-button a:before,
+.friendship-button a:before,
+.group-button a:before,
+.message-button a:before,
+.widget-content .widget-title:before,
+.widget_bp_core_login_widget .bp-login-widget-user-logout a:before,
+.widget_display_forums li a:before,
+.widget_display_topics li:before,
+.widget_display_views li .bbp-view-title:before,
+.youzify .activity-list li.load-newest a:before,
+.youzify-media-item-img.youzify-local-item:after,
+a.button:before {
+    display: inline-block;
+    font-family: "Font Awesome 5 Free" !important;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 600;
+    margin-right: 8px;
+    font-size: 14px
+}
+
+.rtl .bp-site-wide-message strong:before,
+.rtl .follow-button a:before,
+.rtl .friendship-button a:before,
+.rtl .group-button a:before,
+.rtl .message-button a:before,
+.rtl .widget-content .widget-title:before,
+.rtl .widget_bp_core_login_widget .bp-login-widget-user-logout a:before,
+.rtl .widget_display_forums li a:before,
+.rtl .widget_display_topics li:before,
+.rtl .widget_display_views li .bbp-view-title:before,
+.rtl .youzify .activity-list li.load-newest a:before,
+.rtl a.button:before {
+    margin-right: 0;
+    margin-left: 8px
+}
+
+.youzify-actions-btn-border-flat .youzify-wall-actions .youzify-wall-post,
+.youzify-actions-btn-border-flat a,
+.youzify-card-avatar-border-flat .item-avatar,
+.youzify-card-avatar-border-flat .youzify-group-avatar,
+.youzify-card-avatar-border-flat .youzify-group-avatar img,
+.youzify-card-avatar-border-flat .youzify-item-avatar,
+.youzify-card-avatar-border-flat .youzify-item-avatar img,
+.youzify-my-account-widget .youzify-menu-icon-flat .youzify-link-item i,
+.youzify-my-account-widget .youzify-widget-header .youzify-avatar-border-flat img {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0
+}
+
+#bp-login-widget-form > input {
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    -ms-border-radius: 1px;
+    -o-border-radius: 1px;
+    border-radius: 1px
+}
+
+#wp-admin-bar-user-info img.avatar,
+.emojionearea .emojionearea-picker .emojionearea-search > input,
+.nice-select .list,
+.youzify-head-content .youzify-user-status,
+.youzify-name .youzify-user-status,
+.youzify-product-actions a,
+.youzify-product-content .youzify-product-tags li,
+.youzify-scrolltotop i {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px
+}
+
+#bp-login-widget-form #bp-login-widget-submit,
+#bp-login-widget-form .bp-login-widget-register-link a,
+#message,
+#youzify-wall-nav,
+.widget_bp_core_login_widget .bp-login-widget-user-logout a,
+.widget_bp_core_members_widget .item-options a,
+.widget_bp_core_sitewide_messages .bp-site-wide-message button,
+.widget_bp_groups_widget .item-options a,
+.youzify div.item-list-tabs .nice-select,
+.youzify div.item-list-tabs .youzify-bar-select,
+.youzify-actions-btn-border-radius a,
+.youzify-card-avatar-border-radius .item-avatar,
+.youzify-card-avatar-border-radius .youzify-group-avatar,
+.youzify-card-avatar-border-radius .youzify-group-avatar img,
+.youzify-card-avatar-border-radius .youzify-item-avatar,
+.youzify-card-avatar-border-radius .youzify-item-avatar img,
+.youzify-dialog-container,
+.youzify-item-tool .youzify-tool-icon,
+.youzify-item-tool .youzify-tool-icon i,
+.youzify-items-list-widget .youzify-list-item .youzify-item-action .youzify-icon-button i,
+.youzify-list-avatar-radius .youzify-item-avatar img,
+.youzify-my-account-widget .youzify-menu-icon-radius .youzify-link-item i,
+.youzify-my-account-widget .youzify-menu-links .youzify-link-item .youzify-link-title .youzify-link-count,
+.youzify-my-account-widget .youzify-widget-header .youzify-avatar-border-radius img,
+.youzify-notif-icons-radius .youzify-notif-item .youzify-notif-icon i,
+.youzify-profile-avatars-widget.youzify-list-avatar-radius .youzify-more-items a,
+.youzify-rating-show-more,
+.youzify-tab-title-box,
+.youzify-tool-btn,
+.youzify-tooltip:after,
+.youzify-wp-widget-box a,
+[data-youzify-tooltip]:after {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px
+}
+
+.youzify-my-account-widget {
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px
+}
+
+.youzify-page-btns-border-radius .nice-select {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px
+}
+
+.bp-login-widget-user-avatar a img,
+.widget_bp_core_members_widget #members-list .vcard .item-avatar a img,
+.widget_bp_core_recently_active_widget .item-avatar a img,
+.widget_bp_core_sitewide_messages .bp-site-wide-message strong:before,
+.widget_bp_core_whos_online_widget .item-avatar a img,
+.widget_bp_follow_following_widget .item-avatar a img,
+.widget_bp_groups_widget #groups-list li .item-avatar a img,
+.youzify-account-verified,
+.youzify-card-avatar-border-circle .item-avatar,
+.youzify-card-avatar-border-circle .youzify-group-avatar,
+.youzify-card-avatar-border-circle .youzify-group-avatar img,
+.youzify-card-avatar-border-circle .youzify-item-avatar,
+.youzify-card-avatar-border-circle .youzify-item-avatar img,
+.youzify-default-subnav li a i,
+.youzify-list-avatar-circle .youzify-item-avatar img,
+.youzify-modal .youzify-dialog-header i,
+.youzify-my-account-widget .youzify-menu-icon-circle .youzify-link-item i,
+.youzify-my-account-widget .youzify-widget-header .youzify-avatar-border-circle img,
+.youzify-notif-icons-circle .youzify-notif-item .youzify-notif-icon i,
+.youzify-profile-avatars-widget.youzify-list-avatar-circle .youzify-more-items a,
+.youzify-profile-photo .youzify-user-status,
+.youzify-sidebar .widget-content .widget-title:before,
+.youzify-tab-title-box .youzify-tab-title-icon i {
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%;
+    border-radius: 100%
+}
+
+.youzify-actions-btn-border-oval #whats-new-post-in-box .nice-select,
+.youzify-actions-btn-border-oval a,
+.youzify-dialog-container .youzify-dialog-buttons a,
+.youzify-wp-author-widget .youzify-author .youzify-social-buttons a {
+    border-radius: 30px;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px
+}
+
+.youzify a.fav.loading,
+.youzify a.unfav.loading {
+    animation-name: youzify-like-flash;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-play-state: running
+}
+
+@keyframes youzify-like-flash {
+    from {
+        color: #939ba3
+    }
+
+    to {
+        color: #fb6358
+    }
+}
+
+.youzify input.loading {
+    -webkit-animation: loader-pulsate .5s infinite ease-in-out alternate;
+    -moz-animation: loader-pulsate .5s infinite ease-in-out alternate;
+    border-color: #aaa
+}
+
+@-webkit-keyframes loader-pulsate {
+    from {
+        border-color: #aaa;
+        -webkit-box-shadow: 0 0 6px #ccc;
+        box-shadow: 0 0 6px #ccc
+    }
+
+    to {
+        border-color: #ccc;
+        -webkit-box-shadow: 0 0 6px #f8f8f8;
+        box-shadow: 0 0 6px #f8f8f8
+    }
+}
+
+@-moz-keyframes loader-pulsate {
+    from {
+        border-color: #aaa;
+        -moz-box-shadow: 0 0 6px #ccc;
+        box-shadow: 0 0 6px #ccc
+    }
+
+    to {
+        border-color: #ccc;
+        -moz-box-shadow: 0 0 6px #f8f8f8;
+        box-shadow: 0 0 6px #f8f8f8
+    }
+}
+
+.youzify-load-emojis {
+    top: 9px;
+    right: 9px;
+    width: 18px;
+    cursor: pointer;
+    position: absolute
+}
+
+.youzify-load-emojis i {
+    font-size: 17px;
+    color: #bbb
+}
+
+.youzify-load-emojis i:hover {
+    color: #898989
+}
+
+.youzify-comments-emojis .youzify-load-emojis {
+    top: 15px;
+    left: 20px
+}
+
+.youzify-head-content .youzify-user-status {
+    display: block
+}
+
+.youzify-head-content .youzify-user-status {
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 10px;
+    padding: 3px 5px 4px;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase
+}
+
+.youzify-head-content .youzify-user-online {
+    background-color: #7ac225
+}
+
+.youzify-head-content .youzify-user-offline {
+    background-color: #8b8b8b
+}
+
+.bbp-login-form fieldset legend {
+    display: none !important
+}
+
+.bbp-login-form .bbp-email input,
+.bbp-login-form .bbp-password input,
+.bbp-login-form .bbp-username input {
+    padding: 5px
+}
+
+.bbp-login-form label {
+    width: 140px;
+    display: inline-block
+}
+
+.bbp_widget_login .bbp-login-form button {
+    min-height: 50px
+}
+
+#sidebar .bbp-login-form label {
+    width: 70px
+}
+
+.bbp-login-form .bbp-submit-wrapper {
+    text-align: right
+}
+
+.bbp-login-form .bbp-login-links a {
+    float: left;
+    clear: left
+}
+
+.bbp-logged-in {
+    padding: 25px;
+    text-align: center
+}
+
+.bbp-logged-in img.avatar {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 15px;
+    border-radius: 100%
+}
+
+.bbp-logged-in h4 a {
+    color: #898989;
+    font-size: 14px;
+    font-weight: 600
+}
+
+.bbp-logged-in .logout-link {
+    color: #fff;
+    padding: 18px;
+    display: block;
+    font-size: 13px;
+    margin-top: 18px;
+    font-weight: 600;
+    border-radius: 2px;
+    background-color: #f44336;
+    text-transform: uppercase
+}
+
+.widget_display_views ul {
+    padding: 12px 0
+}
+
+.widget_display_views li {
+    padding: 12px 25px;
+    border: none !important
+}
+
+.widget_display_views li .bbp-view-title:before {
+    color: #fff;
+    width: 35px;
+    height: 35px;
+    content: "\f15c";
+    line-height: 35px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #3fc3ff
+}
+
+.widget_display_views li .bbp-view-title {
+    color: #898989;
+    font-size: 13px;
+    font-weight: 600
+}
+
+.widget_display_topics ul {
+    padding: 15px 0
+}
+
+.widget.widget_display_topics li,
+.widget_display_topics li {
+    color: #898989;
+    font-size: 13px;
+    line-height: 24px;
+    min-height: 50px;
+    margin-bottom: 15px;
+    position: relative;
+    border: none !important;
+    padding: 0 25px 0 90px
+}
+
+.rtl .widget_display_topics li {
+    padding: 15px 90px 15px 25px
+}
+
+.widget_display_topics li:before {
+    left: 25px;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    content: "\f303";
+    position: absolute;
+    font-weight: 700;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #3fc3ff
+}
+
+.rtl .widget_display_topics li:before {
+    left: initial;
+    right: 25px
+}
+
+.widget_display_topics li a.bbp-forum-title {
+    color: #898989;
+    font-size: 13px;
+    font-weight: 600
+}
+
+.widget_display_topics li a.bbp-forum-title:before {
+    content: '';
+    padding: 0;
+    margin: 0
+}
+
+.widget_display_topics li .topic-author a.bbp-author-avatar,
+.widget_display_topics li .topic-author img,
+.youzify-follow-message-button {
+    vertical-align: middle;
+    display: inline-block
+}
+
+.widget_display_topics li .topic-author img {
+    width: 20px;
+    height: 20px;
+    margin: 0 3px;
+    border-radius: 100%
+}
+
+.widget_display_topics li .topic-author a.bbp-author-name {
+    font-size: 13px;
+    color: #3fc3ff;
+    font-weight: 600;
+    vertical-align: middle;
+    text-transform: capitalize
+}
+
+.widget_display_topics li div {
+    color: #b1b0b0;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase
+}
+
+.widget_display_forums ul {
+    padding: 12px 0
+}
+
+.widget_display_forums li {
+    padding: 12px 25px
+}
+
+.widget_display_forums li a:before {
+    padding: 0;
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    content: "\f086";
+    line-height: 35px;
+    margin-right: 12px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #3fc3ff
+}
+
+.widget_display_forums li a {
+    color: #898989;
+    font-size: 13px;
+    font-weight: 600
+}
+
+.widget_display_search #bbp-search-form {
+    padding: 25px
+}
+
+.widget_display_search #bbp_search {
+    width: 100%;
+    height: 45px;
+    border-radius: 2px;
+    border: 1px solid #ececec
+}
+
+.widget_display_search #bbp_search_submit {
+    width: 100%;
+    color: #fff;
+    border: none;
+    height: 45px;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 12px;
+    border-radius: 2px;
+    background-color: #03a9f4
+}
+
+.widget_display_replies ul {
+    margin: 0;
+    padding: 15px 0
+}
+
+.widget_display_replies li {
+    clear: both;
+    color: #8a8a8a;
+    font-size: 13px;
+    line-height: 24px;
+    padding: 15px 25px
+}
+
+.widget_display_replies li img {
+    float: left;
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 100%
+}
+
+.widget_display_replies li a.bbp-author-name {
+    color: #00bcd4;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: -3px;
+    text-transform: capitalize
+}
+
+.widget_display_replies li a.bbp-reply-topic-title {
+    color: #898989;
+    font-size: 13px;
+    font-weight: 600
+}
+
+.widget_display_replies li div {
+    color: #b1b0b0;
+    font-size: 10px;
+    font-weight: 600;
+    margin-left: 65px;
+    text-transform: uppercase
+}
+
+.youzify-forums-statistics-items {
+    padding: 15px 0;
+    overflow: hidden
+}
+
+.youzify-forums-statistics-items .youzify-forums-statistics-item {
+    width: 50%;
+    float: left;
+    padding: 15px 0;
+    text-align: center
+}
+
+.youzify-forums-statistics-item .youzify-forums-statistics-icon {
+    margin-bottom: 15px
+}
+
+.youzify-forums-statistics-item .youzify-forums-statistics-icon i {
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 100%;
+    background-color: #eee
+}
+
+.youzify-forums-statistics-content .youzify-forums-statistics-nbr {
+    color: #898989;
+    font-size: 13px
+}
+
+.youzify-forums-statistics-content .youzify-forums-statistics-desc {
+    color: #898989;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 7px
+}
+
+.youzify-statistics-registered-user .youzify-forums-statistics-icon i {
+    background-color: #01c3ff
+}
+
+.youzify-statistics-forums .youzify-forums-statistics-icon i {
+    background-color: #ffca28
+}
+
+.youzify-statistics-topics .youzify-forums-statistics-icon i {
+    background-color: #9dd958
+}
+
+.youzify-statistics-replies .youzify-forums-statistics-icon i {
+    background-color: #fd91b5
+}
+
+.youzify-statistics-topic-tags .youzify-forums-statistics-icon i {
+    background-color: #ff7065
+}
+
+.youzify-statistics-empty-topic-tags .youzify-forums-statistics-icon i {
+    background-color: #ee8cff
+}
+
+.youzify-statistics-hidden-topics .youzify-forums-statistics-icon i {
+    background-color: #18d2c0
+}
+
+.youzify-statistics-hidden-replies .youzify-forums-statistics-icon i {
+    background-color: #77c4e8
+}
+
+.youzify-items-list-widget .youzify-list-item {
+    overflow: hidden;
+    margin: 25px 0 0 0
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-avatar {
+    margin-right: 12px
+}
+
+.rtl .youzify-items-list-widget .youzify-list-item .youzify-item-avatar {
+    margin: 0 0 0 12px
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-avatar,
+.youzify-items-list-widget .youzify-list-item .youzify-item-data {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-avatar img {
+    width: 50px;
+    height: 50px;
+    display: block
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-data {
+    width: calc(100% - 70px)
+}
+
+.youzify-suggested-friends-widget .youzify-list-item .youzify-item-data,
+.youzify-suggested-groups-widget .youzify-list-item .youzify-item-data {
+    width: calc(100% - 140px)
+}
+
+.youzify-items-list-widget .youzify-list-item a.youzify-item-name {
+    color: #7c838a;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: capitalize
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-meta .youzify-meta-item {
+    color: #8a8a8a;
+    font-size: 10px;
+    margin-top: 8px;
+    font-weight: 600;
+    letter-spacing: .02em;
+    text-transform: uppercase
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-meta .youzify-meta-item i,
+.youzify-items-list-widget .youzify-list-item .youzify-item-meta .youzify-meta-item span {
+    vertical-align: middle
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-meta .youzify-meta-item i {
+    font-size: 13px;
+    margin-right: 6px
+}
+
+.rtl .youzify-items-list-widget .youzify-list-item .youzify-item-meta .youzify-meta-item i {
+    margin: 0 0 0 6px
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-action {
+    float: right;
+    margin-top: 10px;
+    display: inline-block
+}
+
+.rtl .youzify-items-list-widget .youzify-list-item .youzify-item-action {
+    float: left
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-action .youzify-item-button {
+    display: inline-block
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-action .youzify-icon-button i {
+    width: 30px;
+    height: 30px;
+    color: #8a8a8a;
+    font-size: 14px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #f6f6f6
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-action .youzify-add-button {
+    margin-right: 3px
+}
+
+.rtl .youzify-items-list-widget .youzify-list-item .youzify-item-action .youzify-add-button {
+    margin-right: 0;
+    margin-left: 3px
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-action .youzify-add-button i {
+    color: #fff;
+    background-color: #03a9f4
+}
+
+.youzify-items-list-widget .youzify-list-item .youzify-item-action .youzify-close-button i {
+    color: #8a8a8a;
+    background-color: #f6f6f6
+}
+
+.youzify-list-avatar-flat .youzify-item-avatar img,
+.youzify-notif-icons-flat .youzify-notif-item .youzify-notif-icon i,
+.youzify-profile-avatars-widget.youzify-list-avatar-flat .youzify-more-items a {
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+    border-radius: 0
+}
+
+#wpadminbar {
+    z-index: 99999999
+}
+
+.youzify-scrolltotop {
+    opacity: 0;
+    right: 30px;
+    bottom: 40px;
+    position: fixed;
+    z-index: 999999;
+    cursor: pointer;
+    visibility: hidden;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s
+}
+
+.youzify-scrolltotop i {
+    color: #fff;
+    width: 45px;
+    height: 45px;
+    line-height: 43px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, .3);
+    -webkit-transition: background-color .2s ease-in-out;
+    -moz-transition: background-color .2s ease-in-out;
+    -o-transition: background-color .2s ease-in-out;
+    transition: background-color .2s ease-in-out
+}
+
+.no-touch .youzify-scrolltotop:hover,
+.youzify-scrolltotop.youzify-fade-out,
+.youzify-scrolltotop.youzify-is-visible {
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s
+}
+
+.youzify-scrolltotop.youzify-is-visible {
+    visibility: visible;
+    opacity: 1
+}
+
+.youzify-scrolltotop.youzify-fade-out {
+    opacity: .5
+}
+
+.no-touch .youzify-scrolltotop:hover,
+.youzify-scrolltotop.youzify-fade-out:hover {
+    opacity: 1
+}
+
+.youzify-scrolltotop i:hover {
+    background-color: #333;
+    -webkit-transition: color .3s ease;
+    -moz-transition: color .3s ease;
+    -o-transition: color .3s ease;
+    transition: color .3s ease
+}
+
+.youzify-item-tools {
+    display: none;
+    padding: 12px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #f5f5f5
+}
+
+.youzify-item-tools .youzify-item-tool {
+    cursor: pointer;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.youzify .group-button.loading a:before,
+.youzify-embed-action .friendship-button.loading a:before,
+.youzify-item-tools .youzify-item-tool.loading .youzify-tool-icon i,
+.youzify-social-buttons .friendship-button.loading a:before,
+.youzify-social-buttons .youzify-follow-message-button .follow-button a.loading:before {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    -webkit-transition: all 1s ease-in;
+    -moz-transition: all 1s ease-in;
+    -o-transition: all 1s ease-in;
+    transition: all 1s ease-in
+}
+
+.friendship-button:not(.awaiting_response_friend).loading a:before,
+.youzify .group-button.loading a:before,
+.youzify-item-tools .youzify-item-tool.loading .youzify-tool-icon i:before,
+.youzify-social-buttons .youzify-follow-message-button .follow-button a.loading:before {
+    content: "\f110" !important
+}
+
+.youzify-item-tool .youzify-tool-name {
+    margin: 0;
+    padding: 0;
+    color: #898989;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px
+}
+
+.youzify-item-tool .youzify-tool-icon,
+.youzify-item-tool .youzify-tool-icon i {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center
+}
+
+.youzify-item-tool .youzify-tool-icon {
+    margin-right: 8px;
+    background-color: #f5f5f5
+}
+
+.rtl .youzify-item-tool .youzify-tool-icon {
+    margin-right: 0;
+    margin-left: 8px
+}
+
+.youzify-item-tool .youzify-tool-icon i {
+    margin: 0;
+    padding: 0;
+    color: #898989
+}
+
+.youzify-pin-tool .youzify-tool-icon {
+    line-height: 29px;
+    background-color: #ffc107
+}
+
+.youzify-bookmark-tool .youzify-tool-icon {
+    background-color: #03a9f4
+}
+
+.youzify-report-tool .youzify-tool-icon {
+    background-color: #7b7b7b
+}
+
+.youzify-bookmark-tool .youzify-tool-icon i,
+.youzify-pin-tool .youzify-tool-icon i,
+.youzify-report-tool .youzify-tool-icon i {
+    color: #fff
+}
+
+.youzify-item-tool .youzify-tool-icon,
+.youzify-item-tool .youzify-tool-name {
+    display: inline-block;
+    vertical-align: middle
+}
+
+.youzify-show-item-tools {
+    top: 15px;
+    width: 30px;
+    cursor: pointer;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    right: 20px;
+    position: absolute
+}
+
+.rtl .youzify-show-item-tools {
+    right: initial;
+    left: 25px
+}
+
+.youzify-show-item-tools.youzify-close-item-tools i:before {
+    content: '\f106'
+}
+
+.youzify-show-item-tools i {
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    color: #a8a8a8;
+    font-size: 16px;
+    cursor: pointer
+}
+
+.youzify-show-item-tools i:hover {
+    color: #8190a9
+}
+
+.activity-item:hover .youzify-show-item-tools i,
+.youzify-item:hover .youzify-show-item-tools i {
+    opacity: 1
+}
+
+.youzify-item-tool.youzify-edit-tool .youzify-tool-icon {
+    background-color: #03a9f4
+}
+
+.youzify-item-tool.youzify-delete-tool .youzify-tool-icon {
+    background-color: #f44336
+}
+
+.youzify-item-tool.youzify-edit-tool .youzify-tool-icon {
+    background-color: #1fc36a
+}
+
+.youzify-item-tool.youzify-delete-tool .youzify-tool-icon i,
+.youzify-item-tool.youzify-edit-tool .youzify-tool-icon i {
+    color: #fff
+}
+
+.youzify-review-item .youzify-show-item-tools {
+    top: 10px;
+    right: 15px
+}
+
+.rtl .youzify-review-item .youzify-show-item-tools {
+    right: initial;
+    left: 15px
+}
+
+.youzify-review-item .youzify-show-item-tools i {
+    font-size: 13px
+}
+
+.youzify-review-item .youzify-item-tools .youzify-item-tool {
+    margin-right: 15px
+}
+
+.rtl .youzify-review-item .youzify-item-tools .youzify-item-tool {
+    margin-right: 0;
+    margin-left: 15px
+}
+
+.youzify-review-item .youzify-item-tools {
+    padding: 12px 25px
+}
+
+.youzify-review-item .youzify-show-item-tools.youzify-close-item-tools {
+    top: 17px;
+    right: 25px
+}
+
+.rtl .youzify-review-item .youzify-show-item-tools.youzify-close-item-tools {
+    left: 25px;
+    right: initial
+}
+
+.youzify-hashtags {
+    padding: 25px
+}
+
+.youzify-hashtags-widget .youzify-hashtag-item {
+    margin-bottom: 15px
+}
+
+.youzify-hashtags-widget .youzify-hashtag-item:last-of-type {
+    margin-bottom: 0
+}
+
+.youzify-hashtags-widget .youzify-hashtag-item .youzify-hashtag-title {
+    color: #8e8e8e;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 18px;
+    margin-bottom: 5px;
+    display: block
+}
+
+.youzify-hashtags-widget .youzify-hashtag-item .youzify-hashtag-count {
+    color: #a09f9f;
+    font-size: 10px;
+    text-transform: uppercase
+}
+
+.youzify-community-hashtags {
+    padding: 25px;
+    text-align: center
+}
+
+.youzify-community-hashtags .youzify-hashtag-item {
+    margin: 5px;
+    border: none;
+    color: #898989;
+    font-size: 13px;
+    box-shadow: none;
+    font-weight: 600;
+    line-height: 18px;
+    padding: 5px 15px;
+    border-radius: 30px;
+    display: inline-block;
+    text-decoration: none;
+    background-color: #f7f7f7;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+.youzify-pagination {
+    clear: both;
+    margin-bottom: 20px
+}
+
+.youzify-pagination .youzify-nav-links .page-numbers,
+.youzify-pagination .youzify-pagination-pages {
+    float: left;
+    height: 35px;
+    color: #9e9e9e;
+    font-size: 13px;
+    background: #fff;
+    line-height: 35px;
+    margin-right: 8px;
+    text-align: center;
+    margin-bottom: 12px;
+    box-shadow: 0 1px 0 #e4e4e4;
+    -webkit-box-shadow: 0 1px 0 #e4e4e4;
+    -moz-box-shadow: 0 1px 0 #e4e4e4
+}
+
+.rtl .youzify-pagination .youzify-nav-links .page-numbers,
+.rtl .youzify-pagination .youzify-pagination-pages {
+    float: right;
+    margin-right: 0;
+    margin-left: 8px
+}
+
+.youzify-pagination .youzify-pagination-pages {
+    padding: 0 15px
+}
+
+.youzify-pagination .youzify-nav-links .page-numbers {
+    padding: 0;
+    width: 35px;
+    border: none
+}
+
+.youzify-pagination .youzify-nav-links .page-numbers:hover:not(.current) {
+    background-color: #fff;
+    color: #777
+}
+
+.youzify-pagination .youzify-nav-links {
+    display: inline-block
+}
+
+.youzify-pagination .current .youzify-page-nbr {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600
+}
+
+.youzify-pagination .next .youzify-page-symbole {
+    font-size: 16px;
+    line-height: 33px
+}
+
+.youzify .youzify-next-nbr {
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute !important;
+    word-wrap: normal !important;
+    clip: rect(1px, 1px, 1px, 1px)
+}
+
+.lb-container {
+    padding: 4px
+}
+
+.youzify-tooltip,
+[data-youzify-tooltip] {
+    position: relative;
+    display: inline-block
+}
+
+.youzify-tooltip:after,
+.youzify-tooltip:before,
+[data-youzify-tooltip]:after,
+[data-youzify-tooltip]:before {
+    position: absolute;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000000;
+    pointer-events: none;
+    -webkit-transition: .3s ease;
+    -moz-transition: .3s ease;
+    transition: .3s ease;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s
+}
+
+.youzify-tooltip:hover:after,
+.youzify-tooltip:hover:before,
+[data-youzify-tooltip]:hover:after,
+[data-youzify-tooltip]:hover:before {
+    visibility: visible;
+    opacity: 1
+}
+
+.youzify-tooltip:hover:after,
+.youzify-tooltip:hover:before,
+[data-youzify-tooltip]:hover:after,
+[data-youzify-tooltip]:hover:before {
+    -webkit-transition-delay: .1s;
+    -moz-transition-delay: .1s;
+    transition-delay: .1s
+}
+
+.youzify-tooltip:before,
+[data-youzify-tooltip]:before {
+    content: '';
+    position: absolute;
+    background: 0 0;
+    border: 6px solid transparent;
+    z-index: 1000001
+}
+
+.youzify-tooltip:after,
+[data-youzify-tooltip]:after {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 12px;
+    padding: 10px 15px;
+    background: #333740;
+    white-space: nowrap
+}
+
+.youzify-tooltip:after,
+[data-youzify-tooltip]:after {
+    content: attr(data-youzify-tooltip)
+}
+
+[data-youzify-tooltip='']:after,
+[data-youzify-tooltip='']:before {
+    display: none !important
+}
+
+.youzify-tooltip:before,
+[data-youzify-tooltip]:before {
+    margin-bottom: -11px;
+    border-top-color: #333740
+}
+
+.youzify-tooltip:after,
+.youzify-tooltip:before,
+[data-youzify-tooltip]:after,
+[data-youzify-tooltip]:before {
+    bottom: 100%;
+    left: 50%
+}
+
+.youzify-tooltip:before,
+[data-youzify-tooltip]:before {
+    left: calc(50% - 6px)
+}
+
+.youzify-tooltip:after,
+[data-youzify-tooltip]:after {
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    transform: translateX(-50%)
+}
+
+.youzify-tooltip:hover:before,
+[data-youzify-tooltip]:hover:before {
+    -webkit-transform: translateY(-8px);
+    -moz-transform: translateY(-8px);
+    transform: translateY(-8px)
+}
+
+.youzify-tooltip:hover:after,
+[data-youzify-tooltip]:hover:after {
+    -webkit-transform: translateX(-50%) translateY(-8px);
+    -moz-transform: translateX(-50%) translateY(-8px);
+    transform: translateX(-50%) translateY(-8px)
+}
+
+.tooltip-left:after,
+.tooltip-left:before {
+    right: 100%;
+    bottom: 50%;
+    left: auto
+}
+
+.tooltip-left:before {
+    margin-left: 0;
+    margin-right: -12px;
+    margin-bottom: 0;
+    border-top-color: transparent;
+    border-left-color: #000;
+    border-left-color: hsla(0, 0%, 20%, .9)
+}
+
+.tooltip-left:focus:after,
+.tooltip-left:focus:before,
+.tooltip-left:hover:after,
+.tooltip-left:hover:before {
+    -webkit-transform: translateX(-12px);
+    -moz-transform: translateX(-12px);
+    transform: translateX(-12px)
+}
+
+.tooltip-left:before,
+.tooltip-right:before {
+    top: 3px
+}
+
+.tooltip-left:after,
+.tooltip-right:after {
+    margin-left: 0;
+    margin-bottom: -16px
+}
+
+#youzify-modal .youzify-modal * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+#youzify-modal {
+    top: 0;
+    left: 0;
+    padding: 0;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: block;
+    overflow-y: auto;
+    position: fixed;
+    background: rgba(0, 0, 0, .5);
+    font-family: Open sans, sans-serif;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transition: all .3s;
+    backface-visibility: hidden;
+    -moz-transition: all .3s;
+    transition: all .3s;
+    visibility: visible
+}
+
+#youzify-modal .youzify-modal .uk-option-item {
+    margin-bottom: 25px
+}
+
+#youzify-modal .youzify-modal .uk-option-item .option-title {
+    margin: 0;
+    display: flex;
+    color: #838a9a;
+    font-size: 13px;
+    font-weight: 600
+}
+
+#youzify-modal .youzify-modal .uk-option-item .option-desc {
+    display: block;
+    color: #929292;
+    font-size: 13px;
+    margin: 6px 25px 0 0
+}
+
+#youzify-modal .youzify-modal .uk-option-item input[type=email],
+#youzify-modal .youzify-modal .uk-option-item input[type=text] {
+    height: 45px;
+    padding: 8px 12px
+}
+
+#youzify-modal .youzify-modal .uk-option-item textarea {
+    height: 100px;
+    padding: 15px
+}
+
+#youzify-modal .youzify-modal .uk-option-item input[type=email],
+#youzify-modal .youzify-modal .uk-option-item input[type=text],
+#youzify-modal .youzify-modal .uk-option-item textarea {
+    color: #9a9a9a;
+    font-size: 13px;
+    box-shadow: none;
+    background: #eaeaea;
+    border-radius: 2px;
+    margin-top: 15px;
+    border: none;
+    line-height: 24px;
+    width: 100%
+}
+
+#youzify-modal .youzify-modal .uk-option-item .nice-select,
+#youzify-modal .youzify-modal .uk-option-item select {
+    margin-top: 15px
+}
+
+#youzify-modal .youzify-modal .uk-option-item select {
+    font-size: 13px;
+    margin-top: 15px;
+    background: #eee;
+    border: 1px solid #eee;
+    padding: 5px 15px;
+    font-weight: 600;
+    color: #898988
+}
+
+#youzify-modal .youzify-modal .uk-option-item:last-of-type {
+    margin-bottom: 0
+}
+
+#youzify-modal .youzify-modal-2rows .uk-option-item:nth-child(1) {
+    width: 48%;
+    float: left
+}
+
+#youzify-modal .youzify-modal-2rows .uk-option-item:nth-child(2) {
+    width: 48%;
+    float: right
+}
+
+#youzify-modal .youzify-modal-2rows .uk-option-item:last-of-type {
+    margin-bottom: 25px
+}
+
+#youzify-modal .youzify-modal {
+    width: 700px;
+    min-width: 300px;
+    background: #fff;
+    position: relative;
+    overflow: initial;
+    border-radius: 4px;
+    margin: 70px auto;
+    font-family: Open sans, sans-serif
+}
+
+#youzify-modal .youzify-modal-title {
+    background-size: cover;
+    position: relative;
+    padding: 20px 35px;
+    font-weight: 500;
+    text-align: left;
+    font-size: 16px;
+    color: #fff;
+    margin: 0
+}
+
+#youzify-modal .youzify-modal-title .youzify-modal-title-text,
+#youzify-modal .youzify-modal-title > i {
+    display: inline-block;
+    vertical-align: middle
+}
+
+#youzify-modal .youzify-modal-title > i {
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    background: rgba(255, 255, 255, .2);
+    text-align: center;
+    margin-right: 8px;
+    line-height: 35px;
+    border-radius: 3px
+}
+
+#youzify-modal .youzify-modal-title {
+    background: #24c6dc;
+}
+
+.rtl .youzify-modal-title {
+    text-align: right
+}
+
+#youzify-modal .youzify-modal-content {
+    color: #929292;
+    font-size: 13px;
+    font-weight: 300;
+    position: relative;
+    padding: 25px
+}
+
+#youzify-modal .youzify-modal-actions {
+    text-align: right;
+    padding: 0 25px 25px;
+    background-color: #fff
+}
+
+#youzify-modal .youzify-modal-actions a,
+#youzify-modal .youzify-modal-actions button {
+    margin: 0;
+    font-size: 13px;
+    border: none;
+    display: inline-block;
+    padding: 20px;
+    min-width: 100px;
+    text-transform: uppercase;
+    font-weight: 600;
+    width: 100%;
+    border-radius: 4px
+}
+
+.youzify-modal-actions a i,
+.youzify-modal-actions button i {
+    margin-right: 10px
+}
+
+#youzify-modal .youzify-modal-save {
+    background-color: #47ca74;
+    color: #fff
+}
+
+#youzify-modal .youzify-modal-close {
+    background-color: #f1f1f1;
+    color: #8a8a8a
+}
+
+#youzify-modal .youzify-modal-actions .youzify-modal-delete {
+    color: #fff;
+    cursor: pointer;
+    margin-top: 15px;
+    text-align: center;
+    background-color: #6c6c6c
+}
+
+.youzify-modal .youzify-modal-close-icon {
+    top: 18px;
+    right: 35px;
+    cursor: pointer;
+    padding: 4px 6px 5px;
+    position: absolute;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, .44);
+    font-size: 10px !important
+}
+
+#youzify-modal .youzify-big-close-icon .youzify-modal-close-icon {
+    top: 22px;
+    text-align: center;
+    line-height: 30px !important;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    position: absolute;
+    font-size: 12px !important
+}
+
+#youzify-modal .youzify-modal-actions button.loading i:before {
+    font-weight: 700;
+    content: "\f110" !important;
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease
+}
+
+#youzify-modal .youzify-modal-actions button.loading i {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear
+}
+
+#buddypress.youzify div.item-list-tabs {
+    background: #fff
+}
+
+#buddypress.youzify #reply-title small a span:after,
+#buddypress.youzify #reply-title small a span:before,
+#buddypress.youzify a.bp-primary-action span:after,
+#buddypress.youzify a.bp-primary-action span:before {
+    content: ''
+}
+
+.youzify-loader-wrapper {
+    margin: 0 0 35px 0;
+    background: #fff;
+    width: 100%;
+    display: flex;
+    border-radius: 3px;
+    flex-direction: column
+}
+
+.youzify-loader-wrapper.youzify-loader-no-margin {
+    margin: 0
+}
+
+.youzify-loader-wrapper-padding {
+    padding: 25px
+}
+
+.youzify-loader-wrapper-cell {
+    display: flex;
+    margin-bottom: 30px
+}
+
+.youzify-loader-wrapper-cell:last-of-type {
+    margin-bottom: 0
+}
+
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -468px 0
+    }
+
+    100% {
+        background-position: 468px 0
+    }
+}
+
+.youzify-loader-animated-background,
+.youzify-loader-image,
+.youzify-loader-pcimage,
+.youzify-loader-text-line {
+    animation-duration: 1.25s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f6f6;
+    background: linear-gradient(to right, #f6f6f6 8%, #f0f0f0 18%, #f6f6f6 33%);
+    background-size: 800px 104px;
+    height: 96px;
+    position: relative
+}
+
+.youzify-loader-image {
+    height: 60px;
+    width: 60px
+}
+
+.youzify-loader-pcimage {
+    height: 120px;
+    width: 120px;
+    margin: auto
+}
+
+.youzify-loader-image-radius {
+    border-radius: 100%
+}
+
+.youzify-loader-items-margin .youzify-loader-text {
+    margin-left: 20px
+}
+
+.youzify-loader-text-line {
+    height: 10px;
+    width: 200px;
+    margin: 6px 0
+}
+
+.youzify-loader-pc-header .youzify-loader-text-line {
+    margin: 4px auto;
+    width: 90%
+}
+
+.youzify-loader-images-list .youzify-loader-image {
+    text-align: center;
+    width: 33.33%;
+    height: 111px;
+    float: left;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff
+}
+
+.youzify-loader-images-list .youzify-loader-image div {
+    width: 100%;
+    line-height: 111px;
+    height: 111px
+}
+
+.youzify-loader-images-list .youzify-loader-image i {
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    line-height: 35px;
+    color: #898989;
+    border-radius: 100%
+}
+
+.youzify-mobile-nav {
+    display: none
+}
+
+#youzify-live-notifications {
+    bottom: 0;
+    max-width: 450px;
+    width: 90%;
+    padding: 0 0 50px 50px;
+    display: table;
+    position: fixed;
+    z-index: 999999;
+    vertical-align: middle
+}
+
+#youzify-live-notifications:empty {
+    display: none
+}
+
+#youzify-live-notifications .youzify-notif-item:last-of-type {
+    margin-bottom: 0
+}
+
+#youzify-live-notifications .youzify-notif-item .youzify-delete-notification {
+    top: 0;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    color: #d0d0d0;
+    cursor: pointer;
+    position: absolute;
+    line-height: 35px;
+    text-align: center
+}
+
+#youzify-live-notifications .youzify-notif-icon {
+    position: relative;
+    vertical-align: middle
+}
+
+#youzify-live-notifications .youzify-notif-item .youzify-delete-notification:hover {
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out
+}
+
+#youzify-live-notifications .youzify-notif-item .youzify-delete-notification:hover {
+    color: #9a9898
+}
+
+#youzify-live-notifications .youzify-notif-item {
+    display: block;
+    padding: 20px;
+    overflow: hidden;
+    border-radius: 3px;
+    position: relative;
+    margin-bottom: 15px;
+    text-decoration: none;
+    background-color: #fff;
+    box-shadow: 0 0 44px 0 rgba(0, 0, 0, .1)
+}
+
+#youzify-live-notifications .youzify-notif-item .youzify-notif-content {
+    width: calc(100% - 70px)
+}
+
+#youzify-live-notifications .youzify-notif-item img {
+    border-radius: 100%
+}
+
+#youzify-live-notifications .youzify-notif-item .youzify-notif-icon i {
+    bottom: 0;
+    right: -5px;
+    width: 25px;
+    height: 25px;
+    font-size: 13px;
+    line-height: 25px;
+    position: absolute;
+    border-radius: 100%
+}
+
+#youzify-live-notifications .youzify-notif-item .youzify-notif-desc {
+    font-size: 13.5px
+}
+
+#youzify-live-notifications .youzify-notif-item .youzify-notif-desc,
+#youzify-live-notifications .youzify-notif-item .youzify-notif-time {
+    font-family: Open sans, sans-serif
+}
+
+body.my-listing.buddypress {
+    overflow: visible !important
+}
+
+.youzify .gp-video-wrapper {
+    position: relative;
+    padding: 0;
+    height: initial;
+    background: 0 0
+}
+
+.youzify .gp-video-wrapper .mejs-video,
+.youzify .gp-video-wrapper iframe {
+    height: -webkit-fill-available !important
+}
+
+@media screen and (max-width:375px) {
+    .youzify-modal .youzify-dialog-header i {
+        display: inline-block;
+        margin: 0 8px 0 0
+    }
+}
+
+#youzify .avia-iframe-wrap {
+    margin: 0
+}
+
+@media screen and (max-width:1024px) {
+
+    .youzify-3columns-layout,
+    .youzify-left-sidebar-layout,
+    .youzify-right-sidebar-layout {
+        grid-gap: 15px
+    }
+
+    .youzify-right-sidebar-layout {
+        grid-template-columns: calc(72% - 15px) 28%
+    }
+
+    .youzify-left-sidebar-layout {
+        grid-template-columns: 28% calc(72% - 15px)
+    }
+
+    .youzify-3columns-layout {
+        grid-template-columns: 23% calc(56% - 30px) 23%
+    }
+
+    .youzify-horizontal-layout .youzify-page-main-content {
+        padding: 15px 15px 0
+    }
+
+    .youzify table {
+        margin-bottom: 15px
+    }
+}
+
+@media screen and (max-width:768px) {
+
+    .youzify-3columns-layout,
+    .youzify-left-sidebar-layout,
+    .youzify-right-sidebar-layout {
+        display: block
+    }
+
+    .youzify-mobile-nav {
+        display: block;
+        overflow: hidden;
+        border-radius: 3px;
+        margin-bottom: 15px;
+        padding: 0 5px;
+        background: #f1f1f1
+    }
+
+    .youzify-mobile-nav .youzify-mobile-nav-item {
+        float: left;
+        width: 33.3333%;
+        padding: 10px 5px;
+        cursor: pointer;
+        text-align: center
+    }
+
+    .youzify-directory .youzify-mobile-nav .youzify-mobile-nav-item {
+        width: 50%
+    }
+
+    .youzify-mobile-nav .youzify-mobile-nav-item .youzify-mobile-nav-container {
+        background: #fff;
+        padding: 15px;
+        width: 100%;
+        border-radius: 3px
+    }
+
+    .youzify-mobile-nav .youzify-mobile-nav-item:last-of-type {
+        border: none
+    }
+
+    .youzify-inline-mobile-nav {
+        padding: 0
+    }
+
+    .youzify-inline-mobile-nav .youzify-mobile-nav-item {
+        padding: 8px;
+        width: 100%;
+        text-align: left
+    }
+
+    .youzify-inline-mobile-nav .youzify-mobile-nav-item .youzify-mobile-nav-container {
+        text-align: center
+    }
+
+    .youzify-mobile-nav .youzify-mobile-nav-item i {
+        display: block;
+        color: #9f9f9f;
+        width: 35px;
+        height: 35px;
+        background: #f6f6f6;
+        border-radius: 50px;
+        text-align: center;
+        margin: auto;
+        line-height: 35px
+    }
+
+    .youzify-inline-mobile-nav .youzify-mobile-nav-item i {
+        display: inline-block
+    }
+
+    .youzify-mobile-nav .youzify-mobile-nav-item a {
+        margin-top: 12px;
+        padding: 0;
+        border: none;
+        color: #9f9f9f;
+        font-size: 13px;
+        display: block;
+        cursor: pointer;
+        font-weight: 600
+    }
+
+    .youzify-inline-mobile-nav .youzify-mobile-nav-item a {
+        margin: 0 0 0 10px;
+        display: inline-block
+    }
+
+    .youzify-review-item .youzify-show-item-tools {
+        right: 25px;
+        top: 20px
+    }
+
+    .youzify-review-item .youzify-show-item-tools.youzify-close-item-tools {
+        top: 15px;
+        right: 25px
+    }
+
+    .youzify-show-item-tools i,
+    .youzify-tools {
+        opacity: 1
+    }
+
+    .youzify-user-tools {
+        z-index: 9999
+    }
+
+    .rtl .youzify-horizontal-layout .youzify-main-column,
+    .rtl .youzify-horizontal-layout .youzify-sidebar-colum,
+    .youzify-horizontal-layout .youzify-main-column,
+    .youzify-horizontal-layout .youzify-sidebar-column {
+        width: 100%
+    }
+
+    .youzify-scrolltotop {
+        right: 50px;
+        bottom: 20px
+    }
+}
+
+@media screen and (max-width:475px) {
+
+    .youzify-sidebar .widget-content,
+    .youzify-sidebar .youzify-mycred-balance-box-widget {
+        margin-bottom: 15px
+    }
+
+    .youzify-tools-full-btns .youzify-tool-btn .youzify-tool-name {
+        display: none
+    }
+
+    .youzify-follow-message-button {
+        margin: 0;
+        border-radius: 0;
+        background-color: transparent
+    }
+
+    .youzify-follow-message-button div {
+        float: none
+    }
+
+    .youzify-social-buttons .youzify-follow-message-button .youzify-send-message span {
+        display: inline-block
+    }
+
+    .youzify-social-buttons .youzify-follow-message-button .follow-button {
+        margin-top: 12px
+    }
+
+    .youzify-social-buttons .youzify-follow-message-button .follow-button a {
+        background-color: #f6f6f6;
+        border-radius: 100px
+    }
+
+    .youzify-social-buttons .youzify-follow-message-button .youzify-send-message {
+        height: 52px;
+        line-height: 52px;
+        margin: 0 !important;
+        padding: 0 !important;
+        background-color: #fff;
+        border: 1px solid #eee
+    }
+
+    .youzify-social-buttons .youzify-follow-message-button .youzify-send-message:before {
+        width: initial;
+        height: initial;
+        margin-right: 8px
+    }
+
+    .rtl .youzify-social-buttons .youzify-follow-message-button .youzify-send-message:before {
+        margin-right: 0;
+        margin-left: 8px
+    }
+
+    .youzify-scrolltotop {
+        right: 30px;
+        bottom: 20px
+    }
+
+    #youzify-modal .youzify-modal {
+        width: 95%;
+        margin-top: 0;
+        top: 60px
+    }
+
+    #youzify-modal .youzify-modal-content {
+        padding: 20px 15px
+    }
+
+    #youzify-modal .youzify-modal-actions {
+        padding: 0 25px 25px
+    }
+
+    #youzify-modal .youzify-modal-2rows .uk-option-item {
+        width: 100% !important;
+        float: none !important
+    }
+
+    #youzify-modal .nice-select.open .list,
+    #youzify-modal .youzify-modal .uk-option-item .nice-select,
+    #youzify-modal .youzify-modal .uk-option-item select {
+        width: 100%
+    }
+
+    .youzify table tbody td:empty {
+        padding: 0
+    }
+
+    #youzify-live-notifications {
+        padding: 20px;
+        width: 100%;
+        max-width: 100%
+    }
+}
+
+@media screen and (max-width:320px) {
+    .youzify-mobile-nav .youzify-mobile-nav-item .youzify-mobile-nav-container {
+        padding: 10px
+    }
+}
+
+@media(any-pointer:coarse) {
+
+    .youzify-tooltip:after,
+    .youzify-tooltip:before,
+    [data-youzify-tooltip]:before,
+    [data-youzify-tooltip]:not(.youzify-copy_link-sbtn):after {
+        display: none
+    }
+}
+
+
+.youzify-search-header {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.youzify-search-landing-image-container {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    max-height: 360px;
+    background-color: #fd507e
+}
+
+.youzify-search-header .youzify-search-landing-image-container:before {
+    content: '';
+    display: block;
+    padding-top: 25%
+}
+
+.youzify-search-header .youzify-search-landing-image {
+    width: 100%;
+    max-height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+
+.youzify-search-landing-image-text {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 0 16px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    color: #fff;
+    top: 50%;
+    -webkit-transform: translateY(-70%);
+    -ms-transform: translateY(-70%);
+    transform: translateY(-70%)
+}
+
+.youzify-search-landing-heading {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-bottom: 16px
+}
+
+.youzify-search-landing-heading-text {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 32px
+}
+
+.youzify-search-results-details {
+    padding: 0 16px;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 1
+}
+
+.youzify-search-input-container {
+    max-width: 628px;
+    width: 100%;
+    margin: 0 auto;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 1
+}
+
+.youzify-search-input-with-dropdown {
+    background: #fff;
+    -webkit-box-shadow: 0 8px 20px rgb(0 0 0 / 6%);
+    box-shadow: 0 8px 20px rgb(0 0 0 / 6%);
+    border-radius: 8px;
+    height: 64px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative
+}
+
+.youzify-left-side-wrapper {
+    position: relative;
+    -ms-flex: 1;
+    flex: 1;
+    height: 100%;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 28px
+}
+
+.youzify-search-input-with-dropdown .youzify-search-icon {
+    width: 16px;
+    height: 16px;
+    color: #9e9ea7;
+    fill: #9e9ea7
+}
+
+.youzify-search-input-form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+}
+
+.youzify-accessibility-text {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    overflow: hidden
+}
+
+.youzify-vertical-divider {
+    margin-right: 24px;
+    width: 2px;
+    background: #e7e7e9;
+    height: 50%
+}
+
+.youzify-btn-dropdown {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap
+}
+
+.youzify-search-input-with-dropdown .youzify-btn-dropdown {
+    position: static;
+    min-width: 84px;
+    margin-right: 28px
+}
+
+.youzify-search-input-with-dropdown .youzify-btn-dropdown .youzify-btn-dropdown-link {
+    color: #0d0c22;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    padding: 0
+}
+
+.youzify-show-filters {
+    cursor: pointer;
+    font-size: 14px;
+    color: #898989;
+    font-weight: 600
+}
+
+.youzify-show-filters i {
+    margin-right: 12px
+}
+
+.youzify-search-input-with-dropdown input[type=search] {
+    -webkit-appearance: textfield
+}
+
+.youzify-search-input-with-dropdown input[type=search]::-webkit-search-decoration {
+    -webkit-appearance: none
+}
+
+.youzify-search-input-with-dropdown .youzify-search-input {
+    padding: 0;
+    border: none;
+    height: 100%;
+    font-size: 14px;
+    color: #8c9094;
+    background: #fff;
+    font-weight: 600;
+    padding-left: 60px;
+    padding-right: 24px;
+    background: 0 0
+}
+
+.youzify-search-input-with-dropdown .youzify-search-input:active,
+.youzify-search-input-with-dropdown .youzify-search-input:focus,
+.youzify-search-input-with-dropdown .youzify-search-input:hover {
+    background: 0 0;
+    border-color: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+.youzify-search-input-with-dropdown .youzify-search-input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-size: 100%;
+    opacity: .5
+}
+
+.youzify-directory-filter {
+    padding: 15px 20px;
+    margin: 0 17.5px 35px;
+    background-color: #fff
+}
+
+.youzify-directory-filter:after {
+    content: '';
+    clear: both;
+    display: table
+}
+
+#buddypress.youzify div.item-list-tabs:not(#subnav) ul li a,
+#buddypress.youzify div.item-list-tabs:not(#subnav) ul li > span,
+.youzify-directory-filter #directory-show-filter a,
+.youzify-directory-filter #directory-show-search a,
+.youzify-directory-filter .item-list-tabs li a {
+    margin: 5px;
+    padding: 0;
+    border: none;
+    color: #969696;
+    font-size: 13px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-right: 15px;
+    display: inline-block
+}
+
+.rtl .youzify-directory-filter #directory-show-filter a,
+.rtl .youzify-directory-filter #directory-show-search a,
+.rtl .youzify-directory-filter .item-list-tabs li a {
+    margin-right: 0;
+    margin-left: 15px
+}
+
+.youzify .youzify-directory-filter #directory-show-filter a i,
+.youzify .youzify-directory-filter #directory-show-filter a:before,
+.youzify .youzify-directory-filter #directory-show-search a i,
+.youzify .youzify-directory-filter #directory-show-search a:before,
+.youzify .youzify-directory-filter .item-list-tabs li a i,
+.youzify .youzify-directory-filter .item-list-tabs li a:before {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center
+}
+
+.youzify-directory-filter .item-list-tabs li.loading a i {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear
+}
+
+#youzify-members-list .youzify-user-actions a.loading:before,
+.youzify-directory-filter .item-list-tabs li.loading a i:before,
+.youzify-directory-filter .item-list-tabs li.loading:not(.yzmt-directory-tab) a:before {
+    color: #898989;
+    content: "\f110" !important;
+    background: 0 0 !important;
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+    -webkit-transition: all 1s ease-in;
+    -moz-transition: all 1s ease-in;
+    -o-transition: all 1s ease-in;
+    transition: all 1s ease-in
+}
+
+#youzify #youzify-members-directory .youzify-directory-filter .item-list-tabs li.loading a i {
+    background: 0 0 !important
+}
+
+#youzify-members-list .youzify-user-actions a.friendship-button:before {
+    color: #fff
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions .follow-button a {
+    -webkit-transition: all 1s ease-in;
+    -moz-transition: all 1s ease-in;
+    -o-transition: all 1s ease-in;
+    transition: all 1s ease-in
+}
+
+.youzify-directory-filter .item-list-tabs li a span {
+    font-size: 11px;
+    min-width: 20px;
+    margin-left: 5px;
+    padding: 2px 8px;
+    line-height: 18px;
+    text-align: center;
+    display: inline-block;
+    background-color: #eee
+}
+
+.rtl .youzify-directory-filter .item-list-tabs li a span {
+    margin-left: 0;
+    margin-right: 5px
+}
+
+#youzify .youzify-directory-filter .item-list-tabs li label,
+#youzify .youzify-directory-filter .item-list-tabs li#members-order-select label {
+    width: auto;
+    color: #969696;
+    font-size: 11px;
+    font-weight: 600;
+    margin: 0 4px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+    text-transform: uppercase
+}
+
+.rtl .youzify-directory-filter .item-list-tabs li label,
+.rtl .youzify-directory-filter .item-list-tabs li#members-order-select label {
+    margin: 0 0 0 5px
+}
+
+.rtl #youzify-directory-search-box {
+    margin-right: 10px
+}
+
+#youzify .youzify-directory-filter .item-list-tabs li select {
+    margin: 0;
+    width: 120px;
+    height: 40px;
+    color: #8a8a8a;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #f6f6f6;
+    text-transform: uppercase;
+    padding: 0 18px !important
+}
+
+.youzify-directory-filter .item-list-tabs li#groups-all a:before {
+    content: "\f57e"
+}
+
+.youzify-directory-filter .item-list-tabs li#groups-personal a:before {
+    content: "\f0c0"
+}
+
+.youzify-directory-filter .item-list-tabs li#group-create-nav a:before {
+    content: "\f303"
+}
+
+.youzify-directory-filter .item-list-tabs li#members-all a:before {
+    content: "\f57e"
+}
+
+.youzify-directory-filter .item-list-tabs li#members-following a:before {
+    content: "\f09e"
+}
+
+.youzify-directory-filter .item-list-tabs li#members-personal a:before {
+    content: "\f0c0"
+}
+
+.youzify-directory-filter #directory-show-search a:before {
+    content: "\f002"
+}
+
+.youzify-directory-filter #directory-show-filter a:before {
+    content: "\f1de"
+}
+
+.youzify-directory-filter #subnav {
+    float: right
+}
+
+.rtl .youzify-directory-filter #subnav {
+    float: left
+}
+
+.youzify-directory-filter #directory-show-search a,
+.youzify-directory-filter .item-list-tabs,
+.youzify-directory-filter .item-list-tabs li,
+.youzify-directory-filter .item-list-tabs ul {
+    display: inline-block;
+    float: left
+}
+
+.rtl .youzify-directory-filter #directory-show-search a,
+.rtl .youzify-directory-filter .item-list-tabs,
+.rtl .youzify-directory-filter .item-list-tabs li,
+.rtl .youzify-directory-filter .item-list-tabs ul {
+    float: right
+}
+
+.youzify-directory-filter #directory-show-filter,
+.youzify-directory-filter #directory-show-search {
+    display: none
+}
+
+#youzify #search-groups-form {
+    margin: 0
+}
+
+#youzify #groups_search {
+    margin-right: 4px
+}
+
+#youzify-directory-search-box {
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #f2f2f2
+}
+
+.rtl #youzify-directory-search-box {
+    margin-left: 0;
+    padding-left: 0;
+    margin-right: 10px;
+    padding-right: 10px;
+    border-left: none;
+    border-right: 1px solid #f2f2f2
+}
+
+#youzify-directory-search-box form input[type=text] {
+    margin: 0;
+    width: 165px;
+    height: 40px;
+    color: #898989;
+    font-size: 13px;
+    font-weight: 600;
+    background: #fff;
+    padding: 5px 15px;
+    display: inline-block;
+    vertical-align: middle;
+    box-shadow: none !important;
+    border: 1px solid #eee !important
+}
+
+.youzify-search-input::-webkit-input-placeholder {
+    color: #8c9094;
+    font-family: Open sans, sans-serif
+}
+
+#youzify-directory-search-box form input[type=text]::-webkit-input-placeholder {
+    color: #8c9094;
+    font-family: Open sans, sans-serif
+}
+
+.youzify-search-input:-moz-placeholder {
+    font-family: Open sans, sans-serif;
+    color: #8c9094;
+    opacity: 1
+}
+
+#youzify-directory-search-box form input[type=text]:-moz-placeholder {
+    font-family: Open sans, sans-serif;
+    color: #8c9094;
+    opacity: 1
+}
+
+.youzify-search-input::-moz-placeholder {
+    font-family: Open sans, sans-serif;
+    color: #8c9094;
+    opacity: 1
+}
+
+#youzify-directory-search-box form input[type=text]::-moz-placeholder {
+    font-family: Open sans, sans-serif;
+    color: #8c9094;
+    opacity: 1
+}
+
+.youzify-search-input:-ms-input-placeholder {
+    font-family: Open sans, sans-serif;
+    color: #8c9094
+}
+
+#youzify-directory-search-box form input[type=text]:-ms-input-placeholder {
+    font-family: Open sans, sans-serif;
+    color: #8c9094
+}
+
+#youzify-directory-search-box form input[type=text]::-ms-input-placeholder {
+    font-family: Open sans, sans-serif;
+    color: #8c9094
+}
+
+#youzify-directory-search-box form input[type=submit],
+body #buddypress #youzify-directory-search-box form input[type=submit] {
+    margin: 0;
+    color: #fff;
+    height: 40px;
+    border: none;
+    float: none;
+    width: initial;
+    font-size: 12px;
+    padding: 0 15px;
+    font-weight: 600;
+    line-height: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    background-color: #a4aaca
+}
+
+.youzify #groups-order-select,
+.youzify #members-order-select,
+.youzify #youzify-directory-search-box {
+    width: auto;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.rtl .youzify #groups-order-select,
+.rtl .youzify #members-order-select {
+    float: right
+}
+
+.rtl .youzify #youzify-directory-search-box {
+    float: left
+}
+
+#groups-order-select .nice-select .list,
+#members-order-select .nice-select .list {
+    min-width: 170px
+}
+
+#youzify-members-directory {
+    width: 100%;
+    max-width: 1170px
+}
+
+#youzify-members-list > li {
+    float: left;
+    width: 33.33%;
+    list-style-type: none
+}
+
+#youzify-members-list > li .youzify-cover {
+    width: 100%;
+    height: 150px;
+    display: block;
+    object-fit: cover;
+    position: relative
+}
+
+#youzify-members-list > li .youzify-cover-pattern {
+    width: 100%;
+    height: 100%;
+    background-size: auto
+}
+
+#youzify-groups-list li .youzify-group-data,
+#youzify-members-list > li .youzify-user-data,
+.youzify-cover,
+.youzify-cover .youzify-cover-pattern,
+.youzify-cover img {
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px
+}
+
+#youzify-members-list > li.youzify-show-cover .youzify-user-data {
+    padding: 0
+}
+
+#youzify-members-list > li .youzify-user-data {
+    padding: 35px 0 0;
+    position: relative;
+    text-align: center;
+    margin: 0 17.5px 35px;
+    background-color: #fff
+}
+
+#youzify-members-list .youzify-item-avatar {
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: relative
+}
+
+#youzify-members-list .youzify-show-cover .youzify-item-avatar {
+    margin: -55px auto 20px
+}
+
+#youzify-members-list .youzify-item-avatar {
+    margin-bottom: 20px
+}
+
+#youzify-members-list.youzify-card-show-avatar-border .youzify-item-avatar {
+    margin-bottom: 12px
+}
+
+#youzify-members-list .youzify-item-avatar img {
+    width: 100%;
+    height: 100%
+}
+
+#youzify-members-list > li .youzify-item-avatar:before {
+    top: -3px;
+    right: -3px;
+    width: 6px;
+    height: 6px;
+    content: '';
+    display: block;
+    text-align: right;
+    position: absolute
+}
+
+#youzify-members-list.youzify-card-avatar-border-flat li .youzify-item-avatar:before,
+#youzify-members-list.youzify-card-avatar-border-radius li .youzify-item-avatar:before {
+    top: -16px;
+    right: -16px
+}
+
+#youzify-members-list.youzify-card-avatar-border-flat li.youzify-show-cover .youzify-item-avatar:before,
+#youzify-members-list.youzify-card-avatar-border-radius li.youzify-show-cover .youzify-item-avatar:before {
+    top: auto;
+    right: -20px;
+    bottom: 16px
+}
+
+#youzify-members-list.youzify-card-avatar-border-circle li.youzify-show-cover .youzify-item-avatar:before {
+    top: auto;
+    bottom: -3px;
+    right: -3px
+}
+
+#youzify-members-list .is-online .youzify-item-avatar:before {
+    border: 3px solid #a7e65d
+}
+
+#youzify-members-list .is-offline .youzify-item-avatar:before {
+    border: 3px solid #eee
+}
+
+#youzify-members-list .youzify-fullname {
+    color: #8a8a8a;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    text-transform: capitalize
+}
+
+#youzify-members-list .youzify-meta-item a {
+    color: #898989;
+    line-height: 18px;
+    margin-top: 10px;
+    line-height: 18px
+}
+
+#youzify-members-list .youzify-meta-item {
+    color: #898989;
+    display: block;
+    font-size: 14px;
+    margin-top: 10px
+}
+
+#youzify-members-list .youzify-meta-item i {
+    color: #999;
+    margin-right: 5px
+}
+
+#youzify-members-list .item-meta {
+    margin-bottom: 20px
+}
+
+.youzify-user-statistics {
+    padding: 0 25px;
+    margin-bottom: 25px
+}
+
+.youzify-user-statistics .youzify-data-item {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.youzify-user-statistics .youzify-data-item span {
+    color: #fff;
+    width: 35px;
+    margin: 5px;
+    height: 35px;
+    display: block;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #eee
+}
+
+.youzify-user-statistics .youzify-data-item:nth-child(1) span {
+    background-color: #4fc8ff
+}
+
+.youzify-user-statistics .youzify-data-item:nth-child(2) span {
+    background-color: #ffc107
+}
+
+.youzify-user-statistics .youzify-data-item:nth-child(3) span {
+    background-color: #975dfd
+}
+
+.youzify-user-statistics .youzify-data-item:nth-child(4) span {
+    background-color: #39e9d9
+}
+
+.youzify-user-statistics .youzify-data-item:nth-child(5) span {
+    background-color: #f76697
+}
+
+.youzify-user-statistics .youzify-data-item:nth-child(6) span {
+    background-color: #6ad46e
+}
+
+.youzify-user-statistics .youzify-data-item:nth-child(7) span {
+    background-color: #f75f54
+}
+
+.youzify-user-actions {
+    margin-top: 25px;
+    border-top: 1px solid #f6f6f6
+}
+
+.youzify-card-action-buttons-inline-block .youzify-user-actions {
+    padding: 20px 0
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions {
+    padding: 10px 15px
+}
+
+.youzify-user-actions a i {
+    font-size: 14px;
+    margin-right: 8px
+}
+
+#buddypress.youzify div.generic-button a,
+.buddypress .youzify div.generic-button a,
+.youzify-user-actions a {
+    margin: 0;
+    padding: 0;
+    border: none;
+    height: 50px;
+    width: initial;
+    display: block;
+    color: #838383;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 50px;
+    text-indent: initial;
+    letter-spacing: inherit;
+    background-color: #f6f6f6
+}
+
+#buddypress.youzify .youzify-card-action-buttons-block div.generic-button a,
+.buddypress .youzify-card-action-buttons-block div.generic-button a,
+.youzify-card-action-buttons-block .youzify-user-actions a {
+    padding: 0;
+    margin: 15px
+}
+
+.youzify-members-directory-shortcode .youzify #youzify-members-list .youzify-user-actions a {
+    margin-bottom: 12px;
+    width: 100%
+}
+
+.youzify-card-action-buttons-inline-block .youzify-user-actions a {
+    margin: 5px;
+    min-width: 140px;
+    line-height: 24px;
+    padding: 12px 15px
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions .friendship-button,
+.youzify-card-action-buttons-block .youzify-user-actions .generic-button,
+.youzify-card-action-buttons-block .youzify-user-actions .message-button {
+    display: block
+}
+
+.youzify-card-action-buttons-block .youzify-user-actions .follow-button a:hover {
+    color: #999
+}
+
+.youzify-card-action-buttons-inline-block .youzify-user-actions .follow-button,
+.youzify-card-action-buttons-inline-block .youzify-user-actions .friendship-button,
+.youzify-card-action-buttons-inline-block .youzify-user-actions .message-button {
+    display: inline-block;
+    margin: 5px
+}
+
+.youzify-card-action-buttons-inline-block .youzify-user-actions .youzify-profile-settings {
+    color: #898989;
+    margin: 2px 30px;
+    padding: 15px 25px;
+    border: 1px solid #eaeaea;
+    background-color: transparent
+}
+
+.youzify-user-actions .youzify-profile-settings i {
+    font-size: 14px;
+    margin-right: 8px
+}
+
+.rtl #youzify-groups-list .action a i,
+.rtl #youzify-groups-list .item .item-meta .group-status i,
+.rtl .youzify-user-actions .youzify-profile-settings i,
+.rtl .youzify-user-actions a i {
+    margin: 0 0 0 8px
+}
+
+#youzify .youzify-user-actions .youzify-send-message,
+#youzify .youzify-user-actions .yzmd-second-btn {
+    color: #898989;
+    border: 1px solid #eee;
+    background-color: transparent
+}
+
+#youzify-groups-list {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+}
+
+.group-row {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+#youzify-groups-list li {
+    float: left;
+    width: 25%;
+    list-style-type: none;
+}
+
+#youzify-groups-list li.hidden {
+    display: initial !important;
+    visibility: initial !important
+}
+
+#youzify-groups-list li .youzify-cover,
+#youzify-groups-list li .youzify-cover-pattern {
+    width: 100%;
+    height: 150px;
+    display: block;
+    object-fit: cover
+}
+
+#youzify-groups-list li .youzify-cover-pattern {
+    background-size: auto;
+    background-position: center
+}
+
+#youzify-groups-list li.youzify-show-cover .youzify-group-data {
+    padding: 0
+}
+
+#youzify-groups-list li .youzify-group-data {
+    padding: 35px 0 0;
+    position: relative;
+    text-align: center;
+    margin: 0 17.5px 35px;
+    background-color: #fff
+}
+
+#youzify-groups-list .item-avatar {
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: relative;
+    margin: 0 auto 20px
+}
+
+#youzify-groups-list .youzify-show-cover .item-avatar {
+    margin-top: -55px
+}
+
+#youzify-groups-list.youzify-card-show-avatar-border .item-avatar {
+    margin-bottom: 12px
+}
+
+#youzify-groups-list .item-avatar .youzify-group-avatar {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat
+}
+
+#youzify-groups-list .item-avatar .youzify-group-avatar div,
+#youzify-groups-list .item-avatar .youzify-group-avatar img {
+    width: 100% !important;
+    height: 100% !important
+}
+
+#youzify-groups-list .item .item-title a {
+    color: #8a8a8a;
+    display: block;
+    font-size: 14px;
+    font-weight: 600
+}
+
+#youzify-groups-list .item .item-meta .group-status {
+    color: #898989;
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 600
+}
+
+#youzify-groups-list .item .item-meta .group-status i {
+    font-size: 13px;
+    margin-right: 8px
+}
+
+#youzify-groups-list .item-meta {
+    margin-bottom: 20px
+}
+
+#youzify-groups-list .youzify-group-user-statistics {
+    margin-bottom: 25px
+}
+
+.youzify-group-user-statistics .youzify-data-item {
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle
+}
+
+.youzify-group-user-statistics .youzify-data-item span {
+    color: #fff;
+    width: 35px;
+    margin: 5px;
+    height: 35px;
+    display: block;
+    font-size: 20px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #eee
+}
+
+.youzify-group-user-statistics .youzify-data-posts span {
+    background-color: #4fc8ff
+}
+
+.youzify-group-user-statistics .youzify-data-activity span {
+    background-color: #ffc107
+}
+
+.youzify-group-user-statistics .youzify-data-members span {
+    background-color: #f76697
+}
+
+#youzify-groups-list .action {
+    padding: 10px 20px;
+    margin-top: 25px;
+    border-top: 1px solid #f6f6f6
+}
+
+#youzify-groups-list .action a i {
+    font-size: 14px;
+    margin-right: 8px
+}
+
+#youzify-groups-list .action a {
+    margin: 15px;
+    padding: 17px;
+    display: block;
+    font-size: 13px;
+    min-width: 140px;
+    font-weight: 600;
+    line-height: 14px;
+    background-color: #f6f6f6
+}
+
+#youzify-groups-list .action .youzify-manage-group {
+    color: #838383;
+    background-color: #f6f6f6
+}
+
+#youzify-groups-list .action .group-button .leave-group {
+    padding: 16px;
+    color: #898989;
+    border: 1px solid #eee;
+    background-color: transparent
+}
+
+.youzify-directory .pagination {
+    width: 100%;
+    padding: 0;
+    clear: both;
+    border: none;
+    text-align: left;
+    overflow: hidden;
+    line-height: 16px;
+    position: relative;
+    margin: 0 17.5px 35px
+}
+
+.youzify-directory .pagination .page-numbers:not(.current):hover {
+    color: #777;
+    background-color: #fff
+}
+
+.youzify-directory .pagination .page-numbers {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 12px;
+    margin-top: 30px;
+    font-weight: 600;
+    line-height: 40px;
+    margin-right: 5px;
+    text-align: center;
+    display: inline-block;
+    text-transform: uppercase;
+    box-shadow: none !important
+}
+
+.youzify-directory #group-dir-pag-bottom:empty {
+    display: none
+}
+
+.youzify-directory #pag-bottom .pag-count {
+    color: #8c8fa0;
+    font-size: 14px;
+    font-weight: 400
+}
+
+.youzify #message {
+    margin: 35px 17.5px;
+    margin-bottom: 35px
+}
+
+.youzify-card-show-avatar-border .item-avatar,
+.youzify-card-show-avatar-border .youzify-item-avatar {
+    border: 8px solid transparent;
+    background-color: rgba(255, 255, 255, .35)
+}
+
+#youzify-members-list > li .youzify-item-avatar:before {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+#youzify-directory-search-box form input[type=text] {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+.youzify-directory-filter .item-list-tabs li a i {
+    margin-right: 10px
+}
+
+#buddypress.youzify .youzify-directory-filter .item-list-tabs li a:before,
+#youzify-groups-list .action .group-button a:before,
+.youzify-directory-filter #directory-show-filter a:before,
+.youzify-directory-filter #directory-show-search a:before,
+.youzify-directory-filter .item-list-tabs li a:before {
+    display: inline-block;
+    font-family: "Font Awesome 5 Free" !important;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin-right: 10px;
+    font-size: 14px
+}
+
+.rtl #youzify-groups-list .action .group-button a:before,
+.rtl .youzify-directory-filter #directory-show-search a:before,
+.rtl .youzify-directory-filter .item-list-tabs li a:before {
+    margin: 0 0 0 10px
+}
+
+#youzify .youzify-directory-filter .item-list-tabs li select,
+#youzify-directory-search-box form input[type=submit],
+#youzify-directory-search-box form input[type=text],
+#youzify-groups-list .action a,
+#youzify-groups-list .item .item-meta span,
+#youzify-groups-list .item .item-title a,
+#youzify-members-list .youzify-fullname,
+#youzify-members-list .youzify-meta-item,
+#youzify-members-list .youzify-user-actions a {
+    font-family: Open sans, sans-serif
+}
+
+#youzify-groups-list .clear,
+#youzify-members-list .clear {
+    clear: both;
+    display: block;
+    overflow: hidden
+}
+
+.youzify-page-btns-border-flat .action a,
+.youzify-page-btns-border-flat .youzify-group-user-statistics .youzify-data-item span,
+.youzify-page-btns-border-flat .youzify-user-statistics .youzify-data-item span {
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0
+}
+
+.youzify #message p {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px
+}
+
+#youzify-directory-search-box form input[type=submit],
+#youzify-directory-search-box form input[type=text],
+.youzify-directory .pagination .page-numbers,
+.youzify-directory-filter,
+.youzify-directory-filter .item-list-tabs li a span,
+.youzify-group-user-statistics .youzify-data-item span,
+.youzify-page-btns-border-radius .action a,
+.youzify-page-btns-border-radius .youzify-user-actions a,
+.youzify-user-statistics .youzify-data-item span {
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px
+}
+
+.youzify-page-btns-border-oval .action a,
+.youzify-page-btns-border-oval .youzify-user-actions a {
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px
+}
+
+.youzify-directory-filter {
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px
+}
+
+#youzify-groups-list li .item-avatar a:before,
+#youzify-members-list > li .youzify-item-avatar:before,
+.youzify .youzify-directory-filter #directory-show-filter a:before,
+.youzify .youzify-directory-filter #directory-show-search a:before,
+.youzify .youzify-directory-filter .item-list-tabs li a i,
+.youzify .youzify-directory-filter .item-list-tabs li a:before,
+.youzify-card-action-buttons-border-circle .youzify-user-actions a {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    -ms-border-radius: 100%;
+    -o-border-radius: 100%
+}
+
+.bp-screen-reader-text {
+    display: none !important
+}
+
+.youzify-user-data .youzify-user-ratings-details {
+    margin-top: 0;
+    margin-bottom: 20px
+}
+
+.youzify-user-data .youzify-user-ratings-details .youzify-user-rating-stars {
+    display: block
+}
+
+.youzify-user-data .youzify-user-rating-stars + .youzify-separator {
+    display: none
+}
+
+.youzify-user-data .youzify-user-ratings-details .youzify-separator,
+.youzify-user-data .youzify-user-ratings-details .youzify-user-ratings-rate,
+.youzify-user-data .youzify-user-ratings-details .youzify-user-ratings-total {
+    margin-top: 15px
+}
+
+@media screen and (max-width:1024px) {
+    .youzify.youzify-directory .youzify-page-main-content {
+        padding: 25px 7.5px 0
+    }
+
+    .youzify-directory-filter {
+        padding: 15px;
+        margin: 0 auto 25px;
+        width: calc(100% - 25px)
+    }
+
+    #youzify-groups-list li .youzify-group-data,
+    #youzify-members-list > li .youzify-user-data {
+        margin: 0 12.5px 25px
+    }
+
+    .youzify-directory-filter #directory-show-search a,
+    .youzify-directory-filter .item-list-tabs li a {
+        margin-right: 8px
+    }
+
+    #youzify-directory-search-box form input[type=text] {
+        width: 145px
+    }
+
+    #youzify .youzify-groups-directory-page #youzify-directory-search-box form input[type=text] {
+        margin-right: 0;
+        width: calc(100% - 128px)
+    }
+
+    .youzify-directory-filter #directory-show-filter,
+    .youzify-directory-filter #directory-show-search {
+        display: inline-block;
+        vertical-align: middle
+    }
+
+    .youzify #youzify-directory-search-box {
+        display: none
+    }
+
+    .youzify #groups-order-select,
+    .youzify #members-order-select {
+        display: none;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #f5f5f5
+    }
+
+    .rtl .youzify-directory-filter .item-list-tabs li label,
+    .rtl .youzify-directory-filter .item-list-tabs li#members-order-select label {
+        margin: 0
+    }
+
+    .rtl .youzify #groups-order-select,
+    .rtl .youzify #members-order-select,
+    .rtl .youzify #youzify-directory-search-box {
+        float: none
+    }
+
+    .youzify #groups-order-select,
+    .youzify #members-order-select,
+    .youzify #youzify-directory-search-box,
+    .youzify-directory-filter #subnav ul {
+        width: 100%
+    }
+
+    .youzify-directory-filter #subnav {
+        float: none;
+        width: 100%;
+        display: inline
+    }
+
+    #youzify-directory-search-box,
+    .rtl #youzify-directory-search-box {
+        display: none;
+        margin: 0 0 0;
+        padding: 15px 0 0;
+        border: none;
+        border-top: 1px solid #f5f5f5
+    }
+
+    .youzify-directory-filter #subnav ul {
+        display: block
+    }
+
+    .youzify-directory-filter .item-list-tabs li label {
+        margin-right: 0
+    }
+
+    .youzify-directory-filter .item-list-tabs li #members-dir-search label {
+        margin: 0;
+        width: calc(100% - 124px)
+    }
+
+    #youzify-directory-search-box form input[type=text] {
+        height: 46px;
+        margin-right: 5px;
+        width: calc(100% - 6px)
+    }
+
+    .rtl #youzify-directory-search-box form input[type=text] {
+        margin: 0
+    }
+
+    #youzify-directory-search-box form input[type=submit] {
+        height: 45px;
+        width: 120px
+    }
+
+    #youzify-directory-pagination .pagination-inner,
+    .youzify #message {
+        margin: 0 0 15px 0
+    }
+
+    .youzify-directory .pagination {
+        margin: 0 auto 25px;
+        width: calc(100% - 25px)
+    }
+
+    .youzify-directory .pagination-inner {
+        margin: 0
+    }
+
+    .youzify-directory .pagination .page-numbers {
+        margin-top: 25px
+    }
+}
+
+@media screen and (max-width:768px) {
+    .youzify.youzify-directory .youzify-mobile-nav {
+        margin: 0 auto 25px;
+        width: calc(100% - 25px)
+    }
+
+    #youzify-groups-list li,
+    #youzify-members-list > li {
+        width: 50%
+    }
+
+    .youzify-directory-filter .item-list-tabs li a {
+        margin: 0 0 15px 0;
+        width: 100%
+    }
+
+    .youzify-directory-filter .item-list-tabs li:last-of-type a {
+        margin-bottom: 0
+    }
+
+    .youzify-directory-filter .item-list-tabs li a span {
+        padding: 0;
+        float: right;
+        height: 30px;
+        min-width: 30px;
+        line-height: 30px
+    }
+
+    #youzify .youzify-directory-filter {
+        padding: 0;
+        margin: 0;
+        background: 0 0;
+        width: calc(100% - 25px);
+        margin: auto
+    }
+
+    .youzify-directory-filter .item-list-tabs:not(#subnav) ul {
+        display: none;
+        padding: 20px;
+        background-color: #fff;
+        margin-bottom: 25px
+    }
+
+    #youzify-directory-search-box,
+    .youzify #groups-order-select,
+    .youzify #members-order-select {
+        margin-bottom: 25px;
+        padding: 15px;
+        text-align: center;
+        border: none;
+        background: #fff
+    }
+
+    #youzify-directory-search-box,
+    .youzify #groups-order-select,
+    .youzify #members-order-select,
+    .youzify-directory-filter .item-list-tabs:not(#subnav) ul {
+        border-radius: 3px
+    }
+
+    .youzify-directory-filter #directory-show-filter,
+    .youzify-directory-filter #directory-show-search {
+        display: none
+    }
+
+    .youzify-directory-filter .item-list-tabs,
+    .youzify-directory-filter .item-list-tabs li,
+    .youzify-directory-filter .item-list-tabs ul {
+        float: none;
+        display: block
+    }
+
+    #youzify-directory-pagination .pagination-inner,
+    .youzify #message,
+    .youzify-directory-filter {
+        margin: 0 0 15px 0
+    }
+
+    #youzify .youzify-directory-filter .item-list-tabs li#groups-order-select label,
+    #youzify .youzify-directory-filter .item-list-tabs li#members-order-select label {
+        display: inline-block;
+        background: #a4aaca;
+        padding: 15px;
+        border-radius: 3px;
+        margin: 0;
+        font-size: 13px;
+        line-height: 15px;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 13px
+    }
+
+    #youzify .youzify-directory-filter .nice-select,
+    #youzify .youzify-directory-filter select {
+        display: block;
+        width: 100%;
+        padding: 0
+    }
+
+    #youzify .youzify-directory-filter .nice-select.open .list {
+        width: 100%
+    }
+
+    #youzify .youzify-directory-filter .nice-select .current {
+        text-align: center
+    }
+
+    #youzify .youzify-directory-filter .nice-select,
+    #youzify .youzify-directory-filter .nice-select .current,
+    #youzify .youzify-directory-filter select {
+        height: 45px;
+        line-height: 45px
+    }
+
+    #youzify .nice-select:after {
+        right: 15px
+    }
+}
+
+@media screen and (max-width:475px) {
+
+    #youzify-groups-list li,
+    #youzify-members-list > li {
+        width: 100%;
+        float: none
+    }
+
+    .youzify-directory-filter .item-list-tabs li #members-dir-search label {
+        width: 100%
+    }
+
+    #youzify .youzify-groups-directory-page #youzify-directory-search-box form input[type=text],
+    #youzify-directory-search-box form input[type=text] {
+        height: 46px;
+        width: 100%;
+        margin-right: 0
+    }
+
+    #youzify-directory-search-box form input[type=submit] {
+        width: 100%;
+        height: 46px;
+        margin-top: 12px
+    }
+
+    .youzify-user-actions {
+        padding: 25px
+    }
+
+    #youzify-members-list .youzify-user-actions a,
+    .youzify-user-actions .friendship-button,
+    .youzify-user-actions .message-button,
+    .youzify-user-actions .message-button a {
+        display: block
+    }
+
+    .youzify-user-actions a {
+        padding: 15px
+    }
+
+    .youzify-user-actions .youzify-send-message {
+        display: block;
+        margin-top: 15px
+    }
+}
+
+@media screen and (max-width:375px) {
+    .youzify-card-action-buttons-inline-block .youzify-user-actions {
+        padding: 25px
+    }
+
+    .youzify-card-action-buttons-inline-block .youzify-user-actions .follow-button,
+    .youzify-card-action-buttons-inline-block .youzify-user-actions .friendship-button,
+    .youzify-card-action-buttons-inline-block .youzify-user-actions .message-button {
+        display: block;
+        margin: 0 0 15px
+    }
+
+    .youzify-card-action-buttons-inline-block .youzify-user-actions > div:last-of-type {
+        margin-bottom: 0
+    }
+
+    .youzify.youzify-directory .youzify-page-main-content {
+        padding: 15px 0 0
+    }
+
+    #youzify-directory-search-box,
+    #youzify-members-list > li .youzify-user-data,
+    .youzify #groups-order-select,
+    .youzify #members-order-select,
+    .youzify-directory .pagination,
+    .youzify-directory-filter .item-list-tabs:not(#subnav) ul,
+    .youzify.youzify-directory .youzify-mobile-nav {
+        margin-bottom: 15px
+    }
+}

@@ -1,0 +1,138 @@
+.demopage-preview {
+    padding: 0 0 0;
+}
+
+.uk-h3 {
+    font-family: 'Marcellus', serif;
+}
+
+.uk-text-center {
+    text-align: center !important;
+    padding-bottom: 50px;
+}
+
+.uk-margin-large-bottom {
+    font-size: 30px;
+    margin-bottom: 0 !important;
+    padding-top: 50px;
+}
+
+.demopage-preview > div {
+    padding-bottom: 70px;
+}
+
+.demopage-preview_item {
+    display: block;
+    z-index: 10;
+    position: relative;
+    width: 350px;
+    height: 302px;
+    margin: 0 auto;
+    padding: 17px 18px 86px 16px;
+    background: url("../img/mac.png") no-repeat;
+    background-size: contain;
+}
+
+.demopage-preview_inner {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.demopage-preview_inner:after {
+    -webkit-transition: all 0.1s;
+    -o-transition: all 0.1s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    content: '';
+    transition: all 0.1s;
+}
+
+.demopage-preview_inner:hover:after {
+    -webkit-box-shadow: inset 0 0 11px 2px white;
+    box-shadow: inset 0 0 11px 2px white;
+}
+
+.demopage-preview_inner img {
+    -webkit-transition: all 4s ease 0s;
+    -o-transition: all 4s ease 0s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: all 4s ease 0s;
+}
+
+.demopage-preview h3 {
+    padding-top: 13px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.demopage-img {
+    -webkit-transition: all 5.5s;
+    -o-transition: all 5.5s;
+    background-position: 0 0;
+    background-size: cover;
+    transition: all 5.5s;
+}
+
+.demopage-img:hover {
+    background-position: 0 100%;
+}
+
+[uk-scrollspy] > div {
+    opacity: 0;
+}
+
+[uk-scrollspy] > div.uk-scrollspy-inview {
+    opacity: 1;
+}
+
+@media (max-width: 1199px) {
+    .demopage-preview {
+        padding: 81px 40px 0;
+    }
+
+    .demopage-preview_item {
+        width: 270px;
+        height: 230px;
+        padding: 13px 14px 64px 13px;
+    }
+
+    .demopage-title {
+        margin-bottom: 0;
+    }
+
+    ul.demopage-help_list {
+        padding: 0;
+    }
+
+    ul.demopage-help_list li {
+        width: 100%;
+        border-left: 1px solid #eee;
+    }
+
+    ul.demopage-help_list li a {
+        width: 100%;
+        text-align: center;
+    }
+
+    ul.demopage-help_list li:first-child {
+        border-bottom: 1px solid #eee;
+    }
+}
+
+@media (max-width: 991px) {
+    .demopage-preview {
+        padding: 81px 0 0;
+    }
+}
