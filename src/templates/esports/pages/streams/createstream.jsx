@@ -12,6 +12,8 @@ import Textarea from "../../component/form/textarea";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
+import Glitch from 'glitch-javascript-sdk';
+
 
 
 class StreamCreatePage extends Component {
@@ -42,11 +44,11 @@ class StreamCreatePage extends Component {
 
         this.setState({isLoading : true});
 
-        Requests.eventsCreate(data).then(response => {
+        Glitch.api.Events.create(data).then(response => {
 
             this.setState({isLoading : false});
 
-            this.props.router.navigate(Navigate.streamsBroadcastPage(response.data.id));
+            this.props.router.navigate(Navigate.streamsBroadcastPage(response.data.data.id));
         }).catch(error => {
 
             this.setState({isLoading : false});

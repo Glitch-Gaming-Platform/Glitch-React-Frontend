@@ -6,6 +6,8 @@ import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import VideoSection from "../../component/section/video";
 
+import Glitch from 'glitch-javascript-sdk';
+
 
 class StreamsPage extends Component {
 
@@ -20,11 +22,18 @@ class StreamsPage extends Component {
 
     componentDidMount() {
 
+        Glitch.api.Events.list().then(response => {
+            this.setState({events : <VideoSection streams={response.data.data} ></VideoSection>});
+        }).catch(error => {
+            console.log(error);
+        })
+
+        /*
         Requests.eventsList().then(response => {
             this.setState({events : <VideoSection streams={response.data} ></VideoSection>});
         }).catch(error => {
             console.log(error);
-        })
+        })*/
     }
 
     render() { 

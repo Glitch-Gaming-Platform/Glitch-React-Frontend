@@ -2,6 +2,7 @@ import { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
+import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import Storage from "../../../../util/Storage";
@@ -12,7 +13,6 @@ import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import SocialMedia from "../../component/section/socialmedia";
-import Glitch from 'glitch-javascript-sdk';
 
 
 const title = "Register Now";
@@ -66,11 +66,11 @@ class SignUp extends Component {
 
         this.setState({isLoading : true});
 
-        Glitch.api.Auth.register(data).then((response) => {
-            Storage.setAuthToken(response.data.data.token.access_token);
-            Storage.set('user_id', response.data.data.id);
+        Requests.authRegister(data).then((response) => {
+            Storage.setAuthToken(response.data.token.access_token);
+            Storage.set('user_id', response.data.id);
 
-            Session.processAuthentication(response.data.data);
+            Session.processAuthentication(response.data);
 
             this.setState({isLoading : false});
 
@@ -106,7 +106,7 @@ class SignUp extends Component {
 
         if(iscohost) {
 
-            Glitch.api.Events.acceptInvite(stream_id, token ).then(response => {
+            Requests.eventsAcceptInvite(stream_id, {token : token}).then(response => {
                 this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
             }).catch(error => {
                 this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));

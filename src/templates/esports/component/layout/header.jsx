@@ -2,41 +2,59 @@ import { Component } from "react";
 import { NavLink, Link } from 'react-router-dom';
 import Navigate from "../../../../util/Navigate";
 import Session from "../../../../util/Session";
+import Glitch from 'glitch-javascript-sdk';
+
+
+let community = Glitch.util.Storage.get('community');
 
 let SocialMideaList = []
 
-if (process.env.REACT_APP_SOCIAL_FACEBOOK_PAGE) {
+if (community.facebook_page) {
     SocialMideaList.push({
         IconName: 'icofont-facebook',
-        IconLink: process.env.REACT_APP_SOCIAL_FACEBOOK_PAGE,
+        IconLink: community.facebook_page,
     });
 }
 
-if (process.env.REACT_APP_SOCIAL_INSTAGRAM_PAGE) {
+if (community.instagram_page) {
     SocialMideaList.push({
         IconName: 'icofont-instagram',
-        IconLink: process.env.REACT_APP_SOCIAL_INSTAGRAM_PAGE,
+        IconLink: community.instagram_page,
     });
 }
 
-if (process.env.REACT_APP_SOCIAL_GITHUB_PAGE) {
+if (community.github_page) {
     SocialMideaList.push({
         IconName: 'icofont-github',
-        IconLink: process.env.REACT_APP_SOCIAL_GITHUB_PAGE,
+        IconLink: community.github_page,
     });
 }
 
-if (process.env.REACT_APP_SOCIAL_TWITTER_PAGE) {
+if (community.twitter_page) {
     SocialMideaList.push({
         IconName: 'icofont-twitter',
-        IconLink: process.env.REACT_APP_SOCIAL_TWITTER_PAGE,
+        IconLink: community.twitter_page,
     });
 }
 
-if (process.env.REACT_APP_SOCIAL_YOUTUBE_PAGE) {
+if (community.youtube_page) {
     SocialMideaList.push({
         IconName: 'icofont-youtube',
-        IconLink: process.env.REACT_APP_SOCIAL_YOUTUBE_PAGE,
+        IconLink: community.youtube_page,
+    });
+}
+
+if (community.discord_page) {
+    SocialMideaList.push({
+        IconName: 'icofont-youtube',
+        IconLink: community.discord_page,
+    });
+}
+
+if (community.steam_page) {
+    SocialMideaList.push({
+        IconName: 'icofont-brand-steam',
+        IconLink: community.steam_page,
     });
 }
 
@@ -107,7 +125,7 @@ class Header extends Component {
                         <div className="brand-logo d-none d-lg-inline-block">
                             <div className="logo">
                                 <Link to="/">
-                                    <img className="img-fluid" width="150px" src="/assets/images/logo/glitch_3.png" alt="logo" />
+                                    <img className="img-fluid" width="150px" src={(community.logo) ? community.logo :  "/assets/images/logo/glitch_3.png"} alt="logo" />
                                 </Link>
                             </div>
                         </div>

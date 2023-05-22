@@ -87,6 +87,126 @@ const Navigate = {
     accountRegisterStep2 : () => {
         return app_routes.acount_register_page_2;
     },
+    joinPage : () => {
+        return app_routes.join;
+    },
+
+    //Communites Pages
+    communitiesPage : () => {
+        return app_routes.communities;
+    },
+    communitiesCreatePage : () => {
+        return app_routes.communities_create;
+    },
+    communitiesUpdatePage : (community_id) => {
+
+        let path = app_routes.communities_update;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+    communitiesViewPage : (community_id) => {
+
+        let path = app_routes.communities_view;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+    communitiesDeletePage : (community_id) => {
+
+        let path = app_routes.communities_delete;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    communitiesOverviewPage : (community_id) => {
+
+        let path = app_routes.communities_overview;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    communitiesManagePage : (community_id) => {
+
+        let path = app_routes.communities_manage;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    communitiesAccessibilityPage : (community_id) => {
+
+        let path = app_routes.communities_accessibility;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    communitiesSocialPage : (community_id) => {
+
+        let path = app_routes.communities_social;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    communitiesFeaturesPage : (community_id) => {
+
+        let path = app_routes.communities_features;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    communitiesCnamePage : (community_id) => {
+
+        let path = app_routes.communities_cname;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+    communitiesMediaPage : (community_id) => {
+
+        let path = app_routes.communities_media;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+
+
 
     //Stream Pages
     streamsPage : () => {

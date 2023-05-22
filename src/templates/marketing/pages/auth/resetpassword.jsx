@@ -1,18 +1,16 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
+import Navigate from "../../../../util/Navigate";
 import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
-import Glitch from 'glitch-javascript-sdk';
 
+const title = "Reset Password";
 
-const title = "Forgot Password";
-
-class CohostPasswordPage extends Component {
+class ResetPassword extends Component {
     
     constructor(props){
         super(props);
@@ -26,11 +24,27 @@ class CohostPasswordPage extends Component {
 
         event.preventDefault();
 
-        Glitch.api.Auth.forgotPasswordWithEmail(this.state.email).then((response) => {
-            
-            alert("You have been sent an email to reset your password.");
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+       
+        let token = params.token;
 
-            this.setState({email : ''})
+        let email= params.email;
+
+        let data = {
+            new_password : this.state.password,
+            token : token,
+            email : email
+        };
+
+        Requests.authResetPassword(data).then((response) => {
+            
+            alert("Your password has been reset");
+
+            this.setState({password : ''});
+
+            this.props.router.navigate(Navigate.authLogin());
 
         }).catch((error) => {
 
@@ -51,21 +65,21 @@ class CohostPasswordPage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'FORGOT PASSWORD'} curPage={'Forgot Password'} />
+                <PageHeader title={'RESET PASSWORD'} curPage={'Reset Password'} />
                 <div className="login-section padding-top padding-bottom">
                     <div className=" container">
                         <div className="account-wrapper">
                             <h3 className="title">{title}</h3>
-                            <p>Enter your email address to get an email to reset your password.</p>
+                            <p>Enter a new password for your account here.</p>
                             <form className="account-form">
                                 <div className="form-group">
                                     <input
-                                        type="text"
+                                        type="password"
                                         name="name"
                                         id="item01"
-                                        value={this.state.email}
-                                        onChange={(e)=>{this.setState({email: e.target.value});}}
-                                        placeholder="Email *"
+                                        value={this.state.password}
+                                        onChange={(e)=>{this.setState({password : e.target.value});}}
+                                        placeholder="Enter A New Password"
                                     />
                                 </div>
                                 
@@ -85,4 +99,4 @@ class CohostPasswordPage extends Component {
     }
 }
  
-export default withRouter(CohostPasswordPage);
+export default withRouter(ResetPassword);

@@ -2,11 +2,12 @@ import { VideoConferencing } from "invirtu-react-widgets";
 import { Component, Fragment } from "react";
 import HasAccess from "../../../../util/HasAccess";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
+import Glitch from 'glitch-javascript-sdk';
+
 
 
 class CohostWatchStreamPage extends Component {
@@ -30,22 +31,22 @@ class CohostWatchStreamPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.userMe().then(response => {
+        Glitch.api.Users.me().then(response => {
 
-            let userData = response.data;
+            let userData = response.data.data;
 
-            Requests.eventsView(id).then(response => {
+            Glitch.api.Events.view(id).then(response => {
 
-                if(!HasAccess.userInList(Session.getID(), response.data.speakers)){
+                if(!HasAccess.userInList(Session.getID(), response.data.data.speakers)){
                     //this.props.router.navigate(Navigate.accessDeniedPage());
                 }
 
-                if (response.data.invirtu_id) {
+                if (response.data.data.invirtu_id) {
 
                     this.setState({
-                        video_conference_widget: <VideoConferencing id={response.data.invirtu_id} auth_token={userData.invirtu_user_jwt_token} />,
-                        event: response.data,
-                        watch_page: Navigate.streamsWatchPage(response.data.id)
+                        video_conference_widget: <VideoConferencing id={response.data.data.invirtu_id} auth_token={userData.invirtu_user_jwt_token} />,
+                        event: response.data.data,
+                        watch_page: Navigate.streamsWatchPage(response.data.data.id)
                     });
                 }
             }).catch(error => {
@@ -63,11 +64,11 @@ class CohostWatchStreamPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsAddRTMPSource(id, { rtmp_source: this.state.rtmp_source }).then(response => {
+        Glitch.api.Events.addRTMPSource(id, { rtmp_source: this.state.rtmp_source }).then(response => {
 
             this.setState({
                 rtmp_source: '',
-                event: response.data
+                event: response.data.data
             });
 
         }).catch(error => {
@@ -81,10 +82,10 @@ class CohostWatchStreamPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsSetToBroadcastMode(id).then(response => {
+        Glitch.api.Events.enableBroadcastMode(id).then(response => {
 
             this.setState({
-                event: response.data
+                event: response.data.data
             });
 
         }).catch(error => {
@@ -98,10 +99,10 @@ class CohostWatchStreamPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsSetToLivestreamMode(id, { mode: type }).then(response => {
+        Glitch.api.Events.enableLivestreamMode(id, { mode: type }).then(response => {
 
             this.setState({
-                event: response.data
+                event: response.data.data
             });
 
         }).catch(error => {
@@ -119,10 +120,10 @@ class CohostWatchStreamPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsRemoveRTMPSource(id, stream_id).then(response => {
+        Glitch.api.Events.removeRTMPSource(id, stream_id).then(response => {
 
             this.setState({
-                event: response.data
+                event: response.data.data
             });
 
         }).catch(error => {
@@ -143,14 +144,14 @@ class CohostWatchStreamPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsSendInvite(id, data).then(response => {
-            console.log(response);
+        Glitch.api.Events.sendInvite(id, data).then(response => {
+
             this.setState({
                 invite_cohost_email : '',
                 invite_cohost_email : ''
             });
 
-            this.state.event.invites.push(response.data);
+            this.state.event.invites.push(response.data.data);
         }).catch(error => {
             console.log(error);
         });

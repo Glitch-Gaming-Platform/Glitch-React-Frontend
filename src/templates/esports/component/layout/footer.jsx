@@ -1,8 +1,9 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import site from "../../../../constants/site";
+import Glitch from 'glitch-javascript-sdk';
 
-
+let community = Glitch.util.Storage.get('community');
 
 const postTitle = "Download The Source Code";
 const newsTitle = "Our Newsletter";
