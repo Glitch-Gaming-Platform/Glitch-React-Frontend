@@ -11,7 +11,7 @@ import Glitch from 'glitch-javascript-sdk';
 import Storage from './util/Storage';
 
 
-Glitch.config.Config.setBaseUrl("https://api.glitch.local/api", true);
+Glitch.config.Config.setBaseUrl(process.env.REACT_APP_API_URL, true);
 
 Glitch.config.Config.setAuthToken(Storage.getAuthToken());
 
