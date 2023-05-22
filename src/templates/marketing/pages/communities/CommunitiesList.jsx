@@ -48,7 +48,7 @@ class CommunitiesList extends Component {
 
                     <div className="container padding-bottom mt-5" >
                         <div className="section-wrapper">
-                            <Link className={"default-button"} to={Navigate.communitiesCreatePage()} >Create A Community</Link>
+                            <Link className={"btn btn-success"} to={Navigate.communitiesCreatePage()} >Create A Community</Link>
                         </div>
                     </div>
 
@@ -65,16 +65,16 @@ class CommunitiesList extends Component {
 
                                             </div>
                                             <div className="blog-content p-4 w-xl-50 w-100">
-                                                <h3><Link to={'http://' + ((community.cname && community.cname_enabled) ? community.cname : community.subdomain + '.glitch.local') }>{community.name}</Link></h3>
+                                                <h3><Link to={'http://' + ((community.cname && community.cname_enabled) ? community.cname : community.subdomain + process.env.REACT_APP_SITE_DOMAIN) }>{community.name}</Link></h3>
                                                 <br />
                                                 <p>{community.description}</p>
 
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
-                        </div>;
+                        </div>
                     }) : ''
 
 
