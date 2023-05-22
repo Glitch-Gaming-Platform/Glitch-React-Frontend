@@ -87,6 +87,9 @@ const Navigate = {
     accountRegisterStep2 : () => {
         return app_routes.acount_register_page_2;
     },
+    joinPage : () => {
+        return app_routes.join;
+    },
 
     //Communites Pages
     communitiesPage : () => {
@@ -184,6 +187,16 @@ const Navigate = {
     communitiesCnamePage : (community_id) => {
 
         let path = app_routes.communities_cname;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+    communitiesMediaPage : (community_id) => {
+
+        let path = app_routes.communities_media;
 
         if(community_id){
             path = path.replace(':id', community_id)

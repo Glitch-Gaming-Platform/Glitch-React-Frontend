@@ -52,15 +52,6 @@ class HomeTwo extends Component {
                     </div>
                 </div>
 
-
-
-
-                <CtaSection imgUrl={'assets/images/cta/02.png'} />
-
-
-
-              
-
                 <Footer />
             </Fragment>
         );

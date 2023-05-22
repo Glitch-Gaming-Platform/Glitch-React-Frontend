@@ -4,7 +4,7 @@ import Danger from "../../alerts/Danger";
 import Input from "../../form/input";
 import Textarea from "../../form/textarea";
 
-export default function CompetitionFormFeatures({ disableStreamsValue, disableStreamsOnChange, disableCompetitionsValue, disableCompetitionsOnChange,  disableForumsValue, disableForumsOnChange, disableTeamsValue, disableTeamsOnChange, errors  }) {
+export default function CommunityFormFeatures({ disableStreamsValue, disableStreamsOnChange, disableCompetitionsValue, disableCompetitionsOnChange,  disableForumsValue, disableForumsOnChange, disableTeamsValue, disableTeamsOnChange, errors  }) {
 
     return (
         <>
@@ -30,7 +30,7 @@ export default function CompetitionFormFeatures({ disableStreamsValue, disableSt
             </div>
 
             <div className="form-group-checkbox">
-                <Input type="checkbox" className={"form-checkbox mr-5 pr-5"} name="disable_forums" checked={disableCompetitionsValue} onChange={disableForumsOnChange} />
+                <Input type="checkbox" className={"form-checkbox mr-5 pr-5"} name="disable_forums" checked={disableForumsValue} onChange={disableForumsOnChange} />
 
                 <label>Disable Forums</label>
                 {errors && errors.disable_forums && errors.disable_forums.map(function (name, index) {

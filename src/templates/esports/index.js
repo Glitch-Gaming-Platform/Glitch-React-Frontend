@@ -49,6 +49,7 @@ import SignUp from "./pages/auth/signup";
 import ForgotPassword from "./pages/auth/forgotpassword";
 import ResetPassword from "./pages/auth/resetpassword";
 import LogIn from "./pages/auth/login";
+import JoinPage from './pages/auth/join';
 
 import CompetitionsCreatePage from "./pages/competitions/competition_admin_create";
 import CompetitionsUpdatePage from "./pages/competitions/competition_admin_update";
@@ -134,6 +135,7 @@ function Template() {
 
           <Route path={Navigate.accountMainPage()} element={<AccountUpdatePage />} />
           <Route path={Navigate.accountRegisterStep2()} element={<RegisterStep2 />} />
+          <Route path={Navigate.joinPage()} element={<JoinPage />} />
 
           <Route path={Navigate.authLogin()} element={<LogIn />} />
           <Route path={Navigate.authRegister()} element={<SignUp />} />
@@ -146,7 +148,7 @@ function Template() {
           <Route path={Navigate.authMicrosoft()} element={<AuthMicrosoft/>} />
           <Route path={Navigate.authMicrosoftTeams()} element={<AuthMicrosoftTeams/>} />
           <Route path={Navigate.authStripe()} element={<AuthStripe />} />
-
+          
           <Route path={Navigate.streamsPage()} element={<StreamsPage />} />
           <Route path={Navigate.streamsCreatePage()} element={<StreamsCreatePage />} />
           <Route path={Navigate.streamsWatchPage()} element={<StreamsWatchPage />} />

@@ -69,7 +69,6 @@ class CommunitiesList extends Component {
                                                 <br />
                                                 <p>{community.description}</p>
 
-                                                <p><Link to={Navigate.communitiesOverviewPage(community.id)}>Manage</Link></p>
                                             </div>
                                         </div>
                                     </div>

@@ -33,6 +33,7 @@
     //accounts route
     account_update : '/accounts/update',
     acount_register_page_2 : '/accounts/register/step2',
+    join : '/join',
 
     //Communities
     communities : '/communities',
@@ -48,6 +49,7 @@
     communities_accessibility : '/communities/:id/accessibility',
     communities_cname : '/communities/:id/cname',
     communities_social : '/communities/:id/social',
+    communities_media : '/communities/:id/media',
     
 
     //streams route

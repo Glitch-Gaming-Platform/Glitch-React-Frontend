@@ -4,7 +4,7 @@ import ImageUploading from 'react-images-uploading';
 import Loading from "../../alerts/Loading";
 
 
-export default function CommunityFormMedia({ mainImageValue, mainImageOnChange, saveMainImage, isLoadingMainImage, bannerImageValue, bannerImageOnChange, saveBannerImage, isLoadingBannerImage, errors }) {
+export default function CommunityFormMedia({ logoValue, logoOnChange, saveLogo, isLoadingMainImage, bannerImageValue, bannerImageOnChange, saveBannerImage, isLoadingBannerImage, errors }) {
 
     return (
         <>
@@ -13,8 +13,8 @@ export default function CommunityFormMedia({ mainImageValue, mainImageOnChange, 
             <label>Main Image</label>
             <ImageUploading
                 multiple
-                value={mainImageValue}
-                onChange={mainImageOnChange}
+                value={logoValue}
+                onChange={logoOnChange}
                 maxNumber={1}
                 dataURLKey="data_url"
             >
@@ -43,7 +43,7 @@ export default function CommunityFormMedia({ mainImageValue, mainImageOnChange, 
                             <div key={index} className="image-item">
                                 <img src={image['data_url']} alt="" width="400" />
                                 <div className="image-item__btn-wrapper">
-                                    <button className="btn btn-success" onClick={saveMainImage}>{isLoadingMainImage ? <Loading /> : ''} Save Image</button>
+                                    <button className="btn btn-success" onClick={saveLogo}>{isLoadingMainImage ? <Loading /> : ''} Save Image</button>
                                 </div>
                             </div>
                         ))}

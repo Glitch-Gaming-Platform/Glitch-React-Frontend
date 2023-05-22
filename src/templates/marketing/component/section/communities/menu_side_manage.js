@@ -27,6 +27,9 @@ export default function SidebarManageMenu({ community_id }) {
                 <li key={4}>
                     <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesCnamePage(community_id)}><span><i className="icofont-rounded-double-right"></i>CName</span></Link>
                 </li>
+                <li key={6}>
+                    <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesMediaPage(community_id)}><span><i className="icofont-rounded-double-right"></i>Media</span></Link>
+                </li>
                 <li key={5}>
                     <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesSocialPage(community_id)}><span><i className="icofont-rounded-double-right"></i>Social Links</span></Link>
                 </li>

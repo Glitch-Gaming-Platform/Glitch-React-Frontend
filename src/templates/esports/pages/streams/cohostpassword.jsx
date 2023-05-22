@@ -7,6 +7,8 @@ import Danger from "../../component/alerts/Danger";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
+import Glitch from 'glitch-javascript-sdk';
+
 
 const title = "Forgot Password";
 
@@ -24,11 +26,7 @@ class CohostPasswordPage extends Component {
 
         event.preventDefault();
 
-        let data = {
-            email : this.state.email,
-        };
-
-        Requests.authForgotPassword(data).then((response) => {
+        Glitch.api.Auth.forgotPasswordWithEmail(this.state.email).then((response) => {
             
             alert("You have been sent an email to reset your password.");
 

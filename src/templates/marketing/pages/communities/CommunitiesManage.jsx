@@ -6,6 +6,7 @@ import PageHeader from "../../component/layout/pageheader";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import SidebarManageMenu from "../../component/section/communities/menu_side_manage";
+import CommunityOverview from '../../component/section/communities/community_overview';
 
 
 
@@ -54,10 +55,11 @@ class CommunitiesManagePage extends Component {
                     <div className="container">
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
-                                <div className="col-lg-8 col-12">
-                                    
+                                <div className="col-lg-8 col-12 pe-5">   
 
-                                    <hr/>
+                                    <CommunityOverview community={this.state.community} />
+
+                                    
 
                                 </div>
                                 <div className="col-lg-4 col-md-7 col-12">

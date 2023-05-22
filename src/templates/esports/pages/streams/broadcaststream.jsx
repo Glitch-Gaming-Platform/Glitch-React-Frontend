@@ -5,7 +5,6 @@ import { Beforeunload } from 'react-beforeunload';
 import timeouts from "../../../../constants/timeouts";
 import HasAccess from "../../../../util/HasAccess";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -18,6 +17,8 @@ import Textarea from "../../component/form/textarea";
 import Data from "../../../../util/Data";
 import Footer from "../../component/layout/footer";
 import Widgets from "../../../../constants/widgets";
+import Glitch from 'glitch-javascript-sdk';
+
 
 class StreamsBroadcastPage extends Component {
 
@@ -68,28 +69,28 @@ class StreamsBroadcastPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.userMe().then(response => {
+        Glitch.api.Users.me().then(response => {
 
-            let userData = response.data;
+            let userData = response.data.data;
 
-            this.setState({me : response.data});
+            this.setState({me : response.data.data});
 
-            Requests.eventsView(id).then(response => {
+            Glitch.api.Events.view(id).then(response => {
 
-                if (!HasAccess.userInList(Session.getID(), response.data.admins)) {
+                if (!HasAccess.userInList(Session.getID(), response.data.data.admins)) {
                     this.props.router.navigate(Navigate.accessDeniedPage());
                 }
 
-                if (response.data.invirtu_id) {
+                if (response.data.data.invirtu_id) {
 
                     this.setState({
-                        video_conference_widget: <VideoConferencing id={response.data.invirtu_id} auth_token={userData.invirtu_user_jwt_token} />,
-                        event: response.data,
-                        watch_page: Navigate.streamsWatchPage(response.data.id),
-                        min_screenshare_fps : response.data.invirtu_event.screenshare_frames_per_second_min,
-                        max_screenshare_fps : response.data.invirtu_event.screenshare_frames_per_second_max,
-                        min_desktop_fps : response.data.invirtu_event.desktop_frames_per_second_min,
-                        max_desktop_fps : response.data.invirtu_event.desktop_frames_per_second_max,
+                        video_conference_widget: <VideoConferencing id={response.data.data.invirtu_id} auth_token={userData.invirtu_user_jwt_token} />,
+                        event: response.data.data,
+                        watch_page: Navigate.streamsWatchPage(response.data.data.id),
+                        min_screenshare_fps : response.data.data.invirtu_event.screenshare_frames_per_second_min,
+                        max_screenshare_fps : response.data.data.invirtu_event.screenshare_frames_per_second_max,
+                        min_desktop_fps : response.data.data.invirtu_event.desktop_frames_per_second_min,
+                        max_desktop_fps : response.data.data.invirtu_event.desktop_frames_per_second_max,
                     });
                 }
             }).catch(error => {
@@ -113,9 +114,9 @@ class StreamsBroadcastPage extends Component {
 
         this.setState({isLoading : true});
 
-        Requests.eventsUpdate(id, data).then(response => {
+        Glitch.api.Events.update(id, data).then(response => {
 
-            this.setState({ event : response.data, isLoading : false});
+            this.setState({ event : response.data.data, isLoading : false});
 
         }).catch(error => {
 
@@ -142,13 +143,13 @@ class StreamsBroadcastPage extends Component {
 
         this.setState({ isLoadingRTMPSource: true });
 
-        Requests.eventsAddRTMPSource(id, { rtmp_source: this.state.rtmp_source }).then(response => {
+        Glitch.api.Events.addRTMPSource(id, { rtmp_source: this.state.rtmp_source }).then(response => {
 
             this.setState({ isLoadingRTMPSource: false });
 
             this.setState({
                 rtmp_source: '',
-                event: response.data
+                event: response.data.data
             });
 
         }).catch(error => {
@@ -188,10 +189,10 @@ class StreamsBroadcastPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsSetToBroadcastMode(id).then(response => {
+        Glitch.api.Events.enableBroadcastMode(id).then(response => {
 
             this.setState({
-                event: response.data
+                event: response.data.data
             });
 
         }).catch(error => {
@@ -205,10 +206,10 @@ class StreamsBroadcastPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsSetToLivestreamMode(id, { mode: type }).then(response => {
+        Glitch.api.Events.enableLivestreamMode(id, { mode: type }).then(response => {
 
             this.setState({
-                event: response.data
+                event: response.data.data
             });
 
         }).catch(error => {
@@ -239,10 +240,10 @@ class StreamsBroadcastPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsUpdateRTMPSource(id, stream_id, data).then(response => {
+        Glitch.api.Events.updateRTMPSource(id, stream_id, data).then(response => {
 
             this.setState({
-                event: response.data,
+                event: response.data.data,
                 isLoadingRTMPAdvanced : false
             });
 
@@ -258,10 +259,10 @@ class StreamsBroadcastPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsRemoveRTMPSource(id, stream_id).then(response => {
+        Glitch.api.Events.removeRTMPSource(id, stream_id).then(response => {
 
             this.setState({
-                event: response.data
+                event: response.data.data
             });
 
         }).catch(error => {
@@ -284,16 +285,16 @@ class StreamsBroadcastPage extends Component {
 
         this.setState({ isLoadingUpdateFPS: true });
 
-        Requests.eventsUpdateInvirtuEvent(id, data).then(response => {
+        Glitch.api.Events.updateInvirtuEvent(id, data).then(response => {
 
             this.setState({ isLoadingUpdateFPS: false });
 
             this.setState({
-                event: response.data,
-                min_screenshare_fps : response.data.invirtu_event.screenshare_frames_per_second_min,
-                max_screenshare_fps : response.data.invirtu_event.screenshare_frames_per_second_max,
-                min_desktop_fps : response.data.invirtu_event.desktop_frames_per_second_min,
-                max_desktop_fps : response.data.invirtu_event.desktop_frames_per_second_max,
+                event: response.data.data,
+                min_screenshare_fps : response.data.data.invirtu_event.screenshare_frames_per_second_min,
+                max_screenshare_fps : response.data.data.invirtu_event.screenshare_frames_per_second_max,
+                min_desktop_fps : response.data.data.invirtu_event.desktop_frames_per_second_min,
+                max_desktop_fps : response.data.data.invirtu_event.desktop_frames_per_second_max,
             });
 
         }).catch(error => {
@@ -319,7 +320,7 @@ class StreamsBroadcastPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsSendInvite(id, data).then(response => {
+        Glitch.api.Events.sendInvite(id, data).then(response => {
 
             this.setState({
                 invite_cohost_name: '',
@@ -327,7 +328,7 @@ class StreamsBroadcastPage extends Component {
                 isLoadingAddCohost: false
             });
 
-            this.state.event.invites.push(response.data);
+            this.state.event.invites.push(response.data.data);
         }).catch(error => {
 
             this.setState({ isLoadingAddCohost: false });
@@ -366,7 +367,7 @@ class StreamsBroadcastPage extends Component {
             content: message
         };
 
-        Requests.eventsSendOnScreenContent(id, data).then(response => {
+        Glitch.api.Events.sendOnScreenContent(id, data).then(response => {
 
             this.setState({ onscreen_message: '', isLoadingOnScreenMessage: false });
         }).catch(error => {
@@ -394,6 +395,8 @@ class StreamsBroadcastPage extends Component {
 
     saveOverlayImage = (index) => {
 
+        let id = this.props.router.params.id;
+
         let image = this.state.images[index];
 
         this.setState({isLoadingImage : true});
@@ -404,8 +407,9 @@ class StreamsBroadcastPage extends Component {
 
         formData.append('image', blob, 'screenshot.png');
 
-        Requests.userUploadAvatar(formData).then(response => {
-            this.setState({ user: response.data, images: [], isLoadingImage : false });
+        Glitch.api.Events.addOverlayAsBlob(id, blob ).then(response => {
+            //@todo
+            //this.setState({ user: response.data.data, images: [], isLoadingImage : false });
         }).catch(error => {
 
             this.setState({isLoadingImage : false});
@@ -422,8 +426,7 @@ class StreamsBroadcastPage extends Component {
 
         this.setState({isLoadingOverlay : true});
 
-        Requests.eventsEnableOverlay(id, overlay_id).then((response) => {
-
+        Glitch.api.Events.enableOverlay(id, overlay_id).then((response) => {
             this.setState({isLoadingOverlay : false});
             console.log(response);
         }).catch(error => {
@@ -440,7 +443,7 @@ class StreamsBroadcastPage extends Component {
 
         this.setState({isLoadingOverlay : true});
 
-        Requests.eventsDisableOverlay(id).then((response) => {
+        Glitch.api.Events.disableOverlay(id).then((response) => {
             this.setState({isLoadingOverlay : false});
             console.log(response);
         }).catch(error => {
@@ -458,10 +461,10 @@ class StreamsBroadcastPage extends Component {
 
         this.setState({isLoadingDonation : true});
 
-        Requests.eventsEnableDonations(id).then((response) => {
+        Glitch.api.Events.enableDonations(id).then((response) => {
 
             this.setState({
-                event: response.data,
+                event: response.data.data,
                 isLoadingDonation : false
             });
 
@@ -479,10 +482,10 @@ class StreamsBroadcastPage extends Component {
 
         this.setState({isLoadingDonation : true});
 
-        Requests.eventsDisableDonations(id).then((response) => {
+        Glitch.api.Events.disableDonations(id).then((response) => {
             
             this.setState({
-                event: response.data,
+                event: response.data.data,
                 isLoadingDonation : false
             });
 

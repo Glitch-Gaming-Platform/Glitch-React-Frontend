@@ -7,6 +7,8 @@ import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import RecordingVideo from "../../component/section/recordingvideo";
+import Glitch from 'glitch-javascript-sdk';
+
 
 
 class WatchRecordingPage extends Component {

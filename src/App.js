@@ -10,12 +10,18 @@ const App = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      
+
       try {
         const domain = getDomain();
         const response = await Glitch.api.Communities.findByDomain(domain);
 
         setData(response.data.data);
+        console.log("Community Data");
+        console.log(response.data.data);
+        Glitch.config.Config.setCommunity(response.data.data);
+        Glitch.util.Storage.set('community_id', response.data.data.id);
+        Glitch.util.Storage.set('community',response.data.data);
+
         let community = response.data.data;
         let templateDir = community?.template?.directory + community?.template?.entry_point_file;
 
@@ -63,7 +69,7 @@ const App = () => {
 
     console.log(currentDomain);
 
-    if (currentDomain === 'glitch.local' || currentDomain.endsWith('.glitch.local')) {
+    if (currentDomain === process.env.REACT_APP_SITE_DOMAIN || currentDomain.endsWith(process.env.REACT_APP_SITE_DOMAIN)) {
       const subdomain = currentDomain.split('.')[0];
       return subdomain;
     } else {

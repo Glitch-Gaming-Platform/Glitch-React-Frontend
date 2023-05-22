@@ -72,7 +72,7 @@ class CommunitiesUpdatePage extends Component {
 
             this.setState({ isLoading: false });
 
-            this.props.router.navigate(Navigate.communitiesViewPage(response.data.data.id));
+            this.props.router.navigate(Navigate.communitiesManagePage(response.data.data.id));
         }).catch(error => {
 
             this.setState({ isLoading: false });
@@ -104,7 +104,7 @@ class CommunitiesUpdatePage extends Component {
                     <div className="container">
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
-                                <div className="col-lg-8 col-12">
+                                <div className="col-lg-8 col-12 pe-5">
                                     
                                 <form className="text-left" style={{ textAlign: "left" }}>
                                     <CommunityFormBasic
@@ -128,7 +128,7 @@ class CommunitiesUpdatePage extends Component {
 
                                 </form>
 
-                                    <hr/>
+               
 
                                 </div>
                                 <div className="col-lg-4 col-md-7 col-12">
