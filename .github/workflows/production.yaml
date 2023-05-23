@@ -1,39 +1,117 @@
-name: Deploy to GCP App Engine
+name: Deploy to GCP Cloud Run
 
 on:
   push:
     branches:
-      - main
+      - production-web
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      PROJECT_ID: invirtu
-      APP_NAME: glitch-production
-      GAE_SERVICE: default
-      GAE_VERSION: v1
+      IMAGE_NAME : production-glitch-react
+      PROJECT_ID : invirtu
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Set up Google Cloud SDK
-        uses: google-github-actions/setup-gcloud@v0
-        with:
-          project_id: ${{ env.PROJECT_ID }}
-          service_account_key: ${{ secrets.GCP_GLITCH }}
-          export_default_credentials: true
+    - name: Set up Google Cloud SDK
+      uses: google-github-actions/setup-gcloud@v0
+      with:
+        project_id: invirtu
+        service_account_key: ${{ secrets.GCP_GITHUB_DEPLOY }}
+        export_default_credentials: true
 
-      - name: Install Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 18
+    - name: Get secrets from Secret Manager
+      uses: google-github-actions/get-secretmanager-secrets@v1
+      id: secrets
+      with:
+        project_id: invirtu
+        secrets: |-
+          token:projects/522989861526/secrets/glitch-production-react-env
 
-      - name: Build and Test
-        run: |
-          npm ci
-          npm run build
+    - name: Create .env file
+      run: |
+        echo "${{ steps.secrets.outputs.token}}" >> .env
 
-      - name: Deploy to App Engine
-        run: |
-          gcloud app deploy --project ${{ env.PROJECT_ID }} --quiet --version ${{ env.GAE_VERSION }} --no-promote --stop-previous-version
+
+    - name: Build Docker image
+      run: docker build -t gcr.io/invirtu/production-glitch-react -f .docker/production-glitch-react/Dockerfile . 
+
+    - name: Push Docker image to Google Cloud Storage
+      env:
+        GIT_TAG: v0.1.0
+      run: |
+        gcloud auth configure-docker -q
+        docker tag gcr.io/invirtu/${{ env.IMAGE_NAME }}:latest gcr.io/invirtu/${{ env.IMAGE_NAME }}:latest
+        docker tag gcr.io/invirtu/${{ env.IMAGE_NAME }}:latest gcr.io/invirtu/${{ env.IMAGE_NAME }}:${{ github.sha }}
+        docker push gcr.io/invirtu/${{ env.IMAGE_NAME }}:latest
+        docker push gcr.io/invirtu/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+    - name: Create Subnet
+      run: |
+          if ! gcloud compute networks subnets describe production-web-subnet --region us-central1 2>/dev/null; then
+            gcloud compute networks subnets create production-web-subnet \
+            --range=10.66.0.0/28 --network=default --region=us-central1
+          fi
+
+
+    - name: Create Connector
+      run: |
+          if ! gcloud compute networks vpc-access connectors describe production-web-connector --region us-central1 2>/dev/null; then
+            gcloud compute networks vpc-access connectors create production-web-connector \
+            --region=us-central1 \
+            --subnet-project=invirtu \
+            --subnet=production-web-subnet
+          fi
+
+    - name: Create Net Gateway
+      run: |
+          if ! gcloud compute routers describe production-web-router --region us-central1 2>/dev/null; then
+            gcloud compute routers create production-web-router \
+            --network=default \
+            --region=us-central1
+          fi
+
+    - name: Create Static IP
+      run: |
+          if ! gcloud compute addresses describe production-web-static-ip --region us-central1 2>/dev/null; then
+            gcloud compute addresses create production-web-static-ip --region=us-central1
+          fi
+
+    - name: Create NAT
+      run: |
+          if ! gcloud compute routers nats describe production-web-nat --router=production-web-router --region=us-central1 2>/dev/null; then
+            gcloud compute routers nats create production-web-nat \
+            --router=production-web-router \
+            --region=us-central1 \
+            --nat-custom-subnet-ip-ranges=production-web-subnet \
+            --nat-external-ip-pool=production-web-static-ip
+          fi
+
+    
+
+    - name: Deploy to Cloud Run
+      uses: google-github-actions/deploy-cloudrun@v1
+      with:
+          image: gcr.io/invirtu/production-glitch-react:${{ github.sha }}
+          project_id: invirtu
+          region: us-central1
+          service: production-glitch-react
+          service_name: production-glitch-react
+          platform: managed
+          env_vars_file: .env
+          allow_unauthenticated: true
+          port: 80
+          min_instances: 1
+          vpc-egress: all-traffic
+          vpc-connector : production-web-connector
+          args:
+            -- 'port=80'
+            -- 'min-instances=1'
+          traffic_percent_strategy: '{"latest":50}'
+    
+
+   
+        
+
