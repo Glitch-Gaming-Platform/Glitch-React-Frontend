@@ -61,7 +61,7 @@ class CommunitiesList extends Component {
                                         <div className="blog-inner d-flex flex-wrap align-items-center">
                                             <div className="blog-thumb w-xl-50 w-100">
 
-                                                <img src={(community.bannner_image) ? community.bannner_image : `assets/images/revenue/sponsored_1.jpg`} alt={`Earn Donations`} className="w-100" />
+                                                <img src={(community.banner_image) ? community.banner_image : `assets/images/revenue/sponsored_1.jpg`} alt={`Earn Donations`} className="w-100" />
 
                                             </div>
                                             <div className="blog-content p-4 w-xl-50 w-100">
