@@ -46,50 +46,7 @@ jobs:
         docker tag gcr.io/invirtu/${{ env.IMAGE_NAME }}:latest gcr.io/invirtu/${{ env.IMAGE_NAME }}:latest
         docker tag gcr.io/invirtu/${{ env.IMAGE_NAME }}:latest gcr.io/invirtu/${{ env.IMAGE_NAME }}:${{ github.sha }}
         docker push gcr.io/invirtu/${{ env.IMAGE_NAME }}:latest
-        docker push gcr.io/invirtu/${{ env.IMAGE_NAME }}:${{ github.sha }}
-
-    - name: Create Subnet
-      run: |
-          if ! gcloud compute networks subnets describe production-web-subnet --region us-central1 2>/dev/null; then
-            gcloud compute networks subnets create production-web-subnet \
-            --range=10.66.0.0/28 --network=default --region=us-central1
-          fi
-
-
-    - name: Create Connector
-      run: |
-          if ! gcloud compute networks vpc-access connectors describe production-web-connector --region us-central1 2>/dev/null; then
-            gcloud compute networks vpc-access connectors create production-web-connector \
-            --region=us-central1 \
-            --subnet-project=invirtu \
-            --subnet=production-web-subnet
-          fi
-
-    - name: Create Net Gateway
-      run: |
-          if ! gcloud compute routers describe production-web-router --region us-central1 2>/dev/null; then
-            gcloud compute routers create production-web-router \
-            --network=default \
-            --region=us-central1
-          fi
-
-    - name: Create Static IP
-      run: |
-          if ! gcloud compute addresses describe production-web-static-ip --region us-central1 2>/dev/null; then
-            gcloud compute addresses create production-web-static-ip --region=us-central1
-          fi
-
-    - name: Create NAT
-      run: |
-          if ! gcloud compute routers nats describe production-web-nat --router=production-web-router --region=us-central1 2>/dev/null; then
-            gcloud compute routers nats create production-web-nat \
-            --router=production-web-router \
-            --region=us-central1 \
-            --nat-custom-subnet-ip-ranges=production-web-subnet \
-            --nat-external-ip-pool=production-web-static-ip
-          fi
-
-    
+        docker push gcr.io/invirtu/${{ env.IMAGE_NAME }}:${{ github.sha }} 
 
     - name: Deploy to Cloud Run
       uses: google-github-actions/deploy-cloudrun@v1
@@ -104,8 +61,6 @@ jobs:
           allow_unauthenticated: true
           port: 80
           min_instances: 1
-          vpc-egress: all-traffic
-          vpc-connector : production-web-connector
           args:
             -- 'port=80'
             -- 'min-instances=1'
