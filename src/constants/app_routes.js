@@ -50,6 +50,7 @@
     communities_cname : '/communities/:id/cname',
     communities_social : '/communities/:id/social',
     communities_media : '/communities/:id/media',
+    communities_css : '/communities/:id/css',
     
 
     //streams route

@@ -33,8 +33,9 @@ export default function SidebarManageMenu({ community_id }) {
                 <li key={5}>
                     <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesSocialPage(community_id)}><span><i className="icofont-rounded-double-right"></i>Social Links</span></Link>
                 </li>
-
-
+                <li key={7}>
+                    <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesCssPage(community_id)}><span><i className="icofont-rounded-double-right"></i>Custom CSS</span></Link>
+                </li>
 
             </ul>
         </div>

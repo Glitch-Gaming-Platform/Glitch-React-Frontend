@@ -47,6 +47,8 @@ import CommunitiesMedia from './pages/communities/CommunitiesMedia';
 import CommunitiesSocial from './pages/communities/CommunitiesSocial';
 import CommunitiesCname from './pages/communities/CommunitiesCname';
 import CommunitiesAccessibility from './pages/communities/CommunitiesAccessibility';
+import CommunityFormCss from './component/section/communities/form_community_css';
+
 
 
 import AccountUpdatePage from "./pages/account/profile";
@@ -57,6 +59,7 @@ import MarketingPage from './pages/misc/marketing';
 import RevenuePage from './pages/misc/revenue';
 import FeaturesPage from './pages/misc/features';
 import InstallationPage from './pages/misc/installation';
+import CommunitiesCss from './pages/communities/CommunitiesCss';
 
 
 function Template() {
@@ -91,6 +94,7 @@ function Template() {
           <Route path={Navigate.communitiesSocialPage()} element={<CommunitiesSocial />} />
           <Route path={Navigate.communitiesMediaPage()} element={<CommunitiesMedia />} />
           <Route path={Navigate.communitiesAccessibilityPage()} element={<CommunitiesAccessibility />} />
+          <Route path={Navigate.communitiesCssPage()} element={<CommunitiesCss />} />
 
 
           <Route path={Navigate.authLogin()} element={<LogIn />} />

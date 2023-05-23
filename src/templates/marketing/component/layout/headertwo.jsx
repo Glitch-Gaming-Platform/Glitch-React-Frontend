@@ -142,24 +142,20 @@ class HeaderTwo extends Component {
                                             <li >
                                                 <a href={Navigate.revenuePage()} >Increase Revenue</a>
                                             </li>
-
-
+                                            
                                             <li >
                                                 <a href={Navigate.marketingPage()} >Enhance Marketing</a>
                                             </li>
 
                                             <li >
-                                                <a href={Navigate.installationPage()} >Installation</a>
-                                            </li>
-
-                                            <li >
-                                                <a target={'_blank'} href={`https://community.glitch.fun`} >Example Community</a>
+                                                <a href={Navigate.installationPage()} >Install</a>
                                             </li>
                                             
-
+                                            {loginOrAccountMobile}
                                  
                                         </ul>
 
+                                        {loginOrAccount}
 
                                         <div className="header-bar d-lg-none" onClick={this.menuTrigger}>
                                             <span></span>

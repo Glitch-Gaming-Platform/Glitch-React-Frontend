@@ -204,6 +204,16 @@ const Navigate = {
 
         return path;
     },
+    communitiesCssPage : (community_id) => {
+
+        let path = app_routes.communities_css;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
 
 
 
