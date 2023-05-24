@@ -7,8 +7,8 @@ import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import UserListItem from "../../component/section/userlistitem";
 import ProfileHeader from "../../component/section/profile";
-import Requests from "../../../../util/Requests";
 import Navigate from "../../../../util/Navigate";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class UserProfilePage extends Component {
@@ -61,13 +61,13 @@ class UserProfilePage extends Component {
     componentDidMount() {
         let id = this.props.router.params.id;
 
-        Requests.userProfile(id)
+        Glitch.api.Users.profile(id)
             .then((response) => {
                 this.setState({
-                    profileHeader: <ProfileHeader user={response.data} />,
-                    followers: <UserListItem user={response.data.followers} />,
-                    followers: <UserListItem user={response.data.following} />,
-                    events: response.data.events
+                    profileHeader: <ProfileHeader user={response.data.data} />,
+                    followers: <UserListItem user={response.data.data.followers} />,
+                    followers: <UserListItem user={response.data.data.following} />,
+                    events: response.data.data.events
                 });
             })
             .catch((error) => {

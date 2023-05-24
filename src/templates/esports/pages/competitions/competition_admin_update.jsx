@@ -16,6 +16,7 @@ import CompetitionFormBasicInfo from "../../component/section/competitions/form_
 import CompetitionFormMatchDetails from "../../component/section/competitions/form_competition_match";
 import CompetitionFormSignupDetails from "../../component/section/competitions/form_competition_signup";
 import CompetitionFormSocial from "../../component/section/competitions/form_competition_social";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsUpdatePage extends Component {

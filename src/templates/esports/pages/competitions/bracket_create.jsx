@@ -1,13 +1,13 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import withRouter from "../../../../util/withRouter";
 import Loading from "../../component/alerts/Loading";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsBracketCreate extends Component {
@@ -31,8 +31,8 @@ class CompetitionsBracketCreate extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ tournament: response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ tournament: response.data.data });
         }).catch(error => {
 
         });
@@ -46,7 +46,9 @@ class CompetitionsBracketCreate extends Component {
 
         this.setState({ isLoading: true });
 
-        Requests.tournamentsVenueCreate(data).then(response => {
+        let id = this.props.router.params.id;
+
+        Glitch.api.Competitions.createVenue(id, data).then(response => {
 
             this.setState({ isLoading: false });
 

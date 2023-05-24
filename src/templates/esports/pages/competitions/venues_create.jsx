@@ -12,6 +12,7 @@ import PageHeader from "../../component/layout/pageheader";
 import VenueFormAdditional from "../../component/section/competitions/form_venue_additonal";
 import VenueFormBasic from "../../component/section/competitions/form_venue_basic";
 import VenueFormLocation from "../../component/section/competitions/form_venue_location";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsVenuesCreate extends Component {

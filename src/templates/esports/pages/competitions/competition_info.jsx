@@ -18,6 +18,7 @@ import CompetitionFormBasicInfo from "../../component/section/competitions/form_
 import CompetitionFormMatchDetails from "../../component/section/competitions/form_competition_match";
 import CompetitionFormSignupDetails from "../../component/section/competitions/form_competition_signup";
 import CompetitionFormSocial from "../../component/section/competitions/form_competition_social";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsInfoPage extends Component {
@@ -40,8 +41,8 @@ class CompetitionsInfoPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ tournament : response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ tournament : response.data.data });
         }).catch(error => {
 
         });
@@ -57,11 +58,11 @@ class CompetitionsInfoPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsRegisterUser(id, data).then(response => {
+        Glitch.api.Competitions.registerUser(id, data).then(response => {
 
             this.setState({ isLoading: false });
 
-            this.props.router.navigate(Navigate.tournamentsManage(response.data.id));
+            this.props.router.navigate(Navigate.tournamentsManage(response.data.data.id));
         }).catch(error => {
 
             this.setState({ isLoading: false });

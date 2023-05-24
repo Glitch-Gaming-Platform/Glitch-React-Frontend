@@ -1,14 +1,17 @@
 import Errors from "../../components/form/Errors";
+import File from "../../components/form/File";
 import Input from "../../components/form/Input";
 import Label from "../../components/form/Label";
 import Textarea from "../../components/form/Textarea";
+import Cropper, { ReactCropperElement } from "react-cropper";
+import "cropperjs/dist/cropper.css";
 
 
-const TeamsFormMedia = ({ nameValue, nameOnChange, descriptionValue, descriptionOnChange, errors }) => {
+const TeamsFormMedia = ({ getMainImageUrl, mainImageSrc, setMainImageCropper, setBannerImageCropper, bannerImageSrc, getBannerImageUrl, errors }) => {
 
 
     return (<>
-        <FileInput
+        <File
             accept="image/png, image/jpeg, image/jpg"
             onChange={getMainImageUrl}
             text="Upload Main Image"
@@ -29,7 +32,7 @@ const TeamsFormMedia = ({ nameValue, nameOnChange, descriptionValue, description
             />) : ''}
 
 
-        <FileInput
+        <File
             accept="image/png, image/jpeg, image/jpg"
             onChange={getBannerImageUrl}
             text="Upload Banner Image"

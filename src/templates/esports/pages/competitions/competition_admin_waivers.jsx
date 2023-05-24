@@ -17,6 +17,7 @@ import CompetitionFormMatchDetails from "../../component/section/competitions/fo
 import CompetitionFormSignupDetails from "../../component/section/competitions/form_competition_signup";
 import CompetitionFormSocial from "../../component/section/competitions/form_competition_social";
 import CompetitionFormWaivers from "../../component/section/competitions/form_competition_waivers";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsWaiversPage extends Component {

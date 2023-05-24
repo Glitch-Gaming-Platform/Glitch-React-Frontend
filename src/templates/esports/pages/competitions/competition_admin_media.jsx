@@ -19,6 +19,7 @@ import CompetitionFormMedia from "../../component/section/competitions/form_comp
 import CompetitionFormSignupDetails from "../../component/section/competitions/form_competition_signup";
 import CompetitionFormSocial from "../../component/section/competitions/form_competition_social";
 import SidebarManageMenu from "../../component/section/competitions/menu_side_manage";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsMediaPage extends Component {

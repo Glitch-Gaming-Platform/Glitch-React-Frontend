@@ -21,6 +21,7 @@ import RecentPost from "../../component/sidebar/recentpost";
 import SearchBar from "../../component/sidebar/search";
 import Tags from "../../component/sidebar/tags";
 import CompetitionBrackets from "../../component/section/competitions/detail_bracket";
+import Glitch from 'glitch-javascript-sdk';
 
 
 

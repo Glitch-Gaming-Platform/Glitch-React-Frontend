@@ -3,6 +3,8 @@ import ReactGA from 'react-ga';
 import Glitch from 'glitch-javascript-sdk';
 import ReactDOM from 'react-dom/client';
 
+
+
 const App = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -16,14 +18,19 @@ const App = () => {
         const response = await Glitch.api.Communities.findByDomain(domain);
 
         setData(response.data.data);
-        console.log("Community Data");
-        console.log(response.data.data);
+
         Glitch.config.Config.setCommunity(response.data.data);
         Glitch.util.Storage.set('community_id', response.data.data.id);
         Glitch.util.Storage.set('community',response.data.data);
 
         let community = response.data.data;
         let templateDir = community?.template?.directory + community?.template?.entry_point_file;
+
+        if(community.custom_css) {
+          const styleElement = document.createElement('style');
+          styleElement.innerHTML = community.custom_css;
+          document.head.appendChild(styleElement);
+        }
 
         loadSite(templateDir);
 
@@ -80,6 +87,7 @@ const App = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
+  
 
   if (template) {
     return (

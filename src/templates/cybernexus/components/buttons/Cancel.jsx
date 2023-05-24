@@ -1,4 +1,4 @@
-const Cancel = ({name, text, onClick}) => {
+const Cancel = ({name, text, onClick, value}) => {
 
   return (<button 
     name={name} 

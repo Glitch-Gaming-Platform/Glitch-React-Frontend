@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import SidebarManageMenu from "../../component/section/competitions/menu_side_manage";
 import UserItem from "../../component/section/competitions/detail_user_item";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsRoundsUsersPage extends Component {

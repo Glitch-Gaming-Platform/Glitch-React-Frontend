@@ -1,10 +1,10 @@
 import { Component, Fragment } from "react";
-import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import UserListItem from "../../component/section/userlistitem";
+import Glitch from 'glitch-javascript-sdk';
 
 class UsersPage extends Component {
 
@@ -20,9 +20,8 @@ class UsersPage extends Component {
 
     componentDidMount() {
 
-        Requests.userList().then(response => {
-            console.log(response);
-            this.setState({users : response.data});
+        Glitch.api.Users.list.then(response => {
+            this.setState({users : response.data.data});
         }).catch(error => {
             console.log(error);
         })

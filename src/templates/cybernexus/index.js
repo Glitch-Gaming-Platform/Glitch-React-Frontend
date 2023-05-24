@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import './assets/css/libs.min.css';
+import './assets/css/youzify.min.css';
+import './assets/css/main.css';      
 import reportWebVitals from './reportWebVitals';
 
 import  Glitch  from 'glitch-javascript-sdk';
@@ -40,12 +43,9 @@ import Chat from './pages/chat';
 import "cropperjs/dist/cropper.css";
 import 'react-tabs/style/react-tabs.css';*/
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-//import Router from './util/Router';
-import Routes from './constants/Routes';
+import {BrowserRouter, Routes, Route } from "react-router-dom";
+import Router from './util/Router';
+import {Routes as AppRoutes} from './constants/Routes';
 import CompetitionsVenues from './pages/competitions/venues';
 
 console.log("Base URL", process.env.REACT_APP_API_URL)
@@ -56,6 +56,7 @@ if(Glitch.util.Session.getAuthToken()) {
 }
 
 
+/*
 const router = createBrowserRouter([
   {
     path: "/",
@@ -150,17 +151,41 @@ const router = createBrowserRouter([
     path: Routes.chat,
     element: <Chat />,
   },
-]);
+]);*/
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+function Template() {
   
-    <RouterProvider router={router} />
-  
-);
+	return (
+		// <div className="App">
+		// 	<ShopPage />
+		// </div>
+    <>
+      
+        <Routes>
+          
+          <Route path={Router.homePage()} element={<Home />} />
+          <Route path={Router.loginPage()} element={<Login />} />
+          <Route path={Router.registerPage()} element={<Register />} />
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
+          <Route path={Router.streamsListPage()} element={<Streams />} />
+          <Route path={Router.streamsCreatePage()} element={<StreamsCreate />} />
+          <Route path={Router.streamsViewPage()} element={<StreamsView />} />
+          <Route path={Router.streamsUpdatePage()} element={<StreamsManage />} />
+          <Route path={Router.streamsDeletePage()} element={<Register />} />
+
+
+          <Route path={Router.competitionsListPage()} element={<Competitions />} />
+          <Route path={Router.competitionsCreatePage()} element={<CompetitionsCreate />} />
+          <Route path={Router.competitionsUpdatePage()} element={<CompetitionsUpdate />} />
+          
+        </Routes>
+      </>
+        
+		
+	);
+}
+
+export default Template;
+
 

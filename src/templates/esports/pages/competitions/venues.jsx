@@ -10,6 +10,7 @@ import VenueItem from "../../component/section/competitions/detail_venue_item";
 import SidebarManageMenu from "../../component/section/competitions/menu_side_manage";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsVenuesList extends Component {

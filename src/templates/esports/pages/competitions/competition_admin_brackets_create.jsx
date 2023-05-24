@@ -20,6 +20,7 @@ import CompetitionFormMatchDetails from "../../component/section/competitions/fo
 import CompetitionFormSignupDetails from "../../component/section/competitions/form_competition_signup";
 import CompetitionFormSocial from "../../component/section/competitions/form_competition_social";
 import RoundFormBasicInfo from "../../component/section/competitions/form_round_basic";
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsCreateBracketsPage extends Component {

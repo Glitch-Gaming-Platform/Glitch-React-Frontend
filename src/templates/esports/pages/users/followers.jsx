@@ -2,6 +2,7 @@ import { Component, Fragment } from "react";
 import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Header from "../../component/layout/header";
+import Glitch from 'glitch-javascript-sdk';
 
 class ProfilePage extends Component {
 
@@ -18,7 +19,7 @@ class ProfilePage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.userProfile(id).then(response => {
+        Glitch.api.Users.profile(id).then(response => {
            
         }).catch(error => {
             console.log(error);

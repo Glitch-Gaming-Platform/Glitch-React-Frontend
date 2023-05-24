@@ -11,6 +11,7 @@ import TournamentItem from "../../component/section/competitions/detail_tourname
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import SidebarManageMenu from "../../component/section/competitions/menu_side_manage";
+import Glitch from 'glitch-javascript-sdk';
 
 class CompetitionsRoundsListPage extends Component {
 

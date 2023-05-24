@@ -2,13 +2,13 @@ import { Component, Fragment } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import TournamentItem from "../../component/section/competitions/detail_tournament_item";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import Glitch from 'glitch-javascript-sdk';
 
 
 class CompetitionsListPage extends Component {
@@ -31,8 +31,8 @@ class CompetitionsListPage extends Component {
 
     loadTournaments() {
 
-        Requests.tournamentsList().then(response => {
-            this.setState({ tournaments: response.data });
+        Glitch.api.Competitions.list().then(response => {
+            this.setState({ tournaments: response.data.data });
             console.log(response);
         }).catch(error => {
 
