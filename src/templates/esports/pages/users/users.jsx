@@ -20,7 +20,7 @@ class UsersPage extends Component {
 
     componentDidMount() {
 
-        Glitch.api.Users.list.then(response => {
+        Glitch.api.Users.list().then(response => {
             this.setState({users : response.data.data});
         }).catch(error => {
             console.log(error);

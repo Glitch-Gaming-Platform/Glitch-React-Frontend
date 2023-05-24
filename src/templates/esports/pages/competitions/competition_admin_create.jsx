@@ -42,11 +42,11 @@ class CompetitionsCreatePage extends Component {
 
         this.setState({ isLoading: true });
 
-        Requests.tournamentsCreate(data).then(response => {
+        Glitch.api.Competitions.create(data).then(response => {
 
             this.setState({ isLoading: false });
 
-            this.props.router.navigate(Navigate.tournamentsManage(response.data.id));
+            this.props.router.navigate(Navigate.tournamentsManage(response.data.data.id));
         }).catch(error => {
 
             this.setState({ isLoading: false });
