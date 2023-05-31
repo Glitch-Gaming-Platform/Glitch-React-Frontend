@@ -144,7 +144,7 @@ class HeaderTwo extends Component {
                                 </div>
                                 <div className="header-wrapper justify-content-lg-end">
                                     <div className="mobile-logo d-lg-none">
-                                        <Link to="/"><img src="/assets/images/logo/glitch_3.png" alt="logo" /></Link>
+                                        <Link to="/"><img src={(community.logo) ? community.logo :  "/assets/images/logo/glitch_3.png"} alt="logo" /></Link>
                                     </div>
                                     <div className="menu-area">
                                         <ul className="menu">
@@ -152,21 +152,33 @@ class HeaderTwo extends Component {
                                                 <a href={Navigate.homePage()} >Home</a>
                                             </li>
 
-                                            <li >
-                                                <a href={Navigate.streamsPage()} >Streams</a>
-                                            </li>
+                                            {(community.disable_streams) ? <></> : <>
                                             
-                                            <li >
-                                                <a href={Navigate.tournamentsList()} >Tournaments</a>
-                                            </li>
+                                                <li >
+                                                    <a href={Navigate.streamsPage()} >Streams</a>
+                                                </li>
+                                            </> }
 
+                                            {(community.disable_competitions) ? <></> : <>
+                                            
+                                                <li >
+                                                    <a href={Navigate.tournamentsList()} >Tournaments</a>
+                                                </li>
+                                            </> }
+                                            
+                                            
+                                          
                                             <li >
                                                 <a href={Navigate.usersList()} >Users</a>
                                             </li>
 
-                                            <li className="menu-item-has-children">
+
+                                            {(community.disable_streams) ? <></> : <>
+                                            
+                                                <li className="menu-item-has-children" >
                                                 <a href={Navigate.streamsCreatePage()} aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Start Streaming</a>
-                                            </li>
+                                                </li>
+                                            </> }
                                             {loginOrAccountMobile}
                                         </ul>
 

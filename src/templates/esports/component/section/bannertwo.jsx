@@ -16,11 +16,7 @@ let BannerListContent = [
         desc: site.description,
         btnText: 'join us today',
     },
-]
-
-
-
-console.log(community);
+];
 
 class BannerTwo extends Component {
 
@@ -28,18 +24,14 @@ class BannerTwo extends Component {
     render() { 
         return (
             <div className="banner__slider overflow-hidden">
-                <Swiper
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    loop={'true'}
-                >
+       
                     {BannerListContent.map((val, i) => (
-                        <SwiperSlide key={i}>
-                            <div className="banner" style={{backgroundImage: `url(${val.bgImgUrl})`}}>
+                        
+                            <div className="banner1" style={{backgroundImage: `url(${val.bgImgUrl})`}}>
                                 <div className="container">
                                     <div className="row g-0">
                                         <div className="col-lg-6 col-12">
-                                            <div className="banner__content">
+                                            <div className="banner__content1" style={{paddingTop: '150px', paddingBottom : '100px'}}>
                                                 <h1>{community.name}</h1>
                                                 <h2>{community.tagline}</h2>
                                                 <p>{val.desc}</p>
@@ -49,9 +41,9 @@ class BannerTwo extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </SwiperSlide>
+                       
                     ))}
-                </Swiper>
+               
             </div>
         );
     }

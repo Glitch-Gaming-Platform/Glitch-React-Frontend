@@ -49,7 +49,7 @@ class CommunitiesView extends Component {
                                 <p>{this.state.community.description}</p>
 
                                 <h4>Subdomain:</h4>
-                                <p>{this.state.community.subdomain}.glitch.fun</p>
+                                <p>{this.state.community.subdomain}{process.env.REACT_APP_SITE_DOMAIN}</p>
                             </div>
                         </div>
                     </div>

@@ -18,6 +18,7 @@ class CommunitiesManagePage extends Component {
         super(props);
         this.state = {
             community: {},
+            community_link : '',
             errors: {},
             isLoading: false,
         };
@@ -56,6 +57,9 @@ class CommunitiesManagePage extends Component {
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
                                 <div className="col-lg-8 col-12 pe-5">   
+
+                                    <h2>Manage Your Community</h2>
+                                    <p>See the overview of your community and manage your community options through the menu. You can access your community as <a target="_blank" href={"//" + this.state.community.subdomain + process.env.REACT_APP_SITE_DOMAIN }>{this.state.community.subdomain}{process.env.REACT_APP_SITE_DOMAIN}</a>.</p>
 
                                     <CommunityOverview community={this.state.community} />
 

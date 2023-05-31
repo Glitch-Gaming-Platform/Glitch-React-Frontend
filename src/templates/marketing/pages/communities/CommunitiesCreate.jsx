@@ -43,12 +43,12 @@ class CommunitiesCreate extends Component {
 
         this.setState({ isLoading: true });
         
-
         Glitch.api.Communities.create(data).then(response => {
 
             this.setState({ isLoading: false });
 
-            this.props.router.navigate(Navigate.communitiesViewPage(response.data.data.id));
+            this.props.router.navigate(Navigate.communitiesManagePage(response.data.data.id));
+
         }).catch(error => {
 
             this.setState({ isLoading: false });
@@ -92,7 +92,7 @@ class CommunitiesCreate extends Component {
                                         errors = {this.state.errors}
                                     />
 
-                                    {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are errors in creating the venue. Please check the form above."} /> : ''}
+                                    {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are error(s) in creating the community. Please check the form above."} /> : ''}
 
                                     <div className="form-group">
                                         <button className="d-block default-button" onClick={(e => { this.createCommunity(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create Community</span></button>

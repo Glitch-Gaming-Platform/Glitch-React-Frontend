@@ -123,6 +123,12 @@ class CompetitionsUpdatePage extends Component {
                                     allowTeamSignupOnChange={(e) => { this.setState({ data: { ...this.state.data, allow_team_signup: e.target.checked } }); }}
                                     allowUserSignupValue={(this.state.data.allow_individual_signup === 'true' || this.state.data.allow_individual_signup == true)}
                                     allowUserSignupOnChange={(e) => { this.setState({ data: { ...this.state.data, allow_individual_signup: e.target.checked } }); }}
+                                    
+                                    autoAssignTeamValue={(this.state.data.auto_assign_team === 'true' || this.state.data.auto_assign_team == true)}
+                                    autoAssignTeamOnChange={(e) => { this.setState({ data: { ...this.state.data, auto_assign_team : e.target.checked } }); }}
+                                    autoAssignUserValue={(this.state.data.auto_assign_user === 'true' || this.state.data.auto_assign_user == true)}
+                                    autoAssignUserOnChange={(e) => { this.setState({ data: { ...this.state.data, auto_assign_user : e.target.checked } }); }}
+
                                     maxTeamsValue={this.state.data.max_registration_for_teams}
                                     maxTeamsOnChange={(e) => { this.setState({ data: { ...this.state.data, max_registration_for_teams: e.target.value } }); }}
                                     maxUsersValue={this.state.data.max_registration_for_users}

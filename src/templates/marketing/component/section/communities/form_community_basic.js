@@ -38,7 +38,7 @@ export default function CommunityFormBasic({ nameValue, nameOnChange, descriptio
             <div className="form-group text-left">
                 <label>Template Design</label>
                 <Select className="form-control" value={templateValue} onChange={templateOnChange}>
-                    <option value={""}>Select A Tempate</option>
+                    <option value={""}>Select A Template</option>
                     {templates  && templates.map(function (template, index) {
                         return <option key={index} value={template.id}>{template.name}</option>;
                     })}

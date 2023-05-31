@@ -103,7 +103,7 @@ class CommunitiesAccessibility extends Component {
                                         />
 
                                         <hr/>
-                                        {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are errors in creating the venue. Please check the form above."} /> : ''}
+                                        {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are error(s) in updating the community. Please check the form above."} /> : ''}
 
                             
                                         <div className="form-group">

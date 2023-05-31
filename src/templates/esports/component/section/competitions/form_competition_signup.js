@@ -4,7 +4,7 @@ import Danger from "../../alerts/Danger";
 import Input from "../../form/input";
 import Textarea from "../../form/textarea";
 
-export default function CompetitionFormSignupDetails({ allowTeamSignupValue, allowTeamSignupOnChange, allowUserSignupValue, allowUserSignupOnChange, maxTeamsValue, maxTeamsOnChange, maxUsersValue, maxUsersOnChange, teamRegistrationPriceValue, teamRegistrationPriceOnChange, userRegistrationPriceValue, userRegistrationPriceOnChange, enableCheckinValue, enableCheckinOnChange, checkinTimePriorValue, checkinTimePriorOnChange, registrationStartDateValue, registrationStartDateOnChange, registrationEndDateValue, registrationEndDateOnChange, errors  }) {
+export default function CompetitionFormSignupDetails({ allowTeamSignupValue, allowTeamSignupOnChange, allowUserSignupValue, allowUserSignupOnChange, autoAssignTeamValue, autoAssignTeamOnChange, autoAssignUserValue, autoAssignUserOnChange, maxTeamsValue, maxTeamsOnChange, maxUsersValue, maxUsersOnChange, teamRegistrationPriceValue, teamRegistrationPriceOnChange, userRegistrationPriceValue, userRegistrationPriceOnChange, enableCheckinValue, enableCheckinOnChange, checkinTimePriorValue, checkinTimePriorOnChange, registrationStartDateValue, registrationStartDateOnChange, registrationEndDateValue, registrationEndDateOnChange, errors  }) {
 
     return (
         <>
@@ -18,6 +18,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                 {errors && errors.allow_team_signup && errors.allow_team_signup.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
+                <p className="small">This option will allow teams to register for the tournament when enabled.</p>
             </div>
 
             <div className="form-group-checkbox mb-5">
@@ -27,8 +28,32 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                 {errors && errors.allow_individual_signup && errors.allow_individual_signup.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-                <br />
+                <p className="small">This option will allow indinvidual users to register for the tournament when enabled.</p>
             </div>
+
+
+            <div className="form-group-checkbox">
+                <Input type="checkbox" className={"form-checkbox mr-5 pr-5"} name="auto_assign_team" checked={autoAssignTeamValue} onChange={autoAssignTeamOnChange} />
+
+                <label>Auto Bracket User On Sign-Up</label>
+                {errors && errors.auto_assign_team && errors.auto_assign_team.map(function (name, index) {
+                    return <Danger message={name} key={index} />;
+                })}
+                <p className="small">When a user registers for the tournament, they will be auto-assigned to a bracket.</p>
+            </div>
+
+            <div className="form-group-checkbox mb-5">
+                <Input type="checkbox" className={"form-checkbox"} name="auto_assign_user" checked={autoAssignUserValue} onChange={autoAssignUserOnChange} />
+
+                <label>Auto Bracket Team On-Sign Up</label>
+                {errors && errors.auto_assign_user && errors.auto_assign_user.map(function (name, index) {
+                    return <Danger message={name} key={index} />;
+                })}
+                <br />
+                <p className="small">When a user registers for the tournament, they will be auto-assigned to a bracket.</p>
+            </div>
+
+
 
             <div className="form-group-time mb-5">
                 <label style={{marginRight: "10px"}}>Registration Start Date (Optional)</label>
