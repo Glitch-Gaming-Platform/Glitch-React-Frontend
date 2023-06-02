@@ -8,7 +8,6 @@ import Danger from "../../component/alerts/Danger";
 import Warning from "../../component/alerts/Warning";
 import Success from "../../component/alerts/Success";
 import Session from "../../../../util/Session";
-import Requests from "../../../../util/Requests";
 import Meta from "../../component/layout/meta";
 import ProfileHeader from "../../component/section/profile";
 import RecordingVideo from "../../component/section/recordingvideo";
@@ -40,7 +39,7 @@ class StreamsWatchPage extends Component {
 
         if (Session.isLoggedIn()) {
 
-            Requests.userMe().then(response => {
+            Glitch.api.Users.me().then(response => {
 
                 let userData = response.data;
 
@@ -59,7 +58,7 @@ class StreamsWatchPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsView(id).then(response => {
+        Glitch.api.Events.view(id).then(response => {
 
             this.setState({ stream: response.data, meta: <Meta title={response.data.title} description={response.data.description} />  });
 

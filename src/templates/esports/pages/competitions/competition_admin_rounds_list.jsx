@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
@@ -35,7 +34,7 @@ class CompetitionsRoundsListPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
+        Glitch.api.Competitions.view(id).then(response => {
             this.setState({ tournament : response.data });
         }).catch(error => {
 

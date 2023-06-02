@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import Storage from "../../../../util/Storage";
@@ -39,7 +38,7 @@ class JoinPage extends Component {
 
         if (token) {
 
-            Requests.authOneTimeLogin({ token: token }).then(response => {
+            Glitch.api.Auth.oneTimeLogin({ token: token }).then(response => {
                 Storage.setAuthToken(response.data.token.access_token);
                 Storage.set('user_id', response.data.id);
 

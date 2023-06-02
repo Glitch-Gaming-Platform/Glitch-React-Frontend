@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -45,7 +44,7 @@ class CompetitionsUpdateRoundsPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
+        Glitch.api.Competitions.view(id).then(response => {
             this.setState({ tournament : response.data });
         }).catch(error => {
 
@@ -58,7 +57,7 @@ class CompetitionsUpdateRoundsPage extends Component {
 
         let round_id = this.props.router.params.round_id;
 
-        Requests.tournamentsRoundsView(id, round_id).then(response => {
+        Glitch.api.Competitions.rounds(id, round_id).then(response => {
             this.setState({ data : response.data });
         }).catch(error => {
 
@@ -78,7 +77,7 @@ class CompetitionsUpdateRoundsPage extends Component {
 
         let round_id = this.props.router.params.round_id;
 
-        Requests.tournamentsRoundsUpdate(id, round_id, data).then(response => {
+        Glitch.api.Competitions.updateRound(id, round_id, data).then(response => {
 
             this.setState({ isLoading: false });
 

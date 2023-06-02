@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";

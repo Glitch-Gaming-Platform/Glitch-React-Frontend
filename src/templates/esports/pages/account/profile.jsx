@@ -8,12 +8,13 @@ import VideoSection from "../../component/section/video";
 import Moment from 'react-moment';
 import Navigate from "../../../../util/Navigate";
 import withRouter from "../../../../util/withRouter";
-import Requests from "../../../../util/Requests";
 import Danger from "../../component/alerts/Danger";
 import Warning from "../../component/alerts/Warning";
 import Success from "../../component/alerts/Success";
 import TournamentItem from "../../component/section/competitions/detail_tournament_item";
 import Footer from "../../component/layout/footer";
+
+import Glitch from 'glitch-javascript-sdk';
 
 
 
@@ -34,8 +35,7 @@ class AccountUpdatePage extends Component {
 
     componentDidMount() {
 
-
-        Requests.userMe().then(response => {
+        Glitch.api.Users.me().then(response => {
 
             this.setState({
                 me: response.data,
@@ -49,7 +49,7 @@ class AccountUpdatePage extends Component {
 
     activateDonations() {
 
-        Requests.userCreateDonationsPage().then(response => {
+        Glitch.api.Users.createDonationPage().then(response => {
 
             this.setState({
                 me: response.data

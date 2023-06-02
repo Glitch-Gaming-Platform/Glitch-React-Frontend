@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Data from "../../../../util/Data";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -49,7 +48,7 @@ class CompetitionsMediaPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
+        Glitch.api.Competitions.view(id).then(response => {
             this.setState({ tournament: response.data });
         }).catch(error => {
 
@@ -75,7 +74,7 @@ class CompetitionsMediaPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsUploadMainImage(id, formData).then(response => {
+        Glitch.api.Competitions.uploadCompetitionMainImageBlob(id, formData).then(response => {
             this.setState({ tournament: response.data, mainImages: [], isLoadingMainImage: false });
         }).catch(error => {
 
@@ -102,7 +101,7 @@ class CompetitionsMediaPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsUploadBanner(id, formData).then(response => {
+        Glitch.api.Competitions.uploadCompetitionsBannerImageBlob(id, formData).then(response => {
             this.setState({ tournament: response.data, bannerImages: [], isLoadingBannerImage: false });
         }).catch(error => {
 

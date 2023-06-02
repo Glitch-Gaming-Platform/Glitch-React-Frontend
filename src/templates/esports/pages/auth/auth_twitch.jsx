@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import Storage from "../../../../util/Storage";
@@ -9,6 +8,8 @@ import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
+
+import Glitch from 'glitch-javascript-sdk';
 
 const title = "Authenticate With Twitch";
 
@@ -36,7 +37,7 @@ class AuthTwitch extends Component {
 
         if (token) {
 
-            Requests.authOneTimeLogin({ token: token }).then(response => {
+            Glitch.api.Auth.oneTimeLogin({ token: token }).then(response => {
                 Storage.setAuthToken(response.data.token.access_token);
                 Storage.set('user_id', response.data.id);
 
@@ -56,7 +57,7 @@ class AuthTwitch extends Component {
 
         if (Session.isLoggedIn()) {
             
-            Requests.userOneTimeToken().then((response) => {
+            Glitch.api.Users.oneTimeLoginToken().then((response) => {
 
                 if (response.data.one_time_login_token) {
                     redirect += '?token=' + response.data.one_time_login_token;

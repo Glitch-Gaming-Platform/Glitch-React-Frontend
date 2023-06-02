@@ -32,7 +32,7 @@ class CompetitionsRoundCreate extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
+        Glitch.api.Competitions.view(id).then(response => {
             this.setState({ tournament: response.data });
         }).catch(error => {
 

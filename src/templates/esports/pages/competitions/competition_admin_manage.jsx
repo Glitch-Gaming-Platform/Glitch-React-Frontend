@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";

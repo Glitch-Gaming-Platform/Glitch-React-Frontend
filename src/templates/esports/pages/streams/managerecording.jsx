@@ -31,7 +31,7 @@ class ManageRecordingPage extends Component {
 
         if (Session.isLoggedIn()) {
 
-            Requests.userMe().then(response => {
+            Glitch.api.Users.me().then(response => {
 
                 let userData = response.data;
 
@@ -50,7 +50,7 @@ class ManageRecordingPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsView(id).then(response => {
+       Glitch.api.Events.view(id).then(response => {
 
             if(!HasAccess.userInList(Session.getID(), response.data.admins)){
                 this.props.router.navigate(Navigate.accessDeniedPage());
@@ -110,6 +110,7 @@ class ManageRecordingPage extends Component {
             description : this.state.description,
         };
 
+        //Glitch.api.Events
         Requests.recordingsUpdate(event_id, recording_id, data).then((response) => {
             console.log(response);
         }).catch(error => {

@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -43,7 +42,7 @@ class CompetitionsWaiversPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
+        Glitch.api.Competitions.view(id).then(response => {
             this.setState({ data: response.data });
         }).catch(error => {
 
@@ -60,7 +59,7 @@ class CompetitionsWaiversPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsUpdate(id, data).then(response => {
+        Glitch.api.Competitions.update(id, data).then(response => {
 
             this.setState({ isLoading: false });
 

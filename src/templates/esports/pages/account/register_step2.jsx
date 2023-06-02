@@ -7,11 +7,12 @@ import PageHeader from "../../component/layout/pageheader";
 import SocialMedia from "../../component/section/socialmedia";
 import ImageUploading from 'react-images-uploading';
 import withRouter from "../../../../util/withRouter";
-import Requests from "../../../../util/Requests";
 import Navigate from "../../../../util/Navigate";
 import Data from "../../../../util/Data";
 import Textarea from "../../component/form/textarea";
 import Loading from "../../component/alerts/Loading";
+
+import Glitch from 'glitch-javascript-sdk';
 
 
 
@@ -35,7 +36,7 @@ class RegisterStep2 extends Component {
 
     componentDidMount() {
 
-        Requests.userMe().then(response => {
+        Glitch.api.Users.me().then(response => {
 
             this.setState({
                 user: response.data,
@@ -55,7 +56,7 @@ class RegisterStep2 extends Component {
 
         this.setState({isLoading : true});
 
-        Requests.updateAccount(data).then(response => {
+        Glitch.api.Users.update(data).then(response => {
             
             this.setState({isLoading : false});
 
@@ -97,7 +98,7 @@ class RegisterStep2 extends Component {
 
         formData.append('image', blob, 'screenshot.png');
 
-        Requests.userUploadAvatar(formData).then(response => {
+        Glitch.api.Users.uploadAvatarImageFile(formData).then(response => {
             this.setState({ user: response.data, images: [], isLoadingImage : false });
         }).catch(error => {
             this.setState({isLoadingImage : false});
