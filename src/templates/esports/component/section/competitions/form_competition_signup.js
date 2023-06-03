@@ -58,6 +58,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
             <div className="form-group-time mb-5">
                 <label style={{marginRight: "10px"}}>Registration Start Date (Optional)</label>
                 <DateTimePicker onChange={registrationStartDateOnChange} value={registrationStartDateValue} />
+                <p className="small">Set the start date for your rival teams or individuals to register.</p>
                 {errors && errors.registration_start_date && errors.registration_start_date.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
@@ -67,6 +68,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
             <div className="form-group-time mb-5">
                 <label style={{marginRight: "16px"}}>Registration End Date (Optional)</label>
                 <DateTimePicker onChange={registrationEndDateOnChange} value={registrationEndDateValue} />
+                <p className="small">Set an end date for your rival teams or individuals to register. After the date registration will be closed.</p>
                 {errors && errors.registration_end_date && errors.registration_end_date.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}

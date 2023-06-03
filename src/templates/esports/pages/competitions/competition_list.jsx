@@ -53,7 +53,9 @@ class CompetitionsListPage extends Component {
                     <div className="tab-content mt-3" id="myTabContent">
 
                         <div className="container text-right">
-
+                            <br />
+                            <p className="esportsCTA">Ready to crown a champion? Create your own tournament and watch as players from around the world compete for glory. Start building the ultimate gaming showdown!</p>
+                           <br />
                             <Link className="btn btn-success mb-5" to={Navigate.tournamentsCreate()}><FontAwesomeIcon icon={faPlus} /> Create A Tournament</Link>
 
                             <div className="row g-4 match-grid GameListStyleTwo">
