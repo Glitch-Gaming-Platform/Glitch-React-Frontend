@@ -1,0 +1,23 @@
+.icon-buttons-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 90%; /* Adjust the maximum width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+    margin-top: 20px;
+  }
+  
+  .icon-button {
+    width: 150px;
+    height: 150px;
+    margin: 0 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.MuiSvgIcon-root {
+    width: 100% !important;
+    height: 70% !important;
+  }

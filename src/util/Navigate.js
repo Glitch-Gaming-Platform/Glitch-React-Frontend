@@ -215,6 +215,44 @@ const Navigate = {
         return path;
     },
 
+    //Posts
+    postsListPage : () => {
+        return app_routes.posts;
+    },
+    postsCreatePage : () => {
+        return app_routes.posts_create;
+    },
+    postsUpdatePage : (post_id) => {
+
+        let path = app_routes.posts_update;
+
+        if(post_id){
+            path = path.replace(':id', post_id)
+        }
+
+        return path;
+    },
+    postsViewPage : (post_id) => {
+
+        let path = app_routes.posts_view;
+
+        if(post_id){
+            path = path.replace(':id', post_id)
+        }
+
+        return path;
+    },
+    postsDeletePage : (post_id) => {
+
+        let path = app_routes.posts_delete;
+
+        if(post_id){
+            path = path.replace(':id', post_id)
+        }
+
+        return path;
+    },
+
 
 
 

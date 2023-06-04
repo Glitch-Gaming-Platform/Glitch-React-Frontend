@@ -15,7 +15,7 @@ import Success from "../../component/alerts/Success";
 import TournamentItem from "../../component/section/competitions/detail_tournament_item";
 import Footer from "../../component/layout/footer";
 
-
+import Glitch from 'glitch-javascript-sdk';
 
 
 class AccountUpdatePage extends Component {

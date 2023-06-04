@@ -53,15 +53,14 @@ class StreamCreatePage extends Component {
 
             this.setState({isLoading : false});
 
-            let jsonErrors = Response.parseJSONFromError(error);
-
-            if(jsonErrors) {
-                this.setState({errors : jsonErrors});
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
                 setTimeout(() =>{
                     this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
             }
+            
         });
     }
 

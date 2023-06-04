@@ -51,6 +51,14 @@
     communities_social : '/communities/:id/social',
     communities_media : '/communities/:id/media',
     communities_css : '/communities/:id/css',
+
+    //Posts
+    posts : '/posts',
+    posts_create : '/posts/create',
+    posts_view : '/posts/:id/view',
+    posts_delete : '/posts/:id/delete',
+    posts_update : '/communities/:id/update',
+
     
 
     //streams route
@@ -123,7 +131,6 @@
     tournaments_rounds_view : '/tournmanets/:id/rounds/:round_id/view',
     tournaments_rounds_update : '/tournmanets/:id/rounds/:round_id/update',
     tournaments_rounds_delete : '/tournmanets/:id/rounds/:round_id/delete',
-
 
     tournaments_brackets : '/tournmanets/:id/rounds/:round_id/brackets',
     tournaments_brackets_create : '/tournaments/:id/rounds/:round_id/brackets/create',
