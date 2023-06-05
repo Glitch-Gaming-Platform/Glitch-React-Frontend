@@ -65,7 +65,7 @@ class PostsListPage extends Component {
                                     <>
                                         {this.state.posts}
                                     </> :
-                                    <section className="fore-zero padding-top padding-bottom">
+                                    <section className="fore-zero pt-5 padding-bottom">
                                         <div className="container">
                                             <div className="section-wrapper">
                                                 <div className="zero-item">

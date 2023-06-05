@@ -60,8 +60,12 @@ class StreamsWatchPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Glitch.api.Posts.view(id, {event_id : id}).then(response => {
-            this.setState({ post: response.data.data, comments: response.data.data.children });
+        Glitch.api.Posts.list({event_id : id, withChildren : true}).then(response => {
+            this.setState({ post: response.data.data });
+
+            if(response.data.data) {
+                this.setState({ comments: response.data.data });
+            }
         }).catch(error => {
             console.log(error);
         })
@@ -139,10 +143,10 @@ class StreamsWatchPage extends Component {
         let id = this.props.router.params.id;
 
         let data = {
-            parent_id: id,
             content: this.state.comment_text,
             title: 'Re: ' + this.state.stream.title,
-            type: Glitch.constants.PostTypes.TEXT
+            type: Glitch.constants.PostTypes.TEXT,
+            event_id : id
         };
 
         Glitch.api.Posts.create(data).then(response => {
