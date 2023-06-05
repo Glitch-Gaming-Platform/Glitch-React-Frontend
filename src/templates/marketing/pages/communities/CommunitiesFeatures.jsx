@@ -106,6 +106,8 @@ class CommunitiesFeatures extends Component {
                                             disableForumsOnChange={(e) => { this.setState({ data: { ...this.state.data, disable_forums: e.target.checked } }); }}
                                             disableTeamsValue={(this.state.data.disable_teams === 'true' || this.state.data.disable_teams == true)}
                                             disableTeamsOnChange={(e) => { this.setState({ data: { ...this.state.data, disable_teams: e.target.checked } }); }}
+                                            disableUsersValue={(this.state.data.disable_users === 'true' || this.state.data.disable_users == true)}
+                                            disableUsersOnChange={(e) => { this.setState({ data: { ...this.state.data, disable_users: e.target.checked } }); }}
                                             errors = {this.state.errors}
                                         />
 

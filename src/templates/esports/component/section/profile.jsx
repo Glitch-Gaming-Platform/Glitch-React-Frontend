@@ -3,10 +3,6 @@ import { Autoplay, Navigation } from "swiper";
 import { Swiper } from "swiper/react";
 import FollowButton from "./followbutton";
 
-const Name = "Rajib Ahmed";
-const desc = "Competently conceptualize alternative synergy and technically and niche markets. Efficiently impact technically sound outsourcing rath tnclicks-and-mortar best practices.";
-
-
 
 class ProfileHeader extends Component {
 
@@ -74,7 +70,7 @@ class ProfileHeader extends Component {
                         <div className="product-thumb">
                             <div className="swiper-container pro-single-top">
                                 <div className="single-thumb">
-                                    <img src={(user.avatar) ? user.avatar : "https://picsum.photos/200"} />
+                                    <img src={(user.avatar) ? user.avatar : "https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png"} />
                                 </div>
 
                             </div>

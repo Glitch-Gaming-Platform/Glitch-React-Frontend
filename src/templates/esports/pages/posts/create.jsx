@@ -19,6 +19,7 @@ import PostFormButtons from "../../component/section/posts/form_buttons";
 import ImageUploadAndCrop from "../../component/form/image_crop_uploader";
 import MarkdownEditor from "../../component/form/markdown";
 import VideoUploader from "../../component/form/video";
+import Wysiwyg from "../../component/form/wysiwyg";
 
 
 class PostCreatePage extends Component {
@@ -28,7 +29,7 @@ class PostCreatePage extends Component {
         this.state = {
             data: {
                 title: '',
-                description: '',
+                content : '',
                 type: '',
             },
             blob: null,
@@ -148,7 +149,7 @@ class PostCreatePage extends Component {
                                 {(this.state.data.type == Glitch.constants.PostTypes.TEXT || this.state.data.type == Glitch.constants.PostTypes.VIDEO || this.state.data.type == Glitch.constants.PostTypes.IMAGE || this.state.data.type == Glitch.constants.PostTypes.VIDEO) &&
                                     <div className="form-group" style={{ textAlign: "left" }}>
                                         <label>Content</label>
-                                        <Textarea name="content" onChange={(e) => { this.setState((prevState) => ({ data: { ...prevState.data, content: e.target.value }, })); }} placeholder="Describe what the stream will be about" >{this.state.description}</Textarea>
+                                        <Wysiwyg name="content" onChange={(e) => { this.setState((prevState) => ({ data: { ...prevState.data, content: e }, })); }}>{this.state.data.content}</Wysiwyg>
                                         {this.state.errors && this.state.errors.content && this.state.errors.content.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}

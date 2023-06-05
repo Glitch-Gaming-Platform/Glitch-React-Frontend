@@ -185,13 +185,6 @@ class HeaderTwo extends Component {
                                                 </li>
                                             </>}
 
-
-                                            {(community.disable_streams) ? <></> : <>
-
-                                                <li className="menu-item-has-children" >
-                                                    <a href={Navigate.streamsCreatePage()} aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Start Streaming</a>
-                                                </li>
-                                            </>}
                                             {loginOrAccountMobile}
                                         </ul>
 

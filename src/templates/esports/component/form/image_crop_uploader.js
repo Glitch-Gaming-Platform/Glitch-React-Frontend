@@ -31,7 +31,7 @@ const ImageUploadAndCrop = ({setCroppedBlob}) => {
     };
   
     return (
-      <div>
+      <div className='text-center'>
         <input type="file" accept="image/*" onChange={handleImageUpload} />
         {selectedImage && (
           <Cropper
@@ -43,7 +43,7 @@ const ImageUploadAndCrop = ({setCroppedBlob}) => {
           />
         )}
         {selectedImage && <button className='btn btn-lg btn-warning' type='button' onClick={handleCrop}>Crop Image & Finish</button>}
-        {croppedImage && <img src={croppedImage} alt="Cropped Image" />}
+        {croppedImage && <div><br /><img src={croppedImage} className='img-fluid' alt="Cropped Image" /></div>}
       </div>
     );
   };

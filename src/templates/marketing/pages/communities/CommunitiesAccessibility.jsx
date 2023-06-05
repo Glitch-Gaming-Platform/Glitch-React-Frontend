@@ -99,6 +99,8 @@ class CommunitiesAccessibility extends Component {
                                             isPrivateOnChange={(e) => { this.setState({ data: { ...this.state.data, is_private : e.target.checked } }); }}
                                             requiresInviteValue={(this.state.data.requires_invite === 'true' || this.state.data.requires_invite == true)}
                                             requiresInviteOnChange={(e) => { this.setState({ data: { ...this.state.data, requires_invite : e.target.checked } }); }}
+                                            postDefaultStatusValue={this.state.data.post_default_status}
+                                            postDefaultStatusOnChange={(e) => { this.setState({ data: { ...this.state.data, post_default_status : e.target.value } }); }}
                                             errors = {this.state.errors}
                                         />
 

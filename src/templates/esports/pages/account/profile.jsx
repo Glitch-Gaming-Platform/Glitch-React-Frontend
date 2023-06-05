@@ -16,6 +16,7 @@ import TournamentItem from "../../component/section/competitions/detail_tourname
 import Footer from "../../component/layout/footer";
 
 import Glitch from 'glitch-javascript-sdk';
+import PostItem from "../../component/section/posts/detail_post_item";
 
 
 class AccountUpdatePage extends Component {
@@ -96,10 +97,13 @@ class AccountUpdatePage extends Component {
                             <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Update Profile</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Manage Streams</button>
+                            <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Manage {Glitch.util.LabelManager.getStreamLabel(true, true)}</button>
                         </li>
                         <li className="nav-item" role="presentation">
-                            <button className="nav-link" id="tournament-tab" data-bs-toggle="tab" data-bs-target="#tournament" type="button" role="tab" aria-controls="tournament" aria-selected="false">Tournaments</button>
+                            <button className="nav-link" id="tournament-tab" data-bs-toggle="tab" data-bs-target="#tournament" type="button" role="tab" aria-controls="tournament" aria-selected="false">{Glitch.util.LabelManager.getCompetitionLabel(true, true)}</button>
+                        </li>
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link" id="post-tab" data-bs-toggle="tab" data-bs-target="#post" type="button" role="tab" aria-controls="post" aria-selected="false">{Glitch.util.LabelManager.getPostLabel(true, true)}</button>
                         </li>
                         <li className="nav-item" role="presentation">
                             <button className="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Donations</button>
@@ -168,6 +172,20 @@ class AccountUpdatePage extends Component {
 
                                         return (
                                             <TournamentItem  tournament={tournament} key={index} is_admin={true} />
+                                        )
+                                    })
+                                }
+                            </div>
+                        </div>
+                        <div className="tab-pane fade mt-3" id="post" role="tabpanel" aria-labelledby="post-tab">
+                            <div className="row g-4 match-grid GameListStyleTwo">
+
+
+                                {
+                                    this.state.me && this.state.me.posts && this.state.me.posts.map((post, index) => {
+
+                                        return (
+                                            <PostItem  post={post} key={index} is_admin={true} />
                                         )
                                     })
                                 }

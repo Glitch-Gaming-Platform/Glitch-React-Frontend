@@ -105,11 +105,10 @@ class PostViewPage extends Component {
                                                         <li><span><i className="icofont-speech-comments"></i><a href="#comments">{Data.countCommentChildren(this.state.post)} Comments</a></span></li>
                                                     </ul>
 
-                                                    {this.state.post.content}
+                                                    <div dangerouslySetInnerHTML={{ __html: this.state.post.content }} />
 
                                                     {this.state.post.url && <Link target="_blank" to={this.state.post.url}>{this.state.post.url}</Link>}
 
-                                                    <br /><br />
 
                                                     <div className="tags-area">
                                                         <ul className="tags lab-ul justify-content-center">
@@ -146,7 +145,7 @@ class PostViewPage extends Component {
                                         </div>
 
                                         <CommentForm
-                                            commentOnChange={(e) => { this.setState({ comment_text: e.target.value }) }}
+                                            commentOnChange={(e) => { this.setState({ comment_text: e }) }}
                                             commentValue={this.state.comment_text} commentSubmit={(e) => { this.submitComment(e) }}
                                         />
 

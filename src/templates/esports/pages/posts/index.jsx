@@ -10,6 +10,11 @@ import Glitch from 'glitch-javascript-sdk';
 import Navigate from "../../../../util/Navigate";
 import { Link } from "react-router-dom";
 import PostItem from "../../component/section/posts/detail_post_item";
+import SearchBar from "../../component/sidebar/search";
+import RecentPost from "../../component/sidebar/recentpost";
+import CategorieTwo from "../../component/sidebar/categorietwo";
+import Archive from "../../component/sidebar/archive";
+import Tags from "../../component/sidebar/tags";
 
 
 class PostsListPage extends Component {
@@ -17,7 +22,7 @@ class PostsListPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: '',
+            posts: null,
             errors: {},
 
         };
@@ -29,11 +34,13 @@ class PostsListPage extends Component {
 
         Glitch.api.Posts.list().then(response => {
 
-            let posts = response.data.data.map(function (post, index) {
-                return <div className="mt-3"><PostItem post={post} /></div>;
-            })
+            if(response.data.data && response.data.data.length > 0) {
+                let posts = response.data.data.map(function (post, index) {
+                    return <div className="mt-3"><PostItem post={post} /></div>;
+                })
 
-            this.setState({ posts: posts });
+                this.setState({ posts: posts });
+            }
 
         }).catch(error => {
             console.log(error);
@@ -50,27 +57,42 @@ class PostsListPage extends Component {
                 <div className="container pt-5">
                     <Link className="default-button reverse-effect" to={Navigate.postsCreatePage()}><span>Create Post</span> </Link>
                 </div>
-                {(this.state.posts) ?
-                    <div className="container mt-3">
-                        {this.state.posts}
-                    </div> :
-                    <section className="fore-zero padding-top padding-bottom">
-                        <div className="container">
-                            <div className="section-wrapper">
-                                <div className="zero-item">
-                                    <div className="zero-thumb">
+                <div className="container">
+                    <div className="section-wrapper">
+                        <div className="row justify-content-center pb-15">
+                            <div className="col-lg-8 col-12 pe-5">
+                                {(this.state.posts) ?
+                                    <>
+                                        {this.state.posts}
+                                    </> :
+                                    <section className="fore-zero padding-top padding-bottom">
+                                        <div className="container">
+                                            <div className="section-wrapper">
+                                                <div className="zero-item">
 
-                                    </div>
-                                    <div className="zero-content">
-                                        <h2>No Posts Have Been Created</h2>
-                                        <p>Be a leader and create the first post!</p>
-                                        <Link className="default-button reverse-effect" to={Navigate.postsCreatePage()}><span>Create Post <i className="icofont-double-right"></i></span> </Link>
-                                    </div>
-                                </div>
+                                                    <div className="zero-content">
+                                                        <h2>No Posts Have Been Created</h2>
+                                                        <p>Be a leader and create the first post!</p>
+                                                        <Link className="default-button reverse-effect" to={Navigate.postsCreatePage()}><span>Create Post <i className="icofont-double-right"></i></span> </Link>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                }
+                            </div>
+                            <div className="col-lg-4 col-md-7 col-12">
+                                <aside className="ps-lg-4">
+                                    <SearchBar />
+                                    <RecentPost />
+                                    <CategorieTwo />
+                                    <Archive />
+                                    <Tags />
+                                </aside>
                             </div>
                         </div>
-                    </section>
-                }
+                    </div>
+                </div>
                 <Footer />
             </Fragment>
         );

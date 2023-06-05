@@ -57,7 +57,7 @@ const Comments = ({ comments, title }) => {
                                             </a>
                                         </span>
                                     </div>
-                                    <p>{val.content}</p>
+                                    <div dangerouslySetInnerHTML={{ __html: val.content }} />
                                     <div className="reply-btn"></div>
                                     <form onSubmit={(e) => { submitComment(e, val, e.target.comment.value, e.target.comment) }}>
                                         <textarea
