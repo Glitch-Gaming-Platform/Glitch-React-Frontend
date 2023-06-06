@@ -8,7 +8,6 @@ import Danger from "../../component/alerts/Danger";
 import Warning from "../../component/alerts/Warning";
 import Success from "../../component/alerts/Success";
 import Session from "../../../../util/Session";
-import Requests from "../../../../util/Requests";
 import Meta from "../../component/layout/meta";
 import ProfileHeader from "../../component/section/profile";
 import RecordingVideo from "../../component/section/recordingvideo";
@@ -44,9 +43,9 @@ class StreamsWatchPage extends Component {
 
         if (Session.isLoggedIn()) {
 
-            Requests.userMe().then(response => {
+            Glitch.api.Users.me().then(response => {
 
-                let userData = response.data;
+                let userData = response.data.data;
 
                 this.loadStreamData(userData);
 
@@ -75,39 +74,39 @@ class StreamsWatchPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsView(id).then(response => {
+        Glitch.api.Events.view(id).then(response => {
 
-            this.setState({ stream: response.data, meta: <Meta title={response.data.title} description={response.data.description} />  });
+            this.setState({ stream: response.data.data, meta: <Meta title={response.data.data.title} description={response.data.data.description} />  });
 
-            if (response.data.is_live) {
+            if (response.data.data.is_live) {
                 this.setState({ isLive: <Success message={"Is Live"} /> });
             } else {
-                if (response.data.recordings && response.data.recordings.length > 0) {
+                if (response.data.data.recordings && response.data.data.recordings.length > 0) {
                     this.setState({ isLive: <Warning message={"Not Live - Has Recordings!"} /> });
                 } else {
                     this.setState({ isLive: <Danger message={"Not Live - No Recordings"} /> });
                 }
 
-                if (response.data.admins && response.data.admins.length > 0) {
-                    this.setState({ profile: <div className="authors"><ProfileHeader user={response.data.admins[0]} /></div> });
+                if (response.data.data.admins && response.data.data.admins.length > 0) {
+                    this.setState({ profile: <div className="authors"><ProfileHeader user={response.data.data.admins[0]} /></div> });
                 }
             }
 
-            if (response.data.invirtu_id) {
+            if (response.data.data.invirtu_id) {
                 let auth_token = null;
 
                 if (user) {
                     auth_token = user.invirtu_user_jwt_token
                 }
 
-                if ((!response.data.is_live || response.data.is_live == 0) && (response.data.recordings && response.data.recordings.length > 0)) {
+                if ((!response.data.data.is_live || response.data.data.is_live === 0) && (response.data.data.recordings && response.data.data.recordings.length > 0)) {
 
-                    let recording = response.data.recordings[0];
+                    let recording = response.data.data.recordings[0];
 
                     //want to show the longest recording if multiple
-                    if (response.data.recordings.length > 1) {
+                    if (response.data.data.recordings.length > 1) {
 
-                        response.data.recordings.forEach((item, index) => {
+                        response.data.data.recordings.forEach((item, index) => {
 
                             try {
                                 if (item.runtime && recording.runtime && parseFloat(item.runtime) > parseFloat(recording.runtime)) {
@@ -121,14 +120,14 @@ class StreamsWatchPage extends Component {
                     }
                     this.setState({
                         broadcast_widget: <RecordingVideo video={recording} />,
-                        event: response.data
+                        event: response.data.data
                     })
 
                 } else {
 
                     this.setState({
-                        broadcast_widget: <Broadcasting id={response.data.invirtu_id} auth_token={auth_token} />,
-                        event: response.data
+                        broadcast_widget: <Broadcasting id={response.data.data.invirtu_id} auth_token={auth_token} />,
+                        event: response.data.data
                     })
                 }
             }
@@ -218,7 +217,7 @@ class StreamsWatchPage extends Component {
                 <section className="about-section">
                     <div className="container">
                         <h3>Recordings</h3>
-                        <p>Missed the stream? No problem, watch past recordings of the streams.</p>
+                        <p>Missed the {Glitch.util.LabelManager.getStreamLabel(false, false)}? No problem, watch past recordings of the {Glitch.util.LabelManager.getStreamLabel(false, false)}.</p>
 
                         <br />
                         <ul className="indent">

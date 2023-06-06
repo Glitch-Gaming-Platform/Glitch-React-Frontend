@@ -43,9 +43,8 @@ class CompetitionsCreateRoundsPage extends Component {
     loadTournament() {
 
         let id = this.props.router.params.id;
-
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ tournament : response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ tournament : response.data.data });
         }).catch(error => {
 
         });
@@ -93,7 +92,7 @@ class CompetitionsCreateRoundsPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Create A Tournament Round</h3>
+                            <h3 className="title">Create A {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Round</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
                                 
 

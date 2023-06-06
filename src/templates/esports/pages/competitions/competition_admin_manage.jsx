@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
@@ -60,7 +59,7 @@ class CompetitionsManagePage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Tournaments'} curPage={'Find A Tournamnet'} />
+                <PageHeader title={Glitch.util.LabelManager.getCompetitionLabel(true, true)} curPage={'Find A Tournamnet'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     <div className="container">

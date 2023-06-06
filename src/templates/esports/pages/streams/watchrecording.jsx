@@ -1,6 +1,5 @@
 import { VideoConferencing } from "invirtu-react-widgets";
 import { Component, Fragment } from "react";
-import Requests from "../../../../util/Requests";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
@@ -27,9 +26,9 @@ class WatchRecordingPage extends Component {
 
         if(Session.isLoggedIn()){
             
-            Requests.userMe().then(response => {
+            Glitch.api.Users.me().then(response => {
 
-                let userData = response.data;
+                let userData = response.data.data;
 
                 this.loadStreamData(userData);
 
@@ -46,9 +45,9 @@ class WatchRecordingPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.eventsView(id).then(response => {
+        Glitch.api.Events.view(id).then(response => {
 
-            if (response.data.invirtu_id) {
+            if (response.data.data.invirtu_id) {
                 let auth_token = null;
 
                 if(user){
@@ -56,10 +55,10 @@ class WatchRecordingPage extends Component {
                 }
 
                 this.setState({ 
-                    event: response.data
+                    event: response.data.data
                  })
 
-                 this.filterRecording(response.data);
+                 this.filterRecording(response.data.data);
             }
         }).catch(error => {
             console.log(error);
@@ -75,7 +74,7 @@ class WatchRecordingPage extends Component {
 
             event.recordings.forEach((recording) => {
 
-                if(recording.id == recording_id) {
+                if(recording.id === recording_id) {
 
                     this.setState({
                         recording : recording,

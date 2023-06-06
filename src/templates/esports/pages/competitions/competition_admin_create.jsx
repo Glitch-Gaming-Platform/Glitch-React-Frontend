@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -51,9 +50,9 @@ class CompetitionsCreatePage extends Component {
             
             this.setState({ isLoading: false });
 
-            if (error.response && error.response.data) {
+            if (error.response && error.response.data.data) {
 
-                this.setState({ errors: error.response.data });
+                this.setState({ errors: error.response.data.data });
 
                 setTimeout(() => {
                     this.setState({ errors: {} });
@@ -75,7 +74,7 @@ class CompetitionsCreatePage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Create A Tournament</h3>
+                            <h3 className="title">Create A {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
                                 <CompetitionFormBasicInfo
                                     nameValue={this.state.data.name}
@@ -120,7 +119,7 @@ class CompetitionsCreatePage extends Component {
                                     registrationStartDateOnChange={(e) => { this.setState({ data: { ...this.state.data, registration_start_date : e } }); }}
                                     registrationEndDateValue={this.state.data.registration_end_date} 
                                     registrationEndDateOnChange={(e) => { this.setState({ data: { ...this.state.data, registration_end_date : e} }); }}
-                                    enableCheckinValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled == true)}
+                                    enableCheckinValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled === true)}
                                     enableCheckinOnChange={(e) => { this.setState({ data: { ...this.state.data, checkin_enabled : e.target.checked } }); }}
                                     errors={this.state.errors}
                                 />
@@ -153,7 +152,7 @@ class CompetitionsCreatePage extends Component {
                                 {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are errors in your registration. Please check the form above."} /> : ''}
 
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create Tournament</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</span></button>
                                 </div>
                             </form>
 

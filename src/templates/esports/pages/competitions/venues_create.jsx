@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
@@ -37,7 +36,7 @@ class CompetitionsVenuesCreate extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
+        Glitch.api.Competitions.view(id).then(response => {
             this.setState({ tournament: response.data });
         }).catch(error => {
 
@@ -53,7 +52,7 @@ class CompetitionsVenuesCreate extends Component {
         this.setState({ isLoading: true });
         
 
-        Requests.tournamentsVenueCreate(this.state.tournament.id, data).then(response => {
+        Glitch.api.Competitions.createVenue(this.state.tournament.id, data).then(response => {
 
             this.setState({ isLoading: false });
 

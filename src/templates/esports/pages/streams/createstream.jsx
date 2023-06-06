@@ -77,7 +77,7 @@ class StreamCreatePage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Create Your Own Stream</h3>
+                            <h3 className="title">Create Your Own {Glitch.util.LabelManager.getStreamLabel(false, true)}</h3>
                             <form className="account-form">
                                 <div className="form-group">
                                     <Input type="text" name="title" value={this.state.title} onChange={(e) => { this.setState({ title: e.target.value }); }} placeholder="Give the stream a title" />
@@ -95,7 +95,7 @@ class StreamCreatePage extends Component {
 
 
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create Stream</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create {Glitch.util.LabelManager.getPostLabel(false, true)}</span></button>
                                 </div>
                             </form>
 

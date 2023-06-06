@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -48,8 +47,8 @@ class CompetitionsUpdateBracketsPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ tournament: response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ tournament: response.data.data });
         }).catch(error => {
 
         });
@@ -63,8 +62,8 @@ class CompetitionsUpdateBracketsPage extends Component {
 
         let bracket_id = this.props.router.params.bracket_id;
 
-        Requests.tournamentsRoundBracketsView(id, round_id, bracket_id).then(response => {
-            this.setState({ data : response.data });
+        Glitch.api.Competitions.showBracket(id, round_id, bracket_id).then(response => {
+            this.setState({ data : response.data.data });
         }).catch(error => {
 
         });
@@ -84,7 +83,7 @@ class CompetitionsUpdateBracketsPage extends Component {
 
         let bracket_id = this.props.router.params.bracket_id;
 
-        Requests.tournamentsRoundBracketsUpdate(id, round_id, bracket_id, data).then(response => {
+        Glitch.api.Competitions.updateBracket(id, round_id, bracket_id, data).then(response => {
 
             this.setState({ isLoading: false });
 
@@ -115,7 +114,7 @@ class CompetitionsUpdateBracketsPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Update Tournament Bracket</h3>
+                            <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Bracket</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
 
 
@@ -126,7 +125,7 @@ class CompetitionsUpdateBracketsPage extends Component {
                                     startDateOnChange={(e) => { this.setState({ data: { ...this.state.data, bracket_start_date: e } }); }}
                                     endDateValue={(typeof this.state.data.bracket_end_date === "string") ? new Date(this.state.data.bracket_end_date) : this.state.data.bracket_end_date}
                                     endDateOnChange={(e) => { this.setState({ data: { ...this.state.data, bracket_end_date: e } }); }}
-                                    checkinEnableValue={(this.state.data.checked_in === 'true' || this.state.data.checked_in == true)}
+                                    checkinEnableValue={(this.state.data.checked_in === 'true' || this.state.data.checked_in === true)}
                                     checkEnabledOnChange={(e) => { this.setState({ data: { ...this.state.data, checked_in: e.target.checked } }); }}
                                     errors={this.state.errors}
                                 />
@@ -142,9 +141,9 @@ class CompetitionsUpdateBracketsPage extends Component {
                                 />
 
                                 <BracketFormCompletion
-                                    isWinnerValue={(this.state.data.is_winner === 'true' || this.state.data.is_winner == true)}
+                                    isWinnerValue={(this.state.data.is_winner === 'true' || this.state.data.is_winner === true)}
                                     isWinnerOnChange={(e) => { this.setState({ data: { ...this.state.data, is_winner: e.target.checked } }); }}
-                                    isFinishedValue={(this.state.data.is_finished === 'true' || this.state.data.is_finished == true)}
+                                    isFinishedValue={(this.state.data.is_finished === 'true' || this.state.data.is_finished === true)}
                                     isFinishedOnChange={(e) => { this.setState({ data: { ...this.state.data, is_finished: e.target.checked } }); }}
                                     pointsValue={this.state.data.points_awarded}
                                     pointsOnChange={(e) => { this.setState({ data: { ...this.state.data, points_awarded: e.target.value } }); }}

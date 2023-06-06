@@ -76,6 +76,11 @@ class StreamsPage extends Component {
         return (
             <Fragment>
                 <Header />
+<<<<<<< HEAD
+                <PageHeader title={'The Live Streams' } curPage={'Streams'} />
+                
+                {this.state.events}
+=======
                 <PageHeader title={'The Live Streams'} curPage={'Streams'} />
 
                 <div className="video-section padding-top padding-bottom bg-attachment" style={{ backgroundImage: "url(/assets/images/video/bg.jpg)" }}>
@@ -122,6 +127,7 @@ class StreamsPage extends Component {
                         </div>
                     </div>
                 </div>
+>>>>>>> ff47b703a6d884b96fbd1827bd0fd8d0f8604293
                 <Footer />
             </Fragment>
         );
