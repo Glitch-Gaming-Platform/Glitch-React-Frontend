@@ -94,7 +94,7 @@ class Header extends Component {
 
             adminButtonMobile = (<>
                 <li className="d-block d-sm-none" >
-                    <a href={ "http://www" + process.env.REACT_APP_SITE_DOMAIN + Navigate.communitiesManagePage(community.id)} >Admin</a>
+                    <Link to={ "http://www" + process.env.REACT_APP_SITE_DOMAIN + Navigate.communitiesManagePage(community.id)} >Admin</Link>
                 </li>
 
             </>);
@@ -110,11 +110,11 @@ class Header extends Component {
 
             loginOrAccountMobile = (<>
                 <li className="d-block d-sm-none" >
-                    <a href={Navigate.accountMainPage()} >Account 123</a>
+                    <Link to={Navigate.accountMainPage()} >Account 123</Link>
                 </li>
                 {adminButtonMobile}
                 <li className="d-block d-sm-none" >
-                    <a href={"#"} onClick={(e) => { e.preventDefault(); Glitch.util.Session.end(); window.location = Navigate.homePage() }} >Logout</a>
+                    <Link to={"#"} onClick={(e) => { e.preventDefault(); Glitch.util.Session.end(); window.location = Navigate.homePage() }} >Logout</Link>
                 </li>
 
             </>);
@@ -126,10 +126,10 @@ class Header extends Component {
 
             loginOrAccountMobile = (<>
                 <li className="d-block d-sm-none" >
-                    <a href={Navigate.authLogin()} >Login</a>
+                    <Link to={Navigate.authLogin()} >Login</Link>
                 </li>
                 <li className="d-block d-sm-none" >
-                    <a href={Navigate.authRegister()} >Register</a>
+                    <Link to={Navigate.authRegister()} >Register</Link>
                 </li>
 
             </>);
@@ -160,7 +160,7 @@ class Header extends Component {
                                     <ul className="social-icons d-flex align-items-center">
                                         {SocialMideaList.map((val, i) => (
                                             <li key={i}>
-                                                <a href={`${val.IconLink}`} className="fb"><i className={`${val.IconName}`}></i></a>
+                                                <Link to={`${val.IconLink}`} className="fb"><i className={`${val.IconName}`}></i></Link>
                                             </li>
                                         ))}
                                     </ul>
@@ -174,39 +174,39 @@ class Header extends Component {
                                     <div className="menu-area">
                                         <ul className="menu">
                                             <li >
-                                                <a href={Navigate.homePage()} >Home</a>
+                                                <Link to={Navigate.homePage()} >Home</Link>
                                             </li>
 
                                             {(community.disable_streams) ? <></> : <>
                                             
                                                 <li >
-                                                    <a href={Navigate.streamsPage()} >{Glitch.util.LabelManager.getStreamLabel(true, true)}</a>
+                                                    <Link to={Navigate.streamsPage()} >{Glitch.util.LabelManager.getStreamLabel(true, true)}</Link>
                                                 </li>
                                             </> }
 
                                             {(community.disable_competitions) ? <></> : <>
                                             
                                                 <li >
-                                                    <a href={Navigate.tournamentsList()} >{Glitch.util.LabelManager.getCompetitionLabel(true, true)}</a>
+                                                    <Link to={Navigate.tournamentsList()} >{Glitch.util.LabelManager.getCompetitionLabel(true, true)}</Link>
                                                 </li>
                                             </> }
 
                                             {(community.disable_forums) ? <></> : <>
                                             
                                                 <li >
-                                                    <a href={Navigate.postsListPage()} >{Glitch.util.LabelManager.getPostLabel(true, true)}</a>
+                                                    <Link to={Navigate.postsListPage()} >{Glitch.util.LabelManager.getPostLabel(true, true)}</Link>
                                                 </li>
                                             </> }
 
                                             {(community.disable_users) ? <></> : <>
                                                 <li >
-                                                    <a href={Navigate.usersList()} >{Glitch.util.LabelManager.getUserLabel(true, true)}</a>
+                                                    <Link to={Navigate.usersList()} >{Glitch.util.LabelManager.getUserLabel(true, true)}</Link>
                                                 </li>
                                             </> }
                                             
                                             {(community.disable_streams) ? <></> : <>
                                             <li className="menu-item-has-children">
-                                                <a href={Navigate.streamsCreatePage()} aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Start {Glitch.util.LabelManager.getStreamLabel(false, true)}ing</a>
+                                                <Link to={Navigate.streamsCreatePage()} aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Start {Glitch.util.LabelManager.getStreamLabel(false, true)}ing</Link>
                                             </li>
                                             </> }
                                             

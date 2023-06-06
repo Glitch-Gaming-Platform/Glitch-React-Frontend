@@ -7,6 +7,7 @@ import VideoSection from "../../component/section/video";
 
 import Glitch from 'glitch-javascript-sdk';
 import Navigate from "../../../../util/Navigate";
+import { Link } from "react-router-dom";
 
 const subtitle = "our LATEST VIDEOS";
 const title = "check our live streaming";
@@ -76,11 +77,6 @@ class StreamsPage extends Component {
         return (
             <Fragment>
                 <Header />
-<<<<<<< HEAD
-                <PageHeader title={'The Live Streams' } curPage={'Streams'} />
-                
-                {this.state.events}
-=======
                 <PageHeader title={'The Live Streams'} curPage={'Streams'} />
 
                 <div className="video-section padding-top padding-bottom bg-attachment" style={{ backgroundImage: "url(/assets/images/video/bg.jpg)" }}>
@@ -101,14 +97,14 @@ class StreamsPage extends Component {
                                                             <div className="video-thumb position-relative video-overlay">
                                                                 <img src={(val.image_main) ? val.image_main : "/assets/images/cta/02.png"} alt={`${val.imgAlt}`} className="w-100" />
                                                                 <div className="video-icon">
-                                                                    <a href={Navigate.streamsWatchPage(val.id)} >
+                                                                    <Link href={Navigate.streamsWatchPage(val.id)} >
                                                                         <i className="icofont-play-alt-1"></i>
                                                                         <span className="pluse"></span>
-                                                                    </a>
+                                                                    </Link>
                                                                 </div>
                                                             </div>
                                                             <div className="video-content abs-video-content">
-                                                                <a href={Navigate.streamsWatchPage(val.id)} >{val.btnText} <i className="icofont-play-alt-1"></i></a>
+                                                                <Link href={Navigate.streamsWatchPage(val.id)} >{val.btnText} <i className="icofont-play-alt-1"></i></Link>
                                                                 <h3>{val.title}</h3>
                                                             </div>
                                                         </div>
@@ -127,7 +123,6 @@ class StreamsPage extends Component {
                         </div>
                     </div>
                 </div>
->>>>>>> ff47b703a6d884b96fbd1827bd0fd8d0f8604293
                 <Footer />
             </Fragment>
         );
