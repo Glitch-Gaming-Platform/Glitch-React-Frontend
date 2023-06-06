@@ -22,31 +22,67 @@ class PostsListPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            posts: null,
+            posts: [],
+            page: 1,
+            hasMore: true,
+            isLoading: false,
             errors: {},
 
         };
     }
 
     componentDidMount() {
-
-        let id = this.props.router.params.id;
-
-        Glitch.api.Posts.list().then(response => {
-
-            if(response.data.data && response.data.data.length > 0) {
-                let posts = response.data.data.map(function (post, index) {
-                    return <div className="mt-3"><PostItem post={post} /></div>;
-                })
-
-                this.setState({ posts: posts });
-            }
-
-        }).catch(error => {
-            console.log(error);
-        })
-
+        this.loadPosts();
+        window.addEventListener("scroll", this.handleScroll);
     }
+
+    componentWillUnmount() {
+        window.removeEventListener("scroll", this.handleScroll);
+    }
+
+
+    loadPosts = () => {
+        if (!this.state.hasMore || this.state.isLoading) return;
+
+        this.setState({ isLoading: true });
+
+        Glitch.api.Posts.list({ page: this.state.page })
+            .then((response) => {
+                if (response.data.data && response.data.data.length > 0) {
+                    const newPosts = response.data.data.map((post, index) => (
+                        <div className="mt-3" key={post.id}>
+                            <PostItem post={post} />
+                        </div>
+                    ));
+
+                    this.setState((prevState) => ({
+                        posts: [...prevState.posts, ...newPosts],
+                        page: prevState.page + 1,
+                        hasMore: response.data.meta.current_page < response.data.meta.last_page,
+                        isLoading: false,
+                    }));
+                } else {
+                    this.setState({
+                        hasMore: false,
+                        isLoading: false,
+                    });
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({ isLoading: false });
+            });
+    };
+
+    handleScroll = () => {
+        if (
+            window.innerHeight + window.scrollY >= document.body.offsetHeight - 500 &&
+            this.state.hasMore &&
+            !this.state.isLoading
+        ) {
+            this.loadPosts();
+        }
+    };
 
     render() {
 
@@ -64,6 +100,7 @@ class PostsListPage extends Component {
                                 {(this.state.posts) ?
                                     <>
                                         {this.state.posts}
+                                        {this.state.isLoading && <div>Loading...</div>}
                                     </> :
                                     <section className="fore-zero pt-5 padding-bottom">
                                         <div className="container">
