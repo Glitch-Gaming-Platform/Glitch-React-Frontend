@@ -16,7 +16,6 @@ import CategorieTwo from "../../component/sidebar/categorietwo";
 import Archive from "../../component/sidebar/archive";
 import Tags from "../../component/sidebar/tags";
 
-
 class PostsListPage extends Component {
 
     constructor(props) {
@@ -91,7 +90,7 @@ class PostsListPage extends Component {
                 <Header />
                 <PageHeader title={'Community Posts'} curPage={'Posts'} />
                 <div className="container pt-5">
-                    <Link className="default-button reverse-effect" to={Navigate.postsCreatePage()}><span>Create Post</span> </Link>
+                    <Link className="default-button reverse-effect" to={Navigate.postsCreatePage()}><span>Create {Glitch.util.LabelManager.getPostLabel(true, true)}</span> </Link>
                 </div>
                 <div className="container">
                     <div className="section-wrapper">
@@ -108,9 +107,9 @@ class PostsListPage extends Component {
                                                 <div className="zero-item">
 
                                                     <div className="zero-content">
-                                                        <h2>No Posts Have Been Created</h2>
-                                                        <p>Be a leader and create the first post!</p>
-                                                        <Link className="default-button reverse-effect" to={Navigate.postsCreatePage()}><span>Create Post <i className="icofont-double-right"></i></span> </Link>
+                                                        <h2>No {Glitch.util.LabelManager.getPostLabel(true, true)} Have Been Created</h2>
+                                                        <p>Be a leader and create the first {Glitch.util.LabelManager.getPostLabel(false, true)}!</p>
+                                                        <Link className="default-button reverse-effect" to={Navigate.postsCreatePage()}><span>Create {Glitch.util.LabelManager.getPostLabel(false, true)} <i className="icofont-double-right"></i></span> </Link>
                                                     </div>
                                                 </div>
                                             </div>

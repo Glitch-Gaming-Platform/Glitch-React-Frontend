@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -37,8 +36,8 @@ class CompetitionsRegisterUserPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ data: response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ data: response.data.data });
         }).catch(error => {
 
         });
@@ -56,11 +55,11 @@ class CompetitionsRegisterUserPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsRegisterUser(id, data).then(response => {
+        Glitch.api.Competitions.registerUser(id, data).then(response => {
 
             this.setState({ isLoading: false });
 
-            this.props.router.navigate(Navigate.tournamentsView(response.data.id));
+            this.props.router.navigate(Navigate.tournamentsView(response.data.data.id));
         }).catch(error => {
 
             this.setState({ isLoading: false });
@@ -87,12 +86,12 @@ class CompetitionsRegisterUserPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Register Tournament</h3>
+                            <h3 className="title">Register {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
                                 
-                                <h3>Register For Tournament</h3>
+                                <h3>Register For {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</h3>
 
-                                <p>Register to the tournament as an individual contentest. After logging in, simply register using the button below.</p>
+                                <p>Register to the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} as an individual contentest. After logging in, simply register using the button below.</p>
 
                                 { this.state.error ? <Danger message={this.state.error}  /> : ''}
                                 <div className="form-group">

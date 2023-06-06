@@ -4508,3 +4508,9 @@ button {
     font-weight: 700; }
     .fore-zero .section-wrapper .zero-item .zero-content .lab-btn span {
       color: #fff; }
+
+      .esportsCTA {
+        font-size: larger;
+        font-weight: bolder;
+        text-align: center;
+      }

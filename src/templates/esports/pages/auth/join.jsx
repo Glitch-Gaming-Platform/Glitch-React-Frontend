@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
@@ -63,7 +62,7 @@ class JoinPage extends Component {
         console.log(community_id);
         console.log(community.id);
 
-        if(Session.isLoggedIn()) {
+        if(Glitch.util.Session.isLoggedIn()) {
 
             Glitch.api.Communities.join(community_id).then((response) => {
             

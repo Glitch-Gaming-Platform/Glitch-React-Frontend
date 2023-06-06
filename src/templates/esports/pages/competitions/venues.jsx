@@ -35,8 +35,8 @@ class CompetitionsVenuesList extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ tournament: response.data });
+       Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ tournament: response.data.data });
         }).catch(error => {
 
         });
@@ -46,8 +46,8 @@ class CompetitionsVenuesList extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsVenueList(id).then(response => {
-            this.setState({ venues: response.data });
+       Glitch.api.Competitions.venues(id).then(response => {
+            this.setState({ venues: response.data.data });
         }).catch(error => {
 
         });

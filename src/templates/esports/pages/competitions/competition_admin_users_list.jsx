@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import Moment from "react-moment";
 import { Link } from "react-router-dom";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
@@ -37,8 +36,8 @@ class CompetitionsRoundsUsersPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ tournament : response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ tournament : response.data.data });
         }).catch(error => {
 
         });
@@ -59,10 +58,10 @@ class CompetitionsRoundsUsersPage extends Component {
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
                                 <div className="col-lg-8 col-12">
-                                    <Link className="btn btn-success" to={Navigate.tournamentsUsersInvite(this.state.tournament.id)}><FontAwesomeIcon icon={faPlus} /> Invite User</Link>
+                                    <Link className="btn btn-success" to={Navigate.tournamentsUsersInvite(this.state.tournament.id)}><FontAwesomeIcon icon={faPlus} /> Invite {Glitch.util.LabelManager.getUserLabel(false, true)}</Link>
                                     <br />
-                                    <h2>Users</h2>
-                                    <p className="lead">Manage the users who have access to the platform.</p>
+                                    <h2>{Glitch.util.LabelManager.getUserLabel(true, true)}</h2>
+                                    <p className="lead">Manage the {Glitch.util.LabelManager.getUserLabel(true, false)} who have access to the platform.</p>
 
                                     {this.state.tournaments && this.state.tournament.admins && this.state.tournament.admins.map(function (user, index) {
                                         return (

@@ -6,6 +6,8 @@ import Input from "../../form/input";
 import Select from "../../form/select";
 import Textarea from "../../form/textarea";
 
+import Glitch from "glitch-javascript-sdk";
+
 export default function RoundFormBasicInfo({ roundValue, roundOnChange, titleValue, titleOnChange, overviewValue, overviewOnChange, startDateValue, startDateOnChange, endDateValue, endDateOnChange, checkinEnableValue, checkEnabledOnChange, checkinPriorValue, checkinPriorOnChange, eliminationValue, eliminationOnChange, errors }) {
 
     return (
@@ -87,7 +89,7 @@ export default function RoundFormBasicInfo({ roundValue, roundOnChange, titleVal
                     <option value={TournamentTypes.SEMI_ROUND_ROBINS}>Semi-Round Roins</option>
                     <option value={TournamentTypes.EXTENDED}>Extended</option>
                 </Select>
-                <p className="small">If this round elimination type is different from the tournaments default elimination, you can set the elimination type here just for this round.</p>
+                <p className="small">If this round elimination type is different from the {Glitch.util.LabelManager.getCompetitionLabel(true, false)} default elimination, you can set the elimination type here just for this round.</p>
                 {errors && errors.elimination_type && errors.elimination_type.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}

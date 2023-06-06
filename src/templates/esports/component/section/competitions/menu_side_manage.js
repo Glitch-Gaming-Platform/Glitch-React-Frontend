@@ -1,14 +1,14 @@
 import { Link } from "react-router-dom";
 import Navigate from "../../../../../util/Navigate";
 
-
+import Glitch from "glitch-javascript-sdk";
 
 export default function SidebarManageMenu({ competition_id }) {
 
     return (
         <div className="widget widget-category">
             <div className="widget-header">
-                <h5>Manage Tournament</h5>
+                <h5>Manage {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</h5>
             </div>
             <ul className="lab-ul widget-wrapper list-bg-none">
 

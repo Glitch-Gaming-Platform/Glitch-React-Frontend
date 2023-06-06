@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -66,7 +65,7 @@ class CompetitionsCreateBracketsPage extends Component {
 
         let round_id = this.props.router.params.round_id;
 
-        Requests.tournamentsRoundBracketsCreate(id, round_id, data).then(response => {
+        Glitch.api.Competitions.createRound(id, round_id, data).then(response => {
 
             this.setState({ isLoading: false });
 
@@ -99,7 +98,7 @@ class CompetitionsCreateBracketsPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h2 className="title">Create A Tournament Bracket For Round {round_id}</h2>
+                            <h2 className="title">Create A {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Bracket For Round {round_id}</h2>
                             <p className="lead">A bracket is used to assign which competitors will compete against each other. For each competitor, create a bracket with an assigned competitor. Competitors with the same bracket number will compete against each other.</p>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
 

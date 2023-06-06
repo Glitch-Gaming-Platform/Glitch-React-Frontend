@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -42,8 +41,8 @@ class CompetitionsUpdatePage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ data: response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ data: response.data.data });
         }).catch(error => {
 
         });
@@ -59,11 +58,11 @@ class CompetitionsUpdatePage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsUpdate(id, data).then(response => {
+        Glitch.api.Competitions.update(id, data).then(response => {
 
             this.setState({ isLoading: false });
 
-            this.props.router.navigate(Navigate.tournamentsManage(response.data.id));
+            this.props.router.navigate(Navigate.tournamentsManage(response.data.data.id));
         }).catch(error => {
 
             this.setState({ isLoading: false });
@@ -90,7 +89,7 @@ class CompetitionsUpdatePage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Update Tournament</h3>
+                            <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
                                 <CompetitionFormBasicInfo
                                     nameValue={this.state.data.name}
@@ -119,14 +118,14 @@ class CompetitionsUpdatePage extends Component {
                                 <hr/>
 
                                 <CompetitionFormSignupDetails
-                                    allowTeamSignupValue={(this.state.data.allow_team_signup === 'true' || this.state.data.allow_team_signup == true)}
+                                    allowTeamSignupValue={(this.state.data.allow_team_signup === 'true' || this.state.data.allow_team_signup === true)}
                                     allowTeamSignupOnChange={(e) => { this.setState({ data: { ...this.state.data, allow_team_signup: e.target.checked } }); }}
-                                    allowUserSignupValue={(this.state.data.allow_individual_signup === 'true' || this.state.data.allow_individual_signup == true)}
+                                    allowUserSignupValue={(this.state.data.allow_individual_signup === 'true' || this.state.data.allow_individual_signup === true)}
                                     allowUserSignupOnChange={(e) => { this.setState({ data: { ...this.state.data, allow_individual_signup: e.target.checked } }); }}
                                     
-                                    autoAssignTeamValue={(this.state.data.auto_assign_team === 'true' || this.state.data.auto_assign_team == true)}
+                                    autoAssignTeamValue={(this.state.data.auto_assign_team === 'true' || this.state.data.auto_assign_team === true)}
                                     autoAssignTeamOnChange={(e) => { this.setState({ data: { ...this.state.data, auto_assign_team : e.target.checked } }); }}
-                                    autoAssignUserValue={(this.state.data.auto_assign_user === 'true' || this.state.data.auto_assign_user == true)}
+                                    autoAssignUserValue={(this.state.data.auto_assign_user === 'true' || this.state.data.auto_assign_user === true)}
                                     autoAssignUserOnChange={(e) => { this.setState({ data: { ...this.state.data, auto_assign_user : e.target.checked } }); }}
 
                                     maxTeamsValue={this.state.data.max_registration_for_teams}
@@ -141,7 +140,7 @@ class CompetitionsUpdatePage extends Component {
                                     registrationStartDateOnChange={(e) => { this.setState({ data: { ...this.state.data, registration_start_date : e } }); }}
                                     registrationEndDateValue={(typeof this.state.data.registration_end_date === "string") ? new Date(this.state.data.registration_end_date)  : this.state.data.registration_end_date} 
                                     registrationEndDateOnChange={(e) => { this.setState({ data: { ...this.state.data, registration_end_date : e} }); }}
-                                    enableCheckinValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled == true)}
+                                    enableCheckinValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled === true)}
                                     enableCheckinOnChange={(e) => { this.setState({ data: { ...this.state.data, checkin_enabled : e.target.checked } }); }}
                                     errors={this.state.errors}
                                 />
@@ -172,7 +171,7 @@ class CompetitionsUpdatePage extends Component {
                                 {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are errors in your update. Please check the form above."} /> : ''}
 
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.update(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update Tournament</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.update(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</span></button>
                                 </div>
                             </form>
 

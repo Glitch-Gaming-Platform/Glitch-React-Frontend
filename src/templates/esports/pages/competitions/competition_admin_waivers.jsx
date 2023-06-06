@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -43,8 +42,8 @@ class CompetitionsWaiversPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ data: response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ data: response.data.data });
         }).catch(error => {
 
         });
@@ -60,11 +59,11 @@ class CompetitionsWaiversPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsUpdate(id, data).then(response => {
+        Glitch.api.Competitions.update(id, data).then(response => {
 
             this.setState({ isLoading: false });
 
-            this.props.router.navigate(Navigate.tournamentsManage(response.data.id));
+            this.props.router.navigate(Navigate.tournamentsManage(response.data.data.id));
         }).catch(error => {
 
             this.setState({ isLoading: false });
@@ -91,7 +90,7 @@ class CompetitionsWaiversPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Update Tournament Rules & Waivers</h3>
+                            <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Rules & Waivers</h3>
                             <form className="text-left" style={{ textAlign: "left" }}>
                                 <CompetitionFormWaivers
                                     rulesValue={this.state.data.rules}

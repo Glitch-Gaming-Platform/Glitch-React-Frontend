@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
@@ -45,8 +44,8 @@ class CompetitionsUpdateRoundsPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsView(id).then(response => {
-            this.setState({ tournament : response.data });
+        Glitch.api.Competitions.view(id).then(response => {
+            this.setState({ tournament : response.data.data });
         }).catch(error => {
 
         });
@@ -58,8 +57,8 @@ class CompetitionsUpdateRoundsPage extends Component {
 
         let round_id = this.props.router.params.round_id;
 
-        Requests.tournamentsRoundsView(id, round_id).then(response => {
-            this.setState({ data : response.data });
+        Glitch.api.Competitions.rounds(id, round_id).then(response => {
+            this.setState({ data : response.data.data });
         }).catch(error => {
 
         });
@@ -78,7 +77,7 @@ class CompetitionsUpdateRoundsPage extends Component {
 
         let round_id = this.props.router.params.round_id;
 
-        Requests.tournamentsRoundsUpdate(id, round_id, data).then(response => {
+        Glitch.api.Competitions.updateRound(id, round_id, data).then(response => {
 
             this.setState({ isLoading: false });
 
@@ -109,7 +108,7 @@ class CompetitionsUpdateRoundsPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Update Tournament Round</h3>
+                            <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Round</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
                                 
 
@@ -124,7 +123,7 @@ class CompetitionsUpdateRoundsPage extends Component {
                                     startDateOnChange={(e) => { this.setState({ data: { ...this.state.data, round_start_date : e } }); }} 
                                     endDateValue={(typeof this.state.data.round_end_date === "string") ? new Date(this.state.data.round_end_date) : this.state.data.round_end_date} 
                                     endDateOnChange={(e) => { this.setState({ data: { ...this.state.data, round_end_date : e } }); }} 
-                                    checkinEnableValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled == true)} 
+                                    checkinEnableValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled === true)} 
                                     checkEnabledOnChange={(e) => { this.setState({ data: { ...this.state.data, checkin_enabled : e.target.checked } }); }}
                                     checkinPriorValue={this.state.data.checkin_mintues_prior} 
                                     checkinPriorOnChange={(e) => { this.setState({ data: { ...this.state.data, checkin_mintues_prior : e.target.value } }); }}
