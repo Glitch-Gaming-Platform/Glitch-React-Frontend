@@ -1,4 +1,3 @@
-import Storage from "./Storage";
 
 const HasAccess = {
     

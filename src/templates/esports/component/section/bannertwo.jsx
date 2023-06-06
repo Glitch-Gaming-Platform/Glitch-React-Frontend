@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import site from "../../../../constants/site";
 import Navigate from "../../../../util/Navigate";
-import Storage from "../../../../util/Storage";
 import Glitch from 'glitch-javascript-sdk';
 
 let community = Glitch.util.Storage.get('community');

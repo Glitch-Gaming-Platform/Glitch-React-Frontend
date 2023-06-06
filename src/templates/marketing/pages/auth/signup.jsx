@@ -13,6 +13,7 @@ import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import SocialMedia from "../../component/section/socialmedia";
+import Glitch from 'glitch-javascript-sdk';
 
 
 const title = "Register Now";

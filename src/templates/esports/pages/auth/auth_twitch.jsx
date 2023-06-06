@@ -9,6 +9,7 @@ import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
+import Glitch from 'glitch-javascript-sdk';
 
 const title = "Authenticate With Twitch";
 
@@ -37,8 +38,8 @@ class AuthTwitch extends Component {
         if (token) {
 
             Requests.authOneTimeLogin({ token: token }).then(response => {
-                Storage.setAuthToken(response.data.token.access_token);
-                Storage.set('user_id', response.data.id);
+                Glitch.util.Storage.setAuthToken(response.data.token.access_token);
+                Glitch.util.Storage.set('user_id', response.data.id);
 
                 this.props.router.navigate(Navigate.streamsPage());
             }).catch(error => {
