@@ -17,7 +17,7 @@ class RecordingVideo extends Component {
         
         let video = '';
 
-        if (this.props.video.video_processing_state == recording_state.FINISHED) {
+        if (this.props.video.video_processing_state === recording_state.FINISHED) {
             const videoJsOptions = {
                 autoplay: true,
                 controls: true,
@@ -43,11 +43,11 @@ class RecordingVideo extends Component {
               };
 
             video = (<VideoJSPlayer options={videoJsOptions} onReady={handlePlayerReady} />);
-        } else if (this.props.video.video_processing_state == recording_state.UNPROCESSED) {
+        } else if (this.props.video.video_processing_state === recording_state.UNPROCESSED) {
             video = <div className="text-center lead"><Info message={"Recording requires processing, please check back later."}></Info></div>
-        } else if (this.props.video.video_processing_state == recording_state.PROCESSING) {
+        } else if (this.props.video.video_processing_state === recording_state.PROCESSING) {
             video = <div className="text-center lead"><Info message={"Recording is currently processing, please check back soon!"}></Info></div>
-        } else if (this.props.video.video_processing_state == recording_state.PROBLEM) {
+        } else if (this.props.video.video_processing_state === recording_state.PROBLEM) {
             video = <div className="text-center lead"><Danger message={"Recording is currently processing, please check back soon!"}></Danger></div>
         } else {
             video = <div className="text-center lead"><Info message={"Unkown Processing State."}></Info></div>

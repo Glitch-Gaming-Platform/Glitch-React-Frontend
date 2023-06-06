@@ -45,7 +45,7 @@ class CompetitionsUpdateRoundsPage extends Component {
         let id = this.props.router.params.id;
 
         Glitch.api.Competitions.view(id).then(response => {
-            this.setState({ tournament : response.data });
+            this.setState({ tournament : response.data.data });
         }).catch(error => {
 
         });
@@ -58,7 +58,7 @@ class CompetitionsUpdateRoundsPage extends Component {
         let round_id = this.props.router.params.round_id;
 
         Glitch.api.Competitions.rounds(id, round_id).then(response => {
-            this.setState({ data : response.data });
+            this.setState({ data : response.data.data });
         }).catch(error => {
 
         });
@@ -123,7 +123,7 @@ class CompetitionsUpdateRoundsPage extends Component {
                                     startDateOnChange={(e) => { this.setState({ data: { ...this.state.data, round_start_date : e } }); }} 
                                     endDateValue={(typeof this.state.data.round_end_date === "string") ? new Date(this.state.data.round_end_date) : this.state.data.round_end_date} 
                                     endDateOnChange={(e) => { this.setState({ data: { ...this.state.data, round_end_date : e } }); }} 
-                                    checkinEnableValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled == true)} 
+                                    checkinEnableValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled === true)} 
                                     checkEnabledOnChange={(e) => { this.setState({ data: { ...this.state.data, checkin_enabled : e.target.checked } }); }}
                                     checkinPriorValue={this.state.data.checkin_mintues_prior} 
                                     checkinPriorOnChange={(e) => { this.setState({ data: { ...this.state.data, checkin_mintues_prior : e.target.value } }); }}

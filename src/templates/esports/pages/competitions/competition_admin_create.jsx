@@ -54,9 +54,9 @@ class CompetitionsCreatePage extends Component {
 
             let jsonErrors = Response.parseJSONFromError(error);
 
-            if (error.response && error.response.data) {
+            if (error.response && error.response.data.data) {
 
-                this.setState({ errors: error.response.data });
+                this.setState({ errors: error.response.data.data });
 
                 setTimeout(() => {
                     this.setState({ errors: {} });
@@ -123,7 +123,7 @@ class CompetitionsCreatePage extends Component {
                                     registrationStartDateOnChange={(e) => { this.setState({ data: { ...this.state.data, registration_start_date : e } }); }}
                                     registrationEndDateValue={this.state.data.registration_end_date} 
                                     registrationEndDateOnChange={(e) => { this.setState({ data: { ...this.state.data, registration_end_date : e} }); }}
-                                    enableCheckinValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled == true)}
+                                    enableCheckinValue={(this.state.data.checkin_enabled === 'true' || this.state.data.checkin_enabled === true)}
                                     enableCheckinOnChange={(e) => { this.setState({ data: { ...this.state.data, checkin_enabled : e.target.checked } }); }}
                                     errors={this.state.errors}
                                 />

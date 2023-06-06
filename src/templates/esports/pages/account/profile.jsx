@@ -38,8 +38,8 @@ class AccountUpdatePage extends Component {
         Glitch.api.Users.me().then(response => {
 
             this.setState({
-                me: response.data,
-                profileHeader: <ProfileUpdateHeader user={response.data} />
+                me: response.data.data,
+                profileHeader: <ProfileUpdateHeader user={response.data.data} />
             });
 
         }).catch(error => {
@@ -52,7 +52,7 @@ class AccountUpdatePage extends Component {
         Glitch.api.Users.createDonationPage().then(response => {
 
             this.setState({
-                me: response.data
+                me: response.data.data
             });
 
         }).catch(error => {

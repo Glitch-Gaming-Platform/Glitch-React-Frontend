@@ -669,7 +669,7 @@ const Requests = {
 
             if(!res.ok) {
                 
-                if(res.status == 401 && Session.isLoggedIn()) {
+                if(res.status === 401 && Session.isLoggedIn()) {
                     //Remove the users info and send them back to the login
                     Session.end();
                     window.location = Navigate.authLogin();

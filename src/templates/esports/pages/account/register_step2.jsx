@@ -13,7 +13,7 @@ import Textarea from "../../component/form/textarea";
 import Loading from "../../component/alerts/Loading";
 
 import Glitch from 'glitch-javascript-sdk';
-
+import Requests from "../../../../util/Requests";
 
 
 const title = "Complete Your Profile";
@@ -39,7 +39,7 @@ class RegisterStep2 extends Component {
         Glitch.api.Users.me().then(response => {
 
             this.setState({
-                user: response.data,
+                user: response.data.data,
             });
 
         }).catch(error => {
@@ -98,8 +98,9 @@ class RegisterStep2 extends Component {
 
         formData.append('image', blob, 'screenshot.png');
 
-        Glitch.api.Users.uploadAvatarImageFile(formData).then(response => {
-            this.setState({ user: response.data, images: [], isLoadingImage : false });
+
+        Glitch.api.Users.me(formData).then(response => {
+            this.setState({ user: response.data.data, images: [], isLoadingImage : false });
         }).catch(error => {
             this.setState({isLoadingImage : false});
             console.log(error)

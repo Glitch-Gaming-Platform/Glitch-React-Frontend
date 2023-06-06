@@ -49,7 +49,7 @@ class CompetitionsMediaPage extends Component {
         let id = this.props.router.params.id;
 
         Glitch.api.Competitions.view(id).then(response => {
-            this.setState({ tournament: response.data });
+            this.setState({ tournament: response.data.data });
         }).catch(error => {
 
         });
@@ -75,7 +75,7 @@ class CompetitionsMediaPage extends Component {
         let id = this.props.router.params.id;
 
         Glitch.api.Competitions.uploadCompetitionMainImageBlob(id, formData).then(response => {
-            this.setState({ tournament: response.data, mainImages: [], isLoadingMainImage: false });
+            this.setState({ tournament: response.data.data, mainImages: [], isLoadingMainImage: false });
         }).catch(error => {
 
             this.setState({ isLoadingMainImage: false });
@@ -102,7 +102,7 @@ class CompetitionsMediaPage extends Component {
         let id = this.props.router.params.id;
 
         Glitch.api.Competitions.uploadCompetitionsBannerImageBlob(id, formData).then(response => {
-            this.setState({ tournament: response.data, bannerImages: [], isLoadingBannerImage: false });
+            this.setState({ tournament: response.data.data, bannerImages: [], isLoadingBannerImage: false });
         }).catch(error => {
 
             this.setState({ isLoadingBannerImage: false });

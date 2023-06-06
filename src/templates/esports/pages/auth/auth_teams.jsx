@@ -39,8 +39,8 @@ class AuthTeams extends Component {
         if (token) {
 
             Glitch.api.Auth.oneTimeLogin({ token: token }).then(response => {
-                Storage.setAuthToken(response.data.token.access_token);
-                Storage.set('user_id', response.data.id);
+                Storage.setAuthToken(response.data.data.token.access_token);
+                Storage.set('user_id', response.data.data.id);
 
                 this.props.router.navigate(Navigate.streamsPage());
             }).catch(error => {
@@ -60,8 +60,8 @@ class AuthTeams extends Component {
 
             Glitch.api.Users.oneTimeLoginToken().then((response) => {
             
-            if(response.data.one_time_login_token){
-                    redirect += '?token=' + response.data.one_time_login_token;
+            if(response.data.data.one_time_login_token){
+                    redirect += '?token=' + response.data.data.one_time_login_token;
                 }
 
                 window.location = redirect;

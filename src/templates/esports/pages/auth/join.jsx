@@ -39,8 +39,8 @@ class JoinPage extends Component {
         if (token) {
 
             Glitch.api.Auth.oneTimeLogin({ token: token }).then(response => {
-                Storage.setAuthToken(response.data.token.access_token);
-                Storage.set('user_id', response.data.id);
+                Storage.setAuthToken(response.data.data.token.access_token);
+                Storage.set('user_id', response.data.data.id);
 
                 this.props.router.navigate(Navigate.streamsPage());
             }).catch(error => {
