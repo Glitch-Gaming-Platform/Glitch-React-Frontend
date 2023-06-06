@@ -1,9 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
-import Storage from "../../../../util/Storage";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
@@ -38,8 +35,8 @@ class AuthYoutube extends Component {
         if (token) {
 
             Glitch.api.Auth.oneTimeLogin({ token: token }).then(response => {
-                Storage.setAuthToken(response.data.data.token.access_token);
-                Storage.set('user_id', response.data.data.id);
+                Glitch.util.Storage.setAuthToken(response.data.data.token.access_token);
+                Glitch.util.Storage.set('user_id', response.data.data.id);
 
                 this.props.router.navigate(Navigate.streamsPage());
             }).catch(error => {
@@ -55,7 +52,7 @@ class AuthYoutube extends Component {
 
         let redirect = process.env.REACT_APP_OAUTH_YOUTUBE_URL;
 
-        if (Session.isLoggedIn()) {
+        if (Glitch.util.Session.isLoggedIn()) {
 
             Glitch.api.Users.oneTimeLoginToken().then((response) => {
 
@@ -67,13 +64,11 @@ class AuthYoutube extends Component {
 
             }).catch((error) => {
 
-                let jsonErrors = Response.parseJSONFromError(error);
-
-                if (jsonErrors) {
-                    this.setState({ errors: jsonErrors });
-
-                    setTimeout(() => {
-                        this.setState({ errors: {} });
+                if(error.response && error.response.data) {
+                    this.setState({errors : error.response.data});
+    
+                    setTimeout(() =>{
+                        this.setState({errors : {}});
                     }, timeouts.error_message_timeout)
                 }
             });

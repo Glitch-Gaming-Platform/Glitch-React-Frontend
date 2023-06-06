@@ -1,7 +1,6 @@
 import { Component } from "react";
 import { NavLink, Link } from 'react-router-dom';
 import Navigate from "../../../../util/Navigate";
-import Session from "../../../../util/Session";
 import Glitch from 'glitch-javascript-sdk';
 
 
@@ -82,21 +81,40 @@ class Header extends Component {
 
         let loginOrAccount = '';
 
+        let adminButton = '';
+
         let loginOrAccountMobile = '';
 
-        if (Session.isLoggedIn()) {
+        let adminButtonMobile = '';
+
+
+        if( Glitch.util.Session.isLoggedIn() && (community?.me?.user_role == Glitch.constants.Roles.ADMINISTRATOR || community?.me?.user_role == Glitch.constants.Roles.MODERATOR || community?.me?.user_role == Glitch.constants.Roles.SUPER_ADMINISTRATOR)) {
+            
+            adminButton =( <Link target="_blank" to={ "http://www" + process.env.REACT_APP_SITE_DOMAIN + Navigate.communitiesManagePage(community.id)} className="login"><i className="icofont-key"></i> <span>Admin</span> </Link>);
+
+            adminButtonMobile = (<>
+                <li className="d-block d-sm-none" >
+                    <a href={ "http://www" + process.env.REACT_APP_SITE_DOMAIN + Navigate.communitiesManagePage(community.id)} >Admin</a>
+                </li>
+
+            </>);
+        }
+
+        if (Glitch.util.Session.isLoggedIn()) {
             loginOrAccount = (<>
                 <Link to={Navigate.accountMainPage()} className="login"><i className="icofont-user"></i> <span>Account</span> </Link>
-                <Link onClick={(e) => { e.preventDefault(); Session.end(); window.location = Navigate.homePage() }} className="signup"><i className="icofont-users"></i> <span>Logout</span></Link>
+                {adminButton}
+                <Link onClick={(e) => { e.preventDefault(); Glitch.util.Session.end(); window.location = Navigate.homePage() }} className="signup"><i className="icofont-users"></i> <span>Logout</span></Link>
 
             </>);
 
             loginOrAccountMobile = (<>
                 <li className="d-block d-sm-none" >
-                    <a href={Navigate.accountMainPage()} >Account</a>
+                    <a href={Navigate.accountMainPage()} >Account 123</a>
                 </li>
+                {adminButtonMobile}
                 <li className="d-block d-sm-none" >
-                    <a href={"#"} onClick={(e) => { e.preventDefault(); Session.end(); window.location = Navigate.homePage() }} >Logout</a>
+                    <a href={"#"} onClick={(e) => { e.preventDefault(); Glitch.util.Session.end(); window.location = Navigate.homePage() }} >Logout</a>
                 </li>
 
             </>);

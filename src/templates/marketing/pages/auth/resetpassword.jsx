@@ -7,6 +7,7 @@ import Danger from "../../component/alerts/Danger";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
+import Glitch from 'glitch-javascript-sdk';
 
 const title = "Reset Password";
 

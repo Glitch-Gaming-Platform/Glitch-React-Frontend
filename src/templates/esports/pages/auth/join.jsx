@@ -2,7 +2,6 @@ import { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Storage from "../../../../util/Storage";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
@@ -36,9 +35,9 @@ class JoinPage extends Component {
 
         if (token) {
 
-            Glitch.api.Auth.oneTimeLogin({ token: token }).then(response => {
-                Storage.setAuthToken(response.data.data.token.access_token);
-                Storage.set('user_id', response.data.data.id);
+            Glitch.api.Auth.oneTimeLogin.authOneTimeLogin({ token: token }).then(response => {
+                Glitch.util.Storage.setAuthToken(response.data.token.access_token);
+                Glitch.util.Storage.set('user_id', response.data.id);
 
                 this.props.router.navigate(Navigate.streamsPage());
             }).catch(error => {

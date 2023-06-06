@@ -8,14 +8,14 @@ import { BrowserRouter } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
 import Glitch from 'glitch-javascript-sdk';
-import Storage from './util/Storage';
 
 
 Glitch.config.Config.setBaseUrl(process.env.REACT_APP_API_URL, true);
 
-Glitch.config.Config.setAuthToken(Storage.getAuthToken());
+Glitch.config.Config.setAuthToken(Glitch.util.Storage.getAuthToken());
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
     <BrowserRouter>
       <App />

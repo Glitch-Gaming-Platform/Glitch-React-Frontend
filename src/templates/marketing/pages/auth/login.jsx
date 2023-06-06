@@ -4,7 +4,6 @@ import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
 import Requests from "../../../../util/Requests";
 import Session from "../../../../util/Session";
-import Storage from "../../../../util/Storage";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
@@ -12,6 +11,7 @@ import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import SocialMedia from "../../component/section/socialmedia";
+import Glitch from 'glitch-javascript-sdk';
 
 
 const title = "Login";
@@ -38,7 +38,7 @@ class LogIn extends Component {
             
             let iscohost = params.iscohost;
     
-            if(iscohost && Session.isLoggedIn()) {
+            if(iscohost && Glitch.util.Session.isLoggedIn()) {
                 this.goToNextScreen();
             }
 
@@ -58,8 +58,8 @@ class LogIn extends Component {
         this.setState({isLoading : true});
 
         Requests.authLogin(data).then((response) => {
-            Storage.setAuthToken(response.data.token.access_token);
-            Storage.set('user_id', response.data.id);
+            Glitch.util.Storage.setAuthToken(response.data.token.access_token);
+            Glitch.util.Storage.set('user_id', response.data.id);
 
             Session.processAuthentication(response.data);
 

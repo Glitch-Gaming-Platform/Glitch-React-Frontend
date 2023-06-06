@@ -18,6 +18,9 @@ export default function SidebarManageMenu({ community_id }) {
                 <li key={1}>
                     <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesUpdatePage(community_id)}><span><i className="icofont-rounded-double-right"></i>Update</span></Link>
                 </li>
+                <li key={8}>
+                    <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesUsersListPage(community_id)}><span><i className="icofont-rounded-double-right"></i>Users</span></Link>
+                </li>
                 <li key={2}>
                     <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesFeaturesPage(community_id)}><span><i className="icofont-rounded-double-right"></i>Features</span></Link>
                 </li>

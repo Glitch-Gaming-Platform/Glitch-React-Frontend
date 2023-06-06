@@ -11,9 +11,7 @@ import Navigate from "../../../../util/Navigate";
 import Data from "../../../../util/Data";
 import Textarea from "../../component/form/textarea";
 import Loading from "../../component/alerts/Loading";
-
 import Glitch from 'glitch-javascript-sdk';
-import Requests from "../../../../util/Requests";
 
 
 const title = "Complete Your Profile";
