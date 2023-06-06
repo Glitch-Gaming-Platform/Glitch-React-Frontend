@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
 import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
 import Session from "../../../../util/Session";
 import Storage from "../../../../util/Storage";
 import withRouter from "../../../../util/withRouter";
@@ -57,7 +56,14 @@ class JoinPage extends Component {
 
         let redirect = process.env.REACT_APP_OAUTH_MICROSOFT_TEAMS_URL;
 
-        let community_id = Storage.get("community_id");
+        let community_id = Glitch.util.Storage.get("community_id");
+
+        let community = Glitch.util.Storage.get("community");
+
+        console.log(community);
+
+        console.log(community_id);
+        console.log(community.id);
 
         if(Session.isLoggedIn()) {
 
@@ -67,15 +73,14 @@ class JoinPage extends Component {
 
             }).catch((error) => {
 
-                let jsonErrors = Response.parseJSONFromError(error);
-
-                if(jsonErrors) {
-                    this.setState({errors : jsonErrors});
-
+                if(error.response && error.response.data) {
+                    this.setState({errors : error.response.data});
+    
                     setTimeout(() =>{
                         this.setState({errors : {}});
                     }, timeouts.error_message_timeout)
                 }
+
             });
         } else {
             window.location = redirect;

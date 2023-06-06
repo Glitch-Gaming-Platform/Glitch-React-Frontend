@@ -51,6 +51,12 @@
     communities_social : '/communities/:id/social',
     communities_media : '/communities/:id/media',
     communities_css : '/communities/:id/css',
+    communities_users : '/communities/:id/users',
+    communities_user : '/communities/:id/user/:user_id',
+    communities_invite : '/communities/:id/invite',
+
+    communities_invited_login : '/invites/login', 
+    communities_invited_register : '/invites/register', 
 
     //Posts
     posts : '/posts',

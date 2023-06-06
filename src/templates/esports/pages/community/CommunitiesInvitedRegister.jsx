@@ -14,11 +14,13 @@ import Glitch from 'glitch-javascript-sdk';
 
 const title = "Register Now";
 
-class SignUp extends Component {
+class CommunitiesInvitedRegister extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            invite : {},
+            community : {},
             first_name: '',
             last_name: '',
             email: '',
@@ -33,17 +35,28 @@ class SignUp extends Component {
 
     componentDidMount() {
 
+        
         setTimeout(() =>{
 
             const params = new Proxy(new URLSearchParams(window.location.search), {
                 get: (searchParams, prop) => searchParams.get(prop),
             });
 
-            let iscohost = params.iscohost;
+            let token = params.token;
     
-            if(iscohost && Glitch.util.Session.isLoggedIn()) {
-                this.goToNextScreen();
-            }
+            let community = Glitch.util.Storage.get('community');
+
+            Glitch.api.Communities.retrieveInvite(community.id, token).then(response => {
+
+                this.setState({
+                    invite : response.data.data,
+                    username : response.data.data.name,
+                    email : response.data.data.email,
+                    community : community,
+                });
+            }).catch(error => {
+
+            });
 
         }, 1000) 
         
@@ -64,9 +77,9 @@ class SignUp extends Component {
         this.setState({isLoading : true});
 
         Glitch.api.Auth.register(data).then((response) => {
+            console.log(response.data.data);
             Glitch.util.Storage.setAuthToken(response.data.data.token.access_token);
             Glitch.util.Storage.set('user_id', response.data.data.id);
-
             Glitch.util.Session.processAuthentication(response.data.data);
 
             this.setState({isLoading : false});
@@ -92,24 +105,19 @@ class SignUp extends Component {
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
         });
-       
-        let iscohost = params.iscohost;
 
-        let stream_id = params.stream;
+        Glitch.api.Communities.join(this.state.community.id).then(response => {
 
-        let token = params.token;
-
-        if(iscohost) {
-
-            Glitch.api.Events.acceptInvite(stream_id, token ).then(response => {
-                this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
-            }).catch(error => {
-                this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
-            });
-
-        } else {
             this.props.router.navigate(Navigate.accountRegisterStep2());
-        }
+            
+            this.setState({isLoading : false});
+        }).catch(error => {
+
+            this.props.router.navigate(Navigate.joinPage());
+
+            this.setState({isLoading : false});
+
+        });
 
     }
 
@@ -219,4 +227,4 @@ class SignUp extends Component {
     }
 }
  
-export default withRouter(SignUp);
+export default withRouter(CommunitiesInvitedRegister);

@@ -104,6 +104,8 @@ import Navigate from "../../util/Navigate";
 import MarketingPage from './pages/misc/marketing';
 import RevenuePage from './pages/misc/revenue';
 import FeaturesPage from './pages/misc/features';
+import CommunitiesInvitedRegister from './pages/community/CommunitiesInvitedRegister';
+import CommunitiesInvitedLogin from './pages/community/CommunitiesInvitedLogin';
 
 
 
@@ -190,6 +192,8 @@ function Template() {
           <Route path={Navigate.usersList()} element={<UsersPage />} />
           <Route path={Navigate.usersProfilePage()} element={<UserProfilePage />} />
           
+          <Route path={Navigate.communitiesInvitedRegisterPage()} element={<CommunitiesInvitedRegister/>} />
+          <Route path={Navigate.communitiesInvitedLoginPage()} element={<CommunitiesInvitedLogin/>} />
          
 
           <Route path="*" element={<ErrorPage />} />

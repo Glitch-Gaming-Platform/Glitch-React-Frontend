@@ -5,6 +5,8 @@ import Input from "../../form/input";
 import Textarea from "../../form/textarea";
 import Roles from "../../../../../constants/roles";
 import Select from "../../form/select";
+import Glitch from 'glitch-javascript-sdk';
+
 
 export default function CommunityFormInvite({ nameValue, nameOnChange, emailValue, emailOnChange, roleValue, roleOnChange, errors  }) {
 
@@ -24,8 +26,8 @@ export default function CommunityFormInvite({ nameValue, nameOnChange, emailValu
 
             <div className="form-group text-left">
                 <label>User's Email</label>
-                <Input type="text" name="email" value={emailValue} onChange={emailOnChange} placeholder="Enter the us'ers email." />
-                <p className="small">Enter the name of the user you are inviting: ie John Doe</p>
+                <Input type="text" name="email" value={emailValue} onChange={emailOnChange} placeholder="Enter the user's email." />
+                <p className="small">Enter email of the user you are invite: ie john@example.com.</p>
                 {errors && errors.email && errors.email.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
@@ -35,10 +37,10 @@ export default function CommunityFormInvite({ nameValue, nameOnChange, emailValu
                 <label>User Role</label>
                 <Select className="form-control" value={roleValue} onChange={roleOnChange}>
                     <option value={""}>Select A Role</option>
-                    <options value={Roles.SuperAdministrator}>Super Administrator</options>
-                    <options value={Roles.Administrator}>Administrator</options>
-                    <options value={Roles.Moderator}>Moderator</options>
-                    <options value={Roles.Participant}>Member</options>
+                    <option value={Glitch.constants.Roles.SUPER_ADMINISTRATOR}>Super Administrator</option>
+                    <option value={Glitch.constants.Roles.ADMINISTRATOR}>Administrator</option>
+                    <option value={Glitch.constants.Roles.MODERATOR}>Moderator</option>
+                    <option value={Glitch.constants.Roles.PARTICIPANT}>Member</option>
                 </Select>
 
                 <p className="small">Select a role for the user.</p>
