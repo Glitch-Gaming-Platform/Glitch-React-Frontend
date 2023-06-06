@@ -17,6 +17,7 @@ import Navigate from "../../../../util/Navigate";
 import Data from "../../../../util/Data";
 import Timestamp from "../../component/element/time";
 import { Link } from "react-router-dom";
+import PostInteraction from "../../component/section/posts/element_interaction";
 
 
 class PostViewPage extends Component {
@@ -107,7 +108,20 @@ class PostViewPage extends Component {
 
                                                     <div dangerouslySetInnerHTML={{ __html: this.state.post.content }} />
 
+
                                                     {this.state.post.url && <Link target="_blank" to={this.state.post.url}>{this.state.post.url}</Link>}
+
+                                                    <br />
+
+                                                    <div>
+                                                        <PostInteraction post_id={this.state.post.id} interaction={Glitch.constants.SocialInteractions.LIKE} count={this.state.post?.meta?.interactions && this.state.post?.meta?.interactions[Glitch.constants.SocialInteractions.LIKE]} />
+                                                        <PostInteraction post_id={this.state.post.id} interaction={Glitch.constants.SocialInteractions.THUMBS_DOWN} count={this.state.post?.meta?.interactions && this.state.post?.meta?.interactions[Glitch.constants.SocialInteractions.THUMBS_DOWN]} />
+                                                        <PostInteraction post_id={this.state.post.id} interaction={Glitch.constants.SocialInteractions.LAUGH} count={this.state.post?.meta?.interactions && this.state.post?.meta?.interactions[Glitch.constants.SocialInteractions.LAUGH]} />
+                                                        <PostInteraction post_id={this.state.post.id} interaction={Glitch.constants.SocialInteractions.FOLDED_HANDS} count={this.state.post?.meta?.interactions && this.state.post?.meta?.interactions[Glitch.constants.SocialInteractions.FOLDED_HANDS]} />
+                                                        <PostInteraction post_id={this.state.post.id} interaction={Glitch.constants.SocialInteractions.ANGRY} count={this.state.post?.meta?.interactions && this.state.post?.meta?.interactions[Glitch.constants.SocialInteractions.ANGRY]} />
+                                                    </div>
+
+                                                    <br />
 
 
                                                     <div className="tags-area">
