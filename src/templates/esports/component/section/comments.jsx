@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import Glitch from 'glitch-javascript-sdk';
 import Timestamp from "../element/time";
+import PostInteraction from "./posts/element_interaction";
 
 const Comments = ({ comments, title }) => {
 
@@ -58,6 +59,15 @@ const Comments = ({ comments, title }) => {
                                         </span>
                                     </div>
                                     <div dangerouslySetInnerHTML={{ __html: val.content }} />
+                                    
+                                    <div>
+                                        <PostInteraction post_id={val.id} interaction={Glitch.constants.SocialInteractions.LIKE} count={val?.meta?.interactions && val?.meta?.interactions[Glitch.constants.SocialInteractions.LIKE]} />
+                                        <PostInteraction post_id={val.id} interaction={Glitch.constants.SocialInteractions.THUMBS_DOWN} count={val?.meta?.interactions && val?.meta?.interactions[Glitch.constants.SocialInteractions.THUMBS_DOWN]} />
+                                        <PostInteraction post_id={val.id} interaction={Glitch.constants.SocialInteractions.LAUGH} count={val?.meta?.interactions && val?.meta?.interactions[Glitch.constants.SocialInteractions.LAUGH]} />
+                                        <PostInteraction post_id={val.id} interaction={Glitch.constants.SocialInteractions.FOLDED_HANDS} count={val?.meta?.interactions && val?.meta?.interactions[Glitch.constants.SocialInteractions.FOLDED_HANDS]} />
+                                        <PostInteraction post_id={val.id} interaction={Glitch.constants.SocialInteractions.ANGRY} count={val?.meta?.interactions && val?.meta?.interactions[Glitch.constants.SocialInteractions.ANGRY]} />
+                                    </div>
+                                    <br />
                                     <div className="reply-btn"></div>
                                     <form onSubmit={(e) => { submitComment(e, val, e.target.comment.value, e.target.comment) }}>
                                         <textarea
