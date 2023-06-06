@@ -46,7 +46,7 @@ class CompetitionsListPage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Tournaments'} curPage={'Find A Tournamnet'} />
+                <PageHeader title={Glitch.util.LabelManager.getCompetitionLabel(true, true)} curPage={'Find A Tournamnet'} />
 
                 <div className="container">
 
@@ -54,9 +54,9 @@ class CompetitionsListPage extends Component {
 
                         <div className="container text-right">
                             <br />
-                            <p className="esportsCTA">Ready to crown a champion? Create your own tournament and watch as players from around the world compete for glory. Start building the ultimate gaming showdown!</p>
+                            <p className="esportsCTA">Ready to crown a champion? Create your own {Glitch.util.LabelManager.getCompetitionLabel(false, false)} and watch as players from around the world compete for glory. Start building the ultimate gaming showdown!</p>
                            <br />
-                            <Link className="btn btn-success mb-5" to={Navigate.tournamentsCreate()}><FontAwesomeIcon icon={faPlus} /> Create A Tournament</Link>
+                            <Link className="btn btn-success mb-5" to={Navigate.tournamentsCreate()}><FontAwesomeIcon icon={faPlus} /> Create A {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</Link>
 
                             <div className="row g-4 match-grid GameListStyleTwo">
                                 {this.state.tournaments && this.state.tournaments.map(function (tournament, index) {

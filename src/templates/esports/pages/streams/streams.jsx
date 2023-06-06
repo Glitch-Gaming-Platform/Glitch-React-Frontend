@@ -41,7 +41,7 @@ class StreamsPage extends Component {
         return(
             <Fragment>
                 <Header />
-                <PageHeader title={'The Live Streams'} curPage={'Streams'} />
+                <PageHeader title={'The Live Streams' } curPage={'Streams'} />
                 
                 {this.state.events}
                 <Footer />

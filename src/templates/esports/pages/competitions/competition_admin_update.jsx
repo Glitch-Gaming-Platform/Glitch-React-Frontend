@@ -89,7 +89,7 @@ class CompetitionsUpdatePage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Update Tournament</h3>
+                            <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
                                 <CompetitionFormBasicInfo
                                     nameValue={this.state.data.name}
@@ -171,7 +171,7 @@ class CompetitionsUpdatePage extends Component {
                                 {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are errors in your update. Please check the form above."} /> : ''}
 
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.update(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update Tournament</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.update(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</span></button>
                                 </div>
                             </form>
 

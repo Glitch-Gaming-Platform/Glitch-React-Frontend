@@ -217,7 +217,7 @@ class StreamsWatchPage extends Component {
                 <section className="about-section">
                     <div className="container">
                         <h3>Recordings</h3>
-                        <p>Missed the stream? No problem, watch past recordings of the streams.</p>
+                        <p>Missed the {Glitch.util.LabelManager.getStreamLabel(false, false)}? No problem, watch past recordings of the {Glitch.util.LabelManager.getStreamLabel(false, false)}.</p>
 
                         <br />
                         <ul className="indent">

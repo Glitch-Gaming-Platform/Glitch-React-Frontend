@@ -89,7 +89,7 @@ class CompetitionsRoundCreate extends Component {
 
 
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create Tournament</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</span></button>
                                 </div>
                             </form>
 

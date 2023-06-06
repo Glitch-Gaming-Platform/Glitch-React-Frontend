@@ -108,7 +108,7 @@ class CompetitionsUpdateRoundsPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Update Tournament Round</h3>
+                            <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Round</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
                                 
 

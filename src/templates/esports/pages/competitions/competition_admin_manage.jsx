@@ -59,7 +59,7 @@ class CompetitionsManagePage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Tournaments'} curPage={'Find A Tournamnet'} />
+                <PageHeader title={Glitch.util.LabelManager.getCompetitionLabel(true, true)} curPage={'Find A Tournamnet'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     <div className="container">

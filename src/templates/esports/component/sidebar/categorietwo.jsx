@@ -1,6 +1,7 @@
 import { Component } from "react";
+import Glitch from 'glitch-javascript-sdk';
 
-const title = "Post Categories";
+const title = " Categories";
 
 let CategorieList = [
     {
@@ -35,7 +36,7 @@ class CategorieTwo extends Component {
         return (
             <div className="widget widget-category">
                 <div className="widget-header">
-                    <h5>{title}</h5>
+                    <h5>{Glitch.util.LabelManager.getPostLabel(false, true)} {title}</h5>
                 </div>
                 <ul className="lab-ul widget-wrapper list-bg-none">
                     {CategorieList.map((val, i) => (

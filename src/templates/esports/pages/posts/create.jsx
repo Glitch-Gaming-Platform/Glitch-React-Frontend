@@ -105,7 +105,7 @@ class PostCreatePage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className="container pl-2">
                         <div className="stream-wrapper">
-                            <h3 className="title">Create A Post</h3>
+                            <h3 className="title">Create A {Glitch.util.LabelManager.getPostLabel(false, false)}</h3>
 
 
                             <PostFormButtons onButtonClicked={(type) => { this.setState((prevState) => ({ data: { ...prevState.data, type: type }, })); }} />
@@ -163,7 +163,7 @@ class PostCreatePage extends Component {
                                 })}
                                 {(this.state.data.type == Glitch.constants.PostTypes.TEXT || this.state.data.type == Glitch.constants.PostTypes.VIDEO || this.state.data.type == Glitch.constants.PostTypes.IMAGE || this.state.data.type == Glitch.constants.PostTypes.LINK) &&
                                     <div className="form-group">
-                                        <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create Post</span></button>
+                                        <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create {Glitch.util.LabelManager.getPostLabel(false, true)}</span></button>
                                     </div>
                                 }
                             </form>

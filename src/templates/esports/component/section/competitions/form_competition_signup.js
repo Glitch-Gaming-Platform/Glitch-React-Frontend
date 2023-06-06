@@ -4,12 +4,14 @@ import Danger from "../../alerts/Danger";
 import Input from "../../form/input";
 import Textarea from "../../form/textarea";
 
+import Glitch from "glitch-javascript-sdk";
+
 export default function CompetitionFormSignupDetails({ allowTeamSignupValue, allowTeamSignupOnChange, allowUserSignupValue, allowUserSignupOnChange, autoAssignTeamValue, autoAssignTeamOnChange, autoAssignUserValue, autoAssignUserOnChange, maxTeamsValue, maxTeamsOnChange, maxUsersValue, maxUsersOnChange, teamRegistrationPriceValue, teamRegistrationPriceOnChange, userRegistrationPriceValue, userRegistrationPriceOnChange, enableCheckinValue, enableCheckinOnChange, checkinTimePriorValue, checkinTimePriorOnChange, registrationStartDateValue, registrationStartDateOnChange, registrationEndDateValue, registrationEndDateOnChange, errors  }) {
 
     return (
         <>
             <h3 >Registration Details</h3>
-            <p className="lead">Configure how individuals and team can register for the tournament.</p>
+            <p className="lead">Configure how individuals and team can register for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)}.</p>
 
             <div className="form-group-checkbox">
                 <Input type="checkbox" className={"form-checkbox mr-5 pr-5"} name="allow_team_signup" checked={allowTeamSignupValue} onChange={allowTeamSignupOnChange} />
@@ -18,7 +20,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                 {errors && errors.allow_team_signup && errors.allow_team_signup.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-                <p className="small">This option will allow teams to register for the tournament when enabled.</p>
+                <p className="small">This option will allow teams to register for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} when enabled.</p>
             </div>
 
             <div className="form-group-checkbox mb-5">
@@ -28,7 +30,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                 {errors && errors.allow_individual_signup && errors.allow_individual_signup.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-                <p className="small">This option will allow indinvidual users to register for the tournament when enabled.</p>
+                <p className="small">This option will allow indinvidual users to register for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} when enabled.</p>
             </div>
 
 
@@ -39,7 +41,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                 {errors && errors.auto_assign_team && errors.auto_assign_team.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-                <p className="small">When a user registers for the tournament, they will be auto-assigned to a bracket.</p>
+                <p className="small">When a user registers for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)}, they will be auto-assigned to a bracket.</p>
             </div>
 
             <div className="form-group-checkbox mb-5">
@@ -50,7 +52,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                     return <Danger message={name} key={index} />;
                 })}
                 <br />
-                <p className="small">When a user registers for the tournament, they will be auto-assigned to a bracket.</p>
+                <p className="small">When a user registers for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)}, they will be auto-assigned to a bracket.</p>
             </div>
 
 
@@ -114,7 +116,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                 <Input type="checkbox" className={"form-checkbox"} name="allow_individual_signup" checked={enableCheckinValue} onChange={enableCheckinOnChange} />
                 <label>Enable Check-in</label>
 
-                <p className="small">Have a check-in that will allow users and teams to check-in to the tournament.</p>
+                <p className="small">Have a check-in that will allow users and teams to check-in to the {Glitch.util.LabelManager.getCompetitionLabel(false, false)}.</p>
                 {errors && errors.allow_individual_signup && errors.allow_individual_signup.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}

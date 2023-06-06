@@ -122,7 +122,7 @@ class CompetitionsMediaPage extends Component {
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
                                 <div className="col-lg-8 col-12">
-                                    <h3 className="title">Update Tournament Media</h3>
+                                    <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Media</h3>
                                     <hr />
                                     <div className="text-left" style={{ textAlign: "left" }}>
 

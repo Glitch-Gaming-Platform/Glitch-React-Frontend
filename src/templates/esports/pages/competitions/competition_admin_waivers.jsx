@@ -90,7 +90,7 @@ class CompetitionsWaiversPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Update Tournament Rules & Waivers</h3>
+                            <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Rules & Waivers</h3>
                             <form className="text-left" style={{ textAlign: "left" }}>
                                 <CompetitionFormWaivers
                                     rulesValue={this.state.data.rules}

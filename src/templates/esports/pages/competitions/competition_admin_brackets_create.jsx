@@ -98,7 +98,7 @@ class CompetitionsCreateBracketsPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h2 className="title">Create A Tournament Bracket For Round {round_id}</h2>
+                            <h2 className="title">Create A {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Bracket For Round {round_id}</h2>
                             <p className="lead">A bracket is used to assign which competitors will compete against each other. For each competitor, create a bracket with an assigned competitor. Competitors with the same bracket number will compete against each other.</p>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
 

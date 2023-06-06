@@ -1,7 +1,8 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
+import Glitch from 'glitch-javascript-sdk';
 
-const title = "Recent Post";
+const title = "Recent ";
 
 
 let RecentPostList = [
@@ -37,7 +38,7 @@ class RecentPost extends Component {
         return (
             <div className="widget widget-post">
                 <div className="widget-header">
-                    <h5>{title}</h5>
+                    <h5>{title} {Glitch.util.LabelManager.getPostLabel(true, true)}</h5>
                 </div>
                 <ul className="lab-ul widget-wrapper">
                     {RecentPostList.map((val, i) => (

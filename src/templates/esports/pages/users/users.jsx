@@ -32,7 +32,7 @@ class UsersPage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Users'} curPage={'Users'} />
+                <PageHeader title={Glitch.util.LabelManager.getUserLabel(true, true)} curPage={'Users'} />
 
                 <div className="shop-single">
 

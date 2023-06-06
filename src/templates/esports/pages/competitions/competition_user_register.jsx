@@ -86,12 +86,12 @@ class CompetitionsRegisterUserPage extends Component {
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">
-                            <h3 className="title">Register Tournament</h3>
+                            <h3 className="title">Register {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</h3>
                             <form className="account-form text-left" style={{ textAlign: "left" }}>
                                 
-                                <h3>Register For Tournament</h3>
+                                <h3>Register For {Glitch.util.LabelManager.getCompetitionLabel(false, true)}</h3>
 
-                                <p>Register to the tournament as an individual contentest. After logging in, simply register using the button below.</p>
+                                <p>Register to the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} as an individual contentest. After logging in, simply register using the button below.</p>
 
                                 { this.state.error ? <Danger message={this.state.error}  /> : ''}
                                 <div className="form-group">
