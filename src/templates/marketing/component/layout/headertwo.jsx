@@ -76,10 +76,10 @@ class HeaderTwo extends Component {
 
             loginOrAccountMobile = (<>
                 <li className="d-block d-sm-none" >
-                    <a href={Navigate.accountMainPage()} >Account</a>
+                    <Link to={Navigate.accountMainPage()} >Account</Link>
                 </li>
                 <li className="d-block d-sm-none" >
-                    <a href={"#"} onClick={(e) => { e.preventDefault(); Session.end(); window.location = Navigate.homePage() }} >Logout</a>
+                    <Link to={"#"} onClick={(e) => { e.preventDefault(); Session.end(); window.location = Navigate.homePage() }} >Logout</Link>
                 </li>
 
             </>);
@@ -91,10 +91,10 @@ class HeaderTwo extends Component {
 
             loginOrAccountMobile = (<>
                 <li className="d-block d-sm-none" >
-                    <a href={Navigate.authLogin()} >Login</a>
+                    <Link to={Navigate.authLogin()} >Login</Link>
                 </li>
                 <li className="d-block d-sm-none" >
-                    <a href={Navigate.authRegister()} >Register</a>
+                    <Link to={Navigate.authRegister()} >Register</Link>
                 </li>
 
             </>);
@@ -132,27 +132,24 @@ class HeaderTwo extends Component {
                                     <div className="menu-area">
                                         <ul className="menu">
                                             <li >
-                                                <a href={Navigate.homePage()} >Home</a>
+                                                <Link to={Navigate.homePage()} >Home</Link>
                                             </li>
 
                                             <li >
-                                                <a href={Navigate.featuresPage()} >Features</a>
+                                                <Link to={Navigate.communitiesPage()} >Communities</Link>
                                             </li>
 
-                                            <li >
-                                                <a href={Navigate.revenuePage()} >Increase Revenue</a>
-                                            </li>
-                                            
-                                            <li >
-                                                <a href={Navigate.marketingPage()} >Enhance Marketing</a>
+                                            <li class="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">The Platform</a>
+                                                <ul class="submenu dropdown-menu" aria-labelledby="dropdown">
+                                                    <li><Link class="" to={Navigate.featuresPage()}>Features</Link></li>
+                                                    <li><Link class="" to={Navigate.revenuePage()}>Increase Revenue</Link></li>
+                                                    <li><Link class="" to={Navigate.marketingPage()}>Enhance Marketing</Link></li>
+                                                    <li><Link class="" to={Navigate.installationPage()}>Install Open Source</Link></li>
+                                                </ul>
                                             </li>
 
-                                            <li >
-                                                <a href={Navigate.installationPage()} >Install</a>
-                                            </li>
-                                            
                                             {loginOrAccountMobile}
-                                 
+
                                         </ul>
 
                                         {loginOrAccount}
