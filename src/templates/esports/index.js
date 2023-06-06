@@ -5,6 +5,7 @@ import './assets/css/icofont.min.css';
 import './assets/css/animate.css';
 import './assets/css/style.css';
 import './assets/css/brackets.css';
+import './assets/css/IconButtons.css';
 
 
 import {BrowserRouter, Routes, Route } from "react-router-dom";
@@ -70,9 +71,12 @@ import CompetitionsUpdateRoundsPage from './pages/competitions/competition_admin
 
 import CompetitionsRoundsUsersPage from './pages/competitions/competition_admin_users_list';
 
-
 import CompetitionsCreateBracketsPage from './pages/competitions/competition_admin_brackets_create';
 import CompetitionsUpdateBracketsPage from './pages/competitions/competition_admin_brackets_update';
+
+import PostCreatePage from './pages/posts/create';
+import PostViewPage from './pages/posts/view';
+import PostsListPage from './pages/posts/index';
 
 import AccountUpdatePage from "./pages/account/profile";
 import RegisterStep2 from "./pages/account/register_step2";
@@ -100,6 +104,8 @@ import Navigate from "../../util/Navigate";
 import MarketingPage from './pages/misc/marketing';
 import RevenuePage from './pages/misc/revenue';
 import FeaturesPage from './pages/misc/features';
+import CommunitiesInvitedRegister from './pages/community/CommunitiesInvitedRegister';
+import CommunitiesInvitedLogin from './pages/community/CommunitiesInvitedLogin';
 
 
 
@@ -148,6 +154,10 @@ function Template() {
           <Route path={Navigate.authMicrosoft()} element={<AuthMicrosoft/>} />
           <Route path={Navigate.authMicrosoftTeams()} element={<AuthMicrosoftTeams/>} />
           <Route path={Navigate.authStripe()} element={<AuthStripe />} />
+
+          <Route path={Navigate.postsCreatePage()} element={<PostCreatePage/>} />
+          <Route path={Navigate.postsListPage()} element={<PostsListPage />} />
+          <Route path={Navigate.postsViewPage()} element={<PostViewPage />} />
           
           <Route path={Navigate.streamsPage()} element={<StreamsPage />} />
           <Route path={Navigate.streamsCreatePage()} element={<StreamsCreatePage />} />
@@ -182,6 +192,8 @@ function Template() {
           <Route path={Navigate.usersList()} element={<UsersPage />} />
           <Route path={Navigate.usersProfilePage()} element={<UserProfilePage />} />
           
+          <Route path={Navigate.communitiesInvitedRegisterPage()} element={<CommunitiesInvitedRegister/>} />
+          <Route path={Navigate.communitiesInvitedLoginPage()} element={<CommunitiesInvitedLogin/>} />
          
 
           <Route path="*" element={<ErrorPage />} />

@@ -16,6 +16,8 @@ import PageHeader from "../../component/layout/pageheader";
 import Navigate from "../../../../util/Navigate";
 import Data from "../../../../util/Data";
 import Glitch from 'glitch-javascript-sdk';
+import CommentForm from "../../component/form/comment";
+import Comments from "../../component/section/comments";
 
 
 
@@ -32,6 +34,8 @@ class StreamsWatchPage extends Component {
             profile: '',
             broadcast_widget: '',
             isLive: '',
+            comments: [],
+            comment_text: '',
         };
     }
 
@@ -52,6 +56,18 @@ class StreamsWatchPage extends Component {
         } else {
             this.loadStreamData();
         }
+
+        let id = this.props.router.params.id;
+
+        Glitch.api.Posts.list({event_id : id, withChildren : true}).then(response => {
+            this.setState({ post: response.data.data });
+
+            if(response.data.data) {
+                this.setState({ comments: response.data.data });
+            }
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
     loadStreamData(user) {
@@ -121,6 +137,28 @@ class StreamsWatchPage extends Component {
 
     }
 
+    submitComment(e) {
+
+        let id = this.props.router.params.id;
+
+        let data = {
+            content: this.state.comment_text,
+            title: 'Re: ' + this.state.stream.title,
+            type: Glitch.constants.PostTypes.TEXT,
+            event_id : id
+        };
+
+        Glitch.api.Posts.create(data).then(response => {
+            this.setState(prevState => ({
+                comments: [response.data.data, ...prevState.comments],
+                comment_text: '',
+            }));
+        }).catch(error => {
+
+        });
+
+    }
+
     render() {
 
         return (
@@ -147,6 +185,16 @@ class StreamsWatchPage extends Component {
                                                     <p>{this.state.stream.description}</p>
 
                                                 </div>
+
+                                                <CommentForm
+                                                    commentOnChange={(e) => { this.setState({ comment_text: e }) }}
+                                                    commentValue={this.state.comment_text} commentSubmit={(e) => { this.submitComment(e) }}
+                                                />
+
+                                                <Comments
+                                                    comments={this.state.comments}
+                                                    title={"Comments"}
+                                                />
                                             </div>
                                         </div>
                                     </div>

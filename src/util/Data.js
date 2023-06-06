@@ -41,7 +41,25 @@ const Data = {
         if (seconds < 10) {seconds = "0"+seconds;}
 
         return hours + ':' + minutes + ':' + seconds;
-    }
+    },
+    countCommentChildren : function(comment) {
+        let count = 0;
+
+        if (!comment.children) {
+            return count;
+          }
+      
+        if (comment.children.length === 0) {
+          return count;
+        }
+      
+        comment.children.forEach(child => {
+          count += 1 + this.countCommentChildren(child);
+        });
+      
+        return count;
+      }
+    
 };
 
 export default Data;

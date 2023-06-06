@@ -15,11 +15,13 @@ import Glitch from 'glitch-javascript-sdk';
 
 const title = "Login";
 
-class LogIn extends Component {
+class CommunitiesInvitedLogin extends Component {
 
     constructor(props){
         super(props);
         this.state = {
+            invite : {},
+            community : {},
             email: '',
             password: '',
             isLoading : false,
@@ -35,11 +37,25 @@ class LogIn extends Component {
                 get: (searchParams, prop) => searchParams.get(prop),
             });
             
-            let iscohost = params.iscohost;
+            let token = params.token;
     
-            if(iscohost && Glitch.util.Session.isLoggedIn()) {
+            let community = Glitch.util.Storage.get('community');
+    
+            if(Glitch.util.Session.isLoggedIn()) {
                 this.goToNextScreen();
             }
+
+            Glitch.api.Communities.retrieveInvite(community.id, token).then(response => {
+
+                this.setState({
+                    invite : response.data.data,
+                    username : response.data.data.name,
+                    email : response.data.data.email,
+                    community : community,
+                });
+            }).catch(error => {
+
+            });
 
         }, 1000) 
         
@@ -95,22 +111,19 @@ class LogIn extends Component {
             get: (searchParams, prop) => searchParams.get(prop),
         });
        
-        let iscohost = params.iscohost;
 
-        let stream_id = params.stream;
+        Glitch.api.Communities.join(this.state.community.id).then(response => {
 
-        let token = params.token;
-
-        if(iscohost) {
-            Glitch.api.Events.acceptInvite.eventsAcceptInvite(stream_id, token).then(response => {
-                this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
-            }).catch(error => {
-                this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
-            });
+            this.props.router.navigate(Navigate.homePage());
             
-        } else {
-            this.props.router.navigate(Navigate.streamsPage());
-        }
+            this.setState({isLoading : false});
+        }).catch(error => {
+
+            this.props.router.navigate(Navigate.joinPage());
+
+            this.setState({isLoading : false});
+
+        });
 
     }
     
@@ -178,4 +191,4 @@ class LogIn extends Component {
     }
 }
  
-export default withRouter(LogIn);
+export default withRouter(CommunitiesInvitedLogin);

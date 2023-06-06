@@ -120,7 +120,7 @@ class RegisterStep2 extends Component {
                             <hr />
                             <form className="account-form">
 
-                                <img src={(this.state.user.avatar) ? this.state.user.avatar : "/assets/images/blog/author/01.jpg"} />
+                                <img src={(this.state.user.avatar) ? this.state.user.avatar : "https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png"} />
 
                                 <ImageUploading
                                     multiple

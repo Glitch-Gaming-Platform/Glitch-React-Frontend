@@ -214,6 +214,102 @@ const Navigate = {
 
         return path;
     },
+    communitiesUsersListPage : (community_id) => {
+
+        let path = app_routes.communities_users;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+    communitiesUsersManagePage : (community_id, user_id) => {
+
+        let path = app_routes.communities_user;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        if(user_id){
+            path = path.replace(':user_id', community_id)
+        }
+
+        return path;
+    },
+    communitiesUsersInvitePage : (community_id) => {
+
+        let path = app_routes.communities_invite;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    communitiesInvitedLoginPage : (community_id) => {
+
+        let path = app_routes.communities_invited_login;
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    communitiesInvitedRegisterPage : (community_id) => {
+
+        let path = app_routes.communities_invited_register
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+
+
+    //Posts
+    postsListPage : () => {
+        return app_routes.posts;
+    },
+    postsCreatePage : () => {
+        return app_routes.posts_create;
+    },
+    postsUpdatePage : (post_id) => {
+
+        let path = app_routes.posts_update;
+
+        if(post_id){
+            path = path.replace(':id', post_id)
+        }
+
+        return path;
+    },
+    postsViewPage : (post_id) => {
+
+        let path = app_routes.posts_view;
+
+        if(post_id){
+            path = path.replace(':id', post_id)
+        }
+
+        return path;
+    },
+    postsDeletePage : (post_id) => {
+
+        let path = app_routes.posts_delete;
+
+        if(post_id){
+            path = path.replace(':id', post_id)
+        }
+
+        return path;
+    },
 
 
 

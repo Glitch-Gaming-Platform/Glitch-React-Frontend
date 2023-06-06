@@ -144,7 +144,7 @@ class HeaderTwo extends Component {
                                 </div>
                                 <div className="header-wrapper justify-content-lg-end">
                                     <div className="mobile-logo d-lg-none">
-                                        <Link to="/"><img src={(community.logo) ? community.logo :  "/assets/images/logo/glitch_3.png"} alt="logo" /></Link>
+                                        <Link to="/"><img src={(community.logo) ? community.logo : "/assets/images/logo/glitch_3.png"} alt="logo" /></Link>
                                     </div>
                                     <div className="menu-area">
                                         <ul className="menu">
@@ -153,32 +153,38 @@ class HeaderTwo extends Component {
                                             </li>
 
                                             {(community.disable_streams) ? <></> : <>
-                                            
+
                                                 <li >
-                                                    <a href={Navigate.streamsPage()} >Streams</a>
+                                                    <a href={Navigate.streamsPage()} >{Glitch.util.LabelManager.getStreamLabel(true, true)}</a>
                                                 </li>
-                                            </> }
+                                            </>}
 
                                             {(community.disable_competitions) ? <></> : <>
-                                            
-                                                <li >
-                                                    <a href={Navigate.tournamentsList()} >Tournaments</a>
-                                                </li>
-                                            </> }
-                                            
-                                            
-                                          
-                                            <li >
-                                                <a href={Navigate.usersList()} >Users</a>
-                                            </li>
 
+                                                <li >
+                                                    <a href={Navigate.tournamentsList()} >{Glitch.util.LabelManager.getCompetitionLabel(true, true)}</a>
+                                                </li>
+                                            </>}
+
+                                            {(community.disable_forums) ? <></> : <>
+
+                                                <li >
+                                                    <a href={Navigate.postsListPage()} >{Glitch.util.LabelManager.getPostLabel(true, true)}</a>
+                                                </li>
+                                            </>}
+
+                                            {(community.disable_users) ? <></> : <>
+                                                <li >
+                                                    <a href={Navigate.usersList()} >{Glitch.util.LabelManager.getUserLabel(true, true)}</a>
+                                                </li>
+                                            </>}
 
                                             {(community.disable_streams) ? <></> : <>
-                                            
-                                                <li className="menu-item-has-children" >
-                                                <a href={Navigate.streamsCreatePage()} aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Start Streaming</a>
+                                                <li className="menu-item-has-children">
+                                                    <a href={Navigate.streamsCreatePage()} aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Start {Glitch.util.LabelManager.getStreamLabel(false, true)}ing</a>
                                                 </li>
-                                            </> }
+                                            </>}
+
                                             {loginOrAccountMobile}
                                         </ul>
 

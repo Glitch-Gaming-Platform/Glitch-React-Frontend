@@ -56,8 +56,7 @@ class CommunitiesCreate extends Component {
             let jsonErrors = error?.response?.data;
 
             if (jsonErrors) {
-
-                console.log(jsonErrors);
+                
                 this.setState({ errors: jsonErrors });
 
                 setTimeout(() => {

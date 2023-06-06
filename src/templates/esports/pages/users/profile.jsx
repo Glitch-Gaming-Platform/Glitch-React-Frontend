@@ -9,6 +9,7 @@ import UserListItem from "../../component/section/userlistitem";
 import ProfileHeader from "../../component/section/profile";
 import Navigate from "../../../../util/Navigate";
 import Glitch from 'glitch-javascript-sdk';
+import PostItem from "../../component/section/posts/detail_post_item";
 
 
 class UserProfilePage extends Component {
@@ -16,6 +17,7 @@ class UserProfilePage extends Component {
         super(props);
         this.state = {
             events: [],
+            posts: [],
             profileHeader: "",
             followers: "No Followers",
             following: "No Followers",
@@ -67,7 +69,8 @@ class UserProfilePage extends Component {
                     profileHeader: <ProfileHeader user={response.data.data} />,
                     followers: <UserListItem user={response.data.data.followers} />,
                     followers: <UserListItem user={response.data.data.following} />,
-                    events: response.data.data.events
+                    events: response.data.data.events,
+                    posts : response.data.data.posts,
                 });
             })
             .catch((error) => {
@@ -88,7 +91,10 @@ class UserProfilePage extends Component {
 
                         <ul className="nav nav-tabs" id="myTab" role="tablist">
                             <li className="nav-item" role="presentation">
-                                <button className="nav-link active btn btn btn-primary btn-lg"  id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Streams</button>
+                                <button className="nav-link active btn btn btn-primary btn-lg" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">{Glitch.util.LabelManager.getStreamLabel(true, true)}</button>
+                            </li>
+                            <li className="nav-item" role="presentation">
+                                <button className="nav-link btn btn btn-primary btn-lg" id="post-tab" data-bs-toggle="tab" data-bs-target="#post" type="button" role="tab" aria-controls="post" aria-selected="true">{Glitch.util.LabelManager.getPostLabel(true, true)}</button>
                             </li>
                             <li className="nav-item" role="presentation">
                                 <button className="nav-link   btn btn btn-primary btn-lg" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Followers</button>
@@ -140,6 +146,20 @@ class UserProfilePage extends Component {
                                     )
                                 })
                             }</div>
+                            <div className="tab-pane fade" id="post" role="tabpanel" aria-labelledby="post-tab">
+
+                                    {
+                                        this.state.posts && this.state.posts.map((post, index) => {
+
+                                            return (
+                                                <div className="mt-2">
+                                                    <PostItem post={post} key={index} is_admin={true} />
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                
+                            </div>
                             <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">{this.state.followers}</div>
                             <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">{this.state.following}</div>
                         </div>

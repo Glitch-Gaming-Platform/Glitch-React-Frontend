@@ -18,6 +18,7 @@ class CommunitiesUsers extends Component {
 
         this.state = {
             community: {},
+            users: [],
             super_administrators: [],
             administrators: [],
         };
@@ -26,26 +27,43 @@ class CommunitiesUsers extends Component {
 
     }
 
+    getRole(role) {
+
+        if(role == Glitch.constants.Roles.ADMINISTRATOR) {
+            return 'Administrator';
+        } else if(role == Glitch.constants.Roles.SUPER_ADMINISTRATOR) {
+            return 'Super Administrator';
+        } else if(role == Glitch.constants.Roles.BLOCKED) {
+            return 'Blocked';
+        } else if(role == Glitch.constants.Roles.MODERATOR) {
+            return 'Moderator';
+        } else if(role == Glitch.constants.Roles.NONE) {
+            return 'None';
+        } else if(role == Glitch.constants.Roles.PARTICIPANT) {
+            return 'Member';
+        } else if(role == Glitch.constants.Roles.SPEAKER) {
+            return 'Speaker';
+        } else if(role == Glitch.constants.Roles.SUBSCRIBER) {
+            return 'Subscriber';
+        } else {
+            return 'Unknown';
+        }
+    }
+
     componentDidMount() {
 
         let id = this.props.router.params.id;
 
         Glitch.api.Communities.view(id).then(response => {
 
-            this.setState({community : response.data.data});
-            this.setState({data : response.data.data});
-
+            this.setState({ community: response.data.data });
 
         }).catch(error => {
 
         })
 
-        Glitch.api.Communities.listUsers(id, {roles: Roles.SuperAdministrator }).then(response => {
-            this.setState({super_administrators : response.data.data});
-        });
-
-        Glitch.api.Communities.listUsers(id, {roles: Roles.Administrator }).then(response => {
-            this.setState({administrators : response.data.data});
+        Glitch.api.Communities.listUsers(id).then(response => {
+            this.setState({ users: response.data.data });
         });
 
     }
@@ -54,44 +72,54 @@ class CommunitiesUsers extends Component {
         return (
             <>
                 <Fragment>
-                <Header />
-                <PageHeader title={'Communities'} curPage={'Manage Community'} />
+                    <Header />
+                    <PageHeader title={'Communities'} curPage={'Manage Community'} />
 
-                <div className="blog-section blog-single padding-top padding-bottom aside-bg">
-                    <div className="container">
-                        <div className="section-wrapper">
-                            <div className="row justify-content-center pb-15">
-                                <div className="col-lg-8 col-12 pe-5">
-                                    
-                                <form className="text-left" style={{ textAlign: "left" }}>
-                                    
+                    <div className="blog-section blog-single padding-top padding-bottom aside-bg">
+                        <div className="container">
+                            <Link className='btn btn-success' to={Navigate.communitiesUsersInvitePage(this.state.community.id)}>Invite User</Link>
+                        </div>
 
-                                    {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are error(s) in updating the community. Please check the form above."} /> : ''}
+                        <div className="container">
 
-                                    <div className="form-group">
-                                        <button className="d-block default-button" onClick={(e => { this.updateCommunity(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update Community</span></button>
+                            <div className="section-wrapper">
+                                <div className="row justify-content-center pb-15">
+                                    <div className="col-lg-8 col-12 pe-5">
+
+
+                                        <h3>Community Users</h3>
+
+                                        {this.state.users.map((user, index) => {
+                                            return (<div className="authors">
+                                                <div className="author-thumb">
+                                                    <Link to={Navigate.communitiesUsersManagePage(this.state.community.id, user.user.id)}><img src={(user.user.avatar) ? user.user.avatar : "https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png"} alt="author" /></Link>
+                                                </div>
+                                                <div className="author-content">
+                                                    <h6><Link to={Navigate.communitiesUsersManagePage(this.state.community.id, user.user.id)}>{user.user.username}</Link></h6>
+                                                    <p className='lead'>{this.getRole(user.user_role)}</p>
+                                                    <p>{user.bio}</p>
+
+                                                </div>
+                                            </div>);
+                                        })}
+
+
                                     </div>
+                                    <div className="col-lg-4 col-md-7 col-12">
+                                        <aside className="ps-lg-4">
+                                            <SidebarManageMenu community_id={this.state.community.id} />
 
-                                </form>
-
-               
-
-                                </div>
-                                <div className="col-lg-4 col-md-7 col-12">
-                                    <aside className="ps-lg-4">
-                                        <SidebarManageMenu community_id={this.state.community.id} />
-                                       
-                                    </aside>
+                                        </aside>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
 
-                <Footer />
-            </Fragment>
+                    <Footer />
+                </Fragment>
             </>
         );
     }

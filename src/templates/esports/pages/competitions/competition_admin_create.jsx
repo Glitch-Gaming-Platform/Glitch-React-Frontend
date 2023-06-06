@@ -47,12 +47,8 @@ class CompetitionsCreatePage extends Component {
 
             this.props.router.navigate(Navigate.tournamentsManage(response.data.data.id));
         }).catch(error => {
-
-
-            console.log(error);
+            
             this.setState({ isLoading: false });
-
-            let jsonErrors = Response.parseJSONFromError(error);
 
             if (error.response && error.response.data.data) {
 

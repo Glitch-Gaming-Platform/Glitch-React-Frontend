@@ -178,6 +178,11 @@ img {
   max-width: 100%;
   height: auto; }
 
+  .ql-toolbar { background-color: white !important; background: white !important;}
+  .ql-editor { min-height: 300px;}
+
+  .ql-snow.ql-toolbar button { margin-top: 0px !important;}
+
 /* Forms
    ========================================================================== */
 /**

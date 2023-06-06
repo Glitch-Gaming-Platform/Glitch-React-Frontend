@@ -11,6 +11,7 @@ import Danger from '../../component/alerts/Danger';
 import Loading from '../../component/alerts/Loading';
 import Navigate from '../../../../util/Navigate';
 import timeouts from '../../../../constants/timeouts';
+import CommunityFormLabels from '../../component/section/communities/form_community_labels';
 
 
 
@@ -105,7 +106,33 @@ class CommunitiesFeatures extends Component {
                                             disableForumsOnChange={(e) => { this.setState({ data: { ...this.state.data, disable_forums: e.target.checked } }); }}
                                             disableTeamsValue={(this.state.data.disable_teams === 'true' || this.state.data.disable_teams == true)}
                                             disableTeamsOnChange={(e) => { this.setState({ data: { ...this.state.data, disable_teams: e.target.checked } }); }}
+                                            disableUsersValue={(this.state.data.disable_users === 'true' || this.state.data.disable_users == true)}
+                                            disableUsersOnChange={(e) => { this.setState({ data: { ...this.state.data, disable_users: e.target.checked } }); }}
                                             errors = {this.state.errors}
+                                        />
+
+                                        <hr />
+                                        <br />
+                                        <CommunityFormLabels 
+                                            labelPostsPluralValue={this.state.data.label_posts_plural}
+                                            labelPostsPluralOnChange={(e) => { this.setState({ data: { ...this.state.data,label_posts_plural : e.target.value } }); }}
+                                            labelPostsSingularValue={this.state.data.label_posts_singular}
+                                            labelPostsSingularOnChange={(e) => { this.setState({ data: { ...this.state.data, label_posts_singular : e.target.value } }); }}
+
+                                            labelUsersPluralValue={this.state.data.label_users_plural}
+                                            labelUsersPluralOnChange={(e) => { this.setState({ data: { ...this.state.data,label_users_plural : e.target.value } }); }}
+                                            labelUsersSingularValue={this.state.data.label_users_singular}
+                                            labelUsersSingularOnChange={(e) => { this.setState({ data: { ...this.state.data, label_users_singular : e.target.value } }); }}
+
+                                            labelCompetitionsPluralValue={this.state.data.label_competitions_plural}
+                                            labelCompetitionsPluralOnChange={(e) => { this.setState({ data: { ...this.state.data,label_competitions_plural : e.target.value } }); }}
+                                            labelCompetitionsSingularValue={this.state.data.label_competitions_singular}
+                                            labelCompetitionsSingularOnChange={(e) => { this.setState({ data: { ...this.state.data, label_competitions_singular : e.target.value } }); }}
+
+                                            labelStreamsPluralValue={this.state.data.label_streams_plural}
+                                            labelStreamsPluralOnChange={(e) => { this.setState({ data: { ...this.state.data,label_streams_plural : e.target.value } }); }}
+                                            labelStreamsSingularValue={this.state.data.label_streams_singular}
+                                            labelStreamsSingularOnChange={(e) => { this.setState({ data: { ...this.state.data, label_streams_singular : e.target.value } }); }}
                                         />
 
                                         {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are error(s) in updating the community. Please check the form above."} /> : ''}
