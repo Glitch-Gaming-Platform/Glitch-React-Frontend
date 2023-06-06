@@ -96,7 +96,7 @@ class PostsListPage extends Component {
                     <div className="section-wrapper">
                         <div className="row justify-content-center pb-15">
                             <div className="col-lg-8 col-12 pe-5">
-                                {(this.state.posts) ?
+                                {(this.state.posts && this.state.posts.length > 0) ?
                                     <>
                                         {this.state.posts}
                                         {this.state.isLoading && <div>Loading...</div>}

@@ -66,20 +66,20 @@ class AccountUpdatePage extends Component {
 
         let stripeData = '';
 
-        if(this.state.me && !this.state.me.stripe_express_account_id) {
+        if (this.state.me && !this.state.me.stripe_express_account_id) {
 
             stripeData = <><Danger message={"No Stripe Account Connected"} />
                 <p>To accept donnations you must connect your Stripe account. You can connect your <Link to={Navigate.authStripe()}>account here.</Link></p>
             </>
-        } else if(this.state.me && !this.state.me.stripe_donation_purhcase_link_url) {
+        } else if (this.state.me && !this.state.me.stripe_donation_purhcase_link_url) {
 
             stripeData = <><Warning message={"Activate Donation Page"} />
                 <p>To finalize your ability to accept donations, you must activate your donation page.</p>
-                <div className="form-group text-center"><button className="d-block default-button" onClick={(e) => {this.activateDonations()}}><span> Activate</span></button></div>
+                <div className="form-group text-center"><button className="d-block default-button" onClick={(e) => { this.activateDonations() }}><span> Activate</span></button></div>
 
             </>
 
-        } else if(this.state.me && this.state.me.stripe_donation_purhcase_link_url) {
+        } else if (this.state.me && this.state.me.stripe_donation_purhcase_link_url) {
 
             stripeData = <><Success message={"Active Donation Page"} />
                 <p>Your Stripe Account and Donations page is active. You will now be able to accept donations in your stream. You can view your donations <a target={"_blank"} href={this.state.me.stripe_donation_purhcase_link_url}>page here.</a></p>
@@ -149,7 +149,7 @@ class AccountUpdatePage extends Component {
                                                                     <div className="match-game-social">
                                                                         <ul className="match-social-list d-flex flex-wrap align-items-center justify-content-center justify-content-xl-start">
 
-                                                                            <li><a href={Navigate.streamsBroadcastPage(elem.id)} className="default-button reverse-effect"><span>{btntext}<i className="icofont-play-alt-1"></i></span> </a></li>
+                                                                            <li><Link to={Navigate.streamsBroadcastPage(elem.id)} className="default-button reverse-effect"><span>{btntext}<i className="icofont-play-alt-1"></i></span> </Link></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -161,6 +161,29 @@ class AccountUpdatePage extends Component {
                                         )
                                     })
                                 }
+
+                                {
+                                    (this.state.me && this.state.me.events && this.state.me.events.length <= 0) ?
+                                        (
+
+                                            <section className="fore-zero pt-5 padding-bottom">
+                                                <div className="container">
+                                                    <div className="section-wrapper">
+                                                        <div className="zero-item">
+
+                                                            <div className="zero-content">
+                                                                <h2>You Have Not Created Any {Glitch.util.LabelManager.getStreamLabel(true, true)}</h2>
+                                                                <p>Create your first {Glitch.util.LabelManager.getStreamLabel(false, true)}!</p>
+                                                                <Link className="default-button reverse-effect" to={Navigate.streamsCreatePage()}><span>Create {Glitch.util.LabelManager.getStreamLabel(false, true)} <i className="icofont-double-right"></i></span> </Link>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                        ) : <></>
+
+                                }
                             </div>
                         </div>
                         <div className="tab-pane fade mt-3" id="tournament" role="tabpanel" aria-labelledby="tournament-tab">
@@ -171,9 +194,32 @@ class AccountUpdatePage extends Component {
                                     this.state.me && this.state.me.competitions && this.state.me.competitions.map((tournament, index) => {
 
                                         return (
-                                            <TournamentItem  tournament={tournament} key={index} is_admin={true} />
+                                            <TournamentItem tournament={tournament} key={index} is_admin={true} />
                                         )
                                     })
+                                }
+
+                                {
+                                    (this.state.me && this.state.me.competitions && this.state.me.competitions.length <= 0) ?
+                                        (
+
+                                            <section className="fore-zero pt-5 padding-bottom">
+                                                <div className="container">
+                                                    <div className="section-wrapper">
+                                                        <div className="zero-item">
+
+                                                            <div className="zero-content">
+                                                                <h2>You Have Not Created Any {Glitch.util.LabelManager.getCompetitionLabel(true, true)}</h2>
+                                                                <p>Create your first {Glitch.util.LabelManager.getCompetitionLabel(false, true)}!</p>
+                                                                <Link className="default-button reverse-effect" to={Navigate.tournamentsCreate()}><span>Create {Glitch.util.LabelManager.getCompetitionLabel(false, true)} <i className="icofont-double-right"></i></span> </Link>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                        ) : <></>
+
                                 }
                             </div>
                         </div>
@@ -185,10 +231,36 @@ class AccountUpdatePage extends Component {
                                     this.state.me && this.state.me.posts && this.state.me.posts.map((post, index) => {
 
                                         return (
-                                            <PostItem  post={post} key={index} is_admin={true} />
+                                            <PostItem post={post} key={index} is_admin={true} />
                                         )
                                     })
                                 }
+
+
+                                {
+                                    (this.state.me && this.state.me.posts && this.state.me.posts.length <= 0) ?
+                                        (
+
+                                            <section className="fore-zero pt-5 padding-bottom">
+                                                <div className="container">
+                                                    <div className="section-wrapper">
+                                                        <div className="zero-item">
+
+                                                            <div className="zero-content">
+                                                                <h2>You Have Not Created Any {Glitch.util.LabelManager.getPostLabel(true, true)}</h2>
+                                                                <p>Create your first {Glitch.util.LabelManager.getPostLabel(false, true)}!</p>
+                                                                <Link className="default-button reverse-effect" to={Navigate.postsCreatePage()}><span>Create {Glitch.util.LabelManager.getPostLabel(false, true)} <i className="icofont-double-right"></i></span> </Link>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                        ) : <></>
+
+                                }
+
+
                             </div>
                         </div>
                         <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">

@@ -64,6 +64,29 @@ class CompetitionsListPage extends Component {
                                         <TournamentItem key={index} tournament={tournament} />
                                     );
                                 })}
+
+                                {
+                                    (this.state.tournaments && this.state.tournaments.length <= 0) ?
+                                        (
+
+                                            <section className="fore-zero pt-5 padding-bottom">
+                                                <div className="container">
+                                                    <div className="section-wrapper">
+                                                        <div className="zero-item">
+
+                                                            <div className="zero-content">
+                                                                <h2>No {Glitch.util.LabelManager.getCompetitionLabel(true, true)} Have Been Created</h2>
+                                                                <p>Create your first {Glitch.util.LabelManager.getCompetitionLabel(false, true)}!</p>
+                                                                <Link className="default-button reverse-effect" to={Navigate.tournamentsCreate()}><span>Create {Glitch.util.LabelManager.getCompetitionLabel(false, true)} <i className="icofont-double-right"></i></span> </Link>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </section>
+
+                                        ) : <></>
+
+                                }
                             </div>
 
                         </div>
