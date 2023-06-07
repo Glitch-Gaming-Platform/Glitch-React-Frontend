@@ -44,6 +44,9 @@ const Navigate = {
     installationPage : () => {
         return app_routes.installation;
     },
+    benefitsPage : () => {
+        return app_routes.benefits;
+    },
 
     //Authentication
     authLogin : () => {

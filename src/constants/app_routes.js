@@ -16,6 +16,7 @@
     marketing : '/marketing',
     features : '/features',
     installation: '/installation',
+    benefits: '/benefits',
 
     //authentication
     auth_login : '/login',

@@ -19,9 +19,10 @@ class UserProfilePage extends Component {
             events: [],
             posts: [],
             profileHeader: "",
-            followers: "No Followers",
-            following: "No Followers",
+            followers: [],
+            following: [],
             errors: {},
+            user: {},
         };
     }
 
@@ -70,7 +71,8 @@ class UserProfilePage extends Component {
                     followers: <UserListItem user={response.data.data.followers} />,
                     followers: <UserListItem user={response.data.data.following} />,
                     events: response.data.data.events,
-                    posts : response.data.data.posts,
+                    posts: response.data.data.posts,
+                    user: response.data.data,
                 });
             })
             .catch((error) => {
@@ -134,7 +136,7 @@ class UserProfilePage extends Component {
                                                                 <div className="match-game-social">
                                                                     <ul className="match-social-list d-flex flex-wrap align-items-center justify-content-center justify-content-xl-start">
 
-                                                                        <li><a href={Navigate.streamsWatchPage(elem.id)} className="default-button reverse-effect"><span>{btntext}<i className="icofont-play-alt-1"></i></span> </a></li>
+                                                                        <li><Link to={Navigate.streamsWatchPage(elem.id)} className="default-button reverse-effect"><span>{btntext}<i className="icofont-play-alt-1"></i></span> </Link></li>
                                                                     </ul>
                                                                 </div>
                                                             </div>
@@ -145,23 +147,98 @@ class UserProfilePage extends Component {
                                         </div>
                                     )
                                 })
-                            }</div>
+                            }
+
+                            {this.state.events.length <= 0 &&
+
+                            <section className="fore-zero pt-5 padding-bottom">
+                                <div className="container">
+                                    <div className="section-wrapper">
+                                        <div className="zero-item">
+
+                                            <div className="zero-content">
+                                                <h2>No {Glitch.util.LabelManager.getStreamLabel(true, true)}</h2>
+                                                <p>{this?.state?.user?.username} has not made any {Glitch.util.LabelManager.getStreamLabel(true,false)}.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            }
+                            
+                            </div>
                             <div className="tab-pane fade" id="post" role="tabpanel" aria-labelledby="post-tab">
 
-                                    {
-                                        this.state.posts && this.state.posts.map((post, index) => {
+                                {
+                                    this.state.posts && this.state.posts.map((post, index) => {
 
-                                            return (
-                                                <div className="mt-2">
-                                                    <PostItem post={post} key={index} is_admin={true} />
+                                        return (
+                                            <div className="mt-2">
+                                                <PostItem post={post} key={index} is_admin={true} />
+                                            </div>
+                                        )
+                                    })
+                                }
+
+                                {this.state.posts.length <= 0 &&
+
+                                    <section className="fore-zero pt-5 padding-bottom">
+                                        <div className="container">
+                                            <div className="section-wrapper">
+                                                <div className="zero-item">
+
+                                                    <div className="zero-content">
+                                                        <h2>No {Glitch.util.LabelManager.getPostLabel(true, true)}</h2>
+                                                        <p>{this?.state?.user?.username} has not made any {Glitch.util.LabelManager.getPostLabel(true, false)}.</p>
+                                                    </div>
                                                 </div>
-                                            )
-                                        })
-                                    }
-                                
+                                            </div>
+                                        </div>
+                                    </section>
+                                }
+
                             </div>
-                            <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">{this.state.followers}</div>
-                            <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">{this.state.following}</div>
+                            <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                {this.state.followers}
+                                {this.state.followers.length <= 0 &&
+
+                                    <section className="fore-zero pt-5 padding-bottom">
+                                        <div className="container">
+                                            <div className="section-wrapper">
+                                                <div className="zero-item">
+
+                                                    <div className="zero-content">
+                                                        <h2>No Followers</h2>
+                                                        <p>{this?.state?.user?.username} does not have any followers</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                }
+                            </div>
+                            <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+
+                                {this.state.following}
+
+                                {this.state.following.length <= 0 &&
+
+                                    <section className="fore-zero pt-5 padding-bottom">
+                                        <div className="container">
+                                            <div className="section-wrapper">
+                                                <div className="zero-item">
+
+                                                    <div className="zero-content">
+                                                        <h2>Not Following Anyone</h2>
+                                                        <p>{this?.state?.user?.username} is not following anyone.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </section>
+                                }
+
+                            </div>
                         </div>
 
 

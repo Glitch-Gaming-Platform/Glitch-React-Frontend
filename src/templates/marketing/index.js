@@ -22,6 +22,7 @@ import ContactPage from "./pages/misc/contact";
 import DataRemovalPage from "./pages/misc/dataremoval";
 import GDPRPage from "./pages/misc/gdpr";
 import AccessDeniedPage from "./pages/misc/accessdenied";
+import BenefitsPage from './pages/misc/benefits';
 
 import AuthFacebook from "./pages/auth/auth_facebook";
 import AuthTwitch from "./pages/auth/auth_twitch";
@@ -81,6 +82,7 @@ function Template() {
           <Route path={Navigate.revenuePage()} element={<RevenuePage />} />
           <Route path={Navigate.featuresPage()} element={<FeaturesPage />} />
           <Route path={Navigate.installationPage()} element={<InstallationPage />} />
+          <Route path={Navigate.benefitsPage()} element={<BenefitsPage />} />
 
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />

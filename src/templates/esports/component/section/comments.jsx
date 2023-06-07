@@ -4,6 +4,8 @@ import Glitch from 'glitch-javascript-sdk';
 import Timestamp from "../element/time";
 import PostInteraction from "./posts/element_interaction";
 import PopupModal from "../element/popup";
+import { Link } from "react-router-dom";
+import Navigate from "../../../../util/Navigate";
 
 const Comments = ({ comments, title }) => {
 
@@ -61,9 +63,9 @@ const Comments = ({ comments, title }) => {
                                 <div className="com-content">
                                     <div className="com-title">
                                         <div className="com-title-meta">
-                                            <a href="#" rel="external nofollow" className="h7">
+                                            <Link to={Navigate.usersProfilePage(val.user.id)} rel="external nofollow" className="h7">
                                                 {val.user.username}
-                                            </a>
+                                            </Link>
                                             <span> <Timestamp timestamp={val.created_at}></Timestamp></span>
                                         </div>
                                         <span className="reply">
