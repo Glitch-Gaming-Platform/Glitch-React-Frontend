@@ -108,7 +108,22 @@ class SignUp extends Component {
             });
 
         } else {
-            this.props.router.navigate(Navigate.accountRegisterStep2());
+
+            let community = Glitch.util.Storage.get('community');
+
+            Glitch.api.Communities.join(community.id).then(response => {
+
+                this.props.router.navigate(Navigate.accountRegisterStep2());
+                
+                this.setState({isLoading : false});
+            }).catch(error => {
+    
+                this.props.router.navigate(Navigate.accountRegisterStep2());
+    
+                this.setState({isLoading : false});
+    
+            });
+            
         }
 
     }

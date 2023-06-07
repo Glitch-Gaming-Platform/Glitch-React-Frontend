@@ -77,7 +77,7 @@ class CommunitiesInvitedRegister extends Component {
         this.setState({isLoading : true});
 
         Glitch.api.Auth.register(data).then((response) => {
-            console.log(response.data.data);
+            
             Glitch.util.Storage.setAuthToken(response.data.data.token.access_token);
             Glitch.util.Storage.set('user_id', response.data.data.id);
             Glitch.util.Session.processAuthentication(response.data.data);

@@ -92,12 +92,7 @@ class RegisterStep2 extends Component {
 
         const blob = Data.dataURItoBlob(image.data_url);
 
-        const formData = new FormData();
-
-        formData.append('image', blob, 'screenshot.png');
-
-
-        Glitch.api.Users.me(formData).then(response => {
+        Glitch.api.Users.uploadAvatarImageBlob(blob).then(response => {
             this.setState({ user: response.data.data, images: [], isLoadingImage : false });
         }).catch(error => {
             this.setState({isLoadingImage : false});

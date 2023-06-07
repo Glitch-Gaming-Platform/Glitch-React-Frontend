@@ -87,6 +87,10 @@ class Header extends Component {
 
         let adminButtonMobile = '';
 
+        let joinButton = '';
+
+        let joinButtonMobile = '';
+
 
         if( Glitch.util.Session.isLoggedIn() && (community?.me?.user_role == Glitch.constants.Roles.ADMINISTRATOR || community?.me?.user_role == Glitch.constants.Roles.MODERATOR || community?.me?.user_role == Glitch.constants.Roles.SUPER_ADMINISTRATOR)) {
             
@@ -100,8 +104,21 @@ class Header extends Component {
             </>);
         }
 
+        if( Glitch.util.Session.isLoggedIn() && !community?.me) {
+
+            joinButton = (<Link to={Navigate.joinPage()} className="login"><i className="icofont-login"></i> <span>Join</span> </Link>);
+
+            joinButtonMobile = (<>
+                <li className="d-block d-sm-none" >
+                    <Link to={Navigate.joinPage()} >Join</Link>
+                </li>
+
+            </>);
+        }
+
         if (Glitch.util.Session.isLoggedIn()) {
             loginOrAccount = (<>
+                {joinButton}
                 <Link to={Navigate.accountMainPage()} className="login"><i className="icofont-user"></i> <span>Account</span> </Link>
                 {adminButton}
                 <Link onClick={(e) => { e.preventDefault(); Glitch.util.Session.end(); window.location = Navigate.homePage() }} className="signup"><i className="icofont-users"></i> <span>Logout</span></Link>
@@ -109,6 +126,7 @@ class Header extends Component {
             </>);
 
             loginOrAccountMobile = (<>
+                {joinButtonMobile}
                 <li className="d-block d-sm-none" >
                     <Link to={Navigate.accountMainPage()} >Account 123</Link>
                 </li>
