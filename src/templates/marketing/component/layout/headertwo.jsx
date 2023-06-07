@@ -140,6 +140,7 @@ class HeaderTwo extends Component {
                                            <li className="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">The Platform</a>
                                                 <ul className="submenu dropdown-menu" aria-labelledby="dropdown">
                                                     <li><Link className="" to={Navigate.featuresPage()}>Features</Link></li>
+                                                    <li><Link className="" to={Navigate.benefitsPage()}>Benefits</Link></li>
                                                     <li><Link className="" to={Navigate.revenuePage()}>Increase Revenue</Link></li>
                                                     <li><Link className="" to={Navigate.marketingPage()}>Enhance Marketing</Link></li>
                                                     <li><Link className="" to={Navigate.installationPage()}>Install Open Source</Link></li>

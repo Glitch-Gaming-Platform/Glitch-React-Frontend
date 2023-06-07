@@ -109,7 +109,7 @@ class CommunitiesAccessibility extends Component {
 
                             
                                         <div className="form-group">
-                                            <button className="d-block default-button" onClick={(e => { this.updateCommunity(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update Accessibility</span></button>
+                                            <button className="d-block default-button" onClick={(e) => { this.updateCommunity(e) }}><span>{this.state.isLoading ? <Loading /> : ''} Update Accessibility</span></button>
                                         </div>
 
                                     </form>

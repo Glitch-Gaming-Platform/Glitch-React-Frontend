@@ -63,7 +63,7 @@ class CommunitiesCss extends Component {
 
             this.setState({ isLoading: false });
 
-            //this.props.router.navigate(Navigate.communitiesManagePage(response.data.data.id));
+            this.props.router.navigate(Navigate.communitiesManagePage(response.data.data.id));
         }).catch(error => {
 
             this.setState({ isLoading: false });
@@ -108,7 +108,7 @@ class CommunitiesCss extends Component {
                                         {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are error(s) in updating the community. Please check the form above."} /> : ''}
 
                                         <div className="form-group">
-                                            <button className="d-block default-button" onClick={(e => { this.updateCommunity(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update CSS</span></button>
+                                            <button className="d-block default-button" onClick={(e) => { this.updateCommunity(e) }}><span>{this.state.isLoading ? <Loading /> : ''} Update CSS</span></button>
                                         </div>
 
                                     </form>

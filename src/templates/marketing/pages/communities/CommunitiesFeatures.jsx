@@ -140,7 +140,7 @@ class CommunitiesFeatures extends Component {
                                         <hr/>
 
                                         <div className="form-group">
-                                            <button className="d-block default-button" onClick={(e => { this.updateCommunity(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update Features</span></button>
+                                            <button className="d-block default-button" onClick={(e) => { this.updateCommunity(e) }}><span>{this.state.isLoading ? <Loading /> : ''} Update Features</span></button>
                                         </div>
 
                                     </form>

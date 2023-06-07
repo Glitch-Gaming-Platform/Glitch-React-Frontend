@@ -24,8 +24,6 @@ class CommunitiesView extends Component {
 
         let id = this.props.router.params.id;
 
-        console.log(id);
-
         Glitch.api.Communities.view(id).then(response => {
             console.log(response);
             this.setState({ community: response.data.data });
