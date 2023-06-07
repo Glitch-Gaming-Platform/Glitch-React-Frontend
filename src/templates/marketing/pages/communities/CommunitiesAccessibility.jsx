@@ -86,7 +86,7 @@ class CommunitiesAccessibility extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Communities'} curPage={'Manage Community'} />
+                <PageHeader title={this.state.community.name +' Accessibility'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     <div className="container">

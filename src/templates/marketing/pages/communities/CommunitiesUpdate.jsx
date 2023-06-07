@@ -27,8 +27,6 @@ class CommunitiesUpdatePage extends Component {
             errors: {},
             isLoading: false,
         };
-
-        this.updateCommunity = this.updateCommunity.bind(this);
     }
 
     componentDidMount() {
@@ -99,7 +97,7 @@ class CommunitiesUpdatePage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Communities'} curPage={'Manage Community'} />
+                <PageHeader title={'Update ' + this.state.community.name +' Community'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     <div className="container">

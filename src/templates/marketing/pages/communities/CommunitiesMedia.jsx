@@ -28,8 +28,6 @@ class CommunitiesMedia extends Component {
             isLoadingBannerImage: false,
             bannerImages: [],
         };
-
-        this.updateCommunity = this.updateCommunity.bind(this);
     }
 
     
@@ -43,7 +41,7 @@ class CommunitiesMedia extends Component {
 
         Glitch.api.Communities.view(id).then(response => {
 
-            this.setState({ community: response.data.data });
+            this.setState({ community : response.data.data });
             this.setState({ data: response.data.data });
 
 
@@ -113,7 +111,7 @@ class CommunitiesMedia extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Communities'} curPage={'Manage Community'} />
+                <PageHeader title={this.state.community.name +' Community Social Profiles'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     <div className="container">

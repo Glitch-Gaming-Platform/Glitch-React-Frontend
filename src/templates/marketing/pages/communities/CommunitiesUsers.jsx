@@ -73,7 +73,7 @@ class CommunitiesUsers extends Component {
             <>
                 <Fragment>
                     <Header />
-                    <PageHeader title={'Communities'} curPage={'Manage Community'} />
+                    <PageHeader title={this.state.community.name +' Users'} curPage={'Manage Community'} />
 
                     <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                         <div className="container">

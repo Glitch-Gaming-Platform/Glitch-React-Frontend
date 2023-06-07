@@ -88,7 +88,7 @@ class CommunitiesCname extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Communities'} curPage={'Manage Community'} />
+                <PageHeader title={this.state.community.name +' CName'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     <div className="container">

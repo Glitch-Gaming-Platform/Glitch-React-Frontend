@@ -9,6 +9,8 @@ import SidebarManageMenu from "../../component/section/communities/menu_side_man
 import CommunityFormSocial from '../../component/section/communities/form_community_social';
 import Loading from '../../component/alerts/Loading';
 import Danger from '../../component/alerts/Danger';
+import timeouts from '../../../../constants/timeouts';
+import Navigate from '../../../../util/Navigate';
 
 
 
@@ -45,6 +47,41 @@ class CommunitiesSocial extends Component {
         })
     }
 
+    updateCommunity(event) {
+
+        if(event){
+            event.preventDefault();
+        }
+
+        let data = this.state.data;
+
+        let id = this.props.router.params.id;
+
+        this.setState({ isLoading: true });
+        
+        Glitch.api.Communities.update(id, data).then(response => {
+
+            this.setState({ isLoading: false });
+
+            this.props.router.navigate(Navigate.communitiesManagePage(response.data.data.id));
+        }).catch(error => {
+
+            this.setState({ isLoading: false });
+
+            let jsonErrors = error?.response?.data;
+
+            if (jsonErrors) {
+
+                this.setState({ errors: jsonErrors });
+
+                setTimeout(() => {
+                    this.setState({ errors: {} });
+                }, timeouts .error_message_timeout)
+            }
+        });
+        
+    }
+
     render() {
 
 
@@ -52,7 +89,7 @@ class CommunitiesSocial extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Communities'} curPage={'Manage Community'} />
+                <PageHeader title={this.state.community.name +' Community Social Profiles'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     <div className="container">

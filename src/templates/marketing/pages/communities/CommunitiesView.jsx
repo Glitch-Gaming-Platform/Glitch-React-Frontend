@@ -15,9 +15,6 @@ class CommunitiesView extends Component {
         this.state = {
             community: {},
         };
-
-
-
     }
 
     componentDidMount() {
@@ -25,7 +22,6 @@ class CommunitiesView extends Component {
         let id = this.props.router.params.id;
 
         Glitch.api.Communities.view(id).then(response => {
-            console.log(response);
             this.setState({ community: response.data.data });
         })
 
@@ -36,7 +32,7 @@ class CommunitiesView extends Component {
             <>
                 <Fragment>
                     <Header />
-                    <PageHeader title={'View Community'} curPage={'Communities'} />
+                    <PageHeader title={this.state.community.name +' Community'} curPage={'Communities'} />
                     <div className=" padding-top padding-bottom">
                         <div className=" container">
                             <div className="stream-wrapper" style={{textAlign: "left"}}>
