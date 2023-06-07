@@ -18,6 +18,7 @@ import Data from "../../../../util/Data";
 import Timestamp from "../../component/element/time";
 import { Link } from "react-router-dom";
 import PostInteraction from "../../component/section/posts/element_interaction";
+import PopupModal from "../../component/element/popup";
 
 
 class PostViewPage extends Component {
@@ -29,6 +30,7 @@ class PostViewPage extends Component {
             comments: [],
             comment_text: '',
             errors: {},
+            isLoginModalOpen: false,
 
         };
     }
@@ -46,24 +48,32 @@ class PostViewPage extends Component {
 
     submitComment(e) {
 
-        let id = this.props.router.params.id;
+        if (Glitch.util.Session.isLoggedIn()) {
+            let id = this.props.router.params.id;
 
-        let data = {
-            parent_id: id,
-            content: this.state.comment_text,
-            title: 'Re: ' + this.state.post.title,
-            type: Glitch.constants.PostTypes.TEXT
-        };
+            let data = {
+                parent_id: id,
+                content: this.state.comment_text,
+                title: 'Re: ' + this.state.post.title,
+                type: Glitch.constants.PostTypes.TEXT
+            };
 
-        Glitch.api.Posts.create(data).then(response => {
-            this.setState(prevState => ({
-                comments: [response.data.data, ...prevState.comments],
-                comment_text: '',
-            }));
-        }).catch(error => {
+            Glitch.api.Posts.create(data).then(response => {
+                this.setState(prevState => ({
+                    comments: [response.data.data, ...prevState.comments],
+                    comment_text: '',
+                }));
+            }).catch(error => {
 
-        });
+            });
+        } else {
+            this.setState({ isLoginModalOpen: true });
+        }
 
+    }
+
+    closeLoginModal() {
+        this.setState({ isLoginModalOpen: false });
     }
 
 
@@ -185,6 +195,12 @@ class PostViewPage extends Component {
                     </div>
                 </div>
                 <Footer />
+                <PopupModal
+                    isOpen={this.state.isLoginModalOpen}
+                    closeModal={() => this.closeLoginModal()}
+                    title="Login Required"
+                    content="Please login to engage."
+                />
             </Fragment>
         );
     }

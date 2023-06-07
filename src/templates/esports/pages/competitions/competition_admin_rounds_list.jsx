@@ -48,15 +48,19 @@ class CompetitionsRoundsListPage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Tourmanet Rounds'} curPage={'Find A Tournamnet'} />
+                <PageHeader title={ Glitch.util.LabelManager.getCompetitionLabel(false, true) + ' Rounds'} curPage={'Find A ' + Glitch.util.LabelManager.getCompetitionLabel(true, false)} />
 
-                <div className="blog-section blog-single padding-top padding-bottom aside-bg">
+                <div className="container pt-5 mb-3">
+                    <Link className="default-button reverse-effect" to={Navigate.tournamentsRoundsCreate(this.state.tournament.id)}><span><FontAwesomeIcon icon={faPlus} /> Add A Round</span> </Link>
+                </div>
+
+
+                <div className="blog-section blog-single padding-bottom aside-bg">
                     
                     <div className="container">
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
-                                <div className="col-lg-8 col-12">
-                                    <Link className="btn btn-success" to={Navigate.tournamentsRoundsCreate(this.state.tournament.id)}><FontAwesomeIcon icon={faPlus} /> Add A Round</Link>
+                                <div className="col-lg-8 col-12 pe-5">
                                     <br />
                                     <h2>Manage Rounds and Brackets</h2>
                                     <p className="lead">Manage the rounds and brackets for reach round below.</p>

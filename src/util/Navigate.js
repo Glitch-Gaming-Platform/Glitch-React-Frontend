@@ -914,6 +914,12 @@ const Navigate = {
 
         return path;
     },
+    tournamentsTypes : () => {
+
+        let path = app_routes.tournaments_types;
+
+        return path;
+    },
 
 
     //Users

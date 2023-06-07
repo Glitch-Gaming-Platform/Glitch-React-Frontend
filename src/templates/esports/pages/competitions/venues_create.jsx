@@ -36,7 +36,7 @@ class CompetitionsVenuesCreate extends Component {
         let id = this.props.router.params.id;
 
         Glitch.api.Competitions.view(id).then(response => {
-            this.setState({ tournament: response.data });
+            this.setState({ tournament: response.data.data });
         }).catch(error => {
 
         });

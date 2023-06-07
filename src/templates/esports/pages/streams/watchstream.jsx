@@ -17,6 +17,7 @@ import Data from "../../../../util/Data";
 import Glitch from 'glitch-javascript-sdk';
 import CommentForm from "../../component/form/comment";
 import Comments from "../../component/section/comments";
+import PopupModal from "../../component/element/popup";
 
 
 
@@ -29,7 +30,7 @@ class StreamsWatchPage extends Component {
             events: [],
             errors: {},
             stream: {},
-            meta : '',
+            meta: '',
             profile: '',
             broadcast_widget: '',
             isLive: '',
@@ -58,10 +59,10 @@ class StreamsWatchPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Glitch.api.Posts.list({event_id : id, withChildren : true}).then(response => {
+        Glitch.api.Posts.list({ event_id: id, withChildren: true }).then(response => {
             this.setState({ post: response.data.data });
 
-            if(response.data.data) {
+            if (response.data.data) {
                 this.setState({ comments: response.data.data });
             }
         }).catch(error => {
@@ -75,7 +76,7 @@ class StreamsWatchPage extends Component {
 
         Glitch.api.Events.view(id).then(response => {
 
-            this.setState({ stream: response.data.data, meta: <Meta title={response.data.data.title} description={response.data.data.description} />  });
+            this.setState({ stream: response.data.data, meta: <Meta title={response.data.data.title} description={response.data.data.description} /> });
 
             if (response.data.data.is_live) {
                 this.setState({ isLive: <Success message={"Is Live"} /> });
@@ -138,24 +139,33 @@ class StreamsWatchPage extends Component {
 
     submitComment(e) {
 
-        let id = this.props.router.params.id;
+        if (Glitch.util.Session.isLoggedIn()) {
+            let id = this.props.router.params.id;
 
-        let data = {
-            content: this.state.comment_text,
-            title: 'Re: ' + this.state.stream.title,
-            type: Glitch.constants.PostTypes.TEXT,
-            event_id : id
-        };
+            let data = {
+                content: this.state.comment_text,
+                title: 'Re: ' + this.state.stream.title,
+                type: Glitch.constants.PostTypes.TEXT,
+                event_id: id
+            };
 
-        Glitch.api.Posts.create(data).then(response => {
-            this.setState(prevState => ({
-                comments: [response.data.data, ...prevState.comments],
-                comment_text: '',
-            }));
-        }).catch(error => {
+            Glitch.api.Posts.create(data).then(response => {
+                this.setState(prevState => ({
+                    comments: [response.data.data, ...prevState.comments],
+                    comment_text: '',
+                }));
+            }).catch(error => {
 
-        });
+            });
+            
+        } else {
+            this.setState({ isLoginModalOpen: true });
+        }
 
+    }
+
+    closeLoginModal() {
+        this.setState({ isLoginModalOpen: false });
     }
 
     render() {
@@ -229,6 +239,12 @@ class StreamsWatchPage extends Component {
                     </div>
                 </section>
                 <Footer />
+                <PopupModal
+                    isOpen={this.state.isLoginModalOpen}
+                    closeModal={() => this.closeLoginModal()}
+                    title="Login Required"
+                    content="Please login to engage."
+                />
             </Fragment>
         );
     }

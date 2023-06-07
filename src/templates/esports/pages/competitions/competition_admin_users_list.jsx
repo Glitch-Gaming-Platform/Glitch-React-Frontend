@@ -50,14 +50,14 @@ class CompetitionsRoundsUsersPage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Tourmanet Users'} curPage={'Manage Tournamnet'} />
+                <PageHeader title={Glitch.util.LabelManager.getCompetitionLabel(true, false) + ' ' + Glitch.util.LabelManager.getUserLabel(true, false)} curPage={'Manage Tournamnet'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     
                     <div className="container">
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
-                                <div className="col-lg-8 col-12">
+                                <div className="col-lg-8 col-12 pe-5">
                                     <Link className="btn btn-success" to={Navigate.tournamentsUsersInvite(this.state.tournament.id)}><FontAwesomeIcon icon={faPlus} /> Invite {Glitch.util.LabelManager.getUserLabel(false, true)}</Link>
                                     <br />
                                     <h2>{Glitch.util.LabelManager.getUserLabel(true, true)}</h2>
