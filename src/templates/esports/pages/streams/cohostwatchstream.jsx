@@ -2,7 +2,6 @@ import { VideoConferencing } from "invirtu-react-widgets";
 import { Component, Fragment } from "react";
 import HasAccess from "../../../../util/HasAccess";
 import Navigate from "../../../../util/Navigate";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
@@ -37,7 +36,7 @@ class CohostWatchStreamPage extends Component {
 
             Glitch.api.Events.view(id).then(response => {
 
-                if(!HasAccess.userInList(Session.getID(), response.data.data.speakers)){
+                if(!HasAccess.userInList(Glitch.util.Session.getID(), response.data.data.speakers)){
                     //this.props.router.navigate(Navigate.accessDeniedPage());
                 }
 

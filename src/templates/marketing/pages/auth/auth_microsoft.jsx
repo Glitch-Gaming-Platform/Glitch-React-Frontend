@@ -1,16 +1,11 @@
 import { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
-import Storage from "../../../../util/Storage";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
-
+import Glitch from 'glitch-javascript-sdk';
 
 const title = "Authenticate With Microsoft";
 
@@ -38,9 +33,9 @@ class AuthMicrosoft extends Component {
 
         if (token) {
 
-            Requests.authOneTimeLogin({ token: token }).then(response => {
-                Storage.setAuthToken(response.data.token.access_token);
-                Storage.set('user_id', response.data.id);
+            Glitch.api.Auth.oneTimeLogin( token ).then(response => {
+                Glitch.util.Storage.setAuthToken(response.data.data.token.access_token);
+                Glitch.util.Storage.set('user_id', response.data.data.id);
 
                 this.props.router.navigate(Navigate.streamsPage());
             }).catch(error => {
@@ -56,9 +51,9 @@ class AuthMicrosoft extends Component {
 
         let redirect = process.env.REACT_APP_OAUTH_MICROSOFT_URL;
 
-        if(Session.isLoggedIn()) {
+        if(Glitch.util.Session.isLoggedIn()) {
 
-            Requests.userOneTimeToken().then((response) => {
+            Glitch.util.Requests.userOneTimeToken().then((response) => {
             
             if(response.data.one_time_login_token){
                     redirect += '?token=' + response.data.one_time_login_token;
@@ -68,13 +63,11 @@ class AuthMicrosoft extends Component {
 
             }).catch((error) => {
 
-                let jsonErrors = Response.parseJSONFromError(error);
-
-                if(jsonErrors) {
-                    this.setState({errors : jsonErrors});
-
-                    setTimeout(() =>{
-                        this.setState({errors : {}});
+                if (error.response && error.response.data) {
+                    this.setState({ errors: error.response.data });
+    
+                    setTimeout(() => {
+                        this.setState({ errors: {} });
                     }, timeouts.error_message_timeout)
                 }
             });

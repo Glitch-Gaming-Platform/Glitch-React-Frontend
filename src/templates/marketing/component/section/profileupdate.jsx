@@ -1,15 +1,12 @@
 import { Component } from "react";
-import { Autoplay, Navigation } from "swiper";
-import { Swiper } from "swiper/react";
 import ImageUploading from 'react-images-uploading';
-import Requests from "../../../../util/Requests";
 import Data from "../../../../util/Data";
 import Loading from "../alerts/Loading";
 import Danger from "../alerts/Danger";
 import Textarea from "../form/textarea";
-import Response from "../../../../util/Response";
 import Alerts from "../../../../util/Alerts";
 import timeouts from "../../../../constants/timeouts";
+import Glitch from 'glitch-javascript-sdk';
 
 
 const Name = "Rajib Ahmed";
@@ -73,7 +70,7 @@ class ProfileUpdateHeader extends Component {
 
         this.setState({isLoading : true});
 
-        Requests.updateAccount(data).then(response => {
+        Glitch.api.Users.update(data).then(response => {
            
             this.setState({isLoading : false});
 
@@ -84,13 +81,11 @@ class ProfileUpdateHeader extends Component {
 
             this.setState({isLoading : false});
 
-            let jsonErrors = Response.parseJSONFromError(error);
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-            if (jsonErrors) {
-                this.setState({ errors: jsonErrors });
-
-                setTimeout(() => {
-                    this.setState({ errors: {} });
+                setTimeout(() =>{
+                    this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
             }
         })
@@ -110,12 +105,8 @@ class ProfileUpdateHeader extends Component {
 
         const blob = Data.dataURItoBlob(image.data_url);
 
-        const formData = new FormData();
-
-        formData.append('image', blob, 'screenshot.png');
-
-        Requests.userUploadAvatar(formData).then(response => {
-            this.setState({ user: response.data, images: [], isLoadingImage : false });
+        Glitch.api.Users.uploadAvatarImageBlob(blob).then(response => {
+            this.setState({ user: response.data.data, images: [], isLoadingImage : false });
         }).catch(error => {
 
             this.setState({isLoadingImage : false});

@@ -1,8 +1,7 @@
 import { Component } from "react";
-import { Link } from "react-router-dom";
 import Alerts from "../../../../util/Alerts";
-import Requests from "../../../../util/Requests";
-import Session from "../../../../util/Session";
+import Glitch from 'glitch-javascript-sdk';
+
 
 class FollowButton extends Component {
 
@@ -21,31 +20,30 @@ class FollowButton extends Component {
 
         let followers = this.props.user.followers;
 
-        if(followers && Session.isLoggedIn()) {
+        if (followers && Glitch.util.Session.isLoggedIn()) {
             followers.forEach(follower => {
 
-                if(follower.id == Session.getID()){
-
-                    this.setState({text : "Unfollow"});
-
+                if (follower.id == Glitch.util.Session.getID()) {
+                    this.setState({ text: "Unfollow" });
                 }
             });
         }
 
-        
+
     }
 
     toggleFollow(event) {
+        
         event.preventDefault();
 
-        if(Session.isLoggedIn()) {
+        if (Glitch.util.Session.isLoggedIn()) {
 
-            Requests.userToggleFollow(this.props.user.id).then((response) => {
+            Glitch.api.Users.followToggle(this.props.user.id).then((response) => {
 
-                if(response.data.unfollowed== true) {
-                    this.setState({text : "Follow"});
+                if (response.data.data.unfollowed == true) {
+                    this.setState({ text: "Follow" });
                 } else {
-                    this.setState({text : "Unfollow"});
+                    this.setState({ text: "Unfollow" });
                 }
             }).catch(error => {
                 console.log(error);
@@ -53,15 +51,15 @@ class FollowButton extends Component {
 
         } else {
 
-            
+
             Alerts.display('Login Required', 'You must login in order to follow a user.', 'error');
         }
     }
 
-    render() { 
+    render() {
         return (
             <>
-                 <button type="button" className="d-block default-button" onClick={(e => {this.toggleFollow(e)})}><span>{this.state.text}</span></button>
+                <button type="button" className="d-block default-button" onClick={(e => { this.toggleFollow(e) })}><span>{this.state.text}</span></button>
             </>
         )
     }

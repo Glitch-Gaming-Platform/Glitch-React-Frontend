@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { NavLink, Link } from 'react-router-dom';
 import Navigate from "../../../../util/Navigate";
-import Session from "../../../../util/Session";
+import Glitch from 'glitch-javascript-sdk';
 
 let SocialMideaList = []
 
@@ -66,10 +66,10 @@ class Header extends Component {
 
         let loginOrAccountMobile = '';
 
-        if (Session.isLoggedIn()) {
+        if (Glitch.util.Session.isLoggedIn()) {
             loginOrAccount = (<>
                 <Link to={Navigate.accountMainPage()} className="login"><i className="icofont-user"></i> <span>Account</span> </Link>
-                <Link onClick={(e) => { e.preventDefault(); Session.end(); window.location = Navigate.homePage() }} className="signup"><i className="icofont-users"></i> <span>Logout</span></Link>
+                <Link onClick={(e) => { e.preventDefault(); Glitch.util.Session.end(); window.location = Navigate.homePage() }} className="signup"><i className="icofont-users"></i> <span>Logout</span></Link>
 
             </>);
 
@@ -78,7 +78,7 @@ class Header extends Component {
                     <Link to={Navigate.accountMainPage()} >Account</Link>
                 </li>
                 <li className="d-block d-sm-none" >
-                    <Link to={"#"} onClick={(e) => { e.preventDefault(); Session.end(); window.location = Navigate.homePage() }} >Logout</Link>
+                    <Link to={"#"} onClick={(e) => { e.preventDefault(); Glitch.util.Session.end(); window.location = Navigate.homePage() }} >Logout</Link>
                 </li>
 
             </>);
@@ -145,12 +145,12 @@ class Header extends Component {
                                                 <Link to={Navigate.communitiesPage()} >Communities</Link>
                                             </li>
 
-                                            <li class="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">The Platform</a>
-                                                <ul class="submenu dropdown-menu" aria-labelledby="dropdown">
-                                                    <li><Link class="" to={Navigate.featuresPage()}>Features</Link></li>
-                                                    <li><Link class="" to={Navigate.revenuePage()}>Increase Revenue</Link></li>
-                                                    <li><Link class="" to={Navigate.marketingPage()}>Enhance Marketing</Link></li>
-                                                    <li><Link class="" to={Navigate.installationPage()}>Install Open Source</Link></li>
+                                           <li className="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">The Platform</a>
+                                                <ul className="submenu dropdown-menu" aria-labelledby="dropdown">
+                                                    <li><Link className="" to={Navigate.featuresPage()}>Features</Link></li>
+                                                    <li><Link className="" to={Navigate.revenuePage()}>Increase Revenue</Link></li>
+                                                    <li><Link className="" to={Navigate.marketingPage()}>Enhance Marketing</Link></li>
+                                                    <li><Link className="" to={Navigate.installationPage()}>Install Open Source</Link></li>
                                                 </ul>
                                             </li>
 

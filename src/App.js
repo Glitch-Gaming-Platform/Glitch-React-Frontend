@@ -74,8 +74,6 @@ const App = () => {
   function getDomain() {
     const currentDomain = window.location.hostname;
 
-    console.log(currentDomain);
-
     if (currentDomain === process.env.REACT_APP_SITE_DOMAIN || currentDomain.endsWith(process.env.REACT_APP_SITE_DOMAIN)) {
       const subdomain = currentDomain.split('.')[0];
       return subdomain;

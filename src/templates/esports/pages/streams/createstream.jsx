@@ -1,9 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
@@ -28,7 +25,7 @@ class StreamCreatePage extends Component {
             isLoading : false,
         };
 
-        if(!Session.isLoggedIn()){
+        if(!Glitch.util.Session.isLoggedIn()){
             window.location = Navigate.authLogin();
         }
     }

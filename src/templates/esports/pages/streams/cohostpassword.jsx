@@ -1,7 +1,5 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
-import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Footer from "../../component/layout/footer";
@@ -34,15 +32,13 @@ class CohostPasswordPage extends Component {
 
         }).catch((error) => {
 
-            console.log(error);
+            if (error.response && error.response.data) {
+                this.setState({ errors: error.response.data });
 
-            let response = Response.parseJSONFromError(error)
-
-            this.setState({errors : [response.message]});
-
-            setTimeout(() =>{
-                this.setState({errors : []});
-            }, timeouts.error_message_timeout)
+                setTimeout(() => {
+                    this.setState({ errors: {} });
+                }, timeouts.error_message_timeout)
+            }
         });
 
     }

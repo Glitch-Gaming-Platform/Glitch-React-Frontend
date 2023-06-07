@@ -1,8 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
 import withRouter from "../../../../util/withRouter";
 import Loading from "../../component/alerts/Loading";
 import Footer from "../../component/layout/footer";
@@ -33,7 +31,7 @@ class CompetitionsRoundCreate extends Component {
         let id = this.props.router.params.id;
 
         Glitch.api.Competitions.view(id).then(response => {
-            this.setState({ tournament: response.data });
+            this.setState({ tournament: response.data.data });
         }).catch(error => {
 
         });
@@ -45,9 +43,11 @@ class CompetitionsRoundCreate extends Component {
 
         let data = this.state.data;
 
+        let id = this.props.router.params.id;
+
         this.setState({ isLoading: true });
 
-        Requests.tournamentsVenueCreate(data).then(response => {
+        Glitch.api.Competitions.createVenue(id, data).then(response => {
 
             this.setState({ isLoading: false });
 
@@ -56,11 +56,8 @@ class CompetitionsRoundCreate extends Component {
 
             this.setState({ isLoading: false });
 
-            let jsonErrors = Response.parseJSONFromError(error);
-
-            if (jsonErrors) {
-
-                this.setState({ errors: jsonErrors });
+            if (error.response && error.response.data) {
+                this.setState({ errors: error.response.data });
 
                 setTimeout(() => {
                     this.setState({ errors: {} });

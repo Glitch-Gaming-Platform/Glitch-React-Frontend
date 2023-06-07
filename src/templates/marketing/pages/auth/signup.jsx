@@ -2,10 +2,6 @@ import { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
-import Storage from "../../../../util/Storage";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
@@ -45,7 +41,7 @@ class SignUp extends Component {
 
             let iscohost = params.iscohost;
     
-            if(iscohost && Session.isLoggedIn()) {
+            if(iscohost && Glitch.util.Session.isLoggedIn()) {
                 this.goToNextScreen();
             }
 
@@ -67,11 +63,11 @@ class SignUp extends Component {
 
         this.setState({isLoading : true});
 
-        Requests.authRegister(data).then((response) => {
-            Storage.setAuthToken(response.data.token.access_token);
-            Storage.set('user_id', response.data.id);
+        Glitch.api.Auth.register(data).then((response) => {
+            Glitch.util.Storage.setAuthToken(response.data.data.token.access_token);
+            Glitch.util.Storage.set('user_id', response.data.data.id);
 
-            Session.processAuthentication(response.data);
+            Glitch.util.Session.processAuthentication(response.data.data);
 
             this.setState({isLoading : false});
 
@@ -80,10 +76,8 @@ class SignUp extends Component {
 
             this.setState({isLoading : false});
 
-            let jsonErrors = Response.parseJSONFromError(error);
-
-            if(jsonErrors) {
-                this.setState({errors : jsonErrors});
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
                 setTimeout(() =>{
                     this.setState({errors : {}});
@@ -107,7 +101,7 @@ class SignUp extends Component {
 
         if(iscohost) {
 
-            Requests.eventsAcceptInvite(stream_id, {token : token}).then(response => {
+            Glitch.api.Events.acceptInvite(stream_id, token ).then(response => {
                 this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
             }).catch(error => {
                 this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));

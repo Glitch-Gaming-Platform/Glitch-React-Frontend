@@ -1,8 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
@@ -66,14 +64,11 @@ class CompetitionsInfoPage extends Component {
 
             this.setState({ isLoading: false });
 
-            let jsonErrors = Response.parseJSONFromError(error);
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-            if (jsonErrors) {
-
-                this.setState({ errors: jsonErrors });
-
-                setTimeout(() => {
-                    this.setState({ errors: {} });
+                setTimeout(() =>{
+                    this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
             }
         })
