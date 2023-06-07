@@ -20,7 +20,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                 {errors && errors.allow_team_signup && errors.allow_team_signup.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-                <p className="small">This option will allow teams to register for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} when enabled.</p>
+                <p className="small">This option will allow teams to register for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} when enabled. Otherwise teams will not be able to sign-up.</p>
             </div>
 
             <div className="form-group-checkbox mb-5">
@@ -30,7 +30,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
                 {errors && errors.allow_individual_signup && errors.allow_individual_signup.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-                <p className="small">This option will allow indinvidual users to register for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} when enabled.</p>
+                <p className="small">This option will allow indinvidual users to register for the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} when enabled. Other individuals will not be able to sign-up.</p>
             </div>
 
 
@@ -97,7 +97,7 @@ export default function CompetitionFormSignupDetails({ allowTeamSignupValue, all
             <div className="form-group text-left">
                 <label>Team Registration Price (Optional)</label>
                 <Input type="number" step="0.01" name="team_registration_price" value={teamRegistrationPriceValue} onChange={teamRegistrationPriceOnChange}  />
-                <p className="small">Set the price for a teamto register. 0 or blank will allow free registration.</p>
+                <p className="small">Set the price for a team to register. 0 or blank will allow free registration.</p>
                 {errors && errors.team_registration_price && errors.team_registration_price.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}

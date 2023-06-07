@@ -63,7 +63,7 @@ class CompetitionsCreateBracketsPage extends Component {
 
         let round_id = this.props.router.params.round_id;
 
-        Glitch.api.Competitions.createRound(id, round_id, data).then(response => {
+        Glitch.api.Competitions.createBracket(id, round_id, data).then(response => {
 
             this.setState({ isLoading: false });
 

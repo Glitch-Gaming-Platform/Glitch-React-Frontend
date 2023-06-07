@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Wysiwyg from "./wysiwyg";
+import PopupModal from "../element/popup";
 
 const title = "Leave a Comment";
 
@@ -7,6 +8,7 @@ const CommentForm = ({commentOnChange, commentValue, commentSubmit}) => {
 
 
   return (
+    <>
     <div id="respond" className="comment-respond">
       <h6 className="h7">{title}</h6>
       <div className="add-comment">
@@ -20,6 +22,7 @@ const CommentForm = ({commentOnChange, commentValue, commentSubmit}) => {
         </form>
       </div>
     </div>
+    </>
   );
 };
 

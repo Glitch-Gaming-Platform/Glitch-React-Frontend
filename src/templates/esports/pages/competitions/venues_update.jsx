@@ -50,7 +50,7 @@ class CompetitionsVenuesUpdate extends Component {
         let venue_id = this.props.router.params.venue_id;
 
         Glitch.api.Competitions.showVenue(id, venue_id).then(response => {
-            this.setState({ data: response.data });
+            this.setState({ data: response.data.data });
         }).catch(error => {
 
         });

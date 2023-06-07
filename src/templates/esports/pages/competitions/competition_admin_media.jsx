@@ -66,13 +66,9 @@ class CompetitionsMediaPage extends Component {
 
         const blob = Data.dataURItoBlob(image.data_url);
 
-        const formData = new FormData();
-
-        formData.append('image', blob, 'screenshot.png');
-
         let id = this.props.router.params.id;
 
-        Glitch.api.Competitions.uploadCompetitionMainImageBlob(id, formData).then(response => {
+        Glitch.api.Competitions.uploadCompetitionMainImageBlob(id, blob).then(response => {
             this.setState({ tournament: response.data.data, mainImages: [], isLoadingMainImage: false });
         }).catch(error => {
 
@@ -93,13 +89,9 @@ class CompetitionsMediaPage extends Component {
 
         const blob = Data.dataURItoBlob(image.data_url);
 
-        const formData = new FormData();
-
-        formData.append('image', blob, 'screenshot.png');
-
         let id = this.props.router.params.id;
 
-        Glitch.api.Competitions.uploadCompetitionsBannerImageBlob(id, formData).then(response => {
+        Glitch.api.Competitions.uploadCompetitionsBannerImageBlob(id, blob).then(response => {
             this.setState({ tournament: response.data.data, bannerImages: [], isLoadingBannerImage: false });
         }).catch(error => {
 
@@ -119,7 +111,7 @@ class CompetitionsMediaPage extends Component {
                     <div className="container">
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
-                                <div className="col-lg-8 col-12">
+                                <div className="col-lg-8 col-12 pe-5">
                                     <h3 className="title">Update {Glitch.util.LabelManager.getCompetitionLabel(false, true)} Media</h3>
                                     <hr />
                                     <div className="text-left" style={{ textAlign: "left" }}>
@@ -128,6 +120,7 @@ class CompetitionsMediaPage extends Component {
                                             <>
                                                 <h5>Current Main Image</h5>
                                                 <img src={this.state.tournament.main_image} className="img-fluid" />
+                                                <hr/>
                                             </>
                                             : ''}
 
@@ -135,6 +128,7 @@ class CompetitionsMediaPage extends Component {
                                             <>
                                                 <h5>Current Banner Image</h5>
                                                 <img src={this.state.tournament.banner_image} className="img-fluid" />
+                                                <hr />
                                             </>
                                             : ''}
 

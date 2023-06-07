@@ -57,15 +57,19 @@ class CompetitionsVenuesList extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Manage Tournaments Venues'} curPage={'Find A Tournamnet'} />
+                <PageHeader title={'Manage ' + Glitch.util.LabelManager.getCompetitionLabel(false, true) +' Venues'} curPage={'Find A ' + Glitch.util.LabelManager.getCompetitionLabel(false, true)} />
 
-                <div className="blog-section blog-single padding-top padding-bottom aside-bg">
+                <div className="container pt-5 mb-3">
+                    <Link className="default-button reverse-effect" to={Navigate.tournamentsVenuesCreate(this.state.tournament.id)}><span>Create Venue</span> </Link>
+                </div>
+
+
+                <div className="blog-section blog-single padding-bottom aside-bg">
                     <div className="container">
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
-                                <div className="col-lg-8 col-12">
+                                <div className="col-lg-8 col-12 pe-5">
                                     <article>
-                                        <Link to={Navigate.tournamentsVenuesCreate(this.state.tournament.id)} className="btn btn-success"><FontAwesomeIcon icon={faPlus} /> Add Venue</Link>
                                         <h2>{this.state.tournament.name} Venues</h2>
 
                                         {this.state.venues && this.state.venues.map(function (venue, index) {

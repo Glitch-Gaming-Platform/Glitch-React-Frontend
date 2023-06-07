@@ -48,9 +48,9 @@ class CompetitionsCreatePage extends Component {
             
             this.setState({ isLoading: false });
 
-            if (error.response && error.response.data.data) {
+            if (error.response && error.response.data) {
 
-                this.setState({ errors: error.response.data.data });
+                this.setState({ errors: error.response.data });
 
                 setTimeout(() => {
                     this.setState({ errors: {} });
@@ -68,7 +68,7 @@ class CompetitionsCreatePage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Create Tournamnet'} curPage={'Compete'} />
+                <PageHeader title={'Create A ' + Glitch.util.LabelManager.getCompetitionLabel(false, true)} curPage={'Compete'} />
                 <div className=" padding-top padding-bottom">
                     <div className=" container">
                         <div className="stream-wrapper">

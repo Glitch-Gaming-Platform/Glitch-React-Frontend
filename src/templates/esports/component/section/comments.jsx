@@ -3,34 +3,48 @@ import React, { useState } from "react";
 import Glitch from 'glitch-javascript-sdk';
 import Timestamp from "../element/time";
 import PostInteraction from "./posts/element_interaction";
+import PopupModal from "../element/popup";
 
 const Comments = ({ comments, title }) => {
 
     const [children, setChildren] = useState([]);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const openModal = () => {
+        setModalIsOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalIsOpen(false);
+    };
 
     const submitComment = (e, parent_comment, commentText, tmp) => {
         e.preventDefault();
 
-        let data = {
-            parent_id: parent_comment.id,
-            content: commentText,
-            title: 'Re: ' + parent_comment.title,
-            type: Glitch.constants.PostTypes.TEXT, // Set the post type
-        };
+        if (Glitch.util.Session.isLoggedIn()) {
+            let data = {
+                parent_id: parent_comment.id,
+                content: commentText,
+                title: 'Re: ' + parent_comment.title,
+                type: Glitch.constants.PostTypes.TEXT, // Set the post type
+            };
 
-        // Make the API request to submit the new comment
-        Glitch.api.Posts.create(data).then(response => {
+            // Make the API request to submit the new comment
+            Glitch.api.Posts.create(data).then(response => {
 
-            if (!parent_comment.children) {
-                parent_comment.children = [];
-            }
-            parent_comment.children.unshift(response.data.data);
-            setChildren([...children]); 
-            e.target.comment.value = "";
+                if (!parent_comment.children) {
+                    parent_comment.children = [];
+                }
+                parent_comment.children.unshift(response.data.data);
+                setChildren([...children]);
+                e.target.comment.value = "";
 
-        }).catch(error => {
+            }).catch(error => {
 
-        });
+            });
+        } else {
+            openModal();
+        }
     };
 
     return (
@@ -59,7 +73,7 @@ const Comments = ({ comments, title }) => {
                                         </span>
                                     </div>
                                     <div dangerouslySetInnerHTML={{ __html: val.content }} />
-                                    
+
                                     <div>
                                         <PostInteraction post_id={val.id} interaction={Glitch.constants.SocialInteractions.LIKE} count={val?.meta?.interactions && val?.meta?.interactions[Glitch.constants.SocialInteractions.LIKE]} />
                                         <PostInteraction post_id={val.id} interaction={Glitch.constants.SocialInteractions.THUMBS_DOWN} count={val?.meta?.interactions && val?.meta?.interactions[Glitch.constants.SocialInteractions.THUMBS_DOWN]} />
@@ -74,7 +88,7 @@ const Comments = ({ comments, title }) => {
                                             name="comment"
                                             placeholder="Leave a comment"
                                         ></textarea>
-                                        <button type="submit">Submit</button>
+                                        <button className="btn btn-success btn-sm" type="submit">Submit</button>
                                     </form>
                                     <Comments comments={val.children} key={`${i}_child`} />
                                 </div>
@@ -82,7 +96,14 @@ const Comments = ({ comments, title }) => {
                         </li>
                     ))}
                 </ul>
-                
+
+                <PopupModal
+                    isOpen={modalIsOpen}
+                    closeModal={closeModal}
+                    title="Login Required"
+                    content="Please login to engage."
+                />
+
             </div>
         ) : (
             <></>

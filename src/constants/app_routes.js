@@ -144,6 +144,8 @@
     tournaments_brackets_update : '/tournmanets/:id/rounds/:round_id/brackets/:bracket_id/update',
     tournaments_brackets_delete : '/tournmanets/:id/rounds/:round_id/brackets/:bracket_id/delete',
 
+    tournaments_types : '/tournmanets/types',
+
     //users routes
     users_list : '/users',
     users_profile : '/users/:id/profile',
