@@ -29,8 +29,10 @@ class CommunitiesMedia extends Component {
             bannerImages: [],
         };
 
+        this.updateCommunity = this.updateCommunity.bind(this);
     }
 
+    
     componentDidMount() {
         this.loadCommunity();
     }

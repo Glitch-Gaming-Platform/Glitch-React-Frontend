@@ -8,9 +8,9 @@ export default function CommunityFormMedia({ logoValue, logoOnChange, saveLogo, 
 
     return (
         <>
-        <h3>Update Main Image</h3>
+        <h3>Update Community Logo</h3>
         <div className="form-group text-left">
-            <label>Main Image</label>
+            <label>Logo</label>
             <ImageUploading
                 multiple
                 value={logoValue}
@@ -56,9 +56,9 @@ export default function CommunityFormMedia({ logoValue, logoOnChange, saveLogo, 
         </div>
 
 
-        <h3>Update Banner Image</h3>
+        <h3>Update Community Banner</h3>
         <div className="form-group text-left">
-            <label>Main Image</label>
+            <label>Banner Image</label>
             <ImageUploading
                 multiple
                 value={bannerImageValue}

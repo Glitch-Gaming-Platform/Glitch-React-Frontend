@@ -28,6 +28,7 @@ class CommunitiesUpdatePage extends Component {
             isLoading: false,
         };
 
+        this.updateCommunity = this.updateCommunity.bind(this);
     }
 
     componentDidMount() {
@@ -60,7 +61,9 @@ class CommunitiesUpdatePage extends Component {
 
     updateCommunity(event) {
 
-        event.preventDefault();
+        if(event){
+            event.preventDefault();
+        }
 
         let data = this.state.data;
 
@@ -93,8 +96,6 @@ class CommunitiesUpdatePage extends Component {
 
     render() {
 
-
-
         return (
             <Fragment>
                 <Header />
@@ -123,7 +124,7 @@ class CommunitiesUpdatePage extends Component {
                                     {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are error(s) in updating the community. Please check the form above."} /> : ''}
 
                                     <div className="form-group">
-                                        <button className="d-block default-button" onClick={(e => { this.updateCommunity(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Update Community</span></button>
+                                        <button className="d-block default-button" onClick={(e) => { this.updateCommunity(e) }}><span>{this.state.isLoading ? <Loading /> : ''} Update Community</span></button>
                                     </div>
 
                                 </form>
