@@ -1,6 +1,5 @@
 import { VideoConferencing } from "invirtu-react-widgets";
 import { Component, Fragment } from "react";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
@@ -24,7 +23,7 @@ class WatchRecordingPage extends Component {
 
     componentDidMount() {
 
-        if(Session.isLoggedIn()){
+        if(Glitch.util.Session.isLoggedIn()){
             
             Glitch.api.Users.me().then(response => {
 

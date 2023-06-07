@@ -1,11 +1,8 @@
 import { Component, Fragment } from "react";
-import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
-import VideoSection from "../../component/section/video";
-
 import Glitch from 'glitch-javascript-sdk';
 import Navigate from "../../../../util/Navigate";
 import { Link } from "react-router-dom";

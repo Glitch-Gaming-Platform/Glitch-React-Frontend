@@ -1,8 +1,6 @@
 import { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
@@ -54,7 +52,7 @@ class AuthGoogle extends Component {
 
         let redirect = process.env.REACT_APP_OAUTH_GOOGLE_URL;
 
-        if(Session.isLoggedIn()) {
+        if(Glitch.util.Session.isLoggedIn()) {
 
             Glitch.api.Users.oneTimeLoginToken().then((response) => {
             

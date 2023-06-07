@@ -33,7 +33,7 @@ class InstallationPage extends Component {
                                             <div className="blog-inner">
 
                                                 <div className="blog-content px-3 py-4">
-                                                    <h3><span class="badge badge-secondary" style={{backgroundColor: "blue"}}>1</span> Installing The Backend</h3>
+                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>1</span> Installing The Backend</h3>
 
                                                     <p>The source of truth for your community application is the backend. The backend code and installation instructions are available here:</p>
 
@@ -51,7 +51,7 @@ class InstallationPage extends Component {
                                             <div className="blog-inner">
 
                                                 <div className="blog-content px-3 py-4">
-                                                    <h3><span class="badge badge-secondary" style={{backgroundColor: "blue"}}>2</span> Installing The Frontend</h3>
+                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>2</span> Installing The Frontend</h3>
 
                                                     <p>After the backend, you can then set up the frontend. The frontend provided is an example application designed to give you an idea of how the system works. You can view the example frontend here:</p>
 
@@ -69,7 +69,7 @@ class InstallationPage extends Component {
                                             <div className="blog-inner">
 
                                                 <div className="blog-content px-3 py-4">
-                                                    <h3><span class="badge badge-secondary" style={{backgroundColor: "blue"}}>3</span> Installing Mobile</h3>
+                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>3</span> Installing Mobile</h3>
 
                                                     <p>Like the frontend, the mobile implementation is meant to serve as an example to guide developers. The mobile implementation example will be completed by the end of February.</p>
 
@@ -84,7 +84,7 @@ class InstallationPage extends Component {
                                             <div className="blog-inner">
 
                                                 <div className="blog-content px-3 py-4">
-                                                    <h3><span class="badge badge-secondary" style={{backgroundColor: "blue"}}>4</span> Customizing The Streaming Experience</h3>
+                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>4</span> Customizing The Streaming Experience</h3>
 
                                                     <p>One of the community's most unique aspects is the ability to live stream the games. The live stream interface is powered by Invirtu/BingeWave, which is a mixture of no-code and low-code video builder. To understand how the implementation works, review the docs here:</p>
 

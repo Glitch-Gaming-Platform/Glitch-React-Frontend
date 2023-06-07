@@ -1,17 +1,16 @@
 import { Component, Fragment } from "react";
-import { Link } from "react-router-dom";
 import Danger from "../../component/alerts/Danger";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
-import SocialMedia from "../../component/section/socialmedia";
 import ImageUploading from 'react-images-uploading';
 import withRouter from "../../../../util/withRouter";
-import Requests from "../../../../util/Requests";
 import Navigate from "../../../../util/Navigate";
 import Data from "../../../../util/Data";
 import Textarea from "../../component/form/textarea";
 import Loading from "../../component/alerts/Loading";
+import Glitch from 'glitch-javascript-sdk';
+import timeouts from "../../../../constants/timeouts";
 
 
 
@@ -35,10 +34,10 @@ class RegisterStep2 extends Component {
 
     componentDidMount() {
 
-        Requests.userMe().then(response => {
+        Glitch.api.Users.me().then(response => {
 
             this.setState({
-                user: response.data,
+                user: response.data.data,
             });
 
         }).catch(error => {
@@ -55,7 +54,7 @@ class RegisterStep2 extends Component {
 
         this.setState({isLoading : true});
 
-        Requests.updateAccount(data).then(response => {
+        Glitch.api.Users.update(data).then(response => {
             
             this.setState({isLoading : false});
 
@@ -65,15 +64,14 @@ class RegisterStep2 extends Component {
             this.setState({isLoading : false});
 
             this.props.router.navigate(Navigate.streamsPage());
-            /*let jsonErrors = Response.parseJSONFromError(error);
 
-            if (jsonErrors) {
-                this.setState({ errors: jsonErrors });
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-                setTimeout(() => {
-                    this.setState({ errors: {} });
+                setTimeout(() =>{
+                    this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
-            }*/
+            }
         })
     }
 
@@ -93,12 +91,8 @@ class RegisterStep2 extends Component {
 
         const blob = Data.dataURItoBlob(image.data_url);
 
-        const formData = new FormData();
-
-        formData.append('image', blob, 'screenshot.png');
-
-        Requests.userUploadAvatar(formData).then(response => {
-            this.setState({ user: response.data, images: [], isLoadingImage : false });
+        Glitch.api.Users.uploadAvatarImageBlob(blob).then(response => {
+            this.setState({ user: response.data.data, images: [], isLoadingImage : false });
         }).catch(error => {
             this.setState({isLoadingImage : false});
             console.log(error)

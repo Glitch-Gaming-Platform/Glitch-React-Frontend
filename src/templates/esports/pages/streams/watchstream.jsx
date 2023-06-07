@@ -7,7 +7,6 @@ import Footer from "../../component/layout/footer";
 import Danger from "../../component/alerts/Danger";
 import Warning from "../../component/alerts/Warning";
 import Success from "../../component/alerts/Success";
-import Session from "../../../../util/Session";
 import Meta from "../../component/layout/meta";
 import ProfileHeader from "../../component/section/profile";
 import RecordingVideo from "../../component/section/recordingvideo";
@@ -41,7 +40,7 @@ class StreamsWatchPage extends Component {
 
     componentDidMount() {
 
-        if (Session.isLoggedIn()) {
+        if (Glitch.util.Session.isLoggedIn()) {
 
             Glitch.api.Users.me().then(response => {
 

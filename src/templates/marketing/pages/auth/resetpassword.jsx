@@ -1,7 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Footer from "../../component/layout/footer";
@@ -39,7 +38,7 @@ class ResetPassword extends Component {
             email : email
         };
 
-        Requests.authResetPassword(data).then((response) => {
+        Glitch.api.Auth.resetPassword(data).then((response) => {
             
             alert("Your password has been reset");
 

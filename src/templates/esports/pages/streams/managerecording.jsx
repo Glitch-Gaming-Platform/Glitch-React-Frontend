@@ -1,9 +1,6 @@
-import { VideoConferencing } from "invirtu-react-widgets";
 import { Component, Fragment } from "react";
 import HasAccess from "../../../../util/HasAccess";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Input from "../../component/form/input";
@@ -29,7 +26,7 @@ class ManageRecordingPage extends Component {
 
     componentDidMount() {
 
-        if (Session.isLoggedIn()) {
+        if (Glitch.util.Session.isLoggedIn()) {
 
             Glitch.api.Users.me().then(response => {
 
@@ -50,13 +47,13 @@ class ManageRecordingPage extends Component {
 
         let id = this.props.router.params.id;
 
-       Glitch.api.Events.view(id).then(response => {
+        Glitch.api.Events.view(id).then(response => {
 
-            if(!HasAccess.userInList(Session.getID(), response.data.data.admins)){
+            if (!HasAccess.userInList(Glitch.util.Session.getID(), response.data.data.admins)) {
                 this.props.router.navigate(Navigate.accessDeniedPage());
             }
 
-            if (response.data.invirtu_id) {
+            if (response.data.data.invirtu_id) {
                 let auth_token = null;
 
                 if (user) {
@@ -64,7 +61,7 @@ class ManageRecordingPage extends Component {
                 }
 
                 this.setState({
-                    event: response.data
+                    event: response.data.data
                 })
 
                 this.filterRecording(response.data);
@@ -88,8 +85,8 @@ class ManageRecordingPage extends Component {
                     this.setState({
                         recording: recording,
                         recording_video: <RecordingVideo video={recording} />,
-                        title : recording.title,
-                        description : recording.description
+                        title: recording.title,
+                        description: recording.description
                     });
                 }
             });
@@ -106,8 +103,8 @@ class ManageRecordingPage extends Component {
         let recording_id = this.props.router.params.subid;
 
         let data = {
-            title : this.state.title,
-            description : this.state.description,
+            title: this.state.title,
+            description: this.state.description,
         };
 
         //Glitch.api.Events

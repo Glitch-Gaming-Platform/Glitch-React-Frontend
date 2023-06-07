@@ -1,6 +1,5 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
-import Response from "../../../../util/Response";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
@@ -43,15 +42,13 @@ class ForgotPassword extends Component {
 
         }).catch((error) => {
 
-            console.log(error);
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-            let response = Response.parseJSONFromError(error)
-
-            this.setState({errors : [response.message], isLoading : false});
-
-            setTimeout(() =>{
-                this.setState({errors : []});
-            }, timeouts.error_message_timeout)
+                setTimeout(() =>{
+                    this.setState({errors : {}});
+                }, timeouts.error_message_timeout)
+            }
         });
 
     }

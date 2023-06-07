@@ -1,8 +1,6 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
@@ -23,7 +21,7 @@ class CompetitionsRegisterUserPage extends Component {
             isLoading: false,
         };
 
-        if (!Session.isLoggedIn()) {
+        if (!Glitch.util.Session.isLoggedIn()) {
             window.location = Navigate.authLogin();
         }
     }
@@ -48,7 +46,7 @@ class CompetitionsRegisterUserPage extends Component {
         event.preventDefault();
 
         let data = {
-            user_id : Session.getID()
+            user_id : Glitch.util.Session.getID()
         };
 
         this.setState({ isLoading: true });
@@ -64,14 +62,11 @@ class CompetitionsRegisterUserPage extends Component {
 
             this.setState({ isLoading: false });
 
-            let jsonErrors = Response.parseJSONFromError(error);
-            
-            if (jsonErrors && jsonErrors.error) {
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-                this.setState({ error: jsonErrors.error });
-
-                setTimeout(() => {
-                    this.setState({ error: null });
+                setTimeout(() =>{
+                    this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
             }
         });

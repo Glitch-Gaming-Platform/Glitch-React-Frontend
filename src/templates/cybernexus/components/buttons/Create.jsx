@@ -5,7 +5,7 @@ const Create = ({name, text, value, onClick}) => {
       value={value} 
       onClick={onClick} 
       className="creat-list-btn">
-      <i class="ico_add-square"></i><span>{text}</span>
+     <i className="ico_add-square"></i><span>{text}</span>
       </button>);
   }
   

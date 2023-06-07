@@ -1,21 +1,12 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
-import Input from "../../component/form/input";
-import Textarea from "../../component/form/textarea";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
-import CompetitionFormBasicInfo from "../../component/section/competitions/form_competition_basic";
-import CompetitionFormMatchDetails from "../../component/section/competitions/form_competition_match";
-import CompetitionFormSignupDetails from "../../component/section/competitions/form_competition_signup";
-import CompetitionFormSocial from "../../component/section/competitions/form_competition_social";
 import RoundFormBasicInfo from "../../component/section/competitions/form_round_basic";
 import Glitch from 'glitch-javascript-sdk';
 
@@ -31,7 +22,7 @@ class CompetitionsCreateRoundsPage extends Component {
             isLoading: false,
         };
 
-        if (!Session.isLoggedIn()) {
+        if (!Glitch.util.Session.isLoggedIn()) {
             window.location = Navigate.authLogin();
         }
     }
@@ -60,7 +51,7 @@ class CompetitionsCreateRoundsPage extends Component {
 
         let id = this.props.router.params.id;
 
-        Requests.tournamentsRoundsCreate(id, data).then(response => {
+        Glitch.api.Competitions.createRound(id, data).then(response => {
 
             this.setState({ isLoading: false });
 
@@ -69,11 +60,8 @@ class CompetitionsCreateRoundsPage extends Component {
 
             this.setState({ isLoading: false });
 
-            let jsonErrors = Response.parseJSONFromError(error);
-
-            if (jsonErrors) {
-
-                this.setState({ errors: jsonErrors });
+            if (error.response && error.response.data) {
+                this.setState({ errors: error.response.data });
 
                 setTimeout(() => {
                     this.setState({ errors: {} });

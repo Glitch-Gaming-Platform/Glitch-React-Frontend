@@ -1,14 +1,12 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
-import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
-
+import Glitch from 'glitch-javascript-sdk';
 
 const title = "Forgot Password";
 
@@ -33,7 +31,7 @@ class ForgotPassword extends Component {
 
         this.setState({isLoading : true});
 
-        Requests.authForgotPassword(data).then((response) => {
+        Glitch.api.Auth.forgotPasswordWithEmail(this.state.email).then((response) => {
             
             alert("You have been sent an email to reset your password.");
 
@@ -43,15 +41,14 @@ class ForgotPassword extends Component {
 
         }).catch((error) => {
 
-            console.log(error);
 
-            let response = Response.parseJSONFromError(error)
+            if (error.response && error.response.data) {
+                this.setState({ errors: error.response.data });
 
-            this.setState({errors : [response.message], isLoading : false});
-
-            setTimeout(() =>{
-                this.setState({errors : []});
-            }, timeouts.error_message_timeout)
+                setTimeout(() => {
+                    this.setState({ errors: {} });
+                }, timeouts.error_message_timeout)
+            }
         });
 
     }

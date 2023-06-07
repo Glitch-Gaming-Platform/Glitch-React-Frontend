@@ -5,8 +5,6 @@ import { Beforeunload } from 'react-beforeunload';
 import timeouts from "../../../../constants/timeouts";
 import HasAccess from "../../../../util/HasAccess";
 import Navigate from "../../../../util/Navigate";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Header from "../../component/layout/header";
 import modes from "../../../../constants/modes";
@@ -127,13 +125,11 @@ class StreamsBroadcastPage extends Component {
 
             this.setState({isLoading : false});
 
-            let jsonErrors = Response.parseJSONFromError(error);
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-            if (jsonErrors) {
-                this.setState({ rtmpSourceError: jsonErrors.message });
-
-                setTimeout(() => {
-                    this.setState({ rtmpSourceError: '' });
+                setTimeout(() =>{
+                    this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
             }
 
@@ -161,13 +157,11 @@ class StreamsBroadcastPage extends Component {
 
             this.setState({ isLoadingRTMPSource: false });
 
-            let jsonErrors = Response.parseJSONFromError(error);
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-            if (jsonErrors) {
-                this.setState({ rtmpSourceError: jsonErrors.message });
-
-                setTimeout(() => {
-                    this.setState({ rtmpSourceError: '' });
+                setTimeout(() =>{
+                    this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
             }
 
@@ -338,19 +332,11 @@ class StreamsBroadcastPage extends Component {
 
             this.setState({ isLoadingAddCohost: false });
 
-            let jsonErrors = Response.parseJSONFromError(error);
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-            if (jsonErrors && jsonErrors.message) {
-                this.setState({ addCohostError: jsonErrors.message });
-
-                setTimeout(() => {
-                    this.setState({ addCohostError: '' });
-                }, timeouts.error_message_timeout)
-            } else {
-                this.setState({ addCohostErrorObject: jsonErrors });
-
-                setTimeout(() => {
-                    this.setState({ addCohostErrorObject: {} });
+                setTimeout(() =>{
+                    this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
             }
         });
@@ -379,13 +365,11 @@ class StreamsBroadcastPage extends Component {
 
             this.setState({ isLoadingOnScreenMessage: false });
 
-            let jsonErrors = Response.parseJSONFromError(error);
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-            if (jsonErrors) {
-                this.setState({ onScreenMessageError: jsonErrors.message });
-
-                setTimeout(() => {
-                    this.setState({ onScreenMessageError: '' });
+                setTimeout(() =>{
+                    this.setState({errors : {}});
                 }, timeouts.error_message_timeout)
             }
         });

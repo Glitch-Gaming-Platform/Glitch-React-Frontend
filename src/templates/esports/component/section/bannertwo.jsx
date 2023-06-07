@@ -26,7 +26,7 @@ class BannerTwo extends Component {
        
                     {BannerListContent.map((val, i) => (
                         
-                            <div className="banner1" style={{backgroundImage: `url(${val.bgImgUrl})`}}>
+                            <div className="banner1" style={{backgroundImage: `url(${val.bgImgUrl})`}} key={i}>
                                 <div className="container">
                                     <div className="row g-0">
                                         <div className="col-lg-6 col-12">

@@ -8,7 +8,7 @@ const VenueOverview = ({ venue, is_admin }) => {
     return (
         <>
 
-            <ul class="game-profile-card__list">
+            <ul className="game-profile-card__list">
                 <li>
                     <div>Address Line 1:</div>
                     <div>{venue.address_line_1}</div>

@@ -1,23 +1,16 @@
 import { Component, Fragment } from "react";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
-import Response from "../../../../util/Response";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
 import Input from "../../component/form/input";
-import Textarea from "../../component/form/textarea";
 import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
-import { Button } from '@mui/material';
-import { Textsms, Image, VideoLibrary, Link } from '@mui/icons-material';
 import Glitch from 'glitch-javascript-sdk';
 import PostFormButtons from "../../component/section/posts/form_buttons";
 import ImageUploadAndCrop from "../../component/form/image_crop_uploader";
-import MarkdownEditor from "../../component/form/markdown";
 import VideoUploader from "../../component/form/video";
 import Wysiwyg from "../../component/form/wysiwyg";
 
@@ -38,7 +31,7 @@ class PostCreatePage extends Component {
             isLoading: false,
         };
 
-        if (!Session.isLoggedIn()) {
+        if (!Glitch.util.Session.isLoggedIn()) {
             window.location = Navigate.authLogin();
         }
     }

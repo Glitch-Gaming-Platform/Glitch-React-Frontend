@@ -2,8 +2,6 @@ import { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import timeouts from "../../../../constants/timeouts";
 import Navigate from "../../../../util/Navigate";
-import Requests from "../../../../util/Requests";
-import Session from "../../../../util/Session";
 import withRouter from "../../../../util/withRouter";
 import Danger from "../../component/alerts/Danger";
 import Loading from "../../component/alerts/Loading";
@@ -57,24 +55,37 @@ class LogIn extends Component {
 
         this.setState({isLoading : true});
 
-        Requests.authLogin(data).then((response) => {
-            Glitch.util.Storage.setAuthToken(response.data.token.access_token);
-            Glitch.util.Storage.set('user_id', response.data.id);
-
-            Session.processAuthentication(response.data);
-
-            this.setState({isLoading : false});
-
-            this.goToNextScreen();
+        Glitch.api.Auth.loginWithEmail(this.state.email, this.state.password).then((response) => {
+            this.handleLogin(response.data.data);
+            
         }).catch((error) => {
 
-            this.setState({errors : ['Invalid username and password'], isLoading : false});
-
-            setTimeout(() =>{
-                this.setState({errors : []});
-            }, timeouts.error_message_timeout)
+            Glitch.api.Auth.loginWithUsername(this.state.email, this.state.password).then((response) => {
+                this.handleLogin(response.data.data);
+                
+            }).catch((error) => {
+    
+                this.setState({errors : ['Invalid username and password'], isLoading : false});
+    
+                setTimeout(() =>{
+                    this.setState({errors : []});
+                }, timeouts.error_message_timeout)
+            });
+  
         });
 
+    }
+
+    handleLogin(data) {
+
+        Glitch.util.Storage.setAuthToken(data.token.access_token);
+        Glitch.util.Storage.set('user_id', data.id);
+
+        Glitch.util.Session.processAuthentication(data);
+
+        this.setState({isLoading : false});
+
+        this.goToNextScreen();
     }
 
     goToNextScreen() {
@@ -90,14 +101,14 @@ class LogIn extends Component {
         let token = params.token;
 
         if(iscohost) {
-            Requests.eventsAcceptInvite(stream_id, {token : token}).then(response => {
+            Glitch.api.Events.acceptInvite.eventsAcceptInvite(stream_id, token).then(response => {
                 this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
             }).catch(error => {
                 this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
             });
             
         } else {
-            this.props.router.navigate(Navigate.streamsPage());
+            this.props.router.navigate(Navigate.accountMainPage());
         }
 
     }

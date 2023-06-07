@@ -36,7 +36,7 @@ const Chat = (props) => {
                         </div>
                      {/*    <div className='chat-box'></div>
                          {/*Need to change search icon to send icon
-                        <div className="chat_input"><input type="text" name="message" placeholder="Message..." /><span class="ico_search"></span></div>
+                        <div className="chat_input"><input type="text" name="message" placeholder="Message..." /><span className="ico_search"></span></div>
                          */}
                     </div>
                 </main>
