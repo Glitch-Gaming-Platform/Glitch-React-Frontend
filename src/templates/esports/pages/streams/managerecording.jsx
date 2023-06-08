@@ -64,7 +64,7 @@ class ManageRecordingPage extends Component {
                     event: response.data.data
                 })
 
-                this.filterRecording(response.data);
+                this.filterRecording(response.data.data);
             }
         }).catch(error => {
             console.log(error);
