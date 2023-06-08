@@ -88,7 +88,8 @@ class CompetitionsRegisterUserPage extends Component {
 
                                 <p>Register to the {Glitch.util.LabelManager.getCompetitionLabel(false, false)} as an individual contentest. After logging in, simply register using the button below.</p>
 
-                                { this.state.error ? <Danger message={this.state.error}  /> : ''}
+                                
+                                { this.state.errors && this.state.errors.error ? <Danger message={this.state.errors.error}  /> : ''}
                                 <div className="form-group">
                                     <button className="d-block default-button" onClick={(e => { this.register(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Register</span></button>
                                 </div>

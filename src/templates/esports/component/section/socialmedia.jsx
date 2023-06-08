@@ -1,5 +1,6 @@
 import { Component, Fragment } from "react";
 import Navigate from "../../../../util/Navigate";
+import { Link } from "react-router-dom";
 
 
 class SocialMedia extends Component {
@@ -7,10 +8,10 @@ class SocialMedia extends Component {
         return (
             <Fragment>
                 <li>
-                    <a href={Navigate.authFacebook()}><img src="/assets/images/match/facebook.png" alt="facebook" /></a>
+                    <Link to={Navigate.authFacebook()}><img src="/assets/images/match/facebook.png" alt="facebook" /></Link>
                 </li>
                 <li>
-                    <a href={Navigate.authTwitch()}><img src="/assets/images/match/social-3.png" alt="twitch" /></a>
+                    <Link to={Navigate.authTwitch()}><img src="/assets/images/match/social-3.png" alt="twitch" /></Link>
                 </li>
             </Fragment>
         );

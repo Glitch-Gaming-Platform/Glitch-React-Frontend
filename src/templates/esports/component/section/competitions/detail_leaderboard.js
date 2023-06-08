@@ -18,6 +18,22 @@ export default function CompetitionLeaderboards({ tournament, usersByPoints, use
 
     return (
         <div className="section-wrapper">
+            {usersByPoints?.length <=0 && usersByWins?.length <=0  && teamsByWins?.length <=0 && teamsByPoints?.length <=0  &&
+            <section className="fore-zero pt-5 padding-bottom">
+                <div className="container">
+                    <div className="section-wrapper">
+                        <div className="zero-item">
+
+                            <div className="zero-content">
+                                <h2>No Leaderboard Information</h2>
+                                <p>There is no leaderboard information currently available.</p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            }
             <div className="achievement-area">
                 <ul className="nav nav-tabs align-items-center" id="myTab" role="tablist">
                     {usersByPoints && usersByPoints.length > 0 && <li className="nav-item" role="presentation" title="Pubg Lite"><button className="nav-link active" id="tabOne-tab" data-bs-toggle="tab" data-bs-target="#tabOne" type="button" role="tab" aria-controls="tabOne" aria-selected="false">Users By Points</button></li> }

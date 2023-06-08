@@ -25,6 +25,7 @@ class CompetitionsInfoPage extends Component {
         this.state = {
             tournament : {},
             leaderboards : {},
+            me : {},
             data: {},
             errors: {},
             isLoading: false,
@@ -44,6 +45,12 @@ class CompetitionsInfoPage extends Component {
 
             Glitch.api.Competitions.allLeaderboards(id).then(response => {
                 this.setState({ leaderboards : response.data.data });
+            }).catch(error => {
+
+            });
+
+            Glitch.api.Competitions.me(id).then(response => {
+                this.setState({ me : response.data.data });
             }).catch(error => {
 
             });
@@ -89,7 +96,7 @@ class CompetitionsInfoPage extends Component {
                 <PageHeader title={Glitch.util.LabelManager.getCompetitionLabel(false, true) + ' Info'} curPage={'Compete'} backgroundImage={this.state.tournament.banner_image} />
                 
                 <div className="container">
-                    <TournamentOverview tournament={this.state.tournament} leaderboards={this.state.leaderboards} is_admin={false} />
+                    <TournamentOverview tournament={this.state.tournament} leaderboards={this.state.leaderboards} me={this.state.me} is_admin={false} />
 
                     <hr />
 

@@ -30,6 +30,7 @@ class CompetitionsManagePage extends Component {
         super(props);
         this.state = {
             tournament: {},
+            leaderboards : {},
             errors: {},
             isLoading: false,
             tournaments: []
@@ -47,6 +48,13 @@ class CompetitionsManagePage extends Component {
 
         Glitch.api.Competitions.view(id).then(response => {
             this.setState({ tournament: response.data.data });
+
+            Glitch.api.Competitions.allLeaderboards(id).then(response => {
+                this.setState({ leaderboards : response.data.data });
+            }).catch(error => {
+
+            });
+
         }).catch(error => {
 
         });
@@ -66,7 +74,7 @@ class CompetitionsManagePage extends Component {
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
                                 <div className="col-lg-8 col-12 pe-5">
-                                    <TournamentOverview tournament={this.state.tournament} is_admin={true} />
+                                    <TournamentOverview tournament={this.state.tournament} leaderboards={this.state.leaderboards} is_admin={true} />
 
                                     <hr/>
 

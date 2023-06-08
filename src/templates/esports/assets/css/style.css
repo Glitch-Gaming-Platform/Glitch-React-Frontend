@@ -4519,5 +4519,7 @@ button {
 
       .banner__content1 p {
         color: white;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        text-shadow: 6px 6px 4px rgba(0, 0, 0, 1);
+        -webkit-text-stroke: 1px white;
+        -webkit-text-fill-color: black;
       }
