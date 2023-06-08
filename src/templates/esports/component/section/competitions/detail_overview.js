@@ -11,17 +11,22 @@ import Glitch from 'glitch-javascript-sdk';
 export default function TournamentOverview({ tournament, leaderboards, me, is_admin }) {
 
 
+    let adminButton = '';
     let registerTeamButton = '';
 
     let registerIndividualButton = '';
 
+    if(me?.role?.user_role == Glitch.constants.Roles.ADMINISTRATOR || me?.role?.user_role == Glitch.constants.Roles.SUPER_ADMINISTRATOR || me?.role?.user_role == Glitch.constants.Roles.MODERATOR  ) {
+        adminButton  = <Link className="btn btn-danger me-3" to={Navigate.tournamentsManage(tournament.id)}>Admin</Link>
+    }
+
     if (!is_admin) {
         if (tournament.allow_team_signup) {
-            registerTeamButton = <Link className="btn btn-info mr-2" to={Navigate.tournamentsRegisterTeam(tournament.id)}>Register As Team</Link>
+            registerTeamButton = <Link className="btn btn-info me-3" to={Navigate.tournamentsRegisterTeam(tournament.id)}>Register As Team</Link>
         }
 
         if (tournament.allow_individual_signup) {
-            registerIndividualButton = <Link className="btn btn-info mr-2" to={Navigate.tournamentsRegisterUser(tournament.id)}>Register As Individual</Link>
+            registerIndividualButton = <Link className="btn btn-info me-3" to={Navigate.tournamentsRegisterUser(tournament.id)}>Register As Individual</Link>
         }
     }
 
@@ -48,6 +53,7 @@ export default function TournamentOverview({ tournament, leaderboards, me, is_ad
                 </>}
 
             <div className="mt-2 mb-4">
+                {adminButton}
                 {registerTeamButton}
                 {registerIndividualButton}
             </div>

@@ -137,7 +137,7 @@ class SignUp extends Component {
                     <div className=" container">
                         <div className="account-wrapper">
                             <h3 className="title">{title}</h3>
-                            <div className="account-form">
+                            <form className="account-form" onScroll={this.register}>
                                 <div className="form-group">
                                     <input
                                         type="text"
@@ -214,15 +214,15 @@ class SignUp extends Component {
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <button type="button" className="d-block default-button" onClick={(e => {this.register(e)})}><span>{this.state.isLoading ? <Loading /> : ''} Get Started Now</span></button>
+                                    <button type="submit" className="d-block default-button" onClick={(e => {this.register(e)})}><span>{this.state.isLoading ? <Loading /> : ''} Get Started Now</span></button>
                                 </div>
-                            </div>
+                            </form>
                             <div className="account-bottom">
                                 <span className="d-block cate pt-10">Are you a member? <Link to={Navigate.authLogin()}>Login</Link></span>
                                 <span className="or"><span>or</span></span>
                                 <h5 className="subtitle">Register With Social Media</h5>
                                 <ul className="match-social-list d-flex flex-wrap align-items-center justify-content-center mt-4">
-                                    <SocialMedia />
+                                    
                                 </ul>
                             </div>
                         </div>

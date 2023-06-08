@@ -109,7 +109,7 @@ class LogIn extends Component {
             });
             
         } else {
-            this.props.router.navigate(Navigate.streamsPage());
+            this.props.router.navigate(Navigate.homePage());
         }
 
     }
@@ -166,7 +166,7 @@ class LogIn extends Component {
                                 <span className="or"><span>or</span></span>
                                 <h5 className="subtitle">Login With Social Media</h5>
                                 <ul className="match-social-list d-flex flex-wrap align-items-center justify-content-center mt-4">
-                                    <SocialMedia />
+                                  
                                 </ul>
                             </div>
                         </div>
