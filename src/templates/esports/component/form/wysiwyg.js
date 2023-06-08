@@ -9,7 +9,7 @@ export default function Wysiwyg({ children, name, placeholder, className, value,
         <>
             <ReactQuill
                 theme="snow"
-                style={{ backgroundColor : "rgba(255, 255, 255, 0.1", color : "white", minHeight : '300px'}}
+                style={{ backgroundColor : "rgba(255, 255, 255, 0.1", color : "white", minHeight : '200px'}}
                 name={name}
                 placeholder={placeholder}
                 className={className}

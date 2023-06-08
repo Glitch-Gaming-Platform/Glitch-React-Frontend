@@ -118,9 +118,7 @@ class PostsListPage extends Component {
                                 <aside className="ps-lg-4">
                                     <SearchBar />
                                     <RecentPost />
-                                    <CategorieTwo />
-                                    <Archive />
-                                    <Tags />
+                                    
                                 </aside>
                             </div>
                         </div>

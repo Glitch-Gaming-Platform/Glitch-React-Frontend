@@ -103,7 +103,7 @@ class PostCreatePage extends Component {
 
                             <PostFormButtons onButtonClicked={(type) => { this.setState((prevState) => ({ data: { ...prevState.data, type: type }, })); }} />
 
-                            <form className="account-form mt-5">
+                            <form className="mt-5">
 
                                 {(this.state.data.type == Glitch.constants.PostTypes.TEXT || this.state.data.type == Glitch.constants.PostTypes.VIDEO || this.state.data.type == Glitch.constants.PostTypes.IMAGE || this.state.data.type == Glitch.constants.PostTypes.LINK) &&
                                     <div className="form-group" style={{ textAlign: "left" }}>
@@ -154,8 +154,9 @@ class PostCreatePage extends Component {
                                 {this.state.errors && this.state.errors.file && this.state.errors.file.map(function (name, index) {
                                     return <Danger message={name} key={index} />;
                                 })}
+
                                 {(this.state.data.type == Glitch.constants.PostTypes.TEXT || this.state.data.type == Glitch.constants.PostTypes.VIDEO || this.state.data.type == Glitch.constants.PostTypes.IMAGE || this.state.data.type == Glitch.constants.PostTypes.LINK) &&
-                                    <div className="form-group">
+                                    <div className="form-group mt-5">
                                         <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create {Glitch.util.LabelManager.getPostLabel(false, true)}</span></button>
                                     </div>
                                 }

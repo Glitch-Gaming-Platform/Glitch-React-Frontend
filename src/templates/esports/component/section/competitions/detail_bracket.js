@@ -38,7 +38,7 @@ export default function CompetitionBrackets({ tournament, is_admin }) {
                                 let spacer = '';
                                 if(currentBracket !=bracket.bracket) {
                                     hasPlacedTop = false;
-                                    spacer = <li className="spacer">&nbsp;</li>
+                                    spacer = <li key={"spacer" + index} className="spacer">&nbsp;</li>
                                 }
 
                                 let competitor_name = '';
@@ -47,7 +47,7 @@ export default function CompetitionBrackets({ tournament, is_admin }) {
                                     competitor_name = bracket.user.username;
 
                                     if(bracket.event_id) {
-                                        competitor_name =  <Link  to={Navigate.streamsWatchPage(bracket.event_id)}>{competitor_name}</Link>
+                                        competitor_name =  <Link key={"link" + index}  to={Navigate.streamsWatchPage(bracket.event_id)}>{competitor_name}</Link>
                                     }
                                 }
 
@@ -56,7 +56,7 @@ export default function CompetitionBrackets({ tournament, is_admin }) {
 
                                 if(hasPlacedTop == false) {
                                     competitorClass = 'game game-top';
-                                    gameSpacer = <li className="game game-spacer pt-1"> <small>Round {round.round} Bracket {bracket.bracket}</small></li>
+                                    gameSpacer = <li key={"game" + index} className="game game-spacer pt-1"> <small>Round {round.round} Bracket {bracket.bracket}</small></li>
 
                                 } else {
                                     competitorClass = 'game game-bottom';

@@ -11,9 +11,6 @@ class RecordingVideo extends Component {
 
     constructor(props) {
         super(props);
-
-        console.log("Video Props");
-        console.log(props);
     }
 
     render() {

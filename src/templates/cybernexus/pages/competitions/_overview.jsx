@@ -24,15 +24,15 @@ const CompetitionsOverview = ({ competition, is_admin }) => {
                 {competition.start_date && competition.end_date ? <> to <Moment format="LLL" >{competition.end_date}</Moment></> : ''}
 
                 {(competition.registration_start_date) ?
-                        <div className="section mb-2">
-                            <h4>Registration Dates</h4>
-                            {competition.registration_start_date ? <Moment format="LLL">{competition.registration_start_date}</Moment> : ''}
+                    <div className="section mb-2">
+                        <h4>Registration Dates</h4>
+                        {competition.registration_start_date ? <Moment format="LLL">{competition.registration_start_date}</Moment> : ''}
 
-                            {competition.registration_start_date && competition.end_date ? <> to <Moment format="LLL" >{competition.registration_end_date}</Moment></> : ''}
-                        </div>
+                        {competition.registration_start_date && competition.end_date ? <> to <Moment format="LLL" >{competition.registration_end_date}</Moment></> : ''}
+                    </div>
 
 
-                : ''}
+                    : ''}
 
             </TabPanel>
             <TabPanel>

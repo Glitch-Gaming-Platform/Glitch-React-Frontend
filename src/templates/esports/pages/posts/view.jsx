@@ -116,6 +116,24 @@ class PostViewPage extends Component {
                                                         <li><span><i className="icofont-speech-comments"></i><a href="#comments">{Data.countCommentChildren(this.state.post)} Comments</a></span></li>
                                                     </ul>
 
+                                                    {this.state.post && this.state.post.type==Glitch.constants.PostTypes.LINK &&
+                                                        <>
+
+                                                            <div className="card card-body bg-light text-black" >
+                                                                <a target="_blank" href={this.state.post.url}>{(this.state.post?.meta?.title) ? <><h4 style={{ color: "black" }}>{this.state.post?.meta?.title}</h4></> : <></>}</a>
+
+                                                                <a target="_blank" href={this.state.post.url}>{(this.state.post?.meta?.og_tags['og:image']) ? <><img src={this.state.post?.meta?.og_tags['og:image']} className="w-100 mb-2 img-fluid" /></> : <></>}</a>
+
+                                                                <a target="_blank" href={this.state.post.url}>{(this.state.post?.meta?.description && !this.state.post?.meta?.og_tags['og:description']) ? <><p className="mt-2" style={{ color: "black" }}>{this.state.post?.meta?.description}</p></> : <></>}</a>
+
+                                                                <a target="_blank" href={this.state.post.url}>{(!this.state.post?.meta?.description && this.state.post?.meta?.og_tags['og:description']) ? <><p className="mt-2" style={{ color: "black" }}>{this.state.post?.meta?.og_tags['og:description']}</p></> : <></>}</a>
+
+                                                                <a target="_blank" style={{ color: "red" }}  href={this.state.post.url}>{this.state.post.url}</a>
+
+                                                            </div>
+                                                        </>
+                                                    }
+
                                                     <div dangerouslySetInnerHTML={{ __html: this.state.post.content }} />
 
 
@@ -184,10 +202,7 @@ class PostViewPage extends Component {
                                     <aside className="ps-lg-4">
                                         <SearchBar />
                                         <RecentPost />
-                                        <CategorieTwo />
-                                        <Instagram />
-                                        <Archive />
-                                        <Tags />
+                                        
                                     </aside>
                                 </div>
                             </div>

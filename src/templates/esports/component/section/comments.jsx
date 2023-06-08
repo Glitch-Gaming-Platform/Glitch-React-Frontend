@@ -6,11 +6,14 @@ import PostInteraction from "./posts/element_interaction";
 import PopupModal from "../element/popup";
 import { Link } from "react-router-dom";
 import Navigate from "../../../../util/Navigate";
+import Wysiwyg from "../form/wysiwyg";
 
 const Comments = ({ comments, title }) => {
 
     const [children, setChildren] = useState([]);
     const [modalIsOpen, setModalIsOpen] = useState(false);
+    const [commentValues, setCommentValues] = useState({});
+
 
     const openModal = () => {
         setModalIsOpen(true);
@@ -20,7 +23,17 @@ const Comments = ({ comments, title }) => {
         setModalIsOpen(false);
     };
 
-    const submitComment = (e, parent_comment, commentText, tmp) => {
+    
+
+    const handleWysiwygChange = (newValue, index) => {
+
+        setCommentValues(prevValues => ({
+            ...prevValues,
+            [index]: newValue
+        }));
+    };
+
+    const submitComment = (e, parent_comment, commentText, tmp, i, setCommentValues, commentValues) => {
         e.preventDefault();
 
         if (Glitch.util.Session.isLoggedIn()) {
@@ -39,8 +52,12 @@ const Comments = ({ comments, title }) => {
                 }
                 parent_comment.children.unshift(response.data.data);
                 setChildren([...children]);
-                e.target.comment.value = "";
+    
 
+                // Clear the current comment value for the specific index (i)
+                commentValues[i] = "";
+                setCommentValues(commentValues);
+                //handleWysiwygChange("", i);
             }).catch(error => {
 
             });
@@ -85,12 +102,14 @@ const Comments = ({ comments, title }) => {
                                     </div>
                                     <br />
                                     <div className="reply-btn"></div>
-                                    <form onSubmit={(e) => { submitComment(e, val, e.target.comment.value, e.target.comment) }}>
-                                        <textarea
-                                            name="comment"
-                                            placeholder="Leave a comment"
-                                        ></textarea>
-                                        <button className="btn btn-success btn-sm" type="submit">Submit</button>
+                                    <form onSubmit={(e) => { submitComment(e, val, commentValues[i], e.target.comment, i, setCommentValues, commentValues) }}>
+                                    <Wysiwyg
+                                         onChange={(e) => handleWysiwygChange(e, i)}
+                                    >{commentValues[i] || ""}</Wysiwyg>
+                                        
+                                        <div className="mt-3">
+                                            <button className="btn btn-success btn-sm" type="submit">Submit</button>
+                                        </div>
                                     </form>
                                     <Comments comments={val.children} key={`${i}_child`} />
                                 </div>

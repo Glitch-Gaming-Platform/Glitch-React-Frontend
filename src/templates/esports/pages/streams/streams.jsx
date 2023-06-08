@@ -80,7 +80,7 @@ class StreamsPage extends Component {
                 <PageHeader title={'The Live Streams'} curPage={'Streams'} />
 
                 <div className="container pt-5">
-                    <Link className="default-button reverse-effect" to={Navigate.streamsCreatePage()}><span>Create {Glitch.util.LabelManager.getStreamLabel(true, true)}</span> </Link>
+                    <Link className="default-button reverse-effect" to={Navigate.streamsCreatePage()}><span>Create {Glitch.util.LabelManager.getStreamLabel(false, true)}</span> </Link>
                 </div>
 
                 <div className="video-section padding-top padding-bottom bg-attachment" style={{ backgroundImage: "url(/assets/images/video/bg.jpg)" }}>
