@@ -222,12 +222,6 @@ class Header extends Component {
                                                 </li>
                                             </> }
                                             
-                                            {(community.disable_streams) ? <></> : <>
-                                            <li className="menu-item-has-children">
-                                                <Link to={Navigate.streamsCreatePage()} aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Start {Glitch.util.LabelManager.getStreamLabel(false, true)}ing</Link>
-                                            </li>
-                                            </> }
-                                            
                                             {loginOrAccountMobile}
 
                                         </ul>
