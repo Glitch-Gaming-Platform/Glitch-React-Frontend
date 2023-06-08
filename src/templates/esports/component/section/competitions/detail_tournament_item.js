@@ -66,7 +66,7 @@ export default function TournamentItem({ tournament, is_admin }) {
                                 <div className="match-game-social">
                                     <ul className="match-social-list d-flex flex-wrap align-items-center justify-content-center justify-content-xl-start">
 
-                                        <li><a href={Navigate.tournamentsView(tournament.id)} className="default-button reverse-effect"><span>View {Glitch.util.LabelManager.getCompetitionLabel(false, true)}<i className="icofont-play-alt-1"></i></span> </a></li>
+                                        <li><Link to={Navigate.tournamentsView(tournament.id)} className="default-button reverse-effect"><span>View {Glitch.util.LabelManager.getCompetitionLabel(false, true)}<i className="icofont-play-alt-1"></i></span> </Link></li>
                                     </ul>
                                 </div>
                             </div>

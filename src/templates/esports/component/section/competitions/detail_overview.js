@@ -238,6 +238,28 @@ export default function TournamentOverview({ tournament, leaderboards, me, is_ad
                             <UserItem key={index} user={contestant} />
                         );
                     })}
+
+                {
+                    ((!tournament || !tournament?.contestants) || (tournament.contestants && tournament.contestants.length <= 0)) ?
+                        (
+
+                            <section className="fore-zero pt-5 padding-bottom">
+                                <div className="container">
+                                    <div className="section-wrapper">
+                                        <div className="zero-item">
+
+                                            <div className="zero-content">
+                                                <h2>No Contestants</h2>
+                                                <p>No contestants have registered.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        ) : <></>
+
+                }
                 </div>
                 <div className="tab-pane fade mt-4" id="teams" role="tabpanel" aria-labelledby="teams-tab">
 
@@ -248,6 +270,28 @@ export default function TournamentOverview({ tournament, leaderboards, me, is_ad
                             <VenueItem key={index} team={team} />
                         );
                     })}
+
+                {
+                    ((!tournament || !tournament?.teams) || (tournament.teams && tournament.teams.length <= 0)) ?
+                        (
+
+                            <section className="fore-zero pt-5 padding-bottom">
+                                <div className="container">
+                                    <div className="section-wrapper">
+                                        <div className="zero-item">
+
+                                            <div className="zero-content">
+                                                <h2>No Teams</h2>
+                                                <p>No teams have registered.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                        ) : <></>
+
+                }
                 </div>
 
                 <div className="tab-pane fade mt-4" id="rules" role="tabpanel" aria-labelledby="rules-tab">
