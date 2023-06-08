@@ -113,7 +113,22 @@ class SignUp extends Component {
 
             Glitch.api.Communities.join(community.id).then(response => {
 
-                this.props.router.navigate(Navigate.accountRegisterStep2());
+
+                const domain = this.getDomain();
+
+                Glitch.api.Communities.findByDomain(domain).then(response => {
+
+                    Glitch.config.Config.setCommunity(response.data.data);
+                    Glitch.util.Storage.set('community_id', response.data.data.id);
+                    Glitch.util.Storage.set('community', response.data.data);
+
+                    this.props.router.navigate(Navigate.accountRegisterStep2());
+                }).catch(error => {
+
+                    this.props.router.navigate(Navigate.accountRegisterStep2());
+
+                });
+
                 
                 this.setState({isLoading : false});
             }).catch(error => {
@@ -126,6 +141,17 @@ class SignUp extends Component {
             
         }
 
+    }
+
+    getDomain() {
+        const currentDomain = window.location.hostname;
+
+        if (currentDomain === process.env.REACT_APP_SITE_DOMAIN || currentDomain.endsWith(process.env.REACT_APP_SITE_DOMAIN)) {
+            const subdomain = currentDomain.split('.')[0];
+            return subdomain;
+        } else {
+            return currentDomain;
+        }
     }
 
     render() { 

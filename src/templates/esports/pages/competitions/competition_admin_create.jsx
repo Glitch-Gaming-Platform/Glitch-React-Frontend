@@ -14,6 +14,7 @@ import CompetitionFormMatchDetails from "../../component/section/competitions/fo
 import CompetitionFormSignupDetails from "../../component/section/competitions/form_competition_signup";
 import CompetitionFormSocial from "../../component/section/competitions/form_competition_social";
 import Glitch from 'glitch-javascript-sdk';
+import Alerts from "../../../../util/Alerts";
 
 
 class CompetitionsCreatePage extends Component {
@@ -35,28 +36,35 @@ class CompetitionsCreatePage extends Component {
 
         event.preventDefault();
 
-        let data = this.state.data;
+        if(!Glitch.util.Session.hasJoinedCommunity()) {
 
-        this.setState({ isLoading: true });
+            Alerts.display("Must Join Community", "Before you are able to engage, please join the community.")
 
-        Glitch.api.Competitions.create(data).then(response => {
+        } else {
 
-            this.setState({ isLoading: false });
+            let data = this.state.data;
 
-            this.props.router.navigate(Navigate.tournamentsManage(response.data.data.id));
-        }).catch(error => {
-            
-            this.setState({ isLoading: false });
+            this.setState({ isLoading: true });
 
-            if (error.response && error.response.data) {
+            Glitch.api.Competitions.create(data).then(response => {
 
-                this.setState({ errors: error.response.data });
+                this.setState({ isLoading: false });
 
-                setTimeout(() => {
-                    this.setState({ errors: {} });
-                }, timeouts.error_message_timeout)
-            }
-        })
+                this.props.router.navigate(Navigate.tournamentsManage(response.data.data.id));
+            }).catch(error => {
+                
+                this.setState({ isLoading: false });
+
+                if (error.response && error.response.data) {
+
+                    this.setState({ errors: error.response.data });
+
+                    setTimeout(() => {
+                        this.setState({ errors: {} });
+                    }, timeouts.error_message_timeout)
+                }
+            })
+        }
     }
 
     componentDidMount() {

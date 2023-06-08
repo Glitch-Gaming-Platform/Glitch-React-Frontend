@@ -150,9 +150,7 @@ class CommunitiesMedia extends Component {
                                     {(Object.keys(this.state.errors).length > 0) ? <Danger message={"There are error(s) in updating the community. Please check the form above."} /> : ''}
 
                                     <hr />
-                                    <div className="form-group">
-                                        <button className="d-block default-button" onClick={(e) => { this.updateCommunity(e) }}><span>{this.state.isLoading ? <Loading /> : ''} Update Community</span></button>
-                                    </div>
+                            
 
 
 

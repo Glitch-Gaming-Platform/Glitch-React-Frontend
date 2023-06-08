@@ -13,10 +13,10 @@ const title = "Join The Community To Start Engaging";
 
 class JoinPage extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            errors : {}
+            errors: {}
         };
     }
 
@@ -30,7 +30,7 @@ class JoinPage extends Component {
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
         });
-       
+
         let token = params.loginToken;
 
         if (token) {
@@ -46,7 +46,7 @@ class JoinPage extends Component {
 
         }
     }
-    
+
     join(event) {
 
         event.preventDefault();
@@ -57,24 +57,32 @@ class JoinPage extends Component {
 
         let community = Glitch.util.Storage.get("community");
 
-        console.log(community);
-
-        console.log(community_id);
-        console.log(community.id);
-
-        if(Glitch.util.Session.isLoggedIn()) {
+        if (Glitch.util.Session.isLoggedIn()) {
 
             Glitch.api.Communities.join(community_id).then((response) => {
-            
-                this.props.router.navigate(Navigate.homePage());
+
+                const domain = this.getDomain();
+
+                Glitch.api.Communities.findByDomain(domain).then(response => {
+
+                    Glitch.config.Config.setCommunity(response.data.data);
+                    Glitch.util.Storage.set('community_id', response.data.data.id);
+                    Glitch.util.Storage.set('community', response.data.data);
+
+                    this.props.router.navigate(Navigate.homePage());
+                }).catch(error => {
+
+                    this.props.router.navigate(Navigate.homePage());
+
+                });
 
             }).catch((error) => {
 
-                if(error.response && error.response.data) {
-                    this.setState({errors : error.response.data});
-    
-                    setTimeout(() =>{
-                        this.setState({errors : {}});
+                if (error.response && error.response.data) {
+                    this.setState({ errors: error.response.data });
+
+                    setTimeout(() => {
+                        this.setState({ errors: {} });
                     }, timeouts.error_message_timeout)
                 }
 
@@ -85,7 +93,18 @@ class JoinPage extends Component {
 
     }
 
-    render() { 
+    getDomain() {
+        const currentDomain = window.location.hostname;
+
+        if (currentDomain === process.env.REACT_APP_SITE_DOMAIN || currentDomain.endsWith(process.env.REACT_APP_SITE_DOMAIN)) {
+            const subdomain = currentDomain.split('.')[0];
+            return subdomain;
+        } else {
+            return currentDomain;
+        }
+    }
+
+    render() {
         return (
             <Fragment>
                 <Header />
@@ -95,10 +114,10 @@ class JoinPage extends Component {
                         <div className="account-wrapper">
                             <h3 className="title">{title}</h3>
                             <form className="account-form">
-                                
+
                                 <p>Join The Community</p>
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => {this.join(e)})}><span>Join</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.join(e) })}><span>Join</span></button>
                                 </div>
                             </form>
 
@@ -110,5 +129,5 @@ class JoinPage extends Component {
         );
     }
 }
- 
+
 export default withRouter(JoinPage);

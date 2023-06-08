@@ -10,6 +10,7 @@ import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import Glitch from 'glitch-javascript-sdk';
+import Alerts from "../../../../util/Alerts";
 
 
 
@@ -34,31 +35,38 @@ class StreamCreatePage extends Component {
 
         event.preventDefault();
 
-        let data = {
-            title: this.state.title,
-            description : this.state.description
-        };
+        if(!Glitch.util.Session.hasJoinedCommunity()) {
 
-        this.setState({isLoading : true});
+            Alerts.display("Must Join Community", "Before you are able to engage, please join the community.")
 
-        Glitch.api.Events.create(data).then(response => {
+        } else {
 
-            this.setState({isLoading : false});
+            let data = {
+                title: this.state.title,
+                description : this.state.description
+            };
 
-            this.props.router.navigate(Navigate.streamsBroadcastPage(response.data.data.id));
-        }).catch(error => {
+            this.setState({isLoading : true});
 
-            this.setState({isLoading : false});
+            Glitch.api.Events.create(data).then(response => {
 
-            if(error.response && error.response.data) {
-                this.setState({errors : error.response.data});
+                this.setState({isLoading : false});
 
-                setTimeout(() =>{
-                    this.setState({errors : {}});
-                }, timeouts.error_message_timeout)
-            }
-            
-        });
+                this.props.router.navigate(Navigate.streamsBroadcastPage(response.data.data.id));
+            }).catch(error => {
+
+                this.setState({isLoading : false});
+
+                if(error.response && error.response.data) {
+                    this.setState({errors : error.response.data});
+
+                    setTimeout(() =>{
+                        this.setState({errors : {}});
+                    }, timeouts.error_message_timeout)
+                }
+                
+            });
+        }
     }
 
     componentDidMount() {

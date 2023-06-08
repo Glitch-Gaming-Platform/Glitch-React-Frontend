@@ -36,6 +36,9 @@ export default function SidebarManageMenu({ competition_id }) {
                 <li key={7}>
                     <Link className="d-flex flex-wrap justify-content-between" to={Navigate.tournamentsUpdateMedia(competition_id)}><span><i className="icofont-rounded-double-right"></i>Media</span></Link>
                 </li>
+                <li key={8}>
+                    <Link className="d-flex flex-wrap justify-content-between" to={Navigate.tournamentsView(competition_id)}><span><i className="icofont-rounded-double-right"></i>Preview</span></Link>
+                </li>
 
             </ul>
         </div>

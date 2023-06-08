@@ -13,6 +13,7 @@ import PostFormButtons from "../../component/section/posts/form_buttons";
 import ImageUploadAndCrop from "../../component/form/image_crop_uploader";
 import VideoUploader from "../../component/form/video";
 import Wysiwyg from "../../component/form/wysiwyg";
+import Alerts from "../../../../util/Alerts";
 
 
 class PostCreatePage extends Component {
@@ -40,48 +41,55 @@ class PostCreatePage extends Component {
 
         event.preventDefault();
 
-        let data = this.state.data;
+        if(!Glitch.util.Session.hasJoinedCommunity()) {
 
-        this.setState({ isLoading: true });
+            Alerts.display("Must Join Community", "Before you are able to engage, please join the community.")
 
-        if (this.state.data.type == Glitch.constants.PostTypes.TEXT || this.state.data.type == Glitch.constants.PostTypes.LINK) {
+        } else {
 
-            Glitch.api.Posts.create(data).then(response => {
+            let data = this.state.data;
 
-                this.setState({ isLoading: false });
+            this.setState({ isLoading: true });
 
-                this.props.router.navigate(Navigate.postsViewPage(response.data.data.id));
-            }).catch(error => {
+            if (this.state.data.type == Glitch.constants.PostTypes.TEXT || this.state.data.type == Glitch.constants.PostTypes.LINK) {
 
-                this.setState({ isLoading: false });
+                Glitch.api.Posts.create(data).then(response => {
 
-                if (error.response && error.response.data) {
-                    this.setState({ errors: error.response.data });
+                    this.setState({ isLoading: false });
 
-                    setTimeout(() => {
-                        this.setState({ errors: {} });
-                    }, timeouts.error_message_timeout)
-                }
-            });
-        } else if (this.state.data.type == Glitch.constants.PostTypes.IMAGE || this.state.data.type == Glitch.constants.PostTypes.VIDEO) {
+                    this.props.router.navigate(Navigate.postsViewPage(response.data.data.id));
+                }).catch(error => {
 
-            Glitch.api.Posts.createWithBlob(this.state.blob, data).then(response => {
+                    this.setState({ isLoading: false });
 
-                this.setState({ isLoading: false });
+                    if (error.response && error.response.data) {
+                        this.setState({ errors: error.response.data });
 
-                this.props.router.navigate(Navigate.postsViewPage(response.data.data.id));
-            }).catch(error => {
+                        setTimeout(() => {
+                            this.setState({ errors: {} });
+                        }, timeouts.error_message_timeout)
+                    }
+                });
+            } else if (this.state.data.type == Glitch.constants.PostTypes.IMAGE || this.state.data.type == Glitch.constants.PostTypes.VIDEO) {
 
-                this.setState({ isLoading: false });
+                Glitch.api.Posts.createWithBlob(this.state.blob, data).then(response => {
 
-                if (error.response && error.response.data) {
-                    this.setState({ errors: error.response.data });
+                    this.setState({ isLoading: false });
 
-                    setTimeout(() => {
-                        this.setState({ errors: {} });
-                    }, timeouts.error_message_timeout)
-                }
-            });
+                    this.props.router.navigate(Navigate.postsViewPage(response.data.data.id));
+                }).catch(error => {
+
+                    this.setState({ isLoading: false });
+
+                    if (error.response && error.response.data) {
+                        this.setState({ errors: error.response.data });
+
+                        setTimeout(() => {
+                            this.setState({ errors: {} });
+                        }, timeouts.error_message_timeout)
+                    }
+                });
+            }
         }
     }
 
