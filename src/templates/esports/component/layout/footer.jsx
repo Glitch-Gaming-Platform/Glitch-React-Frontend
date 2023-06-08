@@ -33,7 +33,7 @@ class Footer extends Component {
                                             <img src={(community.logo) ? community.logo :  "/assets/images/logo/glitch_3.png"} width="100px" alt="logo" />
                                         </div>
                                         <div className="fm-item-content">
-                                            <p className="mb-4">{site.description}</p>
+                                            <p className="mb-4">{community.description}</p>
                                            
                                         </div>
                                     </div>

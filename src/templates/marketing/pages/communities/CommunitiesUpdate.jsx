@@ -109,6 +109,8 @@ class CommunitiesUpdatePage extends Component {
                                     <CommunityFormBasic
                                         nameValue={this.state.data.name}
                                         nameOnChange={(e) => { this.setState({ data: { ...this.state.data, name : e.target.value } }); }}
+                                        taglineValue={this.state.data.tagline}
+                                        taglineOnChange={(e) => { this.setState({ data: { ...this.state.data, tagline : e.target.value } }); }}
                                         descriptionValue={this.state.data.description}
                                         descriptionOnChange={(e) => { this.setState({ data: { ...this.state.data, description : e.target.value } }); }}
                                         subdomainValue={this.state.data.subdomain}

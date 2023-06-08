@@ -32,8 +32,7 @@ class BannerTwo extends Component {
                                         <div className="col-lg-6 col-12">
                                             <div className="banner__content1" style={{paddingTop: '150px', paddingBottom : '100px'}}>
                                                 <h1>{community.name}</h1>
-                                                <h2>{community.tagline}</h2>
-                                                <p>{val.desc}</p>
+                                                <p className="lead">{community.tagline}</p>
                                                 <Link to={Navigate.authLogin()} className="default-button"><span>{val.btnText}  <i className="icofont-play-alt-1"></i></span> </Link>
                                             </div>
                                         </div>

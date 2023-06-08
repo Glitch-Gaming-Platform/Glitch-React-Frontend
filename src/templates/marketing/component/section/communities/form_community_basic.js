@@ -6,7 +6,7 @@ import Input from "../../form/input";
 import Select from "../../form/select";
 import Textarea from "../../form/textarea";
 
-export default function CommunityFormBasic({ nameValue, nameOnChange, descriptionValue, descriptionOnChange, subdomainValue, subdomainOnChange, templateValue, templateOnChange, templates, errors }) {
+export default function CommunityFormBasic({ nameValue, nameOnChange, taglineValue, taglineOnChange, descriptionValue, descriptionOnChange, subdomainValue, subdomainOnChange, templateValue, templateOnChange, templates, errors }) {
 
     return (
         <>
@@ -15,6 +15,13 @@ export default function CommunityFormBasic({ nameValue, nameOnChange, descriptio
                 <label>Community Name</label>
                 <Input type="text" name="community_name" value={nameValue} onChange={nameOnChange} placeholder="Give the community a name for your game(s)." />
                 {errors && errors.name && errors.name.map(function (name, index) {
+                    return <Danger message={name} key={index} />;
+                })}
+            </div>
+            <div className="form-group text-left">
+                <label>Community Tagline</label>
+                <Input type="text" name="community_name" value={taglineValue} onChange={taglineOnChange} placeholder="Enter a tagline for your game or community." />
+                {errors && errors.tagline && errors.tagline.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
             </div>
