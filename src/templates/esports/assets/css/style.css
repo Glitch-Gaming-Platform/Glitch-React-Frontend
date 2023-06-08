@@ -4302,9 +4302,7 @@ button {
       vertical-align: middle; }
       .achievement-area ul li .nav-link {
         border: none;
-        width: 90px;
-        line-height: 60px;
-        font-size: calc(1.3125rem + 0.75vw);
+        font-size: 20px !important;
         color: #fff !important; }
         @media (min-width: 1200px) {
           .achievement-area ul li .nav-link {
@@ -4331,7 +4329,10 @@ button {
     .achievement-area .tab-content .table tbody tr:last-child {
       border-color: #232a5c; }
     .achievement-area .tab-content .table tbody tr td {
-      padding: 20px 0; }
+      padding: 20px 0; 
+      background-color: #232a5c;
+      color: white;
+    } 
 
 /*Account Section Starts Here*/
 .account-wrapper {
@@ -4513,4 +4514,10 @@ button {
         font-size: larger;
         font-weight: bolder;
         text-align: center;
+      }
+
+
+      .banner__content1 p {
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
       }

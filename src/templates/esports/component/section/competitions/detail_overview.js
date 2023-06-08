@@ -5,8 +5,9 @@ import UserItem from "../user/detail_user_item";
 import CompetitionBrackets from "./detail_bracket";
 import MatchType from "./detail_match_type";
 import VenueItem from "./detail_venue_item";
+import CompetitionLeaderboards from "./detail_leaderboard";
 
-export default function TournamentOverview({ tournament, is_admin }) {
+export default function TournamentOverview({ tournament, leaderboards, is_admin }) {
 
 
     let registerTeamButton = '';
@@ -44,11 +45,6 @@ export default function TournamentOverview({ tournament, is_admin }) {
             : <> <h2>{tournament.name}</h2> 
             <p>{tournament.description}</p> 
             </>}
-            
-            
-
-            
-
 
             <div className="mt-2 mb-4">
                 {registerTeamButton}
@@ -64,7 +60,7 @@ export default function TournamentOverview({ tournament, is_admin }) {
                 </li>
                 
                 <li className="nav-item" role="presentation">
-                    <button className="nav-link" id="brackets-tab" data-bs-toggle="tab" data-bs-target="#leader" type="button" role="tab" aria-controls="brackets" aria-selected="true">Leaderboard</button>
+                    <button className="nav-link" id="leaderboards-tab" data-bs-toggle="tab" data-bs-target="#leaderboards" type="button" role="tab" aria-controls="leaderboards" aria-selected="true">Leaderboard</button>
                 </li>
                 {tournament.rules ?
                     <li className="nav-item" role="presentation">
@@ -124,6 +120,19 @@ export default function TournamentOverview({ tournament, is_admin }) {
                 <div className="tab-pane fade mt-4" id="brackets" role="tabpanel" aria-labelledby="brackets-tab">
 
                     <CompetitionBrackets tournament={tournament} is_admin={false} />
+
+                </div>
+
+                <div className="tab-pane fade mt-4" id="leaderboards" role="tabpanel" aria-labelledby="leaderboards-tab">
+
+                    <CompetitionLeaderboards 
+                        tournament={tournament} 
+                        usersByPoints={leaderboards.user_points_leaderboard}
+                        usersByWins={leaderboards.user_wins_leaderboard} 
+                        teamsByPoints={leaderboards.team_points_leaderboard} 
+                        teamsByWins={leaderboards.team_wins_leaderboard}  
+                        is_admin={false} 
+                    />
 
                 </div>
                 <div className="tab-pane fade mt-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
