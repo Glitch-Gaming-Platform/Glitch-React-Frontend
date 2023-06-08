@@ -75,10 +75,10 @@ class CommunitiesUsers extends Component {
                     <Header />
                     <PageHeader title={this.state.community.name +' Users'} curPage={'Manage Community'} />
 
-                    <div className="blog-section blog-single padding-top padding-bottom aside-bg">
-                        <div className="container">
-                            <Link className='btn btn-success' to={Navigate.communitiesUsersInvitePage(this.state.community.id)}>Invite User</Link>
-                        </div>
+                    <div className="container pt-5 mb-3">
+                        <Link className="default-button reverse-effect" to={Navigate.communitiesUsersInvitePage(this.state.community.id)}><span>Invite User</span> </Link>
+                    </div>
+                    <div className="blog-section blog-single padding-bottom aside-bg">
 
                         <div className="container">
 
