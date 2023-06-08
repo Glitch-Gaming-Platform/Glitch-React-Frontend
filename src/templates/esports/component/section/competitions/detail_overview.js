@@ -62,6 +62,10 @@ export default function TournamentOverview({ tournament, is_admin }) {
                 <li className="nav-item" role="presentation">
                     <button className="nav-link" id="brackets-tab" data-bs-toggle="tab" data-bs-target="#brackets" type="button" role="tab" aria-controls="brackets" aria-selected="true">Brackets</button>
                 </li>
+                
+                <li className="nav-item" role="presentation">
+                    <button className="nav-link" id="brackets-tab" data-bs-toggle="tab" data-bs-target="#leader" type="button" role="tab" aria-controls="brackets" aria-selected="true">Leaderboard</button>
+                </li>
                 {tournament.rules ?
                     <li className="nav-item" role="presentation">
                         <button className="nav-link" id="rules-tab" data-bs-toggle="tab" data-bs-target="#rules" type="button" role="tab" aria-controls="rules" aria-selected="false">Rules</button>
