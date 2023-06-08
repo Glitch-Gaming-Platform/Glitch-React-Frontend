@@ -24,6 +24,7 @@ class LogIn extends Component {
             isLoading : false,
             errors : []
         };
+        
     }
 
     componentDidMount() {
@@ -122,7 +123,7 @@ class LogIn extends Component {
                     <div className=" container">
                         <div className="account-wrapper">
                             <h3 className="title">{title}</h3>
-                            <form className="account-form">
+                            <form method="post" className="account-form" onSubmit={this.login}>
                                 <div className="form-group">
                                     <input
                                         type="text"
@@ -157,7 +158,7 @@ class LogIn extends Component {
                                         return <Danger message={name} key={index} />;
                                 })}
                                 <div className="form-group">
-                                    <button type="button" className="d-block default-button" onClick={(e => {this.login(e)})}> <span>{this.state.isLoading ? <Loading /> : ''} Login</span></button>
+                                    <button type="submit" className="d-block default-button" onClick={(e => {this.login(e)})}> <span>{this.state.isLoading ? <Loading /> : ''} Login</span></button>
                                 </div>
                             </form>
                             <div className="account-bottom">
