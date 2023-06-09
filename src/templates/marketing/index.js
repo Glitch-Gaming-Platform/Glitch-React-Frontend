@@ -35,6 +35,7 @@ import SignUp from "./pages/auth/signup";
 import ForgotPassword from "./pages/auth/forgotpassword";
 import ResetPassword from "./pages/auth/resetpassword";
 import LogIn from "./pages/auth/login";
+import RegisterStep2 from './pages/auth/register_step2';
 
 
 //Communities
@@ -104,7 +105,7 @@ function Template() {
 
           <Route path={Navigate.authLogin()} element={<LogIn />} />
           <Route path={Navigate.authRegister()} element={<SignUp />} />
-
+          <Route path={Navigate.accountRegisterStep2()} element={<RegisterStep2 />} />
           <Route path={Navigate.accountMainPage()} element={<AccountUpdatePage />} />
           
           <Route path="*" element={<ErrorPage />} />

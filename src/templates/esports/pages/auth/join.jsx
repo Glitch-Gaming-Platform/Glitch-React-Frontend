@@ -69,7 +69,19 @@ class JoinPage extends Component {
                     Glitch.util.Storage.set('community_id', response.data.data.id);
                     Glitch.util.Storage.set('community', response.data.data);
 
-                    this.props.router.navigate(Navigate.homePage());
+                    try {
+                        // Find all elements with the class name "join-button-to-remove"
+                        const elementsToRemove = document.getElementsByClassName('join-button-to-remove');
+
+                        console.log(elementsToRemove);
+                        while (elementsToRemove.length > 0) {
+                            elementsToRemove[0].parentNode.removeChild(elementsToRemove[0]);
+                        }
+                    } catch (err) {
+                        console.error(err);
+                    }
+
+                    window.location = Navigate.homePage();
                 }).catch(error => {
 
                     this.props.router.navigate(Navigate.homePage());

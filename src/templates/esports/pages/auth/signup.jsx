@@ -122,7 +122,18 @@ class SignUp extends Component {
                     Glitch.util.Storage.set('community_id', response.data.data.id);
                     Glitch.util.Storage.set('community', response.data.data);
 
-                    this.props.router.navigate(Navigate.accountRegisterStep2());
+                    try {
+                        // Find all elements with the class name "join-button-to-remove"
+                        const elementsToRemove = document.getElementsByClassName('join-button-to-remove');
+                        
+                        while (elementsToRemove.length > 0) {
+                            elementsToRemove[0].parentNode.removeChild(elementsToRemove[0]);
+                        }
+                    } catch(err){
+                        console.error(err);
+                    }
+
+                    window.location = Navigate.accountRegisterStep2();
                 }).catch(error => {
 
                     this.props.router.navigate(Navigate.accountRegisterStep2());

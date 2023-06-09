@@ -105,10 +105,10 @@ class HeaderTwo extends Component {
 
         if( Glitch.util.Session.isLoggedIn() && !community?.me) {
 
-            joinButton = (<Link to={Navigate.joinPage()} className="login"><i className="icofont-login"></i> <span>Join</span> </Link>);
+            joinButton = (<Link to={Navigate.joinPage()} className="login join-button-to-remove" id="joinButton"><i className="icofont-login"></i> <span>Join</span> </Link>);
 
             joinButtonMobile = (<>
-                <li className="d-block d-sm-none" >
+                <li className="d-block d-sm-none join-button-to-remove" >
                     <Link to={Navigate.joinPage()} >Join</Link>
                 </li>
 
