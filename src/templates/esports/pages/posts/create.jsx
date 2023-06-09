@@ -14,7 +14,7 @@ import ImageUploadAndCrop from "../../component/form/image_crop_uploader";
 import VideoUploader from "../../component/form/video";
 import Wysiwyg from "../../component/form/wysiwyg";
 import Alerts from "../../../../util/Alerts";
-
+//import Invirtu from "../../../../util/Invirtu";
 
 class PostCreatePage extends Component {
 
@@ -26,6 +26,7 @@ class PostCreatePage extends Component {
                 content : '',
                 type: '',
             },
+            me : {},
             blob: null,
             events: [],
             errors: {},
@@ -74,9 +75,34 @@ class PostCreatePage extends Component {
 
                 Glitch.api.Posts.createWithBlob(this.state.blob, data).then(response => {
 
-                    this.setState({ isLoading: false });
+                   let model = response.data.data;
 
-                    this.props.router.navigate(Navigate.postsViewPage(response.data.data.id));
+                   console.log(model);
+                    
+                    if(this.state.data.type == Glitch.constants.PostTypes.VIDEO && model.media && model.media[0] && model.media[0].invirtu_media_id && this.state.me.invirtu_user_jwt_token) {
+                        
+                        this.setState({ isLoading: false });
+
+                        /*Config.setAuthToken(this.state.me.invirtu_user_jwt_token);
+
+                    
+                        const formData = new FormData();
+                        
+                        formData.append("file", this.state.blob);
+
+                        Videos.uploadMainVideo(formData, model.invirtu_media_id).then(response => {
+                            console.log(response);
+                        }).catch(error => {
+                            console.log(error);
+                        })*/
+
+                    } else {
+
+                        this.setState({ isLoading: false });
+
+                        this.props.router.navigate(Navigate.postsViewPage(response.data.data.id));
+
+                    }
                 }).catch(error => {
 
                     this.setState({ isLoading: false });
@@ -94,6 +120,14 @@ class PostCreatePage extends Component {
     }
 
     componentDidMount() {
+
+        Glitch.api.Users.me().then(response => {
+
+            this.setState({me : response.data.data });
+
+        }).catch(error => {
+
+        });
 
     }
 
