@@ -36,11 +36,24 @@ export default function PostItem({ post, is_admin }) {
                 <div className="card card-body bg-light text-black" >
                     <a target="_blank" href={post.url}>{(post?.meta?.title) ? <><h4 style={{ color: "black" }}>{post?.meta?.title}</h4></> : <></>}</a>
 
-                    <a target="_blank" href={post.url}>{(post?.meta?.og_tags['og:image']) ? <><img src={post?.meta?.og_tags['og:image']} className="w-100 mb-2 img-fluid" /></> : <></>}</a>
+                    <a target="_blank" href={post.url}>
+                        {post?.meta?.og_tags && post?.meta?.og_tags['og:image'] ? (
+                            <img src={post?.meta?.og_tags['og:image']} className="w-100 mb-2 img-fluid" />
+                        ) : (
+                            <></>
+                        )}
+                    </a>
 
                     <a target="_blank" href={post.url}>{(post?.meta?.description && !post?.meta?.og_tags['og:description']) ? <><p className="mt-2" style={{ color: "black" }}>{post?.meta?.description}</p></> : <></>}</a>
 
-                    <a target="_blank" href={post.url}>{(!post?.meta?.description && post?.meta?.og_tags['og:description']) ? <><p className="mt-2" style={{ color: "black" }}>{post?.meta?.og_tags['og:description']}</p></> : <></>}</a>
+                    <a target="_blank" href={post.url}>
+                        {(!post?.meta?.description && post?.meta?.og_tags && post?.meta?.og_tags['og:description']) ? (
+                            <p className="mt-2" style={{ color: "black" }}>{post.meta.og_tags['og:description']}</p>
+                        ) : (
+                            <></>
+                        )}
+                    </a>
+
 
                     <a target="_blank" style={{ color: "red" }} href={post.url}>{post.url}</a>
 

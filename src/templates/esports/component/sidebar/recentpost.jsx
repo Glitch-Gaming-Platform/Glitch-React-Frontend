@@ -85,7 +85,9 @@ class RecentPost extends Component {
                                         <source src={post.meta.default_video} type="video/mp4" />
                                     </video>}
 
-                                    {post.type == Glitch.constants.PostTypes.LINK && post?.meta?.og_tags['og:image'] && <img src={post?.meta?.og_tags['og:image']} className="w-100 mb-2 img-fluid" />}
+                                    {post.type === Glitch.constants.PostTypes.LINK && post?.meta?.og_tags && post.meta.og_tags['og:image'] && (
+                                    <img src={post.meta.og_tags['og:image']} className="w-100 mb-2 img-fluid" />
+                                    )}
                                 </Link>
                             </div>
                             <div className="post-content ps-4">
