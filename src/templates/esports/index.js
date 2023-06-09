@@ -38,6 +38,7 @@ import StreamsWatchPage from "./pages/streams/watchstream";
 import WatchRecordingPage from "./pages/streams/watchrecording";
 import ManageRecordingPage from "./pages/streams/managerecording";
 import CohostWatchStream from "./pages/streams/cohostwatchstream";
+import StreamsDeletePage from './pages/streams/deletestream';
 
 import AuthFacebook from "./pages/auth/auth_facebook";
 import AuthTwitch from "./pages/auth/auth_twitch";
@@ -78,6 +79,8 @@ import CompetitionsUpdateBracketsPage from './pages/competitions/competition_adm
 import PostCreatePage from './pages/posts/create';
 import PostViewPage from './pages/posts/view';
 import PostsListPage from './pages/posts/index';
+import PostUpdatePage from './pages/posts/update';
+import PostDeletePage from './pages/posts/delete';
 
 import AccountUpdatePage from "./pages/account/profile";
 import RegisterStep2 from "./pages/account/register_step2";
@@ -159,6 +162,8 @@ function Template() {
           <Route path={Navigate.postsCreatePage()} element={<PostCreatePage/>} />
           <Route path={Navigate.postsListPage()} element={<PostsListPage />} />
           <Route path={Navigate.postsViewPage()} element={<PostViewPage />} />
+          <Route path={Navigate.postsUpdatePage()} element={<PostUpdatePage />} />
+          <Route path={Navigate.postsDeletePage()} element={<PostDeletePage />} />
           
           <Route path={Navigate.streamsPage()} element={<StreamsPage />} />
           <Route path={Navigate.streamsCreatePage()} element={<StreamsCreatePage />} />
@@ -167,6 +172,7 @@ function Template() {
           <Route path={Navigate.streamsWatchRecordingPage()} element={<WatchRecordingPage />} />
           <Route path={Navigate.streamsManageRecordingPage()} element={<ManageRecordingPage />} />
           <Route path={Navigate.streamsCohostWatch()} element={<CohostWatchStream />} />
+          <Route path={Navigate.streamsDeletePage()} element={<StreamsDeletePage />} />
 
           <Route path={Navigate.tournamentsList()} element={<CompetitionsListPage />} />
           <Route path={Navigate.tournamentsCreate()} element={<CompetitionsCreatePage />} />

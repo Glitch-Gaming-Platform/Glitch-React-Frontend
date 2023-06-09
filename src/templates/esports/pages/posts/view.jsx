@@ -30,6 +30,7 @@ class PostViewPage extends Component {
             comments: [],
             comment_text: '',
             errors: {},
+            isAdmin: false,
             isLoginModalOpen: false,
 
         };
@@ -41,6 +42,10 @@ class PostViewPage extends Component {
 
         Glitch.api.Posts.view(id).then(response => {
             this.setState({ post: response.data.data, comments: response.data.data.children });
+
+            if (response.data.data.user.id == Glitch.util.Session.getID()) {
+                this.setState({ isAdmin: true });
+            }
         }).catch(error => {
             console.log(error);
         })
@@ -49,6 +54,7 @@ class PostViewPage extends Component {
     submitComment(e) {
 
         if (Glitch.util.Session.isLoggedIn()) {
+
             let id = this.props.router.params.id;
 
             let data = {
@@ -82,11 +88,17 @@ class PostViewPage extends Component {
             <Fragment>
                 <Header />
                 <PageHeader title={this.state.post.title} curPage={'Read Post'} />
+
+
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">
                     <div className="container">
                         <div className="section-wrapper">
                             <div className="row justify-content-center pb-15">
                                 <div className="col-lg-8 col-12 pe-5">
+                                    {this.state.isAdmin && <div className="mb-3">
+                                        <Link to={Navigate.postsUpdatePage(this.state.post.id)} className="btn btn-info me-2">Manage {Glitch.util.LabelManager.getPostLabel(false, true)}</Link>
+                                        <Link to={Navigate.postsDeletePage(this.state.post.id)} className="btn btn-danger" >Delete {Glitch.util.LabelManager.getPostLabel(false, true)}</Link>
+                                    </div>}
                                     <article>
                                         <div className="post-item-2">
                                             <div className="post-inner">
@@ -116,31 +128,31 @@ class PostViewPage extends Component {
                                                         <li><span><i className="icofont-speech-comments"></i><a href="#comments">{Data.countCommentChildren(this.state.post)} Comments</a></span></li>
                                                     </ul>
 
-                                                    {this.state.post && this.state.post.type==Glitch.constants.PostTypes.LINK &&
+                                                    {this.state.post && this.state.post.type == Glitch.constants.PostTypes.LINK &&
                                                         <>
 
                                                             <div className="card card-body bg-light text-black" >
                                                                 <a target="_blank" href={this.state.post.url}>{(this.state.post?.meta?.title) ? <><h4 style={{ color: "black" }}>{this.state.post?.meta?.title}</h4></> : <></>}</a>
 
                                                                 <a target="_blank" href={this.state.post.url}>
-                                                                {this.state.post?.meta?.og_tags && this.state.post?.meta?.og_tags['og:image'] ? (
-                                                                    <img src={this.state.post?.meta?.og_tags['og:image']} className="w-100 mb-2 img-fluid" />
-                                                                ) : (
-                                                                    <></>
-                                                                )}
+                                                                    {this.state.post?.meta?.og_tags && this.state.post?.meta?.og_tags['og:image'] ? (
+                                                                        <img src={this.state.post?.meta?.og_tags['og:image']} className="w-100 mb-2 img-fluid" />
+                                                                    ) : (
+                                                                        <></>
+                                                                    )}
                                                                 </a>
 
                                                                 <a target="_blank" href={this.state.post.url}>{(this.state.post?.meta?.description && !this.state.post?.meta?.og_tags['og:description']) ? <><p className="mt-2" style={{ color: "black" }}>{this.state.post?.meta?.description}</p></> : <></>}</a>
 
                                                                 <a target="_blank" href={this.state.post.url}>
-                                                                {(!this.state.post?.meta?.description && this.state.post?.meta?.og_tags && this.state.post?.meta?.og_tags['og:description']) ? (
-                                                                    <p className="mt-2" style={{ color: "black" }}>{this.state.post.meta.og_tags['og:description']}</p>
-                                                                ) : (
-                                                                    <></>
-                                                                )}
+                                                                    {(!this.state.post?.meta?.description && this.state.post?.meta?.og_tags && this.state.post?.meta?.og_tags['og:description']) ? (
+                                                                        <p className="mt-2" style={{ color: "black" }}>{this.state.post.meta.og_tags['og:description']}</p>
+                                                                    ) : (
+                                                                        <></>
+                                                                    )}
                                                                 </a>
-                                                                
-                                                                <a target="_blank" style={{ color: "red" }}  href={this.state.post.url}>{this.state.post.url}</a>
+
+                                                                <a target="_blank" style={{ color: "red" }} href={this.state.post.url}>{this.state.post.url}</a>
 
                                                             </div>
                                                         </>
@@ -214,7 +226,7 @@ class PostViewPage extends Component {
                                     <aside className="ps-lg-4">
                                         <SearchBar />
                                         <RecentPost />
-                                        
+
                                     </aside>
                                 </div>
                             </div>

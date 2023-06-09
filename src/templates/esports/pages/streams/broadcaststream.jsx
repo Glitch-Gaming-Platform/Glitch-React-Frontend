@@ -75,10 +75,7 @@ class StreamsBroadcastPage extends Component {
 
             Glitch.api.Events.view(id).then(response => {
 
-                console.log("Session ID");
                 Glitch.util.Session.getID();
-                console.log("User ID");
-                console.log(userData.id);
 
                 if (!HasAccess.userInList(userData.id, response.data.data.admins)) {
                     this.props.router.navigate(Navigate.accessDeniedPage());

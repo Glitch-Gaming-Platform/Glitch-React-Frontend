@@ -18,6 +18,7 @@ import Glitch from 'glitch-javascript-sdk';
 import CommentForm from "../../component/form/comment";
 import Comments from "../../component/section/comments";
 import PopupModal from "../../component/element/popup";
+import HasAccess from "../../../../util/HasAccess";
 
 
 
@@ -34,6 +35,7 @@ class StreamsWatchPage extends Component {
             profile: '',
             broadcast_widget: '',
             isLive: '',
+            isAdmin : '',
             comments: [],
             comment_text: '',
         };
@@ -60,11 +62,13 @@ class StreamsWatchPage extends Component {
         let id = this.props.router.params.id;
 
         Glitch.api.Posts.list({ event_id: id, withChildren: true }).then(response => {
+
             this.setState({ post: response.data.data });
 
             if (response.data.data) {
                 this.setState({ comments: response.data.data });
             }
+
         }).catch(error => {
             console.log(error);
         })
@@ -77,6 +81,10 @@ class StreamsWatchPage extends Component {
         Glitch.api.Events.view(id).then(response => {
 
             this.setState({ stream: response.data.data, meta: <Meta title={response.data.data.title} description={response.data.data.description} /> });
+
+            if (HasAccess.userInList(Glitch.util.Session.getID(), response.data.data.admins)) {
+                this.setState({ isAdmin: true });
+            }
 
             if (response.data.data.is_live) {
                 this.setState({ isLive: <Success message={"Is Live"} /> });
@@ -174,13 +182,17 @@ class StreamsWatchPage extends Component {
             <Fragment>
                 <Header />
                 {this.state.meta}
-                <PageHeader title={'Watch Stream'} curPage={'Stream'} />
+                <PageHeader title={'Watch ' + Glitch.util.LabelManager.getStreamLabel(false, true)} curPage={'Stream'} />
                 <section className="about-section">
                     <div className="container">
                         <div className="section-wrapper padding-top">
                             <div className="row">
                                 <div className="col-12">
                                     {this.state.isLive}
+                                    {this.state.isAdmin && <div className="mb-3">
+                                        <Link to={Navigate.streamsBroadcastPage(this.state.stream.id)} className="btn btn-info me-2">Manage {Glitch.util.LabelManager.getStreamLabel(false, true)}</Link>
+                                        <Link to={Navigate.streamsDeletePage(this.state.stream.id)} className="btn btn-danger" >Delete {Glitch.util.LabelManager.getStreamLabel(false, true)}</Link>
+                                    </div>}
                                     {this.state.broadcast_widget}
 
                                     <div className="container">

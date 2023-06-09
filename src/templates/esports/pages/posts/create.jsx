@@ -102,7 +102,7 @@ class PostCreatePage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'Create Stream'} curPage={'Stream'} />
+                <PageHeader title={'Create ' +  Glitch.util.LabelManager.getPostLabel(false, true)} curPage={Glitch.util.LabelManager.getPostLabel(false, true)} />
                 <div className=" padding-top padding-bottom">
                     <div className="container pl-2">
                         <div className="stream-wrapper">
