@@ -77,7 +77,7 @@ class StreamsPage extends Component {
         return (
             <Fragment>
                 <Header />
-                <PageHeader title={'The Live Streams'} curPage={'Streams'} />
+                <PageHeader title={'Live & Recorded ' + Glitch.util.LabelManager.getStreamLabel(true, true) } curPage={'Streams'} />
 
                 <div className="container pt-5">
                     <Link className="default-button reverse-effect" to={Navigate.streamsCreatePage()}><span>Create {Glitch.util.LabelManager.getStreamLabel(false, true)}</span> </Link>

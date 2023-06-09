@@ -72,8 +72,7 @@ class JoinPage extends Component {
                     try {
                         // Find all elements with the class name "join-button-to-remove"
                         const elementsToRemove = document.getElementsByClassName('join-button-to-remove');
-
-                        console.log(elementsToRemove);
+                        
                         while (elementsToRemove.length > 0) {
                             elementsToRemove[0].parentNode.removeChild(elementsToRemove[0]);
                         }

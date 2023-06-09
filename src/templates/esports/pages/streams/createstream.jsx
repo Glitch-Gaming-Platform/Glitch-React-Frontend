@@ -100,7 +100,7 @@ class StreamCreatePage extends Component {
 
 
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create {Glitch.util.LabelManager.getPostLabel(false, true)}</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.create(e) })}><span>{this.state.isLoading ? <Loading /> : ''} Create {Glitch.util.LabelManager.getStreamLabel(false, true)}</span></button>
                                 </div>
                             </form>
 
