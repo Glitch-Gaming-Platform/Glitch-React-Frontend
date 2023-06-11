@@ -109,7 +109,7 @@ class LogIn extends Component {
             });
             
         } else {
-            this.props.router.navigate(Navigate.homePage());
+            window.location = Navigate.homePage();
         }
 
     }

@@ -60,12 +60,22 @@ class StreamsBroadcastPage extends Component {
 
             overlayImages: [],
             isLoadingOverlayImage : false,
+            community_domain : '',
         };
     }
 
     componentDidMount() {
 
         let id = this.props.router.params.id;
+
+        let community = Glitch.util.Storage.get('community');
+
+        if(community) {
+
+            const community_domain = 'http://' + ((community.cname && community.cname_enabled) ? community.cname : community.subdomain + process.env.REACT_APP_SITE_DOMAIN);
+
+            this.setState({community_domain : community_domain});
+        }
 
         Glitch.api.Users.me().then(response => {
 
@@ -610,10 +620,18 @@ class StreamsBroadcastPage extends Component {
                                     : ''}
 
 
+                                <hr />
 
+                                <>
+                                    <h3>Watch And Share Your Stream</h3>
+                                    <p>When you are broadcasting your stream, you can preview it here and also share the link with your fans to watch:</p>
+                                    <p><strong><Link target="_blank" to={this.state.community_domain + Navigate.streamsWatchPage(this.state.event.id)}>{this.state.community_domain + Navigate.streamsWatchPage(this.state.event.id)}</Link></strong></p>
 
+                                </>
 
                                 <hr />
+                                        
+
                                 <h3>Restreams</h3>
                                 <p>Restreams is the ability to stream your broadcast to multiple other sources. Enter the RTMP streams from sources like Facebook, Youtube or Twitch to Restream to those sites BEFORE an broadcast or recording has started. To see how to restream to each one, see the links below:</p>
                                 <ul className="indent">
