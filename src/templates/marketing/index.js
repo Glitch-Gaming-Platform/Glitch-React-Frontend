@@ -107,6 +107,8 @@ function Template() {
           <Route path={Navigate.authRegister()} element={<SignUp />} />
           <Route path={Navigate.accountRegisterStep2()} element={<RegisterStep2 />} />
           <Route path={Navigate.accountMainPage()} element={<AccountUpdatePage />} />
+          <Route path={Navigate.authForgotPassword()} element={<ForgotPassword />} />
+          <Route path={Navigate.authResetPassword()} element={<ResetPassword />} />
           
           <Route path="*" element={<ErrorPage />} />
 

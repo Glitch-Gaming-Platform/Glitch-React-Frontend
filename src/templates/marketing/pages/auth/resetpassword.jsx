@@ -7,6 +7,7 @@ import Footer from "../../component/layout/footer";
 import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import Glitch from 'glitch-javascript-sdk';
+import Alerts from "../../../../util/Alerts";
 
 const title = "Reset Password";
 
@@ -17,7 +18,7 @@ class ResetPassword extends Component {
         this.state = {
             errors : []
         };
-        console.log("I am here");
+
     }
 
     resetPassword(event) {
@@ -39,8 +40,8 @@ class ResetPassword extends Component {
         };
 
         Glitch.api.Auth.resetPassword(data).then((response) => {
-            
-            alert("Your password has been reset");
+
+            Alerts.display("Password Successfully Reset", "Your password has been reset. Use your new password to login.")
 
             this.setState({password : ''});
 
@@ -48,15 +49,13 @@ class ResetPassword extends Component {
 
         }).catch((error) => {
 
-            console.log(error);
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
 
-            let response = Response.parseJSONFromError(error)
-
-            this.setState({errors : [response.message]});
-
-            setTimeout(() =>{
-                this.setState({errors : []});
-            }, timeouts.error_message_timeout)
+                setTimeout(() =>{
+                    this.setState({errors : {}});
+                }, timeouts.error_message_timeout)
+            }
         });
 
     }
@@ -83,9 +82,8 @@ class ResetPassword extends Component {
                                     />
                                 </div>
                                 
-                                {this.state.errors &&  this.state.errors.map(function(name, index){
-                                        return <Danger message={name} key={index} />;
-                                })}
+                                {this.state.errors.message && <Danger message={this.state.errors.message} /> }
+
                                 <div className="form-group">
                                     <button type="button" className="d-block default-button" onClick={(e => {this.resetPassword(e)})}><span>Reset Password</span></button>
                                 </div>

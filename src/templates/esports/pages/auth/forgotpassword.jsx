@@ -8,6 +8,7 @@ import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 
 import Glitch from 'glitch-javascript-sdk';
+import Alerts from "../../../../util/Alerts";
 
 const title = "Forgot Password";
 
@@ -19,28 +20,27 @@ class ForgotPassword extends Component {
             errors : [],
             isLoading : false,
         };
-        console.log("I am here");
+
     }
 
     resetPassword(event) {
 
         event.preventDefault();
 
-        let data = {
-            email : this.state.email,
-        };
 
         this.setState({isLoading : true});
 
-        Glitch.api.Auth.forgotPasswordWithEmail(data).then((response) => {
-            
-            alert("You have been sent an email to reset your password.");
+        Glitch.api.Auth.forgotPasswordWithEmail(this.state.email).then((response) => {
+
+            Alerts.display("Password Reset", "You have been sent an email to reset your password.")
 
             this.setState({isLoading : false});
 
             this.setState({email : ''})
 
         }).catch((error) => {
+
+            this.setState({isLoading : false});
 
             if(error.response && error.response.data) {
                 this.setState({errors : error.response.data});
@@ -75,9 +75,10 @@ class ForgotPassword extends Component {
                                     />
                                 </div>
                                 
-                                {this.state.errors &&  this.state.errors.map(function(name, index){
+                                {this.state.errors.email &&  this.state.errors.email.map(function(name, index){
                                         return <Danger message={name} key={index} />;
                                 })}
+
                                 <div className="form-group">
                                     <button type="button" className="d-block default-button" onClick={(e => {this.resetPassword(e)})}><span>{this.state.isLoading ? <Loading /> : ''} Reset Password</span></button>
                                 </div>
