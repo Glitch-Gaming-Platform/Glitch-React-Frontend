@@ -85,9 +85,13 @@ export default function TournamentOverview({ tournament, leaderboards, me, is_ad
                         <button className="nav-link" id="schedule-tab" data-bs-toggle="tab" data-bs-target="#schedule" type="button" role="tab" aria-controls="schedule" aria-selected="false">Schedule</button>
                     </li>
                     : ''}
+
+                {tournament.venues && tournament.venues.length > 0  ?
                 <li className="nav-item" role="presentation">
                     <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Venue(s)</button>
                 </li>
+                 : ''}
+
                 {tournament.allow_individual_signup ?
                     <li className="nav-item" role="presentation">
                         <button className="nav-link" id="contestants-tab" data-bs-toggle="tab" data-bs-target="#contestants" type="button" role="tab" aria-controls="contestants" aria-selected="false">Contestants</button>
