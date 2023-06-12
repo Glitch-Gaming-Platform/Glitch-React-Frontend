@@ -556,7 +556,7 @@ class StreamsBroadcastPage extends Component {
 
                                         <ol>
                                             <li>Click the join above to start the video session. You will appear on-screen!</li>
-                                            <li>Have your game screen in a separate window. Use the "Share Desktop" button in the video session to share that window.</li>
+                                            <li>Setup your game in OBS like your normally would.</li>
                                             <li>Find the OBS RTMP endpoint and RTMP key below. Enter those into OBS preferences for live streaming.</li>
                                             <li>On OBS, use a 'Window Capture' view, and you can do one of the following
 
@@ -567,6 +567,7 @@ class StreamsBroadcastPage extends Component {
 
                                             </li>
                                             <li>On OBS, click the 'Start Streaming' button to broadcast your game.</li>
+                                            <li>Once you start streaming from OBS, your stream will start displaying on the screen above.</li>
                                             <li>You can check what fans will see <Link target={"_blank"} to={this.state.watch_page}>in this watch page.</Link></li>
                                             <li>Optionally, you can use the Record button if you want to record.</li>
                                         </ol>
@@ -614,7 +615,7 @@ class StreamsBroadcastPage extends Component {
 
                                         <h5>FFMPEG Example</h5>
                                         <ul>
-                                            <li><strong>Command:</strong> ffmpeg -re -i [a_local_file_or_input_stream] -maxrate 5M -crf 24 -bufsize 6000k -c:v libx264 -preset superfast -tune zerolatency -strict -2 -c:a aac -ar 44100 -attempt_recovery 1 -max_recovery_attempts 5 -drop_pkts_on_overflow 1 -max_muxing_queue_size 9999 -f flv 'rtmp://ingest.bingewave.com/live/{this.state.event.id}?sign={this.state.event.invirtu_rtmp_broadcast_key}'</li>
+                                            <li><strong>Command:</strong> ffmpeg -re -i [a_local_file_or_input_stream] -maxrate 5M -crf 24 -bufsize 6000k -c:v libx264 -preset superfast -tune zerolatency -strict -2 -c:a aac -ar 44100 -attempt_recovery 1 -max_recovery_attempts 5 -drop_pkts_on_overflow 1 -max_muxing_queue_size 9999 -f flv 'rtmp://ingest.bingewave.com/live/{this.state.event.id}-broadcast?sign={this.state.event.invirtu_rtmp_broadcast_key}'</li>
                                         </ul>
                                     </>
                                     : ''}
