@@ -687,7 +687,7 @@ class StreamsBroadcastPage extends Component {
                                 <ul className="indent">
                                     <li><a target={"_blank"} href="https://youtu.be/zmvdD72KsBs">Playstation 5</a></li>
                                     <li>XBOX (coming soon)</li>
-                                    <li>Computer (comming soon)</li>
+                                    <li>Computer (coming soon)</li>
                                 </ul>
 
 
