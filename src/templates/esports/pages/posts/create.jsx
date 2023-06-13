@@ -136,7 +136,7 @@ class PostCreatePage extends Component {
                                 {this.state.data.type == Glitch.constants.PostTypes.IMAGE &&
                                     <div className="mt-4 mb-4" style={{ textAlign: "left" }}>
                                         <label>Upload Image</label>
-                                        <ImageUploadAndCrop setCroppedBlob={(file) => { this.setState((prevState) => ({ blob: file })); }} />
+                                        <ImageUploadAndCrop setCroppedBlob={(file) => { this.setState((prevState) => ({ blob: file })); }}  accept="image/*" />
                                     </div>
                                 }
 

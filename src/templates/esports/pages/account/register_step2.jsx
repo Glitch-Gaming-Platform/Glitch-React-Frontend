@@ -121,6 +121,7 @@ class RegisterStep2 extends Component {
                                     onChange={this.imageOnChange}
                                     maxNumber={1}
                                     dataURLKey="data_url"
+                                    accept="image/*"
                                 >
                                     {({
                                         imageList,
