@@ -694,7 +694,7 @@ class StreamsBroadcastPage extends Component {
                                 <br /><br />
                                 <h3>Engagement</h3>
 
-                                <p className="lead">Create interactive experiences with your audience as your stream your content.</p>
+                                <p className="lead">Create interactive experiences with your audience as you stream your content.</p>
 
                                 <hr />
                                 <br />
