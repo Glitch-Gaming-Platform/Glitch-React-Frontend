@@ -531,14 +531,12 @@ class StreamsBroadcastPage extends Component {
                                     <label className="form-check-label" htmlFor="inlineRadio3">Generic RTMP Stream</label>
                                 </div>
 
-
-                                <hr />
                                 <br />
                                 <br />
 
                                 {modes.broadcast == this.state.event.mode ?
                                     <>
-                                        <h3>How It Works With Screensharing</h3>
+                                        <h4>How It Works With Screensharing</h4>
                                         <p>Starting your live stream is simple with screen sharing! We will describe how to use the platform in 3 easy steps.</p>
 
                                         <ol>
@@ -551,7 +549,7 @@ class StreamsBroadcastPage extends Component {
 
                                 {modes.obs == this.state.event.mode ?
                                     <>
-                                        <h3>How It Works With OBS</h3>
+                                        <h4>How It Works With OBS</h4>
                                         <p>OBS (Open Broadcast Software) is an easy way to stream your game. Follow the instructions below for streaming through OBS.</p>
 
                                         <ol>
@@ -587,7 +585,7 @@ class StreamsBroadcastPage extends Component {
 
                                 {modes.livestream == this.state.event.mode ?
                                     <>
-                                        <h3>How It Works With RTMP</h3>
+                                        <h4>How It Works With RTMP</h4>
                                         <p>A stream can all be ingested and broadcast from another source. Use the RTMP Endpoint to accomplish RTMP streaming from other sources.</p>
 
                                         <br />
