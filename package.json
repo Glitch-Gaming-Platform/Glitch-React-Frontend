@@ -60,6 +60,7 @@
     "react-scroll": "^1.8.8",
     "react-serialize": "^0.2.1",
     "react-share": "^4.4.1",
+    "react-spinners": "^0.13.8",
     "react-tabs": "^6.0.1",
     "sweetalert2": "^11.6.9",
     "sweetalert2-react-content": "^5.0.7",
