@@ -39,7 +39,7 @@ class StreamCreatePage extends Component {
 
             Alerts.display("Must Join Community", "Before you are able to engage, please join the community.")
 
-        } else {
+        } else if(this.state.isLoading == false) {
 
             let data = {
                 title: this.state.title,
