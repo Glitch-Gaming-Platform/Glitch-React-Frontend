@@ -40,6 +40,28 @@ class InstallationPage extends Component {
                                                     <p><a target={"_blank"} href="https://github.com/Glitch-Gaming-Platform/Glitch-PHP-Backend">https://github.com/Glitch-Gaming-Platform/Glitch-PHP-Backend</a></p>
 
                                                     <p>Start by reading the instructions and installing it. Afterward, you can install the frontend application.</p>
+
+                                                    <p>The backend is documentated by an API here:</p>
+
+                                                    <p><a target={"_blank"} href="https://api.glitch.fun/api/documentation">https://api.glitch.fun/api/documentation</a></p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-lg-12 col-12" key={"step2"}>
+                                        <div className="blog-item">
+                                            <div className="blog-inner">
+
+                                                <div className="blog-content px-3 py-4">
+                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>2</span> Javascript SDK</h3>
+
+                                                    <p>For communicating with the backend, a comprenhensive SDK is available to be installed into any project.</p>
+
+                                                    <p><a target={"_blank"} href="https://github.com/Glitch-Gaming-Platform/Glitch-Javascript-SDK">https://github.com/Glitch-Gaming-Platform/Glitch-Javascript-SDK</a></p>
+
+                                                    <p>Read the through the instructions for installing and using the SDK.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -51,7 +73,7 @@ class InstallationPage extends Component {
                                             <div className="blog-inner">
 
                                                 <div className="blog-content px-3 py-4">
-                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>2</span> Installing The Frontend</h3>
+                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>3</span> Installing The Frontend</h3>
 
                                                     <p>After the backend, you can then set up the frontend. The frontend provided is an example application designed to give you an idea of how the system works. You can view the example frontend here:</p>
 
@@ -69,7 +91,7 @@ class InstallationPage extends Component {
                                             <div className="blog-inner">
 
                                                 <div className="blog-content px-3 py-4">
-                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>3</span> Installing Mobile</h3>
+                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>4</span> Installing Mobile</h3>
 
                                                     <p>Like the frontend, the mobile implementation is meant to serve as an example to guide developers. The mobile implementation example will be completed by the end of February.</p>
 
@@ -84,7 +106,7 @@ class InstallationPage extends Component {
                                             <div className="blog-inner">
 
                                                 <div className="blog-content px-3 py-4">
-                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>4</span> Customizing The Streaming Experience</h3>
+                                                    <h3><span className="badge badge-secondary" style={{backgroundColor: "blue"}}>5</span> Customizing The Streaming Experience</h3>
 
                                                     <p>One of the community's most unique aspects is the ability to live stream the games. The live stream interface is powered by Invirtu/BingeWave, which is a mixture of no-code and low-code video builder. To understand how the implementation works, review the docs here:</p>
 
