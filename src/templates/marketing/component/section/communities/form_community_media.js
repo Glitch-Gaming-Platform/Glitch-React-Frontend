@@ -56,6 +56,9 @@ export default function CommunityFormMedia({ logoValue, logoOnChange, saveLogo, 
         </div>
 
 
+        <hr />
+        <br />
+        
         <h3>Update Community Banner</h3>
         <div className="form-group text-left">
             <label>Banner Image</label>
