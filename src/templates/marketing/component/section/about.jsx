@@ -11,20 +11,20 @@ let AboutListContent = [
     {
         imgUrl: '/assets/images/about/icon-1.png',
         imgAlt: 'Restream To Twitch, Youtube, and Facebook',
-        title: 'Restream To Twitch, Youtube, and Facebook',
-        desc: 'Grow your audience by restreaming automatically on Glitch, Facebook, Youtube, and Twitch simultaneously.',
+        title: 'Your Fans Can Easily Stream Their Gameplay',
+        desc: 'Your fans can easily stream their gameplay from the community and multicast to Facebook, YouTube, and Twitch simultaneously.',
     },
     {
         imgUrl: '/assets/images/about/icon-2.png',
         imgAlt: 'No-Code Your Own Experience',
-        title: 'No-Code Your Own Experience',
-        desc: 'Use Invirtu\'s No-Code Tool to create fully custom experiences for yourself, your fans, and your sponsors.',
+        title: 'Your Users Create Content and Compete',
+        desc: 'Users can compete and create content centered around your game to help drive engagement.',
     },
     {
         imgUrl: '/assets/images/about/icon-3.png',
         imgAlt: 'About Icon',
-        title: 'Make Your Own Rules and Control Monetization',
-        desc: 'Decide on your own rules for yourself and users, and create monetization strategies that work best with your approach to gaming & Esports.',
+        title: 'Your Game Earns Revenue from Engagement',
+        desc: 'As users stream, compete, and create content, your game(s) earn an additional stream of revenue.',
     },
 ]
 

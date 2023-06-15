@@ -17,6 +17,7 @@ import SponsorSection from '../../component/section/sponsor';
 import BlogSection from '../../component/section/blog';
 import TestimonialSection from '../../component/section/testimonial';
 import { Link } from "react-router-dom";
+import Waitlist from "../../component/section/waitlist";
 
 class HomeTwo extends Component {
     render() {
@@ -30,7 +31,7 @@ class HomeTwo extends Component {
                 
 
 
-
+                <Waitlist />
 
 
                 <Footer />
