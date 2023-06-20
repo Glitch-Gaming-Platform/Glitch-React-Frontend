@@ -26,10 +26,71 @@ class SignUp extends Component {
             username : '',
             confirm_password: '',
             isLoading : false,
-            errors : {}
+            errors : {},
+        handleChange: this.handleChange.bind(this),
+        handleSubmit: this.handleSubmit.bind(this),
         };
 
+        
+
     }
+
+    handleChange = (event) => {
+        if(this.setState({confirm_Password: event.target.value}) !== this.state.password) {
+            alert('error');
+            this.setState({confirm_Password: event.target.value})
+        }
+        /*
+        if (event.target.value !== this.state.password) {
+          alert('error');
+          this.setState({confirmPassword: event.target.value})
+        }*/
+    }
+
+    handleSubmit = (event) =>{
+        if (this.state.password !== this.state.confirm_password){
+            alert("These passwords don't match");
+            return false;
+        } else 
+        return true;
+    }
+
+   /* handleChange(event){
+        let input = this.state.input;
+        input[event.target.name] = event.target.value;
+
+        this.setState({ input });
+    }
+
+    handleSubmit(event){
+
+        event.preventDefault();
+
+        if(this.validate()){
+            let input = {};
+
+            input["password"] = "";
+            input["conpassword"] = "";
+            this.setState({input:input});
+        }
+    }
+
+    validate(){
+        let input = this.state.input;
+        let errors = {};
+        let isValid = true;
+
+        if(typeof input["password"] !== "undefined" && input["conpassword"] !== "undefined") {
+            if(input["password"] !== input["conpassword"]){
+                isValid = false;
+                errors["conpassword"] = "These passwords do not match";
+            }
+        }
+        this.setState({ errors: errors });
+
+        return isValid;
+    }*/
+    
 
     componentDidMount() {
 
@@ -174,7 +235,7 @@ class SignUp extends Component {
                     <div className=" container">
                         <div className="account-wrapper">
                             <h3 className="title">{title}</h3>
-                            <form className="account-form" onScroll={this.register}>
+                            <form className="account-form" onScroll={this.register} onSubmit={this.handleSubmit}>
                                 <div className="form-group">
                                     <input
                                         type="text"
@@ -233,7 +294,8 @@ class SignUp extends Component {
                                         name="password"
                                         id="item04"
                                         value={this.state.password}
-                                        onChange={(e)=>{this.setState({password: e.target.value});}}
+                                        onChange={(e)=>{this.handleChange({password: e.target.value});}}
+                                       // onChange={(e)=>{this.setState({password: e.target.value});}}
                                         placeholder="Password *"
                                     />
                                     {this.state.errors && this.state.errors.password && this.state.errors.password.map(function(name, index){
@@ -246,12 +308,13 @@ class SignUp extends Component {
                                         name="conpassword"
                                         id="item05"
                                         value={this.state.confirm_password}
-                                        onChange={(e)=>{this.setState({confirm_password: e.target.value});}}
+                                        onChange={(e)=>{this.handleChange({confirm_password: e.target.value});}}
+                                        //onChange={(e)=>{this.setState({confirm_password: e.target.value});}}
                                         placeholder="Confirm Password *"
                                     />
                                 </div>
                                 <div className="form-group">
-                                    <button type="submit" className="d-block default-button" onClick={(e => {this.register(e)})}><span>{this.state.isLoading ? <Loading /> : ''} Get Started Now</span></button>
+                                    <button type="submit" className="d-block default-button" onClick={(e => {this.handleSubmit(this.register(e))})}><span>{this.state.isLoading ? <Loading /> : ''} Get Started Now</span></button>
                                 </div>
                             </form>
                             <div className="account-bottom">
