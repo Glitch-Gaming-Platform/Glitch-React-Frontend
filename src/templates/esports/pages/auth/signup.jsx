@@ -270,13 +270,11 @@ class SignUp extends Component {
 
                                 <div className="form-group">
                                     <button type="submit" 
-                                    className="d-block default-button"
-                                    onClick={(e => {this.register(e)})}
-                                    disabled = {!this.state.passwordMatch}
-                                   // </div>onClick={(e => {this.register(e)})}
-                                    >
-                                        <span>{this.state.isLoading ? <Loading /> : ''} Get Started Now</span>
-                                        </button>
+                                        className="d-block default-button"
+                                        onClick={(e => {this.register(e)})}
+                                        disabled = {!this.state.passwordMatch}>
+                                            <span>{this.state.isLoading ? <Loading /> : ''} Get Started Now</span>
+                                    </button>
                                 </div>
                             </form>
                             <div className="account-bottom">
