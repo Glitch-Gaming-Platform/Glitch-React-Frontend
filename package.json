@@ -6,6 +6,7 @@
     "@codemirror/lang-css": "^6.2.0",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
+    "@filmgardi/videojs-markers": "^2.0.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
@@ -66,7 +67,6 @@
     "swiper": "^8.4.5",
     "uikit": "^3.16.17",
     "uuid": "^9.0.0",
-    "video.js": "^7.20.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -96,6 +96,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.14.7",
     "sass": "^1.56.0",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "video.js": "^8.3.0"
   }
 }

@@ -10,6 +10,7 @@ import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import RecordingVideo from "../../component/section/recordingvideo";
 import Glitch from 'glitch-javascript-sdk';
+import VideoEditor from "../../../../util/VideoEditor";
 
 
 class ManageRecordingPage extends Component {
@@ -82,9 +83,10 @@ class ManageRecordingPage extends Component {
 
                 if (recording.id == recording_id) {
 
+                    console.log(recording);
                     this.setState({
                         recording: recording,
-                        recording_video: <RecordingVideo video={recording} />,
+                        recording_video: <VideoEditor videoPath={recording.video_mp4} />,
                         title: recording.title,
                         description: recording.description
                     });
