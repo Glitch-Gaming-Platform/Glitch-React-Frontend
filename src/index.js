@@ -14,7 +14,7 @@ Glitch.config.Config.setBaseUrl(process.env.REACT_APP_API_URL, true);
 
 Glitch.config.Config.setRootDomain(process.env.REACT_APP_SITE_DOMAIN);
 
-document.domain = Glitch.config.Config.getRootDomain();
+//document.domain = Glitch.config.Config.getRootDomain();
 
 Glitch.config.Config.setAuthToken(Glitch.util.Storage.getAuthToken());
 
