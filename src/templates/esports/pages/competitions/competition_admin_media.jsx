@@ -142,6 +142,7 @@ class CompetitionsMediaPage extends Component {
                                             bannerImageOnChange={this.bannerImageOnChange}
                                             saveBannerImage={this.saveBannerImage}
                                             errors={this.state.errors}
+                                            accept="image/*"
                                         />
 
                                         <hr />

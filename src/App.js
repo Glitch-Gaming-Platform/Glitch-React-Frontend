@@ -1,7 +1,8 @@
-import React, { useState, useEffect, lazy, Suspense } from 'react';
+import React, { useState, useEffect, lazy, Suspense, CSSProperties } from 'react';
 import ReactGA from 'react-ga';
 import Glitch from 'glitch-javascript-sdk';
 import ReactDOM from 'react-dom/client';
+import RingLoader from 'react-spinners/RingLoader'
 
 
 
@@ -9,6 +10,12 @@ const App = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [template, setTemplate] = useState(null);
+
+  const override: CSSProperties = {
+    display: "block",
+    margin: "auto",
+    marginTop: "45%",
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,7 +90,11 @@ const App = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <RingLoader 
+      loading = {loading}
+      cssOverride = {override}
+      size = {60}
+      color = '#0dcaf0' />
   }
   
 
