@@ -3,8 +3,8 @@ import { Component } from "react";
 
 const subtitle = "Our Goal";
 
-const title = "Build A Live Gaming Community\n The Way You Envision";
-const desc = "Use an open-source gaming community platform that you can customize, tweak and brand to create the live gaming & esports you deserve.";
+const title = "Communities That Benefit Game Publishers and Developers";
+const desc = "We are an open-source gaming community platform designed to revolutionize engagement and revenue generation for game publishers and indie developers.";
 
 
 let AboutListContent = [
@@ -12,19 +12,19 @@ let AboutListContent = [
         imgUrl: '/assets/images/about/icon-1.png',
         imgAlt: 'Restream To Twitch, Youtube, and Facebook',
         title: 'Your Fans Can Easily Stream Their Gameplay',
-        desc: 'Your fans can easily stream their gameplay from the community and multicast to Facebook, YouTube, and Twitch simultaneously.',
+        desc: 'Immerse your fans in the gaming experience as they effortlessly stream their gameplay from our community and simultaneously multicast to Facebook, YouTube, and Twitch.',
     },
     {
         imgUrl: '/assets/images/about/icon-2.png',
         imgAlt: 'No-Code Your Own Experience',
         title: 'Your Users Create Content and Compete',
-        desc: 'Users can compete and create content centered around your game to help drive engagement.',
+        desc: 'Unleash the creativity and competitive spirit of your users as they compete and generate captivating content centered around your game, igniting unparalleled engagement.',
     },
     {
         imgUrl: '/assets/images/about/icon-3.png',
         imgAlt: 'About Icon',
         title: 'Your Game Earns Revenue from Engagement',
-        desc: 'As users stream, compete, and create content, your game(s) earn an additional stream of revenue.',
+        desc: 'Watch your game(s) unlock an additional stream of revenue as users stream, compete, and craft mesmerizing content.',
     },
 ]
 

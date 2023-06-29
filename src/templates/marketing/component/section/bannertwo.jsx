@@ -8,9 +8,9 @@ import Navigate from "../../../../util/Navigate";
 let BannerListContent = [
     {
         bgImgUrl: 'assets/images/banner/home-2/bg.jpg',
-        title: site.name,
-        subtitle: site.tagline,
-        desc: site.description,
+        title: "Glitch",
+        subtitle: "Create Competitive Gaming Communities",
+        desc: "Drive competitive gaming experiences, foster a tight-knit community, and generate lucrative revenue streams with our game-changing platform.",
         btnText: 'join us today',
     }
 ]

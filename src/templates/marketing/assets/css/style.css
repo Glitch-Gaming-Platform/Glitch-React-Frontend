@@ -475,6 +475,15 @@ input, textarea, select, .body-shape, .body-shape img, .header-section, .header-
 .game-item .game-item-inner, .player-thumb img, .video-overlay::after, .shop-page .shop-product-wrap .product-item .product-thumb .pro-thumb::after, .shop-page .shop-product-wrap .product-list-item .product-thumb .pro-thumb::after {
   height: 100%; }
 
+  ul.built-in-bullets {
+    margin-left: 20px;
+    list-style-type: disc; /* Use 'disc', 'circle', or 'square' for different built-in bullet styles */
+  }
+
+  ul.built-in-bullets li {
+    list-style: disc; /* Use 'disc', 'circle', or 'square' for different built-in bullet styles */
+  }
+
 body h1,
 body h2,
 body h3,
