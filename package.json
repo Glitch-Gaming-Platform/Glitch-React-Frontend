@@ -27,7 +27,7 @@
     "draft-js": "^0.11.7",
     "glitch-javascript-sdk": "^0.4.8",
     "invirtu-javascript-api": "^0.4.1",
-    "invirtu-react-widgets": "^0.0.3",
+    "invirtu-react-widgets": "^0.0.4",
     "jquery": "^3.7.0",
     "jquery-nice-select": "^1.1.0",
     "moment": "^2.29.4",
