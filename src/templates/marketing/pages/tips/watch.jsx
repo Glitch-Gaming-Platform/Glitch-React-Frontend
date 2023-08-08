@@ -9,12 +9,14 @@ import { loadStripe } from '@stripe/stripe-js';
 import CheckoutPage from "./checkout";
 import withRouter from "../../../../util/withRouter";
 import LoginRegisterPopup from "../../component/form/loginregister";
+import { Broadcasting } from "invirtu-react-widgets";
+
 
 import Swal from 'sweetalert2'
 
 const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY);
 
-class EmojisPage extends Component {
+class EmojisWatchPage extends Component {
 
     state = {
         emojis: [],
@@ -25,26 +27,13 @@ class EmojisPage extends Component {
         showPackages: false,
         selectedPackage: null,
         creator: null,
-        showLoginRegister: false
+        showLoginRegister: false,
+        broadcast_widget: '',
     }
 
     timer = null;
 
     componentDidMount() {
-
-        let id = this.props.router.params.id;
-
-        Glitch.api.Events.view(id).then(response => {
-
-            Glitch.util.Session.getID();
-
-            this.setState({ event: response.data.data });
-
-            this.setState({ creator: response.data.data.super_admins[0] });
-
-        }).catch(error => {
-            console.log(error);
-        });
 
         Glitch.api.TipEmojis.list({ order_by: 'price', order_direction: 'asc' }).then((response) => {
             this.setState({ emojis: response.data.data });
@@ -54,7 +43,9 @@ class EmojisPage extends Component {
 
         Glitch.api.Users.me().then((response) => {
             this.setState({ user: response.data.data });
+            this.loadEvent();
         }).catch(error => {
+            this.loadEvent();
             console.error(error);
         });
 
@@ -101,6 +92,31 @@ class EmojisPage extends Component {
 
     }
 
+    loadEvent = () => {
+        let id = this.props.router.params.id;
+
+        Glitch.api.Events.view(id).then(response => {
+
+            Glitch.util.Session.getID();
+
+            let auth_token = null;
+
+            if (this.state.user) {
+                auth_token = this.state.user.invirtu_user_jwt_token
+            }
+
+            this.setState({
+                event: response.data.data,
+                broadcast_widget: <Broadcasting id={response.data.data.invirtu_id} auth_token={auth_token} />,
+            });
+
+            this.setState({ creator: response.data.data.super_admins[0] });
+
+        }).catch(error => {
+            console.log(error);
+        });
+    }
+
     handleLoginRegisterModalClose = () => {
         this.setState({ showLoginRegister: false });
 
@@ -142,7 +158,7 @@ class EmojisPage extends Component {
                 this.displayPackages();
             } else {
 
-                Glitch.api.Tips.give({ type_id: emoji.id, quantity: quantity, receiving_user_id: this.state.creator.id, event_id : this.state.event.id }).then((response) => {
+                Glitch.api.Tips.give({ type_id: emoji.id, quantity: quantity, receiving_user_id: this.state.creator.id, event_id: this.state.event.id }).then((response) => {
 
                     let tip = response.data.data;
 
@@ -153,7 +169,7 @@ class EmojisPage extends Component {
                         confirmButtonText: 'Cool'
                     });
 
-                    this.setState({selectedEmojiId : null});
+                    this.setState({ selectedEmojiId: null });
 
                     Glitch.api.Users.me().then((response) => {
                         this.setState({ user: response.data.data });
@@ -247,62 +263,73 @@ class EmojisPage extends Component {
                         <div className="section-wrapper">
                             <h5>Coins Availabe: <i className="fa-solid fa-coins"></i> ${(this?.state?.user?.tokens_remaining) ? this?.state?.user?.tokens_remaining : 0}</h5>
                             <div className="zero-item">
-                                <h3>Tip {this.state?.creator?.username}</h3>
-                                <div className="zero-thumb">
-
-                                </div>
-
-                                {this.state.showPackages == true && (
-                                    <div className="packages-overlay">
-                                        <div className="packages-modal">
-                                            <button onClick={this.closePackages} className="close-btn">X</button>
-
-                                            {this.state.selectedPackage != null && (
-                                                <form id="payment-form">
-                                                    <div id="link-authentication-element">
-
-                                                    </div>
-                                                    <div id="payment-element"></div>
-                                                    <br />
-                                                    <button id="submit-button" className="btn btn-success btn-lg">Submit Payment</button>
-                                                </form>
-                                            )}
-
-
-                                            {this.state.selectedPackage == null && (
-                                                <>
-                                                    <h2 className="text-black">Select a Package</h2>
-                                                    <p className="text-black">You need some tokens to tip the influencer. Purchase some tokens from a package below.</p>
-                                                    <div className="packages-list">
-                                                        {this.state.packages.map((pack, index) => (
-                                                            <div key={index} className="package" onClick={() => this.selectPackage(pack)}>
-                                                                <h3>{pack.name}</h3>
-                                                                <p>Price: ${pack.price}</p>
-                                                                <p>Tokens: {pack.tokens_awarded}</p>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </>
-                                            )}
-                                        </div>
+                                <div className="row">
+                                    <div className="col-md-8">
+                                        {this.state.broadcast_widget}
                                     </div>
-                                )}
+                                    <div className="col-md-4">
+
+                                        <h3>Tip {this.state?.creator?.username}</h3>
+                                        <div className="zero-thumb">
+
+                                        </div>
+
+                                        {this.state.showPackages == true && (
+                                            <div className="packages-overlay">
+                                                <div className="packages-modal">
+                                                    <button onClick={this.closePackages} className="close-btn">X</button>
+
+                                                    {this.state.selectedPackage != null && (
+                                                        <form id="payment-form">
+                                                            <div id="link-authentication-element">
+
+                                                            </div>
+                                                            <div id="payment-element"></div>
+                                                            <br />
+                                                            <button id="submit-button" className="btn btn-success btn-lg">Submit Payment</button>
+                                                        </form>
+                                                    )}
 
 
-                                <p className="lead">Give tips to the creator by selecting an emoji below and tipping them. The tips will appear on-screen during their live stream.</p>
-                                <div className="zero-content" style={{ height: '45vh', overflowY: 'scroll' }}>
-                                    <div className="row">
-                                        {this.state.emojis.map((emoji, index) => (
-                                            <div className="col-md-3 col-sm-6" key={index} style={{ marginBottom: '15px' }}>
-                                                <div onClick={() => this.selectEmoji(emoji.id)} style={{ cursor: 'pointer', border: '1px solid #ccc', padding: '10px', borderRadius: '5px', backgroundColor: 'white', color: 'black' }}>
-                                                    <div style={{ textAlign: 'center', fontSize: '32px' }}>{emoji.emoji}</div>
-                                                    <div style={{ textAlign: 'center', fontWeight: 'bold' }}>{`$${emoji.price}`}</div>
-                                                    {this.state.selectedEmojiId === emoji.id && <button style={{ width: '100%', backgroundColor: 'blue', color: 'white', fontSize: '18px', padding: '10px', borderRadius: '20px' }} onClick={() => this.incrementQuantity(emoji)}>Tip</button>}
+                                                    {this.state.selectedPackage == null && (
+                                                        <>
+                                                            <h2 className="text-black">Select a Package</h2>
+                                                            <p className="text-black">You need some tokens to tip the influencer. Purchase some tokens from a package below.</p>
+                                                            <div className="packages-list">
+                                                                {this.state.packages.map((pack, index) => (
+                                                                    <div key={index} className="package" onClick={() => this.selectPackage(pack)}>
+                                                                        <h3>{pack.name}</h3>
+                                                                        <p>Price: ${pack.price}</p>
+                                                                        <p>Tokens: {pack.tokens_awarded}</p>
+                                                                    </div>
+                                                                ))}
+                                                            </div>
+                                                        </>
+                                                    )}
                                                 </div>
                                             </div>
-                                        ))}
+                                        )}
+
+
+                                        <p className="small">Give tips to the creator by selecting an emoji below and tipping them. The tips will appear on-screen during their live stream.</p>
+                                        <div className="zero-content" style={{ height: '45vh', overflowY: 'scroll' }}>
+                                            <div className="row">
+                                                {this.state.emojis.map((emoji, index) => (
+                                                    <div className="col-md-4 col-sm-6" key={index} style={{ marginBottom: '15px' }}>
+                                                        <div onClick={() => this.selectEmoji(emoji.id)} style={{ cursor: 'pointer', border: '1px solid #ccc', padding: '10px', borderRadius: '5px', backgroundColor: 'white', color: 'black' }}>
+                                                            <div style={{ textAlign: 'center', fontSize: '32px' }}>{emoji.emoji}</div>
+                                                            <div style={{ textAlign: 'center', fontWeight: 'bold' }}>{`$${emoji.price}`}</div>
+                                                            {this.state.selectedEmojiId === emoji.id && <button style={{ width: '100%', backgroundColor: 'blue', color: 'white', fontSize: '18px', padding: '10px', borderRadius: '20px' }} onClick={() => this.incrementQuantity(emoji)}>Tip</button>}
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+
                                     </div>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -315,4 +342,4 @@ class EmojisPage extends Component {
     }
 }
 
-export default withRouter(EmojisPage);
+export default withRouter(EmojisWatchPage);

@@ -698,6 +698,29 @@ class StreamsBroadcastPage extends Component {
 
                                 <hr />
                                 <br />
+
+                                <h3>Accepting Tips</h3>
+
+                                <p className="lead">Allow users to give you tips that can you turn redeem for cash by giving them these links When they give a tip , it will appear on-screen.</p>
+
+                                <div className="form-group">
+                                    <label>Tip Screen Only</label>
+                                    <input type="text" value={`${window.location.protocol}//www.${window.location.hostname.split('.').slice(-2).join('.')}/tips/${this.state.event.id}/emojis`} />
+                                    <p>Will display only a the emojis for them to tip you.</p>
+                                </div>
+
+
+                                <div className="form-group">
+                                    <label>Tip  & Watch Screen</label>
+                                    <input type="text" value={`${window.location.protocol}//www.${window.location.hostname.split('.').slice(-2).join('.')}/tips/${this.state.event.id}/watch`} />
+                                    <p>Will display a page where they can both watch your game play and give you tips.</p>
+                                </div>
+
+
+
+                                <hr />
+                                <br />
+
                                 <h3>Send On-Screen Message</h3>
 
                                 <p>Broadcast a message that will be displayed on-screen to users who are watchings.</p>

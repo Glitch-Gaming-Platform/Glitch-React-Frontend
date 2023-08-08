@@ -60,8 +60,8 @@
     communities_invited_register : '/invites/register', 
 
     //Tips
-    tips_emojis : '/tips/emojis', 
-    tips_watch_emojis : '/tips/watch', 
+    tips_emojis : '/tips/:id/emojis', 
+    tips_watch_emojis : '/tips/:id/watch', 
 
     //Posts
     posts : '/posts',

@@ -39,6 +39,7 @@ import RegisterStep2 from './pages/auth/register_step2';
 
 //Tips
 import EmojisPage from './pages/tips/emojis';
+import EmojisWatchPage from './pages/tips/watch';
 
 
 //Communities
@@ -105,6 +106,7 @@ function Template() {
           <Route path={Navigate.communitiesUsersInvitePage()} element={<CommunitiesUsersInvite/>} />
 
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
+          <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />
 
 
 
