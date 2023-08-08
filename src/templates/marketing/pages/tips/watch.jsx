@@ -264,7 +264,8 @@ class EmojisWatchPage extends Component {
                             <h5>Coins Availabe: <i className="fa-solid fa-coins"></i> ${(this?.state?.user?.tokens_remaining) ? this?.state?.user?.tokens_remaining : 0}</h5>
                             <div className="zero-item">
                                 <div className="row">
-                                    <div className="col-md-8">
+                                    <div className="col-md-8 text-start" >
+                                        <h3>Watch Stream</h3>
                                         {this.state.broadcast_widget}
                                     </div>
                                     <div className="col-md-4">
@@ -315,7 +316,7 @@ class EmojisWatchPage extends Component {
                                         <div className="zero-content" style={{ height: '45vh', overflowY: 'scroll' }}>
                                             <div className="row">
                                                 {this.state.emojis.map((emoji, index) => (
-                                                    <div className="col-md-4 col-sm-6" key={index} style={{ marginBottom: '15px' }}>
+                                                    <div className="col-md-4 col-sm-6 col-xs-6 col-6" key={index} style={{ marginBottom: '15px' }}>
                                                         <div onClick={() => this.selectEmoji(emoji.id)} style={{ cursor: 'pointer', border: '1px solid #ccc', padding: '10px', borderRadius: '5px', backgroundColor: 'white', color: 'black' }}>
                                                             <div style={{ textAlign: 'center', fontSize: '32px' }}>{emoji.emoji}</div>
                                                             <div style={{ textAlign: 'center', fontWeight: 'bold' }}>{`$${emoji.price}`}</div>

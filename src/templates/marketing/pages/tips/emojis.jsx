@@ -293,7 +293,7 @@ class EmojisPage extends Component {
                                 <div className="zero-content" style={{ height: '45vh', overflowY: 'scroll' }}>
                                     <div className="row">
                                         {this.state.emojis.map((emoji, index) => (
-                                            <div className="col-md-3 col-sm-6" key={index} style={{ marginBottom: '15px' }}>
+                                            <div className="col-md-3 col-sm-3 col-6" key={index} style={{ marginBottom: '15px' }}>
                                                 <div onClick={() => this.selectEmoji(emoji.id)} style={{ cursor: 'pointer', border: '1px solid #ccc', padding: '10px', borderRadius: '5px', backgroundColor: 'white', color: 'black' }}>
                                                     <div style={{ textAlign: 'center', fontSize: '32px' }}>{emoji.emoji}</div>
                                                     <div style={{ textAlign: 'center', fontWeight: 'bold' }}>{`$${emoji.price}`}</div>
