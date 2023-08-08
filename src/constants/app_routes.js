@@ -59,6 +59,10 @@
     communities_invited_login : '/invites/login', 
     communities_invited_register : '/invites/register', 
 
+    //Tips
+    tips_emojis : '/tips/emojis', 
+    tips_watch_emojis : '/tips/watch', 
+
     //Posts
     posts : '/posts',
     posts_create : '/posts/create',

@@ -37,6 +37,9 @@ import ResetPassword from "./pages/auth/resetpassword";
 import LogIn from "./pages/auth/login";
 import RegisterStep2 from './pages/auth/register_step2';
 
+//Tips
+import EmojisPage from './pages/tips/emojis';
+
 
 //Communities
 import CommunitiesList from './pages/communities/CommunitiesList';
@@ -100,6 +103,8 @@ function Template() {
           <Route path={Navigate.communitiesCssPage()} element={<CommunitiesCss />} />
           <Route path={Navigate.communitiesUsersListPage()} element={<CommunitiesUsers/>} />
           <Route path={Navigate.communitiesUsersInvitePage()} element={<CommunitiesUsersInvite/>} />
+
+          <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
 
 
 

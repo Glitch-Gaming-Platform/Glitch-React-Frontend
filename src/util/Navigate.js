@@ -477,6 +477,30 @@ const Navigate = {
         
     },
 
+    //tips
+    tipsEmojiOnly : (event_id) => {
+
+        let path = app_routes.tips_emojis;
+
+        if(event_id){
+            path = path.replace(':id', event_id)
+        }
+
+        return path;
+        
+    },
+    tipsEmojiAndWatch : (event_id) => {
+
+        let path = app_routes.tips_watch_emojis;
+
+        if(event_id){
+            path = path.replace(':id', event_id)
+        }
+
+        return path;
+        
+    },
+
     //Tourmanents
     tournamentsList : () => {
 
