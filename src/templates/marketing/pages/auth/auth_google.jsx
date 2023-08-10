@@ -50,6 +50,9 @@ class AuthGoogle extends Component {
 
         event.preventDefault();
 
+        let redirect = process.env.REACT_APP_OAUTH_GOOGLE_URL;
+
+
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
         });
