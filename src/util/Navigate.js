@@ -76,6 +76,9 @@ const Navigate = {
     authMicrosoftTeams : () => {
         return app_routes.auth_microsoft_teams;
     },
+    authTikTok : () => {
+        return app_routes.auth_tiktok;
+    },
     authForgotPassword : () => {
         return app_routes.auth_forgot_password;
     },

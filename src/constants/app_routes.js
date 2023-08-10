@@ -30,6 +30,8 @@
     auth_google : '/auth/google',
     auth_microsoft : '/auth/microsoft',
     auth_microsoft_teams : '/auth/teams',
+    auth_tiktok : '/auth/tiktok',
+    
 
     //accounts route
     account_update : '/accounts/update',

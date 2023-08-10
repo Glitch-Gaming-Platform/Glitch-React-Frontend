@@ -26,6 +26,7 @@ import BenefitsPage from './pages/misc/benefits';
 
 import AuthFacebook from "./pages/auth/auth_facebook";
 import AuthTwitch from "./pages/auth/auth_twitch";
+import AuthTikTok from "./pages/auth/auth_tiktok";
 import AuthYoutube from "./pages/auth/auth_youtube";
 import AuthStripe from "./pages/auth/auth_stripe";
 import AuthGoogle from "./pages/auth/auth_google";
@@ -108,14 +109,17 @@ function Template() {
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
           <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />
 
-
-
           <Route path={Navigate.authLogin()} element={<LogIn />} />
           <Route path={Navigate.authRegister()} element={<SignUp />} />
           <Route path={Navigate.accountRegisterStep2()} element={<RegisterStep2 />} />
           <Route path={Navigate.accountMainPage()} element={<AccountUpdatePage />} />
           <Route path={Navigate.authForgotPassword()} element={<ForgotPassword />} />
           <Route path={Navigate.authResetPassword()} element={<ResetPassword />} />
+
+
+          <Route path={Navigate.authTwitch()} element={<AuthTwitch />} />
+          <Route path={Navigate.authTikTok()} element={<AuthTikTok />} />
+
           
           <Route path="*" element={<ErrorPage />} />
 
