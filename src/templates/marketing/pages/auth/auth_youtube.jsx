@@ -52,9 +52,15 @@ class AuthYoutube extends Component {
 
         let redirect = process.env.REACT_APP_OAUTH_YOUTUBE_URL;
 
-        if (Glitch.util.Session.isLoggedIn()) {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+       
+        let token = params.loginToken;
 
-            Glitch.api.Auth.oneTimeLogin().then((response) => {
+        if (Glitch.util.Session.isLoggedIn() && token) {
+
+            Glitch.api.Auth.oneTimeLogin( token ).then(response => {
 
                 if (response.data.one_time_login_token) {
                     redirect += '?token=' + response.data.one_time_login_token;

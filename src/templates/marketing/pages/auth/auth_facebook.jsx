@@ -11,10 +11,10 @@ const title = "Authenticate With Facebook";
 
 class AuthFacebook extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            errors : {}
+            errors: {}
         };
     }
 
@@ -28,12 +28,12 @@ class AuthFacebook extends Component {
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
         });
-       
+
         let token = params.loginToken;
 
         if (token) {
 
-            Glitch.api.Auth.oneTimeLogin( token ).then(response => {
+            Glitch.api.Auth.oneTimeLogin(token).then(response => {
                 Glitch.util.Storage.setAuthToken(response.data.data.token.access_token);
                 Glitch.util.Storage.set('user_id', response.data.data.id);
 
@@ -44,18 +44,24 @@ class AuthFacebook extends Component {
 
         }
     }
-    
+
     authenticate(event) {
 
         event.preventDefault();
 
         let redirect = process.env.REACT_APP_OAUTH_FACEBOOK_URL;
 
-        if(Glitch.util.Session.isLoggedIn()) {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
 
-            Glitch.util.Requests.userOneTimeToken().then((response) => {
-            
-            if(response.data.one_time_login_token){
+        let token = params.loginToken;
+
+        if (Glitch.util.Session.isLoggedIn() && token) {
+
+            Glitch.api.Auth.oneTimeLogin(token).then(response => {
+
+                if (response.data.one_time_login_token) {
                     redirect += '?token=' + response.data.one_time_login_token;
                 }
 
@@ -65,7 +71,7 @@ class AuthFacebook extends Component {
 
                 if (error.response && error.response.data) {
                     this.setState({ errors: error.response.data });
-    
+
                     setTimeout(() => {
                         this.setState({ errors: {} });
                     }, timeouts.error_message_timeout)
@@ -77,7 +83,7 @@ class AuthFacebook extends Component {
 
     }
 
-    render() { 
+    render() {
         return (
             <Fragment>
                 <Header />
@@ -87,10 +93,10 @@ class AuthFacebook extends Component {
                         <div className="account-wrapper">
                             <h3 className="title">{title}</h3>
                             <form className="account-form">
-                                
+
                                 <p>Authenticating with Facebook will allow you restream your game directly to Facebook.</p>
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => {this.authenticate(e)})}><span>Authenticate</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
                                 </div>
                             </form>
 
@@ -102,5 +108,5 @@ class AuthFacebook extends Component {
         );
     }
 }
- 
+
 export default withRouter(AuthFacebook);
