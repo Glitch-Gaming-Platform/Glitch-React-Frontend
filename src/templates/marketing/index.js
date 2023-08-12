@@ -120,6 +120,7 @@ function Template() {
           <Route path={Navigate.authTwitch()} element={<AuthTwitch />} />
           <Route path={Navigate.authTikTok()} element={<AuthTikTok />} />
           <Route path={Navigate.authFacebook()} element={<AuthFacebook/>} />
+          <Route path={Navigate.authGoogle()} element={<AuthGoogle/>} />
 
           
           <Route path="*" element={<ErrorPage />} />

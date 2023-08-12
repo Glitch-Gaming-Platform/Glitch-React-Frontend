@@ -276,6 +276,90 @@ class StreamsBroadcastPage extends Component {
         })
     }
 
+    loginToTwitch(event) {
+        event.preventDefault();
+
+        let redirect = process.env.REACT_APP_OAUTH_TWITCH_URL;
+        const currentUrl = window.location.href; // Get the current page URL
+
+        // Add the redirect query parameter to the URL, with the current page URL as the value
+        redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
+
+        // Open the redirect URL in a new pop-up window
+        window.open(redirect, 'twitchlogin', 'width=800,height=600');
+
+    }
+
+    addTwitchMulticast(event) {
+        event.preventDefault();
+    
+        let auth_token = Glitch.util.Session.getAuthToken();
+        let event_id = this.state.event.id;
+        let url = `https://api.glitch.local/api/events/${event_id}/addTwitchMulitcast`;
+    
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth_token}`
+            },
+            body: JSON.stringify({
+                // Include any required body data here
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Handle the response data here
+        })
+        .catch(error => {
+            console.error(error);
+            // Handle any errors here
+        });
+    }
+
+    loginToFacebook(event) {
+        event.preventDefault();
+
+        let redirect = process.env.REACT_APP_OAUTH_FACEBOOK_URL;
+        const currentUrl = window.location.href; // Get the current page URL
+
+        // Add the redirect query parameter to the URL, with the current page URL as the value
+        redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
+
+        // Open the redirect URL in a new pop-up window
+        window.open(redirect, 'facebooklogin', 'width=800,height=600');
+
+    }
+
+    addFacebookMulticast(event) {
+        event.preventDefault();
+    
+        let auth_token = Glitch.util.Session.getAuthToken();
+        let event_id = this.state.event.id;
+        let url = `https://api.glitch.local/api/events/${event_id}/addFacebookMulitcast`;
+    
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth_token}`
+            },
+            body: JSON.stringify({
+                // Include any required body data here
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Handle the response data here
+        })
+        .catch(error => {
+            console.error(error);
+            // Handle any errors here
+        });
+    }
+
     updateFPS(event) {
 
         event.preventDefault();
@@ -633,6 +717,15 @@ class StreamsBroadcastPage extends Component {
 
                                 <h3>Restreams</h3>
                                 <p>Restreams is the ability to stream your broadcast to multiple other sources. Enter the RTMP streams from sources like Facebook, Youtube or Twitch to Restream to those sites BEFORE an broadcast or recording has started. To see how to restream to each one, see the links below:</p>
+
+                                {this.state.me.twitch_auth_token ? 
+                                    <><button type="button" className="btn btn-info" onClick={(e => { this.addTwitchMulticast(e) })}>Add Twitch Stream</button></>
+                                :  <><button type="button" className="btn btn-info" onClick={(e => { this.loginToTwitch(e) })} >Login To Twitch</button></>}
+
+{this.state.me.facebook_auth_token ? 
+                                    <><button type="button" className="btn btn-info" onClick={(e => { this.addFacebookMulticast(e) })}>Add Facebook Stream</button></>
+                                :  <><button type="button" className="btn btn-info" onClick={(e => { this.loginToFacebook(e) })} >Login To Facebook</button></>}
+
                                 <ul className="indent">
                                     <li><a target={"_blank"} href="https://youtu.be/OvQCLkCQgTc">Youtube</a></li>
                                     <li><a target={"_blank"} href="https://youtu.be/eSlgz0aZJTs">Facebook</a></li>

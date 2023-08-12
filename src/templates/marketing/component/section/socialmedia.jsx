@@ -12,6 +12,9 @@ class SocialMedia extends Component {
                 <li>
                     <a href={Navigate.authTwitch()}><img src="/assets/images/match/social-3.png" alt="twitch" /></a>
                 </li>
+                <li>
+                    <a href={Navigate.authGoogle()}><img src="/assets/images/match/social-2.png" alt="youtube" /></a>
+                </li>
             </Fragment>
         );
     }
