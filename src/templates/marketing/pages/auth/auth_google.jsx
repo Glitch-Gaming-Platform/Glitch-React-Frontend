@@ -54,7 +54,7 @@ class AuthGoogle extends Component {
 
         if (Glitch.util.Session.isLoggedIn()) {
 
-           Glitch.api.Users.oneTimeLoginToken.then(response => {
+           Glitch.api.Users.oneTimeLoginToken().then(response => {
 
                 if (response.data.one_time_login_token) {
                     redirect += '?token=' + response.data.one_time_login_token;
