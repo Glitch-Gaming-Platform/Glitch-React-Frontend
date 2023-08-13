@@ -57,6 +57,7 @@ class StreamsBroadcastPage extends Component {
             isLoadingFacebookMulticast : false,
             rtmpSourceError: '',
             onScreenMessageError: '',
+            oneClickRTMPMessageError : '',
             addCohostError: '',
             addCohostErrorObject: {},
             fpsErrorObject: {},
@@ -348,9 +349,17 @@ class StreamsBroadcastPage extends Component {
                 isLoadingTwitchMulticast : false
             });
 
-        }).catch(err => {
+        }).catch(error => {
 
             this.setState({isLoadingTwitchMulticast : false});
+
+            if (error.response && error.response.data && error.response.data.message) {
+                this.setState({ oneClickRTMPMessageError: error.response.data.message });
+
+                setTimeout(() => {
+                    this.setState({ oneClickRTMPMessageError: '' });
+                }, timeouts.error_message_timeout)
+            }
 
         });
     }
@@ -402,8 +411,16 @@ class StreamsBroadcastPage extends Component {
                 isLoadingFacebookMulticast : false
             });
 
-        }).catch(err => {
+        }).catch(error => {
             this.setState({isLoadingFacebookMulticast : false});
+        
+            if (error.response && error.response.data && error.response.data.message) {
+                this.setState({ oneClickRTMPMessageError: error.response.data.message });
+
+                setTimeout(() => {
+                    this.setState({ oneClickRTMPMessageError: '' });
+                }, timeouts.error_message_timeout)
+            }
         });
     
     }
@@ -455,8 +472,17 @@ class StreamsBroadcastPage extends Component {
                 isLoadingYoutubeMulticast : false
             });
 
-        }).catch(err => {
+        }).catch(error => {
+            
             this.setState({isLoadingYoutubeMulticast : false});
+
+            if (error.response && error.response.data && error.response.data.message) {
+                this.setState({ oneClickRTMPMessageError: error.response.data.message });
+
+                setTimeout(() => {
+                    this.setState({ oneClickRTMPMessageError: '' });
+                }, timeouts.error_message_timeout)
+            }
         });
     
     }
@@ -834,6 +860,9 @@ class StreamsBroadcastPage extends Component {
                                 {this.state.me.google_auth_token ? 
                                     <><button type="button" className="btn btn-info m-1" onClick={(e => { this.addYoutubeMulticast(e) })}>{this.state.isLoadingYoutubeMulticast ? <Loading /> : ''}  Add Youtube Stream</button></>
                                 :  <><button type="button" className="btn btn-info m-1" onClick={(e => { this.loginToYoutube(e) })} >Login To Youtube</button></>}
+
+
+                                {this.state.oneClickRTMPMessageError ? <Danger message={this.state.oneClickRTMPMessageError} /> : ''}
 
                                 <br />
                                 <br />
