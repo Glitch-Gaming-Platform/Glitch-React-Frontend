@@ -56,8 +56,8 @@ class AuthStripe extends Component {
 
             Glitch.api.Auth.oneTimeLogin().then((response) => {
 
-                if (response.data.one_time_login_token) {
-                    redirect += '?token=' + response.data.one_time_login_token;
+                if (response.data.data.one_time_login_token) {
+                    redirect += '?token=' + response.data.data.one_time_login_token;
                 }
 
                 window.location = redirect;

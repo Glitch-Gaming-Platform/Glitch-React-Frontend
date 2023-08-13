@@ -385,14 +385,35 @@ class StreamsBroadcastPage extends Component {
     loginToYoutube(event) {
         event.preventDefault();
 
-        let redirect = process.env.REACT_APP_OAUTH_FACEBOOK_URL;
-        const currentUrl = window.location.href; // Get the current page URL
+        Glitch.api.Users.oneTimeLoginToken().then(response => {
 
-        // Add the redirect query parameter to the URL, with the current page URL as the value
-        redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
+            let redirect = process.env.REACT_APP_OAUTH_FACEBOOK_URL;
+            const currentUrl = window.location.href; // Get the current page URL
 
-        // Open the redirect URL in a new pop-up window
-        window.open(redirect, 'facebooklogin', 'width=800,height=600');
+            // Add the redirect query parameter to the URL, with the current page URL as the value
+            redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
+
+            if (response.data.data.one_time_login_token) {
+                redirect += '&token=' + response.data.data.one_time_login_token;
+            }
+
+            // Open the redirect URL in a new pop-up window
+            window.open(redirect, 'facebooklogin', 'width=800,height=600');
+
+            window.location = redirect;
+
+        }).catch((error) => {
+
+            if (error.response && error.response.data) {
+                this.setState({ errors: error.response.data });
+
+                setTimeout(() => {
+                    this.setState({ errors: {} });
+                }, timeouts.error_message_timeout)
+            }
+        });
+
+        
 
     }
 
