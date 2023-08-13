@@ -52,6 +52,9 @@ class StreamsBroadcastPage extends Component {
             isLoadingOverlay : false,
             isLoadingDonation : false,
             isLoadingRTMPAdvanced : false,
+            isLoadingTwitchMulticast : false,
+            isLoadingYoutubeMulticast : false,
+            isLoadingFacebookMulticast : false,
             rtmpSourceError: '',
             onScreenMessageError: '',
             addCohostError: '',
@@ -301,88 +304,58 @@ class StreamsBroadcastPage extends Component {
     loginToTwitch(event) {
         event.preventDefault();
 
-        let redirect = process.env.REACT_APP_OAUTH_TWITCH_URL;
-        const currentUrl = window.location.href; // Get the current page URL
+        Glitch.api.Users.oneTimeLoginToken().then(response => {
 
-        // Add the redirect query parameter to the URL, with the current page URL as the value
-        redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
+            let redirect = process.env.REACT_APP_OAUTH_TWITCH_URL;
+            const currentUrl = window.location.href; // Get the current page URL
 
-        // Open the redirect URL in a new pop-up window
-        window.open(redirect, 'twitchlogin', 'width=800,height=600');
+            // Add the redirect query parameter to the URL, with the current page URL as the value
+            redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
+
+            if (response.data.data.one_time_login_token) {
+                redirect += '&token=' + response.data.data.one_time_login_token;
+            }
+
+            // Open the redirect URL in a new pop-up window
+            window.open(redirect, 'twitchlogin', 'width=800,height=600');
+
+            window.location = redirect;
+
+        }).catch((error) => {
+
+            if (error.response && error.response.data) {
+                this.setState({ errors: error.response.data });
+
+                setTimeout(() => {
+                    this.setState({ errors: {} });
+                }, timeouts.error_message_timeout)
+            }
+        });
 
     }
 
     addTwitchMulticast(event) {
         event.preventDefault();
-    
-        let auth_token = Glitch.util.Session.getAuthToken();
+
         let event_id = this.state.event.id;
-        let url = `https://api.glitch.local/api/events/${event_id}/addTwitchMulticast`;
-    
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${auth_token}`
-            },
-            body: JSON.stringify({
-                // Include any required body data here
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            // Handle the response data here
-        })
-        .catch(error => {
-            console.error(error);
-            // Handle any errors here
+
+        this.setState({isLoadingTwitchMulticast : true});
+
+        Glitch.api.Events.addTwitchMulticast(event_id).then(response => {
+
+            this.setState({
+                event: response.data.data,
+                isLoadingTwitchMulticast : false
+            });
+
+        }).catch(err => {
+
+            this.setState({isLoadingTwitchMulticast : false});
+
         });
     }
 
     loginToFacebook(event) {
-        event.preventDefault();
-
-        let redirect = process.env.REACT_APP_OAUTH_FACEBOOK_URL;
-        const currentUrl = window.location.href; // Get the current page URL
-
-        // Add the redirect query parameter to the URL, with the current page URL as the value
-        redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
-
-        // Open the redirect URL in a new pop-up window
-        window.open(redirect, 'facebooklogin', 'width=800,height=600');
-
-    }
-
-    addFacebookMulticast(event) {
-        event.preventDefault();
-    
-        let auth_token = Glitch.util.Session.getAuthToken();
-        let event_id = this.state.event.id;
-        let url = `https://api.glitch.local/api/events/${event_id}/addFacebookMulticast`;
-    
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${auth_token}`
-            },
-            body: JSON.stringify({
-                // Include any required body data here
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            // Handle the response data here
-        })
-        .catch(error => {
-            console.error(error);
-            // Handle any errors here
-        });
-    }
-
-    loginToYoutube(event) {
         event.preventDefault();
 
         Glitch.api.Users.oneTimeLoginToken().then(response => {
@@ -413,36 +386,79 @@ class StreamsBroadcastPage extends Component {
             }
         });
 
-        
+    }
+
+    addFacebookMulticast(event) {
+        event.preventDefault();
+
+        let event_id = this.state.event.id;
+
+        this.setState({isLoadingFacebookMulticast : true});
+
+        Glitch.api.Events.addFacebookMulticast(event_id).then(response => {
+
+            this.setState({
+                event: response.data.data,
+                isLoadingFacebookMulticast : false
+            });
+
+        }).catch(err => {
+            this.setState({isLoadingFacebookMulticast : false});
+        });
+    
+    }
+
+    loginToYoutube(event) {
+        event.preventDefault();
+
+        Glitch.api.Users.oneTimeLoginToken().then(response => {
+
+            let redirect = process.env.REACT_APP_OAUTH_GOOGLE_URL;
+            const currentUrl = window.location.href; // Get the current page URL
+
+            // Add the redirect query parameter to the URL, with the current page URL as the value
+            redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
+
+            if (response.data.data.one_time_login_token) {
+                redirect += '&token=' + response.data.data.one_time_login_token;
+            }
+
+            // Open the redirect URL in a new pop-up window
+            window.open(redirect, 'googlelogin', 'width=800,height=600');
+
+            window.location = redirect;
+
+        }).catch((error) => {
+
+            if (error.response && error.response.data) {
+                this.setState({ errors: error.response.data });
+
+                setTimeout(() => {
+                    this.setState({ errors: {} });
+                }, timeouts.error_message_timeout)
+            }
+        });
 
     }
 
     addYoutubeMulticast(event) {
         event.preventDefault();
     
-        let auth_token = Glitch.util.Session.getAuthToken();
         let event_id = this.state.event.id;
-        let url = `https://api.glitch.local/api/events/${event_id}/addYoutubeMulticast`;
-    
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${auth_token}`
-            },
-            body: JSON.stringify({
-                // Include any required body data here
-            })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            // Handle the response data here
-        })
-        .catch(error => {
-            console.error(error);
-            // Handle any errors here
+
+        this.setState({isLoadingYoutubeMulticast : true});
+
+        Glitch.api.Events.addYoutubeMulticast(event_id).then(response => {
+
+            this.setState({
+                event: response.data.data,
+                isLoadingYoutubeMulticast : false
+            });
+
+        }).catch(err => {
+            this.setState({isLoadingYoutubeMulticast : false});
         });
+    
     }
 
     updateFPS(event) {
@@ -800,28 +816,31 @@ class StreamsBroadcastPage extends Component {
                                 <hr />
                                         
 
-                                <h3>Restreams</h3>
+                                <h3>Restreams/Multicast</h3>
                                 <p>Restreams is the ability to stream your broadcast to multiple other sources. Enter the RTMP streams from sources like Facebook, Youtube or Twitch to Restream to those sites BEFORE an broadcast or recording has started. To see how to restream to each one, see the links below:</p>
 
+
+                                <h5>One-Click Add Sources</h5>
+                                <p className="small">Use the buttons below to automatically add RTMP endpoints from popular sites.</p>
+
                                 {this.state.me.twitch_auth_token ? 
-                                    <><button type="button" className="btn btn-info" onClick={(e => { this.addTwitchMulticast(e) })}>Add Twitch Stream</button></>
-                                :  <><button type="button" className="btn btn-info" onClick={(e => { this.loginToTwitch(e) })} >Login To Twitch</button></>}
+                                    <><button type="button" className="btn btn-info m-1" onClick={(e => { this.addTwitchMulticast(e) })}>{this.state.isLoadingTwitchMulticast ? <Loading /> : ''} Add Twitch Stream</button></>
+                                :  <><button type="button" className="btn btn-info m-1" onClick={(e => { this.loginToTwitch(e) })} >Login To Twitch</button></>}
 
                                 {this.state.me.facebook_auth_token ? 
-                                    <><button type="button" className="btn btn-info" onClick={(e => { this.addFacebookMulticast(e) })}>Add Facebook Stream</button></>
-                                :  <><button type="button" className="btn btn-info" onClick={(e => { this.loginToFacebook(e) })} >Login To Facebook</button></>}
+                                    <><button type="button" className="btn btn-info m-1" onClick={(e => { this.addFacebookMulticast(e) })}>{this.state.isLoadingFacebookMulticast ? <Loading /> : ''}  Add Facebook Stream</button></>
+                                :  <><button type="button" className="btn btn-info m-1" onClick={(e => { this.loginToFacebook(e) })} >Login To Facebook</button></>}
 
                                 {this.state.me.google_auth_token ? 
-                                    <><button type="button" className="btn btn-info" onClick={(e => { this.addYoutubeMulticast(e) })}>Add Youtube Stream</button></>
-                                :  <><button type="button" className="btn btn-info" onClick={(e => { this.loginToYoutube(e) })} >Login To Youtube</button></>}
+                                    <><button type="button" className="btn btn-info m-1" onClick={(e => { this.addYoutubeMulticast(e) })}>{this.state.isLoadingYoutubeMulticast ? <Loading /> : ''}  Add Youtube Stream</button></>
+                                :  <><button type="button" className="btn btn-info m-1" onClick={(e => { this.loginToYoutube(e) })} >Login To Youtube</button></>}
 
-                                <ul className="indent">
-                                    <li><a target={"_blank"} href="https://youtu.be/OvQCLkCQgTc">Youtube</a></li>
-                                    <li><a target={"_blank"} href="https://youtu.be/eSlgz0aZJTs">Facebook</a></li>
-                                    <li><a target={"_blank"} href="https://youtu.be/0-W1E6qtQdM">Twitch</a> (for ingestion endpoints, see: <a target={"_blank"} href="https://stream.twitch.tv/ingests/">Twitch Endpoints</a>)</li>
-                                </ul>
-
+                                <br />
+                                <br />
+                                <br />
                                 <form>
+                                    <h5>Add Source Manually</h5>
+                                    <p className="small">Enter a custom RTMP endpoint to multicast the game play too.</p>
                                     <div className="form-group">
                                         <label>Enter RTMP Source</label>
                                         <Input name={"rtmp_src"} value={this.state.rtmp_source} onChange={(e) => { this.setState({ rtmp_source: e.target.value }); }} />
@@ -837,7 +856,7 @@ class StreamsBroadcastPage extends Component {
                                 <ul className="indent">
                                     {this.state.event && this.state.event.restreams && this.state.event.restreams.map((restream, index) => {
                                         return <li key={index}>
-                                            {restream.stream_url} <button onClick={(e => { this.removeRTMPSource(e, restream.id) })}>X</button>
+                                           <strong>{restream.label}</strong> {restream.stream_url} <button onClick={(e => { this.removeRTMPSource(e, restream.id) })}>X</button>
                                             <div><a href="#" onClick={(e) => { this.toggleRTMPAdvanced(e, restream.id)}}>Advanced Options</a></div>
                                             {this.state.toggleRTMPAdvanced[restream.id] ? 
                                                 <div className="form-group">
@@ -859,6 +878,7 @@ class StreamsBroadcastPage extends Component {
 
 
                                 <hr />
+
 
                                 <h3>Streaming From Consoles</h3>
                                 <p>You can stream from consoles to Glitch, which will handle the streaming to other endpoints. Below are instructions on how to setup streaming from each console device.</p>
