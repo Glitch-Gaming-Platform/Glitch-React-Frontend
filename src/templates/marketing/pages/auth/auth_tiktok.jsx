@@ -51,15 +51,9 @@ class AuthTikTok extends Component {
 
         let redirect = process.env.REACT_APP_OAUTH_TIKTOK_URL;
 
-        const params = new Proxy(new URLSearchParams(window.location.search), {
-            get: (searchParams, prop) => searchParams.get(prop),
-        });
-       
-        let token = params.loginToken;
-
-        if (Glitch.util.Session.isLoggedIn() && token) {
+        if (Glitch.util.Session.isLoggedIn()) {
             
-            Glitch.api.Auth.oneTimeLogin( token ).then(response => {
+            Glitch.api.Users.oneTimeLoginToken.then(response => {
 
                 if (response.data.one_time_login_token) {
                     redirect += '?token=' + response.data.one_time_login_token;

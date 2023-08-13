@@ -57,9 +57,9 @@ class AuthFacebook extends Component {
 
         let token = params.loginToken;
 
-        if (Glitch.util.Session.isLoggedIn() && token) {
+        if (Glitch.util.Session.isLoggedIn()) {
 
-            Glitch.api.Auth.oneTimeLogin(token).then(response => {
+            Glitch.api.Users.oneTimeLoginToken.then(response => {
 
                 if (response.data.one_time_login_token) {
                     redirect += '?token=' + response.data.one_time_login_token;

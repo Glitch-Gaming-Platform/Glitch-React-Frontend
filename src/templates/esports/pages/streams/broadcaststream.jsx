@@ -79,6 +79,28 @@ class StreamsBroadcastPage extends Component {
 
         Glitch.api.Users.me().then(response => {
 
+
+            let auth_token = Glitch.util.Session.getAuthToken();
+            let url = `https://api.glitch.local/api/users/getYoutubeChannels`;
+        
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${auth_token}`
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                // Handle the response data here
+            })
+            .catch(error => {
+                console.error(error);
+                // Handle any errors here
+            });
+
+
             let userData = response.data.data;
 
             this.setState({me : response.data.data});
@@ -295,7 +317,7 @@ class StreamsBroadcastPage extends Component {
     
         let auth_token = Glitch.util.Session.getAuthToken();
         let event_id = this.state.event.id;
-        let url = `https://api.glitch.local/api/events/${event_id}/addTwitchMulitcast`;
+        let url = `https://api.glitch.local/api/events/${event_id}/addTwitchMulticast`;
     
         fetch(url, {
             method: 'POST',
@@ -337,7 +359,49 @@ class StreamsBroadcastPage extends Component {
     
         let auth_token = Glitch.util.Session.getAuthToken();
         let event_id = this.state.event.id;
-        let url = `https://api.glitch.local/api/events/${event_id}/addFacebookMulitcast`;
+        let url = `https://api.glitch.local/api/events/${event_id}/addFacebookMulticast`;
+    
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${auth_token}`
+            },
+            body: JSON.stringify({
+                // Include any required body data here
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            // Handle the response data here
+        })
+        .catch(error => {
+            console.error(error);
+            // Handle any errors here
+        });
+    }
+
+    loginToYoutube(event) {
+        event.preventDefault();
+
+        let redirect = process.env.REACT_APP_OAUTH_FACEBOOK_URL;
+        const currentUrl = window.location.href; // Get the current page URL
+
+        // Add the redirect query parameter to the URL, with the current page URL as the value
+        redirect += `?redirect=${encodeURIComponent(currentUrl)}`;
+
+        // Open the redirect URL in a new pop-up window
+        window.open(redirect, 'facebooklogin', 'width=800,height=600');
+
+    }
+
+    addYoutubeMulticast(event) {
+        event.preventDefault();
+    
+        let auth_token = Glitch.util.Session.getAuthToken();
+        let event_id = this.state.event.id;
+        let url = `https://api.glitch.local/api/events/${event_id}/addYoutubeMulticast`;
     
         fetch(url, {
             method: 'POST',
@@ -722,9 +786,13 @@ class StreamsBroadcastPage extends Component {
                                     <><button type="button" className="btn btn-info" onClick={(e => { this.addTwitchMulticast(e) })}>Add Twitch Stream</button></>
                                 :  <><button type="button" className="btn btn-info" onClick={(e => { this.loginToTwitch(e) })} >Login To Twitch</button></>}
 
-{this.state.me.facebook_auth_token ? 
+                                {this.state.me.facebook_auth_token ? 
                                     <><button type="button" className="btn btn-info" onClick={(e => { this.addFacebookMulticast(e) })}>Add Facebook Stream</button></>
                                 :  <><button type="button" className="btn btn-info" onClick={(e => { this.loginToFacebook(e) })} >Login To Facebook</button></>}
+
+                                {this.state.me.google_auth_token ? 
+                                    <><button type="button" className="btn btn-info" onClick={(e => { this.addYoutubeMulticast(e) })}>Add Youtube Stream</button></>
+                                :  <><button type="button" className="btn btn-info" onClick={(e => { this.loginToYoutube(e) })} >Login To Youtube</button></>}
 
                                 <ul className="indent">
                                     <li><a target={"_blank"} href="https://youtu.be/OvQCLkCQgTc">Youtube</a></li>
