@@ -38,7 +38,7 @@ class AuthGoogle extends Component {
                 Glitch.util.Storage.setAuthToken(response.data.data.token.access_token);
                 Glitch.util.Storage.set('user_id', response.data.data.id);
 
-                this.props.router.navigate(Navigate.streamsPage());
+                this.props.router.navigate(Navigate.accountMainPage());
             }).catch(error => {
                 console.log(error);
             });

@@ -33,7 +33,7 @@ class AuthTwitch extends Component {
 
         if (token) {
 
-            Glitch.api.Auth.oneTimeLogin({ token: token }).then(response => {
+            Glitch.api.Auth.oneTimeLogin(token).then(response => {
                 Glitch.util.Storage.setAuthToken(response.data.data.token.access_token);
                 Glitch.util.Storage.set('user_id', response.data.data.id);
 
