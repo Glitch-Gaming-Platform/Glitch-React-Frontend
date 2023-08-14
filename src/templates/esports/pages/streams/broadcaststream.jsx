@@ -303,11 +303,13 @@ class StreamsBroadcastPage extends Component {
     }
 
     loginToTwitch(event) {
+
         event.preventDefault();
 
         Glitch.api.Users.oneTimeLoginToken().then(response => {
 
             let redirect = process.env.REACT_APP_OAUTH_TWITCH_URL;
+            
             const currentUrl = window.location.href; // Get the current page URL
 
             // Add the redirect query parameter to the URL, with the current page URL as the value
@@ -318,7 +320,7 @@ class StreamsBroadcastPage extends Component {
             }
 
             // Open the redirect URL in a new pop-up window
-            window.open(redirect, 'twitchlogin', 'width=800,height=600');
+            //window.open(redirect, 'twitchlogin', 'width=800,height=600');
 
             window.location = redirect;
 
@@ -370,6 +372,7 @@ class StreamsBroadcastPage extends Component {
         Glitch.api.Users.oneTimeLoginToken().then(response => {
 
             let redirect = process.env.REACT_APP_OAUTH_FACEBOOK_URL;
+
             const currentUrl = window.location.href; // Get the current page URL
 
             // Add the redirect query parameter to the URL, with the current page URL as the value
@@ -380,7 +383,7 @@ class StreamsBroadcastPage extends Component {
             }
 
             // Open the redirect URL in a new pop-up window
-            window.open(redirect, 'facebooklogin', 'width=800,height=600');
+            //window.open(redirect, 'facebooklogin', 'width=800,height=600');
 
             window.location = redirect;
 
@@ -441,7 +444,7 @@ class StreamsBroadcastPage extends Component {
             }
 
             // Open the redirect URL in a new pop-up window
-            window.open(redirect, 'googlelogin', 'width=800,height=600');
+            //window.open(redirect, 'googlelogin', 'width=800,height=600');
 
             window.location = redirect;
 

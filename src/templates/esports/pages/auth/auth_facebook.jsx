@@ -57,7 +57,7 @@ class AuthFacebook extends Component {
             Glitch.api.Users.oneTimeLoginToken().then((response) => {
             
             if(response.data.data.one_time_login_token){
-                    redirect += '?token=' + response.data.data.one_time_login_token;
+                    redirect += '?token=' + response.data.data.one_time_login_token + "&redirect=" + window.location.href;;
                 }
 
                 window.location = redirect;
@@ -73,7 +73,7 @@ class AuthFacebook extends Component {
                 }
             });
         } else {
-            window.location = redirect;
+            window.location = redirect + "?redirect=" + window.location.href;;
         }
 
     }

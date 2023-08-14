@@ -259,7 +259,7 @@ class SignUp extends Component {
                                 <span className="or"><span>or</span></span>
                                 <h5 className="subtitle">Register With Social Media</h5>
                                 <ul className="match-social-list d-flex flex-wrap align-items-center justify-content-center mt-4">
-                                    
+                                    <SocialMedia />
                                 </ul>
                             </div>
                         </div>
