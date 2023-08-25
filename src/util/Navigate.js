@@ -79,6 +79,32 @@ const Navigate = {
     authTikTok : () => {
         return app_routes.auth_tiktok;
     },
+    
+
+    authFacebookComplete : () => {
+        return app_routes.auth_facebook_complete;
+    },
+    authTwitchComplete : () => {
+        return app_routes.auth_twitch_complete;
+    },
+    authYoutubeComplete : () => {
+        return app_routes.auth_youtube_complete;
+    },
+    authGoogleComplete : () => {
+        return app_routes.auth_google_complete;
+    },
+    authMicrosoftComplete : () => {
+        return app_routes.auth_microsoft_complete;
+    },
+    authMicrosoftTeamsComplete : () => {
+        return app_routes.auth_microsoft_teams_complete;
+    },
+    authTikTokComplete : () => {
+        return app_routes.auth_tiktok_complete;
+    },
+
+
+
     authForgotPassword : () => {
         return app_routes.auth_forgot_password;
     },

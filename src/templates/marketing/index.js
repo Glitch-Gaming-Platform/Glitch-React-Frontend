@@ -24,6 +24,7 @@ import GDPRPage from "./pages/misc/gdpr";
 import AccessDeniedPage from "./pages/misc/accessdenied";
 import BenefitsPage from './pages/misc/benefits';
 
+import AuthComplete from "./pages/auth/auth_complete";
 import AuthFacebook from "./pages/auth/auth_facebook";
 import AuthTwitch from "./pages/auth/auth_twitch";
 import AuthTikTok from "./pages/auth/auth_tiktok";
@@ -115,6 +116,12 @@ function Template() {
           <Route path={Navigate.accountMainPage()} element={<AccountUpdatePage />} />
           <Route path={Navigate.authForgotPassword()} element={<ForgotPassword />} />
           <Route path={Navigate.authResetPassword()} element={<ResetPassword />} />
+
+          <Route path={Navigate.authFacebookComplete()} element={<AuthComplete />} />
+          <Route path={Navigate.authTwitchComplete()} element={<AuthComplete />} />
+          <Route path={Navigate.authGoogleComplete()} element={<AuthComplete />} />
+          <Route path={Navigate.authYoutubeComplete()} element={<AuthComplete />} />
+          <Route path={Navigate.authTikTokComplete()} element={<AuthComplete />} />
 
 
           <Route path={Navigate.authTwitch()} element={<AuthTwitch />} />

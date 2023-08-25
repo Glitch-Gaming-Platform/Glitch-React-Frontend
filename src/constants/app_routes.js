@@ -31,6 +31,14 @@
     auth_microsoft : '/auth/microsoft',
     auth_microsoft_teams : '/auth/teams',
     auth_tiktok : '/auth/tiktok',
+    auth_facebook_complete : '/auth/facebook/complete',
+    auth_youtube_complete : '/auth/youtube/complete',
+    auth_twitch_complete : '/auth/twitch/complete',
+    auth_stripe_complete : '/auth/stripe/complete',
+    auth_google_complete : '/auth/google/complete',
+    auth_microsoft_complete : '/auth/microsoft/complete',
+    auth_microsoft_teams_complete : '/auth/teams/complete',
+    auth_tiktok_complete : '/auth/tiktok/complete',
     
 
     //accounts route
