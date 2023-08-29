@@ -23,6 +23,7 @@ import DataRemovalPage from "./pages/misc/dataremoval";
 import GDPRPage from "./pages/misc/gdpr";
 import AccessDeniedPage from "./pages/misc/accessdenied";
 import BenefitsPage from './pages/misc/benefits';
+import CreatorsPage from './pages/misc/creators';
 
 import AuthComplete from "./pages/auth/auth_complete";
 import AuthFacebook from "./pages/auth/auth_facebook";
@@ -90,6 +91,7 @@ function Template() {
           <Route path={Navigate.featuresPage()} element={<FeaturesPage />} />
           <Route path={Navigate.installationPage()} element={<InstallationPage />} />
           <Route path={Navigate.benefitsPage()} element={<BenefitsPage />} />
+          <Route path={Navigate.creatorsPage()} element={<CreatorsPage />} />
 
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />

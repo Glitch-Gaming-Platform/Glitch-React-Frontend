@@ -148,6 +148,7 @@ class Header extends Component {
                                                     <li><Link className="" to={Navigate.featuresPage()}>Features</Link></li>
                                                     <li><Link className="" to={Navigate.benefitsPage()}>Benefits</Link></li>
                                                     <li><Link className="" to={Navigate.revenuePage()}>Increase Revenue</Link></li>
+                                                    <li><Link className="" to={Navigate.creatorsPage()}>For Creators</Link></li>
                                                     <li><Link className="" to={Navigate.marketingPage()}>Enhance Marketing</Link></li>
                                                     <li><Link className="" to={Navigate.installationPage()}>Install Open Source</Link></li>
                                                 </ul>

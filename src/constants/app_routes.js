@@ -17,6 +17,7 @@
     features : '/features',
     installation: '/installation',
     benefits: '/benefits',
+    creators: '/creators',
 
     //authentication
     auth_login : '/login',

@@ -47,6 +47,9 @@ const Navigate = {
     benefitsPage : () => {
         return app_routes.benefits;
     },
+    creatorsPage : () => {
+        return app_routes.creators;
+    },
 
     //Authentication
     authLogin : () => {
