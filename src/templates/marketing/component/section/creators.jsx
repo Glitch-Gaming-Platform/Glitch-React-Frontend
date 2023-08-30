@@ -37,8 +37,8 @@ const Creators = () => {
                         </div>
 
                         <div className="row mt-4">
-                            <div className="col-12">
-                                <a href="#download" className="btn btn-success">
+                            <div className="col-12 text-center">
+                                <a href="#download" className="btn btn-lg btn-success">
                                     Download Now <i className="icofont-circled-right"></i>
                                 </a>
                             </div>
