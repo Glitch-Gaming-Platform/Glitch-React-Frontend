@@ -48,6 +48,30 @@ const Creators = () => {
                 </div>
             </div>
 
+            <section className="cta-section padding-bottom">
+                <div className="container">
+                    <div className="cta-wrapper item-layer">
+                        <div className="cta-item px-4 px-sm-5 pt-4 pt-sm-5 pt-lg-0" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
+                            <div className="row align-items-center">
+                                <div className="col-lg-6">
+                                    <div className="cta-content">
+                                        <p className="theme-color text-uppercase ls-2">{"Get That Bag"}</p>
+                                        <h2 className="mb-3">Keep 100% Of Your Earnings</h2>
+                                        <p className="mb-4">{'Share a unique link with your fans, inviting them to watch your streams and reward you with tips. You keep 100% of the tip revenue earned from your streams.'}</p>
+                                        <a target="_blank" href="#download" className="default-button"><span>{'Get Started'} <i className="icofont-circled-right"></i></span></a>
+                                    </div>
+                                </div>
+                                <div className="col-lg-6">
+                                    <div className="cta-thumb text-end">
+                                        <img src={'assets/images/creators/black_female.jpeg'} alt="gamer-img" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <div className="container padding-bottom" key={'key3'} >
                 <div className="section-wrapper">
                     <div className="row g-4 justify-content-center"></div>
@@ -76,29 +100,6 @@ const Creators = () => {
                 </div>
             </div>
 
-            <section className="cta-section padding-bottom">
-                <div className="container">
-                    <div className="cta-wrapper item-layer">
-                        <div className="cta-item px-4 px-sm-5 pt-4 pt-sm-5 pt-lg-0" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
-                            <div className="row align-items-center">
-                                <div className="col-lg-6">
-                                    <div className="cta-content">
-                                        <p className="theme-color text-uppercase ls-2">{"Get That Bag"}</p>
-                                        <h2 className="mb-3">Keep 100% Of Your Earnings</h2>
-                                        <p className="mb-4">{'Share a unique link with your fans, inviting them to watch your streams and reward you with tips. You keep 100% of the tip revenue earned from your streams.'}</p>
-                                        <a target="_blank" href="#download" className="default-button"><span>{'Get Started'} <i className="icofont-circled-right"></i></span></a>
-                                    </div>
-                                </div>
-                                <div className="col-lg-6">
-                                    <div className="cta-thumb text-end">
-                                        <img src={'assets/images/creators/black_female.jpeg'} alt="gamer-img" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <a id="download"></a>
             <div className="about-team  padding-bottom padding-top-2" key={'key1'}>
