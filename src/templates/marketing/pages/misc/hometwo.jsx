@@ -19,10 +19,25 @@ import TestimonialSection from '../../component/section/testimonial';
 import { Link } from "react-router-dom";
 import Waitlist from "../../component/section/waitlist";
 import HowItWorks from "../../component/section/home/how";
+import { Helmet } from 'react-helmet';
 
 class HomeTwo extends Component {
     render() {
         return (
+            <>
+            <Helmet>
+                <title>Glitch Gaming Community Platform </title>
+                <meta name="description" content="Create engaging gaming communities that you can host tournaments, stream content and monetize." />
+                <meta property="og:title" content="Glitch Gaming Community Platform " />
+                <meta property="og:description" content="Create engaging gaming communities that you can host tournaments, stream content and monetize." />
+                <meta property="og:image" content="/assets/images/meta/meta_1.jpeg" />
+                <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : 'https://www.glitch.fun'} />
+                <meta property="og:type" content="website" />
+                <meta name="twitter:title" content="Glitch Gaming Community Platform" />
+                <meta name="twitter:description" content="Create engaging gaming communities that you can host tournaments, stream content and monetize." />
+                <meta name="twitter:image" content="/assets/images/meta/meta_1.jpeg" />
+            </Helmet>
+
             <Fragment>
                 <HeaderTwo />
                 <BannerTwo />
@@ -61,6 +76,7 @@ class HomeTwo extends Component {
 
                 <Footer />
             </Fragment>
+            </>
         );
     }
 }
