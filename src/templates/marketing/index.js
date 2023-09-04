@@ -40,6 +40,8 @@ import ResetPassword from "./pages/auth/resetpassword";
 import LogIn from "./pages/auth/login";
 import RegisterStep2 from './pages/auth/register_step2';
 
+import WatchRecording from './pages/streams/watchrecording';
+
 //Tips
 import EmojisPage from './pages/tips/emojis';
 import EmojisWatchPage from './pages/tips/watch';
@@ -108,6 +110,8 @@ function Template() {
           <Route path={Navigate.communitiesCssPage()} element={<CommunitiesCss />} />
           <Route path={Navigate.communitiesUsersListPage()} element={<CommunitiesUsers/>} />
           <Route path={Navigate.communitiesUsersInvitePage()} element={<CommunitiesUsersInvite/>} />
+
+          <Route path={"/streams/:id/recording/:subid"} element={<WatchRecording/>} />
 
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
           <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />
