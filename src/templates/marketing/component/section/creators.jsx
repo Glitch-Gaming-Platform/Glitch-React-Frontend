@@ -119,13 +119,13 @@ const Creators = () => {
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={1}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v0.7.1/Glitch-Desktop-App-0.7.1-arm64.dmg">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v0.7.2/Glitch-Desktop-App-0.7.2-arm64.dmg">
                             <span className="left me-3"><img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{width: '100px'}} /></span>
                             <span className="right">{"Mac"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v0.7.1/Glitch-Desktop-App-Web-Setup-0.7.1.exe">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v0.7.2/Glitch-Desktop-App-Web-Setup-0.7.2.exe">
                             <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{width: '100px'}} /></span>
                             <span className="right">{"Windows"}</span>
                             </a>
