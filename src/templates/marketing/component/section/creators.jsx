@@ -125,7 +125,7 @@ const Creators = () => {
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v0.8.2/Glitch-Desktop-App-Web-Setup-0.8.2.exe">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v0.8.3/Glitch-Desktop-App-Web-Setup-0.8.3.exe">
                             <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{width: '100px'}} /></span>
                             <span className="right">{"Windows"}</span>
                             </a>
