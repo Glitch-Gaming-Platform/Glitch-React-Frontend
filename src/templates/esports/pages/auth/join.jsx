@@ -128,7 +128,7 @@ class JoinPage extends Component {
 
                                 <p>Join The Community</p>
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.join(e) })}><span>Join</span></button>
+                                    <button className="d-block default-button" onClick={(e => { this.join(e) })}><span>Join Community</span></button>
                                 </div>
                             </form>
 

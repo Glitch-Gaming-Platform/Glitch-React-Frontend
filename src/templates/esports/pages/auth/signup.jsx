@@ -26,10 +26,22 @@ class SignUp extends Component {
             username : '',
             confirm_password: '',
             isLoading : false,
-            errors : {}
+            errors : {},
+            passwordMatch: true,
         };
 
     }
+
+    handleConfirmPasswordChange = (e) => {
+        const confirm_password = e.target.value;
+        const { password } = this.state;
+      
+        this.setState({
+          confirm_password,
+          passwordMatch: password === confirm_password,
+        });
+      };
+      
 
     componentDidMount() {
 
@@ -246,12 +258,23 @@ class SignUp extends Component {
                                         name="conpassword"
                                         id="item05"
                                         value={this.state.confirm_password}
-                                        onChange={(e)=>{this.setState({confirm_password: e.target.value});}}
+                                        onChange={this.handleConfirmPasswordChange} 
+                                        //onChange={(e)=>{this.setState({confirm_password: e.target.value});}}
                                         placeholder="Confirm Password *"
                                     />
                                 </div>
+
+                                {!this.state.passwordMatch && (
+                                     <Danger message="Passwords do not match" />
+                                         )}
+
                                 <div className="form-group">
-                                    <button type="submit" className="d-block default-button" onClick={(e => {this.register(e)})}><span>{this.state.isLoading ? <Loading /> : ''} Get Started Now</span></button>
+                                    <button type="submit" 
+                                        className="d-block default-button"
+                                        onClick={(e => {this.register(e)})}
+                                        disabled = {!this.state.passwordMatch}>
+                                            <span>{this.state.isLoading ? <Loading /> : ''} Get Started Now</span>
+                                    </button>
                                 </div>
                             </form>
                             <div className="account-bottom">

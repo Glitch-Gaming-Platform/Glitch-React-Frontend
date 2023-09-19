@@ -98,7 +98,8 @@ class Footer extends Component {
                         <div className="row">
                             <div className="col-12">
                                 <div className="footer-bottom-content text-center">
-                                    <p>{process.env.REACT_APP_COPYRIGHT}</p>
+                                <p>Copyright @ Invirtu Labs, INC</p>
+                                    {/*<p>{process.env.REACT_APP_COPYRIGHT}</p>*/}
                                 </div>
                             </div>
                         </div>
