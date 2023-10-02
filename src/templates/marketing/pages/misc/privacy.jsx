@@ -189,7 +189,7 @@ class PrivacyPage extends Component {
                 <p>You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
                 
                 <h2>Google's Services</h2>
-                <p>The Company will use Personal Data ONLY for the purposes outlined in this Privacy Policy. We adhere strictly to Google's Limited Use Policy, which means that any data we collect, particularly when using Google's services, is used only for the intended purpose and not for any unrelated purposes.</p>
+                <p>The Company will use Personal Data ONLY for the purposes outlined in this Privacy Policy. We adhere strictly to <a target="_blank"  href="https://developers.google.com/terms/api-services-user-data-policy">Google's Limited Use Policy</a>, which means that any data we collect, particularly when using Google's services, is used only for the intended purpose and not for any unrelated purposes.</p>
 
                 <h2>Contact Us</h2>
                 <p>If you have any questions about this Privacy Policy, You can contact us:</p>
