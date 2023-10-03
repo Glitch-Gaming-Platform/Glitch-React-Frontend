@@ -38,6 +38,9 @@ class TermsPage extends Component {
 
                     <p><strong>WE’RE NOT RESPONSIBLE FOR ALL CIRCUMSTANCES.</strong> We're not liable for issues beyond our control, like network interruptions, ISP problems, or third-party attacks.</p>
 
+                    <h3>EXTERNAL FACTORS</h3>
+                    <p>Issues beyond our control, including network interruptions, are not our responsibility.</p>
+
                     <p><strong>TERMINATION BY US.</strong> We can terminate this Agreement at our discretion and may do so without notifying you in advance.</p>
 
                     <p><strong>AMENDMENTS.</strong> We can change the Services or this Agreement. We'll notify you of significant changes. Continued use of the Services means you accept those changes.</p>
