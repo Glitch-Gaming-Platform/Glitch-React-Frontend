@@ -25,8 +25,7 @@ class CreatorsPage extends Component {
                 </Helmet>
                 <Fragment>
                     <Header />
-                    <PageHeader title={'Live Streaming For Creators & Influencers'} curPage={'Creators'} />
-                    <br />
+                    <br /><br /><br />
                     <Creators />
                     <Footer />
                 </Fragment>

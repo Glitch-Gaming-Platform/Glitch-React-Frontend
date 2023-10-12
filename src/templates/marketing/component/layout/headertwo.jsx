@@ -135,6 +135,10 @@ class HeaderTwo extends Component {
                                                 <Link to={Navigate.homePage()} >Home</Link>
                                             </li>
 
+                                            <li >
+                                                <Link to={Navigate.creatorsPage()} >Streaming App</Link>
+                                            </li>
+
                             
 
                                            <li className="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">The Platform</a>
