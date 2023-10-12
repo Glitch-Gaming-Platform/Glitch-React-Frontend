@@ -110,7 +110,7 @@ const Creators = () => {
                                 </div>
                                 <div className="blog-content p-4 w-xl-50 w-100">
                                     <h2>Create & Edit Epic Clips Instantly!</h2>
-                                    <p className='lead'>Ditch the hassle of complex software. Slice and dice your epic gameplay moments in mere seconds!</p>
+                                    <p className='lead'>Ditch the hassle of complex software. Slice and dice your epic gameplay moments in mere seconds! Your gameplay is automatically <strong>recorded</strong> your computer so there are no storage fees.</p>
                                 </div>
                             </div>
                         </div>
