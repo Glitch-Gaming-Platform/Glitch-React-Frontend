@@ -75,15 +75,15 @@ const Creators = () => {
                         <div className="col-5">
                             <div className="d-flex flex-column align-items-center justify-content-center">
                                 <div>
-                                    <img src={'assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
 
                                 </div>
                                 <div>
-                                    <img src={'assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'assets/images/creators/rtmp.png'} alt="RTMP" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/rtmp.png'} alt="RTMP" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
                                 </div>
 
 
