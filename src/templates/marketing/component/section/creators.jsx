@@ -50,7 +50,7 @@ const Creators = () => {
 
                         <div className="row mt-4">
                             <div className="col-12 text-center">
-                            <a target="_blank" href="#download" className="default-button"><span>{'Get Started Now'} <i className="icofont-circled-right"></i></span></a>
+                            <a href="#download" className="default-button"><span>{'Get Started Now'} <i className="icofont-circled-right"></i></span></a>
 
                             </div>
                         </div>
