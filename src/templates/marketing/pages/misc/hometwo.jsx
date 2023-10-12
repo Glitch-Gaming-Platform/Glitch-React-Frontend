@@ -70,6 +70,34 @@ class HomeTwo extends Component {
                 </div>
             </div>
 
+            <div className="container padding-bottom" key={'key3'} >
+                <div className="section-wrapper">
+                    <div className="row g-4 justify-content-center"></div>
+                    <div className="col-12">
+                        <div className="blog-item-1">
+                            <div className="blog-inner d-flex flex-wrap align-items-center">
+                                <div className="blog-content p-4 w-xl-50 w-100">
+                                    <h2>Boost Engagement</h2>
+                                    <br />
+                                    <p className='lead'>Maximize your online presence with our advanced streaming features:</p>
+                                    <ul className="indent lead">
+                                        <li><h5><small>One-click integration with Twitch, Facebook, and YouTube.</small></h5></li>
+                                        <li><h5><small>Engage in real-time with your fans.</small></h5></li>
+                                        <li><h5><small>Built-in tipping system to monetize your streams.</small></h5></li>
+                                        <li><h5><small>Personalize your streams with branding overlays and images.</small></h5></li>
+                                    </ul>
+                                    <a href="#download" className="default-button mr-2"><span>{'Download For Free'} <i className="icofont-circled-right"></i></span></a>
+
+                                </div>
+                                <div className="blog-thumb w-xl-50 w-100">
+                                    <img src={`assets/images/creators/image_6.jpeg`} alt={`Earn Donations`} className="w-100" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
                 <Waitlist />
 

@@ -16,7 +16,7 @@ const Creators = () => {
 
             <div className="container py-5 text-center" key={'key1'}>
                 <h1 class="display-3">
-                    <i className="fas fa-gamepad me-3"></i> 
+                    <i className="fas fa-gamepad me-3"></i>
                     Elevate Your Gaming Content Creation!
                 </h1>
             </div>
@@ -50,14 +50,53 @@ const Creators = () => {
 
                         <div className="row mt-4">
                             <div className="col-12 text-center">
-                                <a href="#download" className="btn btn-lg btn-success">
-                                    Get Started Now <i className="icofont-circled-right"></i>
-                                </a>
+                            <a target="_blank" href="#download" className="default-button"><span>{'Get Started Now'} <i className="icofont-circled-right"></i></span></a>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
+            <div className="container padding-bottom pl-4" key={'key-multicast'} >
+                <div className="section-wrapper">
+                    <div className="row align-items-center justify-content-center">
+
+                        <div className="col-5 text-center pl-4">
+                            <h2>One Click Multicasting!</h2>
+                            <p>Stream to multiple platforms with just a <strong>single click</strong>! Want more control? Set up a custom RTMP URL with ease.</p>
+                            <a href="#download" className="btn btn-primary mt-3">
+                                Start Multicasting Now <i className="icofont-circled-right"></i>
+                            </a>
+                        </div>
+
+                        <div className="col-5">
+                            <div className="d-flex flex-column align-items-center justify-content-center">
+                                <div>
+                                    <img src={'assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
+
+                                </div>
+                                <div>
+                                    <img src={'assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'assets/images/creators/rtmp.png'} alt="RTMP" className="img-fluid mb-2 mr-2" style={{ maxWidth: '50px' }} />
+                                </div>
+
+
+                                <small className="text-white mt-2">...and many more!</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
 
 
             <div className="container py-5" key={'key3'} style={{ background: 'linear-gradient(45deg, #0a103d, #1c2a5e)', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
@@ -131,35 +170,63 @@ const Creators = () => {
                 </div>
             </section>
 
-
-
-            <div className="container padding-bottom" key={'key3'} >
+            <div className="container padding-bottom" key={'key-features'}>
                 <div className="section-wrapper">
-                    <div className="row g-4 justify-content-center"></div>
-                    <div className="col-12">
-                        <div className="blog-item-1">
-                            <div className="blog-inner d-flex flex-wrap align-items-center">
-                                <div className="blog-content p-4 w-xl-50 w-100">
-                                    <h2>Boost Engagement</h2>
-                                    <br />
-                                    <p className='lead'>Maximize your online presence with our advanced streaming features:</p>
-                                    <ul className="indent lead">
-                                        <li><h5><small>One-click integration with Twitch, Facebook, and YouTube.</small></h5></li>
-                                        <li><h5><small>Engage in real-time with your fans.</small></h5></li>
-                                        <li><h5><small>Built-in tipping system to monetize your streams.</small></h5></li>
-                                        <li><h5><small>Personalize your streams with branding overlays and images.</small></h5></li>
-                                    </ul>
-                                    <a href="#download" className="default-button mr-2"><span>{'Download For Free'} <i className="icofont-circled-right"></i></span></a>
+                    <div className="row">
+                        <div className="col-12 text-center">
+                            <h2>Feature-Packed Streaming with Glitch!</h2>
+                            <p>Power up your streaming with the best of tools and integrations.</p>
+                        </div>
+                    </div>
 
-                                </div>
-                                <div className="blog-thumb w-xl-50 w-100">
-                                    <img src={`assets/images/creators/image_6.jpeg`} alt={`Earn Donations`} className="w-100" />
-                                </div>
-                            </div>
+                    <div className="row text-center mt-5">
+                        <div className="col-md-4 mb-4">
+                            <img src={'assets/images/creators/streamelements.jpg'} alt="Stream Elements" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <h4>Stream Elements Integration</h4>
+                            <p>Integrate with Stream Elements for a seamless streaming experience.</p>
+                        </div>
+
+                        <div className="col-md-4 mb-4">
+                            <img src={'assets/images/creators/layers.png'} alt="Overlays" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <h4>Custom Overlays</h4>
+                            <p>Enhance your stream visuals with customizable overlays.</p>
+                        </div>
+
+                        <div className="col-md-4 mb-4">
+                            <img src={'assets/images/creators/alerts.png'} alt="Alert Boxes" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <h4>Alert Boxes</h4>
+                            <p>Engage your audience with real-time alerts and notifications.</p>
+                        </div>
+
+                        <div className="col-md-4 mb-4">
+                            <img src={'assets/images/creators/ai.png'} alt="A.I Chat Assistant" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <h4>A.I Co-Host</h4>
+                            <p>Interact A.I co-host to banter with you and yours followers.</p>
+                        </div>
+
+                        <div className="col-md-4 mb-4">
+                            <img src={'assets/images/creators/chat.png'} alt="Chat" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <h4>Interactive Chat</h4>
+                            <p>Engage with your viewers in real-time chat.</p>
+                        </div>
+
+                        <div className="col-md-4 mb-4">
+                            <img src={'assets/images/creators/emoji_2.png'} alt="Emojies" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <h4>Fun Emojies</h4>
+                            <p>Express more with a wide range of emojies.</p>
+                        </div>
+                    </div>
+
+                    <div className="row mt-5">
+                        <div className="col-12 text-center">
+                            <p>...and a whole lot more to explore! Dive into Glitch and supercharge your streaming.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+
+
 
 
             <a id="download"></a>
@@ -170,30 +237,30 @@ const Creators = () => {
                         <h2 className="mb-3">Download For Windows and Mac</h2>
                         <p className="desc">Stream and record your games from your desktop with up to 120 FPS to capture every moment in vivid detail. Also, use our other online streaming features.</p>
                     </div>
-                    
+
                     <ul className="d-flex flex-wrap justify-content-center player-meta mb-0">
-                    <li className="d-flex align-items-center" key={1}>
+                        <li className="d-flex align-items-center" key={1}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App">
-                            <span className="left me-3"><img src={`assets/images/creators/github.png`} alt={`Earn Donations`} style={{width: '100px'}} /></span>
-                            <span className="right">{"Github Downloads"}</span>
+                                <span className="left me-3"><img src={`assets/images/creators/github.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
+                                <span className="right">{"Github Downloads"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={1}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.1.9/Glitch-Desktop-App-1.1.9-arm64.dmg">
-                            <span className="left me-3"><img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{width: '100px'}} /></span>
-                            <span className="right">{"Mac"}</span>
+                                <span className="left me-3"><img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
+                                <span className="right">{"Mac"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.1.9/Glitch-Desktop-App-Web-Setup-1.1.9.exe">
-                            <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{width: '100px'}} /></span>
-                            <span className="right">{"Windows"}</span>
+                                <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
+                                <span className="right">{"Windows"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.1.9/Glitch-Desktop-App-1.1.9.AppImage">
-                            <span className="left me-3"><img src={`assets/images/creators/linux.png`} alt={`Earn Donations`} style={{width: '100px'}} /></span>
-                            <span className="right">{"Linux"}</span>
+                                <span className="left me-3"><img src={`assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
+                                <span className="right">{"Linux"}</span>
                             </a>
                         </li>
                     </ul>
@@ -217,6 +284,6 @@ const bannerStyle = {
     fontWeight: 'bold', // Bold text to make it stand out more
     textAlign: 'center',
     textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)' // Increased text shadow for enhanced readability
-  };
+};
 
 export default Creators;
