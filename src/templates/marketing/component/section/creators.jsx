@@ -40,11 +40,11 @@ const Creators = () => {
                             </div>
                             <div className="col-md-4">
                                 <button className="btn btn-primary w-100 mb-3"><strong>2:</strong> Set Up Your Webcam</button>
-                                <img src={'assets/images/creators/webcam_2.jpeg'} alt="Choosing a webcam" className="img-fluid rounded" />
+                                <img src={'assets/images/creators/webcam.jpg'} alt="Choosing a webcam" className="img-fluid rounded" />
                             </div>
                             <div className="col-md-4">
                                 <button className="btn btn-primary w-100 mb-3"><strong>3:</strong> Hit 'Go Live' and Shine!</button>
-                                <img src={'assets/images/creators/live_streaming_1.jpeg'} alt="Going live" className="img-fluid rounded" />
+                                <img src={'assets/images/creators/gaming_3.jpg'} alt="Going live" className="img-fluid rounded" />
                             </div>
                         </div>
 
@@ -97,8 +97,6 @@ const Creators = () => {
 
 
 
-
-
             <div className="container py-5" key={'key3'} style={{ background: 'linear-gradient(45deg, #0a103d, #1c2a5e)', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
                 <div className="section-wrapper">
                     <div className="row g-4 justify-content-center"></div>
@@ -106,7 +104,7 @@ const Creators = () => {
                         <div className="blog-item-1">
                             <div className="blog-inner d-flex flex-wrap align-items-center">
                                 <div className="blog-thumb w-xl-50 w-100">
-                                    <img src={`assets/images/creators/edit_clips_1.jpeg`} alt="Action-packed Gameplay Clip" className="w-100" />
+                                    <img src={`assets/images/creators/video_editing_2.jpg`} alt="Action-packed Gameplay Clip" className="w-100 rounded" />
                                 </div>
                                 <div className="blog-content p-4 w-xl-50 w-100">
                                     <h2>Create & Edit Epic Clips Instantly!</h2>
@@ -246,19 +244,19 @@ const Creators = () => {
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={1}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.1.9/Glitch-Desktop-App-1.1.9-arm64.dmg">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.2/Glitch-Desktop-App-1.2.2-arm64.dmg">
                                 <span className="left me-3"><img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Mac"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.1.9/Glitch-Desktop-App-Web-Setup-1.1.9.exe">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.2/Glitch-Desktop-App-Web-Setup-1.2.2.exe">
                                 <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Windows"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.1.9/Glitch-Desktop-App-1.1.9.AppImage">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.2/Glitch-Desktop-App-1.2.2.AppImage">
                                 <span className="left me-3"><img src={`assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Linux"}</span>
                             </a>
