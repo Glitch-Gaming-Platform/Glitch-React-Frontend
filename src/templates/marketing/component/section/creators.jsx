@@ -243,12 +243,29 @@ const Creators = () => {
                                 <span className="right">{"Github Downloads"}</span>
                             </a>
                         </li>
-                        <li className="d-flex align-items-center" key={1}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.7/Glitch-Desktop-App-1.2.7-arm64.dmg">
-                                <span className="left me-3"><img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
-                                <span className="right">{"Mac"}</span>
-                            </a>
-                        </li>
+                        <li className="d-flex flex-column align-items-center" key={1}>
+    <div className="d-flex align-items-center mb-2">
+        <span className="left me-3">
+            <img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
+        </span>
+        <span className="right">{"Mac"}</span>
+    </div>
+    <div>
+        <ul>
+            <li>
+                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.9/Glitch-Desktop-App-1.2.9-arm64.dmg">
+                    Download Mac Silicon Version (AMD)
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.9/Glitch-Desktop-App-1.2.9.dmg">
+                    Download Mac Intel Verson (x86)
+                </a>
+            </li>
+        </ul>
+    </div>
+</li>
+
                         <li className="d-flex align-items-center" key={2}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.7/Glitch-Desktop-App-Web-Setup-1.2.7.exe">
                                 <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
