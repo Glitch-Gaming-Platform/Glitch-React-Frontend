@@ -253,12 +253,12 @@ const Creators = () => {
     <div>
         <ul>
             <li>
-                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.9/Glitch-Desktop-App-1.2.9-arm64.dmg">
+                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.3.0/Glitch-Desktop-App-1.3.0-arm64.dmg">
                     Download Mac Silicon Version (AMD)
                 </a>
             </li>
             <li>
-                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.9/Glitch-Desktop-App-1.2.9.dmg">
+                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.3.0/Glitch-Desktop-App-1.3.0.dmg">
                     Download Mac Intel Verson (x86)
                 </a>
             </li>
