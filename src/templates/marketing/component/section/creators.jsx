@@ -253,12 +253,12 @@ const Creators = () => {
     <div>
         <ul>
             <li>
-                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.3.0/Glitch-Desktop-App-1.3.0-arm64.dmg">
+                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.4.0/Glitch-Desktop-App-1.4.0-arm64.dmg">
                     Download Mac Silicon Version (AMD)
                 </a>
             </li>
             <li>
-                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.3.0/Glitch-Desktop-App-1.3.0.dmg">
+                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.4.0/Glitch-Desktop-App-1.4.0.dmg">
                     Download Mac Intel Verson (x86)
                 </a>
             </li>
@@ -267,13 +267,13 @@ const Creators = () => {
 </li>
 
                         <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.7/Glitch-Desktop-App-Web-Setup-1.2.7.exe">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.4.0/Glitch-Desktop-App-Setup-1.4.0.exe">
                                 <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Windows"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.2.7/Glitch-Desktop-App-1.2.7.AppImage">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.4.0/Glitch-Desktop-App-1.4.0.AppImage">
                                 <span className="left me-3"><img src={`assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Linux"}</span>
                             </a>

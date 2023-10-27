@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import site from "../../../../constants/site";
+import Navigate from "../../../../util/Navigate";
 
 
 
@@ -98,7 +99,7 @@ class Footer extends Component {
                         <div className="row">
                             <div className="col-12">
                                 <div className="footer-bottom-content text-center">
-                                    <p>{process.env.REACT_APP_COPYRIGHT}</p>
+                                    <p>{process.env.REACT_APP_COPYRIGHT} - <a href={Navigate.privacyPage()}>Privacy Policy</a> - <a href={Navigate.termsPage()}>Terms of Service</a></p>
                                 </div>
                             </div>
                         </div>
