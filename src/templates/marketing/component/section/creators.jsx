@@ -50,7 +50,7 @@ const Creators = () => {
 
                         <div className="row mt-4">
                             <div className="col-12 text-center">
-                            <a href="#download" className="default-button"><span>{'Get Started Now'} <i className="icofont-circled-right"></i></span></a>
+                                <a href="#download" className="default-button"><span>{'Get Started Now'} <i className="icofont-circled-right"></i></span></a>
 
                             </div>
                         </div>
@@ -244,36 +244,36 @@ const Creators = () => {
                             </a>
                         </li>
                         <li className="d-flex flex-column align-items-center" key={1}>
-    <div className="d-flex align-items-center mb-2">
-        <span className="left me-3">
-            <img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
-        </span>
-        <span className="right">{"Mac"}</span>
-    </div>
-    <div>
-        <ul>
-            <li>
-                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.4.1/Glitch-Desktop-App-1.4.1-arm64.dmg">
-                    Download Mac Silicon Version (AMD)
-                </a>
-            </li>
-            <li>
-                <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.4.1/Glitch-Desktop-App-1.4.1.dmg">
-                    Download Mac Intel Verson (x86)
-                </a>
-            </li>
-        </ul>
-    </div>
-</li>
+                            <div className="d-flex align-items-center mb-2">
+                                <span className="left me-3">
+                                    <img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
+                                </span>
+                                <span className="right">{"Mac"}</span>
+                            </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2-arm64.dmg">
+                                            Download Mac Silicon Version (AMD)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2.dmg">
+                                            Download Mac Intel Verson (x86)
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
 
                         <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.4.1/Glitch-Desktop-App-Setup-1.4.1.exe">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-Setup-1.5.2.exe">
                                 <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Windows"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.4.1/Glitch-Desktop-App-1.4.1.AppImage">
+                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2.AppImage">
                                 <span className="left me-3"><img src={`assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Linux"}</span>
                             </a>
