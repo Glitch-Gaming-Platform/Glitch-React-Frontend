@@ -7,17 +7,13 @@ const Creators = () => {
         <>
             <a id="goal"></a>
             <div className="container-fluid" style={bannerStyle}>
-                The #1 Workflow App For Gaming Content Creators
-                <br /><br />
-                <h3 class="lead">
-                    Dive into the world of effortless live streaming, clipping, and sharing. We're reshaping the way gaming influencers connect with fans!
-                </h3>
+                The #1 Workflow App <br />For Gaming Content Creators
             </div>
 
             <div className="container py-5 text-center" key={'key1'}>
                 <h1 class="display-3">
                     <i className="fas fa-gamepad me-3"></i>
-                    Elevate Your Gaming Content Creation!
+                    Dive into the world of effortless live streaming, clipping, and sharing. We're reshaping the way gaming influencers connect with fans!
                 </h1>
             </div>
 

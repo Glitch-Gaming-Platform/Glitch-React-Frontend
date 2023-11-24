@@ -69,6 +69,7 @@ import Navigate from "../../util/Navigate";
 import MarketingPage from './pages/misc/marketing';
 import RevenuePage from './pages/misc/revenue';
 import FeaturesPage from './pages/misc/features';
+import CreatorsRewardsPage from './pages/misc/creatorsrewards';
 import InstallationPage from './pages/misc/installation';
 import CommunitiesCss from './pages/communities/CommunitiesCss';
 
@@ -94,6 +95,7 @@ function Template() {
           <Route path={Navigate.installationPage()} element={<InstallationPage />} />
           <Route path={Navigate.benefitsPage()} element={<BenefitsPage />} />
           <Route path={Navigate.creatorsPage()} element={<CreatorsPage />} />
+          <Route path={Navigate.creatorsProgramPage()} element={<CreatorsRewardsPage />} />
 
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />

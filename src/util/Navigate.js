@@ -50,6 +50,9 @@ const Navigate = {
     creatorsPage : () => {
         return app_routes.creators;
     },
+    creatorsProgramPage : () => {
+        return app_routes.creator_rewards;
+    },
 
     //Authentication
     authLogin : () => {

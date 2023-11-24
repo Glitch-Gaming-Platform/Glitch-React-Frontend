@@ -18,6 +18,7 @@
     installation: '/installation',
     benefits: '/benefits',
     creators: '/creators',
+    creator_rewards: '/creatorsprogram',
 
     //authentication
     auth_login : '/login',
