@@ -20,7 +20,11 @@
 
     creators: '/creators',
     creator_influencers: '/creators/influencers',
+    creator_influencers_mac: '/creators/macinfluencers',
+    creator_influencers_linux: '/creators/linuxinfluencers',
     creator_publishers: '/creators/publishers',
+    creator_publishers_mac: '/creators/macpublishers',
+    creator_publishers_linux: '/creators/linuxpublishers',
 
     //authentication
     auth_login : '/login',

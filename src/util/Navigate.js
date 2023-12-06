@@ -53,8 +53,20 @@ const Navigate = {
     creatorsInfluencersPage : () => {
         return app_routes.creator_influencers;
     },
+    creatorsInfluencersMacPage : () => {
+        return app_routes.creator_influencers_mac;
+    },
+    creatorsInfluencersLinuxPage : () => {
+        return app_routes.creator_influencers_linux;
+    },
     creatorsPublishersPage : () => {
         return app_routes.creator_publishers;
+    },
+    creatorsPublishersMacPage : () => {
+        return app_routes.creator_publishers_mac;
+    },
+    creatorsPublishersLinuxPage : () => {
+        return app_routes.creator_publishers_linux;
     },
 
     //Authentication

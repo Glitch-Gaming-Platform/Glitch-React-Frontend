@@ -3,24 +3,24 @@ import Header from "../../component/layout/header";
 import WaitlistPublisher from "../../component/section/waitlistpublisher";
 import { Helmet } from "react-helmet";
 
-class CreatorsPublishersPage extends Component {
+class CreatorsPublishersMacPage extends Component {
 
     render() {
-        
-        const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
+        const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+        
         return (
             <>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Game Influencers For Gaming Publishers and Indie Games</title>
-                    <meta name="description" content="Market and promote your game with influencers and content creators" />
+                    <title>Mac Game Influencers For Gaming Publishers and Indie Games</title>
+                    <meta name="description" content="Market and promote your Mac game with influencers and content creators" />
                     <meta name="robots" content="index, follow" />
-                    <meta property="og:title" content="Game Influencers For Gaming Publishers and Indie Games"/>
-                    <meta property="og:description" content="Market and promote your game with influencers and content creators"/>
+                    <meta property="og:title" content="Mac Game Influencers For Gaming Publishers and Indie Games"/>
+                    <meta property="og:description" content="Market and promote your Mac game with influencers and content creators"/>
                     <meta property="og:type" content="website"/>
                     <meta property="og:url" content={currentUrl}/>
-                    <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/creators_banner_2.png"/>
+                    <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/mac_gaming_2.png"/>
                 </Helmet>
                 <Fragment>
                     <Header />
@@ -28,9 +28,9 @@ class CreatorsPublishersPage extends Component {
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
                                 <div className="pageheader-thumb mb-4">
-                                    <img style={{ maxHeight: '160px' }} className="rounded" src="/assets/images/creators/creators_banner_2.png" alt="team" />
+                                    <img style={{ maxHeight: '160px' }} className="rounded" src="/assets/images/creators/mac_gaming_2.png" alt="team" />
                                 </div>
-                                <h2 className="pageheader-title">Market Your Game With Influencers</h2>
+                                <h2 className="pageheader-title">Market Your Mac Game With Influencers</h2>
 
                                 <p className="lead">Enhance your game's user base by leveraging influencers to market your game.</p>
 
@@ -180,4 +180,4 @@ class CreatorsPublishersPage extends Component {
     }
 }
 
-export default CreatorsPublishersPage;
+export default CreatorsPublishersMacPage;

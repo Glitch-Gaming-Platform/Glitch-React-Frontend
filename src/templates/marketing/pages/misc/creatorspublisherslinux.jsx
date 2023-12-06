@@ -3,24 +3,24 @@ import Header from "../../component/layout/header";
 import WaitlistPublisher from "../../component/section/waitlistpublisher";
 import { Helmet } from "react-helmet";
 
-class CreatorsPublishersPage extends Component {
+class CreatorsPublishersLinuxPage extends Component {
 
     render() {
-        
+
         const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
         return (
             <>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Game Influencers For Gaming Publishers and Indie Games</title>
-                    <meta name="description" content="Market and promote your game with influencers and content creators" />
+                    <title>Linux Game Influencers For Gaming Publishers and Indie Games</title>
+                    <meta name="description" content="Market and promote your Linux game with influencers and content creators" />
                     <meta name="robots" content="index, follow" />
-                    <meta property="og:title" content="Game Influencers For Gaming Publishers and Indie Games"/>
-                    <meta property="og:description" content="Market and promote your game with influencers and content creators"/>
+                    <meta property="og:title" content="Linux Game Influencers For Gaming Publishers and Indie Games"/>
+                    <meta property="og:description" content="Market and promote your Linux game with influencers and content creators"/>
                     <meta property="og:type" content="website"/>
                     <meta property="og:url" content={currentUrl}/>
-                    <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/creators_banner_2.png"/>
+                    <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/linux_gaming_2.png"/>
                 </Helmet>
                 <Fragment>
                     <Header />
@@ -28,9 +28,9 @@ class CreatorsPublishersPage extends Component {
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
                                 <div className="pageheader-thumb mb-4">
-                                    <img style={{ maxHeight: '160px' }} className="rounded" src="/assets/images/creators/creators_banner_2.png" alt="team" />
+                                    <img style={{ maxHeight: '160px' }} className="rounded" src="/assets/images/creators/linux_gaming_2.png" alt="team" />
                                 </div>
-                                <h2 className="pageheader-title">Market Your Game With Influencers</h2>
+                                <h2 className="pageheader-title">Market Your Linux Game With Influencers</h2>
 
                                 <p className="lead">Enhance your game's user base by leveraging influencers to market your game.</p>
 
@@ -180,4 +180,4 @@ class CreatorsPublishersPage extends Component {
     }
 }
 
-export default CreatorsPublishersPage;
+export default CreatorsPublishersLinuxPage;

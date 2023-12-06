@@ -4,7 +4,7 @@ import PageHeader from "../../component/layout/pageheader";
 import WaitlistInfluencer from "../../component/section/waitlistinfluencer";
 import { Helmet } from "react-helmet";
 
-class CreatorsRewardsPage extends Component {
+class CreatorsInfluencerLinuxPage extends Component {
 
     render() {
 
@@ -14,10 +14,10 @@ class CreatorsRewardsPage extends Component {
             <>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Earn Money Playing Games And Creating Content</title>
+                    <title>Earn Money Playing Linux Games And Creating Content</title>
                     <meta name="description" content="Become a content creator and get paid for play games and creating content." />
                     <meta name="robots" content="index, follow" />
-                    <meta property="og:title" content="Earn Money Playing Games And Creating Content"/>
+                    <meta property="og:title" content="Earn Money Playing Linux Games And Creating Content"/>
                     <meta property="og:description" content="Become a content creator and get paid for play games and creating content."/>
                     <meta property="og:type" content="website"/>
                     <meta property="og:url" content={currentUrl}/>
@@ -30,11 +30,11 @@ class CreatorsRewardsPage extends Component {
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
                                 <div className="pageheader-thumb mb-4">
-                                    <img style={{maxHeight: '160px'}} className="rounded" src="/assets/images/creators/creators_3.png" alt="team" />
+                                    <img style={{maxHeight: '160px'}} className="rounded" src="/assets/images/creators/linux_gaming_1.png" alt="team" />
                                 </div>
-                                <h2 className="pageheader-title">Get Rewarded For Playing Games</h2>
+                                <h2 className="pageheader-title">Get Rewarded For Playing Linux Games</h2>
 
-                                <p className="lead">Our content creator program rewards gamers for streaming and creating content.</p>
+                                <p className="lead">Our content creator program rewards linux gamers for streaming and creating content.</p>
 
                             </div>
                         </div>
@@ -162,4 +162,4 @@ class CreatorsRewardsPage extends Component {
     }
 }
 
-export default CreatorsRewardsPage;
+export default CreatorsInfluencerLinuxPage;
