@@ -107,6 +107,15 @@
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"
+    ],
+    "crawl": true,
+    "include": [
+      "/creators/linuxinfluencers",
+      "/creators/macinfluencers",
+      "/creators/influencers",
+      "/creators/publishers",
+      "/creators/macpublishers",
+      "/creators/linuxpublishers"
     ]
   }
 }
