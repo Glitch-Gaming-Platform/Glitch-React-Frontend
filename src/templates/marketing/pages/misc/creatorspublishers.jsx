@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet";
 class CreatorsPublishersPage extends Component {
 
     render() {
-        
+
         const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
         return (
@@ -30,9 +30,9 @@ class CreatorsPublishersPage extends Component {
                                 <div className="pageheader-thumb mb-4">
                                     <img style={{ maxHeight: '160px' }} className="rounded" src="/assets/images/creators/creators_banner_2.png" alt="team" />
                                 </div>
-                                <h2 className="pageheader-title">Market Your Game With Influencers</h2>
+                                <h2 className="pageheader-title">Performance Based Influencer Marketing</h2>
 
-                                <p className="lead">Enhance your game's user base by leveraging influencers to market your game.</p>
+                                <p className="lead">Have influencers market your game and only pay for results</p>
 
                             </div>
                         </div>
