@@ -110,6 +110,7 @@
     ],
     "crawl": true,
     "include": [
+      "/creators",
       "/creators/linuxinfluencers",
       "/creators/macinfluencers",
       "/creators/influencers",
