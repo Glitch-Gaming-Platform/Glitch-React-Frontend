@@ -12,9 +12,6 @@ const Waitlist = () => {
     const [submitted, setSubmitted] = useState(false);
     const [errors, setErrors] = useState({});
 
-
-
-
     const signUp = (e) => {
 
         e.preventDefault();

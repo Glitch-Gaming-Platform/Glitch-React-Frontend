@@ -70,6 +70,7 @@ import MarketingPage from './pages/misc/marketing';
 import RevenuePage from './pages/misc/revenue';
 import FeaturesPage from './pages/misc/features';
 import CreatorsRewardsPage from './pages/misc/creatorsrewards';
+import CreatorsPublishersPage from './pages/misc/creatorspublishers';
 import InstallationPage from './pages/misc/installation';
 import CommunitiesCss from './pages/communities/CommunitiesCss';
 
@@ -95,7 +96,8 @@ function Template() {
           <Route path={Navigate.installationPage()} element={<InstallationPage />} />
           <Route path={Navigate.benefitsPage()} element={<BenefitsPage />} />
           <Route path={Navigate.creatorsPage()} element={<CreatorsPage />} />
-          <Route path={Navigate.creatorsProgramPage()} element={<CreatorsRewardsPage />} />
+          <Route path={Navigate.creatorsInfluencersPage()} element={<CreatorsRewardsPage />} />
+          <Route path={Navigate.creatorsPublishersPage()} element={<CreatorsPublishersPage />} />
 
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />

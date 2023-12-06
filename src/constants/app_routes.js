@@ -17,8 +17,10 @@
     features : '/features',
     installation: '/installation',
     benefits: '/benefits',
+
     creators: '/creators',
-    creator_rewards: '/creatorsprogram',
+    creator_influencers: '/creators/influencers',
+    creator_publishers: '/creators/publishers',
 
     //authentication
     auth_login : '/login',

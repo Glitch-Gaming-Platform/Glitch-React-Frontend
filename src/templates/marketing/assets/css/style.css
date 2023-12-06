@@ -542,10 +542,11 @@ body h6, .page-header-section.style-1 .page-header-content .page-header-inner .b
   text-overflow: ellipsis; }
 
 .pageheader-section .pageheader-title, .video-item .video-inner .video-content h3 {
-  display: -webkit-box;
+  /*display: -webkit-box;*/
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis; }
+  /*text-overflow: ellipsis;*/
+}
 
 /* @@@@@@@@@@@@@  Extend Property CSS Writing Now  @@@@@@@@@@@@@@ */
 .pageheader-section .breadcrumb li a:hover, .pageheader-section .breadcrumb li.active, .video-item .video-inner .video-content a, .video-icon i, .widget.shop-widget .widget-wrapper .shop-menu li.open > a, .widget.shop-widget .widget-wrapper .shop-menu li a, .widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li.open > a, .widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li a, .widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li a.active, .widget.shop-widget .widget-wrapper .shop-menu li .shop-submenu li a:hover, .accordion-item .accordion-header .accordion-button .accor-header-inner .accor-title, .shop-page .shop-product-wrap .product-item .product-content h5 a, .shop-page .shop-product-wrap .product-list-item .product-content h5 a, .shop-single .review .review-content .review-showing .content li .post-content .entry-meta .posted-on a, .shop-cart .section-wrapper .cart-top table tbody tr td.product-item .p-content a {
