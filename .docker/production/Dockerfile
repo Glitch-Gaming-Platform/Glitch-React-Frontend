@@ -1,6 +1,9 @@
 # Base image with Node.js 18
 FROM node:18 AS build
 
+RUN apt-get update && apt-get install -y \
+    libx11-xcb1
+
 # Set the working directory
 WORKDIR /app
 
