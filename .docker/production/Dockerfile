@@ -13,6 +13,8 @@ COPY . ./
 # Install dependencies
 RUN npm install
 
+RUN npm install puppeteer
+
 # Build the React application
 RUN npm run build
 
