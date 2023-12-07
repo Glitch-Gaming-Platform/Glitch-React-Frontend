@@ -14,10 +14,10 @@ class CreatorsPublishersLinuxPage extends Component {
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Performance Based Influencer Marketing For Linux Games</title>
-                    <meta name="description" content="Have influencers market your game and only pay for results." />
+                    <meta name="description" content="Have influencers market your linux game and only pay for results." />
                     <meta name="robots" content="index, follow" />
                     <meta property="og:title" content="Linux Game Influencers For Gaming Publishers and Indie Games"/>
-                    <meta property="og:description" content="Have influencers market your game and only pay for results."/>
+                    <meta property="og:description" content="Have influencers market your linux game and only pay for results."/>
                     <meta property="og:type" content="website"/>
                     <meta property="og:url" content={currentUrl}/>
                     <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/linux_gaming_2.png"/>
@@ -32,7 +32,7 @@ class CreatorsPublishersLinuxPage extends Component {
                                 </div>
                                 <h2 className="pageheader-title">Performance Based Influencer Marketing For Linux Games</h2>
 
-                                <p className="lead">Have influencers market your game and only pay for results</p>
+                                <p className="lead">Have influencers market your Linux game and only pay for results</p>
 
                             </div>
                         </div>

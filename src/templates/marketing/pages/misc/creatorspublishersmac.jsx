@@ -14,10 +14,10 @@ class CreatorsPublishersMacPage extends Component {
                 <Helmet>
                     <meta charSet="utf-8" />
                     <title>Performance Based Influencer Marketing For Mac Games</title>
-                    <meta name="description" content="Have influencers market your game and only pay for results." />
+                    <meta name="description" content="Have influencers market your mac game and only pay for results." />
                     <meta name="robots" content="index, follow" />
                     <meta property="og:title" content="Performance Based Influencer Marketing For Mac Games"/>
-                    <meta property="og:description" content="Have influencers market your game and only pay for results."/>
+                    <meta property="og:description" content="Have influencers market your mac game and only pay for results."/>
                     <meta property="og:type" content="website"/>
                     <meta property="og:url" content={currentUrl}/>
                     <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/mac_gaming_2.png"/>
@@ -32,7 +32,7 @@ class CreatorsPublishersMacPage extends Component {
                                 </div>
                                 <h2 className="pageheader-title">Performance Based Influencer Marketing For Mac Games</h2>
 
-                                <p className="lead">Have influencers market your game and only pay for results</p>
+                                <p className="lead">Have influencers market your mac game(s) and only pay for results</p>
 
                             </div>
                         </div>
