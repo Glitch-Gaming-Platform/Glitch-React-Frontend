@@ -1,7 +1,7 @@
 import { Component, Fragment } from "react";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Navigation } from "swiper";
+import { Autoplay, Navigation } from "swiper/modules";
 
 
 import Footer from "../component/layout/footer";

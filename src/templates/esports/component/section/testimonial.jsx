@@ -1,5 +1,5 @@
 import { Component } from "react";
-import { Autoplay } from "swiper";
+import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Rating from "./rating";
 

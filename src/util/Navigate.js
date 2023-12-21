@@ -69,6 +69,8 @@ const Navigate = {
         return app_routes.creator_publishers_linux;
     },
 
+    //Campaigns
+
     //Authentication
     authLogin : () => {
         return app_routes.auth_login;
@@ -143,6 +145,45 @@ const Navigate = {
     joinPage : () => {
         return app_routes.join;
     },
+
+    //Campaigns
+    campaignsPage : () => {
+        return app_routes.campaigns;
+    },
+    campaignsCreatePage : () => {
+        return app_routes.campaigns_create;
+    },
+    campaignsUpdatePage : (campaign_id) => {
+
+        let path = app_routes.campaigns_update;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        return path;
+    },
+    campaignsViewPage : (campaign_id) => {
+
+        let path = app_routes.campaigns_view;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        return path;
+    },
+    campaignsDeletePage : (campaign_id) => {
+
+        let path = app_routes.campaigns_delete;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        return path;
+    },
+
 
     //Communites Pages
     communitiesPage : () => {

@@ -78,6 +78,8 @@ import CreatorsInfluencerLinuxPage from './pages/misc/creatorsinfluencerslinux';
 import CreatorsPublishersMacPage from './pages/misc/creatorspublishersmac';
 import CreatorsPublishersLinuxPage from './pages/misc/creatorspublisherslinux';
 
+import CampaignsListPage from './pages/campaigns/CampaignsListPage';
+import CampaignCreatePage from './pages/campaigns/CampaignCreatePage';
 
 function Template() {
   
@@ -108,6 +110,10 @@ function Template() {
           <Route path={Navigate.creatorsPublishersMacPage()} element={<CreatorsPublishersMacPage />} />
           <Route path={Navigate.creatorsPublishersLinuxPage()} element={<CreatorsPublishersLinuxPage />} />
 
+          <Route path={Navigate.campaignsPage()} element={<CampaignsListPage />} />
+          <Route path={Navigate.campaignsCreatePage()} element={<CampaignCreatePage />} />
+          <Route path={Navigate.campaignsUpdatePage()} element={<CampaignCreatePage />} />
+          <Route path={Navigate.campaignsViewPage()} element={<CampaignsListPage />} />
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />
           <Route path={Navigate.communitiesCreatePage()} element={<CommunitiesCreate />} />
