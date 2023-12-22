@@ -12,9 +12,10 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
         <div className="container mt-4">
             <div className="card">
                 <div className="card-header bg-secondary">
-                    <h3><i className="fas fa-info-circle mr-2"></i>Infuencer Inforomation</h3>
+                    <h3><i className="fas fa-info-circle mr-2"></i> Infuencer Inforomation</h3>
                 </div>
                 <div className="card-body">
+                    <p className="lead">The information below is what the influencer will read when reviewing your campaign.</p>
                     <form>
                        
                         {createTextAreaField('brief', 'Brief', 'The brief is provided to influencers to research the campaign.', errors)}

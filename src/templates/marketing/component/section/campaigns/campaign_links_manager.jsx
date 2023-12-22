@@ -95,7 +95,7 @@ const CampaignLinksManager = ({campaignID}) => {
 
             <div className="list-group my-4">
                 {links.map(link => (
-                    <div className="list-group-item list-group-item-action" key={link.id}>
+                    <div className="list-group-item list-group-item-action bg-dark text-white" key={link.id}>
                         {editingId === link.id ? (
                             <div>
                                 <input type="text" className="form-control mb-2" value={editLink.name} onChange={(e) => handleInputChange(e, editLink)} name="name" />

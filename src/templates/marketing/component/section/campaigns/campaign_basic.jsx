@@ -72,7 +72,7 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
         <div className="container mt-4">
             <div className="card">
                 <div className="card-header bg-secondary">
-                    <h3><i className="fas fa-info-circle mr-2"></i>Basic Information</h3>
+                    <h3><i className="fas fa-info-circle mr-2"></i> Basic Information</h3>
                 </div>
                 <div className="card-body">
                     <form>

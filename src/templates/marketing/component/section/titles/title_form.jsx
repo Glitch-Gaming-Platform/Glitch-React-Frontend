@@ -21,10 +21,10 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
             <form>
                 <div className="card mb-3">
                     <div className="card-header bg-primary text-white">
-                        <i className="fas fa-gamepad mr-2"></i>Game Title
+                        <h3><i className="fas fa-gamepad mr-2"></i> Game Title</h3>
                     </div>
                     <div className="card-body">
-                        <p>Enter information about the game title you want.</p>
+                        <p>Enter information about the game title you want influencers to promote.</p>
                     </div>
                     <div className="card-body">
                         {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors)}
@@ -72,7 +72,7 @@ function createInput(label, name, value, handleChange, type = 'text', icon, erro
     return (
         <>
             <div className="form-group mb-3">
-                <label htmlFor={name}><i className={`${icon} mr-2`}></i>{label}</label>
+                <label htmlFor={name}><i className={`${icon} mr-2`}></i> &nbsp;{label}</label>
                 <input type={type} className="form-control" id={name} name={name} value={value || ''} onChange={handleChange} />
             </div>
             {errors && errors[name] && errors[name].map(function (name, index) {

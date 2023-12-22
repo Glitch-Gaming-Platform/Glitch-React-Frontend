@@ -34,7 +34,7 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
         <div className="container mt-4 text-start">
             <div className="card">
                 <div className="card-header bg-secondary">
-                    <h3><i className="fas fa-money-bill-wave mr-2"></i>{title}</h3>
+                    <h3><i className="fas fa-money-bill-wave mr-2"></i> {title}</h3>
                 </div>
                 <div className="card-body">
                     <p className="text-muted">{description}</p>
@@ -61,8 +61,13 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
         return (
             <div className="col-md-6">
                 <div className="mb-3">
-                    <label htmlFor={fieldName} className="form-label"><i className={`fas ${icon} mr-2`}></i>{label}</label>
-                    <input type="number" className="form-control bg-dark border-secondary text-white" id={fieldName} name={fieldName} value={campaignData[fieldName] || ''} onChange={handleInputChange} placeholder={`Payment Per ${label}`} />
+                    <label htmlFor={fieldName} className="form-label">
+                        <i className={`fas ${icon} mr-2`}></i> &nbsp;{label}
+                    </label>
+                    <div className="input-group">
+                        <span className="input-group-text">$</span>
+                        <input type="number" className="form-control bg-dark border-secondary text-white" id={fieldName} name={fieldName} value={campaignData[fieldName] || ''} onChange={handleInputChange} placeholder={`Payment Per ${label}`} />
+                    </div>
                     <small className="form-text text-muted">{description}</small>
                 </div>
                 {errors && errors[fieldName] && errors[fieldName].map(function (name, index) {
