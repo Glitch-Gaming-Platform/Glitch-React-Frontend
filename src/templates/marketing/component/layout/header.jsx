@@ -43,12 +43,12 @@ if (process.env.REACT_APP_SOCIAL_YOUTUBE_PAGE) {
 class Header extends Component {
 
     menuTrigger() {
-        document.querySelector('.menu').classList.toggle('active')
-        document.querySelector('.header-bar').classList.toggle('active')
+        document.querySelector('.menu')?.classList?.toggle('active')
+        document.querySelector('.header-bar')?.classList?.toggle('active')
     }
     menuTriggerTwo() {
-        document.querySelector('.header-top').classList.toggle('open')
-        // document.querySelector('.header-bar').classList.toggle('active')
+        document.querySelector('.header-top')?.classList?.toggle('open')
+        // document.querySelector('.header-bar')?.classList.toggle('active')
     }
 
     render() {
@@ -56,9 +56,9 @@ class Header extends Component {
         window.addEventListener('scroll', function () {
             var value = window.scrollY;
             if (value > 200) {
-                document.querySelector('.header-section').classList.add(['header-fixed'], ['fadeInUp'])
+                document.querySelector('.header-section')?.classList?.add(['header-fixed'], ['fadeInUp'])
             } else if (document.querySelector('.header-section') != null) {
-                document.querySelector('.header-section').classList.remove(['header-fixed'], ['fadeInUp'])
+                document.querySelector('.header-section')?.classList?.remove(['header-fixed'], ['fadeInUp'])
             }
         });
 

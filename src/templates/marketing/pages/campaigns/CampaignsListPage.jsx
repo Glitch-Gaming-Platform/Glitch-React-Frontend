@@ -59,14 +59,15 @@ const CampaignsListPage = () => {
                         </div>
                     </div>
                 </section>
-                <div className="container mt-4">
-                    <h2>Campaigns</h2>
 
-                    <div className="container padding-bottom mt-5" >
-                        <div className="section-wrapper">
-                            <Link className={"btn btn-success"} to={Navigate.communitiesCreatePage()} >Create A Campaign</Link>
-                        </div>
+                <div className="container mt-5 mb-2" >
+                    <div className="section-wrapper">
+                        <Link className={"btn btn-success"} to={Navigate.campaignsCreatePage()} >Create A Campaign</Link>
                     </div>
+                </div>
+
+                <div className="container">
+                    <h2>Campaigns</h2>
 
                     <div className="d-flex flex-column">
                         {campaigns.map(campaign => (
@@ -81,7 +82,14 @@ const CampaignsListPage = () => {
                                     </p>
                                     <p className="card-text">Budget: {campaign.spend_limit}</p>
                                     {/* Add other basic info as needed */}
+
+                                    <div className="d-flex justify-content-start">
+                                    <Link className={"btn btn-primary me-2"} to={Navigate.campaignsViewPage(campaign.id)} >View Campaign</Link>
+                                    <Link className={"btn btn-warning me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >Edit Campaign</Link>
+                                    <Link className={"btn btn-info"} to={Navigate.communitiesCreatePage()} >Manage Influencers</Link>
                                 </div>
+                                </div>
+                                
                             </div>
                         ))}
                     </div>

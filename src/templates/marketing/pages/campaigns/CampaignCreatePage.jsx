@@ -11,6 +11,7 @@ import Glitch from 'glitch-javascript-sdk';
 import Danger from '../../component/alerts/Danger';
 import { useNavigate } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
+import CampaignInfluencerForm from '../../component/section/campaigns/campaign_influencer';
 
 
 function CampaignCreatePage() {
@@ -32,9 +33,9 @@ function CampaignCreatePage() {
         Glitch.api.Communities.list({ roles: [Glitch.constants.Roles.ADMINISTRATOR, Glitch.constants.Roles.SUPER_ADMINISTRATOR, Glitch.constants.Roles.MODERATOR], order_by: 'name' }).then(response => {
             setCommunities(response.data.data)
         }).catch(error => {
-        
+
         });
-        
+
         Glitch.api.Users.me().then(response => {
 
             const me = response.data.data;
@@ -42,7 +43,7 @@ function CampaignCreatePage() {
         }).catch(error => {
 
         });
-      }, []);
+    }, []);
 
     // State to manage visibility of each payment form
     const [visibleForms, setVisibleForms] = useState({
@@ -69,40 +70,40 @@ function CampaignCreatePage() {
         console.log("Submitted");
         console.log(campaignData);
 
-        if(!campaignData.title_id) {
+        if (!campaignData.title_id) {
 
             Glitch.api.Titles.create(gameTitle).then(response => {
 
                 //this.setState({ isLoading: false });
-    
+
                 //this.props.router.navigate(Navigate.communitiesManagePage(response.data.data.id));
 
                 setCampaignData({ ...campaignData, ['title_id']: response.data.data.id });
                 campaignData.title_id = response.data.data.id;
-                setTimeout(()=> {
+                setTimeout(() => {
                     handleSubmit(e);
                 }, 1500)
-                
-    
+
+
             }).catch(error => {
-    
+
                 //this.setState({ isLoading: false });
-    
+
                 let jsonErrors = error?.response?.data;
-    
+
                 if (jsonErrors) {
-    
+
                     console.log(jsonErrors);
                     setTitleErrors(jsonErrors);
                     //this.setState({ errors: jsonErrors });
-    
+
                     setTimeout(() => {
                         //this.setState({ errors: {} });
                         setTitleErrors({});
                     }, timeouts.error_message_timeout)
                 }
             });
-        } else  {
+        } else {
 
             Glitch.api.Campaigns.create(campaignData).then(response => {
 
@@ -161,9 +162,12 @@ function CampaignCreatePage() {
                 </section>
                 <div className="container mt-4">
 
-                    <h2>Create A Campaign</h2>
+                    <div className="container">
 
-                    <p>Use the form below to create an influencer campaign for your game. After the campaign is created, influencers can register and start creating content.</p>
+                        <h2>Create A Campaign</h2>
+
+                        <p className="lead">Use the form below to create an influencer campaign for your game. After the campaign is created, influencers can register and start creating content.</p>
+                    </div>
 
                     <form onSubmit={handleSubmit}>
                         <CampaignBasicInfoForm campaignData={campaignData} setCampaignData={setCampaignData} communities={communities} errors={errors} />
@@ -171,46 +175,46 @@ function CampaignCreatePage() {
                         <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
                         <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
 
-                       
-                        <CampaignPaymentForm title="Payment To Influencers" paymentData={campaignData.generalPayment} setPaymentData={(data) => setCampaignData({ ...campaignData, generalPayment: data })} errors={errors} />
+                        <CampaignInfluencerForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+                        <CampaignPaymentForm title="Payment To Influencers" campaignData={campaignData} paymentData={campaignData.generalPayment} setPaymentData={setCampaignData} errors={errors} />
 
-                       {/* Styled buttons and conditional rendering for each CampaignPaymentForm */}
-                       <div className='text-center mt-2'>
-                        <p className='text-left'>If you want to fine-tune payment options for each social platform, use the options below.</p>
-                       <button type="button" className={getButtonClass('tiktok')} onClick={() => toggleFormVisibility('tiktok')}>
-                            {visibleForms.tiktok ? 'Hide TikTok Payment' : 'Show TikTok Payment'}
-                        </button>
-                        {visibleForms.tiktok && <CampaignPaymentForm title="Payment To Influencers For TikTok" social={"tiktok"} /* ...props */ />}
-                        
-                        <button type="button" className={getButtonClass('twitch')} onClick={() => toggleFormVisibility('twitch')}>
-                            {visibleForms.twitch ? 'Hide Twitch Payment' : 'Show Twitch Payment'}
-                        </button>
-                        {visibleForms.twitch && <CampaignPaymentForm title="Payment To Influencers For Twitch" social={"twitch"} /* ...props */ />}
+                        {/* Styled buttons and conditional rendering for each CampaignPaymentForm */}
+                        <div className='text-center mt-2'>
+                            <p className='text-left'>If you want to fine-tune payment options for each social platform, use the options below.</p>
+                            <button type="button" className={getButtonClass('tiktok')} onClick={() => toggleFormVisibility('tiktok')}>
+                                {visibleForms.tiktok ? 'Hide TikTok Payment' : 'Show TikTok Payment'}
+                            </button>
+                            {visibleForms.tiktok && <CampaignPaymentForm title="Payment To Influencers For TikTok" social={"tiktok"}  campaignData={campaignData} setPaymentData={setCampaignData}  />}
 
-                        <button type="button" className={getButtonClass('reddit')} onClick={() => toggleFormVisibility('reddit')}>
-                            {visibleForms.reddit ? 'Hide Reddit Payment' : 'Show Reddit Payment'}
-                        </button>
-                        {visibleForms.reddit && <CampaignPaymentForm title="Payment To Influencers For Reddit" social={"reddit"} /* ...props */ />}
+                            <button type="button" className={getButtonClass('twitch')} onClick={() => toggleFormVisibility('twitch')}>
+                                {visibleForms.twitch ? 'Hide Twitch Payment' : 'Show Twitch Payment'}
+                            </button>
+                            {visibleForms.twitch && <CampaignPaymentForm title="Payment To Influencers For Twitch" social={"twitch"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
-                        <button type="button" className={getButtonClass('facebook')} onClick={() => toggleFormVisibility('facebook')}>
-                            {visibleForms.facebook ? 'Hide Facebook Payment' : 'Show Facebook Payment'}
-                        </button>
-                        {visibleForms.facebook && <CampaignPaymentForm title="Payment To Influencers For Facebook" social={"facebook"} /* ...props */ />}
+                            <button type="button" className={getButtonClass('reddit')} onClick={() => toggleFormVisibility('reddit')}>
+                                {visibleForms.reddit ? 'Hide Reddit Payment' : 'Show Reddit Payment'}
+                            </button>
+                            {visibleForms.reddit && <CampaignPaymentForm title="Payment To Influencers For Reddit" social={"reddit"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
-                        <button type="button" className={getButtonClass('youtube')} onClick={() => toggleFormVisibility('youtube')}>
-                            {visibleForms.youtube ? 'Hide YouTube Payment' : 'Show YouTube Payment'}
-                        </button>
-                        {visibleForms.youtube && <CampaignPaymentForm title="Payment To Influencers For YouTube" social={"youtube"} /* ...props */ />}
+                            <button type="button" className={getButtonClass('facebook')} onClick={() => toggleFormVisibility('facebook')}>
+                                {visibleForms.facebook ? 'Hide Facebook Payment' : 'Show Facebook Payment'}
+                            </button>
+                            {visibleForms.facebook && <CampaignPaymentForm title="Payment To Influencers For Facebook" social={"facebook"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
-                        <button type="button" className={getButtonClass('twitter')} onClick={() => toggleFormVisibility('twitter')}>
-                            {visibleForms.twitter ? 'Hide Twitter Payment' : 'Show Twitter Payment'}
-                        </button>
-                        {visibleForms.twitter && <CampaignPaymentForm title="Payment To Influencers For Twitter" social={"twitter"} /* ...props */ />}
+                            <button type="button" className={getButtonClass('youtube')} onClick={() => toggleFormVisibility('youtube')}>
+                                {visibleForms.youtube ? 'Hide YouTube Payment' : 'Show YouTube Payment'}
+                            </button>
+                            {visibleForms.youtube && <CampaignPaymentForm title="Payment To Influencers For YouTube" social={"youtube"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
-                        <button type="button" className={getButtonClass('kick')} onClick={() => toggleFormVisibility('kick')}>
-                            {visibleForms.kick ? 'Hide Kick Payment' : 'Show Kick Payment'}
-                        </button>
-                        {visibleForms.kick && <CampaignPaymentForm title="Payment To Influencers For Kick" social={"kick"} /* ...props */ />}
+                            <button type="button" className={getButtonClass('twitter')} onClick={() => toggleFormVisibility('twitter')}>
+                                {visibleForms.twitter ? 'Hide Twitter Payment' : 'Show Twitter Payment'}
+                            </button>
+                            {visibleForms.twitter && <CampaignPaymentForm title="Payment To Influencers For Twitter" social={"twitter"} campaignData={campaignData} setPaymentData={setCampaignData} />}
+
+                            <button type="button" className={getButtonClass('kick')} onClick={() => toggleFormVisibility('kick')}>
+                                {visibleForms.kick ? 'Hide Kick Payment' : 'Show Kick Payment'}
+                            </button>
+                            {visibleForms.kick && <CampaignPaymentForm title="Payment To Influencers For Kick" social={"kick"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
                         </div>
 

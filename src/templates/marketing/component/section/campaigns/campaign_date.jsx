@@ -15,8 +15,8 @@ function CampaignDateForm({ campaignData, setCampaignData, errors }) {
     return (
         <div className="container mt-4">
             <div className="card">
-                <div className="card-header bg-success text-white">
-                    <h3><i className="far fa-calendar-alt mr-2"></i>Dates 1</h3>
+                <div className="card-header bg-secondary">
+                    <h3><i className="far fa-calendar-alt mr-2"></i>Dates</h3>
                 </div>
                 <div className="card-body">
                     <div className="row">

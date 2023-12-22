@@ -80,6 +80,8 @@ import CreatorsPublishersLinuxPage from './pages/misc/creatorspublisherslinux';
 
 import CampaignsListPage from './pages/campaigns/CampaignsListPage';
 import CampaignCreatePage from './pages/campaigns/CampaignCreatePage';
+import CampaignUpdatePage from './pages/campaigns/CampaignUpdatePage';
+import CampaignsViewPage from './pages/campaigns/CampaignsViewPage';
 
 function Template() {
   
@@ -112,8 +114,8 @@ function Template() {
 
           <Route path={Navigate.campaignsPage()} element={<CampaignsListPage />} />
           <Route path={Navigate.campaignsCreatePage()} element={<CampaignCreatePage />} />
-          <Route path={Navigate.campaignsUpdatePage()} element={<CampaignCreatePage />} />
-          <Route path={Navigate.campaignsViewPage()} element={<CampaignsListPage />} />
+          <Route path={Navigate.campaignsUpdatePage()} element={<CampaignUpdatePage />} />
+          <Route path={Navigate.campaignsViewPage()} element={<CampaignsViewPage />} />
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />
           <Route path={Navigate.communitiesCreatePage()} element={<CommunitiesCreate />} />

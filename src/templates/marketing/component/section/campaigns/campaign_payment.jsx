@@ -2,13 +2,14 @@ import React from 'react';
 import Danger from '../../alerts/Danger';
 
 
-function CampaignPaymentForm({ title, paymentData = {}, setPaymentData, social, errors }) {
+function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPaymentData, social, errors }) {
     const handleInputChange = (e) => {
         let name = e.target.name;
         if(social && (name.startsWith('payment_per_'))) {
             name = `${name}_${social}`;
         }
-        setPaymentData({ ...paymentData, [name]: e.target.value });
+        console.log({ ...campaignData, [name]: e.target.value });
+        setPaymentData({ ...campaignData, [name]: e.target.value });
     };
 
     const socialDescriptions = {
@@ -61,7 +62,7 @@ function CampaignPaymentForm({ title, paymentData = {}, setPaymentData, social, 
             <div className="col-md-6">
                 <div className="mb-3">
                     <label htmlFor={fieldName} className="form-label"><i className={`fas ${icon} mr-2`}></i>{label}</label>
-                    <input type="number" className="form-control bg-dark border-secondary text-white" id={fieldName} name={fieldName} value={paymentData[fieldName] || ''} onChange={handleInputChange} placeholder={`Payment Per ${label}`} />
+                    <input type="number" className="form-control bg-dark border-secondary text-white" id={fieldName} name={fieldName} value={campaignData[fieldName] || ''} onChange={handleInputChange} placeholder={`Payment Per ${label}`} />
                     <small className="form-text text-muted">{description}</small>
                 </div>
                 {errors && errors[fieldName] && errors[fieldName].map(function (name, index) {

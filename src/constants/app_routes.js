@@ -21,9 +21,9 @@
     //Campaigns
     campaigns: '/campaigns',
     campaigns_create : '/campaigns/create',
-    campaigns_view : '/communities/:id/view',
-    campaigns_update : '/communities/:id/update',
-    campaigns_delete : '/communities/:id/delete',
+    campaigns_view : '/campaigns/:id/view',
+    campaigns_update : '/campaigns/:id/update',
+    campaigns_delete : '/campaigns/:id/delete',
 
     campaigns_register : '/communities/:id/register',
     campaigns_register : '/communities/:id/register',

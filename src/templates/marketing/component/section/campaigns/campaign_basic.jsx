@@ -71,18 +71,16 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
     return (
         <div className="container mt-4">
             <div className="card">
-                <div className="card-header bg-info text-white">
+                <div className="card-header bg-secondary">
                     <h3><i className="fas fa-info-circle mr-2"></i>Basic Information</h3>
                 </div>
                 <div className="card-body">
                     <form>
                         {createInputField('name', 'Campaign Name', 'Give the campaign a name.', 'text', errors)}
                         {createTextAreaField('description', 'Description', 'Give the campaign a description.', errors)}
-                        {createTextAreaField('brief', 'Brief', 'The brief is provided to influencers to research the campaign.', errors)}
 
                         <div className="mb-3">
                             <label htmlFor="type">Community</label>
-                            <p>Select a community account to associate the campaign with.</p>
                             <Select name="type" className="form-select" onChange={handleCommunitySelectChange} value={campaignData.community_id}>
                                 <option key={"-1"} value={""}>
                                         Select A Community
@@ -93,6 +91,8 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                                     </option>
                                 ))}
                             </Select>
+                            <p className="small">Select a community account to associate the campaign with.</p>
+
                             {errors && errors['community_id'] && errors['community_id'].map(function (name, index) {
                                 return <Danger message={name} key={index} />;
                             })}
@@ -100,7 +100,7 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
 
                         <div className="mb-3">
                             <label htmlFor="type">Type</label>
-                            <p>Select the type of campaign you are executing.</p>
+                            
                             <Select name="type" className="form-select" onChange={handleTypeSelectChange} value={campaignData.type}>
                                 <option key={"-1"} value={""}>
                                         Select A Type
@@ -111,6 +111,7 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                                     </option>
                                 ))}
                             </Select>
+                            <p className="small">Select the type of campaign you are executing.</p>
                             {errors && errors['type'] && errors['type'].map(function (name, index) {
                                 return <Danger message={name} key={index} />;
                             })}
@@ -118,7 +119,6 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
 
                         <div className="mb-3">
                             <label htmlFor="objective">Objective</label>
-                            <p>Select the objective of your campaign.</p>
                             <Select name="objective" className="form-select" onChange={handleObjectiveSelectChange} value={campaignData.objective}>
                                 <option key={"-1"} value={""}>
                                         Select An Objective
@@ -129,6 +129,7 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                                     </option>
                                 ))}
                             </Select>
+                            <p className="small">Select the objective of your campaign.</p>
                             {errors && errors['objective'] && errors['objective'].map(function (name, index) {
                                 return <Danger message={name} key={index} />;
                             })}
@@ -144,8 +145,9 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
             <>
                 <div className="mb-3">
                     <label htmlFor={name}>{label}</label>
-                    <p>{description}</p>
+                    
                     <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} placeholder={label} />
+                    <p className="small">{description}</p>
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {
                     return <Danger message={name} key={index} />;
@@ -159,8 +161,9 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
             <>
                 <div className="mb-3">
                     <label htmlFor={name}>{label}</label>
-                    <p>{description}</p>
                     <textarea className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} placeholder={label}></textarea>
+                    <p className="small">{description}</p>
+
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {
                     return <Danger message={name} key={index} />;

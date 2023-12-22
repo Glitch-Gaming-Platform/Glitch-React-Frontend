@@ -9,7 +9,7 @@ function CampaignSpendingLimitsForm({ campaignData, setCampaignData, errors }) {
     return (
         <div className="container mt-4">
             <div className="card">
-                <div className="card-header bg-primary text-white">
+                <div className="card-header bg-secondary">
                     <h3><i className="fas fa-wallet mr-2"></i>Spending Limits</h3>
                 </div>
                 <div className="card-body">
