@@ -32,9 +32,9 @@ class CreatorsCalculator extends Component {
                                 <div className="pageheader-thumb mb-4">
                                     <img style={{ maxHeight: '160px' }} src="/assets/images/creators/calculator.png" alt="team" />
                                 </div>
-                                <h2 className="pageheader-title">Rate Card Card Calculator</h2>
+                                <h2 className="pageheader-title">Rate Card Calculator</h2>
 
-                                <p className="lead">Calculator your earnings potential.</p>
+                                <p className="lead">Calculator your earnings potential</p>
 
                             </div>
                         </div>
