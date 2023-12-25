@@ -13,20 +13,32 @@ class CreatorsCalculator extends Component {
         return (
             <>
                 <Helmet>
-                    <title>Glitch Streaming App</title>
+                    <title>Glitch Performance Marketing Calculator</title>
                     <meta name="description" content="The fastest and easiest way to live stream your games online and create engaging experiences." />
-                    <meta property="og:title" content="Glitch Streaming App" />
-                    <meta property="og:description" content="The fastest and easiest way to live stream your games online and create engaging experiences." />
-                    <meta property="og:image" content="//assets/images/meta/meta_11.jpeg" />
+                    <meta property="og:title" content="Glitch Performance Marketing Calculator" />
+                    <meta property="og:description" content="Optimize your earning potential as an influencer by calculating your possible revenue when marketing a game. Leverage performance-based influencer marketing strategies to maximize your impact and profitability in the gaming industry." />
+                    <meta property="og:image" content="//assets/images/creators/calculator.png" />
                     <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : 'https://www.glitch.fun'} />
                     <meta property="og:type" content="website" />
-                    <meta name="twitter:title" content="Glitch Streaming App" />
-                    <meta name="twitter:description" content="The fastest and easiest way to live stream your games online and create engaging experiences." />
-                    <meta name="twitter:image" content="//assets/images/meta/meta_11.jpeg" />
+                    <meta name="twitter:title" content="Glitch Performance Marketing Calculator" />
+                    <meta name="twitter:description" content="Optimize your earning potential as an influencer by calculating your possible revenue when marketing a game. Leverage performance-based influencer marketing strategies to maximize your impact and profitability in the gaming industry." />
+                    <meta name="twitter:image" content="//assets/images/creators/calculator.png" />
                 </Helmet>
                 <Fragment>
                     <Header />
-                    <br /><br /><br />
+                    <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+                        <div className="container">
+                            <div className="section-wrapper text-center text-uppercase">
+                                <div className="pageheader-thumb mb-4">
+                                    <img style={{ maxHeight: '160px' }} src="/assets/images/creators/calculator.png" alt="team" />
+                                </div>
+                                <h2 className="pageheader-title">Rate Card Card Calculator</h2>
+
+                                <p className="lead">Calculator your earnings potential.</p>
+
+                            </div>
+                        </div>
+                    </section>
                     <PerformanceMarketingCalculator />
                     <Footer />
                 </Fragment>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CampaignLinksManager from '../../component/section/campaigns/campaign_links_manager';
 import Header from '../../component/layout/header';
+import Footer from '../../component/layout/footer';
 
 const CampaignsViewPage = () => {
 
@@ -126,6 +127,7 @@ const CampaignsViewPage = () => {
                 </div>
             </div>
             <CampaignLinksManager campaignID={id} />
+            <Footer />
         </>
     );
 };

@@ -116,7 +116,8 @@
       "/creators/influencers",
       "/creators/publishers",
       "/creators/macpublishers",
-      "/creators/linuxpublishers"
+      "/creators/linuxpublishers",
+      "/creators/calculator"
     ]
   }
 }
