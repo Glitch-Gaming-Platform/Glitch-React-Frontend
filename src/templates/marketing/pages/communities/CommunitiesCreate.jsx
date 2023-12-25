@@ -72,7 +72,7 @@ class CommunitiesCreate extends Component {
             <>
                 <Fragment>
                     <Header />
-                    <PageHeader title={'Creamte Community'} curPage={'Communities   '} />
+                    <PageHeader title={'Create A Community'} curPage={'Communities   '} />
                     <div className=" padding-top padding-bottom">
                         <div className=" container">
                             <div className="stream-wrapper">

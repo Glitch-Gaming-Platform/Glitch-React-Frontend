@@ -6,9 +6,9 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
     const handleInputChange = (e) => {
         let name = e.target.name;
         if(social && (name.startsWith('payment_per_'))) {
-            name = `${name}_${social}`;
+            //name = `${name}_${social}`;
         }
-        console.log({ ...campaignData, [name]: e.target.value });
+
         setPaymentData({ ...campaignData, [name]: e.target.value });
     };
 
@@ -27,7 +27,7 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
     }. This will override the default settings.`;
     
     if (!socialDescriptions[social]) {
-        description = 'Influencer can get paid based on the engagement they make on social media. Set the options below on how much you are willing to pay them per action type.';
+        description = 'Influencer can get paid based on the engagement they make on social media, with each metric having its own rate. Set the options below on how much you are willing to pay them per action type, which will create a Rate Card for influencers.';
     }
 
     return (
@@ -57,7 +57,14 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
     );
 
     function createInputField(field, icon, label, description) {
-        const fieldName = `payment_per_${field}${social ? '_' + social : ''}`;
+        let fieldName = '';
+
+        if(field == 'flat_fee') {
+            fieldName = `payment_${field}${social ? '_' + social : ''}`;
+        } else {
+            fieldName = `payment_per_${field}${social ? '_' + social : ''}`;
+        }
+       
         return (
             <div className="col-md-6">
                 <div className="mb-3">

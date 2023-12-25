@@ -191,7 +191,7 @@ function CampaignUpdatePage() {
                         <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
 
                         <CampaignInfluencerForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
-                        <CampaignPaymentForm title="Payment To Influencers" campaignData={campaignData} paymentData={campaignData.generalPayment} setPaymentData={setCampaignData} errors={errors} />
+                        <CampaignPaymentForm title="Rate Card - General" campaignData={campaignData} paymentData={campaignData.generalPayment} setPaymentData={setCampaignData} errors={errors} />
 
                         {/* Styled buttons and conditional rendering for each CampaignPaymentForm */}
                         <div className='text-center mt-2'>
@@ -199,37 +199,37 @@ function CampaignUpdatePage() {
                             <button type="button" className={getButtonClass('tiktok')} onClick={() => toggleFormVisibility('tiktok')}>
                                 {visibleForms.tiktok ? 'Hide TikTok Payment' : 'Show TikTok Payment'}
                             </button>
-                            {visibleForms.tiktok && <CampaignPaymentForm title="Payment To Influencers For TikTok" social={"tiktok"} campaignData={campaignData} setPaymentData={setCampaignData} />}
+                            {visibleForms.tiktok && <CampaignPaymentForm title="Rate Card For TikTok" social={"tiktok"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
                             <button type="button" className={getButtonClass('twitch')} onClick={() => toggleFormVisibility('twitch')}>
                                 {visibleForms.twitch ? 'Hide Twitch Payment' : 'Show Twitch Payment'}
                             </button>
-                            {visibleForms.twitch && <CampaignPaymentForm title="Payment To Influencers For Twitch" social={"twitch"} campaignData={campaignData} setPaymentData={setCampaignData} />}
+                            {visibleForms.twitch && <CampaignPaymentForm title="Rate Card For Twitch" social={"twitch"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
                             <button type="button" className={getButtonClass('reddit')} onClick={() => toggleFormVisibility('reddit')}>
                                 {visibleForms.reddit ? 'Hide Reddit Payment' : 'Show Reddit Payment'}
                             </button>
-                            {visibleForms.reddit && <CampaignPaymentForm title="Payment To Influencers For Reddit" social={"reddit"} campaignData={campaignData} setPaymentData={setCampaignData} />}
+                            {visibleForms.reddit && <CampaignPaymentForm title="Rate Card For Reddit" social={"reddit"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
                             <button type="button" className={getButtonClass('facebook')} onClick={() => toggleFormVisibility('facebook')}>
                                 {visibleForms.facebook ? 'Hide Facebook Payment' : 'Show Facebook Payment'}
                             </button>
-                            {visibleForms.facebook && <CampaignPaymentForm title="Payment To Influencers For Facebook" social={"facebook"} campaignData={campaignData} setPaymentData={setCampaignData} />}
+                            {visibleForms.facebook && <CampaignPaymentForm title="Rate Card For Facebook" social={"facebook"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
                             <button type="button" className={getButtonClass('youtube')} onClick={() => toggleFormVisibility('youtube')}>
                                 {visibleForms.youtube ? 'Hide YouTube Payment' : 'Show YouTube Payment'}
                             </button>
-                            {visibleForms.youtube && <CampaignPaymentForm title="Payment To Influencers For YouTube" social={"youtube"} campaignData={campaignData} setPaymentData={setCampaignData} />}
+                            {visibleForms.youtube && <CampaignPaymentForm title="Rate Card For YouTube" social={"youtube"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
                             <button type="button" className={getButtonClass('twitter')} onClick={() => toggleFormVisibility('twitter')}>
                                 {visibleForms.twitter ? 'Hide Twitter Payment' : 'Show Twitter Payment'}
                             </button>
-                            {visibleForms.twitter && <CampaignPaymentForm title="Payment To Influencers For Twitter" social={"twitter"} campaignData={campaignData} setPaymentData={setCampaignData} />}
+                            {visibleForms.twitter && <CampaignPaymentForm title="Rate Card For Twitter" social={"twitter"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
                             <button type="button" className={getButtonClass('kick')} onClick={() => toggleFormVisibility('kick')}>
                                 {visibleForms.kick ? 'Hide Kick Payment' : 'Show Kick Payment'}
                             </button>
-                            {visibleForms.kick && <CampaignPaymentForm title="Payment To Influencers For Kick" social={"kick"} campaignData={campaignData} setPaymentData={setCampaignData} />}
+                            {visibleForms.kick && <CampaignPaymentForm title="Rate Card For Kick" social={"kick"} campaignData={campaignData} setPaymentData={setCampaignData} />}
 
                         </div>
 

@@ -82,6 +82,7 @@ import CampaignsListPage from './pages/campaigns/CampaignsListPage';
 import CampaignCreatePage from './pages/campaigns/CampaignCreatePage';
 import CampaignUpdatePage from './pages/campaigns/CampaignUpdatePage';
 import CampaignsViewPage from './pages/campaigns/CampaignsViewPage';
+import CreatorsCalculator from './pages/misc/calculator';
 
 function Template() {
   
@@ -111,6 +112,7 @@ function Template() {
           <Route path={Navigate.creatorsPublishersPage()} element={<CreatorsPublishersPage />} />
           <Route path={Navigate.creatorsPublishersMacPage()} element={<CreatorsPublishersMacPage />} />
           <Route path={Navigate.creatorsPublishersLinuxPage()} element={<CreatorsPublishersLinuxPage />} />
+          <Route path={Navigate.creatorsCalculator()} element={<CreatorsCalculator />} />
 
           <Route path={Navigate.campaignsPage()} element={<CampaignsListPage />} />
           <Route path={Navigate.campaignsCreatePage()} element={<CampaignCreatePage />} />

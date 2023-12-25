@@ -36,18 +36,18 @@ const CampaignsViewPage = () => {
         <>
             <Header />
             <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
-                    <div className="container">
-                        <div className="section-wrapper text-center text-uppercase">
-                            <div className="pageheader-thumb mb-4">
-                                <img style={{ maxHeight: '160px' }} src="assets/images/revenue/profits.png" alt="team" />
-                            </div>
-                            <h2 className="pageheader-title">Campaigns</h2>
-
-                            <p className="lead">Manage your campaigns for your game that you can connect with your influencers on.</p>
-
+                <div className="container">
+                    <div className="section-wrapper text-center text-uppercase">
+                        <div className="pageheader-thumb mb-4">
+                            <img style={{ maxHeight: '160px' }} src="assets/images/revenue/profits.png" alt="team" />
                         </div>
+                        <h2 className="pageheader-title">Campaigns</h2>
+
+                        <p className="lead">Manage your campaigns for your game that you can connect with your influencers on.</p>
+
                     </div>
-                </section>
+                </div>
+            </section>
             <div className="container my-5">
                 <div className="card">
                     <div className="card-header bg-secondary">
@@ -78,10 +78,10 @@ const CampaignsViewPage = () => {
                         </section>
 
                         <section className="mb-4">
-                            <h3 className="text-black">Payments To Influencers</h3>
+                            <h3 className="text-black">Rate Card For Influencers</h3>
                             <p>
-                                Payments to influencers are based on performance in campaigns. Below are the methods by which influencers are
-                                rewarded for the social content they create on various platforms.
+                                Payments to influencers are based on performance in campaigns, where each metric has a different payment rate. Below are the different rates by which influencers are
+                                rewarded for the social content they create on various platforms, which creates their Rate Card.
                             </p>
                             <div className="container">
                                 <div className="row">
@@ -89,7 +89,7 @@ const CampaignsViewPage = () => {
                                         <table className="table table-responsive">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Platform / Payment Type</th>
+                                                    <th scope="col">Platform</th>
                                                     {paymentTypes.map((payment, index) => (
                                                         <th scope="col" key={index}>{payment.type}</th>
                                                     ))}
@@ -101,7 +101,7 @@ const CampaignsViewPage = () => {
                                                         <th scope="row">{platform}</th>
                                                         {paymentTypes.map((payment, pIndex) => (
                                                             <td key={pIndex}>
-                                                                ${campaign[`${payment.key}_${platform.toLowerCase()}`] || campaign[payment.key]}
+                                                                ${(campaign[`${payment.key}_${platform.toLowerCase()}`] > 0) ? campaign[`${payment.key}_${platform.toLowerCase()}`]   : campaign[payment.key]  || campaign[payment.key]}
                                                             </td>
                                                         ))}
                                                     </tr>

@@ -35,6 +35,7 @@
     creator_publishers: '/creators/publishers',
     creator_publishers_mac: '/creators/macpublishers',
     creator_publishers_linux: '/creators/linuxpublishers',
+    creator_calculators : '/creators/calculator',
 
     //authentication
     auth_login : '/login',

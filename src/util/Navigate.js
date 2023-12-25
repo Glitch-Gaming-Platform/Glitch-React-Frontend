@@ -68,6 +68,9 @@ const Navigate = {
     creatorsPublishersLinuxPage : () => {
         return app_routes.creator_publishers_linux;
     },
+    creatorsCalculator : () => {
+        return app_routes.creator_calculators;
+    },
 
     //Campaigns
 
