@@ -6,8 +6,10 @@ import Footer from '../../component/layout/footer';
 import { Link } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import axios from 'axios';
+import CampaignRateCard from '../../component/section/campaigns/campaign_rate_card';
+import GameTitle from '../../component/section/titles/title_display';
 
-const CampaignsListPage = () => {
+const InfluencerFindCampaignsPage = () => {
     const [campaigns, setCampaigns] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -60,33 +62,37 @@ const CampaignsListPage = () => {
                     </div>
                 </section>
 
-                <div className="container mt-5 mb-2" >
-                    <div className="section-wrapper">
-                        <Link className={"btn btn-success"} to={Navigate.campaignsCreatePage()} >Create A Campaign</Link>
-                    </div>
-                </div>
-
                 <div className="container">
-                    <h2>Campaigns</h2>
+                    <h2>Find A Campaign</h2>
 
                     <div className="d-flex flex-column">
                         {campaigns.map(campaign => (
                             <div key={campaign.id} className="card mb-3">
                                 <div className="card-body">
                                     <h5 className="card-title">{campaign.name}</h5>
-                                    <p className="card-text">{campaign.description}</p>
-                                    <p className="card-text">
-                                        <small className="text-muted">
-                                            {campaign.is_active ? 'Active' : 'Inactive'}
-                                        </small>
-                                    </p>
+
+                                    <div className="row">
+                                        <div className="col-md-12">
+                                        <p className="card-text">{campaign.brief}</p>
+                                        <p className="card-text">
+                                            <small className="text-muted">
+                                                {campaign.is_active ? 'Active' : 'Inactive'}
+                                            </small>
+                                        </p>
+                                        </div>
+                                        <div className="col-md-12">
+                                            {campaign?.title.id}
+                                            <GameTitle  gameInfo={campaign?.title} />
+                                        </div>
+                                        <div className="col-md-12">
+                                            <CampaignRateCard campaign={campaign} />
+                                        </div>
+                                    </div>
+                                   
                                     <p className="card-text">Budget: {campaign.spend_limit}</p>
                                     {/* Add other basic info as needed */}
 
                                     <div className="d-flex justify-content-start">
-                                    <Link className={"btn btn-primary me-2"} to={Navigate.campaignsViewPage(campaign.id)} >View Campaign</Link>
-                                    <Link className={"btn btn-warning me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >Edit Campaign</Link>
-                                    <Link className={"btn btn-info"} to={Navigate.campaignsFindInfluencers(campaign.id)} >Find Influencers</Link>
                                 </div>
                                 </div>
                                 
@@ -110,4 +116,4 @@ const CampaignsListPage = () => {
     );
 };
 
-export default CampaignsListPage;
+export default InfluencerFindCampaignsPage;

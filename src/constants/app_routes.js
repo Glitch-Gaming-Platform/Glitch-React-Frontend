@@ -25,8 +25,8 @@
     campaigns_update : '/campaigns/:id/update',
     campaigns_delete : '/campaigns/:id/delete',
 
-    campaigns_register : '/communities/:id/register',
-    campaigns_register : '/communities/:id/register',
+    campaigns_register : '/campaigns/:id/register',
+    campaigns_find_influencer : '/campaigns/:id/findinfluencer',
 
     creators: '/creators',
     creator_influencers: '/creators/influencers',
@@ -87,6 +87,11 @@
 
     communities_invited_login : '/invites/login', 
     communities_invited_register : '/invites/register', 
+
+    //influencers
+    influencer_campaigns : '/influencers/campaigns',
+    influencer_find_campaigns : '/influencers/findcampaigns', 
+    influencer_view_campaign : '/influencers/:campaign_id/campaign/:user_id', 
 
     //Tips
     tips_emojis : '/tips/:id/emojis', 

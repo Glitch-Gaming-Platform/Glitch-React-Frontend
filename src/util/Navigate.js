@@ -187,6 +187,27 @@ const Navigate = {
         return path;
     },
 
+    campaignsRegisterPage : (campaign_id) => {
+
+        let path = app_routes.campaigns_register;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        return path;
+    },
+    campaignsFindInfluencers : (campaign_id) => {
+
+        let path = app_routes.campaigns_find_influencer;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        return path;
+    },
+
 
     //Communites Pages
     communitiesPage : () => {
@@ -363,6 +384,35 @@ const Navigate = {
 
         if(community_id){
             path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+
+    influencersListCampaignsPage : () => {
+
+        let path = app_routes.influencer_campaigns;
+
+        return path;
+    },
+
+    influencersFindCampaignPage : () => {
+
+        let path = app_routes.influencer_find_campaigns;
+
+        return path;
+    },
+
+    influencersViewCampaignPage : (campaign_id, user_id) => {
+
+        let path = app_routes.influencer_view_campaign;
+
+        if(campaign_id){
+            path = path.replace(':campaign_id', campaign_id)
+        }
+
+        if(user_id){
+            path = path.replace(':user_id', user_id)
         }
 
         return path;

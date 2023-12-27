@@ -11,9 +11,8 @@ import Success from "../../component/alerts/Success";
 import TournamentItem from "../../component/section/competitions/detail_tournament_item";
 import Footer from "../../component/layout/footer";
 import Glitch from 'glitch-javascript-sdk';
-
-
-
+import Loading from "../../component/alerts/Loading";
+import timeouts from "../../../../constants/timeouts";
 
 
 class AccountUpdatePage extends Component {
@@ -21,12 +20,14 @@ class AccountUpdatePage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            me: null,
+            me: {},
             profileHeader: '',
             followers: '<h3>No Followers</h3>',
             following: '<h3>No Followers</h3>',
             communities : [],
+            campaigns : [],
             errors: {},
+            isLoading : false,
 
         };
     }
@@ -51,6 +52,8 @@ class AccountUpdatePage extends Component {
         }).catch(error => {
 
         });
+
+        //Glitch.api.Campaigns.listInfluencerCampaigns()
     }
 
     activateDonations() {
@@ -63,6 +66,36 @@ class AccountUpdatePage extends Component {
 
         }).catch(error => {
             console.log(error);
+        })
+    }
+
+    handleChange = (event) => {
+        const { name, value, type, checked } = event.target;
+        const actualValue = type === 'checkbox' ? checked : value;
+        this.setState(prevState => ({
+            ...prevState,
+            me: { ...prevState.me, [name]: actualValue }
+        }));
+    }
+
+    handleUpdateInfluencer    = () => {
+        const { me } = this.state;
+        this.setState({isLoading : true});
+        Glitch.api.Users.update(me).then(response => {
+            // Handle the update response
+        }).catch(error => {
+            console.log(error);
+
+            if(error.response && error.response.data) {
+                this.setState({errors : error.response.data});
+
+                setTimeout(() =>{
+                    this.setState({errors : {}});
+                }, timeouts.error_message_timeout)
+            }
+
+        }).finally(() => {
+            this.setState({isLoading : false});
         })
     }
 
@@ -103,6 +136,9 @@ class AccountUpdatePage extends Component {
                         </li>
                         <li className="nav-item" role="presentation">
                             <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Manage Communities</button>
+                        </li>
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link" id="influencer-profile-tab" data-bs-toggle="tab" data-bs-target="#influencerprofile" type="button" role="tab" aria-controls="influencerprofile" aria-selected="false">Influnecer Profile</button>
                         </li>
                     </ul>
                     <div className="tab-content mt-3" id="myTabContent">
@@ -160,6 +196,110 @@ class AccountUpdatePage extends Component {
                                 }
                             </div>
                         </div>
+
+
+                        <div className="tab-pane fade mt-3 mb-3" id="influencerprofile" role="tabpanel" aria-labelledby="influencer-profile-tab">
+                            <div className="row g-4 match-grid GameListStyleTwo">
+                                <h2>Influencer Profile</h2>
+
+                                <p className="lead">To become an influencer, you must activate and manage your influencer profile. Use the options below to manage your role as an influencer effectively.</p>
+
+                                <div className="col-md-12">
+                                    <div className="mb-3">
+                                        <label htmlFor="isInfluencer" className="form-label">Activate Influencer Profle</label>
+                                        &nbsp;<input type="checkbox" className="form-check-input ml-2" id="isInfluencer" name="is_influencer" checked={this.state.me?.is_influencer} onChange={this.handleChange} />
+                                        <div className="form-text text-white">Use the checkbox for activiating and deactiviting your influencer profile.</div>
+                                        {this.state.errors && this.state.errors.is_influencer && this.state.errors.is_influencer.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+                                </div>
+                                <div className="col-md-6">
+                                    {/* Repeat this pattern for each follower count field */}
+                                    <div className="mb-3">
+                                        <label htmlFor="twitterFollowerCount" className="form-label">Twitter Followers</label>
+                                        <input type="number" className="form-control" id="twitterFollowerCount" name="twitter_follower_count" value={this.state.me.twitter_follower_count} onChange={this.handleChange} />
+                                        <div className="form-text">Enter your number of followers on Twitter.</div>
+                                        {this.state.errors && this.state.errors.twitter_follower_count && this.state.errors.twitter_follower_count.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="facebookFollowerCount" className="form-label">Facebook Followers</label>
+                                        <input type="number" className="form-control" id="twitterFollowerCount" name="facebook_follower_count" value={this.state.me?.facebook_follower_count} onChange={this.handleChange} />
+                                        <div className="form-text">Enter your number of followers on Facebook.</div>
+                                        {this.state.errors && this.state.errors.facebook_follower_count && this.state.errors.facebook_follower_count.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="tiktokFollowerCount" className="form-label">Tiktok Followers</label>
+                                        <input type="number" className="form-control" id="tiktokFollowerCount" name="tiktok_follower_count" value={this.state.me?.tiktok_follower_count} onChange={this.handleChange} />
+                                        <div className="form-text">Enter your number of followers on Tiktok.</div>
+                                        {this.state.errors && this.state.errors.tiktok_follower_count && this.state.errors.tiktok_follower_count.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+                                    <div className="mb-1">
+                                        <label htmlFor="tiktokFollowerCount" className="form-label">Reddit Followers</label>
+                                        <input type="number" className="form-control" id="redditFollowerCount" name="reddit_follower_count" value={this.state.me?.reddit_follower_count} onChange={this.handleChange} />
+                                        <div className="form-text">Enter your number of followers on Reddit.</div>
+                                        {this.state.errors && this.state.errors.reddit_follower_count && this.state.errors.reddit_follower_count.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+                                    {/* ... other social media fields ... */}
+                                </div>
+                                <div className="col-md-6">
+                                    {/* ... other social media fields ... */}
+                                    <div className="mb-3">
+                                        <label htmlFor="youtubeFollowerCount" className="form-label">Twitch Followers</label>
+                                        <input type="number" className="form-control" id="twitchFollowerCount" name="twitch_follower_count" value={this.state.me?.twitch_follower_count} onChange={this.handleChange} />
+                                        <div className="form-text">Enter your number of followers on Twitch.</div>
+                                        {this.state.errors && this.state.errors.twitch_follower_count && this.state.errors.twitch_follower_count.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="youtubeFollowerCount" className="form-label">Youtube Followers</label>
+                                        <input type="number" className="form-control" id="youtubeFollowerCount" name="youtube_follower_count" value={this.state.me?.youtube_follower_count} onChange={this.handleChange} />
+                                        <div className="form-text">Enter your number of followers on Youtube.</div>
+                                        {this.state.errors && this.state.errors.youtube_follower_count && this.state.errors.youtube_follower_count.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+
+                                    <div className="mb-3">
+                                        <label htmlFor="youtubeFollowerCount" className="form-label">Kick Followers</label>
+                                        <input type="number" className="form-control" id="kickFollowerCount" name="kick_follower_count" value={this.state.me?.kick_follower_count} onChange={this.handleChange} />
+                                        <div className="form-text">Enter your number of followers on Kick.</div>
+                                        {this.state.errors && this.state.errors.kick_follower_count && this.state.errors.kick_follower_count.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+                                    <div className="mb-1">
+                                        <label htmlFor="youtubeFollowerCount" className="form-label">Instagram Followers</label>
+                                        <input type="number" className="form-control" id="instagramFollowerCount" name="instagram_follower_count" value={this.state.me?.instagram_follower_count} onChange={this.handleChange} />
+                                        <div className="form-text">Enter your number of followers on Instagram.</div>
+
+                                        {this.state.errors && this.state.errors.instagram_follower_count && this.state.errors.instagram_follower_count.map(function(name, index){
+                                            return <Danger message={name} key={index} />;
+                                        })}
+                                    </div>
+                                </div>
+                                <div className="col-md-12 text-center mb-3">
+
+                                {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are error(s) in updating your profile. Please check the form above."} /> : ''}
+
+                                    <div className="d-grid gap-2 mt-4">
+                                        <button className="btn btn-primary" type="button" onClick={this.handleUpdateInfluencer}><i className="fas fa-save"></i> Update Profile {this.state.isLoading ? <Loading /> : ''}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
                         <div className="tab-pane fade mt-3" id="tournament" role="tabpanel" aria-labelledby="tournament-tab">
                             <div className="row g-4 match-grid GameListStyleTwo">
 

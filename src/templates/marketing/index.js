@@ -77,12 +77,17 @@ import CreatorsInfluencerMacPage from './pages/misc/creatorsinfluencersmac';
 import CreatorsInfluencerLinuxPage from './pages/misc/creatorsinfluencerslinux';
 import CreatorsPublishersMacPage from './pages/misc/creatorspublishersmac';
 import CreatorsPublishersLinuxPage from './pages/misc/creatorspublisherslinux';
+import CreatorsCalculator from './pages/misc/calculator';
 
 import CampaignsListPage from './pages/campaigns/CampaignsListPage';
 import CampaignCreatePage from './pages/campaigns/CampaignCreatePage';
 import CampaignUpdatePage from './pages/campaigns/CampaignUpdatePage';
 import CampaignsViewPage from './pages/campaigns/CampaignsViewPage';
-import CreatorsCalculator from './pages/misc/calculator';
+import CampaignsFindInfluencersPage from './pages/campaigns/CampaignsFindInfluencersPage';
+import InfluencerCampaignsPage from './pages/influencers/InfluencerCampaignsPage';
+import InfluencerFindCampaignsPage from './pages/influencers/InfluencerFindCampaignsPage';
+import InfluencerViewCampaignPage from './pages/influencers/InfluencerViewCampaignPage';
+
 
 function Template() {
   
@@ -118,6 +123,8 @@ function Template() {
           <Route path={Navigate.campaignsCreatePage()} element={<CampaignCreatePage />} />
           <Route path={Navigate.campaignsUpdatePage()} element={<CampaignUpdatePage />} />
           <Route path={Navigate.campaignsViewPage()} element={<CampaignsViewPage />} />
+          <Route path={Navigate.campaignsFindInfluencers()} element={<CampaignsFindInfluencersPage />} />
+
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />
           <Route path={Navigate.communitiesCreatePage()} element={<CommunitiesCreate />} />
@@ -135,6 +142,10 @@ function Template() {
           <Route path={Navigate.communitiesUsersInvitePage()} element={<CommunitiesUsersInvite/>} />
 
           <Route path={"/streams/:id/recording/:subid"} element={<WatchRecording/>} />
+
+          <Route path={Navigate.influencersListCampaignsPage()} element={<InfluencerCampaignsPage />} />
+          <Route path={Navigate.influencersFindCampaignPage()} element={<InfluencerFindCampaignsPage />} />
+          <Route path={Navigate.influencersViewCampaignPage()} element={<InfluencerViewCampaignPage />} />
 
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
           <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />
