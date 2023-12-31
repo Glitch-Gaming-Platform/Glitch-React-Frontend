@@ -1,10 +1,13 @@
 import Glitch from 'glitch-javascript-sdk';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CampaignLinksManager from '../../component/section/campaigns/campaign_links_manager';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
 import CampaignRateCard from '../../component/section/campaigns/campaign_rate_card';
+import GameTitle from '../../component/section/titles/title_display';
+import Navigate from '../../../../util/Navigate';
+import Moment from 'react-moment';
 
 const CampaignsViewPage = () => {
 
@@ -60,6 +63,9 @@ const CampaignsViewPage = () => {
         //fetchCampaignData().then(setCampaign);
     }, []);
 
+    const createMarkup = (htmlContent) => {
+        return {__html: htmlContent};
+    };
    
 
     return (
@@ -69,16 +75,24 @@ const CampaignsViewPage = () => {
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="assets/images/revenue/profits.png" alt="team" />
+                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
-                        <h2 className="pageheader-title">Campaigns</h2>
+                        <h2 className="pageheader-title">View Campaign</h2>
 
-                        <p className="lead">Manage your campaigns for your game that you can connect with your influencers on.</p>
+                        <p className="lead">View the information for this campaign.</p>
 
                     </div>
                 </div>
             </section>
+
+            <div className="container mt-5 mb-2" >
+                    <div className="section-wrapper">
+                        <Link className={"btn btn-success"} to={Navigate.campaignsUpdatePage(campaign.id)} >Update Campaign</Link>
+                    </div>
+                </div>
+
             <div className="container my-5">
+                
                 <div className="card">
                     <div className="card-header bg-secondary">
                         <h2>{campaign?.name}</h2>
@@ -86,12 +100,12 @@ const CampaignsViewPage = () => {
                     <div className="card-body text-dark text-black">
                         <section className="mb-4">
                             <h3 className="text-black">General Information</h3>
-                            <p><strong>Description:</strong> {campaign.description}</p>
-                            <p><strong>Brief:</strong> {campaign.brief}</p>
+                            <p><strong>Description:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.description)} /></p>
+                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
                             <p><strong>Status:</strong> {campaign.is_active ? 'Active' : 'Inactive'}</p>
                             <p><strong>Type:</strong> {campaign.type}</p>
                             <p><strong>Objective:</strong> {campaign.objective}</p>
-                            <p><strong>Community ID:</strong>{campaign?.community?.name}</p>
+                            <p><strong>Community:</strong>{campaign?.community?.name}</p>
                         </section>
 
                         {campaign.social_platforms ? <>
@@ -106,12 +120,18 @@ const CampaignsViewPage = () => {
 
                         <section className="mb-4">
                             <h3 className="text-black">Budget and Limit</h3>
-                            <p><strong>Influencer Limit:</strong> ${campaign.influencer_limit}</p>
+                            <p><strong>Influencer Limit:</strong> {(campaign.influencer_limit) ? 'A maximum of ' + campaign.influencer_limit + ' inlfuencers can sign-up to this campaign.': 'Infinite number of influencers can sign up for this campaign.'}</p>
                             <p><strong>Total Spend Limit:</strong> ${campaign.spend_limit}</p>
-                            <p><strong>Spend Limit Per Influencer:</strong> ${campaign.spend_limit_per_influencer}</p>
+                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ?  '$' + campaign.spend_limit_per_influencer + ' is maximun amount each influencer can make for this campaign.' : 'Infuencers have no cap on how much they make for this campaign.' }</p>
                         </section>
 
                         <hr />
+
+                        <section className="mb-4">
+                            <GameTitle gameInfo={campaign?.title} />
+                        </section>
+
+                        <hr/>
 
                         <CampaignRateCard campaign={campaign} />
 
@@ -121,16 +141,16 @@ const CampaignsViewPage = () => {
                         <section className="mb-4">
                             <h3 className="text-black">Additional Details</h3>
                             {campaign.start_date ? <>
-                                <p><strong>Start Date:</strong> {campaign.start_date}</p>
+                                <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign.start_date}</Moment> </p>
                             </> : ''}
                             {campaign.end_date ? <>
-                                <p><strong>End Date:</strong> {campaign.end_date}</p>
+                                <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign.end_date}</Moment></p>
                             </> : ''}
                             {campaign.target_audience ? <>
-                                <p><strong>Target Audience:</strong> {campaign.target_audience}</p>
+                                <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.target_audience)} /></p>
                             </> : ''}
                             {campaign.requirements ? <>
-                                <p><strong>Requirements:</strong> {campaign.requirements}</p>
+                                <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.requirements)} /></p>
                             </> : ''}
                             <p><strong>Currency:</strong> {campaign.currency}</p>
                         </section>

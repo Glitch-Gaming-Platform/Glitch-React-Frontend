@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 
 const GameTitle = ({ gameInfo }) => {
 
+
   useEffect(() => {
     console.log(gameInfo);
   }, []);
@@ -17,15 +18,19 @@ const GameTitle = ({ gameInfo }) => {
   };
 
   return (
+    <>
+    {(gameInfo ) ? 
     <div >
       <div className="row">
         <div className="col-12 mb-4 text-black">
           <h2 className="text-black">{gameInfo.name}</h2>
-          <hr />
+          <p className="lead">{gameInfo.short_description}</p>
+          <img src={(gameInfo.main_image) ? gameInfo.main_image : '/assets/images/titles/no_image_2.png'} />
+          
         </div>
         <div className="col-md-6">
           {renderSection('Pricing', `${gameInfo.pricing} ${gameInfo.pricing_currency}`)}
-          {renderSection('Platforms', gameInfo.platform_compatibility?.join(', '))}
+     
           {renderSection('Age Rating', gameInfo.age_rating)}
           {renderSection('Developer', gameInfo.developer)}
           {renderSection('Publisher', gameInfo.publisher)}
@@ -54,6 +59,8 @@ const GameTitle = ({ gameInfo }) => {
             
       </div>
     </div>
+    : '' }
+    </>
   );
 };
 

@@ -1,10 +1,13 @@
 // GameTitleForm.jsx
 import React, { useState } from 'react';
+import Glitch from 'glitch-javascript-sdk';
 import Danger from '../../alerts/Danger';
 
 const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
 
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
+    const [mainImage, setMainImage] = useState(null);
+    const [bannerImage, setBannerImage] = useState(null);
 
 
     const handleChange = (e) => {
@@ -14,6 +17,53 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
 
     const toggleAdditionalInfo = () => {
         setShowAdditionalInfo(!showAdditionalInfo);
+    };
+
+    const handleImageChange = (e, imageSetter) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+                imageSetter(reader.result);
+            };
+        }
+    };
+
+    const uploadImage = async (image, name) => {
+
+        console.log("Main Image", mainImage);
+        if(gameTitle.id && name == "mainImage") {
+            //const body = new FormData();
+            //body.append('image', image, name);
+
+            Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, mainImage).then((response)=> {
+
+            }).catch(error => {
+
+            });
+        }  else if(gameTitle.id && name == "annerImage") {
+            const body = new FormData();
+            body.append('image', image, name);
+
+            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, body).then((response)=> {
+
+            }).catch(error => {
+
+            });
+        }
+    };
+
+    const handleMainImageUpload = () => {
+        if (mainImage) {
+            uploadImage(mainImage, 'mainImage');
+        }
+    };
+
+    const handleBannerImageUpload = () => {
+        if (bannerImage) {
+            uploadImage(bannerImage, 'bannerImage');
+        }
     };
 
     return (
@@ -28,6 +78,7 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
                     </div>
                     <div className="card-body">
                         {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors)}
+                        {createTextarea('Short Description', 'short_description', gameTitle.short_description, handleChange, errors)}
                         {createInput('Platform Compatibility', 'platform_compatibility', gameTitle.platform_compatibility, handleChange, 'text', 'fab fa-steam-symbol', errors)}
                         {createInput('Age Rating', 'age_rating', gameTitle.age_rating, handleChange, 'text', 'fas fa-child', errors)}
                         {createInput('Developer', 'developer', gameTitle.developer, handleChange, 'text', 'fas fa-code-branch', errors)}
@@ -40,6 +91,24 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
                         {createInput('Website URL', 'website_url', gameTitle.website_url, handleChange, 'url', 'fas fa-globe', errors)}
                         {createInput('Steam URL', 'steam_url', gameTitle.steam_url, handleChange, 'url', 'fab fa-steam', errors)}
                         {createInput('Itch.io URL', 'itch_url', gameTitle.itch_url, handleChange, 'url', 'fas fa-link', errors)}
+                    </div>
+                </div>
+
+                <div className="card mb-3">
+                    <div className="card-header bg-secondary text-white">
+                        Upload Game Images
+                    </div>
+                    <div className="card-body">
+                        <div className="form-group">
+                            <label htmlFor="mainImage">Main Image</label>
+                            <input type="file" accept="image/*" className="form-control-file" id="mainImage" onChange={(e) => handleImageChange(e, setMainImage)} />
+                            <button type="button" className="btn btn-primary mt-2" onClick={handleMainImageUpload}>Upload Main Image</button>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="bannerImage">Banner Image</label>
+                            <input type="file" accept="image/*"  className="form-control-file" id="bannerImage" onChange={(e) => handleImageChange(e, setBannerImage)} />
+                            <button type="button" className="btn btn-primary mt-2" onClick={handleBannerImageUpload}>Upload Banner Image</button>
+                        </div>
                     </div>
                 </div>
 
@@ -63,6 +132,8 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
                         </div>
                     )}
                 </div>
+
+                
             </form>
         </div>
     );

@@ -1,11 +1,17 @@
 import React from 'react';
 import Select from '../../form/select';
 import Danger from '../../alerts/Danger';
+import Wysiwyg from '../../form/wysiwyg';
 
 function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
 
     const handleInputChange = (e) => {
         setCampaignData({ ...campaignData, [e.target.name]: e.target.value });
+    };
+
+    const handleWysiwigInputChange = (name, value) => {
+        //setCampaignData({ ...campaignData, [name]: value });
+        setCampaignData(campaignData => ({ ...campaignData, [name]: value }));
     };
 
     return (
@@ -47,11 +53,13 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
     }
 
     function createTextAreaField(name, label, description, errors) {
+
         return (
             <>
                 <div className="mb-3">
                     <label htmlFor={name}>{label}</label>
-                    <textarea className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} placeholder={label}></textarea>
+
+                    <Wysiwyg children={campaignData[name] || ''} name={name} id={name} onChange={(value) => {handleWysiwigInputChange(name, value)}} />
                     <p className="small">{description}</p>
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {

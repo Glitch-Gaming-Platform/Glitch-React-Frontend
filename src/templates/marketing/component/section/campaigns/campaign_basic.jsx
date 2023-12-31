@@ -1,11 +1,18 @@
 import React from 'react';
 import Select from '../../form/select';
 import Danger from '../../alerts/Danger';
+import RequiredAsterisk from '../../form/required_asterisk';
+import Wysiwyg from '../../form/wysiwyg';
 
 function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = [], errors }) {
 
     const handleInputChange = (e) => {
         setCampaignData({ ...campaignData, [e.target.name]: e.target.value });
+    };
+
+    const handleWysiwigInputChange = (name, value) => {
+        setCampaignData(campaignData => ({ ...campaignData, [name]: value }));
+        //setCampaignData({ ...campaignData, [name]: value });
     };
 
     const handleTypeSelectChange = (selectedValue) => {
@@ -76,11 +83,11 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                 </div>
                 <div className="card-body">
                     <form>
-                        {createInputField('name', 'Campaign Name', 'Give the campaign a name.', 'text', errors)}
-                        {createTextAreaField('description', 'Description', 'Give the campaign a description.', errors)}
+                        {createInputField('name', 'Campaign Name', 'Give the campaign a name.', 'text', true, errors)}
+                        {createTextAreaField('description', 'Description', 'Give the campaign a description.', true, errors)}
 
                         <div className="mb-3">
-                            <label htmlFor="type">Community</label>
+                            <label htmlFor="type">Community <RequiredAsterisk /></label>
                             <Select name="type" className="form-select" onChange={handleCommunitySelectChange} value={campaignData.community_id}>
                                 <option key={"-1"} value={""}>
                                         Select A Community
@@ -99,7 +106,7 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="type">Type</label>
+                            <label htmlFor="type">Type <RequiredAsterisk /></label>
                             
                             <Select name="type" className="form-select" onChange={handleTypeSelectChange} value={campaignData.type}>
                                 <option key={"-1"} value={""}>
@@ -118,7 +125,7 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="objective">Objective</label>
+                            <label htmlFor="objective">Objective <RequiredAsterisk /></label>
                             <Select name="objective" className="form-select" onChange={handleObjectiveSelectChange} value={campaignData.objective}>
                                 <option key={"-1"} value={""}>
                                         Select An Objective
@@ -140,11 +147,11 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
         </div>
     );
 
-    function createInputField(name, label, description, type = 'text', errors) {
+    function createInputField(name, label, description, type = 'text', required = false, errors) {
         return (
             <>
                 <div className="mb-3">
-                    <label htmlFor={name}>{label}</label>
+                    <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
                     
                     <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} placeholder={label} />
                     <p className="small">{description}</p>
@@ -156,12 +163,12 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
         );
     }
 
-    function createTextAreaField(name, label, description, errors) {
+    function createTextAreaField(name, label, description, required = false, errors) {
         return (
             <>
                 <div className="mb-3">
-                    <label htmlFor={name}>{label}</label>
-                    <textarea className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} placeholder={label}></textarea>
+                    <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
+                    <Wysiwyg children={campaignData[name] || ''} name={name} id={name} onChange={(value) => {handleWysiwigInputChange(name, value)}} />
                     <p className="small">{description}</p>
 
                 </div>

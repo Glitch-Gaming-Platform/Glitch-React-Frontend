@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import CampaignInfluencerForm from '../../component/section/campaigns/campaign_influencer';
 import { useParams } from 'react-router-dom';
+import Loading from '../../component/alerts/Loading';
 
 
 function CampaignUpdatePage() {
@@ -28,6 +29,7 @@ function CampaignUpdatePage() {
     const [errors, setErrors] = useState({});
     const [titleErrors, setTitleErrors] = useState({});
     const [communities, setCommunities] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -85,6 +87,8 @@ function CampaignUpdatePage() {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        setIsLoading(true);
+
         if (!campaignData.title_id) {
 
             Glitch.api.Titles.create(gameTitle).then(response => {
@@ -117,35 +121,48 @@ function CampaignUpdatePage() {
                         setTitleErrors({});
                     }, timeouts.error_message_timeout)
                 }
+            }).finally(()=> {
+                setIsLoading(false);
             });
+
         } else {
 
-            Glitch.api.Campaigns.update(id, campaignData).then(response => {
-
-                //this.setState({ isLoading: false });
-
-                //this.props.router.navigate(Navigate.communitiesManagePage(response.data.data.id));
-
-                navigate(Navigate.campaignsViewPage(response.data.data.id));
+            Glitch.api.Titles.update(campaignData.title_id, gameTitle).then((response) => {
 
             }).catch(error => {
-
-                //this.setState({ isLoading: false });
 
                 let jsonErrors = error?.response?.data;
 
                 if (jsonErrors) {
 
-                    console.log(jsonErrors);
-                    setErrors(jsonErrors);
-                    //this.setState({ errors: jsonErrors });
+                    setTitleErrors(jsonErrors);
 
                     setTimeout(() => {
-                        //this.setState({ errors: {} });
+                        setTitleErrors({});
+                    }, timeouts.error_message_timeout)
+                }
+
+            });
+
+            Glitch.api.Campaigns.update(id, campaignData).then(response => {
+
+                navigate(Navigate.campaignsViewPage(response.data.data.id));
+
+            }).catch(error => {
+
+                let jsonErrors = error?.response?.data;
+
+                if (jsonErrors) {
+
+                    setErrors(jsonErrors);
+
+                    setTimeout(() => {
                         setErrors({});
                     }, timeouts.error_message_timeout)
                 }
-            });
+            }).finally(()=> {
+                setIsLoading(false);
+            });;
         }
     };
 
@@ -166,11 +183,11 @@ function CampaignUpdatePage() {
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">
                             <div className="pageheader-thumb mb-4">
-                                <img style={{ maxHeight: '160px' }} src="assets/images/revenue/profits.png" alt="team" />
+                                <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                             </div>
-                            <h2 className="pageheader-title">Campaigns</h2>
+                            <h2 className="pageheader-title">Update Campaign</h2>
 
-                            <p className="lead">Manage your campaigns for your game that you can connect with your influencers on.</p>
+                            <p className="lead">Update the current campaigns information.</p>
 
                         </div>
                     </div>
@@ -237,7 +254,7 @@ function CampaignUpdatePage() {
                             {(Object.keys(errors).length > 0 || Object.keys(titleErrors).length > 0) ? <Danger message={"There are error(s) in creating the campaign. Please check the form above."} /> : ''}
                         </div>
                         <div className="text-center mt-2">
-                            <button type="submit" className="btn btn-primary btn-lg">Update Campaign</button>
+                            <button type="submit" className="btn btn-primary btn-lg">{isLoading ? <Loading /> : ''} Update Campaign</button>
                         </div>
                     </form>
                 </div>
