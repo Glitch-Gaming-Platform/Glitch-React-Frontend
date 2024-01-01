@@ -1,25 +1,19 @@
 import Glitch from 'glitch-javascript-sdk';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import CampaignLinksManager from '../../component/section/campaigns/campaign_links_manager';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
+import CampaignRateCard from '../../component/section/campaigns/campaign_rate_card';
+import GameTitle from '../../component/section/titles/title_display';
+import Navigate from '../../../../util/Navigate';
+import Moment from 'react-moment';
 
-const InfluencerViewCampaignPage= () => {
+const InfluencerViewCampaignPage = () => {
 
     const [campaign, setCampaign] = useState({});
-    const { id } = useParams();
-
-    // Define the platforms and payment types
-    const platforms = ['General', 'TikTok', 'Facebook', 'Twitch', 'Youtube', 'Reddit', 'Kick', 'Twitter'];
-    const paymentTypes = [
-        { type: 'Per View', key: 'payment_per_view' },
-        { type: 'Per Comment', key: 'payment_per_comment' },
-        { type: 'Per Share', key: 'payment_per_share' },
-        { type: 'Per Engagements', key: 'payment_per_engagement' }, // Assuming this key is correct
-        { type: 'Per Click', key: 'payment_per_click' },
-        { type: 'Flat Fee', key: 'payment_flat_fee' },
-    ];
+    const { id, campaign_id } = useParams();
+    const [me, setMe] = useState({});
 
     // Map the numeric values to string representations for Campaign Objectives and Influencer Campaign Types
     const campaignObjectiveMap = {
@@ -54,7 +48,16 @@ const InfluencerViewCampaignPage= () => {
 
 
     useEffect(() => {
-        Glitch.api.Campaigns.view(id).then(response => {
+
+        if (Glitch.util.Session.isLoggedIn()) {
+            Glitch.api.Users.me().then(response => {
+                setMe(response.data.data);
+            }).catch(error => {
+                console.error('Error fetching me', error);
+            });
+        }
+
+        Glitch.api.Campaigns.view(campaign_id).then(response => {
 
             const updatedCampaign = {
                 ...response.data.data,
@@ -70,16 +73,20 @@ const InfluencerViewCampaignPage= () => {
         //fetchCampaignData().then(setCampaign);
     }, []);
 
-    function checkMultiplier(platform, paymentKey, campaign) {
+    const createMarkup = (htmlContent) => {
+        return { __html: htmlContent };
+    };
 
-        const platformKey = platform.toLowerCase();
-        const useMultiplierKey = `flat_rate_use_multiplier${platformKey !== 'general' ? '_' + platformKey : ''}`;
-        const multiplierKey = `flat_rate_multiplier${platformKey !== 'general' ? '_' + platformKey : ''}`;
+    const register = () => {
 
-        if (paymentKey === 'payment_flat_fee' && campaign[useMultiplierKey]) {
-            return `$${campaign[multiplierKey] || '0'} per follower`;
+        if (Glitch.util.Session.isLoggedIn()) {
+            Glitch.api.Campaigns.createInfluencerCampaign(campaign_id, me.id).then(response => {
+
+            }).catch(error => {
+
+            });
         } else {
-            return `$${(campaign[`${paymentKey}_${platformKey}`] > 0) ? campaign[`${paymentKey}_${platformKey}`] : campaign[paymentKey] || '0'}`;
+            alert("Please Login To Sign-Up For A Campaign");
         }
     }
 
@@ -90,113 +97,76 @@ const InfluencerViewCampaignPage= () => {
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="assets/images/revenue/profits.png" alt="team" />
+                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
-                        <h2 className="pageheader-title">Campaigns</h2>
+                        <h2 className="pageheader-title">View Campaign</h2>
 
-                        <p className="lead">Manage your campaigns for your game that you can connect with your influencers on.</p>
+                        <p className="lead">View the information for this campaign.</p>
 
                     </div>
                 </div>
             </section>
+
             <div className="container my-5">
+
                 <div className="card">
-                    <div className="card-header bg-secondary">
-                        <h2>{campaign?.name}</h2>
-                    </div>
+
+                    <section className="mb-4 card-body">
+                        <GameTitle gameInfo={campaign?.title} />
+                    </section>
+
+                    <hr />
+
                     <div className="card-body text-dark text-black">
                         <section className="mb-4">
                             <h3 className="text-black">General Information</h3>
-                            <p><strong>Description:</strong> {campaign.description}</p>
-                            <p><strong>Brief:</strong> {campaign.brief}</p>
-                            <p><strong>Status:</strong> {campaign.is_active ? 'Active' : 'Inactive'}</p>
-                            <p><strong>Type:</strong> {campaign.type}</p>
-                            <p><strong>Objective:</strong> {campaign.objective}</p>
-                            <p><strong>Community ID:</strong>{campaign?.community?.name}</p>
-                        </section>
-
-                        {campaign.social_platforms ? <>
-                            <hr />
-
-                            <section className="mb-4">
-                                <h3 className="text-black">Social Platforms</h3>
-                                {campaign.social_platforms && <ul>{campaign.social_platforms.map(platform => <li key={platform}>{platform}</li>)}</ul>}
-                            </section>
-                        </> : ''}
-                        <hr />
-
-                        <section className="mb-4">
-                            <h3 className="text-black">Budget and Limit</h3>
-                            <p><strong>Influencer Limit:</strong> ${campaign.influencer_limit}</p>
-                            <p><strong>Total Spend Limit:</strong> ${campaign.spend_limit}</p>
-                            <p><strong>Spend Limit Per Influencer:</strong> ${campaign.spend_limit_per_influencer}</p>
-                        </section>
-
-                        <hr />
-
-                        <section className="mb-4">
-                            <h3 className="text-black">Rate Card For Influencers</h3>
-                            <p>
-                                Payments to influencers are based on performance in campaigns, where each metric has a different payment rate. Below are the different rates by which influencers are
-                                rewarded for the social content they create on various platforms, which creates their Rate Card.
-                            </p>
-                            <div className="container">
-                                <div className="row">
-                                    <div className="col-md-12">
-                                        <table className="table table-responsive">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Platform</th>
-                                                    {paymentTypes.map((payment, index) => (
-                                                        <th scope="col" key={index}>{payment.type}</th>
-                                                    ))}
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {platforms.map((platform, index) => (
-                                                    <tr key={index}>
-                                                        <th scope="row">{platform}</th>
-                                                        {paymentTypes.map((payment, pIndex) => (
-                                                            <td key={pIndex}>
-                                                                {checkMultiplier(platform, payment.key, campaign)}
-                                                            </td>
-                                                        ))}
-                                                    </tr>
-                                                ))}
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-
-                        <hr />
-
-
-                        <section className="mb-4">
-                            <h3 className="text-black">Additional Details</h3>
+                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
+                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
                             {campaign.start_date ? <>
-                                <p><strong>Start Date:</strong> {campaign.start_date}</p>
+                                <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign.start_date}</Moment> </p>
                             </> : ''}
                             {campaign.end_date ? <>
-                                <p><strong>End Date:</strong> {campaign.end_date}</p>
+                                <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign.end_date}</Moment></p>
                             </> : ''}
                             {campaign.target_audience ? <>
-                                <p><strong>Target Audience:</strong> {campaign.target_audience}</p>
+                                <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.target_audience)} /></p>
                             </> : ''}
                             {campaign.requirements ? <>
-                                <p><strong>Requirements:</strong> {campaign.requirements}</p>
+                                <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.requirements)} /></p>
                             </> : ''}
-                            <p><strong>Currency:</strong> {campaign.currency}</p>
                         </section>
+
+                        <hr />
+
+                        <CampaignRateCard campaign={campaign} user={me} />
+
+                        <hr />
+
+                        <div className="container my-5">
+
+                            <h3 className="text-black">How To Sign Up</h3>
+                            <p className="lead">To sign up as an influencer and promote the game {campaign.title.name}, please follow these steps:</p>
+                            <ol>
+                                <li>Click the sign-up link below. Once you register, the campaign manager will be notified.</li>
+                                <li>If the campaign is auto-approved, you'll automatically be authorized to start promoting. If it's not, a campaign manager will review your application and may ask questions, reject, or approve you.</li>
+                                <li>Once approved, you'll gain access to the campaign's assets, referral links, access codes, and other information needed to promote the game.</li>
+                                <li>Download the Glitch Streaming application and begin streaming and creating content. All content must be created through the app as it will track your progress, which is tied to your compensation.</li>
+                                <li>After you've finished promoting, mark the campaign as complete. The brand will then have one week to review your content before distributing payment.</li>
+                            </ol>
+
+                            <div className="text-center">
+                                <button className="btn btn-lg btn-success" onClick={register}>Sign Up</button>
+
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-            <CampaignLinksManager campaignID={id} />
             <Footer />
         </>
     );
 };
 
 export default InfluencerViewCampaignPage;
+

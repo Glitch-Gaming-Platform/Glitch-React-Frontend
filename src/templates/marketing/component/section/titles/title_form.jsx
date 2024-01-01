@@ -32,21 +32,17 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
 
     const uploadImage = async (image, name) => {
 
-        console.log("Main Image", mainImage);
         if(gameTitle.id && name == "mainImage") {
-            //const body = new FormData();
-            //body.append('image', image, name);
 
             Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, mainImage).then((response)=> {
 
             }).catch(error => {
 
             });
-        }  else if(gameTitle.id && name == "annerImage") {
-            const body = new FormData();
-            body.append('image', image, name);
 
-            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, body).then((response)=> {
+        }  else if(gameTitle.id && name == "bannerImage") {
+
+            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, bannerImage).then((response)=> {
 
             }).catch(error => {
 

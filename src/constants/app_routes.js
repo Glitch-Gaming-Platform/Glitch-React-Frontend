@@ -91,7 +91,8 @@
     //influencers
     influencer_campaigns : '/influencers/campaigns',
     influencer_find_campaigns : '/influencers/findcampaigns', 
-    influencer_view_campaign : '/influencers/:campaign_id/campaign/:user_id', 
+    influencer_view_campaign : '/influencers/:campaign_id/campaign',
+    influencer_manage_campaign : '/influencers/:campaign_id/campaign/:user_id',  
 
     //Tips
     tips_emojis : '/tips/:id/emojis', 

@@ -104,7 +104,7 @@ const CampaignsListPage = () => {
                                     <p className="card-text" ><span dangerouslySetInnerHTML={createMarkup(campaign.description)} /></p>
 
                                     <div className="row">
-                                        <div className="col-md-6">
+                                        <div className="col-md-4">
                                             <div className="d-flex align-items-start my-3 text-black">
                                                 {/* Image Section */}
                                                 <img src={(campaign?.title?.main_image) ? campaign?.title?.main_image : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
@@ -116,14 +116,16 @@ const CampaignsListPage = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-md-6">
-                                            <Switch
-                                                checked={campaign.is_active}
-                                                onChange={() => toggleCampaignStatus(campaign.id, !campaign.is_active)}
-                                            />
+                                        <div className="col-md-4">
 
-                                            <p className="card-text">Budget: {campaign.spend_limit}</p>
+                                            <p className="card-text"><strong>Total Budget:</strong> {(campaign.spend_limit) ? '$' + campaign.spend_limit : 'Infinite'}</p>
+                                            <p className="card-text"><strong>Budget Cap Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer : 'Infinite'}</p>
+                                            <p className="card-text"><strong>Max Influencers For Campaign:</strong> {(campaign.influencer_limit) ? campaign.influencer_limit : 'Infinite'}</p>
 
+                                        </div>
+                                        <div className="col-md-4">
+                                            <p><strong>Total Influencers:</strong> {campaign.total_influencers}</p>
+                                            <p><strong>Total Active Influencers:</strong> {campaign.total_active_influencers}</p>
                                         </div>
                                     </div>
 
@@ -132,10 +134,16 @@ const CampaignsListPage = () => {
                                    
                                     {/* Add other basic info as needed */}
 
-                                    <div className="d-flex justify-content-start">
+                                    <div className="d-flex justify-content-start mt-4">
                                         <Link className={"btn btn-primary me-2"} to={Navigate.campaignsViewPage(campaign.id)} >View Campaign</Link>
                                         <Link className={"btn btn-warning me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >Edit Campaign</Link>
                                         <Link className={"btn btn-info"} to={Navigate.campaignsFindInfluencers(campaign.id)} >Find Influencers</Link>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <Switch
+                                                checked={campaign.is_active}
+                                                onChange={() => toggleCampaignStatus(campaign.id, !campaign.is_active)}
+                                                className='text-right'
+                                            />
                                     </div>
                                 </div>
 

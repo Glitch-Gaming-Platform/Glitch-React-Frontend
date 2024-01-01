@@ -1,4 +1,4 @@
-const CampaignRateCard = ({ campaign }) => {
+const CampaignRateCard = ({ campaign, user }) => {
     // Define the platforms and payment types
     const platforms = ['General', 'TikTok', 'Facebook', 'Twitch', 'Youtube', 'Reddit', 'Kick', 'Twitter'];
     const paymentTypes = [
@@ -17,6 +17,10 @@ const CampaignRateCard = ({ campaign }) => {
         const multiplierKey = `flat_rate_multiplier${platformKey !== 'general' ? '_' + platformKey : ''}`;
 
         if (paymentKey === 'payment_flat_fee' && campaign[useMultiplierKey]) {
+            
+            if(user && user[platformKey + '_follower_count']) {
+                return `$${campaign[multiplierKey] * user[platformKey + '_follower_count']}`;
+            }
             return `$${campaign[multiplierKey] || '0'} per follower`;
         } else {
             return `$${(campaign[`${paymentKey}_${platformKey}`] > 0) ? campaign[`${paymentKey}_${platformKey}`] : campaign[paymentKey] || '0'}`;
