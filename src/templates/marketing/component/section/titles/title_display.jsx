@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 const GameTitle = ({ gameInfo }) => {
 
-
   useEffect(() => {
     console.log(gameInfo);
   }, []);
@@ -22,32 +21,36 @@ const GameTitle = ({ gameInfo }) => {
     {(gameInfo ) ? 
     <div >
       <div className="row">
-        <div className="col-12 mb-4 text-black">
+        <div className="col-md-6">
+          <img src={(gameInfo.main_image) ? gameInfo.main_image : '/assets/images/titles/no_image_2.png'} className="img-fluid" />
+        </div>
+        <div className="col-md-6 mb-4 text-black">
           <h2 className="text-black">{gameInfo.name}</h2>
-          <p className="lead">{gameInfo.short_description}</p>
-          <img src={(gameInfo.main_image) ? gameInfo.main_image : '/assets/images/titles/no_image_2.png'} />
-          
+          <p className="lead text-black">{gameInfo.long_description || gameInfo.short_description}</p>
         </div>
-        <div className="col-md-6">
-          {renderSection('Pricing', `${gameInfo.pricing} ${gameInfo.pricing_currency}`)}
-     
-          {renderSection('Age Rating', gameInfo.age_rating)}
-          {renderSection('Developer', gameInfo.developer)}
-          {renderSection('Publisher', gameInfo.publisher)}
-          {renderSection('Release Date', gameInfo.release_date)}
-          {renderSection('Gameplay Mechanics', gameInfo.gameplay_mechanics)}
-          {renderSection('Narrative Setting', gameInfo.narrative_setting)}
-        </div>
-        <div className="col-md-6">
-          {renderSection('Visual & Audio Style', gameInfo.visual_audio_style)}
-          {renderSection('Multiplayer Options', gameInfo.multiplayer_options)}
-          {renderSection('DLC & Expansion Info', gameInfo.dlc_expansion_info)}
-          {renderSection('System Requirements', gameInfo.system_requirements)}
-          {renderSection('Critical Reception', gameInfo.critical_reception)}
-          {renderSection('Availability', gameInfo.availability)}
+        <div className="col-12 mt-2">
+          <div className="row">
+            <div className="col-md-6">
+              {renderSection('Pricing', `${gameInfo.pricing} ${gameInfo.pricing_currency}`)}
+              {renderSection('Age Rating', gameInfo.age_rating)}
+              {renderSection('Developer', gameInfo.developer)}
+              {renderSection('Publisher', gameInfo.publisher)}
+              {renderSection('Release Date', gameInfo.release_date)}
+              {renderSection('Gameplay Mechanics', gameInfo.gameplay_mechanics)}
+              {renderSection('Narrative Setting', gameInfo.narrative_setting)}
+            </div>
+            <div className="col-md-6">
+              {renderSection('Visual & Audio Style', gameInfo.visual_audio_style)}
+              {renderSection('Multiplayer Options', gameInfo.multiplayer_options)}
+              {renderSection('DLC & Expansion Info', gameInfo.dlc_expansion_info)}
+              {renderSection('System Requirements', gameInfo.system_requirements)}
+              {renderSection('Critical Reception', gameInfo.critical_reception)}
+              {renderSection('Availability', gameInfo.availability)}
+            </div>
+          </div>
         </div>
         {(gameInfo.website_url || gameInfo.steam_url || gameInfo.itch_url) ?
-        <div className="col-12 mt-4">
+        <div className="col-12 mt-1">
           <h5>Links</h5>
           <p>
             {gameInfo.website_url && <a href={gameInfo.website_url} className="btn btn-primary me-2"><i className="fas fa-globe"></i> Website</a>}

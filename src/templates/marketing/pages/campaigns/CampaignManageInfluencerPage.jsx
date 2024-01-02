@@ -10,17 +10,17 @@ import Navigate from '../../../../util/Navigate';
 import Moment from 'react-moment';
 import timeouts from '../../../../constants/timeouts';
 import Danger from '../../component/alerts/Danger';
-import { useNavigate } from 'react-router-dom';
+import SocialPostMetrics from '../../component/section/campaigns/campaign_social_post';
+import CampaignAnalytics from '../../component/section/campaigns/campaign_earning_analytics';
 
-
-const InfluencerViewCampaignPage = () => {
+const CampaignManageInfluencerPage = () => {
 
     const [campaign, setCampaign] = useState({});
-    const { id, campaign_id } = useParams();
+    const [posts, setPosts] = useState([]);
+    const [user, setUser] = useState({});
+    const { id, campaign_id, user_id } = useParams();
     const [me, setMe] = useState({});
     const [errors, setErrors] = useState({});
-
-    const navigate = useNavigate();
 
     // Map the numeric values to string representations for Campaign Objectives and Influencer Campaign Types
     const campaignObjectiveMap = {
@@ -64,7 +64,21 @@ const InfluencerViewCampaignPage = () => {
             });
         }
 
-        Glitch.api.Campaigns.view(campaign_id).then(response => {
+        Glitch.api.SocialPosts.list({ user_id: user_id, campaign_id: campaign_id }).then(response => {
+            setPosts(response.data.data);
+        }).catch(error => {
+
+        });
+
+        Glitch.api.Users.profile(user_id).then(response => {
+            setUser(response.data.data);
+        }).catch(error => {
+
+        });
+
+
+
+        Glitch.api.Campaigns.viewInfluencerCampaign(campaign_id, user_id).then(response => {
 
             const updatedCampaign = {
                 ...response.data.data,
@@ -86,17 +100,9 @@ const InfluencerViewCampaignPage = () => {
 
     const register = () => {
 
-        console.log("Start");
-        
         if (Glitch.util.Session.isLoggedIn()) {
 
             Glitch.api.Campaigns.createInfluencerCampaign(campaign_id, me.id).then(response => {
-
-                console.log("OK");
-
-                console.log(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
-
-                navigate(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
 
             }).catch(error => {
 
@@ -128,7 +134,7 @@ const InfluencerViewCampaignPage = () => {
                         <div className="pageheader-thumb mb-4">
                             <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
-                        <h2 className="pageheader-title">View Campaign</h2>
+                        <h2 className="pageheader-title">Manage Campaign</h2>
 
                         <p className="lead">View the information for this campaign.</p>
 
@@ -149,19 +155,19 @@ const InfluencerViewCampaignPage = () => {
                     <div className="card-body text-dark text-black">
                         <section className="mb-4">
                             <h3 className="text-black">General Information</h3>
-                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
-                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
-                            {campaign.start_date ? <>
-                                <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign.start_date}</Moment> </p>
+                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.max_spend) ? '$' + campaign.max_spend + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
+                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.brief)} /></p>
+                            {campaign?.campaign?.start_date ? <>
+                                <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign?.campaign?.start_date}</Moment> </p>
                             </> : ''}
-                            {campaign.end_date ? <>
-                                <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign.end_date}</Moment></p>
+                            {campaign?.campaign?.end_date ? <>
+                                <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign?.campaign?.end_date}</Moment></p>
                             </> : ''}
-                            {campaign.target_audience ? <>
-                                <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.target_audience)} /></p>
+                            {campaign?.campaign?.target_audience ? <>
+                                <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.target_audience)} /></p>
                             </> : ''}
-                            {campaign.requirements ? <>
-                                <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.requirements)} /></p>
+                            {campaign?.campaign?.requirements ? <>
+                                <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.requirements)} /></p>
                             </> : ''}
                         </section>
 
@@ -171,33 +177,33 @@ const InfluencerViewCampaignPage = () => {
 
                         <hr />
 
-                        <div className="container my-5">
+                        <section className="my-4">
+                            <h3 className="text-black">Social Posts</h3>
+                            {posts.length > 0 ? (
+                                posts.map((post, index) => (
+                                    <SocialPostMetrics key={index} post={post} />
+                                ))
+                            ) : (
+                                <p className="lead text-center">No social posts have been created. Create your first post by using the <Link target="_blank" to={Navigate.creatorsPage()}>streaming app</Link>.</p>
+                            )}
+                        </section>
 
-                            <h3 className="text-black">How To Sign Up</h3>
-                            <p className="lead">To sign up as an influencer and promote the game {campaign?.title?.name}, please follow these steps:</p>
-                            <ol>
-                                <li>Click the sign-up link below. Once you register, the campaign manager will be notified.</li>
-                                <li>If the campaign is auto-approved, you'll automatically be authorized to start promoting. If it's not, a campaign manager will review your application and may ask questions, reject, or approve you.</li>
-                                <li>Once approved, you'll gain access to the campaign's assets, referral links, access codes, and other information needed to promote the game.</li>
-                                <li>Download the Glitch Streaming application and begin streaming and creating content. All content must be created through the app as it will track your progress, which is tied to your compensation.</li>
-                                <li>After you've finished promoting, mark the campaign as complete. The brand will then have one week to review your content before distributing payment.</li>
-                            </ol>
+                        <hr />
 
-                            <div className="text-center">
-                                {(errors && errors.error) ?
-                                      <Danger message={errors.error} key={0} /> : ''
-                                }
-                                <button className="btn btn-lg btn-success" onClick={register}>Sign Up</button>
-                            </div>
+                        <section className="my-4">
+                            <h3 className="text-black">Campaign Analytics</h3>
 
-                        </div>
+                            <CampaignAnalytics data={campaign} />
+                        </section>
                     </div>
                 </div>
             </div>
+
+            
             <Footer />
         </>
     );
 };
 
-export default InfluencerViewCampaignPage;
+export default CampaignManageInfluencerPage;
 

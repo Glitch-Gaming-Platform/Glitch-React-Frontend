@@ -8,6 +8,7 @@ import CampaignRateCard from '../../component/section/campaigns/campaign_rate_ca
 import GameTitle from '../../component/section/titles/title_display';
 import Navigate from '../../../../util/Navigate';
 import Moment from 'react-moment';
+import CampaignUserManager from '../../component/section/campaigns/campaign_users_manager';
 
 const CampaignsViewPage = () => {
 
@@ -56,6 +57,12 @@ const CampaignsViewPage = () => {
             };
 
             setCampaign(updatedCampaign);
+
+        }).catch(error => {
+
+        });
+
+        Glitch.api.Campaigns.listInfluencerCampaigns({campaign_id : id}).then(response => {
 
         }).catch(error => {
 
@@ -158,6 +165,8 @@ const CampaignsViewPage = () => {
                 </div>
             </div>
             <CampaignLinksManager campaignID={id} />
+
+            <CampaignUserManager campaignID={id}/>
             <Footer />
         </>
     );

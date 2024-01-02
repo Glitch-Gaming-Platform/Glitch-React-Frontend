@@ -87,6 +87,7 @@ import CampaignsFindInfluencersPage from './pages/campaigns/CampaignsFindInfluen
 import InfluencerCampaignsPage from './pages/influencers/InfluencerCampaignsPage';
 import InfluencerFindCampaignsPage from './pages/influencers/InfluencerFindCampaignsPage';
 import InfluencerViewCampaignPage from './pages/influencers/InfluencerViewCampaignPage';
+import InfluencerManageCampaignPage from './pages/influencers/InfluencerManageCampaignPage';
 
 
 function Template() {
@@ -146,6 +147,7 @@ function Template() {
           <Route path={Navigate.influencersListCampaignsPage()} element={<InfluencerCampaignsPage />} />
           <Route path={Navigate.influencersFindCampaignPage()} element={<InfluencerFindCampaignsPage />} />
           <Route path={Navigate.influencersViewCampaignPage()} element={<InfluencerViewCampaignPage />} />
+          <Route path={Navigate.influencersManageCampaignPage()} element={<InfluencerManageCampaignPage />} />
 
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
           <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />

@@ -403,9 +403,20 @@ const Navigate = {
         return path;
     },
 
-    influencersViewCampaignPage : (campaign_id, user_id) => {
+    influencersViewCampaignPage : (campaign_id) => {
 
         let path = app_routes.influencer_view_campaign;
+
+        if(campaign_id){
+            path = path.replace(':campaign_id', campaign_id)
+        }
+
+        return path;
+    },
+
+    influencersManageCampaignPage : (campaign_id, user_id) => {
+
+        let path = app_routes.influencer_manage_campaign;
 
         if(campaign_id){
             path = path.replace(':campaign_id', campaign_id)
