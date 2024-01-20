@@ -46,7 +46,7 @@ const Login = (props) => {
         <main className="page-first-screen">
             <div className="uk-grid uk-grid-small uk-child-width-1-2@s uk-flex-middle uk-width-1-1" data-uk-grid>
                 <div className="logo-big">
-                    <img src="assets/img/logo-big.png" alt="logo" className="animation-navspinv" />
+                    <img src="/assets/img/logo-big.png" alt="logo" className="animation-navspinv" />
                     <span>TeamHost</span>
                     <h1>Join now and play mighty games!</h1>
                 </div>
@@ -54,9 +54,9 @@ const Login = (props) => {
                     <div className="form-login">
                         <div className="form-login__social">
                             <ul className="social">
-                                <li><a href="http://www.google.com"><img src="assets/img/google.svg" alt="google" /></a></li>
-                                <li><a href="http://www.facebook.com"><img src="assets/img/facebook.svg" alt="facebook" /></a></li>
-                                <li><a href="http://www.twitter.com"><img src="assets/img/twitter.svg" alt="twitter" /></a></li>
+                                <li><a href="http://www.google.com"><img src="/assets/img/google.svg" alt="google" /></a></li>
+                                <li><a href="http://www.facebook.com"><img src="/assets/img/facebook.svg" alt="facebook" /></a></li>
+                                <li><a href="http://www.twitter.com"><img src="/assets/img/twitter.svg" alt="twitter" /></a></li>
                             </ul>
                         </div>
                         <div className="form-login__box">

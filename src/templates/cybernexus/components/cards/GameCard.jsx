@@ -7,7 +7,7 @@ function GameCard({title, description, image, link, subcontent1, subcontent2}) {
         
         <div className="game-card --horizontal favourites-game">
             <div className="game-card__box">
-                <div className="game-card__media"><Link to={link}><img src={ (image) ? image : "assets/img/game-1.jpg"} alt={title} /></Link></div>
+                <div className="game-card__media"><Link to={link}><img src={ (image) ? image : "/assets/img/game-1.jpg"} alt={title} /></Link></div>
                 <div className="game-card__info"><Link className="game-card__title" to={link}> {title}</Link>
                     <div className="game-card__genre">{description}</div>
                     <div className="game-card__rating-and-price">

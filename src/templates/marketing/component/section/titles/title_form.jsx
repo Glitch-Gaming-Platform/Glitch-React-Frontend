@@ -1,13 +1,36 @@
 // GameTitleForm.jsx
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import Glitch from 'glitch-javascript-sdk';
 import Danger from '../../alerts/Danger';
+import Data from '../../../../../util/Data';
+import Cropper from 'react-easy-crop';
+import getCroppedImg from './getCroppedImg'; // You'll create this helper function
 
-const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
+const cropperContainerStyle = {
+    position: 'relative', // Contain the cropper
+    height: '400px', // Adjust as needed
+    width: '100%',
+    zIndex: 10, // Ensure this is lower than other interactive elements
+};
+
+
+const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUpdate, errors }) => {
 
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
     const [mainImage, setMainImage] = useState(null);
     const [bannerImage, setBannerImage] = useState(null);
+
+    const [cropMain, setCropMain] = useState({ x: 0, y: 0 });
+    const [cropBanner, setCropBanner] = useState({ x: 0, y: 0 });
+    const [zoomMain, setZoomMain] = useState(1);
+    const [zoomBanner, setZoomBanner] = useState(1);
+    const [croppedAreaPixelsMain, setCroppedAreaPixelsMain] = useState(null);
+    const [croppedAreaPixelsBanner, setCroppedAreaPixelsBanner] = useState(null);
+
+    const [croppedImageSrc, setCroppedImageSrc] = useState(null);  // New state to hold the URL of the cropped image
+    const [croppedBannerImageSrc, setBannerCroppedImageSrc] = useState(null);  // New state to hold the URL of the cropped image
+
+
 
 
     const handleChange = (e) => {
@@ -19,30 +42,90 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
         setShowAdditionalInfo(!showAdditionalInfo);
     };
 
-    const handleImageChange = (e, imageSetter) => {
+    const onCropCompleteMain = useCallback((croppedArea, croppedAreaPixels) => {
+        setCroppedAreaPixelsMain(croppedAreaPixels);
+    }, []);
+
+    const onCropCompleteBanner = useCallback((croppedArea, croppedAreaPixels) => {
+        setCroppedAreaPixelsBanner(croppedAreaPixels);
+    }, []);
+
+    const showCroppedImage = async (imageSrc, croppedAreaPixels, setImage, name) => {
+        try {
+            // Get the cropped image as a blob
+            const croppedImageBlob = await getCroppedImg(imageSrc, croppedAreaPixels);
+
+            // Convert blob to data URL to display it
+            const croppedImageUrl = URL.createObjectURL(croppedImageBlob);
+
+            if (gameTitle.id && name == "mainImage") {
+
+                //const blob = Data.dataURItoBlob(mainImage);
+
+                // Set the new cropped image
+                setCroppedImageSrc(croppedImageUrl);
+
+                Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, croppedImageBlob).then((response) => {
+
+                }).catch(error => {
+
+                });
+
+            } else if (gameTitle.id && name == "bannerImage") {
+
+                //const blob = Data.dataURItoBlob(bannerImage);
+
+                setBannerCroppedImageSrc(croppedImageUrl);
+
+                Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, croppedImageBlob).then((response) => {
+
+                }).catch(error => {
+
+                });
+            }
+
+            
+
+            // Remove the current mainImage
+            setImage(null);
+
+            console.log("Cropped Image Url", croppedImageUrl);
+            
+        } catch (e) {
+            console.error(e);
+        }
+    };
+
+    const handleImageChange = (e, imageSetter, cropSetter, zoomSetter) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onloadend = () => {
                 imageSetter(reader.result);
+                cropSetter({ x: 0, y: 0 });
+                zoomSetter(1);
             };
         }
     };
 
     const uploadImage = async (image, name) => {
 
-        if(gameTitle.id && name == "mainImage") {
+        if (gameTitle.id && name == "mainImage") {
 
-            Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, mainImage).then((response)=> {
+            const blob = Data.dataURItoBlob(mainImage);
+
+            Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, blob).then((response) => {
 
             }).catch(error => {
 
             });
 
-        }  else if(gameTitle.id && name == "bannerImage") {
+        } else if (gameTitle.id && name == "bannerImage") {
 
-            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, bannerImage).then((response)=> {
+            const blob = Data.dataURItoBlob(bannerImage);
+
+            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, blob).then((response) => {
 
             }).catch(error => {
 
@@ -97,13 +180,58 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
                     <div className="card-body">
                         <div className="form-group">
                             <label htmlFor="mainImage">Main Image</label>
-                            <input type="file" accept="image/*" className="form-control-file" id="mainImage" onChange={(e) => handleImageChange(e, setMainImage)} />
-                            <button type="button" className="btn btn-primary mt-2" onClick={handleMainImageUpload}>Upload Main Image</button>
+                            <input type="file" accept="image/*" className="form-control-file" id="mainImage" onChange={(e) => handleImageChange(e, setMainImage, setCropMain, setZoomMain)} />
+                            {mainImage && (<>
+                                <div style={cropperContainerStyle}>
+                                    <Cropper
+                                        image={mainImage}
+                                        crop={cropMain}
+                                        zoom={zoomMain}
+                                        aspect={374 / 448}
+                                        onCropChange={setCropMain}
+                                        onZoomChange={setZoomMain}
+                                        onCropComplete={onCropCompleteMain}
+                                    />
+                                </div>
+
+                                <button type="button" className="btn btn-primary mt-2" onClick={() => showCroppedImage(mainImage, croppedAreaPixelsMain, setMainImage, "mainImage")}>Crop Image</button>
+                            </>
+                            )}
+
+                            {(croppedImageSrc) ?
+                                <div>
+                                    <p>Cropped Image:</p>
+                                    <img src={croppedImageSrc} alt="Cropped" />
+                                </div>
+                                : ''}
                         </div>
                         <div className="form-group">
-                            <label htmlFor="bannerImage">Banner Image</label>
-                            <input type="file" accept="image/*"  className="form-control-file" id="bannerImage" onChange={(e) => handleImageChange(e, setBannerImage)} />
-                            <button type="button" className="btn btn-primary mt-2" onClick={handleBannerImageUpload}>Upload Banner Image</button>
+
+                            <label htmlFor="mainImage">Banner Image</label>
+                            <input type="file" accept="image/*" className="form-control-file" id="mainImage" onChange={(e) => handleImageChange(e, setBannerImage, setCropBanner, setZoomBanner)} />
+                            {bannerImage && (<>
+                                <div style={cropperContainerStyle}>
+                                    <Cropper
+                                        image={bannerImage}
+                                        crop={cropBanner}
+                                        zoom={zoomBanner}
+                                        aspect={3840 / 1240}
+                                        onCropChange={setCropBanner}
+                                        onZoomChange={setZoomBanner}
+                                        onCropComplete={onCropCompleteBanner}
+                                    />
+                                </div>
+
+                                <button type="button" className="btn btn-primary mt-2" onClick={() => showCroppedImage(bannerImage, croppedAreaPixelsBanner, setBannerImage, "bannerImage")}>Crop Image</button>
+                            </>
+                            )}
+
+                            {(croppedBannerImageSrc) ?
+                                <div>
+                                    <p>Cropped Image:</p>
+                                    <img src={croppedBannerImageSrc} alt="Cropped" />
+                                </div>
+                                : ''}
                         </div>
                     </div>
                 </div>
@@ -129,7 +257,7 @@ const GameTitleForm = ({ gameTitle, onUpdate, errors }) => {
                     )}
                 </div>
 
-                
+
             </form>
         </div>
     );

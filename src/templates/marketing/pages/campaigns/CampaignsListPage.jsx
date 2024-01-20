@@ -19,7 +19,9 @@ const CampaignsListPage = () => {
             try {
 
                 console.log(Glitch.util.Session.getID());
-                Glitch.api.Campaigns.list({ page: currentPage, user_id : Glitch.util.Session.getID() }).then((response) => {
+                let roles = Glitch.constants.Roles.ADMINISTRATOR + ',' + Glitch.constants.Roles.SUPER_ADMINISTRATOR + ',' + Glitch.constants.Roles.MODERATOR;
+
+                Glitch.api.Campaigns.list({ page: currentPage, user_id : Glitch.util.Session.getID(), roles : roles }).then((response) => {
 
                     //this.setState({campaigns : response.data.data });
 
@@ -107,7 +109,7 @@ const CampaignsListPage = () => {
                                         <div className="col-md-4">
                                             <div className="d-flex align-items-start my-3 text-black">
                                                 {/* Image Section */}
-                                                <img src={(campaign?.title?.main_image) ? campaign?.title?.main_image : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
+                                                <img src={(campaign?.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
 
                                                 {/* Text Section */}
                                                 <div className="text-black">

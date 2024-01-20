@@ -111,7 +111,7 @@ const GameListTwo = () => {
                                                                     <li className="match-team-thumb">
                                                                         <Link to="/team-single"><img src={imageone} alt={alt1} /></Link>
                                                                     </li>
-                                                                    <li className="text-center"><img className="w-75 w-md-100" src="assets/images/match/vs.png" alt="vs" /></li>
+                                                                    <li className="text-center"><img className="w-75 w-md-100" src="/assets/images/match/vs.png" alt="vs" /></li>
                                                                     <li className="match-team-thumb">
                                                                         <Link to="/team-single"><img src={imagetwo} alt={alt2} /></Link>
                                                                     </li>

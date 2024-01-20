@@ -49,7 +49,7 @@ const CampaignsFindInfluencersPage = () => {
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">
                             <div className="pageheader-thumb mb-4">
-                                <img style={{ maxHeight: '160px' }} src="assets/images/revenue/profits.png" alt="profits" />
+                                <img style={{ maxHeight: '160px' }} src="/assets/images/revenue/profits.png" alt="profits" />
                             </div>
                             <h2 className="pageheader-title">Find Influencers</h2>
                             <p className="lead">Find the perfect influencers for your marketing campaign.</p>

@@ -36,7 +36,7 @@ class CommunitiesList extends Component {
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
                                 <div className="pageheader-thumb mb-4">
-                                    <img style={{ maxHeight: '160px' }} src="assets/images/revenue/profits.png" alt="team" />
+                                    <img style={{ maxHeight: '160px' }} src="/assets/images/revenue/profits.png" alt="team" />
                                 </div>
                                 <h2 className="pageheader-title">Communities</h2>
 

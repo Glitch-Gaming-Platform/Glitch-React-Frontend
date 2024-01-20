@@ -14,7 +14,7 @@ function StreamItem({title, description, image, is_live, link, datetime, viewers
             <div className="stream-item">
                 <div className="stream-item__box">
                     <div className="stream-item__media" >
-                        <Link to={link} data-attrs="width: 1280; height: 720;" data-caption={title}><img src={(image) ? image : "assets/img/streem-item-1.jpg"} alt={title} /></Link>
+                        <Link to={link} data-attrs="width: 1280; height: 720;" data-caption={title}><img src={(image) ? image : "/assets/img/streem-item-1.jpg"} alt={title} /></Link>
                         <div className="stream-item__info">
                             {isLiveHtml}
                             <div className="stream-item__count">2k</div>

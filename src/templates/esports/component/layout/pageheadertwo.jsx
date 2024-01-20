@@ -7,7 +7,7 @@ class PageHeaderTwo extends Component {
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
-                            <img src="assets/images/team/1.png" alt="team" />
+                            <img src="/assets/images/team/1.png" alt="team" />
                         </div>
                         <h2 className="pageheader-title">Dragon Details</h2>
                     </div>

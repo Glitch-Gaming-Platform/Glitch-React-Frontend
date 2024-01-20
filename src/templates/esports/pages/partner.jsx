@@ -25,7 +25,7 @@ class PartnerPage extends Component {
                                                             aria-controls="collapseOne">
                                                             <span className="accor-header-inner d-flex flex-wrap align-items-center">
                                                                 <span className="accor-thumb">
-                                                                    <img src="assets/images/sponsor/02.png" alt="partner-thumb" />
+                                                                    <img src="/assets/images/sponsor/02.png" alt="partner-thumb" />
                                                                 </span>
                                                                 <span className="accor-title">Book Store</span>
                                                             </span>
@@ -47,7 +47,7 @@ class PartnerPage extends Component {
                                                             aria-controls="collapseTwo">
                                                             <span className="accor-header-inner d-flex flex-wrap align-items-center">
                                                                 <span className="accor-thumb">
-                                                                    <img src="assets/images/sponsor/02.png" alt="partner-thumb" />
+                                                                    <img src="/assets/images/sponsor/02.png" alt="partner-thumb" />
                                                                 </span>
                                                                 <span className="accor-title">Book Store</span>
                                                             </span>
@@ -69,7 +69,7 @@ class PartnerPage extends Component {
                                                             aria-controls="collapseThree">
                                                             <span className="accor-header-inner d-flex flex-wrap align-items-center">
                                                                 <span className="accor-thumb">
-                                                                    <img src="assets/images/sponsor/03.png" alt="partner-thumb" />
+                                                                    <img src="/assets/images/sponsor/03.png" alt="partner-thumb" />
                                                                 </span>
                                                                 <span className="accor-title">Show Time</span>
                                                             </span>
@@ -91,7 +91,7 @@ class PartnerPage extends Component {
                                                             aria-controls="collapseFour">
                                                             <span className="accor-header-inner d-flex flex-wrap align-items-center">
                                                                 <span className="accor-thumb">
-                                                                    <img src="assets/images/sponsor/04.png" alt="partner-thumb" />
+                                                                    <img src="/assets/images/sponsor/04.png" alt="partner-thumb" />
                                                                 </span>
                                                                 <span className="accor-title">Fish Restaurant</span>
                                                             </span>
@@ -119,7 +119,7 @@ class PartnerPage extends Component {
                                                             aria-controls="collapseFive">
                                                             <span className="accor-header-inner d-flex flex-wrap align-items-center">
                                                                 <span className="accor-thumb">
-                                                                    <img src="assets/images/sponsor/05.png" alt="partner-thumb" />
+                                                                    <img src="/assets/images/sponsor/05.png" alt="partner-thumb" />
                                                                 </span>
                                                                 <span className="accor-title">Vintage</span>
                                                             </span>
@@ -141,7 +141,7 @@ class PartnerPage extends Component {
                                                             aria-controls="collapseSix">
                                                             <span className="accor-header-inner d-flex flex-wrap align-items-center">
                                                                 <span className="accor-thumb">
-                                                                    <img src="assets/images/sponsor/06.png" alt="partner-thumb" />
+                                                                    <img src="/assets/images/sponsor/06.png" alt="partner-thumb" />
                                                                 </span>
                                                                 <span className="accor-title">Hats Place</span>
                                                             </span>
@@ -163,7 +163,7 @@ class PartnerPage extends Component {
                                                             aria-controls="collapseSeven">
                                                             <span className="accor-header-inner d-flex flex-wrap align-items-center">
                                                                 <span className="accor-thumb">
-                                                                    <img src="assets/images/sponsor/07.png" alt="partner-thumb" />
+                                                                    <img src="/assets/images/sponsor/07.png" alt="partner-thumb" />
                                                                 </span>
                                                                 <span className="accor-title">Barber Shop</span>
                                                             </span>
@@ -185,7 +185,7 @@ class PartnerPage extends Component {
                                                             aria-controls="collapseEight">
                                                             <span className="accor-header-inner d-flex flex-wrap align-items-center">
                                                                 <span className="accor-thumb">
-                                                                    <img src="assets/images/sponsor/08.png" alt="partner-thumb" />
+                                                                    <img src="/assets/images/sponsor/08.png" alt="partner-thumb" />
                                                                 </span>
                                                                 <span className="accor-title">Fashion Shop</span>
                                                             </span>

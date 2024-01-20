@@ -137,7 +137,7 @@ class MatchSection extends Component {
                                                                     <a href="/team-single"><img src={val.imageone} alt={val.alt1} /></a>
                                                                 </li>
                                                                 <li className="text-center">
-                                                                    <img className="w-75 w-md-100" src="assets/images/match/vs.png" alt="vs" />
+                                                                    <img className="w-75 w-md-100" src="/assets/images/match/vs.png" alt="vs" />
                                                                 </li>
                                                                 <li className="match-team-thumb">
                                                                     <a href="/team-single"><img src={val.imagetwo} alt={val.alt2} /></a>
@@ -193,7 +193,7 @@ class MatchSection extends Component {
                                                                     </div>
                                                                 </div>
                                                                 <div className="col-2 d-md-none">
-                                                                    <img src="assets/images/match/vs.png" alt="vs" />
+                                                                    <img src="/assets/images/match/vs.png" alt="vs" />
                                                                 </div>
                                                                 <div className="col-md-2 col-5 order-md-3 p-0">
                                                                     <div className="match-team-thumb text-center">
@@ -246,7 +246,7 @@ class MatchSection extends Component {
 
                                                                 </div>
                                                                 <div className="col-2 d-md-none">
-                                                                    <img src="assets/images/match/vs.png" alt="vs" />
+                                                                    <img src="/assets/images/match/vs.png" alt="vs" />
                                                                 </div>
                                                                 <div className="col-md-2 col-5 order-md-3 p-0">
                                                                     <div className="match-team-thumb text-center">

@@ -32,7 +32,7 @@ class BlogPageTwo extends Component {
                                             <div className="post-inner">
                                                 <div className="post-thumb">
                                                     <Link to="/blog-single">
-                                                        <img src="assets/images/blog/10.jpg" alt="blog" />
+                                                        <img src="/assets/images/blog/10.jpg" alt="blog" />
                                                     </Link>
                                                 </div>
                                                 <div className="post-content">
@@ -68,13 +68,13 @@ class BlogPageTwo extends Component {
                                                         className="mySwiper"
                                                     >
                                                         <SwiperSlide>
-                                                            <img src="assets/images/blog/10.jpg" alt="blog" className="w-100" />
+                                                            <img src="/assets/images/blog/10.jpg" alt="blog" className="w-100" />
                                                         </SwiperSlide>
                                                         <SwiperSlide>
-                                                            <img src="assets/images/blog/11.jpg" alt="blog" className="w-100" />
+                                                            <img src="/assets/images/blog/11.jpg" alt="blog" className="w-100" />
                                                         </SwiperSlide>
                                                         <SwiperSlide>
-                                                            <img src="assets/images/blog/12.jpg" alt="blog" className="w-100" />
+                                                            <img src="/assets/images/blog/12.jpg" alt="blog" className="w-100" />
                                                         </SwiperSlide>
                                                     </Swiper>
                                                     <div className="thumb-next thumb-nav">
@@ -104,7 +104,7 @@ class BlogPageTwo extends Component {
                                             <div className="post-inner">
                                                 <div className="post-thumb">
                                                     <Link to="/blog-single">
-                                                        <img src="assets/images/blog/12.jpg" alt="blog" />
+                                                        <img src="/assets/images/blog/12.jpg" alt="blog" />
                                                     </Link>
                                                     <a href="https://www.youtube.com/embed/ZgMw__KdjiI" className="play-btn" target="_blank">
                                                         <i className="icofont-play"></i>
@@ -128,7 +128,7 @@ class BlogPageTwo extends Component {
                                         <div className="post-item-2">
                                             <div className="post-inner">
                                                 <div className="post-thumb">
-                                                    <img src="assets/images/blog/13.jpg" alt="blog" />
+                                                    <img src="/assets/images/blog/13.jpg" alt="blog" />
                                                 </div>
                                                 <div className="post-content">
                                                     <Link to="/blog-single">

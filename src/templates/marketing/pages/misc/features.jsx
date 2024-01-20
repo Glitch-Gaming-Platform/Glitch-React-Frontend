@@ -13,7 +13,7 @@ class FeaturesPage extends Component {
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
                                 <div className="pageheader-thumb mb-4">
-                                    <img style={{maxHeight: '160px'}} src="assets/images/features/app-development.png" alt="team" />
+                                    <img style={{maxHeight: '160px'}} src="/assets/images/features/app-development.png" alt="team" />
                                 </div>
                                 <h2 className="pageheader-title">Features For Your Community</h2>
 

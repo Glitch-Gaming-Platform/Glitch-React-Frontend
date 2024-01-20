@@ -58,7 +58,7 @@ class MarketingPage extends Component {
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
                                 <div className="pageheader-thumb mb-4">
-                                    <img style={{ maxHeight: '160px' }} src="assets/images/marketing/social-media.png" alt="team" />
+                                    <img style={{ maxHeight: '160px' }} src="/assets/images/marketing/social-media.png" alt="team" />
                                 </div>
                                 <h2 className="pageheader-title">Increase Exposure and Engagement</h2>
 
@@ -118,7 +118,7 @@ class MarketingPage extends Component {
                                         </div>
                                         <div className="col-lg-6">
                                             <div className="cta-thumb text-end">
-                                                <img src={"assets/images/marketing/tiktok_instagram.jpg"} alt="gamer-img" />
+                                                <img src={"/assets/images/marketing/tiktok_instagram.jpg"} alt="gamer-img" />
                                             </div>
                                         </div>
                                     </div>
@@ -159,17 +159,17 @@ class MarketingPage extends Component {
                             <ul className="d-flex flex-wrap justify-content-center player-meta mb-0">
 
                                 <li className="d-flex align-items-center" key={1}>
-                                    <img src="assets/images/features/facebook-logo.jpg" />
+                                    <img src="/assets/images/features/facebook-logo.jpg" />
 
                                 </li>
 
                                 <li className="d-flex align-items-center" key={2}>
-                                    <img src="assets/images/marketing/twitch.jpg" />
+                                    <img src="/assets/images/marketing/twitch.jpg" />
 
                                 </li>
 
                                 <li className="d-flex align-items-center" key={3}>
-                                    <img src="assets/images/features/youtube-logo.jpg" />
+                                    <img src="/assets/images/features/youtube-logo.jpg" />
                                 </li>
 
                             </ul>

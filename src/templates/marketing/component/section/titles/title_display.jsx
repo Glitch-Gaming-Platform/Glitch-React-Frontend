@@ -22,7 +22,7 @@ const GameTitle = ({ gameInfo }) => {
     <div >
       <div className="row">
         <div className="col-md-6">
-          <img src={(gameInfo.main_image) ? gameInfo.main_image : '/assets/images/titles/no_image_2.png'} className="img-fluid" />
+          <img src={(gameInfo.image_main) ? gameInfo.image_main : '/assets/images/titles/no_image_2.png'} className="img-fluid" />
         </div>
         <div className="col-md-6 mb-4 text-black">
           <h2 className="text-black">{gameInfo.name}</h2>

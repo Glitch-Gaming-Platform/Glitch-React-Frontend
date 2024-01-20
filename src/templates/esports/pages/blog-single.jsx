@@ -28,7 +28,7 @@ class BlogDetails extends Component {
                                         <div className="post-item-2">
                                             <div className="post-inner">
                                                 <div className="post-thumb">
-                                                    <img src="assets/images/blog/single/01.jpg" alt="blog" />
+                                                    <img src="/assets/images/blog/single/01.jpg" alt="blog" />
                                                 </div>
                                                 <div className="post-content">
                                                     <h2>Serenity hassir taken posseson of mying entire</h2>
@@ -48,12 +48,12 @@ class BlogDetails extends Component {
                                                         </div>
                                                     </blockquote>
                                                     <p>Serenity hassir taken posseson of mying entire soung like these sweet mornngs is whch enjoy with my whole heart create am alonesi and feel the charm of exstenceth spotens whch was the blis of souls like mineing am soo happy my dearsi frend absoribed the em exquste sense enjoy with my whole heart inaming alone and feel the charm of exstensc spotsi whch was the blis of souls like mineing am soing happyr my dear frend soingu ize absoribed the exqust sense tranquil existence that neglect my talentsr Ins should byers ncapable ofing is drawng and singe wonderful.</p>
-                                                    <div className="post-thumb mb-30"><img src="assets/images/blog/single/02.jpg" alt="blog-img" /></div>
+                                                    <div className="post-thumb mb-30"><img src="/assets/images/blog/single/02.jpg" alt="blog-img" /></div>
 
                                                     <p>Serenity hassir taken posseson of mying entire soung like these sweet mornngs is whch enjoy with my whole heart create am alonesi and feel the charm of exstenceth spotens whch was the blis of souls like mineing am soo happy my dearsi frend absoribed the em exquste sense enjoy with my whole heart inaming alone and feel the charm of exstensc spotsi whch was the blis of souls like mineing am soing happyr my dear frend soingu ize absoribed the exqust sense tranquil existence that neglect my talentsr Ins should byers ncapable ofing is drawng and singe wonderful.</p>
 
                                                     <div className="post-thumb mb-30">
-                                                        <img src="assets/images/blog/single/03.jpg" alt="blog" />
+                                                        <img src="/assets/images/blog/single/03.jpg" alt="blog" />
                                                         <a href="https://www.youtube.com/embed/ZgMw__KdjiI" className="play-btn" target="_blank">
                                                             <i className="icofont-play"></i>
                                                             <span className="pluse_2"></span>

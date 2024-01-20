@@ -100,7 +100,7 @@ const GallerySection = () => {
                                             <img src={image} alt="gallery" />
                                         </div>
                                         <div className="gallery-content">
-                                            <a href="assets/images/gallery/01.jpg" className="img-pop" target="_blank"><i className="icofont-eye"></i></a>
+                                            <a href="/assets/images/gallery/01.jpg" className="img-pop" target="_blank"><i className="icofont-eye"></i></a>
                                             <h3 className="title">{title}</h3>
                                             <span>{desc}</span>
                                         </div>

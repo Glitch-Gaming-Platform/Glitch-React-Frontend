@@ -97,7 +97,6 @@ function CampaignCreatePage() {
 
                 if (jsonErrors) {
 
-                    console.log(jsonErrors);
                     setTitleErrors(jsonErrors);
                     //this.setState({ errors: jsonErrors });
 

@@ -354,26 +354,26 @@ class AchievementPage extends Component {
                             <div className="achievement-area">
                                 <ul className="nav nav-tabs align-items-center" id="myTab" role="tablist">
                                     <li className="nav-item" role="presentation" title="Pubg Lite">
-                                        <button className="nav-link active" id="tabOne-tab" data-bs-toggle="tab" data-bs-target="#tabOne" type="button" role="tab" aria-controls="tabOne" aria-selected="false"><img src="assets/images/achivement/01.png" alt="achievement" /></button>
+                                        <button className="nav-link active" id="tabOne-tab" data-bs-toggle="tab" data-bs-target="#tabOne" type="button" role="tab" aria-controls="tabOne" aria-selected="false"><img src="/assets/images/achivement/01.png" alt="achievement" /></button>
                                     </li>
                                     <li className="nav-item" role="presentation" title="Rockstar Games">
-                                        <button className="nav-link" id="tabTwo-tab" data-bs-toggle="tab" data-bs-target="#tabTwo" type="button" role="tab" aria-controls="tabTwo" aria-selected="false"><img src="assets/images/achivement/02.png" alt="achievement" /></button>
+                                        <button className="nav-link" id="tabTwo-tab" data-bs-toggle="tab" data-bs-target="#tabTwo" type="button" role="tab" aria-controls="tabTwo" aria-selected="false"><img src="/assets/images/achivement/02.png" alt="achievement" /></button>
                                     </li>
                                     <li className="nav-item" role="presentation" title="Valorant">
-                                        <button className="nav-link" id="tabThree-tab" data-bs-toggle="tab" data-bs-target="#tabThree" type="button" role="tab" aria-controls="tabThree" aria-selected="false"><img src="assets/images/achivement/03.png" alt="achievement" /></button>
+                                        <button className="nav-link" id="tabThree-tab" data-bs-toggle="tab" data-bs-target="#tabThree" type="button" role="tab" aria-controls="tabThree" aria-selected="false"><img src="/assets/images/achivement/03.png" alt="achievement" /></button>
                                     </li>
 
                                     <li className="nav-item" role="presentation" title="Apex Legends">
-                                        <button className="nav-link" id="tabFour-tab" data-bs-toggle="tab" data-bs-target="#tabFour" type="button" role="tab" aria-controls="tabFour" aria-selected="false"><img src="assets/images/achivement/04.png" alt="achievement" /></button>
+                                        <button className="nav-link" id="tabFour-tab" data-bs-toggle="tab" data-bs-target="#tabFour" type="button" role="tab" aria-controls="tabFour" aria-selected="false"><img src="/assets/images/achivement/04.png" alt="achievement" /></button>
                                     </li>
                                     <li className="nav-item" role="presentation" title="Assassins Creed">
-                                        <button className="nav-link" id="tabFive-tab" data-bs-toggle="tab" data-bs-target="#tabFive" type="button" role="tab" aria-controls="tabFive" aria-selected="false"><img src="assets/images/achivement/05.png" alt="achievement" /></button>
+                                        <button className="nav-link" id="tabFive-tab" data-bs-toggle="tab" data-bs-target="#tabFive" type="button" role="tab" aria-controls="tabFive" aria-selected="false"><img src="/assets/images/achivement/05.png" alt="achievement" /></button>
                                     </li>
                                     <li className="nav-item" role="presentation" title="Duty Mobile">
-                                        <button className="nav-link" id="tabSix-tab" data-bs-toggle="tab" data-bs-target="#tabSix" type="button" role="tab" aria-controls="tabSix" aria-selected="false"><img src="assets/images/achivement/06.png" alt="achievement" /></button>
+                                        <button className="nav-link" id="tabSix-tab" data-bs-toggle="tab" data-bs-target="#tabSix" type="button" role="tab" aria-controls="tabSix" aria-selected="false"><img src="/assets/images/achivement/06.png" alt="achievement" /></button>
                                     </li>
                                     <li className="nav-item" role="presentation" title="Epic Games">
-                                        <button className="nav-link" id="tabSeven-tab" data-bs-toggle="tab" data-bs-target="#tabSeven" type="button" role="tab" aria-controls="tabSeven" aria-selected="false"><img src="assets/images/achivement/07.png" alt="achievement" /></button>
+                                        <button className="nav-link" id="tabSeven-tab" data-bs-toggle="tab" data-bs-target="#tabSeven" type="button" role="tab" aria-controls="tabSeven" aria-selected="false"><img src="/assets/images/achivement/07.png" alt="achievement" /></button>
                                     </li>
                                 </ul>
                                 <div className="tab-content" id="myTabContent">

@@ -57,7 +57,7 @@ class CollectionSectionTwo extends Component {
                                                         </Link>
                                                     </li>
                                                     <li className="text-center">
-                                                        <img className="w-75 w-md-100" src="assets/images/match/vs.png" alt="vs" />
+                                                        <img className="w-75 w-md-100" src="/assets/images/match/vs.png" alt="vs" />
                                                     </li>
                                                     <li className="match-team-thumb">
                                                         <Link to="/team-single">

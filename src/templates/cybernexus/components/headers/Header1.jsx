@@ -11,7 +11,7 @@ function Header1(props) {
         account = (<div className="page-header__action">
         <a className="action-btn" href={Router.chatPage()}><i className="ico_message"></i><span className="animation-ripple-delay1"></span></a>
         <a className="action-btn" href={Router.friendListPage()}><i className="ico_notification"></i><span className="animation-ripple-delay2"></span></a>
-        <a className="profile" href="08_wallet.html"><img src="assets/img/profile.png" alt="profile" /></a>
+        <a className="profile" href="08_wallet.html"><img src="/assets/img/profile.png" alt="profile" /></a>
     </div>);
     } else {
 

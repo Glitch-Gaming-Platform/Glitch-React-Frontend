@@ -26,7 +26,7 @@ function Profile(user) {
                             </div>
                             <div className="widjet__body">
                                 <div className="user-info">
-                                    <div className="user-info__avatar"><img src="assets/img/profile.png" alt="profile" /></div>
+                                    <div className="user-info__avatar"><img src="/assets/img/profile.png" alt="profile" /></div>
                                     <div className="user-info__box">
                                         <div className="user-info__title">John Doe</div>
                                         <div className="user-info__text">Egypt, Member since May 2022</div>
@@ -46,7 +46,7 @@ function Profile(user) {
                             </div>
                             <div className="widjet__body">
                                 <div className="widjet-game">
-                                    <div className="widjet-game__media"><a href="10_game-profile.html"><img src="assets/img/game-2.jpg" alt="image" /></a></div>
+                                    <div className="widjet-game__media"><a href="10_game-profile.html"><img src="/assets/img/game-2.jpg" alt="image" /></a></div>
                                     <div className="widjet-game__info"><a className="widjet-game__title" href="10_game-profile.html"> Chrome Fear</a>
                                         <div className="widjet-game__record">3 hours on record</div>
                                         <div className="widjet-game__last-played">last played on 18 Feb, 2022</div>
@@ -61,11 +61,11 @@ function Profile(user) {
                                     </div>
                                     <div className="widjet-game-info__acheivement">
                                         <ul>
-                                            <li><img src="assets/img/acheivement-1.png" alt="acheivement" /></li>
-                                            <li><img src="assets/img/acheivement-2.png" alt="acheivement" /></li>
-                                            <li><img src="assets/img/acheivement-3.png" alt="acheivement" /></li>
-                                            <li><img src="assets/img/acheivement-4.png" alt="acheivement" /></li>
-                                            <li><img src="assets/img/acheivement-5.png" alt="acheivement" /></li>
+                                            <li><img src="/assets/img/acheivement-1.png" alt="acheivement" /></li>
+                                            <li><img src="/assets/img/acheivement-2.png" alt="acheivement" /></li>
+                                            <li><img src="/assets/img/acheivement-3.png" alt="acheivement" /></li>
+                                            <li><img src="/assets/img/acheivement-4.png" alt="acheivement" /></li>
+                                            <li><img src="/assets/img/acheivement-5.png" alt="acheivement" /></li>
                                             <li><span>+10</span></li>
                                         </ul>
                                     </div>
@@ -73,7 +73,7 @@ function Profile(user) {
                             </div>
                             <div className="widjet__body">
                                 <div className="widjet-game">
-                                    <div className="widjet-game__media"><a href="10_game-profile.html"><img src="assets/img/game-3.jpg" alt="image" /></a></div>
+                                    <div className="widjet-game__media"><a href="10_game-profile.html"><img src="/assets/img/game-3.jpg" alt="image" /></a></div>
                                     <div className="widjet-game__info"><a className="widjet-game__title" href="10_game-profile.html"> Retaliate of Prosecution</a>
                                         <div className="widjet-game__record">0.2 hours on record</div>
                                         <div className="widjet-game__last-played">last played on 25 Apr, 2022</div>
@@ -100,9 +100,9 @@ function Profile(user) {
                             </div>
                             <div className="widjet__body">
                                 <ul className="badges-list">
-                                    <li><img src="assets/img/badge-1.png" alt="badge" /></li>
-                                    <li><img src="assets/img/badge-2.png" alt="badge" /></li>
-                                    <li><img src="assets/img/badge-3.png" alt="badge" /></li>
+                                    <li><img src="/assets/img/badge-1.png" alt="badge" /></li>
+                                    <li><img src="/assets/img/badge-2.png" alt="badge" /></li>
+                                    <li><img src="/assets/img/badge-3.png" alt="badge" /></li>
                                 </ul>
                             </div>
                         </div>
@@ -112,10 +112,10 @@ function Profile(user) {
                             </div>
                             <div className="widjet__body">
                                 <ul className="games-list">
-                                    <li><img src="assets/img/game-1.jpg" alt="game" /></li>
-                                    <li><img src="assets/img/game-2.jpg" alt="game" /></li>
-                                    <li><img src="assets/img/game-3.jpg" alt="game" /></li>
-                                    <li><img src="assets/img/game-4.jpg" alt="game" /></li>
+                                    <li><img src="/assets/img/game-1.jpg" alt="game" /></li>
+                                    <li><img src="/assets/img/game-2.jpg" alt="game" /></li>
+                                    <li><img src="/assets/img/game-3.jpg" alt="game" /></li>
+                                    <li><img src="/assets/img/game-4.jpg" alt="game" /></li>
                                 </ul>
                             </div>
                         </div>
