@@ -89,6 +89,12 @@ import InfluencerFindCampaignsPage from './pages/influencers/InfluencerFindCampa
 import InfluencerViewCampaignPage from './pages/influencers/InfluencerViewCampaignPage';
 import InfluencerManageCampaignPage from './pages/influencers/InfluencerManageCampaignPage';
 
+import PublishersGamificationPage from './pages/publishers/publishers_gamification';
+import PublishersOptimizationPage from './pages/publishers/publishers_optomization';
+import PublisherBenefitPage from './pages/publishers/publishers_benefits';
+import PublisherUserAcquistion from './pages/publishers/publishers_user_acquistion';
+import PublisherRegisterPage from './pages/publishers/publishers_register';
+
 
 function Template() {
   
@@ -164,6 +170,12 @@ function Template() {
           <Route path={Navigate.authGoogleComplete()} element={<AuthComplete />} />
           <Route path={Navigate.authYoutubeComplete()} element={<AuthComplete />} />
           <Route path={Navigate.authTikTokComplete()} element={<AuthComplete />} />
+
+          <Route path={Navigate.publishersGamificationPage()} element={<PublishersGamificationPage />} />
+          <Route path={Navigate.publishersOptimizationPage()} element={<PublishersOptimizationPage />} />
+          <Route path={Navigate.publishersBenefitsPage()} element={<PublisherBenefitPage />} />
+          <Route path={Navigate.publishersAcquisitionPage()} element={<PublisherUserAcquistion />} />
+          <Route path={Navigate.publishersRegisterPage()} element={<PublisherRegisterPage />} />
 
 
           <Route path={Navigate.authTwitch()} element={<AuthTwitch />} />

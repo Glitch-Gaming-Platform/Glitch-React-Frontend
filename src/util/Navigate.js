@@ -470,6 +470,38 @@ const Navigate = {
     },
 
 
+    publishersPage : () => {
+
+    },
+    publishersGamificationPage : () => {
+
+        return app_routes.publishers_gamifications;
+
+    },
+    publishersOptimizationPage : () => {
+
+        return app_routes.publishers_optimization;
+
+    },
+    publishersBenefitsPage : () => {
+
+        return app_routes.publishers_benefits;
+
+    },
+    publishersAcquisitionPage : () => {
+
+        return app_routes.publishers_acquisition;
+
+    },
+    publishersRegisterPage : () => {
+
+        return app_routes.publishers_register;
+
+    },
+
+
+
+
 
 
     //Stream Pages

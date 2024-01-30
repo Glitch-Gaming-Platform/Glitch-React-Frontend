@@ -144,7 +144,16 @@ class Header extends Component {
                                                 <Link to={Navigate.creatorsPage()} >Streaming App</Link>
                                             </li>
 
-                                           <li className="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">The Platform</a>
+                                            <li className="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">For Publishers</a>
+                                                <ul className="submenu dropdown-menu" aria-labelledby="dropdown">
+                                                    <li><Link className="" to={Navigate.publishersBenefitsPage()}>Influencer Marketing</Link></li>
+                                                    <li><Link className="" to={Navigate.publishersAcquisitionPage()}>Lower User Acquisition Cost</Link></li>
+                                                    <li><Link className="" to={Navigate.publishersGamificationPage()}>Gamify Marketing</Link></li>
+                                                    <li><Link className="" to={Navigate.publishersOptimizationPage()}>Marketing Optimizatiton</Link></li>
+                                                </ul>
+                                            </li>
+
+                                           <li className="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Community Platform</a>
                                                 <ul className="submenu dropdown-menu" aria-labelledby="dropdown">
                                                     <li><Link className="" to={Navigate.featuresPage()}>Features</Link></li>
                                                     <li><Link className="" to={Navigate.benefitsPage()}>Benefits</Link></li>
