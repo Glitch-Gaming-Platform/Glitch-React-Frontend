@@ -5,6 +5,8 @@ import Danger from '../../alerts/Danger';
 import Data from '../../../../../util/Data';
 import Cropper from 'react-easy-crop';
 import getCroppedImg from './getCroppedImg'; // You'll create this helper function
+import RequiredAsterisk from '../../form/required_asterisk';
+import Wysiwyg from '../../form/wysiwyg';
 
 const cropperContainerStyle = {
     position: 'relative', // Contain the cropper
@@ -14,7 +16,7 @@ const cropperContainerStyle = {
 };
 
 
-const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUpdate, errors }) => {
+const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUpdate, setMainImageBlob, setBannerImageBlob, errors }) => {
 
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
     const [mainImage, setMainImage] = useState(null);
@@ -32,6 +34,12 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
 
 
 
+    const handleWysiwigInputChange = (name, value) => {
+        onUpdate({ [name]: value });
+
+        //setCampaignData(campaignData => ({ ...campaignData, [name]: value }));
+        //setCampaignData({ ...campaignData, [name]: value });
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -51,6 +59,7 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     }, []);
 
     const showCroppedImage = async (imageSrc, croppedAreaPixels, setImage, name) => {
+        console.log("Show Cropped Image");
         try {
             // Get the cropped image as a blob
             const croppedImageBlob = await getCroppedImg(imageSrc, croppedAreaPixels);
@@ -82,6 +91,22 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                 }).catch(error => {
 
                 });
+            } else if (!gameTitle.id && name == "mainImage") {
+
+                //const blob = Data.dataURItoBlob(mainImage);
+
+                // Set the new cropped image
+                setCroppedImageSrc(croppedImageUrl);
+
+                setMainImageBlob(croppedImageBlob);
+
+            } else if (!gameTitle.id && name == "bannerImage") {
+
+                //const blob = Data.dataURItoBlob(bannerImage);
+
+                setBannerCroppedImageSrc(croppedImageUrl);
+
+                setBannerImageBlob(croppedImageBlob);
             }
 
             
@@ -130,6 +155,18 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
             }).catch(error => {
 
             });
+            
+        } else  if (!gameTitle.id && name == "mainImage") {
+
+            const blob = Data.dataURItoBlob(mainImage);
+
+            setMainImageBlob(blob);
+
+        } else if (!gameTitle.id && name == "bannerImage") {
+
+            const blob = Data.dataURItoBlob(bannerImage);
+
+            setBannerImageBlob(blob);
         }
     };
 
@@ -153,7 +190,7 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                         <h3><i className="fas fa-gamepad mr-2"></i> Game Title</h3>
                     </div>
                     <div className="card-body">
-                        <p>Enter information about the game title you want influencers to promote.</p>
+                        <p className="lead">Enter information about the game title you want influencers to promote. Please fill out as much information as possible to excite the potential creator(s) you might be working with.</p>
                     </div>
                     <div className="card-body">
                         {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors)}
@@ -171,9 +208,7 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                         {createInput('Steam URL', 'steam_url', gameTitle.steam_url, handleChange, 'url', 'fab fa-steam', errors)}
                         {createInput('Itch.io URL', 'itch_url', gameTitle.itch_url, handleChange, 'url', 'fas fa-link', errors)}
                     </div>
-                </div>
 
-                <div className="card mb-3">
                     <div className="card-header bg-secondary text-white">
                         Upload Game Images
                     </div>
@@ -234,9 +269,7 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                                 : ''}
                         </div>
                     </div>
-                </div>
 
-                <div className="card mb-3">
                     <div className="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
                         <span>
                             <i className="fas fa-book-open mr-2"></i>Additional Game Information
@@ -261,22 +294,40 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
             </form>
         </div>
     );
+
+    function createInput(label, name, value, handleChange, type = 'text', icon, errors) {
+        return (
+            <>
+                <div className="form-group mb-3">
+                    <label htmlFor={name}><i className={`${icon} mr-2`}></i> &nbsp;{label}</label>
+                    <input type={type} className="form-control" id={name} name={name} value={value || ''} onChange={handleChange} />
+                </div>
+                {errors && errors[name] && errors[name].map(function (name, index) {
+                    return <Danger message={name} key={index} />;
+                })}
+            </>
+        );
+    }
+    
+    function createTextarea(label, name, value, handleChange, errors, required = false) {
+        return (
+            <>
+                <div className="mb-3">
+                    <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
+                    <Wysiwyg children={value || ''} name={name} id={name} onChange={(value) => {handleWysiwigInputChange(name, value)}} />
+    
+                </div>
+                {errors && errors[name] && errors[name].map(function (name, index) {
+                    return <Danger message={name} key={index} />;
+                })}
+            </>
+        );
+    }
 };
 
-function createInput(label, name, value, handleChange, type = 'text', icon, errors) {
-    return (
-        <>
-            <div className="form-group mb-3">
-                <label htmlFor={name}><i className={`${icon} mr-2`}></i> &nbsp;{label}</label>
-                <input type={type} className="form-control" id={name} name={name} value={value || ''} onChange={handleChange} />
-            </div>
-            {errors && errors[name] && errors[name].map(function (name, index) {
-                return <Danger message={name} key={index} />;
-            })}
-        </>
-    );
-}
 
+
+/*
 function createTextarea(label, name, value, handleChange, errors) {
     return (
         <>
@@ -291,5 +342,6 @@ function createTextarea(label, name, value, handleChange, errors) {
 
     );
 }
+*/
 
 export default GameTitleForm;

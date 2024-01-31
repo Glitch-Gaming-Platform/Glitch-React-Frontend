@@ -16,6 +16,10 @@ const GameTitle = ({ gameInfo }) => {
     );
   };
 
+  const createMarkup = (htmlContent) => {
+    return {__html: htmlContent};
+};
+
   return (
     <>
     {(gameInfo ) ? 
@@ -26,7 +30,7 @@ const GameTitle = ({ gameInfo }) => {
         </div>
         <div className="col-md-6 mb-4 text-black">
           <h2 className="text-black">{gameInfo.name}</h2>
-          <p className="lead text-black">{gameInfo.long_description || gameInfo.short_description}</p>
+          <p className="lead text-black"><span dangerouslySetInnerHTML={createMarkup(gameInfo.long_description || gameInfo.short_description)} /></p>
         </div>
         <div className="col-12 mt-2">
           <div className="row">

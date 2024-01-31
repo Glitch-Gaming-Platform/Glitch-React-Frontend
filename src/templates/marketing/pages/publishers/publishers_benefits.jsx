@@ -29,7 +29,7 @@ function PublisherBenefitPage() {
       <br />
       <br />
       <div className="container-fluid" style={bannerStyle}>
-        Maximize Your Games Exposure Enagage With<br />Performance-Based Influencer Marketing
+        Maximize Your Games Exposure With<br />Performance-Based Influencer Marketing
       </div>
 
       <section className="cta-section mt-4 mb-5">
@@ -75,6 +75,7 @@ function PublisherBenefitPage() {
                 <li>Incentivizing High Quality Content</li>
                 <li>Better Creator To Product Alignment</li>
               </ul>
+              <a href={Navigate.publishersRegisterPage()} className="mb-4 default-button"><span>{'Risk Free Try'} <i className="icofont-circled-right"></i></span></a>
             </div>
 
           </div>
@@ -95,7 +96,7 @@ function PublisherBenefitPage() {
           <div className="row align-items-center">
             <div className="col-md-8">
               <h2 className="mb-4">Ensuring Quality and Authenticity</h2>
-              <p className="lead"><FontAwesomeIcon icon={faBullhorn} className="me-2" /> Influencers are motivated to align with games that resonate with their audience, promoting genuine and high-quality content.</p>
+              <p className="lead"><FontAwesomeIcon icon={faBullhorn} className="me-2" /> Content creators are motivated to align with games that resonate with their audience, promoting genuine and high-quality content.</p>
             </div>
             <div className="col-md-4">
               <img src="/assets/images/publishers/authenticity_1.png" alt="Quality and Authenticity" className="img-fluid rounded shadow" />
@@ -108,7 +109,7 @@ function PublisherBenefitPage() {
           <h2 className="mb-4 text-center">Optimized Platform Utilization</h2>
           <div className="text-center">
             <FontAwesomeIcon icon={faChartLine} size="3x" className="mb-3 text-success" />
-            <p className="lead">Encouraging strategic platform usage, influencers can craft more impactful and tailored content, maximizing the reach and engagement of your game.</p>
+            <p className="lead">Encouraging strategic platform usage, content creators can craft more impactful and tailored content, maximizing the reach and engagement of your game.</p>
             <img src="/assets/images/publishers/social_1.png" alt="Platform Utilization" className="img-fluid rounded shadow" />
           </div>
         </div>

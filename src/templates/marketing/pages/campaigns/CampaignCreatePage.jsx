@@ -27,6 +27,9 @@ function CampaignCreatePage() {
     const [communities, setCommunities] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
+    const [gameMainImageBlob, setMainImageBlob] = useState(null);
+    const [gameBannerImageBlob, setBannerImageBlob] = useState(null);
+
     const navigate = useNavigate();
 
 
@@ -84,6 +87,28 @@ function CampaignCreatePage() {
 
                 setCampaignData({ ...campaignData, ['title_id']: response.data.data.id });
                 campaignData.title_id = response.data.data.id;
+
+                if(gameMainImageBlob) {
+
+                    Glitch.api.Titles.uploadMainImageBlob(response.data.data.id, gameMainImageBlob).then((response) => {
+
+                    }).catch(error => {
+        
+                    });
+
+                }
+
+                if(gameBannerImageBlob) {
+
+                    Glitch.api.Titles.uploadBannerImageFile(response.data.data.id, gameBannerImageBlob).then((response) => {
+
+                    }).catch(error => {
+        
+                    });
+
+                }
+
+
                 setTimeout(() => {
                     handleSubmit(e);
                 }, 1500)
@@ -186,7 +211,7 @@ function CampaignCreatePage() {
 
                     <form onSubmit={handleSubmit}>
                         <CampaignBasicInfoForm campaignData={campaignData} setCampaignData={setCampaignData} communities={communities} errors={errors} />
-                        <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} errors={titleErrors} />
+                        <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} setMainImageBlob={setMainImageBlob} setBannerImageBlob={setBannerImageBlob} errors={titleErrors} />
                         <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
                         <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
 

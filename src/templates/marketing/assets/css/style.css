@@ -4513,3 +4513,7 @@ button {
     font-weight: 700; }
     .fore-zero .section-wrapper .zero-item .zero-content .lab-btn span {
       color: #fff; }
+
+      .react-datetime-picker__calendar--open {
+        background-color: #dddcdc;
+      }

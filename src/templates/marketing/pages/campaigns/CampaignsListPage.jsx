@@ -114,7 +114,7 @@ const CampaignsListPage = () => {
                                                 {/* Text Section */}
                                                 <div className="text-black">
                                                     <h5 className="mb-1 text-black">{campaign?.title?.name}</h5>
-                                                    <p className="text-muted mb-0">{campaign?.title?.short_description}</p>
+                                                    <p className="text-muted mb-0"><span dangerouslySetInnerHTML={createMarkup(campaign?.title?.short_description)} /> </p>
                                                 </div>
                                             </div>
                                         </div>
