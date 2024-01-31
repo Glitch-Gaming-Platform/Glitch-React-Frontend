@@ -11,7 +11,7 @@ const Benefits = () => {
                         <div className="blog-item">
                             <div className="blog-inner d-flex flex-wrap align-items-center">
                                 <div className="blog-thumb w-xl-50 w-100">
-                                    <img src={`assets/images/blog/03.jpg`} alt={`Earn Donations`} className="w-100" />
+                                    <img src={`/assets/images/blog/03.jpg`} alt={`Earn Donations`} className="w-100" />
                                 </div>
                                 <div className="blog-content p-4 w-xl-50 w-100">
                                     <h3>Increase Revenue By Leveraging The Live Streams</h3>
@@ -57,7 +57,7 @@ const Benefits = () => {
                                     <a href="/features" className="default-button mr-2"><span>{'Features'} <i className="icofont-circled-right"></i></span></a>
                                 </div>
                                 <div className="blog-thumb w-xl-50 w-100">
-                                    <img src={`assets/images/blog/glitch_growth.jpg`} alt={`Earn Donations`} className="w-100" />
+                                    <img src={`/assets/images/blog/glitch_growth.jpg`} alt={`Earn Donations`} className="w-100" />
                                 </div>
                             </div>
                         </div>

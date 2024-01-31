@@ -135,7 +135,7 @@ class MarketingPage extends Component {
                                     <div className="blog-inner d-flex flex-wrap align-items-center">
                                         <div className="blog-thumb w-xl-50 w-100">
 
-                                            <img src={`assets/images/marketing/gaming_influencer.jpg`} alt={`Earn Donations`} className="w-100" />
+                                            <img src={`/assets/images/marketing/gaming_influencer.jpg`} alt={`Earn Donations`} className="w-100" />
 
                                         </div>
                                         <div className="blog-content p-4 w-xl-50 w-100">

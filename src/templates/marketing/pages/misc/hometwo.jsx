@@ -54,7 +54,7 @@ class HomeTwo extends Component {
                         <div className="blog-item">
                             <div className="blog-inner d-flex flex-wrap align-items-center">
                                 <div className="blog-thumb w-xl-50 w-100">
-                                    <img src={`assets/images/create_phone.jpeg`} alt={`Earn Donations`} className="w-100" />
+                                    <img src={`/assets/images/create_phone.jpeg`} alt={`Earn Donations`} className="w-100" />
                                 </div>
                                 <div className="blog-content p-4 w-xl-50 w-100">
                                     <p class="theme-color text-uppercase ls-2">Download Our App</p>
@@ -90,7 +90,7 @@ class HomeTwo extends Component {
 
                                 </div>
                                 <div className="blog-thumb w-xl-50 w-100">
-                                    <img src={`assets/images/creators/image_6.jpeg`} alt={`Earn Donations`} className="w-100" />
+                                    <img src={`/assets/images/creators/image_6.jpeg`} alt={`Earn Donations`} className="w-100" />
                                 </div>
                             </div>
                         </div>

@@ -61,7 +61,7 @@ class CommunitiesList extends Component {
                                         <div className="blog-inner d-flex flex-wrap align-items-center">
                                             <div className="blog-thumb w-xl-50 w-100">
 
-                                                <img src={(community.banner_image) ? community.banner_image : `assets/images/cover/cover_${Math.floor(Math.random() * 27) + 1}.jpeg`} alt={`Earn Donations`} className="w-100" />
+                                                <img src={(community.banner_image) ? community.banner_image : `/assets/images/cover/cover_${Math.floor(Math.random() * 27) + 1}.jpeg`} alt={`Earn Donations`} className="w-100" />
 
 
                                             </div>

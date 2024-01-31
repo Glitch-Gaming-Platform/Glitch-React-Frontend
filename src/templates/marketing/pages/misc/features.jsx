@@ -33,7 +33,7 @@ class FeaturesPage extends Component {
                                             <div className="blog-inner">
                                                 <div className="blog-thumb text-center">
                                                    
-                                                        <img src={`assets/images/features/live-streaming.png`} alt={`Test`} className="w-50" />
+                                                        <img src={`/assets/images/features/live-streaming.png`} alt={`Test`} className="w-50" />
                                                    
                                                 </div>
                                                 <div className="blog-content px-3 py-4">
@@ -50,7 +50,7 @@ class FeaturesPage extends Component {
                                             <div className="blog-inner">
                                                 <div className="blog-thumb text-center">
                                                    
-                                                        <img src={`assets/images/features/rec-button.png`} alt={`Test`} className="w-50" />
+                                                        <img src={`/assets/images/features/rec-button.png`} alt={`Test`} className="w-50" />
                                                    
                                                 </div>
                                                 <div className="blog-content px-3 py-4">
@@ -67,7 +67,7 @@ class FeaturesPage extends Component {
                                             <div className="blog-inner">
                                                 <div className="blog-thumb text-center">
                                                    
-                                                        <img src={`assets/images/features/private_chat.png`} alt={`Test`} className="w-50" />
+                                                        <img src={`/assets/images/features/private_chat.png`} alt={`Test`} className="w-50" />
                                                    
                                                 </div>
                                                 <div className="blog-content px-3 py-4">
@@ -84,7 +84,7 @@ class FeaturesPage extends Component {
                                             <div className="blog-inner">
                                                 <div className="blog-thumb text-center">
                                                    
-                                                        <img src={`assets/images/features/group_chat.png`} alt={`Test`} className="w-50" />
+                                                        <img src={`/assets/images/features/group_chat.png`} alt={`Test`} className="w-50" />
                                                    
                                                 </div>
                                                 <div className="blog-content px-3 py-4">
@@ -101,7 +101,7 @@ class FeaturesPage extends Component {
                                             <div className="blog-inner">
                                                 <div className="blog-thumb text-center">
                                                    
-                                                        <img src={`assets/images/features/trophy.png`} alt={`Test`} className="w-50" />
+                                                        <img src={`/assets/images/features/trophy.png`} alt={`Test`} className="w-50" />
                                                    
                                                 </div>
                                                 <div className="blog-content px-3 py-4">
@@ -118,7 +118,7 @@ class FeaturesPage extends Component {
                                             <div className="blog-inner">
                                                 <div className="blog-thumb text-center">
                                                    
-                                                        <img src={`assets/images/features/ticket.png`} alt={`Test`} className="w-50" />
+                                                        <img src={`/assets/images/features/ticket.png`} alt={`Test`} className="w-50" />
                                                    
                                                 </div>
                                                 <div className="blog-content px-3 py-4">
@@ -135,7 +135,7 @@ class FeaturesPage extends Component {
                                             <div className="blog-inner">
                                                 <div className="blog-thumb text-center">
                                                    
-                                                        <img src={`assets/images/features/profile.png`} alt={`Test`} className="w-50" />
+                                                        <img src={`/assets/images/features/profile.png`} alt={`Test`} className="w-50" />
                                                    
                                                 </div>
                                                 <div className="blog-content px-3 py-4">
@@ -152,7 +152,7 @@ class FeaturesPage extends Component {
                                             <div className="blog-inner">
                                                 <div className="blog-thumb text-center">
                                                    
-                                                        <img src={`assets/images/features/social-media.png`} alt={`Test`} className="w-50" />
+                                                        <img src={`/assets/images/features/social-media.png`} alt={`Test`} className="w-50" />
                                                    
                                                 </div>
                                                 <div className="blog-content px-3 py-4">

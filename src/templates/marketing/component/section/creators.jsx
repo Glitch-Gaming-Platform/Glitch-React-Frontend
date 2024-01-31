@@ -100,7 +100,7 @@ const Creators = () => {
                         <div className="blog-item-1">
                             <div className="blog-inner d-flex flex-wrap align-items-center">
                                 <div className="blog-thumb w-xl-50 w-100">
-                                    <img src={`assets/images/creators/video_editing_2.jpg`} alt="Action-packed Gameplay Clip" className="w-100 rounded" />
+                                    <img src={`/assets/images/creators/video_editing_2.jpg`} alt="Action-packed Gameplay Clip" className="w-100 rounded" />
                                 </div>
                                 <div className="blog-content p-4 w-xl-50 w-100">
                                     <h2>Create & Edit Epic Clips Instantly!</h2>
@@ -235,14 +235,14 @@ const Creators = () => {
                     <ul className="d-flex flex-wrap justify-content-center player-meta mb-0">
                         <li className="d-flex align-items-center" key={1}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App">
-                                <span className="left me-3"><img src={`assets/images/creators/github.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
+                                <span className="left me-3"><img src={`/assets/images/creators/github.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Github Downloads"}</span>
                             </a>
                         </li>
                         <li className="d-flex flex-column align-items-center" key={1}>
                             <div className="d-flex align-items-center mb-2">
                                 <span className="left me-3">
-                                    <img src={`assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
+                                    <img src={`/assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
                                 </span>
                                 <span className="right">{"Mac"}</span>
                             </div>
@@ -264,13 +264,13 @@ const Creators = () => {
 
                         <li className="d-flex align-items-center" key={2}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-Setup-1.5.2.exe">
-                                <span className="left me-3"><img src={`assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
+                                <span className="left me-3"><img src={`/assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Windows"}</span>
                             </a>
                         </li>
                         <li className="d-flex align-items-center" key={2}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2.AppImage">
-                                <span className="left me-3"><img src={`assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
+                                <span className="left me-3"><img src={`/assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
                                 <span className="right">{"Linux"}</span>
                             </a>
                         </li>

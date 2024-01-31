@@ -32,7 +32,7 @@ class RevenuePage extends Component {
                                     <div className="blog-inner d-flex flex-wrap align-items-center">
                                         <div className="blog-thumb w-xl-50 w-100">
 
-                                            <img src={`assets/images/revenue/sponsored_1.jpg`} alt={`Earn Donations`} className="w-100" />
+                                            <img src={`/assets/images/revenue/sponsored_1.jpg`} alt={`Earn Donations`} className="w-100" />
 
                                         </div>
                                         <div className="blog-content p-4 w-xl-50 w-100">
@@ -77,7 +77,7 @@ class RevenuePage extends Component {
                                         </div>
                                         <div className="blog-thumb w-xl-50 w-100">
 
-                                            <img src={`assets/images/revenue/nft_1.jpg`} alt={`Earn Donations`} className="w-100" />
+                                            <img src={`/assets/images/revenue/nft_1.jpg`} alt={`Earn Donations`} className="w-100" />
 
                                         </div>
                                     </div>
@@ -94,7 +94,7 @@ class RevenuePage extends Component {
                                     <div className="blog-inner d-flex flex-wrap align-items-center">
                                         <div className="blog-thumb w-xl-50 w-100">
 
-                                            <img src={`assets/images/revenue/in_app_purchases.jpg`} alt={`Earn Donations`} className="w-100" />
+                                            <img src={`/assets/images/revenue/in_app_purchases.jpg`} alt={`Earn Donations`} className="w-100" />
 
                                         </div>
                                         <div className="blog-content p-4 w-xl-50 w-100">
