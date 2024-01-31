@@ -5,10 +5,25 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
 import Navigate from '../../../../util/Navigate';
+import { Helmet } from 'react-helmet';
 
 function PublisherUserAcquistion() {
+
+    const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Enhance Game User Acquisition with Glitch's Influencer Marketing Strategy | Glitch</title>
+                <meta name="description" content="Maximize your game's user acquisition with Glitch. Benefit from lower CPI, higher engagement, targeted audience reach, and advanced analytics for impactful influencer marketing strategies in the gaming sector." />
+                <meta name="robots" content="index, follow" />
+                <meta property="og:title" content="Enhance Game User Acquisition with Glitch's Influencer Marketing Strategy | Glitch" />
+                <meta property="og:description" content="Maximize your game's user acquisition with Glitch. Benefit from lower CPI, higher engagement, targeted audience reach, and advanced analytics for impactful influencer marketing strategies in the gaming sector." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={currentUrl} />
+                <meta property="og:image" content="https://www.glitch.fun/assets/images/publishers/banner_4.png" />
+            </Helmet>
             <Header />
             <br />
             <br />
@@ -131,7 +146,7 @@ function PublisherUserAcquistion() {
 }
 
 const bannerStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/images/publishers/banner_3.png")`, // Replace 'path_to_your_image.jpg' with your image path
+    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/images/publishers/banner_4.png")`, // Replace 'path_to_your_image.jpg' with your image path
     height: '500px', // Adjust as needed
     backgroundSize: 'cover',
     backgroundPosition: 'center',

@@ -4,10 +4,25 @@ import { faChartLine, faUserCheck, faBullhorn, faHandshake } from '@fortawesome/
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
 import WaitlistPublisher from '../../component/section/waitlistpublisher';
+import { Helmet } from 'react-helmet';
 
 function PublisherRegisterPage() {
+
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+  
   return (
     <>
+    <Helmet>
+          <meta charSet="utf-8" />
+          <title>Register As A Publisher or Developer | Glitch</title>
+          <meta name="description" content="Register as a publisher or indie developer to start creating influencer campaigns for your games." />
+          <meta name="robots" content="index, follow" />
+          <meta property="og:title" content="Register As A Publisher or Developer | Glitch" />
+          <meta property="og:description" content="Register as a publisher or indie developer to start creating influencer campaigns for your games." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={currentUrl} />
+          <meta property="og:image" content="https://www.glitch.fun/assets/images/publishers/banner_5.png" />
+      </Helmet>
       <Header />
       <br />
       <br />

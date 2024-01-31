@@ -4,10 +4,25 @@ import { faChartLine, faUserCheck, faBullhorn, faHandshake, faThumbsUp, faTools,
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
 import Navigate from '../../../../util/Navigate';
+import { Helmet } from 'react-helmet';
 
 function PublisherBenefitPage() {
+
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
   return (
     <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Revolutionize Game Marketing with Performance-Based Influencer Strategies | Glitch</title>
+        <meta name="description" content="Unlock the power of performance-based influencer marketing for your game. Glitch offers innovative solutions for authenticity, quality content, and optimized platform utilization to maximize game exposure and engage effectively with micro-influencers." />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Revolutionize Game Marketing with Performance-Based Influencer Strategies | Glitch" />
+        <meta property="og:description" content="Unlock the power of performance-based influencer marketing for your game. Glitch offers innovative solutions for authenticity, quality content, and optimized platform utilization to maximize game exposure and engage effectively with micro-influencers." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={currentUrl} />
+        <meta property="og:image" content="https://www.glitch.fun/assets/images/publishers/banner_3.png" />
+      </Helmet>
       <Header />
       <br />
       <br />

@@ -5,10 +5,25 @@ import Footer from '../../component/layout/footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChessKing, faChartLine, faHandshake, faUserFriends, faGem, faBalanceScale, faThumbsUp, faTools, faGamepad, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import Navigate from '../../../../util/Navigate';
+import { Helmet } from 'react-helmet';
 
 function PublishersGamificationPage() {
+
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
   return (
     <>
+      <Helmet>
+          <meta charSet="utf-8" />
+          <title>Innovative Gamification in Influencer Marketing | Glitch</title>
+          <meta name="description" content="Discover Glitch's unique approach to influencer marketing through gamification. Engage audiences with risk-reward strategies, matching creators to your game, and mutual benefits for developers and influencers." />
+          <meta name="robots" content="index, follow" />
+          <meta property="og:title" content="Innovative Gamification in Influencer Marketing | Glitch'" />
+          <meta property="og:description" content="Discover Glitch's unique approach to influencer marketing through gamification. Engage audiences with risk-reward strategies, matching creators to your game, and mutual benefits for developers and influencers." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={currentUrl} />
+          <meta property="og:image" content="https://www.glitch.fun/assets/images/publishers/banner_8.png" />
+      </Helmet>
       <Header />
       <br />
       <br />

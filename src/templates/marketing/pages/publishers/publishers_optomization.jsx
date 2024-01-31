@@ -6,10 +6,25 @@ import { faRedditAlien, faTwitter, faFacebook, faTwitch, faYoutube, faTiktok } f
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
 import Navigate from '../../../../util/Navigate';
+import { Helmet } from 'react-helmet';
 
 function PublishersOptimizationPage() {
+
+  const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
   return (
     <>
+    <Helmet>
+          <meta charSet="utf-8" />
+          <title>Maximize ROI in Gaming with Influencer Marketing Optimization | Glitch</title>
+          <meta name="description" content="Elevate your gaming influencer campaigns with Glitch. Focus on key objectives like community building, player acquisition, and retention, using our rate card and hybrid marketing model for maximum ROI." />
+          <meta name="robots" content="index, follow" />
+          <meta property="og:title" content="Maximize ROI in Gaming with Influencer Marketing Optimization | Glitch" />
+          <meta property="og:description" content="Elevate your gaming influencer campaigns with Glitch. Focus on key objectives like community building, player acquisition, and retention, using our rate card and hybrid marketing model for maximum ROI." />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content={currentUrl} />
+          <meta property="og:image" content="https://www.glitch.fun/assets/images/publishers/banner_1.png" />
+      </Helmet>
       <Header />
       <br /><br /><br /><br />
       <div className="container-fluid" style={bannerStyle}>
