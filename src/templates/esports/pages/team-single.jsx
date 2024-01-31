@@ -32,32 +32,32 @@ let WinPriceList = [
 
 let PlayerList = [
     {
-        imgUrl: 'assets/images/player/01.jpg',
+        imgUrl: '/assets/images/player/01.jpg',
         imgAlt: 'Player Thumb',
         pName: 'Guadalupe R. Johnson',
     },
     {
-        imgUrl: 'assets/images/player/02.jpg',
+        imgUrl: '/assets/images/player/02.jpg',
         imgAlt: 'Player Thumb',
         pName: 'AMADO R. MARTIN',
     },
     {
-        imgUrl: 'assets/images/player/03.jpg',
+        imgUrl: '/assets/images/player/03.jpg',
         imgAlt: 'Player Thumb',
         pName: 'KYLE S. STELLY',
     },
     {
-        imgUrl: 'assets/images/player/04.jpg',
+        imgUrl: '/assets/images/player/04.jpg',
         imgAlt: 'Player Thumb',
         pName: 'JOHN T. TONEY',
     },
     {
-        imgUrl: 'assets/images/player/05.jpg',
+        imgUrl: '/assets/images/player/05.jpg',
         imgAlt: 'Player Thumb',
         pName: 'CHARLES S. ELLIOTT',
     },
     {
-        imgUrl: 'assets/images/player/06.jpg',
+        imgUrl: '/assets/images/player/06.jpg',
         imgAlt: 'Player Thumb',
         pName: 'CLAUDE M. VASQUEZ',
     },

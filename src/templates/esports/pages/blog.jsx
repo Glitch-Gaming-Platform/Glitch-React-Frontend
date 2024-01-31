@@ -6,7 +6,7 @@ import PageHeader from "../component/layout/pageheader";
 
 let BlogContentListOne = [
     {
-        imgUrl: 'assets/images/blog/03.jpg',
+        imgUrl: '/assets/images/blog/03.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinctive redefine resource maximizing for 123',
         desc: 'Uniquely conceptuaze visionary process ariwith tactical ramatica centered qualitys vectoris with outofthebox scenario is ompelling uthoritatively generate front-end niches after one',
@@ -18,7 +18,7 @@ let BlogContentListOne = [
 
 let BlogContentListTwo = [
     {
-        imgUrl: 'assets/images/blog/01.jpg',
+        imgUrl: '/assets/images/blog/01.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinctive redefine resource maximizing for',
         desc: 'Uniquely conceptuaze visionary process ariwith tactical ramatica centered qualitys vectoris with outofthebox scenario is ompelling uthoritatively generate front-end niches after one',
@@ -27,7 +27,7 @@ let BlogContentListTwo = [
         pubAuthor: 'Rajib Raj',
     },
     {
-        imgUrl: 'assets/images/blog/02.jpg',
+        imgUrl: '/assets/images/blog/02.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinctive redefine resource maximizing for',
         desc: 'Uniquely conceptuaze visionary process ariwith tactical ramatica centered qualitys vectoris with outofthebox scenario is ompelling uthoritatively generate front-end niches after one',
@@ -40,7 +40,7 @@ let BlogContentListTwo = [
 
 let BlogContentListThree = [
     {
-        imgUrl: 'assets/images/blog/04.jpg',
+        imgUrl: '/assets/images/blog/04.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinct edeine resour for',
         desc: 'Unique proces ariwith tactica ramatica are centered quatys vectoris with scenario to front-end niches after one',
@@ -49,7 +49,7 @@ let BlogContentListThree = [
         pubAuthor: 'Rajib Raj',
     },
     {
-        imgUrl: 'assets/images/blog/05.jpg',
+        imgUrl: '/assets/images/blog/05.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinct edeine resour for',
         desc: 'Unique proces ariwith tactica ramatica are centered quatys vectoris with scenario to front-end niches after one',
@@ -58,7 +58,7 @@ let BlogContentListThree = [
         pubAuthor: 'Rajib Raj',
     },
     {
-        imgUrl: 'assets/images/blog/06.jpg',
+        imgUrl: '/assets/images/blog/06.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinct edeine resour for',
         desc: 'Unique proces ariwith tactica ramatica are centered quatys vectoris with scenario to front-end niches after one',
@@ -67,7 +67,7 @@ let BlogContentListThree = [
         pubAuthor: 'Rajib Raj',
     },
     {
-        imgUrl: 'assets/images/blog/07.jpg',
+        imgUrl: '/assets/images/blog/07.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinct edeine resour for',
         desc: 'Unique proces ariwith tactica ramatica are centered quatys vectoris with scenario to front-end niches after one',
@@ -76,7 +76,7 @@ let BlogContentListThree = [
         pubAuthor: 'Rajib Raj',
     },
     {
-        imgUrl: 'assets/images/blog/08.jpg',
+        imgUrl: '/assets/images/blog/08.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinct edeine resour for',
         desc: 'Unique proces ariwith tactica ramatica are centered quatys vectoris with scenario to front-end niches after one',
@@ -85,7 +85,7 @@ let BlogContentListThree = [
         pubAuthor: 'Rajib Raj',
     },
     {
-        imgUrl: 'assets/images/blog/09.jpg',
+        imgUrl: '/assets/images/blog/09.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinct edeine resour for',
         desc: 'Unique proces ariwith tactica ramatica are centered quatys vectoris with scenario to front-end niches after one',

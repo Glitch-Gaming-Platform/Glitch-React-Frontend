@@ -5,39 +5,39 @@ const title = "Instagram";
 
 let InstagramList = [
     {
-        imgUrl: 'assets/images/instragram/01.jpg',
+        imgUrl: '/assets/images/instragram/01.jpg',
         imgAlt: 'Instragrm thumb',
     },
     {
-        imgUrl: 'assets/images/instragram/02.jpg',
+        imgUrl: '/assets/images/instragram/02.jpg',
         imgAlt: 'Instragrm thumb',
     },
     {
-        imgUrl: 'assets/images/instragram/03.jpg',
+        imgUrl: '/assets/images/instragram/03.jpg',
         imgAlt: 'Instragrm thumb',
     },
     {
-        imgUrl: 'assets/images/instragram/04.jpg',
+        imgUrl: '/assets/images/instragram/04.jpg',
         imgAlt: 'Instragrm thumb',
     },
     {
-        imgUrl: 'assets/images/instragram/05.jpg',
+        imgUrl: '/assets/images/instragram/05.jpg',
         imgAlt: 'Instragrm thumb',
     },
     {
-        imgUrl: 'assets/images/instragram/06.jpg',
+        imgUrl: '/assets/images/instragram/06.jpg',
         imgAlt: 'Instragrm thumb',
     },
     {
-        imgUrl: 'assets/images/instragram/07.jpg',
+        imgUrl: '/assets/images/instragram/07.jpg',
         imgAlt: 'Instragrm thumb',
     },
     {
-        imgUrl: 'assets/images/instragram/08.jpg',
+        imgUrl: '/assets/images/instragram/08.jpg',
         imgAlt: 'Instragrm thumb',
     },
     {
-        imgUrl: 'assets/images/instragram/09.jpg',
+        imgUrl: '/assets/images/instragram/09.jpg',
         imgAlt: 'Instragrm thumb',
     },
 ]

@@ -10,22 +10,22 @@ const btnText = "Browse All games";
 
 let CollectionListContent = [
     {
-        imgUrl: 'assets/images/game/01.png',
+        imgUrl: '/assets/images/game/01.png',
         imgAlt: 'collect thumb',
         title: 'Witch Sports Team',
     },
     {
-        imgUrl: 'assets/images/game/02.png',
+        imgUrl: '/assets/images/game/02.png',
         imgAlt: 'collect thumb',
         title: 'Wolves Sports Team',
     },
     {
-        imgUrl: 'assets/images/game/03.png',
+        imgUrl: '/assets/images/game/03.png',
         imgAlt: 'collect thumb',
         title: 'Robot Team',
     },
     {
-        imgUrl: 'assets/images/game/04.png',
+        imgUrl: '/assets/images/game/04.png',
         imgAlt: 'collect thumb',
         title: 'Dragon Pro',
     },

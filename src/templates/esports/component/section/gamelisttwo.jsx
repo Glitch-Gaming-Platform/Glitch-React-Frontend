@@ -6,9 +6,9 @@ import SocialMedia from "./socialmedia";
 let GameListTwoData = [
     {
         id: 1,
-        imageone: 'assets/images/match/teamsm/teamsm-1.png',
+        imageone: '/assets/images/match/teamsm/teamsm-1.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-2.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-2.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',
@@ -22,9 +22,9 @@ let GameListTwoData = [
     },
     {
         id: 2,
-        imageone: 'assets/images/match/teamsm/teamsm-3.png',
+        imageone: '/assets/images/match/teamsm/teamsm-3.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-4.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-4.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',
@@ -38,9 +38,9 @@ let GameListTwoData = [
     },
     {
         id: 3,
-        imageone: 'assets/images/match/teamsm/teamsm-5.png',
+        imageone: '/assets/images/match/teamsm/teamsm-5.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-6.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-6.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',
@@ -54,9 +54,9 @@ let GameListTwoData = [
     },
     {
         id: 4,
-        imageone: 'assets/images/match/teamsm/teamsm-7.png',
+        imageone: '/assets/images/match/teamsm/teamsm-7.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-8.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-8.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',

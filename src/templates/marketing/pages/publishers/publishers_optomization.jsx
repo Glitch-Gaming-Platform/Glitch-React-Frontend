@@ -1,6 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBullhorn, faUsers, faDollarSign, faChartLine, faHandshake } from '@fortawesome/free-solid-svg-icons';
+import { faBullhorn, faUsers, faChartLine, faHandshake, faTools, faGamepad, faDollarSign, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faRedditAlien, faTwitter, faFacebook, faTwitch, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons';
+
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
 import Navigate from '../../../../util/Navigate';
@@ -11,7 +13,7 @@ function PublishersOptimizationPage() {
       <Header />
       <br /><br /><br /><br />
       <div className="container-fluid" style={bannerStyle}>
-        Optimize Your Influencer Marketing <br /> Campaigns
+        Optimize Your Influencer Campaigns <br /> To Maximize Your ROI
       </div>
 
       <div className="container py-5">
@@ -21,13 +23,14 @@ function PublishersOptimizationPage() {
           
           <div className="row text-white py-4 align-items-center">
             <div className="col-md-6">
-              <h2 className="text-white">Setting Your Objectives</h2>
+              <h2 className="text-white">Focus On Objectives That Best Align With Your Game</h2>
               <p className="lead">Understanding your game's stage and focusing on objectives, be it driving new user signups or enhancing engagement with existing players, is crucial for a successful influencer marketing strategy.</p>
               <ul className="fa-ul lead">
                 <li><FontAwesomeIcon icon={faUsers} listItem /> Community Building</li>
                 <li><FontAwesomeIcon icon={faDollarSign} listItem /> Player Acquisition</li>
                 <li><FontAwesomeIcon icon={faChartLine} listItem /> Retention and Monetization</li>
               </ul>
+              <a href={Navigate.publishersRegisterPage()} className="mb-4 default-button"><span>{'Risk Free Try'} <i className="icofont-circled-right"></i></span></a>
             </div>
             <div className="col-md-6">
               <img src="/assets/images/publishers/objectives_2.png" alt="Objectives" className="img-fluid rounded" />
@@ -38,19 +41,27 @@ function PublishersOptimizationPage() {
         {/* Aligning Social Platforms Section */}
         <div className='pt-4 pb-2 mb-5 rounded text-center'style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
           <h2 className="text-white">Aligning Social Platforms and Objectives</h2>
+          <p className="text-white lead">Matching your marketing objectives with the right social platforms, like YouTube for wider reach, Twitch for interactive player acquisition, and Twitter for community engagement, is easy to do on the platform.</p>
+          <div  className='text-center'>
+            <FontAwesomeIcon icon={faRedditAlien} size="2x" style={{ color: '#FF5700' }} className="mx-2" />
+            <FontAwesomeIcon icon={faTwitter} size="2x" style={{ color: '#1DA1F2' }} className="mx-2" />
+            <FontAwesomeIcon icon={faFacebook} size="2x" style={{ color: '#1877F2' }} className="mx-2" />
+            <FontAwesomeIcon icon={faTwitch} size="2x" style={{ color: '#6441A4' }} className="mx-2" />
+            <FontAwesomeIcon icon={faYoutube} size="2x" style={{ color: '#FF0000' }} className="mx-2" />
+            <FontAwesomeIcon icon={faTiktok} size="2x" style={{ color: '#000000' }} className="mx-2" />
+          </div>
           <img src="/assets/images/publishers/objectives_1.png" alt="Social Platforms" className="img-fluid rounded my-3" />
-          <p className="text-white lead">Matching your marketing objectives with the right social platforms, like YouTube for wider reach, Twitch for interactive player acquisition, and Twitter for community engagement, is essential.</p>
         </div>
 
         {/* Performance-Based Influencer Marketing Section */}
         <div className="mb-5">
           <div className="row text-white py-4 align-items-center">
             <div className="col-md-6">
-              <h2 className="text-white">Performance-Based Influencer Marketing</h2>
+              <h2 className="text-white">Use A Rate Card To Guide A Creators Focus</h2>
               <p>Implementing Glitch's innovative rate card system allows for a fair and transparent way to incentivize influencers, rewarding them for their real impact in terms of views, shares, and comments.</p>
             </div>
             <div className="col-md-6">
-              <img src="/assets/images/publishers/performance_based_1.png" alt="Performance-Based" className="img-fluid rounded" />
+              <img src="/assets/images/publishers/rate_card.jpg" alt="Performance-Based" className="img-fluid rounded" />
             </div>
           </div>
         </div>
@@ -62,6 +73,33 @@ function PublishersOptimizationPage() {
           <img src="/assets/images/publishers/hybrid.png" alt="Hybrid Model" className="img-fluid rounded my-3" /><br />
           <FontAwesomeIcon icon={faHandshake} size="3x" className="text-white" />
         </div>
+        
+        <div className="container lead text-center mb-4">
+          <h4>Learn More About Performance-Based Influencer Marketing</h4>
+          <div className="d-flex justify-content-center align-items-center">
+              <a href={Navigate.publishersBenefitsPage()} className="mx-2 default-button">
+                  <span><FontAwesomeIcon icon={faThumbsUp} className="me-1" />
+                  Benefits
+                  </span>
+              </a>
+              <a href={Navigate.publishersOptimizationPage()} className="mx-2 default-button">
+              <span><FontAwesomeIcon icon={faTools} className="me-1" />
+                  Optimization
+                  </span>
+              </a>
+              <a href={Navigate.publishersGamificationPage()} className="mx-2 default-button">
+              <span><FontAwesomeIcon icon={faGamepad} className="me-1" />
+                  Gamification
+                  </span>
+              </a>
+              <a href={Navigate.publishersAcquisitionPage()} className="mx-2 default-button">
+              <span><FontAwesomeIcon icon={faDollarSign} className="me-1" />
+                  Acquisition Costs
+                  </span>
+              </a>
+          </div>
+      </div>
+
 
         <div className='pt-5 pb-5 rounded' style={{ backgroundImage: "url(/assets/images/video/bg.jpg)" }}>
           {/* Call to Action Section */}

@@ -104,7 +104,7 @@ const Benefits = () => {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="cta-thumb text-end">
-                                        <img src={'assets/images/cta/02.png'} alt="gamer-img" />
+                                        <img src={'/assets/images/cta/02.png'} alt="gamer-img" />
                                     </div>
                                 </div>
                             </div>

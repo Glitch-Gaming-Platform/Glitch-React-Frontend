@@ -43,7 +43,7 @@ class HomeTwo extends Component {
                 <BannerTwo />
 
 
-                <AboutSection imgUrl={'assets/images/about/02.png'} />
+                <AboutSection imgUrl={'/assets/images/about/02.png'} />
 
                 <HowItWorks />
                 

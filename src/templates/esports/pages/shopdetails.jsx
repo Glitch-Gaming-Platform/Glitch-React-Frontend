@@ -22,19 +22,19 @@ const reviwtitle = "Add a Review";
 
 let ProductImgList = [
     {
-        imgUrl: 'assets/images/shop/01.jpg',
+        imgUrl: '/assets/images/shop/01.jpg',
         imgAlt: 'product thumb',
     },
     {
-        imgUrl: 'assets/images/shop/02.jpg',
+        imgUrl: '/assets/images/shop/02.jpg',
         imgAlt: 'product thumb',
     },
     {
-        imgUrl: 'assets/images/shop/03.jpg',
+        imgUrl: '/assets/images/shop/03.jpg',
         imgAlt: 'product thumb',
     },
     {
-        imgUrl: 'assets/images/shop/04.jpg',
+        imgUrl: '/assets/images/shop/04.jpg',
         imgAlt: 'product thumb',
     },
 ]
@@ -42,28 +42,28 @@ let ProductImgList = [
 
 let ReviewList = [
     {
-        imgUrl: 'assets/images/clients/01.jpg',
+        imgUrl: '/assets/images/clients/01.jpg',
         imgAlt: 'Client thumb',
         name: 'Ganelon Boileau',
         date: 'Posted on December 25, 2017 at 6:57 am',
         desc: 'Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.',
     },
     {
-        imgUrl: 'assets/images/clients/02.jpg',
+        imgUrl: '/assets/images/clients/02.jpg',
         imgAlt: 'Client thumb',
         name: 'Morgana Cailot',
         date: 'Posted on December 25, 2017 at 6:57 am',
         desc: 'Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.',
     },
     {
-        imgUrl: 'assets/images/clients/03.jpg',
+        imgUrl: '/assets/images/clients/03.jpg',
         imgAlt: 'Client thumb',
         name: 'Telford Bois',
         date: 'Posted on December 25, 2017 at 6:57 am',
         desc: 'Enthusiast build innovativ initiatives before lonterm high-impact awesome theme seo psd porta monetize covalent leadership after without resource.',
     },
     {
-        imgUrl: 'assets/images/clients/04.jpg',
+        imgUrl: '/assets/images/clients/04.jpg',
         imgAlt: 'Client thumb',
         name: 'Cher Daviau',
         date: 'Posted on December 25, 2017 at 6:57 am',

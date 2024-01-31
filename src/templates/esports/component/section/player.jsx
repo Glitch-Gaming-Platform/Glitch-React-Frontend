@@ -10,32 +10,32 @@ const title = "Meet Our Squad Players ";
 
 let PlayerListContent = [
     {
-        bgImgUrl: 'assets/images/team/1.jpg',
-        imgUrl: 'assets/images/team/1.png',
+        bgImgUrl: '/assets/images/team/1.jpg',
+        imgUrl: '/assets/images/team/1.png',
         imgAlt: 'Player Thumb',
         title: 'Dragon Team',
     },
     {
-        bgImgUrl: 'assets/images/team/2.jpg',
-        imgUrl: 'assets/images/team/2.png',
+        bgImgUrl: '/assets/images/team/2.jpg',
+        imgUrl: '/assets/images/team/2.png',
         imgAlt: 'Player Thumb',
         title: 'Frogs Team',
     },
     {
-        bgImgUrl: 'assets/images/team/3.jpg',
-        imgUrl: 'assets/images/team/3.png',
+        bgImgUrl: '/assets/images/team/3.jpg',
+        imgUrl: '/assets/images/team/3.png',
         imgAlt: 'Player Thumb',
         title: 'Tigers Team',
     },
     {
-        bgImgUrl: 'assets/images/team/4.jpg',
-        imgUrl: 'assets/images/team/4.png',
+        bgImgUrl: '/assets/images/team/4.jpg',
+        imgUrl: '/assets/images/team/4.png',
         imgAlt: 'Player Thumb',
         title: 'Shark Team',
     },
     {
-        bgImgUrl: 'assets/images/team/5.jpg',
-        imgUrl: 'assets/images/team/5.png',
+        bgImgUrl: '/assets/images/team/5.jpg',
+        imgUrl: '/assets/images/team/5.png',
         imgAlt: 'Player Thumb',
         title: 'Gaming Team',
     },

@@ -17,12 +17,12 @@ class AboutPage extends Component {
             <Fragment>
                 <Header />
                 <PageHeader title={'ABOUT BIGAMER'} curPage={'About Us'} />
-                <AboutSection imgUrl={'assets/images/about/01.png'} />
+                <AboutSection imgUrl={'/assets/images/about/01.png'} />
                 <VideoTestimonial />
                 <ProductSection />
                 <HrShape />
                 <SponsorSection />
-                <CtaSection imgUrl={'assets/images/cta/01.png'} />
+                <CtaSection imgUrl={'/assets/images/cta/01.png'} />
                 <Footer />
             </Fragment>
         );

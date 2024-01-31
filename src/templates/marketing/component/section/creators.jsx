@@ -32,15 +32,15 @@ const Creators = () => {
                         <div className="row text-center">
                             <div className="col-md-4">
                                 <button className="btn btn-primary w-100 mb-3"><strong>1:</strong> Pick Your Game</button>
-                                <img src={'assets/images/creators/list_of_games.jpeg'} alt="Selecting a game" className="img-fluid rounded" />
+                                <img src={'/assets/images/creators/list_of_games.jpeg'} alt="Selecting a game" className="img-fluid rounded" />
                             </div>
                             <div className="col-md-4">
                                 <button className="btn btn-primary w-100 mb-3"><strong>2:</strong> Set Up Your Webcam</button>
-                                <img src={'assets/images/creators/webcam.jpg'} alt="Choosing a webcam" className="img-fluid rounded" />
+                                <img src={'/assets/images/creators/webcam.jpg'} alt="Choosing a webcam" className="img-fluid rounded" />
                             </div>
                             <div className="col-md-4">
                                 <button className="btn btn-primary w-100 mb-3"><strong>3:</strong> Hit 'Go Live' and Shine!</button>
-                                <img src={'assets/images/creators/gaming_3.jpg'} alt="Going live" className="img-fluid rounded" />
+                                <img src={'/assets/images/creators/gaming_3.jpg'} alt="Going live" className="img-fluid rounded" />
                             </div>
                         </div>
 
@@ -71,15 +71,15 @@ const Creators = () => {
                         <div className="col-5">
                             <div className="d-flex flex-column align-items-center justify-content-center">
                                 <div>
-                                    <img src={'assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'/assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'/assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'/assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
 
                                 </div>
                                 <div>
-                                    <img src={'assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'assets/images/creators/rtmp.png'} alt="RTMP" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'/assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'/assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
+                                    <img src={'/assets/images/creators/rtmp.png'} alt="RTMP" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
                                 </div>
 
 
@@ -155,7 +155,7 @@ const Creators = () => {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="cta-thumb text-end">
-                                        <img src={'assets/images/creators/black_female.jpeg'} alt="gamer receiving tips" />
+                                        <img src={'/assets/images/creators/black_female.jpeg'} alt="gamer receiving tips" />
                                     </div>
                                 </div>
                             </div>
@@ -175,37 +175,37 @@ const Creators = () => {
 
                     <div className="row text-center mt-5">
                         <div className="col-md-4 mb-4">
-                            <img src={'assets/images/creators/streamelements.jpg'} alt="Stream Elements" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src={'/assets/images/creators/streamelements.jpg'} alt="Stream Elements" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Stream Elements Integration</h4>
                             <p>Integrate with Stream Elements for a seamless streaming experience.</p>
                         </div>
 
                         <div className="col-md-4 mb-4">
-                            <img src={'assets/images/creators/layers.png'} alt="Overlays" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src={'/assets/images/creators/layers.png'} alt="Overlays" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Custom Overlays</h4>
                             <p>Enhance your stream visuals with customizable overlays.</p>
                         </div>
 
                         <div className="col-md-4 mb-4">
-                            <img src={'assets/images/creators/alerts.png'} alt="Alert Boxes" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src={'/assets/images/creators/alerts.png'} alt="Alert Boxes" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Alert Boxes</h4>
                             <p>Engage your audience with real-time alerts and notifications.</p>
                         </div>
 
                         <div className="col-md-4 mb-4">
-                            <img src={'assets/images/creators/ai.png'} alt="A.I Chat Assistant" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src={'/assets/images/creators/ai.png'} alt="A.I Chat Assistant" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>A.I Co-Host</h4>
                             <p>Interact A.I co-host to banter with you and yours followers.</p>
                         </div>
 
                         <div className="col-md-4 mb-4">
-                            <img src={'assets/images/creators/chat.png'} alt="Chat" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src={'/assets/images/creators/chat.png'} alt="Chat" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Interactive Chat</h4>
                             <p>Engage with your viewers in real-time chat.</p>
                         </div>
 
                         <div className="col-md-4 mb-4">
-                            <img src={'assets/images/creators/emoji_2.png'} alt="Emojies" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src={'/assets/images/creators/emoji_2.png'} alt="Emojies" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Fun Emojies</h4>
                             <p>Express more with a wide range of emojies.</p>
                         </div>

@@ -10,9 +10,9 @@ const Previoutitle = "Previous Matches";
 
 let MatchInfoListOne = [
     {
-        imageone: 'assets/images/match/teamsm/teamsm-1.png',
+        imageone: '/assets/images/match/teamsm/teamsm-1.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-2.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-2.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',
@@ -26,9 +26,9 @@ let MatchInfoListOne = [
 ]
 let MatchInfoListTwo = [
     {
-        imageone: 'assets/images/match/teamsm/teamsm-1.png',
+        imageone: '/assets/images/match/teamsm/teamsm-1.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-2.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-2.png',
         alt2: 'game list name',
         title: 'call of duty TOURNAMENT',
         matchdate: '15  May 2022',
@@ -39,9 +39,9 @@ let MatchInfoListTwo = [
         matchpamount: '$3200',
     },
     {
-        imageone: 'assets/images/match/teamsm/teamsm-3.png',
+        imageone: '/assets/images/match/teamsm/teamsm-3.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-4.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-4.png',
         alt2: 'game list name',
         title: 'LEAGUE BATTLE tournament',
         matchdate: '15  May 2022',
@@ -52,9 +52,9 @@ let MatchInfoListTwo = [
         matchpamount: '$3600',
     },
     {
-        imageone: 'assets/images/match/teamsm/teamsm-5.png',
+        imageone: '/assets/images/match/teamsm/teamsm-5.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-6.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-6.png',
         alt2: 'game list name',
         title: 'pubg classic tournament',
         matchdate: '15  May 2022',
@@ -68,9 +68,9 @@ let MatchInfoListTwo = [
 
 let MatchInfoListThree = [
     {
-        imageone: 'assets/images/match/teamsm/teamsm-7.png',
+        imageone: '/assets/images/match/teamsm/teamsm-7.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-8.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-8.png',
         alt2: 'game list name',
         result: '4 - 2',
         matchdate: '15  May 2022',
@@ -81,9 +81,9 @@ let MatchInfoListThree = [
         matchpamount: '$3200',
     },
     {
-        imageone: 'assets/images/match/teamsm/teamsm-9.png',
+        imageone: '/assets/images/match/teamsm/teamsm-9.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-10.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-10.png',
         alt2: 'game list name',
         result: '3 - 1',
         matchdate: '15  May 2022',
@@ -94,9 +94,9 @@ let MatchInfoListThree = [
         matchpamount: '$3600',
     },
     {
-        imageone: 'assets/images/match/teamsm/teamsm-11.png',
+        imageone: '/assets/images/match/teamsm/teamsm-11.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-12.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-12.png',
         alt2: 'game list name',
         result: '0 - 0',
         matchdate: '15  May 2022',

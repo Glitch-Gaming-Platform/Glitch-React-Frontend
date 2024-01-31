@@ -9,23 +9,23 @@ const btnText = "Browse All games";
 
 let CollectionListContentTwo = [
     {
-        imgUrlOne: 'assets/images/match/teamsm/teamsm-1.png',
+        imgUrlOne: '/assets/images/match/teamsm/teamsm-1.png',
         imgAltOne: 'team thumb',
-        imgUrlTwo: 'assets/images/match/teamsm/teamsm-2.png',
+        imgUrlTwo: '/assets/images/match/teamsm/teamsm-2.png',
         imgAltTwo: 'team thumb',
         title: 'Witch Sports Team',
     },
     {
-        imgUrlOne: 'assets/images/match/teamsm/teamsm-3.png',
+        imgUrlOne: '/assets/images/match/teamsm/teamsm-3.png',
         imgAltOne: 'team thumb',
-        imgUrlTwo: 'assets/images/match/teamsm/teamsm-4.png',
+        imgUrlTwo: '/assets/images/match/teamsm/teamsm-4.png',
         imgAltTwo: 'team thumb',
         title: 'Witch Sports Team',
     },
     {
-        imgUrlOne: 'assets/images/match/teamsm/teamsm-5.png',
+        imgUrlOne: '/assets/images/match/teamsm/teamsm-5.png',
         imgAltOne: 'team thumb',
-        imgUrlTwo: 'assets/images/match/teamsm/teamsm-6.png',
+        imgUrlTwo: '/assets/images/match/teamsm/teamsm-6.png',
         imgAltTwo: 'team thumb',
         title: 'Witch Sports Team',
     },

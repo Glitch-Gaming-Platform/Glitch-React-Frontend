@@ -8,28 +8,28 @@ const title = "check our live streaming";
 
 let VideoListContentTop = [
     {
-        imgUrl: 'assets/images/video/01.jpg',
+        imgUrl: '/assets/images/video/01.jpg',
         imgAlt: 'Video Thum',
         videoLink: 'https://www.youtube.com/embed/g5eQgEuiFC8',
         title: '2021 LVP SuperLiga Orange Summer',
         btnText: 'watch now',
     },
     {
-        imgUrl: 'assets/images/video/02.jpg',
+        imgUrl: '/assets/images/video/02.jpg',
         imgAlt: 'Video Thum',
         videoLink: 'https://www.youtube.com/embed/g5eQgEuiFC8',
         title: '2021 LVP SuperLiga Orange Summer',
         btnText: 'watch now',
     },
     {
-        imgUrl: 'assets/images/video/07.jpg',
+        imgUrl: '/assets/images/video/07.jpg',
         imgAlt: 'Video Thum',
         videoLink: 'https://www.youtube.com/embed/g5eQgEuiFC8',
         title: '2021 LVP SuperLiga Orange Summer',
         btnText: 'watch now',
     },
     {
-        imgUrl: 'assets/images/video/08.jpg',
+        imgUrl: '/assets/images/video/08.jpg',
         imgAlt: 'Video Thum',
         videoLink: 'https://www.youtube.com/embed/g5eQgEuiFC8',
         title: '2021 LVP SuperLiga Orange Summer',
@@ -39,21 +39,21 @@ let VideoListContentTop = [
 
 let VideoListContentBottom = [
     {
-        imgUrl: 'assets/images/video/03.jpg',
+        imgUrl: '/assets/images/video/03.jpg',
         imgAlt: 'Video Thum',
         videoLink: 'https://www.youtube.com/embed/g5eQgEuiFC8',
         title: 'IEM SEASON XVI – SUMMER',
         btnText: 'watch now',
     },
     {
-        imgUrl: 'assets/images/video/04.jpg',
+        imgUrl: '/assets/images/video/04.jpg',
         imgAlt: 'Video Thum',
         videoLink: 'https://www.youtube.com/embed/g5eQgEuiFC8',
         title: 'IEM SEASON XVI – SUMMER',
         btnText: 'watch now',
     },
     {
-        imgUrl: 'assets/images/video/05.jpg',
+        imgUrl: '/assets/images/video/05.jpg',
         imgAlt: 'Video Thum',
         videoLink: 'https://www.youtube.com/embed/g5eQgEuiFC8',
         title: 'IEM SEASON XVI – SUMMER',

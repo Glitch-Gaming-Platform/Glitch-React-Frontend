@@ -9,7 +9,7 @@ let community = Glitch.util.Storage.get('community');
 
 let BannerListContent = [
     {
-        bgImgUrl: (community.banner_image) ? community.banner_image  :'assets/images/banner/home-2/bg-2.jpg',
+        bgImgUrl: (community.banner_image) ? community.banner_image  :'/assets/images/banner/home-2/bg-2.jpg',
         title: site.name,
         subtitle: site.tagline,
         desc: site.description,

@@ -9,9 +9,9 @@ const btnText = "Browse All Matches";
 
 let MatchInfoListOne = [
     {
-        imageone: 'assets/images/match/teamsm/teamsm-1.png',
+        imageone: '/assets/images/match/teamsm/teamsm-1.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-2.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-2.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',
@@ -23,9 +23,9 @@ let MatchInfoListOne = [
         btntextTwo: 'Watch Now',
     },
     {
-        imageone: 'assets/images/match/teamsm/teamsm-3.png',
+        imageone: '/assets/images/match/teamsm/teamsm-3.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-4.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-4.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',
@@ -37,9 +37,9 @@ let MatchInfoListOne = [
         btntextTwo: 'Watch Now',
     },
     {
-        imageone: 'assets/images/match/teamsm/teamsm-5.png',
+        imageone: '/assets/images/match/teamsm/teamsm-5.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-6.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-6.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',
@@ -51,9 +51,9 @@ let MatchInfoListOne = [
         btntextTwo: 'Watch Now',
     },
     {
-        imageone: 'assets/images/match/teamsm/teamsm-7.png',
+        imageone: '/assets/images/match/teamsm/teamsm-7.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-8.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-8.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',
@@ -65,9 +65,9 @@ let MatchInfoListOne = [
         btntextTwo: 'Watch Now',
     },
     {
-        imageone: 'assets/images/match/teamsm/teamsm-9.png',
+        imageone: '/assets/images/match/teamsm/teamsm-9.png',
         alt1: 'game list name',
-        imagetwo: 'assets/images/match/teamsm/teamsm-10.png',
+        imagetwo: '/assets/images/match/teamsm/teamsm-10.png',
         alt2: 'game list name',
         title: 'Battlefield-4 tournament',
         matchdate: '30  April 2021',

@@ -27,10 +27,10 @@ class HomePage extends Component {
                 <Header />
                 <BannerSection />
                 <CollectionSection />
-                <AboutSection imgUrl={'assets/images/about/01.png'} />
+                <AboutSection imgUrl={'/assets/images/about/01.png'} />
                 <MatchSection />
                 <PlayerSection />
-                <CtaSection imgUrl={'assets/images/cta/01.png'} />
+                <CtaSection imgUrl={'/assets/images/cta/01.png'} />
                 <VideoSection />
                 <ProductSection />
                 <HrShape />

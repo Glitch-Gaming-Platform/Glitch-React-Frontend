@@ -6,7 +6,7 @@ const title = "Our Most Popular Blog posts";
 
 let BlogListContent = [
     {
-        imgUrl: 'assets/images/blog/01.jpg',
+        imgUrl: '/assets/images/blog/01.jpg',
         imgAlt: 'Blog Thumb',
         title: 'Distinctive redefine resource maximizing for',
         desc: 'Uniquely conceptuaze visionary process ariwith tactical ramatica centered qualitys vectoris with outofthebox scenario is ompelling uthoritatively generate front-end niches after one',
@@ -15,7 +15,7 @@ let BlogListContent = [
         btnText: 'read more',
     },
     {
-        imgUrl: 'assets/images/blog/02.jpg',
+        imgUrl: '/assets/images/blog/02.jpg',
         imgAlt: 'Blog Thumb',
         title: 'redefine resource maximizing for Distinctive',
         desc: 'Uniquely conceptuaze visionary process ariwith tactical ramatica centered qualitys vectoris with outofthebox scenario is ompelling uthoritatively generate front-end niches after one',

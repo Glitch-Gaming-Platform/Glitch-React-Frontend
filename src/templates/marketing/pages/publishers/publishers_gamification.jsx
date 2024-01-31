@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChessKing, faChartLine, faHandshake } from '@fortawesome/free-solid-svg-icons';
+import { faChessKing, faChartLine, faHandshake, faUserFriends, faGem, faBalanceScale, faThumbsUp, faTools, faGamepad, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import Navigate from '../../../../util/Navigate';
 
 function PublishersGamificationPage() {
@@ -22,9 +22,12 @@ function PublishersGamificationPage() {
         <div className="mb-5">
           <div className="row align-items-center">
             <div className="col-md-6">
+            <FontAwesomeIcon icon={faChessKing} size="3x" className="text-primary" />
               <h2 className="fw-bold text-secondary">Dynamic Risk-Reward Strategies</h2>
               <p className="lead">Discover how leveraging game theory in influencer marketing can create innovative strategies that balance risk and reward, leading to more impactful content.</p>
-              <FontAwesomeIcon icon={faChessKing} size="3x" className="text-primary" />
+              
+              <a href={Navigate.publishersRegisterPage()} className="mb-4 default-button"><span>{'Risk Free Try'} <i className="icofont-circled-right"></i></span></a>
+
             </div>
             <div className="col-md-6">
               <img src="/assets/images/publishers/scale_3.png" alt="Strategic Marketing" className="img-fluid rounded shadow mb-3" />
@@ -34,22 +37,25 @@ function PublishersGamificationPage() {
 
         <div className='p-4 mb-5 rounded'style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
           <div className="mb-5">
-            <h2 className="fw-bold text-success text-center">Engagement-Driven Earnings</h2>
+            <h2 className="fw-bold text-success text-center">How Gamification Works With Marketing</h2>
             <div className="row">
               <div className="col-md-4 text-center">
-                <img src="/assets/images/publishers/social.png" alt="Engagement" className="img-fluid rounded shadow mb-3" />
-                <p className="lead">Engage audiences with authentic content.</p>
+                <img src="/assets/images/publishers/handshake_3.png" alt="Engagement" className="img-fluid rounded shadow mb-3 mt-2" />
+                <p className="lead">Match with content creators whose audience aligns with your game.</p>
+                <FontAwesomeIcon icon={faUserFriends} size="3x" className="text-success d-block mx-auto" />
               </div>
               <div className="col-md-4 text-center">
-                <img src="/assets/images/publishers/charts_1.png" alt="Metrics" className="img-fluid rounded shadow mb-3" />
-                <p className="lead">Measure success through advanced analytics.</p>
+                <img src="/assets/images/publishers/scale_2.png" alt="Metrics" className="img-fluid rounded shadow mb-3 mt-2" />
+                <p className="lead">Creators choose how much risk they want to take for promoting your game.</p>
+                <FontAwesomeIcon icon={faBalanceScale} size="3x" className="text-success d-block mx-auto" />
               </div>
               <div className="col-md-4 text-center">
-                <img src="/assets/images/publishers/chess_3.png" alt="Reward" className="img-fluid rounded shadow mb-3" />
-                <p className="lead">Earn based on performance and engagement.</p>
+                <img src="/assets/images/publishers/treasure_1.png" alt="Reward" className="img-fluid rounded shadow mb-3 mt-2" />
+                <p className="lead">They are rewarded with higher potential earnings for the risk they chose.</p>
+                <FontAwesomeIcon icon={faGem} size="3x" className="text-success d-block mx-auto" />
               </div>
             </div>
-            <FontAwesomeIcon icon={faChartLine} size="3x" className="text-success d-block mx-auto" />
+            
           </div>
         </div>
 
@@ -65,6 +71,32 @@ function PublishersGamificationPage() {
             </div>
           </div>
         </div>
+
+        <div className="container lead text-center mb-4">
+          <h4>Learn More About Performance-Based Influencer Marketing</h4>
+          <div className="d-flex justify-content-center align-items-center">
+              <a href={Navigate.publishersBenefitsPage()} className="mx-2 default-button">
+                  <span><FontAwesomeIcon icon={faThumbsUp} className="me-1" />
+                  Benefits
+                  </span>
+              </a>
+              <a href={Navigate.publishersOptimizationPage()} className="mx-2 default-button">
+              <span><FontAwesomeIcon icon={faTools} className="me-1" />
+                  Optimization
+                  </span>
+              </a>
+              <a href={Navigate.publishersGamificationPage()} className="mx-2 default-button">
+              <span><FontAwesomeIcon icon={faGamepad} className="me-1" />
+                  Gamification
+                  </span>
+              </a>
+              <a href={Navigate.publishersAcquisitionPage()} className="mx-2 default-button">
+              <span><FontAwesomeIcon icon={faDollarSign} className="me-1" />
+                  Acquisition Costs
+                  </span>
+              </a>
+          </div>
+      </div>
 
         <div className='pt-5 pb-5 rounded' style={{ backgroundImage: "url(/assets/images/video/bg.jpg)" }}>
           <div className="text-center mb-5">

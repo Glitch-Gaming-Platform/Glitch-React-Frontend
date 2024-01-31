@@ -6,25 +6,25 @@ const title = "Recent Post";
 
 let RecentPostList = [
     {
-        imgUrl: 'assets/images/blog/p-post/01.jpg',
+        imgUrl: '/assets/images/blog/p-post/01.jpg',
         imgAlt: 'recent post thumb',
         title: 'Poor People’s Campaign Our Resources',
         pubDate: '15 May 2022',
     },
     {
-        imgUrl: 'assets/images/blog/p-post/02.jpg',
+        imgUrl: '/assets/images/blog/p-post/02.jpg',
         imgAlt: 'recent post thumb',
         title: 'Boosting Social For NGO And Charities',
         pubDate: '15 May 2022',
     },
     {
-        imgUrl: 'assets/images/blog/p-post/03.jpg',
+        imgUrl: '/assets/images/blog/p-post/03.jpg',
         imgAlt: 'recent post thumb',
         title: 'Poor People’s Campaign Our Resources',
         pubDate: '15 May 2022',
     },
     {
-        imgUrl: 'assets/images/blog/p-post/04.jpg',
+        imgUrl: '/assets/images/blog/p-post/04.jpg',
         imgAlt: 'recent post thumb',
         title: 'Boosting Social For NGO And Charities',
         pubDate: '15 May 2022',

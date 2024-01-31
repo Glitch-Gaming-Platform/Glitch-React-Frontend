@@ -13,7 +13,7 @@ class TeamPage extends Component {
                 <Header />
                 <PageHeader title={'OUR TEAM'} curPage={'Team'} />
                 <PlayerSectionTwo />
-                <CtaSection imgUrl={'assets/images/cta/02.png'} />
+                <CtaSection imgUrl={'/assets/images/cta/02.png'} />
                 <Footer />
             </Fragment>
         );

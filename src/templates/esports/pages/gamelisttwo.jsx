@@ -12,7 +12,7 @@ class GameListTwoSection extends Component {
                 <Header />
                 <PageHeader title={'MOST POPULAR GAME'} curPage={'Match2'} />
                 <GameListTwo />
-                <CtaSection imgUrl={'assets/images/cta/01.png'} />
+                <CtaSection imgUrl={'/assets/images/cta/01.png'} />
                 <Footer />
             </Fragment>
         );
