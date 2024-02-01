@@ -88,6 +88,9 @@ import InfluencerCampaignsPage from './pages/influencers/InfluencerCampaignsPage
 import InfluencerFindCampaignsPage from './pages/influencers/InfluencerFindCampaignsPage';
 import InfluencerViewCampaignPage from './pages/influencers/InfluencerViewCampaignPage';
 import InfluencerManageCampaignPage from './pages/influencers/InfluencerManageCampaignPage';
+import InfluencerMyCampaignsPage from './pages/influencers/InfluencerMyCampaignsPage';
+
+import MessagesListPage from './pages/messages/MessagesListPage';
 
 import PublishersGamificationPage from './pages/publishers/publishers_gamification';
 import PublishersOptimizationPage from './pages/publishers/publishers_optomization';
@@ -154,6 +157,7 @@ function Template() {
           <Route path={Navigate.influencersFindCampaignPage()} element={<InfluencerFindCampaignsPage />} />
           <Route path={Navigate.influencersViewCampaignPage()} element={<InfluencerViewCampaignPage />} />
           <Route path={Navigate.influencersManageCampaignPage()} element={<InfluencerManageCampaignPage />} />
+          <Route path={Navigate.influencersMyCampaignsPage()} element={<InfluencerMyCampaignsPage />} />
 
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
           <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />
@@ -170,6 +174,8 @@ function Template() {
           <Route path={Navigate.authGoogleComplete()} element={<AuthComplete />} />
           <Route path={Navigate.authYoutubeComplete()} element={<AuthComplete />} />
           <Route path={Navigate.authTikTokComplete()} element={<AuthComplete />} />
+
+          <Route path={Navigate.messagesListPage()} element={<MessagesListPage />} />
 
           <Route path={Navigate.publishersGamificationPage()} element={<PublishersGamificationPage />} />
           <Route path={Navigate.publishersOptimizationPage()} element={<PublishersOptimizationPage />} />

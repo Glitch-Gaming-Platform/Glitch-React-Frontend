@@ -12,6 +12,7 @@ import timeouts from '../../../../constants/timeouts';
 import Danger from '../../component/alerts/Danger';
 import SocialPostMetrics from '../../component/section/campaigns/campaign_social_post';
 import CampaignAnalytics from '../../component/section/campaigns/campaign_earning_analytics';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 const CampaignManageInfluencerPage = () => {
 
@@ -127,7 +128,7 @@ const CampaignManageInfluencerPage = () => {
 
     return (
         <>
-            <Header />
+            <PublisherHeader />
             <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">

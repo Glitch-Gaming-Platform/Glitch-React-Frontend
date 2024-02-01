@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import CampaignInfluencerForm from '../../component/section/campaigns/campaign_influencer';
 import Loading from '../../component/alerts/Loading';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 
 function CampaignCreatePage() {
@@ -186,7 +187,7 @@ function CampaignCreatePage() {
     return (
         <>
             <Fragment>
-                <Header />
+                <PublisherHeader />
                 <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">

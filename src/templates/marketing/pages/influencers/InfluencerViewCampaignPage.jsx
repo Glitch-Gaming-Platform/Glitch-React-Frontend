@@ -11,6 +11,7 @@ import Moment from 'react-moment';
 import timeouts from '../../../../constants/timeouts';
 import Danger from '../../component/alerts/Danger';
 import { useNavigate } from 'react-router-dom';
+import InfluencerHeader from '../../component/layout/infuencerheader';
 
 
 const InfluencerViewCampaignPage = () => {
@@ -121,7 +122,7 @@ const InfluencerViewCampaignPage = () => {
 
     return (
         <>
-            <Header />
+            <InfluencerHeader />
             <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">

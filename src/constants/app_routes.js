@@ -91,6 +91,7 @@
 
     //influencers
     influencer_campaigns : '/influencers/campaigns',
+    influencer_my_campaigns : '/influencers/campaigns/mine',
     influencer_find_campaigns : '/influencers/findcampaigns', 
     influencer_view_campaign : '/influencers/:campaign_id/campaign',
     influencer_manage_campaign : '/influencers/:campaign_id/campaign/:user_id',  
@@ -114,7 +115,8 @@
     publishers_acquisition : '/publishers/acquisition',
     publishers_register : '/publishers/register',
 
-
+    //Messages
+    messages : '/messages',
     
 
     //streams route

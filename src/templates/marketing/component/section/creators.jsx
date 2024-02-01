@@ -11,11 +11,13 @@ const Creators = () => {
             </div>
 
             <div className="container py-5 text-center" key={'key1'}>
-                <h1 class="display-3" style={{ textTransform: 'none' }}>
+                <h2  style={{ textTransform: 'none' }}>
                     <i className="fas fa-gamepad me-3"></i>
                     Dive into the world of effortless live streaming, clipping, and sharing. We're reshaping the way gaming influencers connect with fans!
-                </h1>
+                </h2>
+                <hr />
             </div>
+
 
 
             <div className="container padding-bottom" key={'key2'}>
@@ -52,9 +54,11 @@ const Creators = () => {
                         </div>
                     </div>
                 </div>
+
+                <hr className='mt-5' />
             </div>
 
-
+                
 
             <div className="container padding-bottom pl-4" key={'key-multicast'} >
                 <div className="section-wrapper">

@@ -12,10 +12,13 @@ import timeouts from '../../../../constants/timeouts';
 import Danger from '../../component/alerts/Danger';
 import SocialPostMetrics from '../../component/section/campaigns/campaign_social_post';
 import CampaignAnalytics from '../../component/section/campaigns/campaign_earning_analytics';
+import InfluencerHeader from '../../component/layout/infuencerheader';
+import UserItem from '../../../esports/component/section/user/detail_user_item';
 
 const InfluencerManageCampaignPage = () => {
 
     const [campaign, setCampaign] = useState({});
+    const [community, setCommunity] = useState({});
     const [posts, setPosts] = useState([]);
     const [user, setUser] = useState({});
     const { id, campaign_id, user_id } = useParams();
@@ -57,6 +60,7 @@ const InfluencerManageCampaignPage = () => {
     useEffect(() => {
 
         if (Glitch.util.Session.isLoggedIn()) {
+
             Glitch.api.Users.me().then(response => {
                 setMe(response.data.data);
             }).catch(error => {
@@ -87,6 +91,13 @@ const InfluencerManageCampaignPage = () => {
             };
 
             setCampaign(updatedCampaign);
+
+            Glitch.api.Communities.view(response.data.data.campaign.community.id).then(response => {
+                console.log(response.data.data);
+                setCommunity(response.data.data);
+            }).catch(error => {
+                console.error(error);
+            });
 
         }).catch(error => {
 
@@ -127,7 +138,7 @@ const InfluencerManageCampaignPage = () => {
 
     return (
         <>
-            <Header />
+            <InfluencerHeader />
             <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
@@ -195,6 +206,19 @@ const InfluencerManageCampaignPage = () => {
 
                             <CampaignAnalytics data={campaign} />
                         </section>
+
+                        <section className="my-4">
+                            <h3 className="text-black">Campaign Admins</h3>
+
+                            {community && community?.admins && community?.admins.map(function (contestant, index) {
+                            return (
+                                <UserItem key={index} user={contestant} />
+                            );
+                        })}
+                        </section>
+
+
+                       
                     </div>
                 </div>
             </div>

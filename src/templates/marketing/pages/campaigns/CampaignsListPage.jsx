@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import axios from 'axios';
 import Switch from "react-switch";
+import PublisherHeader from '../../component/layout/publisherheader';
 
 const CampaignsListPage = () => {
     const [campaigns, setCampaigns] = useState([]);
@@ -73,7 +74,7 @@ const CampaignsListPage = () => {
     return (
         <>
             <Fragment>
-                <Header />
+                <PublisherHeader />
                 <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">
@@ -106,7 +107,7 @@ const CampaignsListPage = () => {
                                     <p className="card-text" ><span dangerouslySetInnerHTML={createMarkup(campaign.description)} /></p>
 
                                     <div className="row">
-                                        <div className="col-md-4">
+                                        <div className="col-md-6">
                                             <div className="d-flex align-items-start my-3 text-black">
                                                 {/* Image Section */}
                                                 <img src={(campaign?.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
@@ -118,14 +119,14 @@ const CampaignsListPage = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-md-4">
+                                        <div className="col-md-3">
 
                                             <p className="card-text"><strong>Total Budget:</strong> {(campaign.spend_limit) ? '$' + campaign.spend_limit : 'Infinite'}</p>
                                             <p className="card-text"><strong>Budget Cap Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer : 'Infinite'}</p>
                                             <p className="card-text"><strong>Max Influencers For Campaign:</strong> {(campaign.influencer_limit) ? campaign.influencer_limit : 'Infinite'}</p>
 
                                         </div>
-                                        <div className="col-md-4">
+                                        <div className="col-md-3">
                                             <p><strong>Total Influencers:</strong> {campaign.total_influencers}</p>
                                             <p><strong>Total Active Influencers:</strong> {campaign.total_active_influencers}</p>
                                         </div>
@@ -145,7 +146,7 @@ const CampaignsListPage = () => {
                                                 checked={campaign.is_active}
                                                 onChange={() => toggleCampaignStatus(campaign.id, !campaign.is_active)}
                                                 className='text-right'
-                                            />
+                                            /> &nbsp;&nbsp;&nbsp;{(campaign.is_active) ? 'Active' : 'Inactive'}
                                     </div>
                                 </div>
 

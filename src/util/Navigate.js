@@ -396,6 +396,13 @@ const Navigate = {
         return path;
     },
 
+    influencersMyCampaignsPage : () => {
+
+        let path = app_routes.influencer_my_campaigns;
+
+        return path;
+    },
+
     influencersFindCampaignPage : () => {
 
         let path = app_routes.influencer_find_campaigns;
@@ -430,6 +437,10 @@ const Navigate = {
     },
 
 
+    //Messages
+    messagesListPage : () => {
+        return app_routes.messages;
+    },
 
     //Posts
     postsListPage : () => {

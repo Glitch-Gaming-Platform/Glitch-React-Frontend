@@ -78,7 +78,7 @@ function PublisherUserAcquistion() {
                         <p className='lead'><FontAwesomeIcon icon={faBullhorn} /> With Glitch's influencer match making system, you can with creators whose followers best represent your target audiences and that are more likely to be interested in your game, resulting in:</p>
 
                         {/* List of benefits */}
-                        <ul>
+                        <ul style={{listStyle: 'none', marginLeft: '-10px'}}>
                             <li className='lead'><FontAwesomeIcon icon={faPercentage} /> Improved conversion rates</li>
                             <li className='lead'><FontAwesomeIcon icon={faUsers} /> Effective audience targeting</li>
                             <li className='lead'><FontAwesomeIcon icon={faRocket} /> Enhanced user acquisition strategies</li>

@@ -24,9 +24,9 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
                     <p className="lead">The information below is what the influencer will read when reviewing your campaign.</p>
                     <form>
                        
-                        {createTextAreaField('brief', 'Brief', 'The brief is provided to influencers to research the campaign.', errors)}
+                        {createTextAreaField('brief', 'Brief', 'The brief is an overview about the game and the campaign. It should try to peak the interest in the influencer in why the should work with your game.', errors)}
 
-                        {createTextAreaField('requirements', 'Requirements', 'List any requirements you have an influencer for this campaign.', errors)}
+                        {createTextAreaField('requirements', 'Requirements', 'List any requirements you have of the creator for this campaign. This could range from requirement in their following size, social accounts, interest and other areas.', errors)}
 
                         {createTextAreaField('target_audience', 'Target Audience', 'Describe potential target audiences.', errors)}
 

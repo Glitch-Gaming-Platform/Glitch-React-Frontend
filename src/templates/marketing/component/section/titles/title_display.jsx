@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import Moment from 'react-moment';
 
 const GameTitle = ({ gameInfo }) => {
 
@@ -39,7 +40,7 @@ const GameTitle = ({ gameInfo }) => {
               {renderSection('Age Rating', gameInfo.age_rating)}
               {renderSection('Developer', gameInfo.developer)}
               {renderSection('Publisher', gameInfo.publisher)}
-              {renderSection('Release Date', gameInfo.release_date)}
+              {renderSection('Release Date', (gameInfo.release_date) ? <Moment format="MM-DD-YYYY">{gameInfo.release_date}</Moment> : '')}
               {renderSection('Gameplay Mechanics', gameInfo.gameplay_mechanics)}
               {renderSection('Narrative Setting', gameInfo.narrative_setting)}
             </div>

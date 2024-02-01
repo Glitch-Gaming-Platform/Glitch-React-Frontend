@@ -40,7 +40,7 @@ function PublishersOptimizationPage() {
             <div className="col-md-6">
               <h2 className="text-white">Focus On Objectives That Best Align With Your Game</h2>
               <p className="lead">Understanding your game's stage and focusing on objectives, be it driving new user signups or enhancing engagement with existing players, is crucial for a successful influencer marketing strategy.</p>
-              <ul className="fa-ul lead">
+              <ul className="fa-ul lead" style={{listStyle: 'none', marginLeft: '10px'}}>
                 <li><FontAwesomeIcon icon={faUsers} listItem /> Community Building</li>
                 <li><FontAwesomeIcon icon={faDollarSign} listItem /> Player Acquisition</li>
                 <li><FontAwesomeIcon icon={faChartLine} listItem /> Retention and Monetization</li>

@@ -9,6 +9,7 @@ import GameTitle from '../../component/section/titles/title_display';
 import Navigate from '../../../../util/Navigate';
 import Moment from 'react-moment';
 import CampaignUserManager from '../../component/section/campaigns/campaign_users_manager';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 const CampaignsViewPage = () => {
 
@@ -77,7 +78,7 @@ const CampaignsViewPage = () => {
 
     return (
         <>
-            <Header />
+            <PublisherHeader />
             <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">

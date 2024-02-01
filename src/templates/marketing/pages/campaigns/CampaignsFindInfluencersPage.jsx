@@ -8,6 +8,7 @@ import Navigate from '../../../../util/Navigate';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Make sure to import FontAwesomeIcon
 import { faUser, faUsers } from '@fortawesome/free-solid-svg-icons'; // Import specific icons
+import PublisherHeader from '../../component/layout/publisherheader';
 
 const CampaignsFindInfluencersPage = () => {
     const [users, setUsers] = useState([]);
@@ -44,7 +45,7 @@ const CampaignsFindInfluencersPage = () => {
     return (
         <>
             <Fragment>
-                <Header />
+                <PublisherHeader />
                 <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">

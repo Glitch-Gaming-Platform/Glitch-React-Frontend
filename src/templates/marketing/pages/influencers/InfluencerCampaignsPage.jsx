@@ -6,6 +6,7 @@ import Footer from '../../component/layout/footer';
 import { Link } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import axios from 'axios';
+import InfluencerHeader from '../../component/layout/infuencerheader';
 
 const InfluencerCampaignsPage = () => {
     const [campaigns, setCampaigns] = useState([]);
@@ -49,14 +50,14 @@ const InfluencerCampaignsPage = () => {
     return (
         <>
             <Fragment>
-                <Header />
+                <InfluencerHeader />
                 <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">
                             <div className="pageheader-thumb mb-4">
                                 <img style={{ maxHeight: '160px' }} src="/assets/images/revenue/profits.png" alt="team" />
                             </div>
-                            <h2 className="pageheader-title">Campaigns</h2>
+                            <h2 className="pageheader-title">Find Campaigns</h2>
 
                             <p className="lead">Manage your campaigns for your game that you can connect with your influencers on..</p>
 
@@ -65,7 +66,7 @@ const InfluencerCampaignsPage = () => {
                 </section>
 
                 <div className="container">
-                    <h2>My Campaigns</h2>
+                    <h2>Available Campaigns</h2>
 
                     <div className="d-flex flex-column">
                     {campaigns.length > 0 ? (
@@ -80,12 +81,12 @@ const InfluencerCampaignsPage = () => {
                                         <div className="col-md-4">
                                             <div className="d-flex align-items-start my-3 text-black">
                                                 {/* Image Section */}
-                                                <img src={(campaign?.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
+                                                <img src={(campaign?.campaign.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
 
                                                 {/* Text Section */}
                                                 <div className="text-black">
                                                     <h5 className="mb-1 text-black">{campaign?.title?.name}</h5>
-                                                    <p className="text-muted mb-0">{campaign?.title?.short_description}</p>
+                                                    <p className="text-muted mb-0"><span dangerouslySetInnerHTML={createMarkup(campaign?.title?.short_description)} /></p>
                                                 </div>
                                             </div>
                                         </div>

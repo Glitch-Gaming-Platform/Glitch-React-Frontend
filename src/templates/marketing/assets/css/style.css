@@ -586,7 +586,12 @@ body h6, .page-header-section.style-1 .page-header-content .page-header-inner .b
   margin-top: 10px; }
 
 ul li {
-  margin-left: 0; }
+  margin-left: 20px;
+ }
+
+ .menu li, .left li {
+  margin-left: 0px;
+ }
 
 .page-header-section.style-1 .page-header-content .page-header-inner .breadcrumb li.active, .testimonial-item .testimonial-inner .testimonial-footer h5, .gallery-filter li .itemcount {
   margin-left: 10px; }
@@ -722,8 +727,9 @@ input, textarea, select, .player-item, .player-item-2, .product-item .product-in
   position: absolute;
   width: 1px; }
 
-ul li {
-  list-style: none; }
+.menu li, .left li {
+  list-style: none;
+ }
 
 ul.indent {
   margin-left: 20px; }
