@@ -78,10 +78,10 @@ const InfluencerCampaignsPage = () => {
                                     <p className="card-text" ><span dangerouslySetInnerHTML={createMarkup(campaign.description)} /></p>
 
                                     <div className="row">
-                                        <div className="col-md-4">
+                                        <div className="col-md-6">
                                             <div className="d-flex align-items-start my-3 text-black">
                                                 {/* Image Section */}
-                                                <img src={(campaign?.campaign.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
+                                                <img src={(campaign?.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
 
                                                 {/* Text Section */}
                                                 <div className="text-black">
@@ -90,7 +90,7 @@ const InfluencerCampaignsPage = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="col-md-4">
+                                        <div className="col-md-6">
 
                                             <p className="card-text"><strong>Budget Cap Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer : 'Infinite'}</p>
                                             <p className="card-text"><strong>Max Influencers For Campaign:</strong> {(campaign.influencer_limit) ? campaign.influencer_limit : 'Infinite'}</p>

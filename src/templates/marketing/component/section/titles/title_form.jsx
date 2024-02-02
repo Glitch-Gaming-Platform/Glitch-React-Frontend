@@ -193,10 +193,11 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                         <p className="lead">Enter information about the game title you want influencers to promote. Please fill out as much information as possible to excite the potential creator(s) you might be working with.</p>
                     </div>
                     <div className="card-body">
-                        {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors)}
-                        {createTextarea('Short Description', 'short_description', gameTitle.short_description, handleChange, errors)}
-                        {createInput('Platform Compatibility', 'platform_compatibility', gameTitle.platform_compatibility, handleChange, 'text', 'fab fa-steam-symbol', errors)}
-                        {createInput('Age Rating', 'age_rating', gameTitle.age_rating, handleChange, 'text', 'fas fa-child', errors)}
+                        {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors, 'Enter the name of the game.')}
+                        {createTextarea('Short Description', 'short_description', gameTitle.short_description, handleChange, errors, 'Enter a 1 paragraph brief short description about the game.')}
+                        {createTextarea('Long Description', 'long_description', gameTitle.long_description, handleChange, errors, 'Enter a longer more in-depth description about the game that can be multiple paragraphs.')}
+                        {createInput('Platform Compatibility', 'platform_compatibility', gameTitle.platform_compatibility, handleChange, 'text', 'fab fa-steam-symbol', errors, 'Enter what platforms this game is for, ie: Playstation 5, PC, Xbox, etc')}
+                        {createInput('Age Rating', 'age_rating', gameTitle.age_rating, handleChange, 'text', 'fas fa-child', errors, 'Enter domestic and/or global age ratings for the game.')}
                         {createInput('Developer', 'developer', gameTitle.developer, handleChange, 'text', 'fas fa-code-branch', errors)}
                         {createInput('Publisher', 'publisher', gameTitle.publisher, handleChange, 'text', 'fas fa-briefcase', errors)}
                         {createInput('Release Date', 'release_date', gameTitle.release_date, handleChange, 'date', 'fas fa-calendar-alt', errors)}
@@ -295,12 +296,13 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
         </div>
     );
 
-    function createInput(label, name, value, handleChange, type = 'text', icon, errors) {
+    function createInput(label, name, value, handleChange, type = 'text', icon, errors, description = '') {
         return (
             <>
                 <div className="form-group mb-3">
                     <label htmlFor={name}><i className={`${icon} mr-2`}></i> &nbsp;{label}</label>
                     <input type={type} className="form-control" id={name} name={name} value={value || ''} onChange={handleChange} />
+                    <p className="small">{description}</p>
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {
                     return <Danger message={name} key={index} />;
@@ -309,12 +311,13 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
         );
     }
     
-    function createTextarea(label, name, value, handleChange, errors, required = false) {
+    function createTextarea(label, name, value, handleChange, errors, description, required = false) {
         return (
             <>
                 <div className="mb-3">
                     <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
                     <Wysiwyg children={value || ''} name={name} id={name} onChange={(value) => {handleWysiwigInputChange(name, value)}} />
+                    <p className="small">{description}</p>
     
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {

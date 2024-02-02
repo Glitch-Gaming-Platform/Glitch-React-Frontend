@@ -11,7 +11,7 @@ const Creators = () => {
             </div>
 
             <div className="container py-5 text-center" key={'key1'}>
-                <h2  style={{ textTransform: 'none' }}>
+                <h2 style={{ textTransform: 'none' }}>
                     <i className="fas fa-gamepad me-3"></i>
                     Dive into the world of effortless live streaming, clipping, and sharing. We're reshaping the way gaming influencers connect with fans!
                 </h2>
@@ -58,7 +58,7 @@ const Creators = () => {
                 <hr className='mt-5' />
             </div>
 
-                
+
 
             <div className="container padding-bottom pl-4" key={'key-multicast'} >
                 <div className="section-wrapper">
@@ -237,9 +237,10 @@ const Creators = () => {
                     </div>
 
                     <ul className="d-flex flex-wrap justify-content-center player-meta mb-0">
-                        <li className="d-flex align-items-center" key={1}>
+                        <li className="d-flex align-items-center text-center" key={1}>
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App">
                                 <span className="left me-3"><img src={`/assets/images/creators/github.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
+                                <br /><br />
                                 <span className="right">{"Github Downloads"}</span>
                             </a>
                         </li>
@@ -248,36 +249,64 @@ const Creators = () => {
                                 <span className="left me-3">
                                     <img src={`/assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
                                 </span>
-                                <span className="right">{"Mac"}</span>
+                                <span className="right"></span>
                             </div>
                             <div>
-                                <ul>
+                                <ul style={{ listStyleType: 'none' }}>
                                     <li>
                                         <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2-arm64.dmg">
-                                            Download Mac Silicon Version (AMD)
+                                            Mac Silicon Version (ARM)
                                         </a>
                                     </li>
                                     <li>
                                         <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2.dmg">
-                                            Download Mac Intel Verson (x86)
+                                            Mac Intel Verson (x86)
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
 
-                        <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-Setup-1.5.2.exe">
-                                <span className="left me-3"><img src={`/assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
-                                <span className="right">{"Windows"}</span>
-                            </a>
+                        <li className="d-flex flex-column align-items-center" key={1}>
+                            <div className="d-flex align-items-center mb-2">
+                                <span className="left me-3">
+                                    <img src={`/assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
+                                </span>
+                                <span className="right"></span>
+                            </div>
+                            <div>
+                                <ul style={{ listStyleType: 'none' }}>
+                                    <li>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.3/Glitch-Desktop-App-1.5.3.exe">
+                                            Windows Exe
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
-                        <li className="d-flex align-items-center" key={2}>
-                            <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2.AppImage">
-                                <span className="left me-3"><img src={`/assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
-                                <span className="right">{"Linux"}</span>
-                            </a>
+                        <li className="d-flex flex-column align-items-center" key={1}>
+                            <div className="d-flex align-items-center mb-2">
+                                <span className="left me-3">
+                                    <img src={`/assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
+                                </span>
+                                <span className="right"></span>
+                            </div>
+                            <div>
+                                <ul style={{ listStyleType: 'none' }}>
+                                    <li>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.3/Glitch-Desktop-App-1.5.3-arm64.AppImage">
+                                            Linux ARM App Image (AMD)
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.3/Glitch-Desktop-App-1.5.3.AppImage">
+                                            Linux Intel App Image (x86)
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
+
                     </ul>
                 </div>
             </div>
