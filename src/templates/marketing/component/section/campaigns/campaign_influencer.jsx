@@ -2,10 +2,12 @@ import React from 'react';
 import Select from '../../form/select';
 import Danger from '../../alerts/Danger';
 import Wysiwyg from '../../form/wysiwyg';
+import RequiredAsterisk from '../../form/required_asterisk';
 
 function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
 
     const handleInputChange = (e) => {
+        console.log(e.target.name, e.target.value);
         setCampaignData({ ...campaignData, [e.target.name]: e.target.value });
     };
 
@@ -23,6 +25,8 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
                 <div className="card-body">
                     <p className="lead">The information below is what the influencer will read when reviewing your campaign.</p>
                     <form>
+
+                        {createInputField('title_creator', 'Title For Creators', 'This is the title creators and influencer will see when viewing your campaign.', 'text', true, errors)}
                        
                         {createTextAreaField('brief', 'Brief', 'The brief is an overview about the game and the campaign. It should try to peak the interest in the influencer in why the should work with your game.', errors)}
 
@@ -37,13 +41,14 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
         </div>
     );
 
-    function createInputField(name, label, description, type = 'text', errors) {
+    function createInputField(name, label, description, type = 'text', required = false, errors) {
         return (
             <>
                 <div className="mb-3">
-                    <label htmlFor={name}>{label}</label>
-                    <p>{description}</p>
+                    <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
+                    
                     <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} placeholder={label} />
+                    <p className="small">{description}</p>
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {
                     return <Danger message={name} key={index} />;

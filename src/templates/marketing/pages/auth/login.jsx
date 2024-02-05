@@ -102,7 +102,7 @@ class LogIn extends Component {
         let token = params.token;
 
         if(iscohost) {
-            Glitch.api.Events.acceptInvite.eventsAcceptInvite(stream_id, token).then(response => {
+            Glitch.api.Events.acceptInvite(stream_id, token).then(response => {
                 this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
             }).catch(error => {
                 this.props.router.navigate(Navigate.streamsCohostWatch(stream_id));
