@@ -97,6 +97,7 @@ import PublishersOptimizationPage from './pages/publishers/publishers_optomizati
 import PublisherBenefitPage from './pages/publishers/publishers_benefits';
 import PublisherUserAcquistion from './pages/publishers/publishers_user_acquistion';
 import PublisherRegisterPage from './pages/publishers/publishers_register';
+import Cohostwatchstream from './pages/streams/cohostwatchstream';
 
 
 function Template() {
@@ -174,6 +175,8 @@ function Template() {
           <Route path={Navigate.authGoogleComplete()} element={<AuthComplete />} />
           <Route path={Navigate.authYoutubeComplete()} element={<AuthComplete />} />
           <Route path={Navigate.authTikTokComplete()} element={<AuthComplete />} />
+
+          <Route path={Navigate.streamsCohostWatch()} element={<Cohostwatchstream />} />
 
           <Route path={Navigate.messagesListPage()} element={<MessagesListPage />} />
 
