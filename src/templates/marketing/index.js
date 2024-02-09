@@ -73,6 +73,9 @@ import CreatorsRewardsPage from './pages/misc/creatorsrewards';
 import CreatorsPublishersPage from './pages/misc/creatorspublishers';
 import InstallationPage from './pages/misc/installation';
 import CommunitiesCss from './pages/communities/CommunitiesCss';
+
+import CreatorsOverviewPage from './pages/creators/CreatorsOverview';
+import CreatorsMicroPage from './pages/creators/CreatorsMirco';
 import CreatorsInfluencerMacPage from './pages/misc/creatorsinfluencersmac';
 import CreatorsInfluencerLinuxPage from './pages/misc/creatorsinfluencerslinux';
 import CreatorsPublishersMacPage from './pages/misc/creatorspublishersmac';
@@ -123,12 +126,15 @@ function Template() {
           <Route path={Navigate.creatorsPage()} element={<CreatorsPage />} />
 
           <Route path={Navigate.creatorsInfluencersPage()} element={<CreatorsRewardsPage />} />
+          <Route path={Navigate.creatorsOverviewPage()} element={<CreatorsOverviewPage/>} />
+          <Route path={Navigate.creatorsMicroPage()} element={<CreatorsMicroPage/>} />
           <Route path={Navigate.creatorsInfluencersMacPage()} element={<CreatorsInfluencerMacPage />} />
           <Route path={Navigate.creatorsInfluencersLinuxPage()} element={<CreatorsInfluencerLinuxPage />} />
           <Route path={Navigate.creatorsPublishersPage()} element={<CreatorsPublishersPage />} />
           <Route path={Navigate.creatorsPublishersMacPage()} element={<CreatorsPublishersMacPage />} />
           <Route path={Navigate.creatorsPublishersLinuxPage()} element={<CreatorsPublishersLinuxPage />} />
           <Route path={Navigate.creatorsCalculator()} element={<CreatorsCalculator />} />
+          
 
           <Route path={Navigate.campaignsPage()} element={<CampaignsListPage />} />
           <Route path={Navigate.campaignsCreatePage()} element={<CampaignCreatePage />} />

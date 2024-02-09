@@ -30,6 +30,8 @@
     campaigns_manage_influencer : '/campaigns/:campaign_id/campaign/:user_id',
 
     creators: '/creators',
+    creators_overview: '/creators/overview',
+    creators_micro: '/creators/micro',
     creator_influencers: '/creators/influencers',
     creator_influencers_mac: '/creators/macinfluencers',
     creator_influencers_linux: '/creators/linuxinfluencers',

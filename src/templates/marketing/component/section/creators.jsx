@@ -108,7 +108,16 @@ const Creators = () => {
                                 </div>
                                 <div className="blog-content p-4 w-xl-50 w-100">
                                     <h2>Create & Edit Epic Clips Instantly!</h2>
-                                    <p className='lead'>Ditch the hassle of complex software. Slice and dice your epic gameplay moments in mere seconds! Your gameplay is automatically <strong>recorded</strong> on your computer so there are no storage fees.</p>
+                                    <p className='lead'>Ditch the hassle of complex software. Slice and dice your epic gameplay moments in mere seconds! Your gameplay is automatically <strong>recorded</strong> on your computer so there are no storage fees. Various editing tools include:</p>
+                                    <ul>
+                                        <li>Combining clips</li>
+                                        <li>Adding text overlays</li>
+                                        <li>Incorporating voice-overs</li>
+                                        <li>Changing video speeds</li>
+                                        <li>Utilizing text-to-speech</li>
+                                        <li>Applying transitions</li>
+                                        <li>And more!</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -116,14 +125,27 @@ const Creators = () => {
                 </div>
             </div>
 
-            <br /><br />
+
+            <div className="container py-5" key={'key3'} >
+
+             {/* Micro-Influencers Section */}
+            <div className="mb-5 p-5 rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
+            <h2 className="mb-4 text-center">Livestream With Others In Real-Time!</h2>
+            <div className="text-center">
+                
+                <p className="lead">Invite co-hosts to join your stream and engage in real-time conversations, with up to 60 FPS and as low as 1-second latency. Watch your gameplay together as you restream to multiple platforms simultaneously.</p>
+                <img src="/assets/images/creators/co_hosts.png" alt="Micro Influencers" className="img-fluid rounded shadow mb-2" />
+            </div>
+            </div>
+
+            </div>
 
             <div className="container py-5" style={{ background: 'linear-gradient(45deg, #0a103d, #2a3a6e)', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
                 <div className="section-wrapper">
                     <div className="row g-4 justify-content-center">
                         <div className="col-12 text-center">
                             <h2>Boost Your Social Presence!</h2>
-                            <p className='lead'>With just a single click, share your epic moments on multiple platforms and skyrocket your following.</p>
+                            <p className='lead'>With just a single click, use our built-in social sharing tools to share your epic moments across multiple platforms and skyrocket your following.</p>
                         </div>
                         <div className="col-12 d-flex justify-content-center">
                             <img src="/assets/images/creators/tiktok.png" alt="TikTok" className="m-2" style={{ width: '4rem', height: '4rem' }} />
@@ -277,7 +299,7 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.3/Glitch-Desktop-App-1.5.3.exe">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.5/Glitch-Desktop-App-Setup-1.5.5.exe">
                                             Windows Exe
                                         </a>
                                     </li>
@@ -294,12 +316,12 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.3/Glitch-Desktop-App-1.5.3-arm64.AppImage">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.5/Glitch-Desktop-App-1.5.5-arm64.AppImage">
                                             Linux ARM App Image (AMD)
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.3/Glitch-Desktop-App-1.5.3.AppImage">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.5/Glitch-Desktop-App-1.5.5.AppImage">
                                             Linux Intel App Image (x86)
                                         </a>
                                     </li>

@@ -50,6 +50,12 @@ const Navigate = {
     creatorsPage : () => {
         return app_routes.creators;
     },
+    creatorsOverviewPage : () => {
+        return app_routes.creators_overview;
+    },
+    creatorsMicroPage : () => {
+        return app_routes.creators_micro;
+    },
     creatorsInfluencersPage : () => {
         return app_routes.creator_influencers;
     },
