@@ -13,14 +13,14 @@ class CreatorsPage extends Component {
             <>
                 <Helmet>
                     <title>Glitch Streaming App</title>
-                    <meta name="description" content="The fastest and easiest way to live stream your games online and create engaging experiences." />
+                    <meta name="description" content="Unlock your gaming potential with Glitch! Effortless live streaming, instant clip editing, and real-time collaboration for content creators. Streamline your gaming broadcasts, connect with fans, and monetize your passion. Download now for Windows, Mac and Linux." />
                     <meta property="og:title" content="Glitch Streaming App" />
-                    <meta property="og:description" content="The fastest and easiest way to live stream your games online and create engaging experiences." />
+                    <meta property="og:description" content="Unlock your gaming potential with Glitch! Effortless live streaming, instant clip editing, and real-time collaboration for content creators. Streamline your gaming broadcasts, connect with fans, and monetize your passion. Download now for Windows, Mac and Linux." />
                     <meta property="og:image" content="//assets/images/meta/meta_11.jpeg" />
                     <meta property="og:url" content={typeof window !== 'undefined' ? window.location.href : 'https://www.glitch.fun'} />
                     <meta property="og:type" content="website" />
                     <meta name="twitter:title" content="Glitch Streaming App" />
-                    <meta name="twitter:description" content="The fastest and easiest way to live stream your games online and create engaging experiences." />
+                    <meta name="twitter:description" content="Unlock your gaming potential with Glitch! Effortless live streaming, instant clip editing, and real-time collaboration for content creators. Streamline your gaming broadcasts, connect with fans, and monetize your passion. Download now for Windows, Mac and Linux." />
                     <meta name="twitter:image" content="//assets/images/meta/meta_11.jpeg" />
                 </Helmet>
                 <Fragment>

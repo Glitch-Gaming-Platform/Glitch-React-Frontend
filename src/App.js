@@ -80,8 +80,14 @@ const App = () => {
 
   function getDomain() {
     const currentDomain = window.location.hostname;
-
-    if (currentDomain === process.env.REACT_APP_SITE_DOMAIN || currentDomain.endsWith(process.env.REACT_APP_SITE_DOMAIN)) {
+  
+    // Check if the current domain is exactly the top-level domain (TLD)
+    if (currentDomain === process.env.REACT_APP_SITE_DOMAIN) {
+      // Redirect to 'www' subdomain
+      const wwwDomain = `www.${process.env.REACT_APP_SITE_DOMAIN}`;
+      window.location.replace(`${window.location.protocol}//${wwwDomain}${window.location.pathname}${window.location.search}`);
+      return wwwDomain; // Return the 'www' subdomain, although the page will redirect
+    } else if (currentDomain.endsWith(process.env.REACT_APP_SITE_DOMAIN)) {
       const subdomain = currentDomain.split('.')[0];
       return subdomain;
     } else {

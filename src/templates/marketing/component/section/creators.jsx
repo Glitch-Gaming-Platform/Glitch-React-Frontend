@@ -10,17 +10,18 @@ const Creators = () => {
                 The #1 Workflow App <br />For Gaming Content Creators
             </div>
 
-            <div className="container py-5 text-center" key={'key1'}>
+            <div className="container py-5 text-center mb-1" key={'key1'}>
                 <h2 style={{ textTransform: 'none' }}>
                     <i className="fas fa-gamepad me-3"></i>
-                    Dive into the world of effortless live streaming, clipping, and sharing. We're reshaping the way gaming influencers connect with fans!
+                    Dive into the world of effortless live streaming, clipping, and social sharing. We're reshaping the way gaming influencers connect with fans!
                 </h2>
-                <hr />
+                <hr className='mt-5' />
             </div>
 
 
 
-            <div className="container padding-bottom" key={'key2'}>
+
+            <div className="container padding-bottom mt-2" key={'key2'}>
                 <div className="section-wrapper">
                     <div className="row g-4 justify-content-center"></div>
                     <div className="container">
@@ -282,7 +283,7 @@ const Creators = () => {
                                     </li>
                                     <li>
                                         <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2.dmg">
-                                            Mac Intel Verson (x86)
+                                            Mac Intel Version (x86)
                                         </a>
                                     </li>
                                 </ul>
