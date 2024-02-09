@@ -89,6 +89,7 @@ const WaitlistPublisher = () => {
             email: email,
             website: website,
             company: company,
+            type : 'publisher',
             meta: {
                 info: info,
                 streaming_twitch: streaming_twitch,

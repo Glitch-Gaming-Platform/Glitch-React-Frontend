@@ -3,6 +3,9 @@ import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import WaitlistInfluencer from "../../component/section/waitlistinfluencer";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGamepad, faMoneyBillWave, faBroadcastTower, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+
 
 class CreatorsInfluencerLinuxPage extends Component {
 
@@ -120,6 +123,58 @@ class CreatorsInfluencerLinuxPage extends Component {
                             </div>
                         </div>
                     </div>
+
+                    <div className="how-it-works-section py-5">
+    <div className="container">
+        <h2 className="text-center mb-4">How It Works</h2>
+        <div className="row g-4">
+            {/* Step 1 */}
+            <div className="col-md-6 col-lg-3">
+                <div className="card text-center">
+                    <FontAwesomeIcon icon={faGamepad} size="3x" className="text-primary mt-4"/>
+                    <div className="card-body">
+                        <h5 className="card-title">Connect With A Game</h5>
+                        <p className="card-text">Connect with a game you want to promote.</p>
+                        <img src="/path/to/your/image1.jpg" alt="Connect" className="img-fluid"/>
+                    </div>
+                </div>
+            </div>
+            {/* Step 2 */}
+            <div className="col-md-6 col-lg-3">
+                <div className="card text-center">
+                    <FontAwesomeIcon icon={faMoneyBillWave} size="3x" className="text-primary mt-4"/>
+                    <div className="card-body">
+                        <h5 className="card-title">Rate Card</h5>
+                        <p className="card-text">They will give you a rate card with different payment options.</p>
+                        <img src="/path/to/your/image2.jpg" alt="Rate Card" className="img-fluid"/>
+                    </div>
+                </div>
+            </div>
+            {/* Step 3 */}
+            <div className="col-md-6 col-lg-3">
+                <div className="card text-center">
+                    <FontAwesomeIcon icon={faBroadcastTower} size="3x" className="text-primary mt-4"/>
+                    <div className="card-body">
+                        <h5 className="card-title">Promote The Game</h5>
+                        <p className="card-text">Promote the game on the platform that best aligns with you.</p>
+                        <img src="/path/to/your/image3.jpg" alt="Promote" className="img-fluid"/>
+                    </div>
+                </div>
+            </div>
+            {/* Step 4 */}
+            <div className="col-md-6 col-lg-3">
+                <div className="card text-center">
+                    <FontAwesomeIcon icon={faCheckCircle} size="3x" className="text-primary mt-4"/>
+                    <div className="card-body">
+                        <h5 className="card-title">Get Paid</h5>
+                        <p className="card-text">Get paid based on results.</p>
+                        <img src="/path/to/your/image4.jpg" alt="Get Paid" className="img-fluid"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                     <div className="container padding-bottom" key={'key3'}>
                         <div className="section-wrapper">

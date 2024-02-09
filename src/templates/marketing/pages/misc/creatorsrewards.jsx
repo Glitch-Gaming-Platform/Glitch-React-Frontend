@@ -3,6 +3,8 @@ import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import WaitlistInfluencer from "../../component/section/waitlistinfluencer";
 import { Helmet } from "react-helmet";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGamepad, faMoneyBillWave, faBroadcastTower, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 class CreatorsRewardsPage extends Component {
 
@@ -17,11 +19,11 @@ class CreatorsRewardsPage extends Component {
                     <title>Earn Money Playing Games And Creating Content</title>
                     <meta name="description" content="Become a content creator and get paid for play games and creating content." />
                     <meta name="robots" content="index, follow" />
-                    <meta property="og:title" content="Earn Money Playing Games And Creating Content"/>
-                    <meta property="og:description" content="Become a content creator and get paid for play games and creating content."/>
-                    <meta property="og:type" content="website"/>
-                    <meta property="og:url" content={currentUrl}/>
-                    <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/creators_3.png"/>
+                    <meta property="og:title" content="Earn Money Playing Games And Creating Content" />
+                    <meta property="og:description" content="Become a content creator and get paid for play games and creating content." />
+                    <meta property="og:type" content="website" />
+                    <meta property="og:url" content={currentUrl} />
+                    <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/creators_3.png" />
                 </Helmet>
 
                 <Fragment>
@@ -30,7 +32,7 @@ class CreatorsRewardsPage extends Component {
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
                                 <div className="pageheader-thumb mb-4">
-                                    <img style={{maxHeight: '160px'}} className="rounded" src="/assets/images/creators/creators_3.png" alt="team" />
+                                    <img style={{ maxHeight: '160px' }} className="rounded" src="/assets/images/creators/creators_3.png" alt="team" />
                                 </div>
                                 <h2 className="pageheader-title">Get Rewarded For Playing Games</h2>
 
@@ -51,11 +53,11 @@ class CreatorsRewardsPage extends Component {
                             </div>
 
                             <div className="col-12 d-flex justify-content-center">
-                                <img src={'/assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
-                                <img src={'/assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
-                                <img src={'/assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
-                                <img src={'/assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
-                                <img src={'/assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
 
                                 <img src="/assets/images/creators/tiktok.png" alt="TikTok" className="m-2" style={{ width: '4rem', height: '4rem' }} />
                                 <img src="/assets/images/creators/reddit.png" alt="Reddit" className="m-2" style={{ width: '4rem', height: '4rem' }} />
@@ -67,10 +69,10 @@ class CreatorsRewardsPage extends Component {
                         </div>
                     </div>
 
-                    <section className="cta-section padding-bottom">
+                    <section className="cta-section mb-5">
                         <div className="container">
                             <div className="cta-wrapper item-layer">
-                                <div className="cta-item px-4 px-sm-5 pt-4 pt-sm-5 pt-lg-0" style={{backgroundImage: "url(/assets/images/cta/bg.jpg)"}}>
+                                <div className="cta-item px-4 px-sm-5 pt-4 pt-sm-5 pt-lg-0" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
                                     <div className="row align-items-center">
                                         <div className="col-lg-6">
                                             <div className="cta-content">
@@ -90,6 +92,72 @@ class CreatorsRewardsPage extends Component {
                         </div>
                     </section>
 
+                    <div className="how-it-works-section py-5">
+                        <div className="container">
+                            <h2 className="text-center mb-4">How It Works</h2>
+                            <div className="row g-4">
+                                {/* Step 1 */}
+                                <div className="col-md-6 col-lg-3">
+                                    <div className="card text-center">
+                                        <FontAwesomeIcon icon={faGamepad} size="3x" className="text-primary mt-4" />
+                                        <div className="card-body">
+                                            <h5 className="card-title">Connect With A Game</h5>
+                                            <p className="card-text">Connect with a game you want to promote.</p>
+                                            <img src="/assets/images/creators/connecting_1.webp" alt="Connect" className="img-fluid" />
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Step 2 */}
+                                <div className="col-md-6 col-lg-3">
+                                    <div className="card text-center">
+                                        <FontAwesomeIcon icon={faMoneyBillWave} size="3x" className="text-primary mt-4" />
+                                        <div className="card-body">
+                                            <h5 className="card-title">Rate Card</h5>
+                                            <p className="card-text">They will give you a rate card with different payment options.</p>
+                                            <img src="/assets/images/creators/rate_card_2.webp" alt="Rate Card" className="img-fluid" />
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Step 3 */}
+                                <div className="col-md-6 col-lg-3">
+                                    <div className="card text-center">
+                                        <FontAwesomeIcon icon={faBroadcastTower} size="3x" className="text-primary mt-4" />
+                                        <div className="card-body">
+                                            <h5 className="card-title">Promote The Game</h5>
+                                            <p className="card-text">Promote the game on platforms that aligns with you.</p>
+                                            <img src="/assets/images/creators/promote_1.webp" alt="Promote" className="img-fluid" />
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* Step 4 */}
+                                <div className="col-md-6 col-lg-3">
+                                    <div className="card text-center">
+                                        <FontAwesomeIcon icon={faCheckCircle} size="3x" className="text-primary mt-4" />
+                                        <div className="card-body">
+                                            <h5 className="card-title">Get Paid</h5>
+                                            <p className="card-text">Get paid based on results your social is able to produce.</p>
+                                            <img src="/assets/images/creators/reward_1.webp" alt="Get Paid" className="img-fluid" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="container py-5" key={'key3'} >
+
+                        {/* Micro-Influencers Section */}
+                        <div className="mb-5 p-5 rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
+                            <h2 className="mb-4 text-center">The Rate Card And Hybrid Model</h2>
+                            <div className="text-center">
+
+                                <p className="lead">Gaming publishers will provide you with a rate card that outlines how much you earn for each metric across various social platforms. The hybrid model enables you to receive a guaranteed flat rate, along with the potential for higher earnings.</p>
+                                <img src="/assets/images/creators/rate_card.jpg" alt="Micro Influencers" className="img-fluid rounded shadow mb-2" />
+                            </div>
+                        </div>
+
+                    </div>
 
 
                     <div className="container padding-bottom mt-5" key={'key2'}>

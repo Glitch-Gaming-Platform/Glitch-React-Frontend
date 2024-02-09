@@ -129,15 +129,15 @@ const Creators = () => {
 
             <div className="container py-5" key={'key3'} >
 
-             {/* Micro-Influencers Section */}
-            <div className="mb-5 p-5 rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
-            <h2 className="mb-4 text-center">Livestream With Others In Real-Time!</h2>
-            <div className="text-center">
-                
-                <p className="lead">Invite co-hosts to join your stream and engage in real-time conversations, with up to 60 FPS and as low as 1-second latency. Watch your gameplay together as you restream to multiple platforms simultaneously.</p>
-                <img src="/assets/images/creators/co_hosts.png" alt="Micro Influencers" className="img-fluid rounded shadow mb-2" />
-            </div>
-            </div>
+                {/* Micro-Influencers Section */}
+                <div className="mb-5 p-5 rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
+                    <h2 className="mb-4 text-center">Livestream With Others In Real-Time!</h2>
+                    <div className="text-center">
+
+                        <p className="lead">Invite co-hosts to join your stream and engage in real-time conversations, with up to 60 FPS and as low as 1-second latency. Watch your gameplay together as you restream to multiple platforms simultaneously.</p>
+                        <img src="/assets/images/creators/co_hosts.png" alt="Micro Influencers" className="img-fluid rounded shadow mb-2" />
+                    </div>
+                </div>
 
             </div>
 

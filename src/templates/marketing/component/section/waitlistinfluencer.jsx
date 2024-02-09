@@ -100,6 +100,7 @@ const WaitlistInfluencer = () => {
             first_name: firstName,
             last_name: lastName,
             email: email,
+            type: 'creator',
             meta: {
                 info: info,
                 streaming_twitch: streaming_twitch,
