@@ -145,19 +145,26 @@ class CreatorsRewardsPage extends Component {
                     </div>
 
 
-                    <div className="container py-5" key={'key3'} >
-
-                        {/* Micro-Influencers Section */}
-                        <div className="mb-5 p-5 rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
-                            <h2 className="mb-4 text-center">The Rate Card And Hybrid Model</h2>
-                            <div className="text-center">
-
-                                <p className="lead">Gaming publishers will provide you with a rate card that outlines how much you earn for each metric across various social platforms. The hybrid model enables you to receive a guaranteed flat rate, along with the potential for higher earnings.</p>
-                                <img src="/assets/images/creators/rate_card.jpg" alt="Micro Influencers" className="img-fluid rounded shadow mb-2" />
+                    <div className="container py-5" key={'key3'}>
+                            {/* Micro-Influencers Section */}
+                            <div className="mb-5 p-5 rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
+                                <h2 className="mb-4 text-center">Earnings Scale With The Rate Card <br />And Hybrid Model</h2>
+                                <div className="text-center">
+                                    <p className="lead">Gaming publishers will provide you with a rate card that outlines how much you earn for each metric across various social platforms. The hybrid model enables you to receive a guaranteed flat rate, along with the potential for higher earnings.</p>
+                                    {/* Row for images */}
+                                    <div className="row">
+                                        {/* Column for first image */}
+                                        <div className="col-md-6 d-flex justify-content-center">
+                                            <img src="/assets/images/creators/rate_card.jpg" alt="Rate Card" className="img-fluid rounded shadow mb-2" />
+                                        </div>
+                                        {/* Column for second image */}
+                                        <div className="col-md-6 d-flex justify-content-center">
+                                            <img src="/assets/images/creators/earnings_graph_2.png" alt="Revenue" className="img-fluid rounded shadow mb-2" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-                    </div>
 
 
                     <div className="container padding-bottom mt-5" key={'key2'}>
