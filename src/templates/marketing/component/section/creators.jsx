@@ -277,12 +277,12 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2-arm64.dmg">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.7/Glitch-Desktop-App-1.5.7-arm64.dmg">
                                             Mac Silicon Version (ARM)
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.2/Glitch-Desktop-App-1.5.2.dmg">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.7/Glitch-Desktop-App-1.5.7.dmg">
                                             Mac Intel Version (x86)
                                         </a>
                                     </li>
@@ -300,7 +300,7 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.5/Glitch-Desktop-App-Setup-1.5.5.exe">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.7/Glitch-Desktop-App-Setup-1.5.7.exe">
                                             Windows Exe
                                         </a>
                                     </li>
@@ -317,12 +317,12 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.5/Glitch-Desktop-App-1.5.5-arm64.AppImage">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.7/Glitch-Desktop-App-1.5.7-arm64.AppImage">
                                             Linux ARM App Image (AMD)
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.5/Glitch-Desktop-App-1.5.5.AppImage">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.5.7/Glitch-Desktop-App-1.5.7.AppImage">
                                             Linux Intel App Image (x86)
                                         </a>
                                     </li>
