@@ -86,15 +86,11 @@ class HeaderTwo extends Component {
         } else {
             loginOrAccount = (<>
                 <Link to={Navigate.authLogin()} className="login"><i className="icofont-user"></i> <span>LOG IN</span> </Link>
-                <Link to={Navigate.authRegister()} className="signup"><i className="icofont-users"></i> <span>SIGN UP</span></Link>
             </>);
 
             loginOrAccountMobile = (<>
                 <li className="d-block d-sm-none" >
                     <Link to={Navigate.authLogin()} >Login</Link>
-                </li>
-                <li className="d-block d-sm-none" >
-                    <Link to={Navigate.authRegister()} >Register</Link>
                 </li>
 
             </>);
