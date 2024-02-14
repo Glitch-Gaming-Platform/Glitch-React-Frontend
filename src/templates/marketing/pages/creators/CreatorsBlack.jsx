@@ -23,7 +23,7 @@ class CreatorsBlackPage extends Component {
                     <meta property="og:description" content="Join our content creator program rewards gamers of color for creating content" />
                     <meta property="og:type" content="website" />
                     <meta property="og:url" content={currentUrl} />
-                    <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/creators_3.png" />
+                    <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/black_banner_2.webp" />
                 </Helmet>
 
                 <Fragment>
