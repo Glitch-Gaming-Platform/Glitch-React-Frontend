@@ -16,11 +16,11 @@ class CreatorsBlackPage extends Component {
             <>
                 <Helmet>
                     <meta charSet="utf-8" />
-                    <title>Earn Money Playing Games And Creating Content</title>
-                    <meta name="description" content="Become a content creator and get paid for play games and creating content." />
+                    <title>Black Gamers Rising: Get Paid To Play And Promote Games</title>
+                    <meta name="description" content="Join our content creator program rewards gamers of color for creating content" />
                     <meta name="robots" content="index, follow" />
-                    <meta property="og:title" content="Earn Money Playing Games And Creating Content" />
-                    <meta property="og:description" content="Become a content creator and get paid for play games and creating content." />
+                    <meta property="og:title" content="Black Gamers Rising: Get Paid To Play And Promote Games" />
+                    <meta property="og:description" content="Join our content creator program rewards gamers of color for creating content" />
                     <meta property="og:type" content="website" />
                     <meta property="og:url" content={currentUrl} />
                     <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/creators_3.png" />
@@ -32,7 +32,7 @@ class CreatorsBlackPage extends Component {
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
 
-                                <h2 className="pageheader-title">Gaming While Black <br /> Earning, Playing, Influencing</h2>
+                                <h2 className="pageheader-title">Play with Purpose <br />Black Creators Game, Earn & Influence</h2>
 
                                 <p className="lead">Our content creator program rewards gamers of color for creating content.</p>
 
