@@ -32,6 +32,7 @@
     creators: '/creators',
     creators_overview: '/creators/overview',
     creators_micro: '/creators/micro',
+    creators_black: '/creators/black',
     creator_influencers: '/creators/influencers',
     creator_influencers_mac: '/creators/macinfluencers',
     creator_influencers_linux: '/creators/linuxinfluencers',

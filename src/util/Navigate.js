@@ -56,6 +56,9 @@ const Navigate = {
     creatorsMicroPage : () => {
         return app_routes.creators_micro;
     },
+    creatorsBlackPage : () => {
+        return app_routes.creators_black;
+    },
     creatorsInfluencersPage : () => {
         return app_routes.creator_influencers;
     },
