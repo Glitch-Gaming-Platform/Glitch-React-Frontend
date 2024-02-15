@@ -58,35 +58,16 @@ class Footer extends Component {
                                 <div className="footer-middle-item-wrapper">
                                     <div className="footer-middle-item-3 mb-lg-0">
                                         <div className="fm-item-title">
-                                            <h4>{newsTitle}</h4>
+                                            <h4>Links</h4>
                                         </div>
                                         <div className="fm-item-content">
-                                            <p>{newsdesc}</p>
-                                            <form>
-                                                <div className="form-group mb-4">
-                                                    <input
-                                                        type="text"
-                                                        name="name"
-                                                        id="item01"
-                                                        className="form-control"
-                                                        value={this.state.newsName}
-                                                        onChange={(e)=>{this.setState({newsName: e.target.value});}}
-                                                        placeholder="Your Name *"
-                                                    />
-                                                </div>
-                                                <div className="form-group mb-2">
-                                                    <input
-                                                        type="email"
-                                                        name="name"
-                                                        id="item02"
-                                                        className="form-control"
-                                                        value={this.state.newsEmail}
-                                                        onChange={(e)=>{this.setState({newsEmail: e.target.value});}}
-                                                        placeholder="Your Email *"
-                                                    />
-                                                </div>
-                                                <button type="submit" className="default-button"><span>Send Message <i className="icofont-circled-right"></i></span></button>
-                                            </form>
+                                            <u>
+                                                <li><Link to={Navigate.aboutPage()} >About Us</Link></li>
+                                                <li><Link to={Navigate.creatorsPage()} >Streaming App</Link></li>
+                                                <li><Link to={Navigate.creatorsCalculator()} >Earnings Calculator</Link></li>
+                                            </u>
+                                           
+  
                                         </div>
                                     </div>
                                 </div>

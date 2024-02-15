@@ -23,6 +23,9 @@ const Navigate = {
     contactPage : () => {
         return app_routes.contact;
     },
+    aboutPage : () => {
+        return app_routes.about;
+    },
     dataRemovalPage : () => {
         return app_routes.dataremoval;
     },

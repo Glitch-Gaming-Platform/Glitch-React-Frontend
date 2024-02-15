@@ -17,6 +17,7 @@
     features : '/features',
     installation: '/installation',
     benefits: '/benefits',
+    about: '/about',
 
     //Campaigns
     campaigns: '/campaigns',

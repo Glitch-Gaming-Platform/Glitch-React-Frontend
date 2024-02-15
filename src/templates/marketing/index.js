@@ -73,6 +73,7 @@ import CreatorsRewardsPage from './pages/misc/creatorsrewards';
 import CreatorsPublishersPage from './pages/misc/creatorspublishers';
 import InstallationPage from './pages/misc/installation';
 import CommunitiesCss from './pages/communities/CommunitiesCss';
+import AboutPage from './pages/misc/about';
 
 import CreatorsOverviewPage from './pages/creators/CreatorsOverview';
 import CreatorsMicroPage from './pages/creators/CreatorsMirco';
@@ -125,6 +126,7 @@ function Template() {
           <Route path={Navigate.installationPage()} element={<InstallationPage />} />
           <Route path={Navigate.benefitsPage()} element={<BenefitsPage />} />
           <Route path={Navigate.creatorsPage()} element={<CreatorsPage />} />
+          <Route path={Navigate.aboutPage()} element={<AboutPage />} />
 
           <Route path={Navigate.creatorsInfluencersPage()} element={<CreatorsRewardsPage />} />
           <Route path={Navigate.creatorsOverviewPage()} element={<CreatorsOverviewPage/>} />
