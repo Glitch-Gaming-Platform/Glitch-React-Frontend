@@ -103,6 +103,7 @@ import PublisherBenefitPage from './pages/publishers/publishers_benefits';
 import PublisherUserAcquistion from './pages/publishers/publishers_user_acquistion';
 import PublisherRegisterPage from './pages/publishers/publishers_register';
 import Cohostwatchstream from './pages/streams/cohostwatchstream';
+import PublisherPilotsPage from './pages/publishers/publishers_pilots';
 
 
 function Template() {
@@ -195,6 +196,7 @@ function Template() {
           <Route path={Navigate.publishersBenefitsPage()} element={<PublisherBenefitPage />} />
           <Route path={Navigate.publishersAcquisitionPage()} element={<PublisherUserAcquistion />} />
           <Route path={Navigate.publishersRegisterPage()} element={<PublisherRegisterPage />} />
+          <Route path={Navigate.publishersPilotPage()} element={<PublisherPilotsPage />} />
 
 
           <Route path={Navigate.authTwitch()} element={<AuthTwitch />} />

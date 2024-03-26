@@ -501,6 +501,11 @@ const Navigate = {
         return app_routes.publishers_gamifications;
 
     },
+    publishersPilotPage : () => {
+
+        return app_routes.publishers_pilots;
+
+    },
     publishersOptimizationPage : () => {
 
         return app_routes.publishers_optimization;

@@ -113,6 +113,7 @@
 
     publishers : '/publishers',
     publishers_organizations : '/publishers/organizations',
+    publishers_pilots : '/publishers/pilots',
     publishers_gamifications : '/publishers/gamification',
     publishers_optimization : '/publishers/optimization',
     publishers_benefits : '/publishers/benefits',
