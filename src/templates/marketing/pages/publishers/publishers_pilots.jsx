@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faUserCheck, faBullhorn, faHandshake, faThumbsUp, faTools, faGamepad, faDollarSign, faUserFriends, faBalanceScale, faGem, faUsers, } from '@fortawesome/free-solid-svg-icons';
 import Header from '../../component/layout/header';
@@ -10,6 +10,13 @@ import WaitlistPublisher from '../../component/section/waitlistpublisher';
 function PublisherPilotsPage() {
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+
+  useEffect(() => {
+    window.rdt('track', 'PageVisit');
+
+  }, []); // The empty array means this effect runs only on component mount
+
+
 
   return (
     <>

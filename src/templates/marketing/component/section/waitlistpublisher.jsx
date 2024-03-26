@@ -117,6 +117,8 @@ const WaitlistPublisher = () => {
 
             setSubmitted(true);
 
+            window.rdt('track', 'SignUp');
+
         }).catch(error => {
 
 
