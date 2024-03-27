@@ -72,7 +72,7 @@ function PublisherPilotsPage() {
               <div className="row align-items-center">
                 <div className="col-lg-6">
                   <div className="cta-content">
-                    <p className="theme-color text-uppercase ls-2">{"Why Are We Giving Away From"}</p>
+                    <p className="theme-color text-uppercase ls-2">{"Why Are We Giving Away Free Money?"}</p>
                     <h2 className="mb-3" style={{ textTransform: 'none' }}>We Need Your Help In Developing Case Studies For Influencer Marketing With Games.<br /><br /> We Will Sponsor Your Indie Game For Free!</h2>
 
                   </div>
