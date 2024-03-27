@@ -65,6 +65,29 @@ function PublisherPilotsPage() {
           </div>
         </div>
 
+        <section className="cta-section mt-4 mb-5">
+
+          <div className="cta-wrapper item-layer">
+            <div className="cta-item px-4 px-sm-5 pt-4 pt-sm-5 pt-lg-0" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
+              <div className="row align-items-center">
+                <div className="col-lg-6">
+                  <div className="cta-content">
+                    <p className="theme-color text-uppercase ls-2">{"Why Are We Giving Away From"}</p>
+                    <h2 className="mb-3" style={{ textTransform: 'none' }}>We Need Your Help In Developing Case Studies For Influencer Marketing With Games.<br /><br /> We Will Sponsor Your Indie Game For Free!</h2>
+
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="cta-thumb text-end">
+                    <img src={'/assets/images/publishers/case_study_2.webp'} alt="gamer receiving tips" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+      </section>
+
         <div className='p-4 mb-5 rounded'style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
           <div className="mb-5">
             <h2 className="fw-bold text-success text-center">How The Process Works</h2>
