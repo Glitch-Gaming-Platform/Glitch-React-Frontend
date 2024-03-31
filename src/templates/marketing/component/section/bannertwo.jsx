@@ -9,8 +9,8 @@ let BannerListContent = [
     {
         bgImgUrl: '/assets/images/banner/home-2/bg.jpg',
         title: "Glitch",
-        subtitle: "Create Competitive Gaming Communities",
-        desc: "Drive competitive gaming experiences, foster a tight-knit community, and generate lucrative revenue streams with our game-changing platform.",
+        subtitle: "Build, Play, Profit: Your Gaming Community Begins Here!",
+        desc: "Transform your gaming hobby into a paying gig! Connect with game publishers, contribute to game promotion, and cultivate your gaming community.",
         btnText: 'join us today',
     }
 ]
