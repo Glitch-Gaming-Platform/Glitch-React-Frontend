@@ -14,6 +14,8 @@ function CampaignSpendingLimitsForm({ campaignData, setCampaignData, errors }) {
                     <h3><i className="fas fa-wallet mr-2"></i> Spending Limits</h3>
                 </div>
                 <div className="card-body">
+                    <p className="lead">Set the spending limits of your campaign to prevent yourself from going over budget.</p>
+                    <hr />
                     {createInputField('spend_limit', 'fa-money-bill-wave', 'Campaign Total Budget', 'Set a maximum budget for the campaign. Campaign stops when this limit is reached. Enter zero for unlimited.')}
                     {createInputField('spend_limit_per_influencer', 'fa-user-tie', 'Max Budget Per Influencer', 'Set a maximum budget for each influencer. Influencer\'s campaign stops when this limit is reached. Enter zero for unlimited.')}
                     {/* Other spending limit fields */}

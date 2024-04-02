@@ -15,6 +15,7 @@ import CampaignInfluencerForm from '../../component/section/campaigns/campaign_i
 import { useParams } from 'react-router-dom';
 import Loading from '../../component/alerts/Loading';
 import PublisherHeader from '../../component/layout/publisherheader';
+import CampaignManagementForm from '../../component/section/campaigns/campaign_management';
 
 
 function CampaignUpdatePage() {
@@ -209,6 +210,9 @@ function CampaignUpdatePage() {
                         <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
 
                         <CampaignInfluencerForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+
+                        <CampaignManagementForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+
                         <CampaignPaymentForm title="Rate Card - General" campaignData={campaignData} paymentData={campaignData.generalPayment} setPaymentData={setCampaignData} errors={errors} />
 
                         {/* Styled buttons and conditional rendering for each CampaignPaymentForm */}

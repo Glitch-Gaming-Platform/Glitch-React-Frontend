@@ -191,8 +191,8 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                     </div>
                     <div className="card-body">
                         <p className="lead">Enter information about the game title you want influencers to promote. Please fill out as much information as possible to excite the potential creator(s) you might be working with.</p>
-                    </div>
-                    <div className="card-body">
+                        <hr />
+  
                         {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors, 'Enter the name of the game.')}
                         {createTextarea('Short Description', 'short_description', gameTitle.short_description, handleChange, errors, 'Enter a 1 paragraph brief short description about the game.')}
                         {createTextarea('Long Description', 'long_description', gameTitle.long_description, handleChange, errors, 'Enter a longer more in-depth description about the game that can be multiple paragraphs.')}

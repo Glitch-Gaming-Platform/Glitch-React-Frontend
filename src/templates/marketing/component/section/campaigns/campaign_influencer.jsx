@@ -23,7 +23,10 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
                     <h3><i className="fas fa-info-circle mr-2"></i> Infuencer Inforomation</h3>
                 </div>
                 <div className="card-body">
-                    <p className="lead">The information below is what the influencer will read when reviewing your campaign.</p>
+                    <p className="lead">Expectations and outcomes can be established with the content creators to ensure the messaging and deliverables align with what you desire for your campaign. Use the fields below to specify how you want the content creator to craft content to market and promote your game.</p>
+
+                    <hr />
+
                     <form>
 
                         {createInputField('title_creator', 'Title For Creators', 'This is the title creators and influencer will see when viewing your campaign.', 'text', true, errors)}
@@ -33,6 +36,12 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
                         {createTextAreaField('requirements', 'Requirements', 'List any requirements you have of the creator for this campaign. This could range from requirement in their following size, social accounts, interest and other areas.', errors)}
 
                         {createTextAreaField('target_audience', 'Target Audience', 'Describe potential target audiences.', errors)}
+
+                        {createTextAreaField('hashtags', 'Hashtags', 'List any hashtags that you want the content creators to use.', errors)}
+
+                        {createTextAreaField('highlights', 'Product Highlights', 'List any talking points that you want the creator to discuss in their content.', errors)}
+
+                        {createTextAreaField('prohibited_content', 'Prohibited Content', 'List any thing you want to prohibit the creators in relation to your content.', errors)}
 
                         
                     </form>

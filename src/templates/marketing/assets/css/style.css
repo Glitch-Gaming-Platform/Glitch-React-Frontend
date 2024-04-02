@@ -4523,3 +4523,7 @@ button {
       .react-datetime-picker__calendar--open {
         background-color: #dddcdc;
       }
+
+      .ql-editor {
+        min-height: 200px !important;
+      }

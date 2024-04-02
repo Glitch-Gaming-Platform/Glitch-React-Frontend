@@ -10,6 +10,7 @@ import Navigate from '../../../../util/Navigate';
 import Moment from 'react-moment';
 import CampaignUserManager from '../../component/section/campaigns/campaign_users_manager';
 import PublisherHeader from '../../component/layout/publisherheader';
+import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
 
 const CampaignsViewPage = () => {
 
@@ -145,6 +146,23 @@ const CampaignsViewPage = () => {
 
                         <hr />
 
+                        <section className="mb-4">
+                            <h3 className="text-black">Content Creator Directional Information</h3>
+                         
+                            {campaign.hashtags ? <>
+                                <p><strong>Hashtags:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.hashtags)} /></p>
+                            </> : ''}
+                            {campaign.highlights ? <>
+                                <p><strong>Highlights:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.highlights)} /></p>
+                            </> : ''}
+
+                            {campaign.prohibited_content ? <>
+                                <p><strong>Prohibited Content:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.prohibited_content)} /></p>
+                            </> : ''}
+                            
+                        </section>
+
+                        <hr />
 
                         <section className="mb-4">
                             <h3 className="text-black">Additional Details</h3>
@@ -167,7 +185,10 @@ const CampaignsViewPage = () => {
             </div>
             <CampaignLinksManager campaignID={id} />
 
+            <CampaignMentionsManager campaignID={id} />
+
             <CampaignUserManager campaignID={id}/>
+
             <Footer />
         </>
     );

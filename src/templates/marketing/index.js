@@ -104,6 +104,7 @@ import PublisherUserAcquistion from './pages/publishers/publishers_user_acquisti
 import PublisherRegisterPage from './pages/publishers/publishers_register';
 import Cohostwatchstream from './pages/streams/cohostwatchstream';
 import PublisherPilotsPage from './pages/publishers/publishers_pilots';
+import CampaignsViewCreatorPage from './pages/campaigns/CampaignsViewCreatorPage';
 
 
 function Template() {
@@ -146,6 +147,7 @@ function Template() {
           <Route path={Navigate.campaignsUpdatePage()} element={<CampaignUpdatePage />} />
           <Route path={Navigate.campaignsViewPage()} element={<CampaignsViewPage />} />
           <Route path={Navigate.campaignsFindInfluencers()} element={<CampaignsFindInfluencersPage />} />
+          <Route path={Navigate.campaignsResearchInfluencer()} element={<CampaignsViewCreatorPage />} />
 
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />

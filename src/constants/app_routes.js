@@ -29,6 +29,7 @@
     campaigns_register : '/campaigns/:id/register',
     campaigns_find_influencer : '/campaigns/:id/findinfluencer',
     campaigns_manage_influencer : '/campaigns/:campaign_id/campaign/:user_id',
+    campaigns_research_influencer : '/campaigns/:campaign_id/research/:user_id',
 
     creators: '/creators',
     creators_overview: '/creators/overview',

@@ -30,10 +30,11 @@ const CampaignRateCard = ({ campaign, user }) => {
     return (
         <section className="mb-4">
             <h3 className="text-black">Rate Card For Influencers</h3>
-            <p>
+            <p className="lead">
                 Payments to influencers are based on performance in campaigns, where each metric has a different payment rate. Below are the different rates by which influencers are
                 rewarded for the social content they create on various platforms, which creates their Rate Card.
             </p>
+            <hr />
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">

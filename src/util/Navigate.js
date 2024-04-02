@@ -219,6 +219,34 @@ const Navigate = {
 
         return path;
     },
+    campaignsResearchInfluencer : (campaign_id, user_id) => {
+
+        let path = app_routes.campaigns_research_influencer;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        if(user_id){
+            path = path.replace(':user_id', user_id)
+        }
+
+        return path;
+    },
+    campaignsManageInfluencer : (campaign_id, user_id) => {
+
+        let path = app_routes.campaigns_manage_influencer;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        if(user_id){
+            path = path.replace(':user_id', user_id)
+        }
+
+        return path;
+    },
 
 
     //Communites Pages

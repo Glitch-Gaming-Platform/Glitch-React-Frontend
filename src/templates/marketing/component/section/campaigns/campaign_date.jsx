@@ -32,8 +32,9 @@ function CampaignDateForm({ campaignData, setCampaignData, errors }) {
         <div className="card-header bg-secondary">
           <h3><i className="far fa-calendar-alt mr-2"></i> Dates Optional</h3>
         </div>
-        <div className="card-body">
+        <div className="card-body pb-5">
           <p className="lead">Set the optional start and stop dates of the campaign.</p>
+          <hr />
           <div className="row">
             <div className="col-md-6 mb-3">
               <label htmlFor="startDate" className="form-label">Start Date (Optional)</label>

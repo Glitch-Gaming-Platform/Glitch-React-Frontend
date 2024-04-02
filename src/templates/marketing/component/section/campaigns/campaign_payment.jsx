@@ -60,7 +60,8 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
                     <h3><i className="fas fa-money-bill-wave mr-2"></i> {title}</h3>
                 </div>
                 <div className="card-body">
-                    <p className="text-muted">{description}</p>
+                    <p className="text-muted lead">{description}</p>
+                    <hr />
                     <div className="row">
                         {createInputField('view', 'fa-eye', 'Views', 'Set the amount an influencer earns per view.')}
                         {createInputField('comment', 'fa-comments', 'Comments', 'Set the amount an influencer will earn for each comment.')}

@@ -172,6 +172,29 @@ const InfluencerViewCampaignPage = () => {
 
                         <hr />
 
+                        <section className="mb-4">
+                            <h3 className="text-black">Requirements</h3>
+
+                            {campaign.brief ? <>
+                                <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
+                            </> : ''}
+                        
+                            {campaign.hashtags ? <>
+                                <p><strong>Hashtags:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.hashtags)} /></p>
+                            </> : ''}
+                            {campaign.highlights ? <>
+                                <p><strong>Highlights:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.highlights)} /></p>
+                            </> : ''}
+
+                            {campaign.prohibited_content ? <>
+                                <p><strong>Prohibited Content:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.prohibited_content)} /></p>
+                            </> : ''}
+                            
+                        </section>
+
+
+                        <hr />
+
                         <div className="container my-5">
 
                             <h3 className="text-black">How To Sign Up</h3>

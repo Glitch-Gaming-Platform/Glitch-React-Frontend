@@ -82,6 +82,10 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                     <h3><i className="fas fa-info-circle mr-2"></i> Basic Information</h3>
                 </div>
                 <div className="card-body">
+
+                    <p className="lead">Manage the basic information that describes the campaign for administrative purposes.</p>
+
+                    <hr />
                     <form>
                         {createInputField('name', 'Campaign Name', 'Give the campaign a name.', 'text', true, errors)}
                         {createTextAreaField('description', 'Description', 'Give the campaign a description.', true, errors)}
