@@ -3,7 +3,7 @@ import Glitch from 'glitch-javascript-sdk';
 import { Fragment } from 'react';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Make sure to import FontAwesomeIcon
@@ -14,9 +14,12 @@ const CampaignsFindInfluencersPage = () => {
     const [users, setUsers] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
+    const { id, campaign_id, user_id } = useParams();
     const defaultAvatar = 'https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png'; // Path to your default avatar image
 
     useEffect(() => {
+
+        console.log("ID", id);
         const fetchCampaigns = async () => {
             try {
                 Glitch.api.Users.list({ page: currentPage, is_influencer: true }).then((response) => {
@@ -84,7 +87,8 @@ const CampaignsFindInfluencersPage = () => {
                                         </>
                                     )}
                                     <div className="d-flex justify-content-start mt-3">
-                                        <Link className="btn btn-primary me-2" to={Navigate.usersProfilePage(user.id)}>View Profile</Link>
+                                        <Link className="btn btn-primary me-2" to={Navigate.campaignsResearchInfluencer(id, user.id)}>View Profile</Link>
+                                        <Link className="btn btn-primary me-2" to={Navigate.campaignsMessageInfluencer(id, user.id)}>Send Message</Link>
                                         {/* Add more links or actions as needed */}
                                     </div>
                                 </div>

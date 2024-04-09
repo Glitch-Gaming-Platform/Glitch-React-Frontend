@@ -11,6 +11,7 @@ import timeouts from '../../../../constants/timeouts';
 import CommunityFormCname from '../../component/section/communities/form_community_cname';
 import Danger from '../../component/alerts/Danger';
 import Loading from '../../component/alerts/Loading';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 
 
@@ -87,7 +88,7 @@ class CommunitiesCname extends Component {
 
         return (
             <Fragment>
-                <Header />
+                <PublisherHeader />
                 <PageHeader title={this.state.community.name +' CName'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">

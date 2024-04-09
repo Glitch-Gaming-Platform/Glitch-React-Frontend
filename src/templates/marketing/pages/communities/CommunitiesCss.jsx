@@ -12,6 +12,7 @@ import CommunityFormCname from '../../component/section/communities/form_communi
 import Danger from '../../component/alerts/Danger';
 import Loading from '../../component/alerts/Loading';
 import CommunityFormCss from '../../component/section/communities/form_community_css';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 
 
@@ -88,7 +89,7 @@ class CommunitiesCss extends Component {
 
         return (
             <Fragment>
-                <Header />
+                <PublisherHeader />
                 <PageHeader title={this.state.community.name +' Custom CSS'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">

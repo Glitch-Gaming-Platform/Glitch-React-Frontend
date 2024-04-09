@@ -9,17 +9,17 @@ import GameTitle from '../../component/section/titles/title_display';
 import Navigate from '../../../../util/Navigate';
 import Moment from 'react-moment';
 import CampaignUserManager from '../../component/section/campaigns/campaign_users_manager';
-import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
-import CreatorFollowerCountDisplay from '../../component/section/creators/creator_follower_count';
-import CreatorPostingAnalytics from '../../component/section/creators/creator_posting_analytics';
 import PublisherHeader from '../../component/layout/publisherheader';
-import CreatorHeader from '../../component/section/creators/creator_header';
+import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
+import MessageList from '../../component/section/messages/message_list';
+import MessageInput from '../../component/section/messages/message_input';
 
-const CampaignsViewCreatorPage = () => {
+const CampaignsMessageInfluencerPage = () => {
 
     const [campaign, setCampaign] = useState({});
-    const [user, setUser] = useState({});
+    const [thread, setThread] = useState({});
     const { id, user_id } = useParams();
+
 
     useEffect(() => {
         Glitch.api.Campaigns.view(id).then(response => {
@@ -30,22 +30,25 @@ const CampaignsViewCreatorPage = () => {
 
         });
 
-        Glitch.api.Users.profile(user_id).then(response => {
-
-            setUser(response.data.data);
-
-        }).catch(error => {
-
-        });
-
-
-
+        loadThread();
     }, []);
 
-    const createMarkup = (htmlContent) => {
-        return { __html: htmlContent };
-    };
+    const loadThread =  () => {
 
+        Glitch.api.Messages.createOrGetThread({users : [
+            user_id, Glitch.util.Session.getID()
+        ]}).then(response => { 
+            setThread(response.data.data);
+        }).catch(error => {
+
+        })
+        
+      }
+
+    const createMarkup = (htmlContent) => {
+        return {__html: htmlContent};
+    };
+   
 
     return (
         <>
@@ -56,34 +59,26 @@ const CampaignsViewCreatorPage = () => {
                         <div className="pageheader-thumb mb-4">
                             <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
-                        <h2 className="pageheader-title">View Content Creator</h2>
+                        <h2 className="pageheader-title">Message Influencer 12</h2>
 
-                        <p className="lead">View the information for a content creator.</p>
+                        <p className="lead">Message the influencer about the campaign.</p>
 
                     </div>
                 </div>
             </section>
 
-            <div className="container mt-5 mb-2" >
-                <CreatorHeader user={user} />
-                <hr />
-            </div>
+            <div className="container my-5">
 
-            
-
-            <CreatorFollowerCountDisplay userData={user} />
-
-            <div className="container mt-5 mb-2" >
-                <hr />
-                <CreatorPostingAnalytics userData={user} />
-            </div>
-
-    
+            <MessageList thread={thread} />
+            <MessageInput threadId={thread.id} onMessageSent={loadThread} />
+                
            
+            </div>
+ 
 
             <Footer />
         </>
     );
 };
 
-export default CampaignsViewCreatorPage;
+export default CampaignsMessageInfluencerPage;

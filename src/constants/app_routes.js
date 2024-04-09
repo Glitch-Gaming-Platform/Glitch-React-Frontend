@@ -25,11 +25,15 @@
     campaigns_view : '/campaigns/:id/view',
     campaigns_update : '/campaigns/:id/update',
     campaigns_delete : '/campaigns/:id/delete',
+    campaigns_start : '/campaigns/:id/start',
 
     campaigns_register : '/campaigns/:id/register',
     campaigns_find_influencer : '/campaigns/:id/findinfluencer',
     campaigns_manage_influencer : '/campaigns/:campaign_id/campaign/:user_id',
-    campaigns_research_influencer : '/campaigns/:campaign_id/research/:user_id',
+    campaigns_research_influencer : '/campaigns/:id/research/:user_id',
+    campaigns_performance_influencer : '/campaigns/:id/performance/:user_id',
+    campaigns_message_influencer : '/campaigns/:id/message/:user_id',
+    campaigns_start : '/campaigns/:id/start',
 
     creators: '/creators',
     creators_overview: '/creators/overview',
@@ -73,6 +77,7 @@
 
     //Communities
     communities : '/communities',
+    communities_admin : '/communities/admin',
     communities_create : '/communities/create',
     
     communities_view : '/communities/:id/view',
@@ -111,6 +116,7 @@
     posts_view : '/posts/:id/view',
     posts_delete : '/posts/:id/delete',
     posts_update : '/communities/:id/update',
+    
 
     publishers : '/publishers',
     publishers_organizations : '/publishers/organizations',
@@ -120,6 +126,11 @@
     publishers_benefits : '/publishers/benefits',
     publishers_acquisition : '/publishers/acquisition',
     publishers_register : '/publishers/register',
+    publishers_pricing : '/publishers/pricing',
+
+    publishers_onboarding_step_1 : '/publishers/onboarding/step1',
+    publishers_onboarding_step_2 : '/publishers/onboarding/step2',
+    publishers_onboarding_step_3 : '/publishers/onboarding/step3',
 
     //Messages
     messages : '/messages',
@@ -139,7 +150,9 @@
 
     //messages route
     messages : '/messages',
-    message_thread : '/messages/thread',
+    message_thread : '/messages/thread/:id',
+    message_create : '/messages/create',
+    message_read : '/messages/read/:id ',
 
     //Teams
     teams : '/teams',

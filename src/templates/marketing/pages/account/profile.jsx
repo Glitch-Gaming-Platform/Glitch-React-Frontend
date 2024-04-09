@@ -13,6 +13,7 @@ import Footer from "../../component/layout/footer";
 import Glitch from 'glitch-javascript-sdk';
 import Loading from "../../component/alerts/Loading";
 import timeouts from "../../../../constants/timeouts";
+import Wysiwyg from "../../component/form/wysiwyg";
 
 
 class AccountUpdatePage extends Component {
@@ -24,10 +25,12 @@ class AccountUpdatePage extends Component {
             profileHeader: '',
             followers: '<h3>No Followers</h3>',
             following: '<h3>No Followers</h3>',
-            communities : [],
-            campaigns : [],
+            communities: [],
+            campaigns: [],
             errors: {},
-            isLoading : false,
+            isLoading: false,
+            availableGenres: [], // To store genres fetched from the backend
+            selectedGenre: '', // To store the genre currently selected by the user for addition
 
         };
     }
@@ -46,9 +49,15 @@ class AccountUpdatePage extends Component {
             console.log(error);
         });
 
-        Glitch.api.Communities.list({roles : [1,2]}).then(response => {
+        Glitch.api.Communities.list({ roles: [1, 2] }).then(response => {
 
-            this.setState({communities : response.data.data});
+            this.setState({ communities: response.data.data });
+        }).catch(error => {
+
+        });
+
+        Glitch.api.Utility.listGenres().then(response => {
+            this.setState({ availableGenres: response.data.data });
         }).catch(error => {
 
         });
@@ -70,6 +79,7 @@ class AccountUpdatePage extends Component {
     }
 
     handleChange = (event) => {
+        console.log(event);
         const { name, value, type, checked } = event.target;
         const actualValue = type === 'checkbox' ? checked : value;
         this.setState(prevState => ({
@@ -78,25 +88,54 @@ class AccountUpdatePage extends Component {
         }));
     }
 
-    handleUpdateInfluencer    = () => {
+    handleWysiwigChange = (content, field) => {
+
+        this.setState(prevState => ({
+            ...prevState,
+            me: { ...prevState.me, [field]: content }
+        }));
+    }
+
+    handleUpdateInfluencer = () => {
         const { me } = this.state;
-        this.setState({isLoading : true});
+        this.setState({ isLoading: true });
         Glitch.api.Users.update(me).then(response => {
             // Handle the update response
         }).catch(error => {
             console.log(error);
 
-            if(error.response && error.response.data) {
-                this.setState({errors : error.response.data});
+            if (error.response && error.response.data) {
+                this.setState({ errors: error.response.data });
 
-                setTimeout(() =>{
-                    this.setState({errors : {}});
+                setTimeout(() => {
+                    this.setState({ errors: {} });
                 }, timeouts.error_message_timeout)
             }
 
         }).finally(() => {
-            this.setState({isLoading : false});
+            this.setState({ isLoading: false });
         })
+    }
+
+    handleGenreChange = (event) => {
+        this.setState({ selectedGenre: event.target.value });
+    }
+
+    addGenre = () => {
+        const { selectedGenre } = this.state;
+        Glitch.api.Users.addGenre({ genre_id: selectedGenre }).then((response) => {
+            this.setState({
+                me: response.data.data
+            });
+        }).catch(error => console.log(error));
+    }
+
+    removeGenre = (genreId) => {
+        Glitch.api.Users.removeGenre( genreId ).then((response) => {
+            this.setState({
+                me: response.data.data
+            });
+        }).catch(error => console.log(error));
     }
 
 
@@ -104,20 +143,20 @@ class AccountUpdatePage extends Component {
 
         let stripeData = '';
 
-        if(this.state.me && !this.state.me.stripe_express_account_id) {
+        if (this.state.me && !this.state.me.stripe_express_account_id) {
 
             stripeData = <><Danger message={"No Stripe Account Connected"} />
                 <p>To accept donnations you must connect your Stripe account. You can connect your <Link to={Navigate.authStripe()}>account here.</Link></p>
             </>
-        } else if(this.state.me && !this.state.me.stripe_donation_purhcase_link_url) {
+        } else if (this.state.me && !this.state.me.stripe_donation_purhcase_link_url) {
 
             stripeData = <><Warning message={"Activate Donation Page"} />
                 <p>To finalize your ability to accept donations, you must activate your donation page.</p>
-                <div className="form-group text-center"><button className="d-block default-button" onClick={(e) => {this.activateDonations()}}><span> Activate</span></button></div>
+                <div className="form-group text-center"><button className="d-block default-button" onClick={(e) => { this.activateDonations() }}><span> Activate</span></button></div>
 
             </>
 
-        } else if(this.state.me && this.state.me.stripe_donation_purhcase_link_url) {
+        } else if (this.state.me && this.state.me.stripe_donation_purhcase_link_url) {
 
             stripeData = <><Success message={"Active Donation Page"} />
                 <p>Your Stripe Account and Donations page is active. You will now be able to accept donations in your stream. You can view your donations <a target={"_blank"} href={this.state.me.stripe_donation_purhcase_link_url}>page here.</a></p>
@@ -161,7 +200,7 @@ class AccountUpdatePage extends Component {
                                                     <div className="match-inner">
                                                         <div className="match-header d-flex flex-wrap justify-content-between align-items-center">
                                                             <p className="match-team-info">{tagline}</p>
-                                                          
+
                                                         </div>
                                                         <div className="match-content">
                                                             <div className="row gy-4 align-items-center justify-content-center">
@@ -202,17 +241,21 @@ class AccountUpdatePage extends Component {
                             <div className="row g-4 match-grid GameListStyleTwo">
                                 <h2>Influencer Profile</h2>
 
-                                <p className="lead">To become an influencer, you must activate and manage your influencer profile. Use the options below to manage your role as an influencer effectively.</p>
+                                <p className="lead">Below are different fields to manage your influencer against. Gaming publishers and indie developers will use the information when deciding to work with you. Update the fields that best represent your ability as a content creator.</p>
 
                                 <div className="col-md-12">
                                     <div className="mb-3">
                                         <label htmlFor="isInfluencer" className="form-label">Activate Influencer Profle</label>
                                         &nbsp;<input type="checkbox" className="form-check-input ml-2" id="isInfluencer" name="is_influencer" checked={this.state.me?.is_influencer} onChange={this.handleChange} />
                                         <div className="form-text text-white">Use the checkbox for activiating and deactiviting your influencer profile.</div>
-                                        {this.state.errors && this.state.errors.is_influencer && this.state.errors.is_influencer.map(function(name, index){
+                                        {this.state.errors && this.state.errors.is_influencer && this.state.errors.is_influencer.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
+                                </div>
+                                <div className="col-md-12">
+                                    <h3>Social Followers</h3>
+                                    <p className="lead">Enter the number of followers you have on various social platforms. When you connect your social accounts with Glitch, these values will automatically be updated.</p>
                                 </div>
                                 <div className="col-md-6">
                                     {/* Repeat this pattern for each follower count field */}
@@ -220,7 +263,7 @@ class AccountUpdatePage extends Component {
                                         <label htmlFor="twitterFollowerCount" className="form-label">Twitter Followers</label>
                                         <input type="number" className="form-control" id="twitterFollowerCount" name="twitter_follower_count" value={this.state.me.twitter_follower_count} onChange={this.handleChange} />
                                         <div className="form-text">Enter your number of followers on Twitter.</div>
-                                        {this.state.errors && this.state.errors.twitter_follower_count && this.state.errors.twitter_follower_count.map(function(name, index){
+                                        {this.state.errors && this.state.errors.twitter_follower_count && this.state.errors.twitter_follower_count.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
@@ -228,7 +271,7 @@ class AccountUpdatePage extends Component {
                                         <label htmlFor="facebookFollowerCount" className="form-label">Facebook Followers</label>
                                         <input type="number" className="form-control" id="twitterFollowerCount" name="facebook_follower_count" value={this.state.me?.facebook_follower_count} onChange={this.handleChange} />
                                         <div className="form-text">Enter your number of followers on Facebook.</div>
-                                        {this.state.errors && this.state.errors.facebook_follower_count && this.state.errors.facebook_follower_count.map(function(name, index){
+                                        {this.state.errors && this.state.errors.facebook_follower_count && this.state.errors.facebook_follower_count.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
@@ -236,7 +279,7 @@ class AccountUpdatePage extends Component {
                                         <label htmlFor="tiktokFollowerCount" className="form-label">Tiktok Followers</label>
                                         <input type="number" className="form-control" id="tiktokFollowerCount" name="tiktok_follower_count" value={this.state.me?.tiktok_follower_count} onChange={this.handleChange} />
                                         <div className="form-text">Enter your number of followers on Tiktok.</div>
-                                        {this.state.errors && this.state.errors.tiktok_follower_count && this.state.errors.tiktok_follower_count.map(function(name, index){
+                                        {this.state.errors && this.state.errors.tiktok_follower_count && this.state.errors.tiktok_follower_count.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
@@ -244,7 +287,7 @@ class AccountUpdatePage extends Component {
                                         <label htmlFor="tiktokFollowerCount" className="form-label">Reddit Followers</label>
                                         <input type="number" className="form-control" id="redditFollowerCount" name="reddit_follower_count" value={this.state.me?.reddit_follower_count} onChange={this.handleChange} />
                                         <div className="form-text">Enter your number of followers on Reddit.</div>
-                                        {this.state.errors && this.state.errors.reddit_follower_count && this.state.errors.reddit_follower_count.map(function(name, index){
+                                        {this.state.errors && this.state.errors.reddit_follower_count && this.state.errors.reddit_follower_count.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
@@ -256,7 +299,7 @@ class AccountUpdatePage extends Component {
                                         <label htmlFor="youtubeFollowerCount" className="form-label">Twitch Followers</label>
                                         <input type="number" className="form-control" id="twitchFollowerCount" name="twitch_follower_count" value={this.state.me?.twitch_follower_count} onChange={this.handleChange} />
                                         <div className="form-text">Enter your number of followers on Twitch.</div>
-                                        {this.state.errors && this.state.errors.twitch_follower_count && this.state.errors.twitch_follower_count.map(function(name, index){
+                                        {this.state.errors && this.state.errors.twitch_follower_count && this.state.errors.twitch_follower_count.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
@@ -264,7 +307,7 @@ class AccountUpdatePage extends Component {
                                         <label htmlFor="youtubeFollowerCount" className="form-label">Youtube Followers</label>
                                         <input type="number" className="form-control" id="youtubeFollowerCount" name="youtube_follower_count" value={this.state.me?.youtube_follower_count} onChange={this.handleChange} />
                                         <div className="form-text">Enter your number of followers on Youtube.</div>
-                                        {this.state.errors && this.state.errors.youtube_follower_count && this.state.errors.youtube_follower_count.map(function(name, index){
+                                        {this.state.errors && this.state.errors.youtube_follower_count && this.state.errors.youtube_follower_count.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
@@ -273,7 +316,7 @@ class AccountUpdatePage extends Component {
                                         <label htmlFor="youtubeFollowerCount" className="form-label">Kick Followers</label>
                                         <input type="number" className="form-control" id="kickFollowerCount" name="kick_follower_count" value={this.state.me?.kick_follower_count} onChange={this.handleChange} />
                                         <div className="form-text">Enter your number of followers on Kick.</div>
-                                        {this.state.errors && this.state.errors.kick_follower_count && this.state.errors.kick_follower_count.map(function(name, index){
+                                        {this.state.errors && this.state.errors.kick_follower_count && this.state.errors.kick_follower_count.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
@@ -282,14 +325,71 @@ class AccountUpdatePage extends Component {
                                         <input type="number" className="form-control" id="instagramFollowerCount" name="instagram_follower_count" value={this.state.me?.instagram_follower_count} onChange={this.handleChange} />
                                         <div className="form-text">Enter your number of followers on Instagram.</div>
 
-                                        {this.state.errors && this.state.errors.instagram_follower_count && this.state.errors.instagram_follower_count.map(function(name, index){
+                                        {this.state.errors && this.state.errors.instagram_follower_count && this.state.errors.instagram_follower_count.map(function (name, index) {
                                             return <Danger message={name} key={index} />;
                                         })}
                                     </div>
                                 </div>
+
+                                <hr />
+                                <div className="col-md-12">
+                                    <h3>Manage Your Genres</h3>
+                                    <p className="lead">Select the genre of games you enjoy playing to be matched with games that you most enjoy.</p>
+                                    <div><strong>Your Genres:</strong></div>
+                                    {this.state.me.genres && this.state.me.genres.map((genre) => (
+                                        <span key={genre.id} className="badge bg-secondary me-2">
+                                            {genre.name}
+                                            <button className="btn btn-danger btn-sm ms-2" onClick={() => this.removeGenre(genre.id)}>
+                                                <i className="fas fa-trash-alt"></i>
+                                            </button>
+                                        </span>
+                                    ))}
+                                    <div className="mt-3">
+                                        <div className="input-group w-auto">
+                                            <select className="form-select" value={this.state.selectedGenre} onChange={this.handleGenreChange}>
+                                                <option value="">Select Genre</option>
+                                                {this.state.availableGenres.map((genre) => (
+                                                    <option key={genre.id} value={genre.id}>{genre.name}</option>
+                                                ))}
+                                            </select>
+                                            <button className="btn btn-primary" onClick={this.addGenre}>
+                                                <i className="fas fa-plus"></i> Add
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <hr />
+                                
+                                <div className="col-md-12">
+                                    <h3>Your Profile</h3>
+                                    <p className="lead">Use the questions below further expan on your influencer profile and give gaming publishers and indie developers a more personal view of you.</p>
+                                    <div className="mb-3">
+                                        <label htmlFor="influencerContentType" className="form-label">Content Type</label>
+                                        <div className="text-white">Describe the type of content you like to create.</div>
+                                        <Wysiwyg id="influencerContentType" name="influencer_content_type" onChange={(content) => {this.handleWysiwigChange(content, "influencer_content_type")}}  >{this.state.me?.influencer_content_type || ''}</Wysiwyg>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="influencerContentTheme" className="form-label">Content Theme</label>
+                                        <div className=" text-white">Discuss how you theme your content.</div>
+                                        <Wysiwyg id="influencerContentTheme" name="influencer_content_theme" onChange={(content) => {this.handleWysiwigChange(content, "influencer_content_theme")}}  >{this.state.me?.influencer_content_theme || ''}</Wysiwyg>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="influencerContentUnique" className="form-label">Content Uniqueness</label>
+                                        <div className="text-white">What makes your content unique?</div>
+                                        <Wysiwyg id="influencerContentUnique" name="influencer_content_unique" onChange={(content) => {this.handleWysiwigChange(content, "influencer_content_unique")}}  >{this.state.me?.influencer_content_unique || ''}</Wysiwyg>
+                                    </div>
+                                    <div className="mb-3">
+                                        <label htmlFor="influencerBrandApproach" className="form-label">Brand Approach</label>
+                                        <div className="text-white">How do you approach collaborations with brands?</div>
+                                        <Wysiwyg id="influencerBrandApproach" name="influencer_brand_approach" onChange={(content) => {this.handleWysiwigChange(content, "influencer_brand_approach")}}  >{this.state.me?.influencer_brand_approach || ''}</Wysiwyg>
+                                    </div>
+                                </div>
+
                                 <div className="col-md-12 text-center mb-3">
 
-                                {(Object.keys(this.state.errors).length >0 ) ? <Danger message={"There are error(s) in updating your profile. Please check the form above."} /> : ''}
+                                    {(Object.keys(this.state.errors).length > 0) ? <Danger message={"There are error(s) in updating your profile. Please check the form above."} /> : ''}
 
                                     <div className="d-grid gap-2 mt-4">
                                         <button className="btn btn-primary" type="button" onClick={this.handleUpdateInfluencer}><i className="fas fa-save"></i> Update Profile {this.state.isLoading ? <Loading /> : ''}</button>
@@ -308,7 +408,7 @@ class AccountUpdatePage extends Component {
                                     this.state.me && this.state.me.competitions && this.state.me.competitions.map((tournament, index) => {
 
                                         return (
-                                            <TournamentItem  tournament={tournament} key={index} is_admin={true} />
+                                            <TournamentItem tournament={tournament} key={index} is_admin={true} />
                                         )
                                     })
                                 }

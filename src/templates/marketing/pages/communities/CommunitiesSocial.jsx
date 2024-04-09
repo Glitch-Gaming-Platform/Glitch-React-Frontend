@@ -11,6 +11,7 @@ import Loading from '../../component/alerts/Loading';
 import Danger from '../../component/alerts/Danger';
 import timeouts from '../../../../constants/timeouts';
 import Navigate from '../../../../util/Navigate';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 
 
@@ -88,7 +89,7 @@ class CommunitiesSocial extends Component {
 
         return (
             <Fragment>
-                <Header />
+                <PublisherHeader />
                 <PageHeader title={this.state.community.name +' Community Social Profiles'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">

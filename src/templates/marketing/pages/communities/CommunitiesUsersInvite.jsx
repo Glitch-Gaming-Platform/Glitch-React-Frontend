@@ -13,6 +13,7 @@ import Danger from '../../component/alerts/Danger';
 import Loading from '../../component/alerts/Loading';
 import SidebarManageMenu from '../../component/section/communities/menu_side_manage';
 import timeouts from '../../../../constants/timeouts';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 class CommunitiesUsersInvite extends Component {
 
@@ -80,7 +81,7 @@ class CommunitiesUsersInvite extends Component {
         return (
             <>
                 <Fragment>
-                    <Header />
+                    <PublisherHeader />
                     <PageHeader title={this.state.community.name +' Invite User'} curPage={'Manage Community'} />
 
                     <div className="blog-section blog-single padding-top padding-bottom aside-bg">

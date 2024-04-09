@@ -9,6 +9,8 @@ import timeouts from '../../../../constants/timeouts';
 import Danger from '../../component/alerts/Danger';
 import Navigate from '../../../../util/Navigate';
 import withRouter from '../../../../util/withRouter';
+import PublisherHeader from '../../component/layout/publisherheader';
+
 
 class CommunitiesCreate extends Component {
 
@@ -71,7 +73,7 @@ class CommunitiesCreate extends Component {
         return (
             <>
                 <Fragment>
-                    <Header />
+                    <PublisherHeader />
                     <PageHeader title={'Create A Community'} curPage={'Communities   '} />
                     <div className=" padding-top padding-bottom">
                         <div className=" container">

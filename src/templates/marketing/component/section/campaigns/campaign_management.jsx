@@ -1,10 +1,18 @@
 import React from 'react';
 import Danger from '../../alerts/Danger';
 import { InputGroup, FormControl } from 'react-bootstrap'; // make sure to import these
+import Switch from "react-switch";
 
 function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
     const handleInputChange = (e) => {
         setCampaignData({ ...campaignData, [e.target.name]: e.target.value });
+    };
+
+    // Function to toggle campaign active status
+    const toggleCampaignStatus = async (campaignId, isActive) => {
+
+        setCampaignData({ ...campaignData, ['require_approval']: isActive });
+
     };
 
     return (
@@ -24,7 +32,7 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                             <option value="ai">A.I.</option>
                             <option value="agency">Agency</option>
                         </select>
-                    
+
                         <small className="form-text text-muted">Choose how the process of selecting relevant creators will be managed.</small>
                         {errors && errors['manage_creator_approval_with'] && errors['manage_creator_approval_with'].map(function (name, index) {
                             return <Danger message={name} key={index} />;
@@ -32,13 +40,23 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                     </div>
 
                     <div className="mb-3">
+                        <label htmlFor="require_approval" className="form-label"> &nbsp;Require Content Approval</label>
+                        <br />
+                        <Switch
+                            checked={campaignData.require_approval}
+                            onChange={() => toggleCampaignStatus(campaignData.id, !campaignData.require_approval)}
+                            className='text-right'
+                        /> &nbsp;&nbsp;&nbsp;{(campaignData.require_approval) ? 'Content Requires Approval' : 'Content Auto Approved'}
+
+                    </div>
+                    <div className="mb-3">
                         <label htmlFor="manage_content_approval_with" className="form-label"> &nbsp;Creator Approval Management</label>
                         <select className="form-control" name="manage_content_approval_with" onChange={handleInputChange}>
                             <option value="self">Self</option>
                             <option value="ai">A.I.</option>
                             <option value="agency">Agency</option>
                         </select>
-                    
+
                         <small className="form-text text-muted">Select how the creators' content will be approved if the approval process is active.</small>
                         {errors && errors['manage_content_approval_with'] && errors['manage_content_approval_with'].map(function (name, index) {
                             return <Danger message={name} key={index} />;

@@ -247,11 +247,60 @@ const Navigate = {
 
         return path;
     },
+    campaignsPerformanceInfluencer : (campaign_id, user_id) => {
+
+        let path = app_routes.campaigns_performance_influencer;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        if(user_id){
+            path = path.replace(':user_id', user_id)
+        }
+
+        return path;
+    },
+    campaignsMessageInfluencer: (campaign_id, user_id, otherUsers = []) => {
+        let path = app_routes.campaigns_message_influencer;
+    
+        if (campaign_id) {
+            path = path.replace(':id', campaign_id);
+        }
+    
+        if (user_id) {
+            path = path.replace(':user_id', user_id);
+        }
+    
+        // Check if otherUsers has data and append it as a query string
+        if (otherUsers.length > 0) {
+            // Assuming path does not already contain a '?', if it might, this logic needs to be adjusted.
+            const queryParams = new URLSearchParams();
+            queryParams.append('participants', otherUsers.join(','));
+            path += `?${queryParams.toString()}`;
+        }
+    
+        return path;
+    },
+    campaignsStartPage : (campaign_id) => {
+
+        let path = app_routes.campaigns_start;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+
+        return path;
+    },
 
 
     //Communites Pages
     communitiesPage : () => {
         return app_routes.communities;
+    },
+    communitiesAdminListPage : () => {
+        return app_routes.communities_admin;
     },
     communitiesCreatePage : () => {
         return app_routes.communities_create;
@@ -481,6 +530,29 @@ const Navigate = {
     messagesListPage : () => {
         return app_routes.messages;
     },
+    messagesCreatePage : () => {
+        return app_routes.message_create;
+    },
+    messagesReadPage : (message_id) => {
+
+        let path = app_routes.message_read;
+
+        if(message_id){
+            //path = path.replace(':id', message_id)
+        }
+
+        return path;
+    },
+    messagesThreadPage : (thread_id) => {
+        
+        let path = app_routes.message_thread;
+
+        if(thread_id){
+            path = path.replace(':id', thread_id)
+        }
+
+        return path;
+    },
 
     //Posts
     postsListPage : () => {
@@ -554,6 +626,27 @@ const Navigate = {
         return app_routes.publishers_register;
 
     },
+    publishersPricingPage : () => {
+
+        return app_routes.publishers_pricing;
+
+    },
+    publishersOnboardingStep1Page : () => {
+
+        return app_routes.publishers_onboarding_step_1;
+
+    },
+    publishersOnboardingStep2Page : () => {
+
+        return app_routes.publishers_onboarding_step_2;
+
+    },
+    publishersOnboardingStep3Page : () => {
+
+        return app_routes.publishers_onboarding_step_3;
+
+    },
+
 
 
 

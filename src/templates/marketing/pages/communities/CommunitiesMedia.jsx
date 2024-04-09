@@ -9,6 +9,8 @@ import SidebarManageMenu from "../../component/section/communities/menu_side_man
 import CommunityFormMedia from '../../component/section/communities/form_community_media';
 import Loading from '../../component/alerts/Loading';
 import Danger from '../../component/alerts/Danger';
+import PublisherHeader from '../../component/layout/publisherheader';
+
 
 
 
@@ -110,7 +112,7 @@ class CommunitiesMedia extends Component {
 
         return (
             <Fragment>
-                <Header />
+                <PublisherHeader />
                 <PageHeader title={this.state.community.name +' Community Social Profiles'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">

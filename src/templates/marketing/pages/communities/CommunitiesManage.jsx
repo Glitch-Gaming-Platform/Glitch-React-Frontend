@@ -7,6 +7,7 @@ import withRouter from "../../../../util/withRouter";
 import Footer from "../../component/layout/footer";
 import SidebarManageMenu from "../../component/section/communities/menu_side_manage";
 import CommunityOverview from '../../component/section/communities/community_overview';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 
 
@@ -49,7 +50,7 @@ class CommunitiesManagePage extends Component {
 
         return (
             <Fragment>
-                <Header />
+                <PublisherHeader/>
                 <PageHeader title={'Manage ' + this.state.community.name +' Community'} curPage={'Manage Community'} />
 
                 <div className="blog-section blog-single padding-top padding-bottom aside-bg">

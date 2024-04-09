@@ -16,6 +16,7 @@ import { useParams } from 'react-router-dom';
 import Loading from '../../component/alerts/Loading';
 import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignManagementForm from '../../component/section/campaigns/campaign_management';
+import CampaignTargetingForm from '../../component/section/campaigns/campaign_targeting';
 
 
 function CampaignUpdatePage() {
@@ -123,7 +124,7 @@ function CampaignUpdatePage() {
                         setTitleErrors({});
                     }, timeouts.error_message_timeout)
                 }
-            }).finally(()=> {
+            }).finally(() => {
                 setIsLoading(false);
             });
 
@@ -162,7 +163,7 @@ function CampaignUpdatePage() {
                         setErrors({});
                     }, timeouts.error_message_timeout)
                 }
-            }).finally(()=> {
+            }).finally(() => {
                 setIsLoading(false);
             });;
         }
@@ -204,16 +205,20 @@ function CampaignUpdatePage() {
                     </div>
 
                     <form onSubmit={handleSubmit}>
-                        <CampaignBasicInfoForm campaignData={campaignData} setCampaignData={setCampaignData} communities={communities} errors={errors} />
-                        <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} errors={titleErrors} />
-                        <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
-                        <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
-
-                        <CampaignInfluencerForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
-
-                        <CampaignManagementForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
-
-                        <CampaignPaymentForm title="Rate Card - General" campaignData={campaignData} paymentData={campaignData.generalPayment} setPaymentData={setCampaignData} errors={errors} />
+                        {
+                            Object.keys(campaignData).length > 0 && (
+                                <>
+                                    <CampaignBasicInfoForm campaignData={campaignData} setCampaignData={setCampaignData} communities={communities} errors={errors} />
+                                    <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} errors={titleErrors} />
+                                    <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+                                    <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+                                    <CampaignTargetingForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+                                    <CampaignInfluencerForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+                                    <CampaignManagementForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+                                    <CampaignPaymentForm title="Rate Card - General" campaignData={campaignData} paymentData={campaignData.generalPayment} setPaymentData={setCampaignData} errors={errors} />
+                                </>
+                            )
+                        }
 
                         {/* Styled buttons and conditional rendering for each CampaignPaymentForm */}
                         <div className='text-center mt-2'>

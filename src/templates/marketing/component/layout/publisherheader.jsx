@@ -147,10 +147,9 @@ class PublisherHeader extends Component {
                                             <li >
                                                 <Link to={Navigate.campaignsPage()} >Campaigns</Link>
                                             </li>
-
-
-
-
+                                            <li >
+                                                <Link to={Navigate.communitiesAdminListPage()} >Communities</Link>
+                                            </li>
 
                                             {loginOrAccountMobile}
                                         </ul>

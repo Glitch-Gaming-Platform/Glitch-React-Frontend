@@ -35,8 +35,6 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
 
                         {createTextAreaField('requirements', 'Requirements', 'List any requirements you have of the creator for this campaign. This could range from requirement in their following size, social accounts, interest and other areas.', errors)}
 
-                        {createTextAreaField('target_audience', 'Target Audience', 'Describe potential target audiences.', errors)}
-
                         {createTextAreaField('hashtags', 'Hashtags', 'List any hashtags that you want the content creators to use.', errors)}
 
                         {createTextAreaField('highlights', 'Product Highlights', 'List any talking points that you want the creator to discuss in their content.', errors)}
@@ -56,7 +54,7 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
                 <div className="mb-3">
                     <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
                     
-                    <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} placeholder={label} />
+                    <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} />
                     <p className="small">{description}</p>
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {

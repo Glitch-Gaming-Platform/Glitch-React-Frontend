@@ -3,6 +3,8 @@ import Select from '../../form/select';
 import Danger from '../../alerts/Danger';
 import RequiredAsterisk from '../../form/required_asterisk';
 import Wysiwyg from '../../form/wysiwyg';
+import { Link } from 'react-router-dom';
+import Navigate from '../../../../../util/Navigate';
 
 function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = [], errors }) {
 
@@ -102,7 +104,7 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                                     </option>
                                 ))}
                             </Select>
-                            <p className="small">Select a community account to associate the campaign with.</p>
+                            <p className="small">Select a organizer account to associate the campaign with. If you have not created one, you can <Link to={Navigate.communitiesCreatePage()}>create one here</Link></p>
 
                             {errors && errors['community_id'] && errors['community_id'].map(function (name, index) {
                                 return <Danger message={name} key={index} />;
@@ -157,7 +159,7 @@ function CampaignBasicInfoForm({ campaignData, setCampaignData, communities = []
                 <div className="mb-3">
                     <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
                     
-                    <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} placeholder={label} />
+                    <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} />
                     <p className="small">{description}</p>
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {

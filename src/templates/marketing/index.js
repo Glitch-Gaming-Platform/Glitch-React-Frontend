@@ -105,6 +105,16 @@ import PublisherRegisterPage from './pages/publishers/publishers_register';
 import Cohostwatchstream from './pages/streams/cohostwatchstream';
 import PublisherPilotsPage from './pages/publishers/publishers_pilots';
 import CampaignsViewCreatorPage from './pages/campaigns/CampaignsViewCreatorPage';
+import CampaignsViewCreatorPerformancePage from './pages/campaigns/CampaignsViewCreatorPerformancePage';
+import MessagesCreatePage from './pages/messages/MessagesCreatePage';
+import MessagesReadPage from './pages/messages/MessagesReadPage';
+import PublisherPricingPage from './pages/publishers/publishers_pricing';
+import CampaignsMessageInfluencerPage from './pages/campaigns/CampaignsMessageInfluencerPage';
+import CommunitiesAdminList from './pages/communities/CommunitiesAdminList';
+import PublisherOnboardinStep1Page from './pages/publishers/publisher_onboarding_step_1';
+import PublisherOnboardinStep2Page from './pages/publishers/publisher_onboarding_step_2';
+import PublisherOnboardingStep3Page from './pages/publishers/publisher_onboarding_step_3';
+import CampaignsStartPage from './pages/campaigns/CampaignsStartPage';
 
 
 function Template() {
@@ -148,9 +158,13 @@ function Template() {
           <Route path={Navigate.campaignsViewPage()} element={<CampaignsViewPage />} />
           <Route path={Navigate.campaignsFindInfluencers()} element={<CampaignsFindInfluencersPage />} />
           <Route path={Navigate.campaignsResearchInfluencer()} element={<CampaignsViewCreatorPage />} />
+          <Route path={Navigate.campaignsPerformanceInfluencer()} element={<CampaignsViewCreatorPerformancePage />} />
+          <Route path={Navigate.campaignsMessageInfluencer()} element={<CampaignsMessageInfluencerPage />} />
+          <Route path={Navigate.campaignsStartPage()} element={<CampaignsStartPage />} />
 
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />
+          <Route path={Navigate.communitiesAdminListPage()} element={<CommunitiesAdminList />} />
           <Route path={Navigate.communitiesCreatePage()} element={<CommunitiesCreate />} />
           <Route path={Navigate.communitiesViewPage()} element={<CommunitiesView />} />
           <Route path={Navigate.communitiesOverviewPage()} element={<CommunitiesManage />} />
@@ -192,6 +206,9 @@ function Template() {
           <Route path={Navigate.streamsCohostWatch()} element={<Cohostwatchstream />} />
 
           <Route path={Navigate.messagesListPage()} element={<MessagesListPage />} />
+          <Route path={Navigate.messagesCreatePage()} element={<MessagesCreatePage />} />
+          <Route path={Navigate.messagesReadPage()} element={<MessagesReadPage />} />
+          <Route path={Navigate.messagesThreadPage()} element={<MessagesReadPage/>} />
 
           <Route path={Navigate.publishersGamificationPage()} element={<PublishersGamificationPage />} />
           <Route path={Navigate.publishersOptimizationPage()} element={<PublishersOptimizationPage />} />
@@ -199,6 +216,14 @@ function Template() {
           <Route path={Navigate.publishersAcquisitionPage()} element={<PublisherUserAcquistion />} />
           <Route path={Navigate.publishersRegisterPage()} element={<PublisherRegisterPage />} />
           <Route path={Navigate.publishersPilotPage()} element={<PublisherPilotsPage />} />
+          <Route path={Navigate.publishersPricingPage()} element={<PublisherPricingPage />} />
+
+          <Route path={Navigate.publishersOnboardingStep1Page()} element={<PublisherOnboardinStep1Page />} />
+          <Route path={Navigate.publishersOnboardingStep2Page()} element={<PublisherOnboardinStep2Page />} />
+          <Route path={Navigate.publishersOnboardingStep3Page()} element={<PublisherOnboardingStep3Page />} />
+
+
+
 
 
           <Route path={Navigate.authTwitch()} element={<AuthTwitch />} />

@@ -12,30 +12,30 @@ export default function CommunityFormBasic({ nameValue, nameOnChange, taglineVal
         <>
             <h3>Basic Information</h3>
             <div className="form-group text-left">
-                <label>Community Name</label>
-                <Input type="text" name="community_name" value={nameValue} onChange={nameOnChange} placeholder="Give the community a name for your game(s)." />
+                <label>Organization Name</label>
+                <Input type="text" name="community_name" value={nameValue} onChange={nameOnChange} placeholder="Give the organization a name for your game(s)." />
                 {errors && errors.name && errors.name.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
             </div>
             <div className="form-group text-left">
-                <label>Community Tagline</label>
-                <Input type="text" name="community_name" value={taglineValue} onChange={taglineOnChange} placeholder="Enter a tagline for your game or community." />
+                <label>Organization Tagline</label>
+                <Input type="text" name="community_name" value={taglineValue} onChange={taglineOnChange} placeholder="Enter a tagline for your game or organization." />
                 {errors && errors.tagline && errors.tagline.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
             </div>
             <div className="form-group text-left">
-                <label>Community Description</label>
-                <Textarea type="text" name="community_description"  onChange={descriptionOnChange} placeholder="Describe how you want the community to be for your games." >{descriptionValue}</Textarea>
+                <label>Organization Description</label>
+                <Textarea type="text" name="community_description"  onChange={descriptionOnChange} placeholder="Describe how you want the organization to be for your games." >{descriptionValue}</Textarea>
                 {errors && errors.description && errors.description.map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
             </div>
 
             <div className="form-group text-left">
-                <label>Community Subdomain</label>
-                <Input type="text" name="community_subdomain" value={subdomainValue} onChange={subdomainOnChange} placeholder="Enter the subdomain for the community." />
+                <label>Organization Subdomain</label>
+                <Input type="text" name="community_subdomain" value={subdomainValue} onChange={subdomainOnChange} placeholder="Enter the subdomain for the organization." />
                 <p className="small">The subdomain will the subdomain under glitch.fun. For example, mygame.glitch.fun. </p>
                 {errors && errors.subdomain && errors.subdomain.map(function (name, index) {
                     return <Danger message={name} key={index} />;

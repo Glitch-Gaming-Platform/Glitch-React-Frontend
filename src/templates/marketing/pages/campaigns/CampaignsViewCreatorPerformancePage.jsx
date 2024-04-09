@@ -9,13 +9,17 @@ import GameTitle from '../../component/section/titles/title_display';
 import Navigate from '../../../../util/Navigate';
 import Moment from 'react-moment';
 import CampaignUserManager from '../../component/section/campaigns/campaign_users_manager';
+import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
 import CreatorFollowerCountDisplay from '../../component/section/creators/creator_follower_count';
 import CreatorPostingAnalytics from '../../component/section/creators/creator_posting_analytics';
-import PublisherHeader from '../../component/layout/publisherheader';
+import CreatorPostingStatistics from '../../component/section/creators/creator_posts_statistcs';
+import CreatorPostingCharts from '../../component/section/creators/creator_posts_charts';
+import CreatorLinksCharts from '../../component/section/creators/creator_links_charts';
+import CreatorLinksList from '../../component/section/creators/creator_links_list';
 import CreatorHeader from '../../component/section/creators/creator_header';
 
-const CampaignsViewCreatorPage = () => {
+const CampaignsViewCreatorPerformancePage = () => {
 
     const [campaign, setCampaign] = useState({});
     const [user, setUser] = useState({});
@@ -56,7 +60,7 @@ const CampaignsViewCreatorPage = () => {
                         <div className="pageheader-thumb mb-4">
                             <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
-                        <h2 className="pageheader-title">View Content Creator</h2>
+                        <h2 className="pageheader-title">View Content Creator Performance</h2>
 
                         <p className="lead">View the information for a content creator.</p>
 
@@ -64,20 +68,19 @@ const CampaignsViewCreatorPage = () => {
                 </div>
             </section>
 
-            <div className="container mt-5 mb-2" >
+            <div className='container mt-4'>
+                <h2>{user.username} performance on {campaign.name}</h2>
+                <hr />
                 <CreatorHeader user={user} />
-                <hr />
             </div>
 
-            
+            <CreatorPostingStatistics  user={user}  />
 
-            <CreatorFollowerCountDisplay userData={user} />
+            <CreatorPostingCharts  user={user}  />
 
-            <div className="container mt-5 mb-2" >
-                <hr />
-                <CreatorPostingAnalytics userData={user} />
-            </div>
+            <CreatorLinksCharts  user={user}  />
 
+            <CreatorLinksList  user={user}  />
     
            
 
@@ -86,4 +89,4 @@ const CampaignsViewCreatorPage = () => {
     );
 };
 
-export default CampaignsViewCreatorPage;
+export default CampaignsViewCreatorPerformancePage;

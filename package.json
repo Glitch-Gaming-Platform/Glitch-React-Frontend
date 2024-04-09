@@ -28,7 +28,7 @@
     "bootstrap": "^5.3.2",
     "cropper": "^4.1.0",
     "draft-js": "^0.11.7",
-    "glitch-javascript-sdk": "^0.8.4",
+    "glitch-javascript-sdk": "^0.8.8",
     "invirtu-javascript-api": "^0.4.2",
     "invirtu-react-widgets": "^0.0.7",
     "jquery": "^3.7.1",

@@ -47,7 +47,7 @@ class SignUp extends Component {
 
         }, 1000) 
         
-        window.location = Navigate.authLogin();
+        //window.location = Navigate.authLogin();
     }
 
     register(event) {

@@ -12,6 +12,7 @@ import Loading from '../../component/alerts/Loading';
 import Navigate from '../../../../util/Navigate';
 import timeouts from '../../../../constants/timeouts';
 import CommunityFormLabels from '../../component/section/communities/form_community_labels';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 
 

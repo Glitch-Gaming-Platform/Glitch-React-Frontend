@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import PageHeader from '../../component/layout/pageheader';
 import withRouter from '../../../../util/withRouter';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 class CommunitiesView extends Component {
 
@@ -31,7 +32,7 @@ class CommunitiesView extends Component {
         return (
             <>
                 <Fragment>
-                    <Header />
+                    <PublisherHeader />
                     <PageHeader title={this.state.community.name +' Community'} curPage={'Communities'} />
                     <div className=" padding-top padding-bottom">
                         <div className=" container">

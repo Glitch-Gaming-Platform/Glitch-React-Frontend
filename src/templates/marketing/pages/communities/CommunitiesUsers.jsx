@@ -10,6 +10,7 @@ import Roles from '../../../../constants/roles';
 import Danger from '../../component/alerts/Danger';
 import Loading from '../../component/alerts/Loading';
 import SidebarManageMenu from '../../component/section/communities/menu_side_manage';
+import PublisherHeader from '../../component/layout/publisherheader';
 
 class CommunitiesUsers extends Component {
 
@@ -72,7 +73,7 @@ class CommunitiesUsers extends Component {
         return (
             <>
                 <Fragment>
-                    <Header />
+                    <PublisherHeader />
                     <PageHeader title={this.state.community.name +' Users'} curPage={'Manage Community'} />
 
                     <div className="container pt-5 mb-3">

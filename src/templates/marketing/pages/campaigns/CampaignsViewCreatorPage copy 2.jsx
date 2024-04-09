@@ -9,10 +9,10 @@ import GameTitle from '../../component/section/titles/title_display';
 import Navigate from '../../../../util/Navigate';
 import Moment from 'react-moment';
 import CampaignUserManager from '../../component/section/campaigns/campaign_users_manager';
+import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
 import CreatorFollowerCountDisplay from '../../component/section/creators/creator_follower_count';
 import CreatorPostingAnalytics from '../../component/section/creators/creator_posting_analytics';
-import PublisherHeader from '../../component/layout/publisherheader';
 import CreatorHeader from '../../component/section/creators/creator_header';
 
 const CampaignsViewCreatorPage = () => {
@@ -64,17 +64,11 @@ const CampaignsViewCreatorPage = () => {
                 </div>
             </section>
 
-            <div className="container mt-5 mb-2" >
-                <CreatorHeader user={user} />
-                <hr />
-            </div>
-
-            
+            <CreatorHeader userData={user} />
 
             <CreatorFollowerCountDisplay userData={user} />
 
             <div className="container mt-5 mb-2" >
-                <hr />
                 <CreatorPostingAnalytics userData={user} />
             </div>
 

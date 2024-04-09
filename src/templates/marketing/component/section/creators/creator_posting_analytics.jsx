@@ -72,6 +72,7 @@ const CreatorPostingAnalytics = () => {
   };
 
   const renderBarChart = (data, platform) => (
+
     <ResponsiveContainer width="100%" height={300} key={platform}>
       <BarChart
         data={data}
@@ -96,6 +97,9 @@ const CreatorPostingAnalytics = () => {
 
   return (
     <div>
+      <h3>Recent Posting Data</h3>
+      <p className='lead'>See how the user's recent posts have performaned on social media.</p>
+
       <div className="mb-3">
         <h4>Enable/Disable Metrics</h4>
         {Object.keys(metrics).map((metric) => (
@@ -108,9 +112,10 @@ const CreatorPostingAnalytics = () => {
           </label>
         ))}
       </div>
+      
       {Object.keys(platformData).map(platform => (
         <div key={platform}>
-          <h3>{platform}</h3>
+          <h4>{platform}</h4>
           {renderBarChart(platformData[platform], platform)}
         </div>
       ))}
