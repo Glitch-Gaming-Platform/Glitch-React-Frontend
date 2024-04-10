@@ -308,7 +308,16 @@ function CampaignCreatePage() {
                             </div>
 
                             <div className="mt-2 text-center">
-                                {(Object.keys(errors).length > 0 || Object.keys(titleErrors).length > 0) ? <Danger message={"There are error(s) in creating the campaign. Please check the form above."} /> : ''}
+                                {Object.keys(errors).length > 0 && Object.keys(errors).map((errorKey) => (
+                                    errors[errorKey].map((message, index) => (
+                                        <Danger key={`${errorKey}-${index}`} message={message} />
+                                    ))
+                                ))}
+                                {Object.keys(titleErrors).length > 0 && Object.keys(titleErrors).map((errorKey) => (
+                                    titleErrors[errorKey].map((message, index) => (
+                                        <Danger key={`title-${errorKey}-${index}`} message={message} />
+                                    ))
+                                ))}
                             </div>
 
                         </>}
