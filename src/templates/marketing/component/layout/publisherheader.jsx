@@ -56,9 +56,9 @@ class PublisherHeader extends Component {
         window.addEventListener('scroll', function () {
             var value = window.scrollY;
             if (value > 200) {
-                document.querySelector('.header-section')?.classList?.add(['header-fixed'], ['fadeInUp'])
+                //document.querySelector('.header-section')?.classList?.add(['header-fixed'], ['fadeInUp'])
             } else if (document.querySelector('.header-section') != null) {
-                document.querySelector('.header-section')?.classList?.remove(['header-fixed'], ['fadeInUp'])
+                //document.querySelector('.header-section')?.classList?.remove(['header-fixed'], ['fadeInUp'])
             }
         });
 
@@ -148,7 +148,7 @@ class PublisherHeader extends Component {
                                                 <Link to={Navigate.campaignsPage()} >Campaigns</Link>
                                             </li>
                                             <li >
-                                                <Link to={Navigate.communitiesAdminListPage()} >Communities</Link>
+                                                <Link to={Navigate.communitiesAdminListPage()} >Organizations</Link>
                                             </li>
 
                                             {loginOrAccountMobile}

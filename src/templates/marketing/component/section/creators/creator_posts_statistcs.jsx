@@ -42,7 +42,7 @@ const CreatorPostingStatistics = ({user}) => {
             </div>
             <p className="mb-0 px-2"><i className="fas fa-eye"></i> Views: {post.total_views}</p>
             <p className="mb-0 px-2"><i className="fas fa-comments"></i> Comments: {post.total_comments}</p>
-            <p className="mb-0 px-2"><i className="fas fa-mouse-pointer"></i> Engagements: {post.total_engagements}</p>
+            <p className="mb-0 px-2"><i className="fas fa-mouse-pointer"></i> Non-Verbal Engagements(likes, hearts, etc): {post.total_engagements}</p>
             <p className="mb-0 px-2"><i className="fas fa-share"></i> Shares: {post.total_shares}</p>
             <p className="mb-0 px-2"><i className="fas fa-heart"></i> Reactions: {post.total_reactions}</p>
             <p className="mb-0 px-2"><i className="fas fa-bookmark"></i> Bookmarks: {post.total_bookmarks}</p>

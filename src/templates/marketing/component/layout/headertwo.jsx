@@ -57,9 +57,9 @@ class HeaderTwo extends Component {
         window.addEventListener('scroll', function () {
             var value = window.scrollY;
             if (value > 200) {
-                document.querySelector('.header-section').classList.add(['header-fixed'], ['fadeInUp'])
+                //document.querySelector('.header-section').classList.add(['header-fixed'], ['fadeInUp'])
             } else {
-                document.querySelector('.header-section').classList.remove(['header-fixed'], ['fadeInUp'])
+                //document.querySelector('.header-section').classList.remove(['header-fixed'], ['fadeInUp'])
             }
         });
 

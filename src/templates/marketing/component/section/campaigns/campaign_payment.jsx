@@ -68,7 +68,7 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
                     </div>
                     <div className="row">
                         {createInputField('share', 'fa-share-alt', 'Shares', 'Set the amount an influencer will earn each time their content is shared.')}
-                        {createInputField('engagement', 'fa-heart', 'Engagements', 'Set the amount an influencer will earn for each social engagement.')}
+                        {createInputField('engagement', 'fa-heart', 'Non-Verbal Engagements (likes, hearts, etc)', 'Set the amount an influencer will earn for each social engagement.')}
                     </div>
                     <div className="row">
                         {createInputField('click', 'fa-mouse-pointer', 'Clicks', 'Set the amount an influencer will earn for each click on referral links.')}
