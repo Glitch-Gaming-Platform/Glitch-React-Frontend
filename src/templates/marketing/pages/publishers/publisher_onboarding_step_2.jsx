@@ -33,7 +33,18 @@ const PublisherOnboardinStep2Page = (props) => {
 
         setIsLoading(true);
 
-        Glitch.api.Communities.create(data).then(response => {
+        let tmpData = data;
+
+        // Check if the subdomain contains 'glitch.fun' and modify it
+        if (tmpData.subdomain && tmpData.subdomain.includes('glitch.fun')) {
+            // Find the index of the first '.' and remove everything after it
+            let dotIndex = tmpData.subdomain.indexOf('.');
+            if (dotIndex !== -1) {
+                tmpData.subdomain = tmpData.subdomain.substring(0, dotIndex);
+            }
+        }
+
+        Glitch.api.Communities.create(tmpData).then(response => {
             setIsLoading(false);
             navigate(Navigate.publishersOnboardingStep3Page());
         }).catch(error => {
