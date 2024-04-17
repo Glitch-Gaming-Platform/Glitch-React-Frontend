@@ -5,6 +5,15 @@ import { Link } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 
 const Creators = () => {
+
+    const trackDownload = () => {
+        // Check if fbq function exists
+        if (window.fbq) {
+            // Track custom event, you can change 'Download' to any event name relevant to your tracking strategy
+            window.fbq('track', 'Download');
+        }
+    };
+
     return (
         <>
             <a id="goal"></a>
@@ -19,7 +28,7 @@ const Creators = () => {
                     <div className="section-wrapper padding-top">
                         <div className="row">
                             
-                            <div className="col-lg-6 col-md-10">
+                            <div className="col-lg-6 col-md-10 mb-5">
                                 <div className="about-wrapper">
                                     <div className="section-header">
                                         <p>Earn Cash For Playing Games</p>
@@ -36,7 +45,7 @@ const Creators = () => {
                             </div>
                             <div className="col-lg-6">
                                 <div className="about-image">
-                                    <img src={"/assets/images/creators/connecting_2.webp"} alt="about-image" />
+                                    <img src={"/assets/images/creators/connecting_2.webp"} alt="about-image rounded" />
                                 </div>
                             </div>
                         </div>
@@ -303,12 +312,12 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3-arm64.dmg">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3-arm64.dmg" onClick={trackDownload}>
                                             Mac Silicon Version (ARM)
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3.dmg">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3.dmg" onClick={trackDownload}>
                                             Mac Intel Version (x86)
                                         </a>
                                     </li>
@@ -326,7 +335,7 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-Setup-1.6.3.exe">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-Setup-1.6.3.exe" onClick={trackDownload} >
                                             Windows Exe
                                         </a>
                                     </li>
@@ -343,12 +352,12 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3-arm64.AppImage">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3-arm64.AppImage" onClick={trackDownload}>
                                             Linux ARM App Image (AMD)
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3.AppImage">
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3.AppImage" onClick={trackDownload}>
                                             Linux Intel App Image (x86)
                                         </a>
                                     </li>

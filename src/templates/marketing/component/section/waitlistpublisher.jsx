@@ -117,7 +117,13 @@ const WaitlistPublisher = () => {
 
             setSubmitted(true);
 
-            window.rdt('track', 'SignUp');
+            if(window.rdt) {
+                window.rdt('track', 'SignUp');
+            }
+
+            if (window.fbq) {
+                window.fbq('track', 'CompleteRegistration');
+            }
 
         }).catch(error => {
 

@@ -128,6 +128,14 @@ const WaitlistInfluencer = () => {
 
             setSubmitted(true);
 
+            if (window.fbq) {
+                window.fbq('track', 'CompleteRegistration');
+            }
+
+            if(window.rdt) {
+                window.rdt('track', 'SignUp');
+            }
+
         }).catch(error => {
 
 
