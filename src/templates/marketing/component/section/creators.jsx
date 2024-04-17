@@ -12,6 +12,20 @@ const Creators = () => {
             // Track custom event, you can change 'Download' to any event name relevant to your tracking strategy
             window.fbq('track', 'Download');
         }
+
+        if (window.ttq) {
+            window.ttq.track('Download', {
+                "contents": [
+                    {
+                        "content_id": "1.6.3", // string. ID of the product. Example: "1077218".
+                        "content_type": "product", // string. Either product or product_group.
+                        "content_name": "Glitch App" // string. The name of the page or product. Example: "shirt".
+                    }
+                ],
+                "value": 0, // number. Value of the order or items sold. Example: 100.
+                "currency": "USD" // string. The 4217 currency code. Example: "USD".
+            });
+        }
     };
 
     return (

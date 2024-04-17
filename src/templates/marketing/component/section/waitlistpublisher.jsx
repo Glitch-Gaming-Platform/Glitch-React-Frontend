@@ -51,7 +51,7 @@ const WaitlistPublisher = () => {
 
         if (!firstName) {
 
-            errors.first_name =['First name is required'];
+            errors.first_name = ['First name is required'];
 
             hasError = true;
         }
@@ -63,14 +63,14 @@ const WaitlistPublisher = () => {
             hasError = true;
         }
 
-        if(!console_android && !console_iphone && !console_linux && !console_mac && !console_other && !console_pc && !console_playstation && !console_xbox){
-            
+        if (!console_android && !console_iphone && !console_linux && !console_mac && !console_other && !console_pc && !console_playstation && !console_xbox) {
+
             errors.streaming = ['Please select at least one console option.'];
 
             hasError = true;
         }
 
-        if(hasError){
+        if (hasError) {
 
             errors.hasErrors = ['Fix the errors in the form before submitting.'];
 
@@ -89,7 +89,7 @@ const WaitlistPublisher = () => {
             email: email,
             website: website,
             company: company,
-            type : 'publisher',
+            type: 'publisher',
             meta: {
                 info: info,
                 streaming_twitch: streaming_twitch,
@@ -117,12 +117,31 @@ const WaitlistPublisher = () => {
 
             setSubmitted(true);
 
-            if(window.rdt) {
+            if (window.rdt) {
                 window.rdt('track', 'SignUp');
             }
 
             if (window.fbq) {
                 window.fbq('track', 'CompleteRegistration');
+            }
+
+
+
+
+            if (window.ttq.track) {
+
+
+                window.ttq.track('SubmitForm', {
+                    "contents": [
+                        {
+                            "content_id": "001", // string. ID of the product. Example: "1077218".
+                            "content_type": "product", // string. Either product or product_group.
+                            "content_name": "Glitch Publisher Waitlist" // string. The name of the page or product. Example: "shirt".
+                        }
+                    ],
+                    "value": 0, // number. Value of the order or items sold. Example: 100.
+                    "currency": "USD" // string. The 4217 currency code. Example: "USD".
+                });
             }
 
         }).catch(error => {
@@ -131,7 +150,7 @@ const WaitlistPublisher = () => {
             if (error.response && error.response.data) {
 
                 error.response.data.hasErrors = ['Fix the errors in the form before submitting.'];
-                
+
                 setErrors(error.response.data);
 
                 setTimeout(() => {
@@ -304,7 +323,7 @@ const WaitlistPublisher = () => {
 
                                             <br />
                                             <br />
-                                            
+
                                             <div className="form-group w-100">
 
                                                 <p className='lead text-left' style={{ maxWidth: '100%' }}>Tell us a little bit more about your game, and marketing and promotion goals.</p>
@@ -321,7 +340,7 @@ const WaitlistPublisher = () => {
 
                                             <div className="form-group w-100">
                                                 {errors && errors.hasErrors && errors.hasErrors.map(function (name, index) {
-                                                        return <Danger message={name} key={index} />;
+                                                    return <Danger message={name} key={index} />;
                                                 })}
                                             </div>
 
@@ -329,7 +348,7 @@ const WaitlistPublisher = () => {
                                                 <button className="default-button" type="submit" onClick={signUp}><span>Sign Up</span></button>
                                             </div>
                                         </form>
-                                        
+
                                         <p className="form-message"></p>
                                     </div>
                                 </div>

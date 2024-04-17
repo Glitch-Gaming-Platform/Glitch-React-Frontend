@@ -136,6 +136,21 @@ const WaitlistInfluencer = () => {
                 window.rdt('track', 'SignUp');
             }
 
+            if(window.ttq.track) {
+
+                window.ttq.track('SubmitForm', {
+                    "contents": [
+                        {
+                            "content_id": "001", // string. ID of the product. Example: "1077218".
+                            "content_type": "product", // string. Either product or product_group.
+                            "content_name": "Glitch Publisher Waitlist" // string. The name of the page or product. Example: "shirt".
+                        }
+                    ],
+                    "value": 0, // number. Value of the order or items sold. Example: 100.
+                    "currency": "USD" // string. The 4217 currency code. Example: "USD".
+                });
+            }
+
         }).catch(error => {
 
 

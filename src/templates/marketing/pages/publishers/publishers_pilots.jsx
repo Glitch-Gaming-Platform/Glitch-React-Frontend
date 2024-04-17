@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChartLine, faUserCheck, faBullhorn, faHandshake, faThumbsUp, faTools, faGamepad, faDollarSign, faUserFriends, faBalanceScale, faGem, faUsers, } from '@fortawesome/free-solid-svg-icons';
 import Header from '../../component/layout/header';
@@ -6,13 +6,37 @@ import Footer from '../../component/layout/footer';
 import Navigate from '../../../../util/Navigate';
 import { Helmet } from 'react-helmet';
 import WaitlistPublisher from '../../component/section/waitlistpublisher';
+import sha256 from 'crypto-js/sha256'; 
 
 function PublisherPilotsPage() {
 
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
+  const [contentIdentifier, setContentIdentifier] = useState('');
+
+
   useEffect(() => {
-    window.rdt('track', 'PageVisit');
+
+    const hashedIdentifier = sha256(currentUrl).toString();  // Hashing the URL to create a unique content identifier
+    setContentIdentifier(hashedIdentifier);
+
+    if (window.rdt) {
+      window.rdt('track', 'PageVisit');
+    }
+
+    if (window.ttq.track) {
+      window.ttq.track('ViewContent', {
+        "contents": [
+          {
+            "content_id": hashedIdentifier, // string. ID of the product. Example: "1077218".
+            "content_type": "product", // string. Either product or product_group.
+            "content_name": "publisher_pilot_registration" // string. The name of the page or product. Example: "shirt".
+          }
+        ],
+        "value": 0, // number. Value of the order or items sold. Example: 100.
+        "currency": "USD" // string. The 4217 currency code. Example: "USD".
+      });
+    }
 
   }, []); // The empty array means this effect runs only on component mount
 
@@ -85,10 +109,10 @@ function PublisherPilotsPage() {
               </div>
             </div>
           </div>
-    
-      </section>
 
-        <div className='p-4 mb-5 rounded'style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
+        </section>
+
+        <div className='p-4 mb-5 rounded' style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
           <div className="mb-5">
             <h2 className="fw-bold text-success text-center">How The Process Works</h2>
             <div className="row">
@@ -108,7 +132,7 @@ function PublisherPilotsPage() {
                 <FontAwesomeIcon icon={faBullhorn} size="3x" className="text-success d-block mx-auto" />
               </div>
             </div>
-            
+
           </div>
         </div>
 
@@ -124,7 +148,7 @@ function PublisherPilotsPage() {
 
 
         <div className="container py-5">
-        
+
           <WaitlistPublisher title="Sign Up For The Case Study" />
         </div>
 

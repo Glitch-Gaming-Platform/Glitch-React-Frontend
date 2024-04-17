@@ -6,8 +6,34 @@ import PageHeader from "../../component/layout/pageheader";
 import Benefits from "../../component/section/benefits";
 import Creators from "../../component/section/creators";
 import { Helmet } from 'react-helmet';
+import sha256 from 'crypto-js/sha256';
 
 class CreatorsPage extends Component {
+
+    componentDidMount() {
+        
+        const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+        const hashedIdentifier = sha256(currentUrl).toString();  // Hashing the URL to create a unique content identifier
+
+        if (window.rdt) {
+            window.rdt('track', 'PageVisit');
+          }
+
+        if (window.ttq.track) {
+            window.ttq.track('ViewContent', {
+              "contents": [
+                {
+                  "content_id": hashedIdentifier, // string. ID of the product. Example: "1077218".
+                  "content_type": "product", // string. Either product or product_group.
+                  "content_name": "publisher_pilot_registration" // string. The name of the page or product. Example: "shirt".
+                }
+              ],
+              "value": 0, // number. Value of the order or items sold. Example: 100.
+              "currency": "USD" // string. The 4217 currency code. Example: "USD".
+            });
+          }
+    }
+
     render() {
         return (
             <>
