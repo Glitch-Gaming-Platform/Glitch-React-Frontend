@@ -116,7 +116,7 @@ function PublisherPilotsPage() {
         <div className="mb-5 p-5 rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
           <h2 className="mb-4 text-center">Only 10 Games Will Be Selected</h2>
           <div className="text-center">
-            <p className="lead">We Will Choose Only 10 Games To Work With To Build Case Studies. Registration Close April 5,2024. Register now!</p>
+            <p className="lead">We Will Choose Only 10 Games To Work With To Build Case Studies. Registration Close April 25th,2024. Register now!</p>
             <img src="/assets/images/publishers/final_selection.webp" alt="Micro Influencers" className="img-fluid rounded shadow mb-2" />
           </div>
         </div>
