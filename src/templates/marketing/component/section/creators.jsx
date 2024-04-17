@@ -1,6 +1,8 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
+import Navigate from '../../../../util/Navigate';
 
 const Creators = () => {
     return (
@@ -10,13 +12,37 @@ const Creators = () => {
                 The #1 Workflow App <br />For Gaming Content Creators
             </div>
 
-            <div className="container py-5 text-center mb-1" key={'key1'}>
-                <h2 style={{ textTransform: 'none' }}>
-                    <i className="fas fa-gamepad me-3"></i>
-                    Dive into the world of effortless live streaming, clipping, and social sharing. We're reshaping the way gaming influencers connect with fans!
-                </h2>
-                <hr className='mt-5' />
-            </div>
+
+
+            <section className="about-section">
+                <div className="container">
+                    <div className="section-wrapper padding-top">
+                        <div className="row">
+                            
+                            <div className="col-lg-6 col-md-10">
+                                <div className="about-wrapper">
+                                    <div className="section-header">
+                                        <p>Earn Cash For Playing Games</p>
+                                        <h2>The Streaming Workflow Tool That Pays</h2>
+                                    </div>
+                                    <div className="about-content">
+                                        <p>Glitch is a workflow tool that makes streaming and creating content easy, and also pays you for promoting the latest games. Help game makers market their games by sharing your gameplay content on Twitch, YouTube, TikTok, Reddit, Facebook, Twitter, and Instagram. Get paid for the results you generate.</p>
+                                        <div className='text-center'>
+                                            <Link to={Navigate.creatorsInfluencersPage()} className='btn btn-lg btn-success'>Learn More</Link>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-6">
+                                <div className="about-image">
+                                    <img src={"/assets/images/creators/connecting_2.webp"} alt="about-image" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
 
 

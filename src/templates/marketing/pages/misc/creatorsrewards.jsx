@@ -43,6 +43,31 @@ class CreatorsRewardsPage extends Component {
                     </section>
 
 
+                    
+
+                    <section className="cta-section mb-5 mt-5">
+                        <div className="container">
+                            <div className="cta-wrapper item-layer">
+                                <div className="cta-item px-4 px-sm-5 pt-4 pt-sm-5 pt-lg-0" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
+                                    <div className="row align-items-center">
+                                        <div className="col-lg-6">
+                                            <div className="cta-content">
+                                                <p className="theme-color text-uppercase ls-2">Start Earning</p>
+                                                <h3>Make Money Doing What You Love</h3>
+                                                <p className="mb-4 lead">Get paid for what you are a good at and have passion for! Playing games, streaming your gameplay and creating content.</p>
+                                            </div>
+                                        </div>
+                                        <div className="col-lg-6">
+                                            <div className="cta-thumb text-end">
+                                                <img src="/assets/images/creators/creators_earn.png" alt="gamer-img" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
                     <div className="container padding-bottom pt-5 rounded mt-5" key={'key3'}>
                         <div className="section-wrapper">
                             <div className="row g-4 justify-content-center"></div>
@@ -68,29 +93,6 @@ class CreatorsRewardsPage extends Component {
                             </div>
                         </div>
                     </div>
-
-                    <section className="cta-section mb-5">
-                        <div className="container">
-                            <div className="cta-wrapper item-layer">
-                                <div className="cta-item px-4 px-sm-5 pt-4 pt-sm-5 pt-lg-0" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
-                                    <div className="row align-items-center">
-                                        <div className="col-lg-6">
-                                            <div className="cta-content">
-                                                <p className="theme-color text-uppercase ls-2">Start Earning</p>
-                                                <h3>Make Money Doing What You Love</h3>
-                                                <p className="mb-4 lead">Get paid for what you are a good at and have passion for! Playing games, streaming your gameplay and creating content.</p>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6">
-                                            <div className="cta-thumb text-end">
-                                                <img src="/assets/images/creators/creators_earn.png" alt="gamer-img" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
 
                     <div className="how-it-works-section py-5">
                         <div className="container">
