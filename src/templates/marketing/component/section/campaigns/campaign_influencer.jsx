@@ -52,7 +52,7 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
         return (
             <>
                 <div className="mb-3">
-                    <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
+                    <label className='fw-bold fw-bolder' htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
                     
                     <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} />
                     <p className="small">{description}</p>

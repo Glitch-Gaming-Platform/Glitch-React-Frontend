@@ -33,6 +33,7 @@ function CampaignCreatePage() {
     const [communities, setCommunities] = useState([]);
     const [countries, setCountries] = useState([]);
     const [genders, setGenders] = useState([]);
+    const [types, setTypes] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const [gameMainImageBlob, setMainImageBlob] = useState(null);
@@ -182,9 +183,13 @@ function CampaignCreatePage() {
                 const genderPromises = genders.map(gender => 
                     Glitch.api.Campaigns.addGender(campaignId, { gender_id: gender.id })
                 );
+
+                const typePromises = types.map(type => 
+                    Glitch.api.Campaigns.addType(campaignId, { type_id: type.id })
+                );
     
                 // Wait for all add operations to complete
-                await Promise.all([...countryPromises, ...genderPromises]);
+                await Promise.all([...countryPromises, ...genderPromises, ...typePromises]);
     
                 // Navigate after all operations are successful
                 navigate(Navigate.campaignsStartPage(campaignId));
@@ -258,7 +263,7 @@ function CampaignCreatePage() {
 
                     <form onSubmit={handleSubmit}>
                         {currentStep === 1 && <CampaignBasicInfoForm campaignData={campaignData} setCampaignData={setCampaignData} communities={communities} errors={errors} />}
-                        {currentStep === 2 && <CampaignTargetingForm campaignData={campaignData} setCampaignData={setCampaignData} setCountries={setCountries} setGenders={setGenders} communities={communities} errors={errors} />}
+                        {currentStep === 2 && <CampaignTargetingForm campaignData={campaignData} setCampaignData={setCampaignData} setCountries={setCountries} setGenders={setGenders} setTypes={setTypes} communities={communities} errors={errors} />}
                         {currentStep === 3 && <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} setMainImageBlob={setMainImageBlob} setBannerImageBlob={setBannerImageBlob} errors={titleErrors} />}
                         {currentStep === 4 && <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />}
                         {currentStep === 5 && <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />}

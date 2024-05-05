@@ -140,6 +140,7 @@ const CampaignsListPage = () => {
                                     <div className="d-flex justify-content-start mt-4">
                                         <Link className={"btn btn-primary me-2"} to={Navigate.campaignsViewPage(campaign.id)} >View Campaign</Link>
                                         <Link className={"btn btn-warning me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >Edit Campaign</Link>
+                                        <Link className={"btn btn-info"} to={Navigate.campaignsFindInfluencers(campaign.id)} >Find Influencers</Link>
                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         <Switch
                                                 checked={campaign.is_active}

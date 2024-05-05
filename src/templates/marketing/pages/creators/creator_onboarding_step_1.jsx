@@ -65,18 +65,18 @@ const CreatorOnboardinStep1Page = (props) => {
     };
 
     const goToNextScreen = () => {
-         navigate(Navigate.publishersOnboardingStep2Page());
+         navigate(Navigate.creatorsOnboardingStep2Page());
     };
 
     return (
         <Fragment>
             <Header />
-            <PageHeader title={'Publisher/Developer REGISTRATION PAGE'} curPage={'Register To Promote'} />
+            <PageHeader title={'Influnecer REGISTRATION PAGE'} curPage={'Register To Earn'} />
             <div className="login-section padding-top padding-bottom">
                 <div className=" container">
                     <div className="account-wrapper">
-                        <h3 className="title">Registration for Publisher/Indie Developers</h3>
-                        <p>Register to sign up for account to start promoting your game.</p>
+                        <h3 className="title">Registration for Influencers & Creators</h3>
+                        <p>Register to sign up for account to earning money playing games.</p>
                         <form method="post" className="account-form" onSubmit={register}>
                             <div className="form-group">
                                 <input

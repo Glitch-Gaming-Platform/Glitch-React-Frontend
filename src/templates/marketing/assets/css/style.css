@@ -354,6 +354,10 @@ template {
 [hidden] {
   display: none; }
 
+label {
+  font-weight: bold;
+}
+
 input, textarea, select {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;

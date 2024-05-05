@@ -364,7 +364,15 @@ class AccountUpdatePage extends Component {
                                 
                                 <div className="col-md-12">
                                     <h3>Your Profile</h3>
+
                                     <p className="lead">Use the questions below further expan on your influencer profile and give gaming publishers and indie developers a more personal view of you.</p>
+
+                                    <div className="mb-3">
+                                        <label htmlFor="influencer_games_why" className="form-label">What Kind of Games and Why?</label>
+                                        <div className="text-white">Describe the kind of games you like to play and why do you like to play them.</div>
+                                        <Wysiwyg id="influencer_games_why" name="influencer_games_why" onChange={(content) => {this.handleWysiwigChange(content, "influencer_games_why")}}  >{this.state.me?.influencer_games_why || ''}</Wysiwyg>
+                                    </div>
+
                                     <div className="mb-3">
                                         <label htmlFor="influencerContentType" className="form-label">Content Type</label>
                                         <div className="text-white">Describe the type of content you like to create.</div>

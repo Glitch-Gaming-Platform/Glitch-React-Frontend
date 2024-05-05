@@ -83,6 +83,26 @@ const Navigate = {
     creatorsCalculator : () => {
         return app_routes.creator_calculators;
     },
+    creatorsOnboardingStep1Page : () => {
+
+        return app_routes.creator_onboarding_step_1;
+
+    },
+    creatorsOnboardingStep2Page : () => {
+
+        return app_routes.creator_onboarding_step_2;
+
+    },
+    creatorsOnboardingStep3Page : () => {
+
+        return app_routes.creator_onboarding_step_3;
+
+    },
+    creatorsOnboardingStep4Page : () => {
+
+        return app_routes.creator_onboarding_step_4;
+
+    },
 
     //Campaigns
 
@@ -117,6 +137,12 @@ const Navigate = {
     authTikTok : () => {
         return app_routes.auth_tiktok;
     },
+    authTwitter : () => {
+        return app_routes.auth_twitter;
+    },
+    authReddit : () => {
+        return app_routes.auth_reddit;
+    },
     
 
     authFacebookComplete : () => {
@@ -139,6 +165,12 @@ const Navigate = {
     },
     authTikTokComplete : () => {
         return app_routes.auth_tiktok_complete;
+    },
+    authTwitterComplete : () => {
+        return app_routes.auth_twitter_complete;
+    },
+    authRedditComplete : () => {
+        return app_routes.auth_reddit_complete;
     },
 
 
@@ -215,6 +247,20 @@ const Navigate = {
 
         if(campaign_id){
             path = path.replace(':id', campaign_id)
+        }
+
+        return path;
+    },
+    campaignsViewInfluencer : (campaign_id, influencer_id) => {
+
+        let path = app_routes.campaigns_view_influencer;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        if(influencer_id){
+            path = path.replace(':influencer_id', influencer_id)
         }
 
         return path;

@@ -15,7 +15,6 @@ const cropperContainerStyle = {
     zIndex: 10, // Ensure this is lower than other interactive elements
 };
 
-
 const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUpdate, setMainImageBlob, setBannerImageBlob, errors }) => {
 
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
@@ -29,16 +28,11 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     const [croppedAreaPixelsMain, setCroppedAreaPixelsMain] = useState(null);
     const [croppedAreaPixelsBanner, setCroppedAreaPixelsBanner] = useState(null);
 
-    const [croppedImageSrc, setCroppedImageSrc] = useState(null);  // New state to hold the URL of the cropped image
-    const [croppedBannerImageSrc, setBannerCroppedImageSrc] = useState(null);  // New state to hold the URL of the cropped image
-
-
+    const [croppedImageSrc, setCroppedImageSrc] = useState(null);
+    const [croppedBannerImageSrc, setBannerCroppedImageSrc] = useState(null);
 
     const handleWysiwigInputChange = (name, value) => {
         onUpdate({ [name]: value });
-
-        //setCampaignData(campaignData => ({ ...campaignData, [name]: value }));
-        //setCampaignData({ ...campaignData, [name]: value });
     };
 
     const handleChange = (e) => {
@@ -61,61 +55,24 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     const showCroppedImage = async (imageSrc, croppedAreaPixels, setImage, name) => {
         console.log("Show Cropped Image");
         try {
-            // Get the cropped image as a blob
             const croppedImageBlob = await getCroppedImg(imageSrc, croppedAreaPixels);
-
-            // Convert blob to data URL to display it
             const croppedImageUrl = URL.createObjectURL(croppedImageBlob);
 
             if (gameTitle.id && name == "mainImage") {
-
-                //const blob = Data.dataURItoBlob(mainImage);
-
-                // Set the new cropped image
                 setCroppedImageSrc(croppedImageUrl);
-
-                Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, croppedImageBlob).then((response) => {
-
-                }).catch(error => {
-
-                });
-
+                Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, croppedImageBlob).catch(error => {});
             } else if (gameTitle.id && name == "bannerImage") {
-
-                //const blob = Data.dataURItoBlob(bannerImage);
-
                 setBannerCroppedImageSrc(croppedImageUrl);
-
-                Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, croppedImageBlob).then((response) => {
-
-                }).catch(error => {
-
-                });
+                Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, croppedImageBlob).catch(error => {});
             } else if (!gameTitle.id && name == "mainImage") {
-
-                //const blob = Data.dataURItoBlob(mainImage);
-
-                // Set the new cropped image
                 setCroppedImageSrc(croppedImageUrl);
-
                 setMainImageBlob(croppedImageBlob);
-
             } else if (!gameTitle.id && name == "bannerImage") {
-
-                //const blob = Data.dataURItoBlob(bannerImage);
-
                 setBannerCroppedImageSrc(croppedImageUrl);
-
                 setBannerImageBlob(croppedImageBlob);
             }
-
-            
-
-            // Remove the current mainImage
             setImage(null);
-
             console.log("Cropped Image Url", croppedImageUrl);
-            
         } catch (e) {
             console.error(e);
         }
@@ -135,37 +92,19 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     };
 
     const uploadImage = async (image, name) => {
-
         if (gameTitle.id && name == "mainImage") {
-
             const blob = Data.dataURItoBlob(mainImage);
-
-            Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, blob).then((response) => {
-
-            }).catch(error => {
-
-            });
-
+            Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, blob).catch(error => {});
         } else if (gameTitle.id && name == "bannerImage") {
-
             const blob = Data.dataURItoBlob(bannerImage);
+            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, blob).catch(error => {});
+        } else if (!gameTitle.id && name == "mainImage") {
+            const blob
 
-            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, blob).then((response) => {
-
-            }).catch(error => {
-
-            });
-            
-        } else  if (!gameTitle.id && name == "mainImage") {
-
-            const blob = Data.dataURItoBlob(mainImage);
-
+ = Data.dataURItoBlob(mainImage);
             setMainImageBlob(blob);
-
         } else if (!gameTitle.id && name == "bannerImage") {
-
             const blob = Data.dataURItoBlob(bannerImage);
-
             setBannerImageBlob(blob);
         }
     };
@@ -192,22 +131,35 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                     <div className="card-body">
                         <p className="lead">Enter information about the game title you want influencers to promote. Please fill out as much information as possible to excite the potential creator(s) you might be working with.</p>
                         <hr />
-  
-                        {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors, 'Enter the name of the game.')}
+                        <div className="row">
+                            {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors, 'Enter the name of the game.')}
+                            {createInput('Platform Compatibility', 'platform_compatibility', gameTitle.platform_compatibility, handleChange, 'text', 'fab fa-steam-symbol', errors, 'Enter what platforms this game is for, ie: Playstation 5, PC, Xbox, etc')}
+                        </div>
+                        <div className="row">
+                            {createInput('Age Rating', 'age_rating', gameTitle.age_rating, handleChange, 'text', 'fas fa-child', errors, 'Enter domestic and/or global age ratings for the game.')}
+                            {createInput('Developer', 'developer', gameTitle.developer, handleChange, 'text', 'fas fa-code-branch', errors)}
+                        </div>
+                        <div className="row">
+                            {createInput('Publisher', 'publisher', gameTitle.publisher, handleChange, 'text', 'fas fa-briefcase', errors)}
+                            {createInput('Release Date', 'release_date', gameTitle.release_date, handleChange, 'date', 'fas fa-calendar-alt', errors)}
+                        </div>
+                        <div className="row">
+                            {createInput('Pricing', 'pricing', gameTitle.pricing, handleChange, 'number', 'fas fa-tag', errors)}
+                            {createInput('Pricing Currency', 'pricing_currency', gameTitle.pricing_currency || 'USD', handleChange, 'text', 'fas fa-dollar-sign', errors)}
+                        </div>
+                        <div className="row">
+                            {createInput('Multiplayer Options', 'multiplayer_options', gameTitle.multiplayer_options, handleChange, 'text', 'fas fa-users', errors)}
+                            {createInput('Availability', 'availability', gameTitle.availability, handleChange, 'text', 'fas fa-store', errors)}
+                        </div>
+                        <div className="row">
+                            {createInput('Website URL', 'website_url', gameTitle.website_url, handleChange, 'url', 'fas fa-globe', errors)}
+                            {createInput('Steam URL', 'steam_url', gameTitle.steam_url, handleChange, 'url', 'fab fa-steam', errors)}
+                        </div>
+                        <div className="row">
+                            {createInput('Itch.io URL', 'itch_url', gameTitle.itch_url, handleChange, 'url', 'fas fa-link', errors)}
+                        </div>
                         {createTextarea('Short Description', 'short_description', gameTitle.short_description, handleChange, errors, 'Enter a 1 paragraph brief short description about the game.')}
                         {createTextarea('Long Description', 'long_description', gameTitle.long_description, handleChange, errors, 'Enter a longer more in-depth description about the game that can be multiple paragraphs.')}
-                        {createInput('Platform Compatibility', 'platform_compatibility', gameTitle.platform_compatibility, handleChange, 'text', 'fab fa-steam-symbol', errors, 'Enter what platforms this game is for, ie: Playstation 5, PC, Xbox, etc')}
-                        {createInput('Age Rating', 'age_rating', gameTitle.age_rating, handleChange, 'text', 'fas fa-child', errors, 'Enter domestic and/or global age ratings for the game.')}
-                        {createInput('Developer', 'developer', gameTitle.developer, handleChange, 'text', 'fas fa-code-branch', errors)}
-                        {createInput('Publisher', 'publisher', gameTitle.publisher, handleChange, 'text', 'fas fa-briefcase', errors)}
-                        {createInput('Release Date', 'release_date', gameTitle.release_date, handleChange, 'date', 'fas fa-calendar-alt', errors)}
-                        {createInput('Pricing', 'pricing', gameTitle.pricing, handleChange, 'number', 'fas fa-tag', errors)}
-                        {createInput('Pricing Currency', 'pricing_currency', gameTitle.pricing_currency || 'USD', handleChange, 'text', 'fas fa-dollar-sign', errors)}
-                        {createInput('Multiplayer Options', 'multiplayer_options', gameTitle.multiplayer_options, handleChange, 'text', 'fas fa-users', errors)}
-                        {createInput('Availability', 'availability', gameTitle.availability, handleChange, 'text', 'fas fa-store', errors)}
-                        {createInput('Website URL', 'website_url', gameTitle.website_url, handleChange, 'url', 'fas fa-globe', errors)}
-                        {createInput('Steam URL', 'steam_url', gameTitle.steam_url, handleChange, 'url', 'fab fa-steam', errors)}
-                        {createInput('Itch.io URL', 'itch_url', gameTitle.itch_url, handleChange, 'url', 'fas fa-link', errors)}
                     </div>
 
                     <div className="card-header bg-secondary text-white">
@@ -229,11 +181,11 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                                         onCropComplete={onCropCompleteMain}
                                     />
                                 </div>
+                                <button type="button" className="btn btn-primary mt-2"
 
-                                <button type="button" className="btn btn-primary mt-2" onClick={() => showCroppedImage(mainImage, croppedAreaPixelsMain, setMainImage, "mainImage")}>Crop Image</button>
+ onClick={() => showCroppedImage(mainImage, croppedAreaPixelsMain, setMainImage, "mainImage")}>Crop Image</button>
                             </>
                             )}
-
                             {(croppedImageSrc) ?
                                 <div>
                                     <p>Cropped Image:</p>
@@ -242,9 +194,8 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                                 : ''}
                         </div>
                         <div className="form-group">
-
-                            <label htmlFor="mainImage">Banner Image</label>
-                            <input type="file" accept="image/*" className="form-control-file" id="mainImage" onChange={(e) => handleImageChange(e, setBannerImage, setCropBanner, setZoomBanner)} />
+                            <label htmlFor="bannerImage">Banner Image</label>
+                            <input type="file" accept="image/*" className="form-control-file" id="bannerImage" onChange={(e) => handleImageChange(e, setBannerImage, setCropBanner, setZoomBanner)} />
                             {bannerImage && (<>
                                 <div style={cropperContainerStyle}>
                                     <Cropper
@@ -257,11 +208,9 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                                         onCropComplete={onCropCompleteBanner}
                                     />
                                 </div>
-
                                 <button type="button" className="btn btn-primary mt-2" onClick={() => showCroppedImage(bannerImage, croppedAreaPixelsBanner, setBannerImage, "bannerImage")}>Crop Image</button>
                             </>
                             )}
-
                             {(croppedBannerImageSrc) ?
                                 <div>
                                     <p>Cropped Image:</p>
@@ -290,15 +239,13 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                         </div>
                     )}
                 </div>
-
-
             </form>
         </div>
     );
 
     function createInput(label, name, value, handleChange, type = 'text', icon, errors, description = '') {
         return (
-            <>
+            <div className="col-md-6">
                 <div className="form-group mb-3">
                     <label htmlFor={name}><i className={`${icon} mr-2`}></i> &nbsp;{label}</label>
                     <input type={type} className="form-control" id={name} name={name} value={value || ''} onChange={handleChange} />
@@ -307,44 +254,24 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                 {errors && errors[name] && errors[name].map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-            </>
+            </div>
         );
     }
     
     function createTextarea(label, name, value, handleChange, errors, description, required = false) {
         return (
-            <>
+            <div className="col-md-12">
                 <div className="mb-3">
                     <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
                     <Wysiwyg children={value || ''} name={name} id={name} onChange={(value) => {handleWysiwigInputChange(name, value)}} />
                     <p className="small">{description}</p>
-    
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-            </>
+            </div>
         );
     }
 };
-
-
-
-/*
-function createTextarea(label, name, value, handleChange, errors) {
-    return (
-        <>
-            <div className="form-group mb-3">
-                <label htmlFor={name}>{label}</label>
-                <textarea className="form-control" id={name} name={name} value={value || ''} onChange={handleChange}></textarea>
-            </div>
-            {errors && errors[name] && errors[name].map(function (name, index) {
-                return <Danger message={name} key={index} />;
-            })}
-        </>
-
-    );
-}
-*/
 
 export default GameTitleForm;

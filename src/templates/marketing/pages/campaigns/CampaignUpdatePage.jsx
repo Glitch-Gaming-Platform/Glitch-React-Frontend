@@ -33,6 +33,9 @@ function CampaignUpdatePage() {
     const [titleErrors, setTitleErrors] = useState({});
     const [communities, setCommunities] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [countries, setCountries] = useState([]);
+    const [genders, setGenders] = useState([]);
+    const [types, setTypes] = useState([]);
 
     const navigate = useNavigate();
 
@@ -212,7 +215,7 @@ function CampaignUpdatePage() {
                                     <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} errors={titleErrors} />
                                     <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
                                     <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
-                                    <CampaignTargetingForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
+                                    <CampaignTargetingForm campaignData={campaignData} setCampaignData={setCampaignData} setCountries={setCountries} setGenders={setGenders} setTypes={setTypes} errors={errors} />
                                     <CampaignInfluencerForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
                                     <CampaignManagementForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
                                     <CampaignPaymentForm title="Rate Card - General" campaignData={campaignData} paymentData={campaignData.generalPayment} setPaymentData={setCampaignData} errors={errors} />

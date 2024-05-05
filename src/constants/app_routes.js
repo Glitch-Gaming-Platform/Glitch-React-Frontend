@@ -33,6 +33,7 @@
     campaigns_research_influencer : '/campaigns/:id/research/:user_id',
     campaigns_performance_influencer : '/campaigns/:id/performance/:user_id',
     campaigns_message_influencer : '/campaigns/:id/message/:user_id',
+    campaigns_view_influencer : '/campaigns/:id/viewinfluencer/:influencer_id',
     campaigns_start : '/campaigns/:id/start',
 
     creators: '/creators',
@@ -47,6 +48,11 @@
     creator_publishers_linux: '/creators/linuxpublishers',
     creator_calculators : '/creators/calculator',
 
+    creator_onboarding_step_1 : '/creators/onboarding/step1',
+    creator_onboarding_step_2 : '/creators/onboarding/step2',
+    creator_onboarding_step_3 : '/creators/onboarding/step3',
+    creator_onboarding_step_4 : '/creators/onboarding/step4',
+
     //authentication
     auth_login : '/login',
     auth_register : '/register',
@@ -60,6 +66,8 @@
     auth_microsoft : '/auth/microsoft',
     auth_microsoft_teams : '/auth/teams',
     auth_tiktok : '/auth/tiktok',
+    auth_twitter : '/auth/twitter',
+    auth_reddit : '/auth/reddit',
     auth_facebook_complete : '/auth/facebook/complete',
     auth_youtube_complete : '/auth/youtube/complete',
     auth_twitch_complete : '/auth/twitch/complete',
@@ -68,7 +76,8 @@
     auth_microsoft_complete : '/auth/microsoft/complete',
     auth_microsoft_teams_complete : '/auth/teams/complete',
     auth_tiktok_complete : '/auth/tiktok/complete',
-    
+    auth_twitter_complete : '/auth/tiktok/complete',
+    auth_reddit_complete : '/auth/reddit/complete',
 
     //accounts route
     account_update : '/accounts/update',

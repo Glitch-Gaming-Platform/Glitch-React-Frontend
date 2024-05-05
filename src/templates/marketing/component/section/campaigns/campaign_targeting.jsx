@@ -4,12 +4,14 @@ import Glitch from 'glitch-javascript-sdk';
 import Wysiwyg from '../../form/wysiwyg';
 
 
-function CampaignTargetingForm({ campaignData, setCampaignData,setCountries, setGenders,  errors }) {
+function CampaignTargetingForm({ campaignData, setCampaignData,setCountries, setGenders, setTypes,  errors }) {
 
   const [availableCountries, setAvailableCountries] = useState([]);
   const [availableGenders, setAvailableGenders] = useState([]);
+  const [availableTypes, setAvailableTypes] = useState([]);
   const [selectedCountries, setSelectedCountries] = useState(campaignData.countries || []);
   const [selectedGenders, setSelectedGenders] = useState(campaignData.genders || []);
+  const [selectedTypes, setSelectedTypes] = useState(campaignData.types || []);
 
 
   useEffect(() => {
@@ -27,13 +29,18 @@ function CampaignTargetingForm({ campaignData, setCampaignData,setCountries, set
 
     });
 
+    Glitch.api.Utility.listTypes().then(response => {
+      setAvailableTypes(response.data.data);
+    }).catch(error => {
+
+    });
+
   }, []);
 
   const addCountry = (country_id) => {
 
-    console.log("campaign data", campaignData);
-
     const countryToAdd = availableCountries.find(country => country.id.toString() == country_id);
+
     if (!countryToAdd) {
       console.error("Country not found");
       return;
@@ -68,8 +75,6 @@ function CampaignTargetingForm({ campaignData, setCampaignData,setCountries, set
 
   const removeCountry = (country_id) => {
 
-    console.log("Remove Country", country_id);
-
     const updatedCountries = selectedCountries.filter(tmpCountry => tmpCountry.id != country_id);
     setSelectedCountries(updatedCountries);
     setCountries(updatedCountries);
@@ -86,6 +91,65 @@ function CampaignTargetingForm({ campaignData, setCampaignData,setCountries, set
         setCampaignData({ ...campaignData, countries: response.data.data.countries });
       }).catch(error => {
         console.error("Error removing country", error);
+      })
+    }
+
+  }
+
+  const addType = (type_id) => {
+
+    const typeToAdd = availableTypes.find(type => type.id.toString() == type_id);
+
+    if (!typeToAdd) {
+      console.error("Country not found");
+      return;
+    }
+
+    if (selectedTypes.find(id => id.toString() === type_id)) {
+      console.error("Country already added");
+      return;
+    }
+
+    const updatedTypes = [...selectedTypes, typeToAdd];
+
+    console.log("Selected Types", updatedTypes);
+
+    setSelectedTypes(updatedTypes);
+    setTypes(updatedTypes);
+
+    setCampaignData(prevData => ({
+      ...prevData,
+      types: updatedTypes
+    }));
+
+    if (campaignData.id) {
+      Glitch.api.Campaigns.addType(campaignData.id, { type_id: type_id }).then(response => {
+        setCampaignData({ ...campaignData, types: response.data.data.types });
+      }).catch(error => {
+        console.error("Error adding type", error);
+      })
+    }
+
+  }
+
+  const removeType = (type_id) => {
+
+    const updatedTypes = selectedTypes.filter(tmpType => tmpType.id != type_id);
+    setSelectedTypes(updatedTypes);
+    setTypes(updatedTypes);
+    
+
+    setCampaignData(prevData => ({
+      ...prevData,
+      types: updatedTypes
+    }));
+
+
+    if (campaignData.id) {
+      Glitch.api.Campaigns.removeType(campaignData.id, type_id).then(response => {
+        setCampaignData({ ...campaignData, types: response.data.data.types });
+      }).catch(error => {
+        console.error("Error removing type", error);
       })
     }
 
@@ -180,6 +244,31 @@ function CampaignTargetingForm({ campaignData, setCampaignData,setCountries, set
 
             {createTextAreaField('target_audience', 'Target Audience', 'Describe potential target audiences to give the influencer a clear understanding of the people you aim to reach with your marketing efforts.', errors)}
 
+          {/* Type Section */}
+          <div>
+              <h4 className='text-black'>Game Type(s)</h4>
+              <p>Select all the types that your game falls under to match with the correct audies.</p>
+              <div className="mb-3">
+                <select className="form-select" onChange={(e) => addType(e.target.value)} value="">
+                  <option value="">Select Multiple Types</option>
+                  {availableTypes.map((type) => (
+                    <option key={type.id} value={type.id}>{type.name}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                {selectedTypes.map((type) => {
+
+                  return (
+                    <span key={type.id} className="badge bg-primary m-1">
+                      {type?.name}
+                      <i className="fas fa-times ms-2" style={{ cursor: 'pointer' }} onClick={() => removeType(type.id)}></i>
+                    </span>
+                  );
+                })}
+              </div>
+            </div>
+            
             {/* Country Section */}
             <div>
               <h4 className='text-black'>Countries</h4>

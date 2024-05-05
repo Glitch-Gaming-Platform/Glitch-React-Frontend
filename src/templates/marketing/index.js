@@ -115,6 +115,13 @@ import PublisherOnboardinStep1Page from './pages/publishers/publisher_onboarding
 import PublisherOnboardinStep2Page from './pages/publishers/publisher_onboarding_step_2';
 import PublisherOnboardingStep3Page from './pages/publishers/publisher_onboarding_step_3';
 import CampaignsStartPage from './pages/campaigns/CampaignsStartPage';
+import CreatorOnboardinStep1Page from './pages/creators/creator_onboarding_step_1';
+import CreatorOnboardinStep2Page from './pages/creators/creator_onboarding_step_2';
+import CreatorOnboardinStep3Page from './pages/creators/creator_onboarding_step_3';
+import CreatorOnboardinStep4Page from './pages/creators/creator_onboarding_step_4';
+import AuthReddit from './pages/auth/auth_reddit';
+import AuthTwitter from './pages/auth/auth_twitter';
+import CampaignsViewInfluencerPage from './pages/campaigns/CampaignsViewInfluencerPage';
 
 
 function Template() {
@@ -150,6 +157,11 @@ function Template() {
           <Route path={Navigate.creatorsPublishersMacPage()} element={<CreatorsPublishersMacPage />} />
           <Route path={Navigate.creatorsPublishersLinuxPage()} element={<CreatorsPublishersLinuxPage />} />
           <Route path={Navigate.creatorsCalculator()} element={<CreatorsCalculator />} />
+
+          <Route path={Navigate.creatorsOnboardingStep1Page()} element={<CreatorOnboardinStep1Page />} />
+          <Route path={Navigate.creatorsOnboardingStep2Page()} element={<CreatorOnboardinStep2Page />} />
+          <Route path={Navigate.creatorsOnboardingStep3Page()} element={<CreatorOnboardinStep3Page />} />
+          <Route path={Navigate.creatorsOnboardingStep4Page()} element={<CreatorOnboardinStep4Page />} />
           
 
           <Route path={Navigate.campaignsPage()} element={<CampaignsListPage />} />
@@ -161,6 +173,7 @@ function Template() {
           <Route path={Navigate.campaignsPerformanceInfluencer()} element={<CampaignsViewCreatorPerformancePage />} />
           <Route path={Navigate.campaignsMessageInfluencer()} element={<CampaignsMessageInfluencerPage />} />
           <Route path={Navigate.campaignsStartPage()} element={<CampaignsStartPage />} />
+          <Route path={Navigate.campaignsViewInfluencer()} element={<CampaignsViewInfluencerPage />} />
 
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />
@@ -202,6 +215,8 @@ function Template() {
           <Route path={Navigate.authGoogleComplete()} element={<AuthComplete />} />
           <Route path={Navigate.authYoutubeComplete()} element={<AuthComplete />} />
           <Route path={Navigate.authTikTokComplete()} element={<AuthComplete />} />
+          <Route path={Navigate.authTwitterComplete()} element={<AuthComplete />} />
+          <Route path={Navigate.authRedditComplete()} element={<AuthComplete />} />
 
           <Route path={Navigate.streamsCohostWatch()} element={<Cohostwatchstream />} />
 
@@ -230,6 +245,8 @@ function Template() {
           <Route path={Navigate.authTikTok()} element={<AuthTikTok />} />
           <Route path={Navigate.authFacebook()} element={<AuthFacebook/>} />
           <Route path={Navigate.authGoogle()} element={<AuthGoogle/>} />
+          <Route path={Navigate.authTwitter()} element={<AuthTwitter/>} />
+          <Route path={Navigate.authReddit()} element={<AuthReddit/>} />
 
           
           <Route path="*" element={<ErrorPage />} />
