@@ -69,6 +69,16 @@ RUN npm run build
 #FROM nginx:latest
 FROM fholzer/nginx-brotli:v1.12.2
 
+# Install libraries required by Puppeteer in the final image
+RUN apt-get update && apt-get install -y \
+    libx11-xcb1 \
+    libxss1 \
+    libstdc++6 \
+    fonts-liberation \
+    libappindicator1 \
+    libnss3
+
+
 WORKDIR /etc/nginx
 # Copy the Nginx configuration file
 COPY ./.docker/production/nginx.conf /etc/nginx/nginx.conf
