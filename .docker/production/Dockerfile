@@ -46,7 +46,7 @@ RUN apt-get update && apt-get install -y \
 
 # --- START ---
 
-    RUN apk add --no-cache chromium ca-certificates
+    #RUN apk add --no-cache chromium ca-certificates
     ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
     ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium-browser
     
