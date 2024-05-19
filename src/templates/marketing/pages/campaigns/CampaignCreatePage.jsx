@@ -18,6 +18,7 @@ import CampaignManagementForm from '../../component/section/campaigns/campaign_m
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import CampaignTargetingForm from '../../component/section/campaigns/campaign_targeting';
+import Breadcrumbs from '../../component/layout/breadcrumb';
 
 
 
@@ -175,22 +176,22 @@ function CampaignCreatePage() {
                 await Glitch.api.Titles.update(campaignData.title_id, gameTitle);
                 const campaignResponse = await Glitch.api.Campaigns.create(campaignData);
                 const campaignId = campaignResponse.data.data.id;
-    
+
                 // After successful campaign creation, add countries and genders if applicable
-                const countryPromises = countries.map(country => 
+                const countryPromises = countries.map(country =>
                     Glitch.api.Campaigns.addCountry(campaignId, { country_id: country.id })
                 );
-                const genderPromises = genders.map(gender => 
+                const genderPromises = genders.map(gender =>
                     Glitch.api.Campaigns.addGender(campaignId, { gender_id: gender.id })
                 );
 
-                const typePromises = types.map(type => 
+                const typePromises = types.map(type =>
                     Glitch.api.Campaigns.addType(campaignId, { type_id: type.id })
                 );
-    
+
                 // Wait for all add operations to complete
                 await Promise.all([...countryPromises, ...genderPromises, ...typePromises]);
-    
+
                 // Navigate after all operations are successful
                 navigate(Navigate.campaignsStartPage(campaignId));
             } catch (error) {
@@ -219,31 +220,25 @@ function CampaignCreatePage() {
     return (
         <>
             <Fragment>
-                <PublisherHeader />
-                <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
-                    <div className="container">
-                        <div className="section-wrapper text-center text-uppercase">
-                            <div className="pageheader-thumb mb-4">
-                                <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
-                            </div>
-                            <h2 className="pageheader-title">Create A Campaign</h2>
+                <PublisherHeader position={"relative"} />
 
-                            <p className="lead">Create A New Influencer Campaign</p>
-
-                        </div>
-                    </div>
-                </section>
                 <div className="container mt-4">
 
+
                     <div className="container">
+
+                        <Breadcrumbs items={[
+                            { name: 'Campaigns', link: Navigate.campaignsPage() },
+                            { name: 'Create Campaign', link: Navigate.campaignsCreatePage() }]}
+                        />
 
                         <h2>Create A Campaign: Step {currentStep} of {totalSteps}</h2>
 
                         <p className="lead">Use the form below to create an influencer campaign for your game. After the campaign is created, influencers can register and start creating content. Follow the steps through the creation process.</p>
                     </div>
 
-                     {/* Step navigation pills */}
-                     <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    {/* Step navigation pills */}
+                    <ul className="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         {stepNames.map((name, index) => (
                             <li className="nav-item" key={index}>
                                 <button
@@ -339,15 +334,15 @@ function CampaignCreatePage() {
                                     Next <FontAwesomeIcon icon={faArrowRight} />
                                 </button>
                             ) : (
-                               
+
                                 <button type="button" onClick={handleSubmit} className="btn btn-primary btn-lg">{isLoading ? <Loading /> : ''}  Create Campaign</button>
-                           
+
                             )}
                         </div>
 
 
 
-                        
+
 
                     </form>
                 </div>

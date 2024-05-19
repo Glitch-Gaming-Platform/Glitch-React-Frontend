@@ -60,10 +60,10 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
 
             if (gameTitle.id && name == "mainImage") {
                 setCroppedImageSrc(croppedImageUrl);
-                Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, croppedImageBlob).catch(error => {});
+                Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, croppedImageBlob).catch(error => { });
             } else if (gameTitle.id && name == "bannerImage") {
                 setBannerCroppedImageSrc(croppedImageUrl);
-                Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, croppedImageBlob).catch(error => {});
+                Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, croppedImageBlob).catch(error => { });
             } else if (!gameTitle.id && name == "mainImage") {
                 setCroppedImageSrc(croppedImageUrl);
                 setMainImageBlob(croppedImageBlob);
@@ -94,14 +94,14 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     const uploadImage = async (image, name) => {
         if (gameTitle.id && name == "mainImage") {
             const blob = Data.dataURItoBlob(mainImage);
-            Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, blob).catch(error => {});
+            Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, blob).catch(error => { });
         } else if (gameTitle.id && name == "bannerImage") {
             const blob = Data.dataURItoBlob(bannerImage);
-            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, blob).catch(error => {});
+            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, blob).catch(error => { });
         } else if (!gameTitle.id && name == "mainImage") {
             const blob
 
- = Data.dataURItoBlob(mainImage);
+                = Data.dataURItoBlob(mainImage);
             setMainImageBlob(blob);
         } else if (!gameTitle.id && name == "bannerImage") {
             const blob = Data.dataURItoBlob(bannerImage);
@@ -183,13 +183,19 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                                 </div>
                                 <button type="button" className="btn btn-primary mt-2"
 
- onClick={() => showCroppedImage(mainImage, croppedAreaPixelsMain, setMainImage, "mainImage")}>Crop Image</button>
+                                    onClick={() => showCroppedImage(mainImage, croppedAreaPixelsMain, setMainImage, "mainImage")}>Crop Image</button>
                             </>
                             )}
                             {(croppedImageSrc) ?
                                 <div>
                                     <p>Cropped Image:</p>
                                     <img src={croppedImageSrc} alt="Cropped" />
+                                </div>
+                                : ''}
+                            {(gameTitle.image_main) ?
+                                <div>
+                                    <p>Current Main Image:</p>
+                                    <img src={gameTitle.image_main} alt="Current Main Image" />
                                 </div>
                                 : ''}
                         </div>
@@ -215,6 +221,13 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                                 <div>
                                     <p>Cropped Image:</p>
                                     <img src={croppedBannerImageSrc} alt="Cropped" />
+                                </div>
+                                : ''}
+
+                            {(gameTitle.image_banner) ?
+                                <div>
+                                    <p>Current Banner Image:</p>
+                                    <img src={gameTitle.image_banner} alt="Current Banner Image" />
                                 </div>
                                 : ''}
                         </div>
@@ -257,13 +270,13 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
             </div>
         );
     }
-    
+
     function createTextarea(label, name, value, handleChange, errors, description, required = false) {
         return (
             <div className="col-md-12">
                 <div className="mb-3">
                     <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
-                    <Wysiwyg children={value || ''} name={name} id={name} onChange={(value) => {handleWysiwigInputChange(name, value)}} />
+                    <Wysiwyg children={value || ''} name={name} id={name} onChange={(value) => { handleWysiwigInputChange(name, value) }} />
                     <p className="small">{description}</p>
                 </div>
                 {errors && errors[name] && errors[name].map(function (name, index) {

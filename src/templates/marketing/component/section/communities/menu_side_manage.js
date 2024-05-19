@@ -41,6 +41,20 @@ export default function SidebarManageMenu({ community_id }) {
                 </li>
 
             </ul>
+            <div className="widget-header">
+                <h5>Manage Billing</h5>
+            </div>
+            <ul className="lab-ul widget-wrapper list-bg-none">
+
+                <li key={0}>
+                    <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesSubscribePage(community_id)}><span><i className="icofont-rounded-double-right"></i>Subscriptions</span></Link>
+                </li>
+                <li key={0}>
+                    <Link className="d-flex flex-wrap justify-content-between" to={Navigate.communitiesCardsPage(community_id)}><span><i className="icofont-rounded-double-right"></i>Credit Cards</span></Link>
+                </li>
+
+                
+            </ul>
         </div>
     );
 }

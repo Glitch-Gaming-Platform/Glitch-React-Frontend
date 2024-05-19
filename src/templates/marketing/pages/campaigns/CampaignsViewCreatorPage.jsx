@@ -49,12 +49,11 @@ const CampaignsViewCreatorPage = () => {
 
     return (
         <>
-            <PublisherHeader />
-            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+            <PublisherHeader position={"relative"} />
+            <section className="pageheader-section-min">
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
                         <h2 className="pageheader-title">View Content Creator</h2>
 

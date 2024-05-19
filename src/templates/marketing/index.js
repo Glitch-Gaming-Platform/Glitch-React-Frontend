@@ -122,6 +122,10 @@ import CreatorOnboardinStep4Page from './pages/creators/creator_onboarding_step_
 import AuthReddit from './pages/auth/auth_reddit';
 import AuthTwitter from './pages/auth/auth_twitter';
 import CampaignsViewInfluencerPage from './pages/campaigns/CampaignsViewInfluencerPage';
+import InfluencerViewCampaignInvitePage from './pages/influencers/InfluencerViewCampaignInvitePage';
+import PublisherSubscribePage from './pages/publishers/publishers_subscribe';
+import CommunitiesCreditCardsPage from './pages/communities/CommunitiesCreditCards';
+import CreatorOnboardinStep5Page from './pages/creators/creator_onboarding_step_5';
 
 
 function Template() {
@@ -162,6 +166,8 @@ function Template() {
           <Route path={Navigate.creatorsOnboardingStep2Page()} element={<CreatorOnboardinStep2Page />} />
           <Route path={Navigate.creatorsOnboardingStep3Page()} element={<CreatorOnboardinStep3Page />} />
           <Route path={Navigate.creatorsOnboardingStep4Page()} element={<CreatorOnboardinStep4Page />} />
+          <Route path={Navigate.creatorsOnboardingStep5Page()} element={<CreatorOnboardinStep5Page />} />
+
           
 
           <Route path={Navigate.campaignsPage()} element={<CampaignsListPage />} />
@@ -191,6 +197,10 @@ function Template() {
           <Route path={Navigate.communitiesCssPage()} element={<CommunitiesCss />} />
           <Route path={Navigate.communitiesUsersListPage()} element={<CommunitiesUsers/>} />
           <Route path={Navigate.communitiesUsersInvitePage()} element={<CommunitiesUsersInvite/>} />
+          <Route path={Navigate.communitiesSubscribePage()} element={<PublisherSubscribePage />} />
+          <Route path={Navigate.communitiesCardsPage()} element={< CommunitiesCreditCardsPage />} />
+
+    
 
           <Route path={"/streams/:id/recording/:subid"} element={<WatchRecording/>} />
 
@@ -199,6 +209,7 @@ function Template() {
           <Route path={Navigate.influencersViewCampaignPage()} element={<InfluencerViewCampaignPage />} />
           <Route path={Navigate.influencersManageCampaignPage()} element={<InfluencerManageCampaignPage />} />
           <Route path={Navigate.influencersMyCampaignsPage()} element={<InfluencerMyCampaignsPage />} />
+          <Route path={Navigate.influencersCampaignInvitePage()} element={<InfluencerViewCampaignInvitePage />} />
 
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
           <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />

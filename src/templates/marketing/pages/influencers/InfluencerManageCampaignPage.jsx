@@ -14,9 +14,9 @@ import SocialPostMetrics from '../../component/section/campaigns/campaign_social
 import CampaignAnalytics from '../../component/section/campaigns/campaign_earning_analytics';
 import InfluencerHeader from '../../component/layout/infuencerheader';
 import UserItem from '../../../esports/component/section/user/detail_user_item';
+import CreatorEarningsBreakdown from '../../component/section/creators/creator_earnings';
 
 const InfluencerManageCampaignPage = () => {
-
     const [campaign, setCampaign] = useState({});
     const [community, setCommunity] = useState({});
     const [posts, setPosts] = useState([]);
@@ -25,7 +25,6 @@ const InfluencerManageCampaignPage = () => {
     const [me, setMe] = useState({});
     const [errors, setErrors] = useState({});
 
-    // Map the numeric values to string representations for Campaign Objectives and Influencer Campaign Types
     const campaignObjectiveMap = {
         1: 'Brand Awareness',
         2: 'Audience Engagement',
@@ -54,13 +53,19 @@ const InfluencerManageCampaignPage = () => {
         10: 'Social Issues & Cause Campaigns',
     };
 
-
-
+    const acceptanceStatusMap = {
+        0: 'Unapproved',
+        1: 'Approved',
+        2: 'In Review',
+        3: 'Pending',
+        4: 'Require More Information',
+        5: 'Denied',
+        6: 'Banned',
+        7: 'Probation',
+    };
 
     useEffect(() => {
-
         if (Glitch.util.Session.isLoggedIn()) {
-
             Glitch.api.Users.me().then(response => {
                 setMe(response.data.data);
             }).catch(error => {
@@ -71,38 +76,34 @@ const InfluencerManageCampaignPage = () => {
         Glitch.api.SocialPosts.list({ user_id: user_id, campaign_id: campaign_id }).then(response => {
             setPosts(response.data.data);
         }).catch(error => {
-
+            console.error('Error fetching posts', error);
         });
 
         Glitch.api.Users.profile(user_id).then(response => {
             setUser(response.data.data);
         }).catch(error => {
-
+            console.error('Error fetching user profile', error);
         });
 
-
-
         Glitch.api.Campaigns.viewInfluencerCampaign(campaign_id, user_id).then(response => {
-
             const updatedCampaign = {
                 ...response.data.data,
                 type: influencerCampaignTypeMap[response.data.data.type],
                 objective: campaignObjectiveMap[response.data.data.objective],
+                acceptanceStatus: acceptanceStatusMap[response.data.data.acceptance_status],
             };
 
             setCampaign(updatedCampaign);
 
             Glitch.api.Communities.view(response.data.data.campaign.community.id).then(response => {
-                console.log(response.data.data);
                 setCommunity(response.data.data);
             }).catch(error => {
-                console.error(error);
+                console.error('Error fetching community data', error);
             });
 
         }).catch(error => {
-
+            console.error('Error fetching campaign data', error);
         });
-        //fetchCampaignData().then(setCampaign);
     }, []);
 
     const createMarkup = (htmlContent) => {
@@ -110,26 +111,18 @@ const InfluencerManageCampaignPage = () => {
     };
 
     const register = () => {
-
         if (Glitch.util.Session.isLoggedIn()) {
-
             Glitch.api.Campaigns.createInfluencerCampaign(campaign_id, me.id).then(response => {
-
+                // Handle successful registration
             }).catch(error => {
-
                 console.log(error);
-
                 let jsonErrors = error?.response?.data;
-
                 if (jsonErrors) {
-
                     setErrors(jsonErrors);
-
                     setTimeout(() => {
                         setErrors({});
-                    }, timeouts.error_message_timeout)
+                    }, timeouts.error_message_timeout);
                 }
-
             });
         } else {
             alert("Please Login To Sign-Up For A Campaign");
@@ -138,25 +131,19 @@ const InfluencerManageCampaignPage = () => {
 
     return (
         <>
-            <InfluencerHeader />
-            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+            <InfluencerHeader position={"relative"} />
+            <section className="pageheader-section-min">
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
-                        <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
-                        </div>
+                        <div className="pageheader-thumb mb-4"></div>
                         <h2 className="pageheader-title">Manage Campaign</h2>
-
                         <p className="lead">View the information for this campaign.</p>
-
                     </div>
                 </div>
             </section>
 
             <div className="container my-5">
-
                 <div className="card">
-
                     <section className="mb-4 card-body">
                         <GameTitle gameInfo={campaign?.title} />
                     </section>
@@ -166,25 +153,25 @@ const InfluencerManageCampaignPage = () => {
                     <div className="card-body text-dark text-black">
                         <section className="mb-4">
                             <h3 className="text-black">General Information</h3>
-                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.max_spend) ? '$' + campaign.max_spend + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
-                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.brief)} /></p>
-                            {campaign?.campaign?.start_date ? <>
-                                <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign?.campaign?.start_date}</Moment> </p>
-                            </> : ''}
-                            {campaign?.campaign?.end_date ? <>
-                                <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign?.campaign?.end_date}</Moment></p>
-                            </> : ''}
-                            {campaign?.campaign?.target_audience ? <>
-                                <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.target_audience)} /></p>
-                            </> : ''}
-                            {campaign?.campaign?.requirements ? <>
-                                <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.requirements)} /></p>
-                            </> : ''}
+                            <p><strong>Approval Status:</strong> {campaign.acceptanceStatus}</p>
+                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.max_spend) ? '$' + campaign.max_spend + ' is the maximum amount you can make from this campaign.' : 'There is no cap on how much you can make for this campaign.'}</p>
+                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.brief)} /></p>
+                            {campaign?.campaign?.start_date && <p><strong>Start Date:</strong> <Moment format="MM-DD-YYYY A">{campaign?.campaign?.start_date}</Moment></p>}
+                            {campaign?.campaign?.end_date && <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign?.campaign?.end_date}</Moment></p>}
+                            {campaign?.campaign?.target_audience && <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.target_audience)} /></p>}
+                            {campaign?.campaign?.requirements && <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.requirements)} /></p>}
                         </section>
 
                         <hr />
 
                         <CampaignRateCard campaign={campaign} user={me} />
+
+                        <hr />
+
+                        <section className="my-4">
+                            <h3 className="text-black">Earnings Breakdown</h3>
+                            <CreatorEarningsBreakdown campaign={campaign} />
+                        </section>
 
                         <hr />
 
@@ -203,31 +190,22 @@ const InfluencerManageCampaignPage = () => {
 
                         <section className="my-4">
                             <h3 className="text-black">Campaign Analytics</h3>
-
                             <CampaignAnalytics data={campaign} />
                         </section>
 
                         <section className="my-4">
                             <h3 className="text-black">Campaign Admins</h3>
-
-                            {community && community?.admins && community?.admins.map(function (contestant, index) {
-                            return (
+                            {community?.admins?.map((contestant, index) => (
                                 <UserItem key={index} user={contestant} />
-                            );
-                        })}
+                            ))}
                         </section>
-
-
-                       
                     </div>
                 </div>
             </div>
 
-            
             <Footer />
         </>
     );
 };
 
 export default InfluencerManageCampaignPage;
-

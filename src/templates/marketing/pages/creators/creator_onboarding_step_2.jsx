@@ -26,6 +26,7 @@ function CreatorOnboardinStep2Page() {
   useEffect(() => {
     Glitch.api.Users.me().then(response => {
       setUser(response.data.data);
+      setBio(response.data.data.bio)
     }).catch(error => {
       console.log(error);
     });
@@ -65,8 +66,6 @@ function CreatorOnboardinStep2Page() {
 
   return (
     <Fragment>
-      <Header />
-      <PageHeader title="Update Profile" curPage="Profile" />
       <div className="login-section padding-top padding-bottom">
         <div className="container">
           <div className="account-wrapper">
@@ -116,7 +115,7 @@ function CreatorOnboardinStep2Page() {
               <div className="row">
                 <div className="col-12">
                   <div className="form-group">
-                    <Textarea name="description" onChange={(e) => setBio(e.target.value)} placeholder="Enter your bio that describes you." value={bio} />
+                    <Textarea name="description" onChange={(e) => setBio(e.target.value)} placeholder="Enter your bio that describes you." value={bio}>{bio}</Textarea>
                     {errors.bio && errors.bio.map((name, index) => <Danger message={name} key={index} />)}
                   </div>
                 </div>

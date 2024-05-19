@@ -17,6 +17,7 @@ import Loading from '../../component/alerts/Loading';
 import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignManagementForm from '../../component/section/campaigns/campaign_management';
 import CampaignTargetingForm from '../../component/section/campaigns/campaign_targeting';
+import Breadcrumbs from '../../component/layout/breadcrumb';
 
 
 function CampaignUpdatePage() {
@@ -184,23 +185,19 @@ function CampaignUpdatePage() {
     return (
         <>
             <Fragment>
-                <PublisherHeader />
-                <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
-                    <div className="container">
-                        <div className="section-wrapper text-center text-uppercase">
-                            <div className="pageheader-thumb mb-4">
-                                <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
-                            </div>
-                            <h2 className="pageheader-title">Update Campaign</h2>
+                <PublisherHeader  position={"relative"} />
 
-                            <p className="lead">Update the current campaigns information.</p>
-
-                        </div>
-                    </div>
-                </section>
                 <div className="container mt-4">
 
                     <div className="container">
+
+                    <Breadcrumbs items={[
+                        {name : 'Campaigns', link : Navigate.campaignsPage()}, 
+                        {name : campaignData.name, link : Navigate.campaignsViewPage(campaignData.id)},
+                        {name : 'Update', link : Navigate.campaignsUpdatePage(campaignData.id)}, 
+                        
+                    ]}
+                    />
 
                         <h2>Update Campaign</h2>
 

@@ -11,6 +11,7 @@ import Moment from 'react-moment';
 import CampaignUserManager from '../../component/section/campaigns/campaign_users_manager';
 import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
+import Breadcrumbs from '../../component/layout/breadcrumb';
 
 const CampaignsViewPage = () => {
 
@@ -79,12 +80,17 @@ const CampaignsViewPage = () => {
 
     return (
         <>
-            <PublisherHeader />
-            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
-                <div className="container">
+            <PublisherHeader position={"relative"}  />
+            <section className="pageheader-section-min">
+                <div className="container mt-4">
+                <Breadcrumbs items={[
+                    {name : 'Campaigns', link : Navigate.campaignsPage()}, 
+                    {name : campaign.name, link : Navigate.campaignsViewPage(campaign.id)}, 
+                    ]}
+                />
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
+
                         </div>
                         <h2 className="pageheader-title">View Campaign</h2>
 

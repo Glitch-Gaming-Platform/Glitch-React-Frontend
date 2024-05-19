@@ -103,6 +103,11 @@ const Navigate = {
         return app_routes.creator_onboarding_step_4;
 
     },
+    creatorsOnboardingStep5Page : () => {
+
+        return app_routes.creator_onboarding_step_5;
+
+    },
 
     //Campaigns
 
@@ -523,6 +528,36 @@ const Navigate = {
 
         return path;
     },
+    communitiesSubscribePage : (community_id) => {
+
+        let path = app_routes.communities_subscribe
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+    communitiesSubscriptionsPage : (community_id) => {
+
+        let path = app_routes.communities_subscriptions
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
+    communitiesCardsPage : (community_id) => {
+
+        let path = app_routes.communities_cards
+
+        if(community_id){
+            path = path.replace(':id', community_id)
+        }
+
+        return path;
+    },
 
     influencersListCampaignsPage : () => {
 
@@ -566,6 +601,21 @@ const Navigate = {
 
         if(user_id){
             path = path.replace(':user_id', user_id)
+        }
+
+        return path;
+    },
+
+    influencersCampaignInvitePage : (campaign_id, influencer_id) => {
+
+        let path = app_routes.influencer_campaign_invite;
+
+        if(campaign_id){
+            path = path.replace(':campaign_id', campaign_id)
+        }
+
+        if(influencer_id){
+            path = path.replace(':influencer_id', influencer_id)
         }
 
         return path;

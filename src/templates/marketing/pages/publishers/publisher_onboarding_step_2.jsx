@@ -63,8 +63,7 @@ const PublisherOnboardinStep2Page = (props) => {
 
     return (
         <Fragment>
-            <PublisherHeader />
-            <PageHeader title={'Create An Organization'} curPage={'Organizations'} />
+           
             <div className=" padding-top padding-bottom">
                 <div className=" container">
                     <div className="stream-wrapper">

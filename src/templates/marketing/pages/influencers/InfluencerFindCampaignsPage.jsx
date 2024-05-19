@@ -57,12 +57,11 @@ const InfluencerFindCampaignsPage = () => {
     return (
         <>
             <Fragment>
-                <InfluencerHeader />
-                <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+                <InfluencerHeader  position={"relative"} />
+                <section className="pageheader-section-min">
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">
                             <div className="pageheader-thumb mb-4">
-                                <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                             </div>
                             <h2 className="pageheader-title">Find Campaigns</h2>
                             <p className="lead">Find Games You Want To Promote</p>
@@ -71,7 +70,6 @@ const InfluencerFindCampaignsPage = () => {
                 </section>
 
                 <div className="container">
-                    <h2>Find A Campaign</h2>
                     <div className="d-flex flex-column">
                         {campaigns.map(campaign => (
                             <div key={campaign.id} className="card mb-3">

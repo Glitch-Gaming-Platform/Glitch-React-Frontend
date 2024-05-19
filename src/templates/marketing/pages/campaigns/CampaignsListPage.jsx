@@ -74,12 +74,11 @@ const CampaignsListPage = () => {
     return (
         <>
             <Fragment>
-                <PublisherHeader />
-                <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+                <PublisherHeader position={"relative"} />
+                <section className="pageheader-section-min">
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">
                             <div className="pageheader-thumb mb-4">
-                                <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                             </div>
                             <h2 className="pageheader-title">Campaigns</h2>
 
@@ -96,7 +95,6 @@ const CampaignsListPage = () => {
                 </div>
 
                 <div className="container">
-                    <h2>Campaigns</h2>
 
                     {campaigns.length > 0 ? (
                         <div className="d-flex flex-column">

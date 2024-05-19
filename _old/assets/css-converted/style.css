@@ -1831,6 +1831,17 @@ input, textarea {
       .pageheader-section .pageheader-title {
         font-size: 3rem; } }
 
+.pageheader-section-min {
+
+          padding-top: 30px;
+          background-size: cover;
+          background-position: center; }
+          .pageheader-section .pageheader-title {
+            font-size: calc(1.425rem + 2.1vw); }
+            @media (min-width: 1200px) {
+              .pageheader-section .pageheader-title {
+                font-size: 3rem; } }
+
 .footer-section {
   background-color: #232a5c;
   background-size: cover; }
@@ -4494,3 +4505,8 @@ button {
     font-weight: 700; }
     .fore-zero .section-wrapper .zero-item .zero-content .lab-btn span {
       color: #fff; }
+
+
+      .breadcrumb-item+.breadcrumb-item::before, .breadcrumb-item + .breadcrumb-item::before, .breadcrumb-item+.breadcrumb-item::before {
+        color: white !important;
+      }

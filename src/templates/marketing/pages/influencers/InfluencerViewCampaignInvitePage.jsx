@@ -1,6 +1,6 @@
 import Glitch from 'glitch-javascript-sdk';
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useLocation, useNavigate } from 'react-router-dom';
 import CampaignLinksManager from '../../component/section/campaigns/campaign_links_manager';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
@@ -10,18 +10,16 @@ import Navigate from '../../../../util/Navigate';
 import Moment from 'react-moment';
 import timeouts from '../../../../constants/timeouts';
 import Danger from '../../component/alerts/Danger';
-import { useNavigate } from 'react-router-dom';
 import InfluencerHeader from '../../component/layout/infuencerheader';
 
-
-const InfluencerViewCampaignPage = () => {
-
+const InfluencerViewCampaignInvitePage = () => {
     const [campaign, setCampaign] = useState({});
-    const { id, campaign_id } = useParams();
+    const [influencer, setInfluencer] = useState({});
+    const { campaign_id, influencer_id } = useParams();
     const [me, setMe] = useState({});
     const [errors, setErrors] = useState({});
-
     const navigate = useNavigate();
+    const location = useLocation();
 
     // Map the numeric values to string representations for Campaign Objectives and Influencer Campaign Types
     const campaignObjectiveMap = {
@@ -52,10 +50,9 @@ const InfluencerViewCampaignPage = () => {
         10: 'Social Issues & Cause Campaigns',
     };
 
-
-
-
     useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const token = queryParams.get('token');
 
         if (Glitch.util.Session.isLoggedIn()) {
             Glitch.api.Users.me().then(response => {
@@ -65,87 +62,66 @@ const InfluencerViewCampaignPage = () => {
             });
         }
 
-        Glitch.api.Campaigns.view(campaign_id).then(response => {
-
+        Glitch.api.Campaigns.viewInfluencerInvite(campaign_id, influencer_id, token).then(response => {
             const updatedCampaign = {
-                ...response.data.data,
+                ...response.data.data.campaign,
                 type: influencerCampaignTypeMap[response.data.data.type],
                 objective: campaignObjectiveMap[response.data.data.objective],
             };
 
             setCampaign(updatedCampaign);
-
+            setInfluencer(response.data.data.influencer);
+            
         }).catch(error => {
-
+            console.error('Error fetching campaign invite', error);
         });
-        //fetchCampaignData().then(setCampaign);
-    }, []);
+    }, [campaign_id, influencer_id, location.search]);
 
     const createMarkup = (htmlContent) => {
         return { __html: htmlContent };
     };
 
     const register = () => {
-
-        console.log("Start");
-        
         if (Glitch.util.Session.isLoggedIn()) {
-
             Glitch.api.Campaigns.createInfluencerCampaign(campaign_id, me.id).then(response => {
-
-                console.log("OK");
-
-                console.log(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
-
                 navigate(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
-
             }).catch(error => {
-
-                console.log(error);
-
                 let jsonErrors = error?.response?.data;
 
                 if (jsonErrors) {
-
                     setErrors(jsonErrors);
 
                     setTimeout(() => {
                         setErrors({});
-                    }, timeouts.error_message_timeout)
+                    }, timeouts.error_message_timeout);
                 }
-
             });
         } else {
             alert("Please Login To Sign-Up For A Campaign");
         }
-    }
+    };
 
     return (
         <>
             <InfluencerHeader position={"relative"} />
-            <section className="pageheader-section-min" >
+            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
+                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
                         <h2 className="pageheader-title">View Campaign</h2>
-
                         <p className="lead">View the information for this campaign.</p>
-
                     </div>
                 </div>
             </section>
 
             <div className="container my-5">
-
                 <div className="card">
-
                     <section className="mb-4 card-body">
                         <GameTitle gameInfo={campaign?.title} />
                     </section>
-
                     <hr />
-
                     <div className="card-body text-dark text-black">
                         <section className="mb-4">
                             <h3 className="text-black">General Information</h3>
@@ -164,38 +140,26 @@ const InfluencerViewCampaignPage = () => {
                                 <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.requirements)} /></p>
                             </> : ''}
                         </section>
-
                         <hr />
-
                         <CampaignRateCard campaign={campaign} user={me} />
-
                         <hr />
-
                         <section className="mb-4">
                             <h3 className="text-black">Requirements</h3>
-
                             {campaign.brief ? <>
                                 <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
                             </> : ''}
-                        
                             {campaign.hashtags ? <>
                                 <p><strong>Hashtags:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.hashtags)} /></p>
                             </> : ''}
                             {campaign.highlights ? <>
                                 <p><strong>Highlights:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.highlights)} /></p>
                             </> : ''}
-
                             {campaign.prohibited_content ? <>
                                 <p><strong>Prohibited Content:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.prohibited_content)} /></p>
                             </> : ''}
-                            
                         </section>
-
-
                         <hr />
-
                         <div className="container my-5">
-
                             <h3 className="text-black">How To Sign Up</h3>
                             <p className="lead">To sign up as an influencer and promote the game {campaign?.title?.name}, please follow these steps:</p>
                             <ol>
@@ -205,14 +169,12 @@ const InfluencerViewCampaignPage = () => {
                                 <li>Download the Glitch Streaming application and begin streaming and creating content. All content must be created through the app as it will track your progress, which is tied to your compensation.</li>
                                 <li>After you've finished promoting, mark the campaign as complete. The brand will then have one week to review your content before distributing payment.</li>
                             </ol>
-
                             <div className="text-center">
                                 {(errors && errors.error) ?
-                                      <Danger message={errors.error} key={0} /> : ''
+                                    <Danger message={errors.error} key={0} /> : ''
                                 }
                                 <button className="btn btn-lg btn-success" onClick={register}>Sign Up</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -222,5 +184,4 @@ const InfluencerViewCampaignPage = () => {
     );
 };
 
-export default InfluencerViewCampaignPage;
-
+export default InfluencerViewCampaignInvitePage;

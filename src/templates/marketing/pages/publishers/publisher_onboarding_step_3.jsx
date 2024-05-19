@@ -24,7 +24,7 @@ const PublisherOnboardingStep3Page = () => {
         <div className="d-flex flex-column justify-content-center align-items-center text-center h-100" style={{ gap: '20px' }}>
             <div className='text-white mb-5 mt-5'>
                 <h2>Registration Final Step</h2>
-                <p className="lead text-center">Congrats on completing your registration! What would you like to do next?</p>
+                <p className="lead text-center">Congrats on completing your registration! What would you like to do next? <br />Create an influencer campaign to market your game or build a community for your game.</p>
             </div>
             <div className="d-flex flex-row align-items-center justify-content-center" style={{ gap: '30px' }}>
                 <button 

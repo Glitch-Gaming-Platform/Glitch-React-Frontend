@@ -41,7 +41,11 @@ if (process.env.REACT_APP_SOCIAL_YOUTUBE_PAGE) {
 }
 
 class PublisherHeader extends Component {
+    
+    componentDidMount(){
 
+    }
+    
     menuTrigger() {
         document.querySelector('.menu')?.classList?.toggle('active')
         document.querySelector('.header-bar')?.classList?.toggle('active')
@@ -100,8 +104,10 @@ class PublisherHeader extends Component {
 
         }
 
+        const { position = 'absolute' } = this.props;
+
         return (
-            <header className="header-section">
+            <header className="header-section" style={{ position }}>
                 <div className="container-fluid">
                     <div className="header-holder d-flex flex-wrap justify-content-between align-items-center">
                         <div className="brand-logo d-none d-lg-inline-block">

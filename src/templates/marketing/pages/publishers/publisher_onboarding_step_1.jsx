@@ -70,15 +70,15 @@ const PublisherOnboardinStep1Page = (props) => {
 
     return (
         <Fragment>
-            <Header />
-            <PageHeader title={'Publisher/Developer REGISTRATION PAGE'} curPage={'Register To Promote'} />
+           <Header position={"relative"} />
             <div className="login-section padding-top padding-bottom">
                 <div className=" container">
                     <div className="account-wrapper">
                         <h3 className="title">Registration for Publisher/Indie Developers</h3>
                         <p>Register to sign up for account to start promoting your game.</p>
-                        <form method="post" className="account-form" onSubmit={register}>
+                        <form method="post" className="account-form text-start" onSubmit={register}>
                             <div className="form-group">
+                                <label className="form-label">First Name</label>
                                 <input
                                     type="text"
                                     id="item01"
@@ -89,6 +89,7 @@ const PublisherOnboardinStep1Page = (props) => {
                                 {errors.first_name && errors.first_name.map((name, index) => <Danger message={name} key={index} />)}
                             </div>
                             <div className="form-group">
+                                <label className="form-label">Last Name</label>
                                 <input
                                     type="text"
                                     id="item02"
@@ -99,6 +100,7 @@ const PublisherOnboardinStep1Page = (props) => {
                                 {errors.last_name && errors.last_name.map((name, index) => <Danger message={name} key={index} />)}
                             </div>
                             <div className="form-group">
+                                <label className="form-label">Username</label>
                                 <input
                                     type="text"
                                     id="item03"
@@ -109,6 +111,7 @@ const PublisherOnboardinStep1Page = (props) => {
                                 {errors.username && errors.username.map((name, index) => <Danger message={name} key={index} />)}
                             </div>
                             <div className="form-group">
+                                <label className="form-label">Email</label>
                                 <input
                                     type="text"
                                     id="item04"
@@ -119,6 +122,7 @@ const PublisherOnboardinStep1Page = (props) => {
                                 {errors.email && errors.email.map((name, index) => <Danger message={name} key={index} />)}
                             </div>
                             <div className="form-group">
+                                <label className="form-label">Password</label>
                                 <input
                                     type="password"
                                     id="item05"
@@ -129,6 +133,7 @@ const PublisherOnboardinStep1Page = (props) => {
                                 {errors.password && errors.password.map((name, index) => <Danger message={name} key={index} />)}
                             </div>
                             <div className="form-group">
+                                <label className="form-label">Confirm Password</label>
                                 <input
                                     type="password"
                                     id="item06"

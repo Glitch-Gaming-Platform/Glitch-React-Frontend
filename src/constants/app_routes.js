@@ -52,6 +52,8 @@
     creator_onboarding_step_2 : '/creators/onboarding/step2',
     creator_onboarding_step_3 : '/creators/onboarding/step3',
     creator_onboarding_step_4 : '/creators/onboarding/step4',
+    creator_onboarding_step_5 : '/creators/onboarding/step5',
+
 
     //authentication
     auth_login : '/login',
@@ -108,12 +110,17 @@
     communities_invited_login : '/invites/login', 
     communities_invited_register : '/invites/register', 
 
+    communities_subscribe : '/communities/:id/subscribe',
+    communities_subscriptions : '/communities/:id/subscriptions',
+    communities_cards : '/communities/:id/cards',
+
     //influencers
     influencer_campaigns : '/influencers/campaigns',
     influencer_my_campaigns : '/influencers/campaigns/mine',
     influencer_find_campaigns : '/influencers/findcampaigns', 
     influencer_view_campaign : '/influencers/:campaign_id/campaign',
     influencer_manage_campaign : '/influencers/:campaign_id/campaign/:user_id',  
+    influencer_campaign_invite : '/influencers/:campaign_id/invite/:influencer_id',  
 
     //Tips
     tips_emojis : '/tips/:id/emojis', 
@@ -140,6 +147,8 @@
     publishers_onboarding_step_1 : '/publishers/onboarding/step1',
     publishers_onboarding_step_2 : '/publishers/onboarding/step2',
     publishers_onboarding_step_3 : '/publishers/onboarding/step3',
+
+
 
     //Messages
     messages : '/messages',

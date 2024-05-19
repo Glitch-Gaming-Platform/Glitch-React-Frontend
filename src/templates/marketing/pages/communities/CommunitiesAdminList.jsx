@@ -32,12 +32,11 @@ class CommunitiesAdminList extends Component {
         return (
             <>
                 <Fragment>
-                    <PublisherHeader />
-                    <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+                    <PublisherHeader position={"relative"}  />
+                    <section className="pageheader-section-min">
                         <div className="container">
                             <div className="section-wrapper text-center text-uppercase">
                                 <div className="pageheader-thumb mb-4">
-                                    <img style={{ maxHeight: '160px' }} src="/assets/images/revenue/profits.png" alt="team" />
                                 </div>
                                 <h2 className="pageheader-title">My Admin Communities</h2>
 
@@ -47,11 +46,14 @@ class CommunitiesAdminList extends Component {
                         </div>
                     </section>
 
-                    <div className="container padding-bottom mt-5" >
+                    <div className="container mt-5" >
                         <div className="section-wrapper">
                             <Link className={"btn btn-success"} to={Navigate.communitiesCreatePage()} >Create A Community</Link>
                         </div>
                     </div>
+                    <hr />
+
+                    <br />
 
                     {(this.state.communities) ? this.state.communities.map(function (community, index) {
                         return <div className="container padding-bottom" key={index}>

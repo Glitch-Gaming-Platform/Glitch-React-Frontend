@@ -18,6 +18,7 @@ import CreatorPostingCharts from '../../component/section/creators/creator_posts
 import CreatorLinksCharts from '../../component/section/creators/creator_links_charts';
 import CreatorLinksList from '../../component/section/creators/creator_links_list';
 import CreatorHeader from '../../component/section/creators/creator_header';
+import Breadcrumbs from '../../component/layout/breadcrumb';
 
 const CampaignsViewCreatorPerformancePage = () => {
 
@@ -53,23 +54,29 @@ const CampaignsViewCreatorPerformancePage = () => {
 
     return (
         <>
-            <PublisherHeader />
-            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
-                <div className="container">
+            <PublisherHeader position={"relative"}  />
+            <section className="pageheader-section-min">
+                <div className="container mt-4">
+                <Breadcrumbs items={[
+                    {name : 'Campaigns', link : Navigate.campaignsPage()}, 
+                    {name : campaign.name, link : Navigate.campaignsViewPage(campaign.id)}, 
+                    {name : 'Influencers Performance', link : Navigate.campaignsPerformanceInfluencer(campaign.id,user_id)}, 
+                    ]}
+                />
+
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
-                        <h2 className="pageheader-title">View Content Creator Performance</h2>
+                        <h2 className="pageheader-title">View Influencer's Performance</h2>
 
-                        <p className="lead">View the information for a content creator.</p>
+                        <p className="lead">View the influencers performance for {campaign.name}.</p>
 
                     </div>
                 </div>
             </section>
 
             <div className='container mt-4'>
-                <h2>{user.username} performance on {campaign.name}</h2>
+                <h2>{user.username}</h2>
                 <hr />
                 <CreatorHeader user={user} />
             </div>

@@ -39,8 +39,6 @@ const CreatorOnboardinStep3Page = (props) => {
 
     return (
         <Fragment>
-            <Header />
-            <PageHeader title="Update Profile" curPage="Profile" />
             <div className="login-section padding-top padding-bottom">
                 <div className="container">
                     <div className="account-wrapper">

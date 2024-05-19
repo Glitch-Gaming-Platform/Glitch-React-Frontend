@@ -6,9 +6,11 @@ import { faUser, faUsers, faSearch } from '@fortawesome/free-solid-svg-icons';
 import PublisherHeader from '../../component/layout/publisherheader';
 import Glitch from 'glitch-javascript-sdk';
 import Navigate from '../../../../util/Navigate';
+import Breadcrumbs from '../../component/layout/breadcrumb';
 
 const CampaignsFindInfluencersPage = () => {
     const [influencers, setInfluencers] = useState([]);
+    const [campaign, setCampaign] = useState({});
     const [filters, setFilters] = useState({
         first_name: null,
         location: null,
@@ -30,6 +32,12 @@ const CampaignsFindInfluencersPage = () => {
     const defaultAvatar = 'https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png';
 
     useEffect(() => {
+        Glitch.api.Campaigns.view(id).then(response => {
+            setCampaign(response.data.data);
+        }).catch(error => {
+            console.error(error);
+        });
+
         fetchInfluencers();
     }, [currentPage, filters]);
 
@@ -105,18 +113,9 @@ const CampaignsFindInfluencersPage = () => {
             totalEngagement += parseFloat(influencer['twitch_engagement_percent']);
         }
 
-        //const platforms = ['instagram', 'tiktok', 'youtube'];
-        //const totalFollowers = platforms.reduce((acc, platform) => acc + (influencer[`${platform}_follower_count`] || 0), 0);
-        //const totalEngagement = platforms.reduce((acc, platform) => acc + (influencer[`${platform}_engagement_percent`] || 0), 0);
-        //const count = platforms.reduce((acc, platform) => acc + (influencer[`${platform}_follower_count`] ? 1 : 0), 0);
-
         const averageFollowers = platform_count > 0 ? totalFollowers / platform_count  : 0;
         const averageEngagement = platform_count  > 0 ? totalEngagement / platform_count  : 0;
 
-        console.log("platform_count", platform_count);
-        console.log("totalEngagement", totalEngagement);
-        console.log("averageFollowers", averageFollowers);
-        console.log("averageEngagement", averageEngagement);
         
         const estimatedReach = averageFollowers * (averageEngagement / 100);
         const linkClicks = estimatedReach * (averageEngagement / 100);
@@ -130,21 +129,21 @@ const CampaignsFindInfluencersPage = () => {
 
     return (
         <>
-            <PublisherHeader />
-            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
-                <div className="container">
-                    <div className="section-wrapper text-center text-uppercase">
-                        <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="/assets/images/revenue/profits.png" alt="profits" />
-                        </div>
-                        <h2 className="pageheader-title">Find Influencers</h2>
-                        <p className="lead">Find the perfect influencers for your marketing campaign.</p>
-                    </div>
-                </div>
-            </section>
+            <PublisherHeader position={"relative"} />
+
+            
+
 
             <div className="container mt-4">
+
+            <Breadcrumbs items={[
+                {name : 'Campaigns', link : Navigate.campaignsPage()}, 
+                {name : campaign.name, link : Navigate.campaignsViewPage(campaign.id)}, 
+                {name : 'Find Influencers', link: Navigate.campaignsFindInfluencers(id) }]}
+            />
+                
                 <h2><FontAwesomeIcon icon={faUsers} /> Search Influencers</h2>
+                <p className='lead'>Search for the right influencer(s) for your campaign.</p>
                 <div className="row mb-4">
                     {Object.entries(filters).map(([key, value]) => (
                         <div className="col-md-6" key={key}>
@@ -164,7 +163,8 @@ const CampaignsFindInfluencersPage = () => {
                     </div>
                 </div>
                 <hr />
-                <h2><FontAwesomeIcon icon={faUsers} /> Influencers</h2>
+                <h3><FontAwesomeIcon icon={faUsers} /> Influencers</h3>
+
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     {influencers.map(influencer => (
                         <div key={influencer.id} className="card mb-3 w-100">
@@ -174,7 +174,7 @@ const CampaignsFindInfluencersPage = () => {
                                 </div>
                                 <div className="col-md-8">
                                     <div className="card-body">
-                                        <h5 className="card-title">{influencer.first_name}</h5>
+                                        <h4 className="card-title">{influencer.first_name}</h4>
                                         <div>
                                             {['instagram', 'tiktok', 'youtube', 'twitch', 'twitter', 'reddit', 'facebook'].map(platform => {
                                                 const followers = influencer[`${platform}_follower_count`] || influencer[`${platform}_subscriber_count`];
@@ -183,7 +183,7 @@ const CampaignsFindInfluencersPage = () => {
 
                                                 return followers > 0 && (
                                                     <div key={platform}>
-                                                        <h4><a href={platformLink} target="_blank" rel="noopener noreferrer">{platform.toUpperCase()}</a></h4>
+                                                        <h5><a href={platformLink} target="_blank" rel="noopener noreferrer">{platform.toUpperCase()}</a></h5>
                                                         <p><strong>Followers:</strong> {followers.toLocaleString()}</p>
                                                         <p><strong>Engagement:</strong> {engagement}%</p>
                                                         <hr />

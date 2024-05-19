@@ -40,7 +40,6 @@ function PublisherPricingPage() {
 
               <p>Monthly pricing is based on the number of content creators you choose to work with, after you have approved them to begin creating content for your campaign. You will be able to work with the number of influencers for your package price, and any number over that will incur an overcharge.</p>
 
-              <p><strong>Overcharge:</strong> The overcharge is if you work with more influencers than alloted in your package. You will be charged the overcharge for each additional influencer you choose to work with.</p>
               <div className="table-responsive">
                 <table className="table table-bordered">
                   <thead className="table-dark">
@@ -63,15 +62,38 @@ function PublisherPricingPage() {
                       <td>Call Or Email</td>
                     </tr>
                     <tr>
-                      <td>Overcharge</td>
+                      <td>*Overcharge</td>
                       <td></td>
                       <td>$35</td>
                       <td>$30</td>
                       <td>$20</td>
                       <td>-</td>
                     </tr>
+                    <tr>
+                      <td>**Outreach Credits</td>
+                      <td>0</td>
+                      <td>50</td>
+                      <td>100</td>
+                      <td>200</td>
+                      <td>-</td>
+                    </tr>
+                    <tr>
+                      <td>***Additional Credits</td>
+                      <td>$1.50 per credit</td>
+                      <td>$0.50 per credit</td>
+                      <td>$0.30 per credit</td>
+                      <td>$0.20 per credit</td>
+                      <td>-</td>
+                    </tr>
+                    
                   </tbody>
                 </table>
+                <p><strong>*Overcharge:</strong> The overcharge is if you work with more influencers than alloted in your package. You will be charged the overcharge for each additional influencer you choose to work with.</p>
+                <p><strong>**Outreach Credits:</strong> You can invite influencers to your campaign through our database. Each invite will count as one credit.</p>
+                <p><strong>**Additional Credits:</strong> How much each additioanl credit will cost to send an invite once your monthly limit is used up.</p>
+
+
+
               </div>
             </div>
           </div>

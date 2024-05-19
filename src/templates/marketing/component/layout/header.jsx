@@ -97,8 +97,10 @@ class Header extends Component {
 
         }
 
+        const { position = 'absolute' } = this.props;
+
         return (
-            <header className="header-section">
+            <header className="header-section" style={{ position }}>
                 <div className="container-fluid">
                     <div className="header-holder d-flex flex-wrap justify-content-between align-items-center">
                         <div className="brand-logo d-none d-lg-inline-block">
