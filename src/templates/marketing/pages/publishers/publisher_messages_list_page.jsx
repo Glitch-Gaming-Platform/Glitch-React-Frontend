@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Glitch from 'glitch-javascript-sdk';
 import MessageThreads from '../../component/section/messages/message_threads';
 import Header from '../../component/layout/header';
+import PublisherHeader from '../../component/layout/publisherheader';
 
-const MessagesListPage = () => {
+const PublisherMessagesListPage = () => {
   const [threads, setThreads] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -27,10 +28,10 @@ const MessagesListPage = () => {
 
   return (
     <>
-      <Header position={"relative"} />
+      <PublisherHeader position={"relative"} />
       <div className="container my-4">
         <h2>Messages</h2>
-        <MessageThreads threads={threads} />
+        <MessageThreads threads={threads} section='publisher' />
         {totalPages > 1 && (
           <nav aria-label="Page navigation example">
             <ul className="pagination">
@@ -47,4 +48,4 @@ const MessagesListPage = () => {
   );
 };
 
-export default MessagesListPage;
+export default PublisherMessagesListPage;

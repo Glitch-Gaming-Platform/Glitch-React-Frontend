@@ -36,12 +36,12 @@ const aggregateDataByDate = (links) => {
   return Object.values(aggregation);
 };
 
-const CreatorLinksCharts = () => {
+const CreatorLinksCharts = ({linkData = []}) => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    const fakeData = generateFakeData();
-    const aggregatedData = aggregateDataByDate(fakeData);
+    //const fakeData = generateFakeData();
+    const aggregatedData = aggregateDataByDate(linkData);
     setLinks(aggregatedData);
   }, []);
 

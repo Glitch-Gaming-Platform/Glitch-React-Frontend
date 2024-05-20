@@ -122,6 +122,11 @@
     influencer_manage_campaign : '/influencers/:campaign_id/campaign/:user_id',  
     influencer_campaign_invite : '/influencers/:campaign_id/invite/:influencer_id',  
 
+    influencer_messages : '/influencers/messages',
+    influencer_message_thread : '/influencers/messages/thread/:id',
+    influencer_message_create : '/influencers/messages/create',
+    influencer_message_read : '/influencers/messages/read/:id ',
+
     //Tips
     tips_emojis : '/tips/:id/emojis', 
     tips_watch_emojis : '/tips/:id/watch', 
@@ -148,10 +153,10 @@
     publishers_onboarding_step_2 : '/publishers/onboarding/step2',
     publishers_onboarding_step_3 : '/publishers/onboarding/step3',
 
-
-
-    //Messages
-    messages : '/messages',
+    publishers_messages : '/publishers/messages',
+    publishers_message_thread : '/publishers/messages/thread/:id',
+    publishers_message_create : '/publishers/messages/create',
+    publishers_message_read : '/publishers/messages/read/:id ',
     
 
     //streams route

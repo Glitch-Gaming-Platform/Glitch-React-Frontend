@@ -43,7 +43,7 @@ const aggregateDataByDate = (posts) => {
   return Object.entries(aggregatedData).map(([date, data]) => ({ date, ...data }));
 };
 
-const CreatorPostingCharts = () => {
+const CreatorPostingCharts = ({postData = []}) => {
   const [posts, setPosts] = useState([]);
   const [visibleMetrics, setVisibleMetrics] = useState({
     total_views: true,
@@ -55,8 +55,8 @@ const CreatorPostingCharts = () => {
   });
 
   useEffect(() => {
-    const fakeData = generateFakeData();
-    const aggregatedData = aggregateDataByDate(fakeData);
+    //const fakeData = generateFakeData();
+    const aggregatedData = aggregateDataByDate(postData);
     setPosts(aggregatedData);
   }, []);
 

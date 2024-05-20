@@ -23,11 +23,12 @@ const generateFakeData = () => {
   return data;
 };
 
-const CreatorPostingStatistics = ({user}) => {
+const CreatorPostingStatistics = ({user, postData = []}) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    setPosts(generateFakeData());
+    setPosts(postData)
+    //setPosts(generateFakeData());
   }, []);
 
   return (

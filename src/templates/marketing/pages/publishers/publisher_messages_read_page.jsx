@@ -6,8 +6,9 @@ import MessageMessagesList from '../../component/section/messages/message_messag
 import MessageParticipantsList from '../../component/section/messages/message_participants';
 import Navigate from '../../../../util/Navigate';
 import Breadcrumbs from '../../component/layout/breadcrumb';
+import PublisherHeader from '../../component/layout/publisherheader';
 
-const MessagesReadPage = () => {
+const PublisherMessagesReadPage = () => {
   const [thread, setThread] = useState({ users: [], messages: [] });
   const [newMessage, setNewMessage] = useState('');
   const { id } = useParams();
@@ -37,11 +38,11 @@ const MessagesReadPage = () => {
 
   return (
     <>
-      <Header position={"relative"} />
+      <PublisherHeader position={"relative"} />
       <div className="container my-4">
         <Breadcrumbs items={[
-          { name: 'Messages', link: Navigate.messagesListPage() },
-          { name: 'Read', link: Navigate.messagesThreadPage(thread.id) }]}
+          { name: 'Messages', link: Navigate.publishersMessagesListPage() },
+          { name: 'Read', link: Navigate.publishersMessagesThreadPage(thread.id) }]}
         />
         <h2>Message Thread</h2>
         <MessageParticipantsList users={thread.users} />
@@ -56,4 +57,4 @@ const MessagesReadPage = () => {
   );
 };
 
-export default MessagesReadPage;
+export default PublisherMessagesReadPage;

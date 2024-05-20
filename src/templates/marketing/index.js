@@ -96,6 +96,8 @@ import InfluencerManageCampaignPage from './pages/influencers/InfluencerManageCa
 import InfluencerMyCampaignsPage from './pages/influencers/InfluencerMyCampaignsPage';
 
 import MessagesListPage from './pages/messages/MessagesListPage';
+import MessagesCreatePage from './pages/messages/MessagesCreatePage';
+import MessagesReadPage from './pages/messages/MessagesReadPage';
 
 import PublishersGamificationPage from './pages/publishers/publishers_gamification';
 import PublishersOptimizationPage from './pages/publishers/publishers_optomization';
@@ -106,8 +108,7 @@ import Cohostwatchstream from './pages/streams/cohostwatchstream';
 import PublisherPilotsPage from './pages/publishers/publishers_pilots';
 import CampaignsViewCreatorPage from './pages/campaigns/CampaignsViewCreatorPage';
 import CampaignsViewCreatorPerformancePage from './pages/campaigns/CampaignsViewCreatorPerformancePage';
-import MessagesCreatePage from './pages/messages/MessagesCreatePage';
-import MessagesReadPage from './pages/messages/MessagesReadPage';
+
 import PublisherPricingPage from './pages/publishers/publishers_pricing';
 import CampaignsMessageInfluencerPage from './pages/campaigns/CampaignsMessageInfluencerPage';
 import CommunitiesAdminList from './pages/communities/CommunitiesAdminList';
@@ -126,6 +127,12 @@ import InfluencerViewCampaignInvitePage from './pages/influencers/InfluencerView
 import PublisherSubscribePage from './pages/publishers/publishers_subscribe';
 import CommunitiesCreditCardsPage from './pages/communities/CommunitiesCreditCards';
 import CreatorOnboardinStep5Page from './pages/creators/creator_onboarding_step_5';
+import PublisherMessagesCreatePage from './pages/publishers/publisher_messages_create_page';
+import PublisherMessagesListPage from './pages/publishers/publisher_messages_list_page';
+import PublisherMessagesReadPage from './pages/publishers/publisher_messages_read_page';
+import InfluencerMessagesCreatePage from './pages/influencers/InfluencerMessagesCreatePage';
+import InfluencerMessagesListPage from './pages/influencers/InfluencerMessagesListPage';
+import InfluencerMessagesReadPage from './pages/influencers/InfluencerMessagesReadPage';
 
 
 function Template() {
@@ -211,6 +218,10 @@ function Template() {
           <Route path={Navigate.influencersMyCampaignsPage()} element={<InfluencerMyCampaignsPage />} />
           <Route path={Navigate.influencersCampaignInvitePage()} element={<InfluencerViewCampaignInvitePage />} />
 
+          <Route path={Navigate.influencersMessagesCreatePage()} element={<InfluencerMessagesCreatePage />} />
+          <Route path={Navigate.influencersMessagesListPage()} element={<InfluencerMessagesListPage />} />
+          <Route path={Navigate.influencersMessagesThreadPage()} element={<InfluencerMessagesReadPage />} />
+
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
           <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />
 
@@ -247,6 +258,10 @@ function Template() {
           <Route path={Navigate.publishersOnboardingStep1Page()} element={<PublisherOnboardinStep1Page />} />
           <Route path={Navigate.publishersOnboardingStep2Page()} element={<PublisherOnboardinStep2Page />} />
           <Route path={Navigate.publishersOnboardingStep3Page()} element={<PublisherOnboardingStep3Page />} />
+
+          <Route path={Navigate.publishersMessagesCreatePage()} element={<PublisherMessagesCreatePage />} />
+          <Route path={Navigate.publishersMessagesListPage()} element={<PublisherMessagesListPage />} />
+          <Route path={Navigate.publishersMessagesThreadPage()} element={<PublisherMessagesReadPage />} />
 
 
 

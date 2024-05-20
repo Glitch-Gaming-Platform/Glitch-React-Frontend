@@ -150,6 +150,9 @@ class InfluencerHeader extends Component {
                                                 <Link to={Navigate.influencersFindCampaignPage()} >Find Campaigns</Link>
                                             </li>
                                             <li >
+                                                <Link to={Navigate.influencersMessagesListPage()} >Messages</Link>
+                                            </li>
+                                            <li >
                                                 <Link to={Navigate.influencersMyCampaignsPage()} >My Campaigns</Link>
                                             </li>
 

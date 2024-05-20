@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar,LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Checkbox } from 'recharts';
 
-const CreatorPostingAnalytics = () => {
+const CreatorPostingAnalytics = ({postData}) => {
   const [platformData, setPlatformData] = useState({});
   const [metrics, setMetrics] = useState({
     total_views: true,
@@ -64,8 +64,43 @@ const CreatorPostingAnalytics = () => {
       setPlatformData(chartData);
     };
 
-    generateRandomData();
+    const aggregateData = (data) => {
+      const platforms = ['Twitter', 'Reddit', 'Facebook', 'Instagram', 'TikTok'];
+      const startDate = new Date(2024, 2, 1);
+
+      const aggregatedData = platforms.reduce((acc, platform) => {
+        acc[platform] = data.filter(item => item.social_platform === platform)
+          .reduce((acc, curr) => {
+            const date = curr.date_created;
+            if (!acc[date]) {
+              acc[date] = { ...curr };
+            } else {
+              Object.keys(curr).forEach(key => {
+                if (key !== 'social_platform' && key !== 'date_created') {
+                  acc[date][key] += curr[key];
+                }
+              });
+            }
+            return acc;
+          }, {});
+        return acc;
+      }, {});
+
+      const chartData = {};
+      Object.keys(aggregatedData).forEach(platform => {
+        chartData[platform] = Object.keys(aggregatedData[platform]).map(date => ({
+          date,
+          ...aggregatedData[platform][date]
+        }));
+      });
+
+      setPlatformData(chartData);
+    };
+
+    aggregateData(postData);
+    //generateRandomData();
   }, []);
+
 
   const handleMetricToggle = (metric) => {
     setMetrics(prevMetrics => ({ ...prevMetrics, [metric]: !prevMetrics[metric] }));

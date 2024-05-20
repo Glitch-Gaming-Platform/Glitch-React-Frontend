@@ -621,6 +621,23 @@ const Navigate = {
         return path;
     },
 
+    influencersMessagesListPage : () => {
+        return app_routes.influencer_messages;
+    },
+    influencersMessagesCreatePage : () => {
+        return app_routes.influencer_message_create;
+    },
+    influencersMessagesThreadPage : (thread_id) => {
+        
+        let path = app_routes.influencer_message_thread;
+
+        if(thread_id){
+            path = path.replace(':id', thread_id)
+        }
+
+        return path;
+    },
+
 
     //Messages
     messagesListPage : () => {
@@ -634,7 +651,7 @@ const Navigate = {
         let path = app_routes.message_read;
 
         if(message_id){
-            //path = path.replace(':id', message_id)
+            path = path.replace(':id', message_id)
         }
 
         return path;
@@ -741,6 +758,22 @@ const Navigate = {
 
         return app_routes.publishers_onboarding_step_3;
 
+    },
+    publishersMessagesListPage : () => {
+        return app_routes.publishers_messages;
+    },
+    publishersMessagesCreatePage : () => {
+        return app_routes.publishers_message_create;
+    },
+    publishersMessagesThreadPage : (thread_id) => {
+        
+        let path = app_routes.publishers_message_thread;
+
+        if(thread_id){
+            path = path.replace(':id', thread_id)
+        }
+
+        return path;
     },
 
 

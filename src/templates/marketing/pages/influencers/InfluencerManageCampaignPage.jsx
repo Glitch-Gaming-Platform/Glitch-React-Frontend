@@ -15,11 +15,16 @@ import CampaignAnalytics from '../../component/section/campaigns/campaign_earnin
 import InfluencerHeader from '../../component/layout/infuencerheader';
 import UserItem from '../../../esports/component/section/user/detail_user_item';
 import CreatorEarningsBreakdown from '../../component/section/creators/creator_earnings';
+import CreatorPostingStatistics from '../../component/section/creators/creator_posts_statistcs';
+import CreatorPostingCharts from '../../component/section/creators/creator_posts_charts';
+import CreatorLinksCharts from '../../component/section/creators/creator_links_charts';
+import CreatorLinksList from '../../component/section/creators/creator_links_list';
 
 const InfluencerManageCampaignPage = () => {
     const [campaign, setCampaign] = useState({});
     const [community, setCommunity] = useState({});
     const [posts, setPosts] = useState([]);
+    const [links, setLinks] = useState([]);
     const [user, setUser] = useState({});
     const { id, campaign_id, user_id } = useParams();
     const [me, setMe] = useState({});
@@ -77,6 +82,12 @@ const InfluencerManageCampaignPage = () => {
             setPosts(response.data.data);
         }).catch(error => {
             console.error('Error fetching posts', error);
+        });
+
+        Glitch.api.Campaigns.listInfluencerCampaignLinks(campaign_id, user_id).then(response => {
+            setLinks(response.data.data);
+        }).catch(error => {
+
         });
 
         Glitch.api.Users.profile(user_id).then(response => {
@@ -173,6 +184,7 @@ const InfluencerManageCampaignPage = () => {
                             <CreatorEarningsBreakdown campaign={campaign} />
                         </section>
 
+
                         <hr />
 
                         <section className="my-4">
@@ -188,10 +200,7 @@ const InfluencerManageCampaignPage = () => {
 
                         <hr />
 
-                        <section className="my-4">
-                            <h3 className="text-black">Campaign Analytics</h3>
-                            <CampaignAnalytics data={campaign} />
-                        </section>
+
 
                         <section className="my-4">
                             <h3 className="text-black">Campaign Admins</h3>
@@ -201,6 +210,20 @@ const InfluencerManageCampaignPage = () => {
                         </section>
                     </div>
                 </div>
+
+                <section className="my-4">
+                    <h3 >Campaign Analytics</h3>
+                    <CampaignAnalytics data={campaign}  />
+                </section>
+
+                <CreatorPostingStatistics user={user} postData={posts} />
+
+                <CreatorPostingCharts user={user} postData={posts} />
+
+                <CreatorLinksCharts user={user} linkData={links} />
+
+                <CreatorLinksList user={user} linkData={links?.clicks} />
+
             </div>
 
             <Footer />
