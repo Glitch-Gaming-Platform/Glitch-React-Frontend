@@ -100,7 +100,14 @@ class AccountUpdatePage extends Component {
         const { me } = this.state;
         this.setState({ isLoading: true });
         Glitch.api.Users.update(me).then(response => {
-            // Handle the update response
+           
+            if(this.state.me.is_influencer) {
+                Glitch.api.Users.syncInfluencer().then(()=> {
+
+                }).catch(error => {
+        
+                });
+            }
         }).catch(error => {
             console.log(error);
 

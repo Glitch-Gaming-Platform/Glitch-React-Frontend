@@ -131,9 +131,6 @@ const CampaignsFindInfluencersPage = () => {
         <>
             <PublisherHeader position={"relative"} />
 
-            
-
-
             <div className="container mt-4">
 
             <Breadcrumbs items={[
@@ -201,7 +198,7 @@ const CampaignsFindInfluencersPage = () => {
                                                 </>
                                             );
                                         })()}
-                                        <Link to={Navigate.campaignsViewInfluencer(id, influencer.id)} type="button" className="btn btn-primary">View More</Link>
+                                        <Link to={Navigate.campaignsViewInfluencer(id, influencer.id)} type="button" className="btn btn-primary me-2">View More</Link>
                                         <button type="button" className="btn btn-success">Invite</button>
                                     </div>
                                 </div>

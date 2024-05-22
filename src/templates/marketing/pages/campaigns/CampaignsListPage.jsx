@@ -22,7 +22,7 @@ const CampaignsListPage = () => {
                 console.log(Glitch.util.Session.getID());
                 let roles = Glitch.constants.Roles.ADMINISTRATOR + ',' + Glitch.constants.Roles.SUPER_ADMINISTRATOR + ',' + Glitch.constants.Roles.MODERATOR;
 
-                Glitch.api.Campaigns.list({ page: currentPage, user_id : Glitch.util.Session.getID(), roles : roles }).then((response) => {
+                Glitch.api.Campaigns.list({ page: currentPage, user_id: Glitch.util.Session.getID(), roles: roles }).then((response) => {
 
                     //this.setState({campaigns : response.data.data });
 
@@ -50,7 +50,7 @@ const CampaignsListPage = () => {
     // Function to toggle campaign active status
     const toggleCampaignStatus = async (campaignId, isActive) => {
 
-        Glitch.api.Campaigns.update(campaignId, {is_active : isActive}).then(response => {
+        Glitch.api.Campaigns.update(campaignId, { is_active: isActive }).then(response => {
             let updatedCampaign = response.data.data;
 
             // Update the local state with the new campaign status
@@ -64,11 +64,11 @@ const CampaignsListPage = () => {
         }).catch(error => {
 
         });
-       
+
     };
 
     const createMarkup = (htmlContent) => {
-        return {__html: htmlContent};
+        return { __html: htmlContent };
     };
 
     return (
@@ -98,59 +98,69 @@ const CampaignsListPage = () => {
 
                     {campaigns.length > 0 ? (
                         <div className="d-flex flex-column">
-                        {campaigns.map(campaign => (
-                            <div key={campaign.id} className="card mb-3">
-                                <div className="card-body">
-                                    <h5 className="card-title">{campaign.name}</h5>
-                                    <p className="card-text" ><span dangerouslySetInnerHTML={createMarkup(campaign.description)} /></p>
+                            {campaigns.map(campaign => (
+                                <div key={campaign.id} className="card mb-3">
+                                    <div className="card-body">
+                                        <h5 className="card-title">{campaign.name}</h5>
+                                        <p className="card-text" ><span dangerouslySetInnerHTML={createMarkup(campaign.description)} /></p>
 
-                                    <div className="row">
-                                        <div className="col-md-6">
-                                            <div className="d-flex align-items-start my-3 text-black">
-                                                {/* Image Section */}
-                                                <img src={(campaign?.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                <div className="d-flex align-items-start my-3 text-black">
+                                                    {/* Image Section */}
+                                                    <img src={(campaign?.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/stream_1.jpeg'} alt="Video thumbnail" className="img-fluid" style={{ width: '180px', height: '100px', objectFit: 'cover', marginRight: '20px' }} />
 
-                                                {/* Text Section */}
-                                                <div className="text-black">
-                                                    <h5 className="mb-1 text-black">{campaign?.title?.name}</h5>
-                                                    <p className="text-muted mb-0"><span dangerouslySetInnerHTML={createMarkup(campaign?.title?.short_description)} /> </p>
+                                                    {/* Text Section */}
+                                                    <div className="text-black">
+                                                        <h5 className="mb-1 text-black">{campaign?.title?.name}</h5>
+                                                        <p className="text-muted mb-0"><span dangerouslySetInnerHTML={createMarkup(campaign?.title?.short_description)} /> </p>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div className="col-md-3">
+
+                                                <p className="card-text"><strong>Total Budget:</strong> {(campaign.spend_limit) ? '$' + campaign.spend_limit : 'Infinite'}</p>
+                                                <p className="card-text"><strong>Budget Cap Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer : 'Infinite'}</p>
+                                                <p className="card-text"><strong>Max Influencers For Campaign:</strong> {(campaign.influencer_limit) ? campaign.influencer_limit : 'Infinite'}</p>
+
+                                            </div>
+                                            <div className="col-md-3">
+                                                <p><strong>Total Influencers:</strong> {campaign.total_influencers}</p>
+                                                <p><strong>Total Active Influencers:</strong> {campaign.total_active_influencers}</p>
+                                            </div>
                                         </div>
-                                        <div className="col-md-3">
-
-                                            <p className="card-text"><strong>Total Budget:</strong> {(campaign.spend_limit) ? '$' + campaign.spend_limit : 'Infinite'}</p>
-                                            <p className="card-text"><strong>Budget Cap Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer : 'Infinite'}</p>
-                                            <p className="card-text"><strong>Max Influencers For Campaign:</strong> {(campaign.influencer_limit) ? campaign.influencer_limit : 'Infinite'}</p>
-
-                                        </div>
-                                        <div className="col-md-3">
-                                            <p><strong>Total Influencers:</strong> {campaign.total_influencers}</p>
-                                            <p><strong>Total Active Influencers:</strong> {campaign.total_active_influencers}</p>
-                                        </div>
-                                    </div>
 
 
 
-                                   
-                                    {/* Add other basic info as needed */}
 
-                                    <div className="d-flex justify-content-start mt-4">
-                                        <Link className={"btn btn-primary me-2"} to={Navigate.campaignsViewPage(campaign.id)} >View Campaign</Link>
-                                        <Link className={"btn btn-warning me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >Edit Campaign</Link>
-                                        <Link className={"btn btn-info"} to={Navigate.campaignsFindInfluencers(campaign.id)} >Find Influencers</Link>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <Switch
+                                        {/* Add other basic info as needed */}
+
+                                        <div className="d-flex justify-content-start mt-4">
+                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsViewPage(campaign.id)} >
+                                                <i className="fas fa-eye"></i> View Campaign
+                                            </Link>
+                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >
+                                                <i className="fas fa-edit"></i> Edit Campaign
+                                            </Link>
+                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsFindInfluencers(campaign.id)} >
+                                                <i className="fas fa-search"></i> Find Influencers
+                                            </Link>
+                                            <Link className={"btn btn-primary"} to={Navigate.campaignsInvitesPage(campaign.id)} >
+                                                <i className="fas fa-envelope"></i> Invites
+                                            </Link>
+
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <Switch
                                                 checked={campaign.is_active}
                                                 onChange={() => toggleCampaignStatus(campaign.id, !campaign.is_active)}
                                                 className='text-right'
                                             /> &nbsp;&nbsp;&nbsp;{(campaign.is_active) ? 'Active' : 'Inactive'}
+                                        </div>
                                     </div>
-                                </div>
 
-                            </div>
-                        ))}
-                    </div>
+                                </div>
+                            ))}
+                        </div>
                     ) : (
                         <div className="card card-body bg-dark text-center">
                             <p className="lead">No Campaigns Have Been Created</p>
@@ -165,7 +175,7 @@ const CampaignsListPage = () => {
 
                     )}
 
-                    
+
                     <nav aria-label="Page navigation example">
                         <ul className="pagination">
                             {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (

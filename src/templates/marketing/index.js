@@ -133,6 +133,9 @@ import PublisherMessagesReadPage from './pages/publishers/publisher_messages_rea
 import InfluencerMessagesCreatePage from './pages/influencers/InfluencerMessagesCreatePage';
 import InfluencerMessagesListPage from './pages/influencers/InfluencerMessagesListPage';
 import InfluencerMessagesReadPage from './pages/influencers/InfluencerMessagesReadPage';
+import CampaignsInvitePage from './pages/campaigns/CampaignsInvitePage';
+import InfluencerPayoutsPage from './pages/influencers/InfluencerPayoutsPage';
+import InfluencerInvitesPage from './pages/influencers/InfluencerInvitesPage';
 
 
 function Template() {
@@ -187,6 +190,7 @@ function Template() {
           <Route path={Navigate.campaignsMessageInfluencer()} element={<CampaignsMessageInfluencerPage />} />
           <Route path={Navigate.campaignsStartPage()} element={<CampaignsStartPage />} />
           <Route path={Navigate.campaignsViewInfluencer()} element={<CampaignsViewInfluencerPage />} />
+          <Route path={Navigate.campaignsInvitesPage()} element={<CampaignsInvitePage />} />
 
 
           <Route path={Navigate.communitiesPage()} element={<CommunitiesList />} />
@@ -264,7 +268,8 @@ function Template() {
           <Route path={Navigate.publishersMessagesThreadPage()} element={<PublisherMessagesReadPage />} />
 
 
-
+          <Route path={Navigate.usersInvitesPage()} element={<InfluencerInvitesPage />} />
+          <Route path={Navigate.usersPayoutsPage()} element={<InfluencerPayoutsPage />} />
 
 
           <Route path={Navigate.authTwitch()} element={<AuthTwitch />} />

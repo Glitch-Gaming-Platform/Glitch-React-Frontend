@@ -35,6 +35,7 @@
     campaigns_message_influencer : '/campaigns/:id/message/:user_id',
     campaigns_view_influencer : '/campaigns/:id/viewinfluencer/:influencer_id',
     campaigns_start : '/campaigns/:id/start',
+    campaigns_invites : '/campaigns/:id/invites',
 
     creators: '/creators',
     creators_overview: '/creators/overview',
@@ -244,7 +245,9 @@
     users_list : '/users',
     users_profile : '/users/:id/profile',
     users_followers: '/users/followers',
-    users_following : '/users/following'
+    users_following : '/users/following',
+    users_invites : '/users/invites',
+    users_payouts : '/users/payouts'
 }
 
 export default app_routes;

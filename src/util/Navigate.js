@@ -344,6 +344,17 @@ const Navigate = {
 
         return path;
     },
+    campaignsInvitesPage : (campaign_id) => {
+
+        let path = app_routes.campaigns_invites;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+
+        return path;
+    },
 
 
     //Communites Pages
@@ -1447,6 +1458,28 @@ const Navigate = {
     usersFollowing : (user_id) => {
 
         let path = app_routes.users_following;
+
+        if(user_id){
+            path = path.replace(':id', user_id)
+        }
+
+        return path;
+        
+    },
+    usersInvitesPage : (user_id) => {
+
+        let path = app_routes.users_invites;
+
+        if(user_id){
+            path = path.replace(':id', user_id)
+        }
+
+        return path;
+        
+    },
+    usersPayoutsPage : (user_id) => {
+
+        let path = app_routes.users_payouts;
 
         if(user_id){
             path = path.replace(':id', user_id)

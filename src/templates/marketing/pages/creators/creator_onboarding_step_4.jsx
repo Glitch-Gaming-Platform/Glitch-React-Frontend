@@ -35,6 +35,13 @@ const CreatorOnboardingStep4Page = () => {
     };
 
     const goToNextScreen = () => {
+
+        Glitch.api.Users.syncInfluencer().then(()=> {
+
+        }).catch(error => {
+
+        });
+
         navigate(Navigate.creatorsOnboardingStep5Page());
     };
 

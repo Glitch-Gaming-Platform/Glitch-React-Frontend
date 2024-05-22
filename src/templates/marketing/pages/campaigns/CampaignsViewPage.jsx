@@ -12,6 +12,7 @@ import CampaignUserManager from '../../component/section/campaigns/campaign_user
 import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
 import Breadcrumbs from '../../component/layout/breadcrumb';
+import CampaignInviteManager from '../../component/section/campaigns/campaign_invites_manager';
 
 const CampaignsViewPage = () => {
 

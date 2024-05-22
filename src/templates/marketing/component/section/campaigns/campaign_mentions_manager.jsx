@@ -87,7 +87,7 @@ const CampaignMentionsManager = ({campaignID}) => {
                     <form onSubmit={addMention}>
                         <div className="mb-3">
                             <label htmlFor="description" className="form-label">Source</label>
-                            <select name="social_platform" value={newMention.social_platform} onChange={handleInputChange} required >
+                            <select name="social_platform" className="form-control" value={newMention.social_platform} onChange={handleInputChange} required >
                                 <option value="">Select A Social Platform</option>
                                 <option value="twitch">Twitch</option>
                                 <option value="twitter">Twitter</option>
