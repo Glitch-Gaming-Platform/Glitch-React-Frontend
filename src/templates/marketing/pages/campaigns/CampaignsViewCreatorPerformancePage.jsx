@@ -23,6 +23,7 @@ import Breadcrumbs from '../../component/layout/breadcrumb';
 const CampaignsViewCreatorPerformancePage = () => {
 
     const [campaign, setCampaign] = useState({});
+    const [links, setLinks] = useState([]);
     const [user, setUser] = useState({});
     const { id, user_id } = useParams();
 
@@ -42,6 +43,14 @@ const CampaignsViewCreatorPerformancePage = () => {
         }).catch(error => {
 
         });
+
+        /*Glitch.api.Campaigns.listInfluencerCampaignLinkClicks(id).then(response => {
+
+            console.log("Links", response.data.data);
+            setLinks(response.data.data)
+        }).catch(error => {
+
+        })*/
 
 
 

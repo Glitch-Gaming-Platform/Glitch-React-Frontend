@@ -97,7 +97,7 @@ const CreatorPostingAnalytics = ({postData}) => {
       setPlatformData(chartData);
     };
 
-    aggregateData(postData);
+    aggregateData(postData || []);
     //generateRandomData();
   }, []);
 

@@ -47,7 +47,7 @@ const CampaignUserManager = ({ campaignID, userID }) => {
     };
 
     const declineInfluencer = async (userID) => {
-        Glitch.api.Campaigns.declineInfluencernRequest(campaign_id, userID).then(response => {
+        Glitch.api.Campaigns.declineInfluencerRequest(campaign_id, userID).then(response => {
             fetchLinks(campaign_id);
         }).catch(error => {
             console.error(error);
@@ -145,6 +145,9 @@ const CampaignUserManager = ({ campaignID, userID }) => {
                                     </Link>
                                     <Link className="btn btn-info me-2" to={Navigate.campaignsPerformanceInfluencer(campaign_id, influencer.user.id)}>
                                         <i className="fas fa-chart-line"></i> Performance
+                                    </Link>
+                                    <Link className="btn btn-info me-2" to={Navigate.campaignsUpdateInfluencer(campaign_id, influencer.user.id)}>
+                                        <i className="fas fa-list"></i> Customize Rate Card
                                     </Link>
                                     <button className="btn btn-info" type="button" onClick={() => showMessages(influencer.user.id)}>
                                         <i className="fas fa-envelope"></i> Message

@@ -1,34 +1,81 @@
 import React, { useEffect, useState } from 'react';
 import Danger from '../../alerts/Danger';
 
-
 function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPaymentData, social, errors }) {
     
     const [useMultiplier, setUseMultiplier] = useState(false);
+    const [selectedObjective, setSelectedObjective] = useState('');
 
     useEffect(() => {
-       
         let fieldName = `flat_rate_use_multiplier${social ? '_' + social : ''}`;
-
-        setUseMultiplier(campaignData[fieldName])
-       
-    }, []);
+        setUseMultiplier(campaignData[fieldName]);
+    }, [campaignData, social]);
 
     const handleInputChange = (e) => {
         let name = e.target.name;
-        if(social && (name.startsWith('payment_per_'))) {
-            //name = `${name}_${social}`;
-        }
         setPaymentData({ ...campaignData, [name]: e.target.value });
     };
 
     const toggleMultiplier = (e) => {
-        console.log(e);
-        console.log(e.target.name);
         let name = e.target.name;
-
         setPaymentData({ ...campaignData, [name]: !useMultiplier });
         setUseMultiplier(!useMultiplier);
+    };
+
+    const handleObjectiveChange = (e) => {
+        const objective = e.target.value;
+        setSelectedObjective(objective);
+        autoPopulateFields(objective);
+    };
+
+    const autoPopulateFields = (objective) => {
+        const newPaymentData = { ...campaignData };
+
+        if (objective === 'brand_awareness') {
+            populateBrandAwareness(newPaymentData);
+        } else if (objective === 'community_building') {
+            populateCommunityBuilding(newPaymentData);
+        } else if (objective === 'downloads_installs') {
+            populateDownloadsInstalls(newPaymentData);
+        }
+
+        setPaymentData(newPaymentData);
+    };
+
+    const populateBrandAwareness = (data) => {
+        const platforms = ['tiktok', 'twitter', 'twitch', 'reddit', 'facebook', 'youtube', 'kick'];
+        platforms.forEach((platform) => {
+            data[`payment_per_view${social ? '_' + social : ''}`] = platform.match(/tiktok|twitter|twitch/) ? 0.01 : 0.005;
+            data[`payment_per_share${social ? '_' + social : ''}`] = platform.match(/tiktok|twitter|twitch/) ? 0.05 : 0.03;
+            data[`payment_per_comment${social ? '_' + social : ''}`] = 0.01;
+            data[`payment_per_engagement${social ? '_' + social : ''}`] = 0.001;
+            data[`payment_per_click${social ? '_' + social : ''}`] = 0.01;
+            //data[`payment_flat_fee${social ? '_' + social : ''}`] = 100;
+        });
+    };
+
+    const populateCommunityBuilding = (data) => {
+        const platforms = ['tiktok', 'twitter', 'twitch', 'reddit', 'facebook', 'youtube', 'kick'];
+        platforms.forEach((platform) => {
+            data[`payment_per_view${social ? '_' + social : ''}`] = 0.001;
+            data[`payment_per_share${social ? '_' + social : ''}`] = 0.01;
+            data[`payment_per_comment${social ? '_' + social : ''}`] = platform.match(/reddit|facebook|youtube/) ? 0.05 : 0.03;
+            data[`payment_per_engagement${social ? '_' + social : ''}`] = platform.match(/reddit|facebook|youtube/) ? 0.005 : 0.003;
+            data[`payment_per_click${social ? '_' + social : ''}`] = 0.01;
+            //data[`payment_flat_fee${social ? '_' + social : ''}`] = 100;
+        });
+    };
+
+    const populateDownloadsInstalls = (data) => {
+        const platforms = ['tiktok', 'twitter', 'twitch', 'reddit', 'facebook', 'youtube', 'kick'];
+        platforms.forEach((platform) => {
+            data[`payment_per_view${social ? '_' + social : ''}`] = 0.001;
+            data[`payment_per_share${social ? '_' + social : ''}`] = 0.01;
+            data[`payment_per_comment${social ? '_' + social : ''}`] = 0.01;
+            data[`payment_per_engagement${social ? '_' + social : ''}`] = 0.001;
+            data[`payment_per_click${social ? '_' + social : ''}`] = 0.10;
+            //data[`payment_flat_fee${social ? '_' + social : ''}`] = 100;
+        });
     };
 
     const socialDescriptions = {
@@ -61,6 +108,16 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
                 </div>
                 <div className="card-body">
                     <p className="text-muted lead">{description}</p>
+                    <div className="mb-3">
+                        <label htmlFor="objective" className="form-label">Auto Populate Fields</label>
+                        <select className="form-select" id="objective" value={selectedObjective} onChange={handleObjectiveChange}>
+                            <option value="">Select Objective</option>
+                            <option value="brand_awareness">Brand Awareness</option>
+                            <option value="community_building">Community Building</option>
+                            <option value="downloads_installs">Downloads/Installs</option>
+                        </select>
+                        <small className="form-text text-muted">If you wish to auto-populate the fields, choose objective of your campaign to auto-populate the rate card values.</small>
+                    </div>
                     <hr />
                     <div className="row">
                         {createInputField('view', 'fa-eye', 'Views', 'Set the amount an influencer earns per view.')}
@@ -98,9 +155,7 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
                                 <label className="form-check-label" htmlFor="useMultiplierToggle">Use Flat Multiplier</label>
                             </div>
                         </div>
-                        
                     </div>
-                    {/* Other payment fields wrapped in .row and .col-md-6 */}
                 </div>
             </div>
         </div>
@@ -109,12 +164,12 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
     function createInputField(field, icon, label, description) {
         let fieldName = '';
 
-        if(field == 'flat_fee') {
+        if (field === 'flat_fee') {
             fieldName = `payment_${field}${social ? '_' + social : ''}`;
         } else {
             fieldName = `payment_per_${field}${social ? '_' + social : ''}`;
         }
-       
+
         return (
             <div className="col-md-6">
                 <div className="mb-3">
@@ -127,9 +182,9 @@ function CampaignPaymentForm({ title, campaignData, paymentData = {}, setPayment
                     </div>
                     <small className="form-text text-muted">{description}</small>
                 </div>
-                {errors && errors[fieldName] && errors[fieldName].map(function (name, index) {
-                    return <Danger message={name} key={index} />;
-                })}
+                {errors && errors[fieldName] && errors[fieldName].map((name, index) => (
+                    <Danger message={name} key={index} />
+                ))}
             </div>
         );
     }

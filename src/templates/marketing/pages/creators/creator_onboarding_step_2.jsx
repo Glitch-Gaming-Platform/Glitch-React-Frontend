@@ -36,6 +36,8 @@ function CreatorOnboardinStep2Page() {
     event.preventDefault();
     setIsLoading(true);
     let data = { bio };
+    data.is_influencer = 1;
+    
     Glitch.api.Users.update(data).then(response => {
       setIsLoading(false);
       navigate(Navigate.creatorsOnboardingStep3Page());

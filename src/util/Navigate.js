@@ -270,6 +270,20 @@ const Navigate = {
 
         return path;
     },
+    campaignsUpdateInfluencer : (campaign_id, influencer_id) => {
+
+        let path = app_routes.campaigns_update_influencer;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        if(influencer_id){
+            path = path.replace(':influencer_id', influencer_id)
+        }
+
+        return path;
+    },
     campaignsResearchInfluencer : (campaign_id, user_id) => {
 
         let path = app_routes.campaigns_research_influencer;

@@ -34,6 +34,7 @@
     campaigns_performance_influencer : '/campaigns/:id/performance/:user_id',
     campaigns_message_influencer : '/campaigns/:id/message/:user_id',
     campaigns_view_influencer : '/campaigns/:id/viewinfluencer/:influencer_id',
+    campaigns_update_influencer : '/campaigns/:id/updateinfluencer/:influencer_id',
     campaigns_start : '/campaigns/:id/start',
     campaigns_invites : '/campaigns/:id/invites',
 

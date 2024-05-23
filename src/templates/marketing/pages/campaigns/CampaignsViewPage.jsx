@@ -66,7 +66,7 @@ const CampaignsViewPage = () => {
 
         });
 
-        Glitch.api.Campaigns.listInfluencerCampaigns({campaign_id : id}).then(response => {
+        Glitch.api.Campaigns.listInfluencerCampaigns({ campaign_id: id }).then(response => {
 
         }).catch(error => {
 
@@ -75,20 +75,20 @@ const CampaignsViewPage = () => {
     }, []);
 
     const createMarkup = (htmlContent) => {
-        return {__html: htmlContent};
+        return { __html: htmlContent };
     };
-   
+
 
     return (
         <>
-            <PublisherHeader position={"relative"}  />
+            <PublisherHeader position={"relative"} />
             <section className="pageheader-section-min">
                 <div className="container mt-4">
-                <Breadcrumbs items={[
-                    {name : 'Campaigns', link : Navigate.campaignsPage()}, 
-                    {name : campaign.name, link : Navigate.campaignsViewPage(campaign.id)}, 
+                    <Breadcrumbs items={[
+                        { name: 'Campaigns', link: Navigate.campaignsPage() },
+                        { name: campaign.name, link: Navigate.campaignsViewPage(campaign.id) },
                     ]}
-                />
+                    />
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
 
@@ -102,13 +102,13 @@ const CampaignsViewPage = () => {
             </section>
 
             <div className="container mt-5 mb-2" >
-                    <div className="section-wrapper">
-                        <Link className={"btn btn-success"} to={Navigate.campaignsUpdatePage(campaign.id)} >Update Campaign</Link>
-                    </div>
+                <div className="section-wrapper">
+                    <Link className={"btn btn-success"} to={Navigate.campaignsUpdatePage(campaign.id)} >Update Campaign</Link>
                 </div>
+            </div>
 
             <div className="container my-5">
-                
+
                 <div className="card">
                     <div className="card-header bg-secondary">
                         <h2>{campaign?.name}</h2>
@@ -136,9 +136,9 @@ const CampaignsViewPage = () => {
 
                         <section className="mb-4">
                             <h3 className="text-black">Budget and Limit</h3>
-                            <p><strong>Influencer Limit:</strong> {(campaign.influencer_limit) ? 'A maximum of ' + campaign.influencer_limit + ' inlfuencers can sign-up to this campaign.': 'Infinite number of influencers can sign up for this campaign.'}</p>
+                            <p><strong>Influencer Limit:</strong> {(campaign.influencer_limit) ? 'A maximum of ' + campaign.influencer_limit + ' inlfuencers can sign-up to this campaign.' : 'Infinite number of influencers can sign up for this campaign.'}</p>
                             <p><strong>Total Spend Limit:</strong> ${campaign.spend_limit}</p>
-                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ?  '$' + campaign.spend_limit_per_influencer + ' is maximun amount each influencer can make for this campaign.' : 'Infuencers have no cap on how much they make for this campaign.' }</p>
+                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer + ' is maximun amount each influencer can make for this campaign.' : 'Infuencers have no cap on how much they make for this campaign.'}</p>
                         </section>
 
                         <hr />
@@ -147,29 +147,37 @@ const CampaignsViewPage = () => {
                             <GameTitle gameInfo={campaign?.title} />
                         </section>
 
-                        <hr/>
+                        <hr />
 
                         <CampaignRateCard campaign={campaign} />
 
                         <hr />
 
-                        <section className="mb-4">
-                            <h3 className="text-black">Content Creator Directional Information</h3>
-                         
-                            {campaign.hashtags ? <>
-                                <p><strong>Hashtags:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.hashtags)} /></p>
-                            </> : ''}
-                            {campaign.highlights ? <>
-                                <p><strong>Highlights:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.highlights)} /></p>
-                            </> : ''}
+                        {(campaign.hashtags || campaign.highlights || campaign.prohibited_content) ?
 
-                            {campaign.prohibited_content ? <>
-                                <p><strong>Prohibited Content:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.prohibited_content)} /></p>
-                            </> : ''}
-                            
-                        </section>
+                            <section className="mb-4">
+                                <h3 className="text-black">Content Creator Directional Information</h3>
 
-                        <hr />
+                                {campaign.hashtags ? <>
+                                    <p><strong>Hashtags:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.hashtags)} /></p>
+                                </> : ''}
+                                {campaign.highlights ? <>
+                                    <p><strong>Highlights:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.highlights)} /></p>
+                                </> : ''}
+
+                                {campaign.prohibited_content ? <>
+                                    <p><strong>Prohibited Content:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.prohibited_content)} /></p>
+                                </> : ''}
+
+                                <hr />
+
+                            </section>
+                            :
+
+                            <></>
+                        }
+
+                        
 
                         <section className="mb-4">
                             <h3 className="text-black">Additional Details</h3>
@@ -194,7 +202,7 @@ const CampaignsViewPage = () => {
 
             <CampaignMentionsManager campaignID={id} />
 
-            <CampaignUserManager campaignID={id}/>
+            <CampaignUserManager campaignID={id} />
 
             <Footer />
         </>

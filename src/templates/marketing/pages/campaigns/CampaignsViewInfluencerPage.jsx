@@ -24,8 +24,6 @@ const CampaignsViewInfluencerPage = () => {
         Glitch.api.Campaigns.view(id).then(response => {
             setCampaign(response.data.data);
 
-            console.log('Community Data', response.data.data);
-
             Glitch.api.Subscriptions.listCommunityInfluencerSubscriptions(response.data.data.community_id).then(response => {
                 setSubscriptions(response.data.data);
             }).catch(error => {
@@ -37,30 +35,30 @@ const CampaignsViewInfluencerPage = () => {
         });
 
         fetchInfluencer();
-
-        // Glitch.api.Subscriptions.getCommunityInfluencerSubscription()
     }, []);
 
     const fetchInfluencer = async () => {
         try {
-            const response = await Glitch.api.Influencers.viewInfluencer(influencer_id);
+            const response = await Glitch.api.Influencers.viewInfluencer(influencer_id, { campaign_id: id });
             setInfluencer(response.data.data);
         } catch (error) {
-            console.error('Error fetching influencers', error);
+            console.error('Error fetching influencer', error);
         }
     };
 
     const sendInvite = () => {
         Glitch.api.Campaigns.sendInfluencerInvite(id, { influencer_id: influencer_id }).then(response => {
             setShowSuccessModal(true); // Show the modal on successful invite
+            fetchInfluencer(); // Refresh the influencer data to update the invite status
         }).catch((error) => {
             if (error.response && error.response.status === 402) {
                 if (subscriptions.length === 0) {
                     setErrorMessage(
-                    <div className='text-center'>
-                    <p>You must sign up for a subscription to send the invite. Please follow the button to select a subscription account. </p>
-                    <Link to={Navigate.communitiesSubscribePage(campaign.community_id)} className='btn btn-success'>Get A Subscription</Link>
-                    </div>);
+                        <div className='text-center'>
+                            <p>You must sign up for a subscription to send the invite. Please follow the button to select a subscription account.</p>
+                            <Link to={Navigate.communitiesSubscribePage(campaign.community_id)} className='btn btn-success'>Get A Subscription</Link>
+                        </div>
+                    );
                 } else {
                     setErrorMessage('You must update your payment information to send the invite.');
                 }
@@ -72,13 +70,13 @@ const CampaignsViewInfluencerPage = () => {
     };
 
     const getInfluencerImage = (influencer) => {
-        return influencer.instagram_image || 
-               influencer.tiktok_image || 
-               influencer.youtube_image || 
-               influencer.twitter_image || 
-               influencer.reddit_image || 
-               influencer.facebook_image || 
-               DEFAULT_IMAGE;
+        return influencer.instagram_image ||
+            influencer.tiktok_image ||
+            influencer.youtube_image ||
+            influencer.twitter_image ||
+            influencer.reddit_image ||
+            influencer.facebook_image ||
+            DEFAULT_IMAGE;
     };
 
     const formatNumber = (num) => {
@@ -126,10 +124,10 @@ const CampaignsViewInfluencerPage = () => {
                         <h4 className='text-black'>Personal Information</h4>
                     </div>
                     <div className="card-body d-flex align-items-center">
-                        <img 
-                            src={getInfluencerImage(influencer)} 
-                            alt={`${influencer.first_name}'s profile`} 
-                            className="img-thumbnail me-4" 
+                        <img
+                            src={getInfluencerImage(influencer)}
+                            alt={`${influencer.first_name}'s profile`}
+                            className="img-thumbnail me-4"
                             style={{ width: '150px', height: '150px', objectFit: 'cover' }}
                         />
                         <div>
@@ -176,9 +174,15 @@ const CampaignsViewInfluencerPage = () => {
                 </div>
 
                 <div className='text-center'>
-                    <button className='btn btn-success btn-lg' type='button' onClick={sendInvite}>
-                        Invite To Campaign
-                    </button>
+                    {influencer.invite ? (
+                        <button className='btn btn-warning btn-lg' type='button' onClick={sendInvite}>
+                            Resend Invite (Sent on {new Date(influencer.invite.invite_created_at).toLocaleDateString()})
+                        </button>
+                    ) : (
+                        <button className='btn btn-success btn-lg' type='button' onClick={sendInvite}>
+                            Invite To Campaign
+                        </button>
+                    )}
                 </div>
             </div>
 
@@ -232,7 +236,7 @@ const SocialMediaLink = ({ icon, data, platform }) => {
     };
 
     return (
-        <div>
+        <div className="mb-3">
             <FontAwesomeIcon icon={icon} /> <Link to={data[`${platform}_link`]} target="_blank">{data[`${platform}_username`]}</Link>
             <p>Followers: {formatNumber(data[`${platform}_follower_count`])}</p>
             <p>Engagement: {data[`${platform}_engagement_percent`]}%</p>
