@@ -1,5 +1,5 @@
 import Glitch from 'glitch-javascript-sdk';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CampaignLinksManager from '../../component/section/campaigns/campaign_links_manager';
 import Header from '../../component/layout/header';
@@ -81,25 +81,27 @@ const CampaignsInvitePage = () => {
 
     return (
         <>
-            <PublisherHeader position={"relative"}  />
-            <section className="pageheader-section-min">
-                <div className="container mt-4">
-                <Breadcrumbs items={[
-                    {name : 'Campaigns', link : Navigate.campaignsPage()}, 
-                    {name : campaign.name, link : Navigate.campaignsViewPage(campaign.id)}, 
-                    ]}
-                />
-                    <div className="section-wrapper text-center text-uppercase">
-                        <div className="pageheader-thumb mb-4">
+            <Fragment>
+                <PublisherHeader position={"relative"}  />
+                <section className="pageheader-section-min">
+                    <div className="container mt-4">
+                    <Breadcrumbs items={[
+                        {name : 'Campaigns', link : Navigate.campaignsPage()}, 
+                        {name : campaign.name, link : Navigate.campaignsViewPage(campaign.id)}, 
+                        ]}
+                    />
+                        <div className="section-wrapper text-center text-uppercase">
+                            <div className="pageheader-thumb mb-4">
+
+                            </div>
+                            <h2 className="pageheader-title">View Campaign Invites</h2>
+
+                            <p className="lead">See the influencers you have invited to {campaign?.name}.</p>
 
                         </div>
-                        <h2 className="pageheader-title">View Campaign Invites</h2>
-
-                        <p className="lead">See the influencers you have invited to {campaign?.name}.</p>
-
                     </div>
-                </div>
-            </section>
+                </section>
+            </Fragment>
 
 
             <CampaignInviteManager campaignID={id}/>

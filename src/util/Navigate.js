@@ -369,6 +369,17 @@ const Navigate = {
 
         return path;
     },
+    campaignsLedgerPage : (campaign_id) => {
+
+        let path = app_routes.campaigns_ledger;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+
+        return path;
+    },
 
 
     //Communites Pages

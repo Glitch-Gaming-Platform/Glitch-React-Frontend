@@ -1,5 +1,5 @@
 import Glitch from 'glitch-javascript-sdk';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import CampaignLinksManager from '../../component/section/campaigns/campaign_links_manager';
 import Header from '../../component/layout/header';
@@ -128,77 +128,79 @@ const CampaignManageInfluencerPage = () => {
 
     return (
         <>
-            <PublisherHeader />
-            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
-                <div className="container">
-                    <div className="section-wrapper text-center text-uppercase">
-                        <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
+            <Fragment>
+                <PublisherHeader />
+                <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+                    <div className="container">
+                        <div className="section-wrapper text-center text-uppercase">
+                            <div className="pageheader-thumb mb-4">
+                                <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
+                            </div>
+                            <h2 className="pageheader-title">Manage Campaign</h2>
+
+                            <p className="lead">View the information for this campaign.</p>
+
                         </div>
-                        <h2 className="pageheader-title">Manage Campaign</h2>
-
-                        <p className="lead">View the information for this campaign.</p>
-
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <div className="container my-5">
+                <div className="container my-5">
 
-                <div className="card">
+                    <div className="card">
 
-                    <section className="mb-4 card-body">
-                        <GameTitle gameInfo={campaign?.title} />
-                    </section>
-
-                    <hr />
-
-                    <div className="card-body text-dark text-black">
-                        <section className="mb-4">
-                            <h3 className="text-black">General Information</h3>
-                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.max_spend) ? '$' + campaign.max_spend + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
-                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.brief)} /></p>
-                            {campaign?.campaign?.start_date ? <>
-                                <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign?.campaign?.start_date}</Moment> </p>
-                            </> : ''}
-                            {campaign?.campaign?.end_date ? <>
-                                <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign?.campaign?.end_date}</Moment></p>
-                            </> : ''}
-                            {campaign?.campaign?.target_audience ? <>
-                                <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.target_audience)} /></p>
-                            </> : ''}
-                            {campaign?.campaign?.requirements ? <>
-                                <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.requirements)} /></p>
-                            </> : ''}
+                        <section className="mb-4 card-body">
+                            <GameTitle gameInfo={campaign?.title} />
                         </section>
 
                         <hr />
 
-                        <CampaignRateCard campaign={campaign} user={me} />
+                        <div className="card-body text-dark text-black">
+                            <section className="mb-4">
+                                <h3 className="text-black">General Information</h3>
+                                <p><strong>Spend Limit Per Influencer:</strong> {(campaign.max_spend) ? '$' + campaign.max_spend + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
+                                <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.brief)} /></p>
+                                {campaign?.campaign?.start_date ? <>
+                                    <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign?.campaign?.start_date}</Moment> </p>
+                                </> : ''}
+                                {campaign?.campaign?.end_date ? <>
+                                    <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign?.campaign?.end_date}</Moment></p>
+                                </> : ''}
+                                {campaign?.campaign?.target_audience ? <>
+                                    <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.target_audience)} /></p>
+                                </> : ''}
+                                {campaign?.campaign?.requirements ? <>
+                                    <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.requirements)} /></p>
+                                </> : ''}
+                            </section>
 
-                        <hr />
+                            <hr />
 
-                        <section className="my-4">
-                            <h3 className="text-black">Social Posts</h3>
-                            {posts.length > 0 ? (
-                                posts.map((post, index) => (
-                                    <SocialPostMetrics key={index} post={post} />
-                                ))
-                            ) : (
-                                <p className="lead text-center">No social posts have been created. Create your first post by using the <Link target="_blank" to={Navigate.creatorsPage()}>streaming app</Link>.</p>
-                            )}
-                        </section>
+                            <CampaignRateCard campaign={campaign} user={me} />
 
-                        <hr />
+                            <hr />
 
-                        <section className="my-4">
-                            <h3 className="text-black">Campaign Analytics</h3>
+                            <section className="my-4">
+                                <h3 className="text-black">Social Posts</h3>
+                                {posts.length > 0 ? (
+                                    posts.map((post, index) => (
+                                        <SocialPostMetrics key={index} post={post} />
+                                    ))
+                                ) : (
+                                    <p className="lead text-center">No social posts have been created. Create your first post by using the <Link target="_blank" to={Navigate.creatorsPage()}>streaming app</Link>.</p>
+                                )}
+                            </section>
 
-                            <CampaignAnalytics data={campaign} />
-                        </section>
+                            <hr />
+
+                            <section className="my-4">
+                                <h3 className="text-black">Campaign Analytics</h3>
+
+                                <CampaignAnalytics data={campaign} />
+                            </section>
+                        </div>
                     </div>
-                </div>
             </div>
+            </Fragment>
 
             
             <Footer />

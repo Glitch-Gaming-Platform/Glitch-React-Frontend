@@ -24,6 +24,7 @@ const CampaignsViewCreatorPerformancePage = () => {
 
     const [campaign, setCampaign] = useState({});
     const [links, setLinks] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [user, setUser] = useState({});
     const { id, user_id } = useParams();
 
@@ -44,13 +45,19 @@ const CampaignsViewCreatorPerformancePage = () => {
 
         });
 
-        /*Glitch.api.Campaigns.listInfluencerCampaignLinkClicks(id).then(response => {
+        Glitch.api.Campaigns.listInfluencerCampaignLinkClicks(id, user_id).then(response => {
 
             console.log("Links", response.data.data);
             setLinks(response.data.data)
         }).catch(error => {
 
-        })*/
+        });
+
+        Glitch.api.SocialPosts.list({user_id : user_id, campaign_id : id}).then(response => {
+                setPosts(response.data.data);
+        }).catch(error => {
+
+        });
 
 
 
@@ -92,11 +99,11 @@ const CampaignsViewCreatorPerformancePage = () => {
 
             <CreatorPostingStatistics  user={user}  />
 
-            <CreatorPostingCharts  user={user}  />
+            <CreatorPostingCharts  user={user} postData={posts} />
 
-            <CreatorLinksCharts  user={user}  />
+            <CreatorLinksCharts  user={user}  linkData={links} />
 
-            <CreatorLinksList  user={user}  />
+            <CreatorLinksList  user={user} linkData={links} />
     
            
 

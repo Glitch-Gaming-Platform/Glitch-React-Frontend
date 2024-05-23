@@ -29,7 +29,7 @@ const CreatorLinksList = ({ linkData = [], darkMode = false }) => {
   useEffect(() => {
     setLinks(linkData);
     console.log("Links", links);
-  }, [linkData]);
+  }, []);
 
   return (
     <div className={`container mt-5 ${darkMode ? 'bg-dark text-white' : ''}`}>

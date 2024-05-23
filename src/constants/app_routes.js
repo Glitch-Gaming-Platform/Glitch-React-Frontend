@@ -37,6 +37,8 @@
     campaigns_update_influencer : '/campaigns/:id/updateinfluencer/:influencer_id',
     campaigns_start : '/campaigns/:id/start',
     campaigns_invites : '/campaigns/:id/invites',
+    campaigns_ledger : '/campaigns/:id/ledger',
+
 
     creators: '/creators',
     creators_overview: '/creators/overview',
