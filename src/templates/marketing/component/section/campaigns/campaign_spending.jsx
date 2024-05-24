@@ -25,14 +25,14 @@ function CampaignSpendingLimitsForm({ campaignData, setCampaignData, errors }) {
         
         if (selectedObjective === 'awareness') {
             const reach = parseInt(inputValue);
-            const cpm = 3; // Average CPM for gaming
+            const cpm = 20; // Average CPM for gaming
             totalBudget = (reach / 1000) * cpm;
-            maxBudgetPerInfluencer = totalBudget / 10; // Example distribution
+            maxBudgetPerInfluencer = totalBudget / 2; // Example distribution
         } else if (selectedObjective === 'community_building') {
             const engagement = parseInt(inputValue);
-            const cpc = 1.57; // Average CPC for gaming
+            const cpc = 0.37; // Average CPC for gaming
             totalBudget = engagement * cpc;
-            maxBudgetPerInfluencer = totalBudget / 10; // Example distribution
+            maxBudgetPerInfluencer = totalBudget / 3; // Example distribution
         } else if (selectedObjective === 'downloads_installs') {
             const installs = parseInt(inputValue);
             const cpi = 2.5; // Average CPI for mobile games

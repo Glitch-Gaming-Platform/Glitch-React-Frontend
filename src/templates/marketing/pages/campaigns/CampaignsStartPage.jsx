@@ -43,7 +43,7 @@ const CampaignsStartPage = () => {
     const startSourcing = () => {
 
         Glitch.api.Campaigns.update(id, { activate_sourcing: true }).then((response) => {
-            navigate(Navigate.campaignsViewPage(id));
+            navigate(Navigate.campaignsFindInfluencers(id));
         }).catch(error => {
 
         });
@@ -53,16 +53,16 @@ const CampaignsStartPage = () => {
 
     return (
         <>
-            <PublisherHeader />
-            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+            <PublisherHeader position={"relative"} />
+            <section className="pageheader-section-min">
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
+                            
                         </div>
                         <h2 className="pageheader-title">Start Sourcing</h2>
 
-                        <p className="lead">Start Sourcing Creators.</p>
+                        <p className="lead">Start Sourcing Influencers To Market Your Game.</p>
 
                     </div>
                 </div>
@@ -78,7 +78,7 @@ const CampaignsStartPage = () => {
                     <div className="card-body text-dark text-black">
                         <section className="mb-4">
                             <h3 className="text-black">Start Sourcing Creators</h3>
-                            <p>With your campaign complete, you can start sourcing creators that fit  your needs. Review your target information below, and if everything looks correct, click the 'Begin Sourcing' button to promote and connect creators to your campaign. You will only pay for creators that you choose to work with.</p>
+                            <p>With your campaign creation complete, you can start sourcing creators that fit  your needs. Review your target information below, and if everything looks correct, click the 'Begin Sourcing' button to promote and connect creators to your campaign. You will only pay for creators that you choose to work with.</p>
                             {campaign.target_audience && (
                                 <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.target_audience)} /></p>
                             )}

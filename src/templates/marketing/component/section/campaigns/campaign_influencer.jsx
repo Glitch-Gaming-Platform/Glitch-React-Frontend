@@ -31,7 +31,7 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
 
                         {createInputField('title_creator', 'Title For Creators', 'This is the title creators and influencer will see when viewing your campaign.', 'text', true, errors)}
                        
-                        {createTextAreaField('brief', 'Brief', 'The brief is an overview about the game and the campaign. It should try to peak the interest in the influencer in why the should work with your game.', errors)}
+                        {createTextAreaField('brief', 'Brief', 'The brief is an overview about the game and the campaign. It should try to peak the interest in the influencer in why the should work with your game.', errors, true)}
 
                         {createTextAreaField('requirements', 'Requirements', 'List any requirements you have of the creator for this campaign. This could range from requirement in their following size, social accounts, interest and other areas.', errors)}
 
@@ -64,12 +64,12 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
         );
     }
 
-    function createTextAreaField(name, label, description, errors) {
+    function createTextAreaField(name, label, description, errors, required = false) {
 
         return (
             <>
                 <div className="mb-3">
-                    <label htmlFor={name}>{label}</label>
+                    <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
 
                     <Wysiwyg children={campaignData[name] || ''} name={name} id={name} onChange={(value) => {handleWysiwigInputChange(name, value)}} />
                     <p className="small">{description}</p>

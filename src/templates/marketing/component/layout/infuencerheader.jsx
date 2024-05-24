@@ -121,7 +121,7 @@ class InfluencerHeader extends Component {
                                             <span><u><h5>Creator Dashboard</h5></u></span>
                                         </li>
                                         <li>
-                                            <span><Link className="btn btn-primary btn-sm" to={Navigate.influencersListCampaignsPage()}>Influencer Dashboard</Link></span>
+                                            <span><Link className="btn btn-primary btn-sm" to={Navigate.influencersFindCampaignPage()}>Influencer Dashboard</Link></span>
                                         </li>
                                         <li>
                                             <span><Link className="btn btn-primary btn-sm" to={Navigate.campaignsPage()}>Publishers Dashboard</Link></span>

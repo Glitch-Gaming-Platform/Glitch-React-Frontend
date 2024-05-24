@@ -1,27 +1,27 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faUsers, faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUsers, faSearch, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 import PublisherHeader from '../../component/layout/publisherheader';
 import Glitch from 'glitch-javascript-sdk';
 import Navigate from '../../../../util/Navigate';
 import Breadcrumbs from '../../component/layout/breadcrumb';
 import Calculator from '../../../../util/Calculator';
-import { Modal, Button } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
 
 const CampaignsFindInfluencersPage = () => {
     const [influencers, setInfluencers] = useState([]);
     const [campaign, setCampaign] = useState({});
     const [filters, setFilters] = useState({
-        first_name: null,
-        location: null,
-        speaking_language: null,
-        instagram_username: null,
-        instagram_follower_count_gt: null,
-        instagram_follower_count_lt: null,
-        tiktok_username: null,
-        tiktok_follower_count_gt: null,
-        tiktok_follower_count_lt: null,
+        first_name: '',
+        location: '',
+        speaking_language: '',
+        instagram_username: '',
+        instagram_follower_count_gt: '',
+        instagram_follower_count_lt: '',
+        tiktok_username: '',
+        tiktok_follower_count_gt: '',
+        tiktok_follower_count_lt: '',
     });
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -30,7 +30,6 @@ const CampaignsFindInfluencersPage = () => {
     const [modalMessage, setModalMessage] = useState('');
     const [showErrorModal, setShowErrorModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
-
     const [subscriptions, setSubscriptions] = useState([]);
 
     const { id } = useParams();
@@ -54,12 +53,15 @@ const CampaignsFindInfluencersPage = () => {
     }, [currentPage, filters]);
 
     const fetchInfluencers = async () => {
+        setIsLoading(true);
         try {
             const response = await Glitch.api.Influencers.listInfluencers({ ...filters, page: currentPage, campaign_id: id });
             setInfluencers(response.data.data);
             setTotalPages(response.data.last_page);
         } catch (error) {
             console.error('Error fetching influencers', error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -68,6 +70,22 @@ const CampaignsFindInfluencersPage = () => {
     };
 
     const handleSearch = () => {
+        setCurrentPage(1);
+        fetchInfluencers();
+    };
+
+    const handleClearFilters = () => {
+        setFilters({
+            first_name: '',
+            location: '',
+            speaking_language: '',
+            instagram_username: '',
+            instagram_follower_count_gt: '',
+            instagram_follower_count_lt: '',
+            tiktok_username: '',
+            tiktok_follower_count_gt: '',
+            tiktok_follower_count_lt: '',
+        });
         setCurrentPage(1);
         fetchInfluencers();
     };
@@ -81,47 +99,18 @@ const CampaignsFindInfluencersPage = () => {
         let totalFollowers = 0;
         let totalEngagement = 0;
 
-        if (influencer['instagram_follower_count'] && influencer['instagram_engagement_percent']) {
-            platform_count++;
-            totalFollowers += influencer['instagram_follower_count'];
-            totalEngagement += parseFloat(influencer['instagram_engagement_percent']);
-        }
+        const platforms = ['instagram', 'tiktok', 'youtube', 'reddit', 'twitter', 'facebook', 'twitch'];
 
-        if (influencer['tiktok_follower_count'] && influencer['tiktok_engagement_percent']) {
-            platform_count++;
-            totalFollowers += influencer['tiktok_follower_count'];
-            totalEngagement += parseFloat(influencer['tiktok_engagement_percent']);
-        }
+        platforms.forEach(platform => {
+            const followerCount = influencer[`${platform}_follower_count`] || influencer[`${platform}_subscriber_count`];
+            const engagementPercent = influencer[`${platform}_engagement_percent`];
 
-        if (influencer['youtube_subscriber_count'] && influencer['youtube_engagement_percent']) {
-            platform_count++;
-            totalFollowers += influencer['youtube_subscriber_count'];
-            totalEngagement += parseFloat(influencer['youtube_engagement_percent']);
-        }
-
-        if (influencer['reddit_follower_count'] && influencer['reddit_engagement_percent']) {
-            platform_count++;
-            totalFollowers += influencer['reddit_follower_count'];
-            totalEngagement += parseFloat(influencer['reddit_engagement_percent']);
-        }
-
-        if (influencer['twitter_follower_count'] && influencer['twitter_engagement_percent']) {
-            platform_count++;
-            totalFollowers += influencer['twitter_follower_count'];
-            totalEngagement += parseFloat(influencer['twitter_engagement_percent']);
-        }
-
-        if (influencer['facebook_follower_count'] && influencer['facebook_engagement_percent']) {
-            platform_count++;
-            totalFollowers += influencer['facebook_follower_count'];
-            totalEngagement += parseFloat(influencer['facebook_engagement_percent']);
-        }
-
-        if (influencer['twitch_follower_count'] && influencer['twitch_engagement_percent']) {
-            platform_count++;
-            totalFollowers += influencer['twitch_follower_count'];
-            totalEngagement += parseFloat(influencer['twitch_engagement_percent']);
-        }
+            if (followerCount > 0 && engagementPercent > 0) {
+                platform_count++;
+                totalFollowers += followerCount;
+                totalEngagement += parseFloat(engagementPercent);
+            }
+        });
 
         const averageFollowers = platform_count > 0 ? totalFollowers / platform_count : 0;
         const averageEngagement = platform_count > 0 ? totalEngagement / platform_count : 0;
@@ -131,10 +120,6 @@ const CampaignsFindInfluencersPage = () => {
 
         return { estimatedReach, linkClicks };
     };
-
-    function capitalizeWords(str) {
-        return str.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-    }
 
     const sendInvite = async (influencer_id) => {
         setIsLoading(true);
@@ -178,24 +163,132 @@ const CampaignsFindInfluencersPage = () => {
 
                     <h2><FontAwesomeIcon icon={faUsers} /> Search Influencers</h2>
                     <p className='lead'>Search for the right influencer(s) for your campaign.</p>
-                    <div className="row mb-4">
-                        {Object.entries(filters).map(([key, value]) => (
-                            <div className="col-md-6" key={key}>
-                                <label className='form-label'>{capitalizeWords(key.replace(/_/g, ' '))}</label>
-                                <input
-                                    type="text"
-                                    name={key}
-                                    value={value}
-                                    onChange={handleInputChange}
-                                    className="form-control"
-                                    placeholder={`Search by ${key.replace(/_/g, ' ')}`}
-                                />
+                    <Form>
+                        <div className="row mb-4">
+                            <div className="col-md-6">
+                                <Form.Group controlId="formFirstName">
+                                    <Form.Label>First Name</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="first_name"
+                                        value={filters.first_name}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter first name"
+                                    />
+                                </Form.Group>
                             </div>
-                        ))}
-                        <div className="col-12 text-right mt-3">
-                            <button onClick={handleSearch} className="btn btn-primary"><FontAwesomeIcon icon={faSearch} /> Search</button>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formLocation">
+                                    <Form.Label>Location</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="location"
+                                        value={filters.location}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter location"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formSpeakingLanguage">
+                                    <Form.Label>Speaking Language</Form.Label>
+                                    <Form.Control
+                                        as="select"
+                                        name="speaking_language"
+                                        value={filters.speaking_language}
+                                        onChange={handleInputChange}
+                                    >
+                                        <option value="">Select language</option>
+                                        <option value="english">English</option>
+                                        <option value="spanish">Spanish</option>
+                                        <option value="french">French</option>
+                                        <option value="german">German</option>
+                                        <option value="chinese">Chinese</option>
+                                    </Form.Control>
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formInstagramUsername">
+                                    <Form.Label>Instagram Username</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="instagram_username"
+                                        value={filters.instagram_username}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter Instagram username"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formInstagramFollowerCountGT">
+                                    <Form.Label>Instagram Followers (Greater Than)</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        name="instagram_follower_count_gt"
+                                        value={filters.instagram_follower_count_gt}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter minimum followers"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formInstagramFollowerCountLT">
+                                    <Form.Label>Instagram Followers (Less Than)</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        name="instagram_follower_count_lt"
+                                        value={filters.instagram_follower_count_lt}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter maximum followers"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formTiktokUsername">
+                                    <Form.Label>TikTok Username</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="tiktok_username"
+                                        value={filters.tiktok_username}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter TikTok username"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formTiktokFollowerCountGT">
+                                    <Form.Label>TikTok Followers (Greater Than)</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        name="tiktok_follower_count_gt"
+                                        value={filters.tiktok_follower_count_gt}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter minimum followers"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formTiktokFollowerCountLT">
+                                    <Form.Label>TikTok Followers (Less Than)</Form.Label>
+                                    <Form.Control
+                                        type="number"
+                                        name="tiktok_follower_count_lt"
+                                        value={filters.tiktok_follower_count_lt}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter maximum followers"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-12 text-right mt-3">
+                                <Button variant="primary" onClick={handleSearch}>
+                                    <FontAwesomeIcon icon={faSearch} /> Search
+                                </Button>
+                                <Button variant="secondary" className="ms-2" onClick={handleClearFilters}>
+                                    <FontAwesomeIcon icon={faTimes} /> Clear
+                                </Button>
+                            </div>
                         </div>
-                    </div>
+                    </Form>
                     <hr />
                     <h3><FontAwesomeIcon icon={faUsers} /> Influencers</h3>
 
@@ -286,8 +379,8 @@ const CampaignsFindInfluencersPage = () => {
                 </Modal.Footer>
             </Modal>
 
-             {/* Error Modal */}
-             <div className={`modal fade ${showErrorModal ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: showErrorModal ? 'block' : 'none' }}>
+            {/* Error Modal */}
+            <div className={`modal fade ${showErrorModal ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: showErrorModal ? 'block' : 'none' }}>
                 <div className="modal-dialog" role="document">
                     <div className="modal-content text-black">
                         <div className="modal-header">

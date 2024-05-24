@@ -51,19 +51,30 @@ function CampaignCreatePage() {
         "Dates",
         "Influencer",
         "Management",
-        "Payment"
+        "Rate Card"
     ];
 
 
     const nextStep = () => {
         setCurrentStep(currentStep => Math.min(currentStep + 1, totalSteps));
+
+        window.scrollTo({
+            top: document.documentElement.scrollHeight * 0.1,
+            behavior: 'smooth' // Optional: This adds a smooth scrolling animation
+          });
     };
 
     const prevStep = () => {
         setCurrentStep(currentStep => Math.max(currentStep - 1, 1));
+
+        window.scrollTo({
+            top: document.documentElement.scrollHeight * 0.1,
+            behavior: 'smooth' // Optional: This adds a smooth scrolling animation
+          });
     };
 
     const goToStep = (stepNumber) => {
+
         setCurrentStep(stepNumber);
     };
 
