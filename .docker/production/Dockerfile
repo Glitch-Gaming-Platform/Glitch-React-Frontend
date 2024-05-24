@@ -66,7 +66,7 @@ RUN npm run build
 
 # Stage 2: Set up Nginx
 #FROM nginx:latest
-FROM fholzer/nginx-brotli:v1.12.2
+FROM fholzer/nginx-brotli:v1.23.4
 
 WORKDIR /etc/nginx
 # Copy the Nginx configuration file
