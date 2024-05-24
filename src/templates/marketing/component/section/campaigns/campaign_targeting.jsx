@@ -233,7 +233,7 @@ function CampaignTargetingForm({ campaignData, setCampaignData,setCountries, set
     <div className="container mt-4">
       <div className="card">
         <div className="card-header bg-secondary">
-          <h3><i className="fas fa-info-circle mr-2"></i> Target Informaton</h3>
+          <h3><i className="fas fa-info-circle mr-2"></i> Targeting Informaton</h3>
         </div>
         <div className="card-body">
           <p className="lead">Define the target audience for your campaign based on who you want it marketed to. This information will be provided to the influencer to ensure a suitable match for marketing purposes.</p>

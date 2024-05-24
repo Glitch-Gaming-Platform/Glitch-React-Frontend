@@ -12,18 +12,17 @@ import timeouts from '../../../../constants/timeouts';
 import Danger from '../../component/alerts/Danger';
 import { useNavigate } from 'react-router-dom';
 import InfluencerHeader from '../../component/layout/infuencerheader';
-
+import Calculator from '../../../../util/Calculator';
 
 const InfluencerViewCampaignPage = () => {
-
     const [campaign, setCampaign] = useState({});
+    const [current, setCurrent] = useState({});
     const { id, campaign_id } = useParams();
     const [me, setMe] = useState({});
     const [errors, setErrors] = useState({});
 
     const navigate = useNavigate();
 
-    // Map the numeric values to string representations for Campaign Objectives and Influencer Campaign Types
     const campaignObjectiveMap = {
         1: 'Brand Awareness',
         2: 'Audience Engagement',
@@ -52,94 +51,103 @@ const InfluencerViewCampaignPage = () => {
         10: 'Social Issues & Cause Campaigns',
     };
 
-
-
-
     useEffect(() => {
-
         if (Glitch.util.Session.isLoggedIn()) {
             Glitch.api.Users.me().then(response => {
                 setMe(response.data.data);
+
+                Glitch.api.Campaigns.viewInfluencerCampaign(campaign_id, response.data.data.id).then(response => {
+                    setCurrent(response.data.data);
+                }).catch(error => {
+                    console.error('Error fetching current campaign', error);
+                });
+
             }).catch(error => {
                 console.error('Error fetching me', error);
             });
         }
 
         Glitch.api.Campaigns.view(campaign_id).then(response => {
-
             const updatedCampaign = {
                 ...response.data.data,
                 type: influencerCampaignTypeMap[response.data.data.type],
                 objective: campaignObjectiveMap[response.data.data.objective],
             };
-
             setCampaign(updatedCampaign);
-
         }).catch(error => {
-
+            console.error('Error fetching campaign', error);
         });
-        //fetchCampaignData().then(setCampaign);
-    }, []);
+    }, [campaign_id]);
 
     const createMarkup = (htmlContent) => {
         return { __html: htmlContent };
     };
 
     const register = () => {
-
-        console.log("Start");
-        
         if (Glitch.util.Session.isLoggedIn()) {
-
             Glitch.api.Campaigns.createInfluencerCampaign(campaign_id, me.id).then(response => {
-
-                console.log("OK");
-
-                console.log(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
-
                 navigate(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
-
             }).catch(error => {
-
                 console.log(error);
-
                 let jsonErrors = error?.response?.data;
-
                 if (jsonErrors) {
-
                     setErrors(jsonErrors);
-
                     setTimeout(() => {
                         setErrors({});
-                    }, timeouts.error_message_timeout)
+                    }, timeouts.error_message_timeout);
                 }
-
             });
         } else {
             alert("Please Login To Sign-Up For A Campaign");
         }
-    }
+    };
+
+    const renderTargetingCriteria = () => {
+        const { target_audience, countries, target_age_minimum, target_age_maximum, genders, types } = campaign;
+
+        if (!target_audience && !countries?.length && !target_age_minimum && !target_age_maximum && !genders?.length && !types?.length) {
+            return null;
+        }
+
+        return (
+            <>
+                <hr />
+                <section className="mb-4">
+                    <h3 className="text-black">Targeting Criteria</h3>
+                    <p className='lead'>Below is information on the ideal audience that this campain is tareting.</p>
+                    {target_audience && <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(target_audience)} /></p>}
+                    {countries?.length > 0 && (
+                        <p><strong>Countries:</strong> {countries.map(country => country.name).join(', ')}</p>
+                    )}
+                    {(target_age_minimum || target_age_maximum) && (
+                        <p><strong>Age Range:</strong> {target_age_minimum ? target_age_minimum : 'No minimum'} - {target_age_maximum ? target_age_maximum : 'No maximum'}</p>
+                    )}
+                    {genders?.length > 0 && (
+                        <p><strong>Genders:</strong> {genders.map(gender => gender.name).join(', ')}</p>
+                    )}
+                    {types?.length > 0 && (
+                        <p><strong>Game Types:</strong> {types.map(type => type.name).join(', ')}</p>
+                    )}
+                </section>
+            </>
+        );
+    };
 
     return (
         <>
             <InfluencerHeader position={"relative"} />
-            <section className="pageheader-section-min" >
+            <section className="pageheader-section-min">
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
-                        <div className="pageheader-thumb mb-4">
-                        </div>
+                        <div className="pageheader-thumb mb-4"></div>
                         <h2 className="pageheader-title">View Campaign</h2>
-
                         <p className="lead">View the information for this campaign.</p>
-
                     </div>
                 </div>
             </section>
 
             <div className="container my-5">
-
                 <div className="card">
-
                     <section className="mb-4 card-body">
                         <GameTitle gameInfo={campaign?.title} />
                     </section>
@@ -149,21 +157,32 @@ const InfluencerViewCampaignPage = () => {
                     <div className="card-body text-dark text-black">
                         <section className="mb-4">
                             <h3 className="text-black">General Information</h3>
-                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
+                            <p><strong>Spend Limit Per Influencer:</strong> {campaign.spend_limit_per_influencer ? `$${campaign.spend_limit_per_influencer} is the maximum amount you can make from this campaign.` : 'There is no cap on how much you can make for this campaign.'}</p>
                             <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
-                            {campaign.start_date ? <>
-                                <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign.start_date}</Moment> </p>
-                            </> : ''}
-                            {campaign.end_date ? <>
-                                <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign.end_date}</Moment></p>
-                            </> : ''}
-                            {campaign.target_audience ? <>
-                                <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.target_audience)} /></p>
-                            </> : ''}
-                            {campaign.requirements ? <>
-                                <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.requirements)} /></p>
-                            </> : ''}
+                            {campaign.start_date && <p><strong>Start Date:</strong> <Moment format="MM-DD-YYYY A">{campaign.start_date}</Moment></p>}
+                            {campaign.end_date && <p><strong>End Date:</strong> <Moment format="MM-DD-YYYY A">{campaign.end_date}</Moment></p>}
+                            {campaign.target_audience && <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.target_audience)} /></p>}
+                            {campaign.requirements && <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.requirements)} /></p>}
                         </section>
+
+
+                        {me?.influencer && (
+                            <>
+                                <hr />
+                                <h3 className='text-black'>Your Estimated Earnings</h3>
+                                <p>The estimated payout is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
+                                {(() => {
+                                    const potentialEarnings = Calculator.calculateEarningPotential(me?.influencer, campaign);
+                                    return (
+                                        <>
+                                            <p><strong>Low Estimated Earnings:</strong> ${potentialEarnings.lowEarnings.toFixed(2)}</p>
+                                            <p><strong>High Estimated Earnings:</strong> ${potentialEarnings.highEarnings.toFixed(2)}</p>
+                                            {!potentialEarnings.lowEarnings && !potentialEarnings.highEarnings && <p>Connect your social media to update your earnings <Link to={Navigate.creatorsOnboardingStep4Page()}>here</Link>.</p>}
+                                        </>
+                                    );
+                                })()}
+                            </>
+                        )}
 
                         <hr />
 
@@ -173,29 +192,18 @@ const InfluencerViewCampaignPage = () => {
 
                         <section className="mb-4">
                             <h3 className="text-black">Requirements</h3>
-
-                            {campaign.brief ? <>
-                                <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
-                            </> : ''}
-                        
-                            {campaign.hashtags ? <>
-                                <p><strong>Hashtags:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.hashtags)} /></p>
-                            </> : ''}
-                            {campaign.highlights ? <>
-                                <p><strong>Highlights:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.highlights)} /></p>
-                            </> : ''}
-
-                            {campaign.prohibited_content ? <>
-                                <p><strong>Prohibited Content:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.prohibited_content)} /></p>
-                            </> : ''}
-                            
+                            <p className='lead'>This section is a general overview of requirements for this campaign.</p>
+                            {campaign.hashtags && <p><strong>Hashtags:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.hashtags)} /></p>}
+                            {campaign.highlights && <p><strong>Highlights:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.highlights)} /></p>}
+                            {campaign.prohibited_content && <p><strong>Prohibited Content:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.prohibited_content)} /></p>}
                         </section>
 
+
+                        {renderTargetingCriteria()}
 
                         <hr />
 
                         <div className="container my-5">
-
                             <h3 className="text-black">How To Sign Up</h3>
                             <p className="lead">To sign up as an influencer and promote the game {campaign?.title?.name}, please follow these steps:</p>
                             <ol>
@@ -207,12 +215,16 @@ const InfluencerViewCampaignPage = () => {
                             </ol>
 
                             <div className="text-center">
-                                {(errors && errors.error) ?
-                                      <Danger message={errors.error} key={0} /> : ''
-                                }
-                                <button className="btn btn-lg btn-success" onClick={register}>Sign Up</button>
+                                {errors && errors.error ? <Danger message={errors.error} key={0} /> : ''}
+                                {current ? (
+                                    <>
+                                        <p>You have already signed up for this campaign.</p>
+                                        <button className="btn btn-lg btn-primary" onClick={() => navigate(Navigate.influencersManageCampaignPage(campaign_id, me.id))}>View Your Campaign</button>
+                                    </>
+                                ) : (
+                                    <button className="btn btn-lg btn-success" onClick={register}>Sign Up</button>
+                                )}
                             </div>
-
                         </div>
                     </div>
                 </div>
@@ -223,4 +235,3 @@ const InfluencerViewCampaignPage = () => {
 };
 
 export default InfluencerViewCampaignPage;
-

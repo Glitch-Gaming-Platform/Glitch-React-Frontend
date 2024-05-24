@@ -10,6 +10,7 @@ import Navigate from '../../../../util/Navigate';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
 import InfluencerHeader from '../../component/layout/infuencerheader';
+import Calculator from '../../../../util/Calculator';
 
 const InfluencerFindCampaignsPage = () => {
     const [campaigns, setCampaigns] = useState([]);
@@ -22,7 +23,7 @@ const InfluencerFindCampaignsPage = () => {
         const fetchCampaigns = async () => {
             try {
 
-                if(Glitch.util.Session.isLoggedIn()){
+                if (Glitch.util.Session.isLoggedIn()) {
                     Glitch.api.Users.me().then(response => {
                         setMe(response.data.data);
                     }).catch(error => {
@@ -51,13 +52,13 @@ const InfluencerFindCampaignsPage = () => {
     };
 
     const createMarkup = (htmlContent) => {
-        return {__html: htmlContent};
+        return { __html: htmlContent };
     };
 
     return (
         <>
             <Fragment>
-                <InfluencerHeader  position={"relative"} />
+                <InfluencerHeader position={"relative"} />
                 <section className="pageheader-section-min">
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">
@@ -82,10 +83,23 @@ const InfluencerFindCampaignsPage = () => {
                                             <h3 className="card-title">{campaign.title.name}</h3>
                                             <p className="card-text"><span dangerouslySetInnerHTML={createMarkup(campaign.title.short_description)} /></p>
                                             <div className="my-2">
-                                                <FontAwesomeIcon icon={faCalendarAlt} /> 
-                                                <strong> Campaign Period: </strong> 
-                                                { (campaign.start_date) ? <Moment format="MM/DD/YYYY">{campaign.start_date}</Moment> : 'TBA'} - {(campaign.end_date) ? <Moment format="MM/DD/YYYY">{campaign.end_date}</Moment> : 'TBA'}
+                                                <FontAwesomeIcon icon={faCalendarAlt} />
+                                                <strong> Campaign Period: </strong>
+                                                {(campaign.start_date) ? <Moment format="MM/DD/YYYY">{campaign.start_date}</Moment> : 'TBA'} - {(campaign.end_date) ? <Moment format="MM/DD/YYYY">{campaign.end_date}</Moment> : 'TBA'}
                                             </div>
+                                            {me?.influencer ? <>
+                                                <h6 className='text-black'>Your Estimated Earnings</h6>
+                                                <p>The estimated payout is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
+                                                {(() => {
+                                                    const potentialEarnings = Calculator.calculateEarningPotential(me?.influencer, campaign);
+                                                    return (
+                                                        <>
+                                                            <p><strong>Low Estimated Earnings:</strong> ${potentialEarnings.lowEarnings.toFixed(2)}</p>
+                                                            <p><strong>High Estimated Earnings:</strong> ${potentialEarnings.highEarnings.toFixed(2)}</p>
+                                                        </>
+                                                    );
+                                                })()}
+                                            </> : <></>}
                                             <div className="my-2">
                                                 <FontAwesomeIcon icon={faMoneyBillWave} />
                                                 <strong> Max Earnings: </strong>
