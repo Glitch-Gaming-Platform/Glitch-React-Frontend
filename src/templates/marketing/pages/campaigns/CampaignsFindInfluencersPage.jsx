@@ -28,6 +28,10 @@ const CampaignsFindInfluencersPage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
+    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+
+    const [subscriptions, setSubscriptions] = useState([]);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -36,6 +40,12 @@ const CampaignsFindInfluencersPage = () => {
     useEffect(() => {
         Glitch.api.Campaigns.view(id).then(response => {
             setCampaign(response.data.data);
+
+            Glitch.api.Subscriptions.listCommunityInfluencerSubscriptions(response.data.data.community_id).then(response => {
+                setSubscriptions(response.data.data);
+            }).catch(error => {
+                console.error(error);
+            });
         }).catch(error => {
             console.error(error);
         });
@@ -133,7 +143,21 @@ const CampaignsFindInfluencersPage = () => {
             setModalMessage('Invite Sent Successfully');
             setShowModal(true);
         } catch (error) {
-            console.error('Error sending invite', error);
+            if (error.response && error.response.status === 402) {
+                if (subscriptions.length === 0) {
+                    setErrorMessage(
+                        <div className='text-center'>
+                            <p>You must sign up for a subscription to send the invite. Please follow the button to select a subscription account.</p>
+                            <Link to={Navigate.communitiesSubscribePage(campaign.community_id)} className='btn btn-success'>Get A Subscription</Link>
+                        </div>
+                    );
+                } else {
+                    setErrorMessage('You must update your payment information to send the invite.');
+                }
+                setShowErrorModal(true);
+            } else {
+                console.error('Error sending invite', error);
+            }
         } finally {
             setIsLoading(false);
         }
@@ -261,6 +285,24 @@ const CampaignsFindInfluencersPage = () => {
                     <Button variant="primary" onClick={handleCloseModal}>Close</Button>
                 </Modal.Footer>
             </Modal>
+
+             {/* Error Modal */}
+             <div className={`modal fade ${showErrorModal ? 'show' : ''}`} tabIndex="-1" role="dialog" style={{ display: showErrorModal ? 'block' : 'none' }}>
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content text-black">
+                        <div className="modal-header">
+                            <h5 className="modal-title text-black">{subscriptions.length === 0 ? 'Sign Up for a Subscription' : 'Update Payment Information'}</h5>
+                            <button type="button" className="btn-close" aria-label="Close" onClick={() => setShowErrorModal(false)}></button>
+                        </div>
+                        <div className="modal-body">
+                            <p>{errorMessage}</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-primary" onClick={() => setShowErrorModal(false)}>Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };
