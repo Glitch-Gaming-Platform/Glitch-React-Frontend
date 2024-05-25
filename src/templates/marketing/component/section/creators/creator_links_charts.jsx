@@ -36,19 +36,23 @@ const aggregateDataByDate = (links) => {
   return Object.values(aggregation);
 };
 
-const CreatorLinksCharts = ({linkData = []}) => {
+const CreatorLinksCharts = ({ linkData = [], darkMode = false }) => {
   const [links, setLinks] = useState([]);
 
   useEffect(() => {
-    //const fakeData = generateFakeData();
+    const fakeData = generateFakeData();
+    //const aggregatedData = aggregateDataByDate(fakeData);
     const aggregatedData = aggregateDataByDate(linkData);
     setLinks(aggregatedData);
   }, []);
 
+  const containerStyle = darkMode ? { backgroundColor: 'white', color: 'black' } : {};
+  const textStyle = darkMode ? { color: 'black' } : {};
+
   return (
-    <div className="container mt-5">
-      <h2>Campaign Link Clicks Analytics</h2>
-      <p className='lead'>Track an aggregate of all link clicks for each day.</p>
+    <div className="container mt-5" style={containerStyle}>
+      <h3 style={textStyle}>Campaign Link Clicks Analytics</h3>
+      <p className="lead" style={textStyle}>Track an aggregate of all link clicks for each day.</p>
       <ResponsiveContainer width="100%" height={400}>
         <BarChart
           data={links}

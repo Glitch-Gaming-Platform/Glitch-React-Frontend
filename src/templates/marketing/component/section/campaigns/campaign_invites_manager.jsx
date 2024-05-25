@@ -102,7 +102,7 @@ const CampaignInviteManager = ({ campaignID }) => {
         <div className="container my-4">
             <h2>Manage Invites</h2>
             <p>Manage the influencers who have been invited to market this game.</p>
-            
+
             <div className="mb-3">
                 <input
                     type="text"
@@ -136,17 +136,21 @@ const CampaignInviteManager = ({ campaignID }) => {
                                 </div>
                                 <div className="author-content text-white">
                                     <h6 className="mb-2">{invite.influencer.first_name} {getStatusBadge(invite)}</h6>
-                                    
+
                                     <Link className="btn btn-info me-2 btn-sm" to={Navigate.campaignsViewInfluencer(campaign_id, invite.influencer.id)}>
                                         <i className="fas fa-user"></i> Profile
                                     </Link>
 
-                                    <button className="btn btn-success btn-sm me-2" onClick={() => resendInvite(invite.influencer.id)}>
-                                        <i className="fas fa-redo"></i> Resend Invite
-                                    </button>
-                                    <button className="btn btn-danger btn-sm me-2" onClick={() => withdrawInfluencer(invite.influencer.id)}>
-                                        <i className="fas fa-times"></i> Withdraw Invite
-                                    </button>
+                                    {!invite.accepted && !invite.rejected ?
+                                        <>
+                                            <button className="btn btn-success btn-sm me-2" onClick={() => resendInvite(invite.influencer.id)}>
+                                                <i className="fas fa-redo"></i> Resend Invite
+                                            </button>
+                                            <button className="btn btn-danger btn-sm me-2" onClick={() => withdrawInfluencer(invite.influencer.id)}>
+                                                <i className="fas fa-times"></i> Withdraw Invite
+                                            </button>
+                                        </>
+                                        : <></>}
                                     <br /><br />
                                     <p>{invite.influencer.instagram_biography}</p>
                                 </div>

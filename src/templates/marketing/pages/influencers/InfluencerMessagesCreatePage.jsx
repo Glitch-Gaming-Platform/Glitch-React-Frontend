@@ -6,11 +6,14 @@ import Breadcrumbs from '../../component/layout/breadcrumb';
 import MessageCreateForm from '../../component/section/messages/message_create_form';
 import PublisherHeader from '../../component/layout/publisherheader';
 import InfluencerHeader from '../../component/layout/infuencerheader';
+import { useNavigate } from 'react-router-dom';
 
 const InfluencerMessagesCreatePage = () => {
   const [users, setUsers] = useState([]);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [message, setMessage] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     Glitch.api.Users.list().then(response => {
@@ -32,7 +35,7 @@ const InfluencerMessagesCreatePage = () => {
   const sendMessage = () => {
     Glitch.api.Messages.createOrGetThread({ users: [Glitch.util.Session.getID(), ...selectedUsers] }).then(response => {
       Glitch.api.Messages.sendMessage({ message: message, thread_id: response.data.data.id }).then(response => {
-        Navigate.influencersMessagesThreadPage(response.data.data.id);
+        navigate(Navigate.influencersMessagesThreadPage(response.data.data.id));
       }).catch(error => {
         console.error("Failed to send message:", error);
       });

@@ -43,7 +43,7 @@ const aggregateDataByDate = (posts) => {
   return Object.entries(aggregatedData).map(([date, data]) => ({ date, ...data }));
 };
 
-const CreatorPostingCharts = ({postData = []}) => {
+const CreatorPostingCharts = ({ postData = [], darkMode = false }) => {
   const [posts, setPosts] = useState([]);
   const [visibleMetrics, setVisibleMetrics] = useState({
     total_views: true,
@@ -56,6 +56,7 @@ const CreatorPostingCharts = ({postData = []}) => {
 
   useEffect(() => {
     //const fakeData = generateFakeData();
+    //const aggregatedData = aggregateDataByDate(fakeData);
     const aggregatedData = aggregateDataByDate(postData);
     setPosts(aggregatedData);
   }, []);
@@ -67,9 +68,11 @@ const CreatorPostingCharts = ({postData = []}) => {
     }));
   };
 
+  const textStyle = darkMode ? { color: 'black' } : {};
+
   return (
     <div className="container mt-5">
-      <h2 className="mb-4">Social Posts Analytics</h2>
+      <h3 className="mb-4" style={textStyle}>Social Posts Analytics</h3>
       <div>
         {Object.keys(visibleMetrics).map(metric => (
           <div key={metric} className="form-check form-check-inline">

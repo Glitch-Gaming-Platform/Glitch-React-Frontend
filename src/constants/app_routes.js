@@ -124,7 +124,8 @@
     influencer_find_campaigns : '/influencers/findcampaigns', 
     influencer_view_campaign : '/influencers/:campaign_id/campaign',
     influencer_manage_campaign : '/influencers/:campaign_id/campaign/:user_id',  
-    influencer_campaign_invite : '/influencers/:campaign_id/invite/:influencer_id',  
+    influencer_campaign_invite : '/influencers/:campaign_id/invite/:influencer_id', 
+    influencer_campaing_payouts : '/influencers/:campaign_id/payouts',  
 
     influencer_messages : '/influencers/messages',
     influencer_message_thread : '/influencers/messages/thread/:id',

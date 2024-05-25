@@ -177,7 +177,7 @@ const CampaignsViewPage = () => {
                             <></>
                         }
 
-                        
+
 
                         <section className="mb-4">
                             <h3 className="text-black">Additional Details</h3>

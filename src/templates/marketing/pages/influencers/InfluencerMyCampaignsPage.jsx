@@ -129,7 +129,8 @@ const InfluencerMyCampaignsPage = () => {
                                                         ${campaign.campaign?.spend_limit_per_influencer || 'No Cap'}
                                                     </div>
                                                     <p className="card-text"><small className="text-muted">Campaign Details: <span dangerouslySetInnerHTML={createMarkup(campaign.campaign?.brief)} /></small></p>
-                                                    <Link to={Navigate.influencersManageCampaignPage(campaign.campaign?.id, me?.id)} className="btn btn-primary">View More</Link>
+                                                    <Link to={Navigate.influencersManageCampaignPage(campaign.campaign?.id, me?.id)} className="btn btn-primary me-2">View More</Link>
+                                                    <Link to={Navigate.influencersPayoutsCampaignPage(campaign.campaign?.id)} className="btn btn-primary">Payouts</Link>
                                                 </div>
                                             </div>
                                         </div>

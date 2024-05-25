@@ -16,7 +16,8 @@ import Calculator from '../../../../util/Calculator';
 
 const InfluencerViewCampaignPage = () => {
     const [campaign, setCampaign] = useState({});
-    const [current, setCurrent] = useState({});
+    const [current, setCurrent] = useState(null);
+    const [invite, setInvite] = useState(null);
     const { id, campaign_id } = useParams();
     const [me, setMe] = useState({});
     const [errors, setErrors] = useState({});
@@ -62,6 +63,17 @@ const InfluencerViewCampaignPage = () => {
                     console.error('Error fetching current campaign', error);
                 });
 
+                if(response.data.data.influencer) {
+
+                    Glitch.api.Campaigns.viewInfluencerInvite(campaign_id, response.data.data.influencer.id).then(response => {
+                        setInvite(response.data.data)
+                    }).then(response => {
+
+                    }).catch(error => {
+
+                    });
+                }
+
             }).catch(error => {
                 console.error('Error fetching me', error);
             });
@@ -81,6 +93,22 @@ const InfluencerViewCampaignPage = () => {
 
     const createMarkup = (htmlContent) => {
         return { __html: htmlContent };
+    };
+
+    const acceptInvite = async () => {
+        Glitch.api.Campaigns.acceptInfluencerInvite(campaign_id, me?.influencer.id).then(response => {
+            navigate(Navigate.influencersManageCampaignPage(campaign.id, me.id));
+        }).catch(error => {
+            console.error(error);
+        });
+    };
+
+    const declineInvite = async () => {
+        Glitch.api.Campaigns.declineInfluencerInvite(campaign_id, me?.influencer.id).then(response => {
+            setInvite(response.data.data);
+        }).catch(error => {
+            console.error(error);
+        });
     };
 
     const register = () => {
@@ -204,6 +232,7 @@ const InfluencerViewCampaignPage = () => {
                         <hr />
 
                         <div className="container my-5">
+                        {!current && !invite ? <>
                             <h3 className="text-black">How To Sign Up</h3>
                             <p className="lead">To sign up as an influencer and promote the game {campaign?.title?.name}, please follow these steps:</p>
                             <ol>
@@ -213,18 +242,38 @@ const InfluencerViewCampaignPage = () => {
                                 <li>Download the Glitch Streaming application and begin streaming and creating content. All content must be created through the app as it will track your progress, which is tied to your compensation.</li>
                                 <li>After you've finished promoting, mark the campaign as complete. The brand will then have one week to review your content before distributing payment.</li>
                             </ol>
+                            </>
+                            : <></> 
+                        }
 
                             <div className="text-center">
                                 {errors && errors.error ? <Danger message={errors.error} key={0} /> : ''}
                                 {current ? (
                                     <>
                                         <p>You have already signed up for this campaign.</p>
-                                        <button className="btn btn-lg btn-primary" onClick={() => navigate(Navigate.influencersManageCampaignPage(campaign_id, me.id))}>View Your Campaign</button>
+                                        <button className="btn btn-lg btn-primary" onClick={() => navigate(Navigate.influencersManageCampaignPage(campaign_id, me.id))}>
+                                            <i className="fas fa-eye"></i> View Your Campaign
+                                        </button>
+                                    </>
+                                ) : invite ? (
+                                    <>
+
+                                        {invite.rejected ? <p className='text-danger'>You have rejected this campaign</p> : <p>You have been invited to this campaign.</p> }
+                                        
+                                        <button className="btn btn-lg btn-success me-2" onClick={acceptInvite}>
+                                            <i className="fas fa-check"></i> Accept Invite
+                                        </button>
+                                        <button className="btn btn-lg btn-danger" onClick={declineInvite}>
+                                            <i className="fas fa-times"></i> Reject Invite
+                                        </button>
                                     </>
                                 ) : (
-                                    <button className="btn btn-lg btn-success" onClick={register}>Sign Up</button>
+                                    <button className="btn btn-lg btn-success" onClick={register}>
+                                        <i className="fas fa-sign-in-alt"></i> Sign Up
+                                    </button>
                                 )}
                             </div>
+
                         </div>
                     </div>
                 </div>

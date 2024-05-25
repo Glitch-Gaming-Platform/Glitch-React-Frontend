@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Glitch from 'glitch-javascript-sdk';
 import { Link } from 'react-router-dom';
 import { Modal, Button } from 'react-bootstrap';
+import Navigate from '../../../../../util/Navigate';
 
 const UserManageInvites = () => {
     const [invites, setInvites] = useState([]);
@@ -91,7 +92,7 @@ const UserManageInvites = () => {
                                     />
                                 </div>
                                 <div>
-                                    <h5 className="mb-1">{invite.campaign.name} {getStatusBadge(invite)}</h5>
+                                    <h5 className="mb-1 text-black">{invite.campaign.name} {getStatusBadge(invite)}</h5>
                                     <p className="mb-1">{invite.campaign.title.name}</p>
                                     <div className="btn-group">
                                         <button className="btn btn-success btn-sm" onClick={() => acceptInvite(invite.id)}>
@@ -100,9 +101,9 @@ const UserManageInvites = () => {
                                         <button className="btn btn-danger btn-sm" onClick={() => declineInvite(invite.id)}>
                                             <i className="fas fa-times"></i> Decline
                                         </button>
-                                        <button className="btn btn-info btn-sm" onClick={() => showMoreInfo(invite.campaign)}>
+                                        <Link className="btn btn-info btn-sm" to={Navigate.influencersViewCampaignPage(invite.campaign_id)}>
                                             <i className="fas fa-info-circle"></i> More Info
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>

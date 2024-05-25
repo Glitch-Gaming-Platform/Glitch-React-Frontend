@@ -57,9 +57,6 @@ const CreatorOnboardingStep4Page = () => {
                             <button type="button" className="btn btn-primary w-100 mb-2" style={{ backgroundColor: '#3b5998', borderColor: '#3b5998' }} onClick={() => openOAuthWindow(OAuthLinks.facebook)}>
                                 <i className="fab fa-facebook-f"></i> Connect with Facebook
                             </button>
-                            <button type="button" className="btn w-100 mb-2" style={{ backgroundColor: '#E1306C', borderColor: '#E1306C' }} onClick={() => openOAuthWindow(OAuthLinks.instagram)}>
-                                <i className="fab fa-instagram"></i> Connect with Instagram
-                            </button>
                             <button type="button" className="btn w-100 mb-2 text-white" style={{ backgroundColor: '#000000', borderColor: '#000000' }} onClick={() => openOAuthWindow(OAuthLinks.tiktok)}>
                                 <i className="fab fa-tiktok"></i> Connect with TikTok
                             </button>

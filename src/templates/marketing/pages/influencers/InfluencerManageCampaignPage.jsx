@@ -13,12 +13,14 @@ import Danger from '../../component/alerts/Danger';
 import SocialPostMetrics from '../../component/section/campaigns/campaign_social_post';
 import CampaignAnalytics from '../../component/section/campaigns/campaign_earning_analytics';
 import InfluencerHeader from '../../component/layout/infuencerheader';
-import UserItem from '../../../esports/component/section/user/detail_user_item';
+
 import CreatorEarningsBreakdown from '../../component/section/creators/creator_earnings';
 import CreatorPostingStatistics from '../../component/section/creators/creator_posts_statistcs';
 import CreatorPostingCharts from '../../component/section/creators/creator_posts_charts';
 import CreatorLinksCharts from '../../component/section/creators/creator_links_charts';
 import CreatorLinksList from '../../component/section/creators/creator_links_list';
+import UserItem from '../../component/section/user/detail_user_item';
+import Breadcrumbs from '../../component/layout/breadcrumb';
 
 const InfluencerManageCampaignPage = () => {
     const [campaign, setCampaign] = useState({});
@@ -84,7 +86,7 @@ const InfluencerManageCampaignPage = () => {
             console.error('Error fetching posts', error);
         });
 
-        Glitch.api.Campaigns.listInfluencerCampaignLinks(campaign_id, user_id).then(response => {
+        Glitch.api.Campaigns.listInfluencerCampaignLinkClicks(campaign_id, user_id).then(response => {
             setLinks(response.data.data);
         }).catch(error => {
 
@@ -97,6 +99,7 @@ const InfluencerManageCampaignPage = () => {
         });
 
         Glitch.api.Campaigns.viewInfluencerCampaign(campaign_id, user_id).then(response => {
+            
             const updatedCampaign = {
                 ...response.data.data,
                 type: influencerCampaignTypeMap[response.data.data.type],
@@ -144,7 +147,11 @@ const InfluencerManageCampaignPage = () => {
         <>
             <InfluencerHeader position={"relative"} />
             <section className="pageheader-section-min">
-                <div className="container">
+                <div className="container mt-2">
+                    <Breadcrumbs items={[
+                        { name: 'My Campaigns', link: Navigate.influencersMyCampaignsPage() },
+                        { name: campaign?.campaign?.title_creator, link: Navigate.influencersManageCampaignPage(campaign?.campaign?.id,me.id) },
+                    ]} />
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4"></div>
                         <h2 className="pageheader-title">Manage Campaign</h2>
@@ -209,20 +216,22 @@ const InfluencerManageCampaignPage = () => {
                             ))}
                         </section>
                     </div>
+
+                    <section className="my-4">
+                        <h3 >Campaign Analytics</h3>
+                        <CampaignAnalytics data={campaign} darkMode={true} />
+                    </section>
+
+                    <CreatorPostingStatistics user={user} postData={posts} darkMode={true} />
+
+                    <CreatorPostingCharts user={user} postData={posts} darkMode={true} />
+
+                    <CreatorLinksCharts user={user} linkData={links} darkMode={true} />
+
+                    <CreatorLinksList user={user} linkData={links} darkMode={true} />
                 </div>
 
-                <section className="my-4">
-                    <h3 >Campaign Analytics</h3>
-                    <CampaignAnalytics data={campaign}  />
-                </section>
 
-                <CreatorPostingStatistics user={user} postData={posts} />
-
-                <CreatorPostingCharts user={user} postData={posts} />
-
-                <CreatorLinksCharts user={user} linkData={links} />
-
-                <CreatorLinksList user={user} linkData={links?.clicks} />
 
             </div>
 

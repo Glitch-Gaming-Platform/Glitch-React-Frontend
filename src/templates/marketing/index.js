@@ -225,6 +225,7 @@ function Template() {
           <Route path={Navigate.influencersManageCampaignPage()} element={<InfluencerManageCampaignPage />} />
           <Route path={Navigate.influencersMyCampaignsPage()} element={<InfluencerMyCampaignsPage />} />
           <Route path={Navigate.influencersCampaignInvitePage()} element={<InfluencerViewCampaignInvitePage />} />
+          <Route path={Navigate.influencersPayoutsCampaignPage()} element={<InfluencerPayoutsPage />} />
 
           <Route path={Navigate.influencersMessagesCreatePage()} element={<InfluencerMessagesCreatePage />} />
           <Route path={Navigate.influencersMessagesListPage()} element={<InfluencerMessagesListPage />} />

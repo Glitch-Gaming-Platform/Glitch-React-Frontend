@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar,LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Checkbox } from 'recharts';
 
-const CreatorPostingAnalytics = ({postData}) => {
+const CreatorPostingAnalytics = ({postData = []}) => {
   const [platformData, setPlatformData] = useState({});
   const [metrics, setMetrics] = useState({
     total_views: true,

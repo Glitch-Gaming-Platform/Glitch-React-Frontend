@@ -174,11 +174,16 @@ const CampaignsViewInfluencerPage = () => {
                 </div>
 
                 <div className='text-center'>
-                    {influencer.invite ? (
+                    {influencer.invite && (!influencer.invite.accepted && !influencer.invite.rejected)? (
                         <button className='btn btn-warning btn-lg' type='button' onClick={sendInvite}>
                             Resend Invite (Sent on {new Date(influencer.invite.invite_created_at).toLocaleDateString()})
                         </button>
-                    ) : (
+                    ) : influencer.invite ?
+                    <>
+                        <p>The user has already {influencer.invite.accepted ? 'accepted' : 'rejected'} the invite.</p>
+                    </>
+                    
+                    : (
                         <button className='btn btn-success btn-lg' type='button' onClick={sendInvite}>
                             Invite To Campaign
                         </button>
