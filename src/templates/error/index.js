@@ -14,6 +14,8 @@ function Template() {
 	
       <>
         <h1>No Template was found.</h1>
+        ${process.env.REACT_APP_SITE_DOMAIN}
+        ${process.env}
       </>
 		
 	);
