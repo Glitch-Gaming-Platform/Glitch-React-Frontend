@@ -48,8 +48,6 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 RUN apt-get update && apt-get install -y google-chrome-stable
 
-
-
 # Set the working directory
 WORKDIR /app
 
@@ -65,7 +63,6 @@ RUN npm install puppeteer
 RUN npm run build
 
 # Stage 2: Set up Nginx
-#FROM nginx:latest
 FROM fholzer/nginx-brotli:v1.23.4
 
 WORKDIR /etc/nginx
