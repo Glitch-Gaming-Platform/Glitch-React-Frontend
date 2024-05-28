@@ -24,7 +24,7 @@ export default function CommunityOverview({ community, errors }) {
                                     <img src={`/assets/images/create_phone.jpeg`} alt={`Earn Donations`} className="w-100" />
                                 </div>
                                 <div className="blog-content p-4 w-xl-50 w-100">
-                                    <p class="theme-color text-uppercase ls-2">Download Our App</p>
+                                    <p className="theme-color text-uppercase ls-2">Download Our App</p>
                                     <h3>The Ultimate Live Streaming Solution for Influencers and Creators</h3>
                                     <br />
                                     <p>Download our app and effortlessly multicast to platforms like Twitch, Facebook, YouTube, Trovo, and more. Engage interactively with your fans as they watch and generously tip during your gameplay.</p>

@@ -30,7 +30,7 @@ class HowItWorks extends Component {
 
                                         <h2 className="mb-3">1) <span className="theme-color text-uppercase">Create Challenges</span> For Your Users</h2>
                                         <p className="mb-4">In just a matter of minutes, create a vibrant community and challenge your users in exciting ways within your game, including:</p>
-                                        <ul class="built-in-bullets" style={{listStyleType: "disc"}}>
+                                        <ul className="built-in-bullets" style={{listStyleType: "disc"}}>
                                             <li>No Hit Runs</li>
                                             <li>Max Combos</li>
                                             <li>Speed Runs</li>
@@ -42,7 +42,7 @@ class HowItWorks extends Component {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="cta-thumb text-end">
-                                        <img src={image_1} alt="gamer-img" class="rounded img-fluid" />
+                                        <img src={image_1} alt="gamer-img" className="rounded img-fluid" />
                                     </div>
                                 </div>
                             </div>
@@ -56,7 +56,7 @@ class HowItWorks extends Component {
                             <div className="row align-items-center">
                                 <div className="col-lg-6">
                                     <div className="cta-thumb text-end">
-                                        <img src={image_2} alt="gamer-img" class="rounded img-fluid" />
+                                        <img src={image_2} alt="gamer-img" className="rounded img-fluid" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">
@@ -86,7 +86,7 @@ class HowItWorks extends Component {
                                 </div>
                                 <div className="col-lg-6">
                                     <div className="cta-thumb text-end">
-                                        <img src={image_3} alt="gamer-img" class="rounded img-fluid" />
+                                        <img src={image_3} alt="gamer-img" className="rounded img-fluid" />
                                     </div>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@ class HowItWorks extends Component {
                             <div className="row align-items-center">
                                 <div className="col-lg-6">
                                     <div className="cta-thumb text-end">
-                                        <img src={image_4} alt="gamer-img" class="rounded img-fluid" />
+                                        <img src={image_4} alt="gamer-img" className="rounded img-fluid" />
                                     </div>
                                 </div>
                                 <div className="col-lg-6">

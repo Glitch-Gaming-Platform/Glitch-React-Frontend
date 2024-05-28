@@ -65,12 +65,12 @@ class CreatorsPublishersLinuxPage extends Component {
                         <div className="section-wrapper">
                             <div className="row g-4 justify-content-center"></div>
 
-                            <div class="d-flex justify-content-center align-items-center" >
-                                <h2 class="w-50 text-center">Highlight Clips on the Most Active Social Platforms</h2>
+                            <div className="d-flex justify-content-center align-items-center" >
+                                <h2 className="w-50 text-center">Highlight Clips on the Most Active Social Platforms</h2>
 
                             </div>
 
-                            <div class="d-flex justify-content-center align-items-center">
+                            <div className="d-flex justify-content-center align-items-center">
                                 <p style={{width: "80%"}} className="lead w-60 text-center">Enable influencers and content creators to share your game's highlight clips on leading social platforms, boosting brand awareness.</p>
 
                             </div>
@@ -116,8 +116,8 @@ class CreatorsPublishersLinuxPage extends Component {
                         <div className="section-wrapper">
                             <div className="row g-4 justify-content-center"></div>
 
-                            <div class="d-flex justify-content-center align-items-center mb-2" >
-                                <h2 class="w-50 text-center">User Generated Content Will Drive Your Game's Growth</h2>
+                            <div className="d-flex justify-content-center align-items-center mb-2" >
+                                <h2 className="w-50 text-center">User Generated Content Will Drive Your Game's Growth</h2>
 
                             </div>
 

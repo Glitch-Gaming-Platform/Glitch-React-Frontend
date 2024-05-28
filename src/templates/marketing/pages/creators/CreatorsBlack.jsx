@@ -142,8 +142,8 @@ class CreatorsBlackPage extends Component {
                         <div className="section-wrapper">
                             <div className="row g-4 justify-content-center"></div>
 
-                            <div class="d-flex justify-content-center align-items-center mb-2" >
-                                <h2 class="w-50 text-center">Create Gaming Content For A Variety Of Platforms</h2>
+                            <div className="d-flex justify-content-center align-items-center mb-2" >
+                                <h2 className="w-50 text-center">Create Gaming Content For A Variety Of Platforms</h2>
 
                             </div>
 

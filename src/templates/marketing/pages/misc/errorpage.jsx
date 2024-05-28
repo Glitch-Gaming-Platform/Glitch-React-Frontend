@@ -8,7 +8,6 @@ const title = 'Oops! This Page Not Found';
 const desc = 'We are Really Sorry But the Page you Requested is Missing';
 const btnText = 'Go Back to Home';
 
-
 class ErrorPage extends Component {
     render() { 
         return (
@@ -25,7 +24,7 @@ class ErrorPage extends Component {
                                 <div className="zero-content">
                                     <h2>{title}</h2>
                                     <p>{desc} <i className="icofont-worried"></i></p>
-                                    <Link to="/" className="default-button reverse-effect"><span>{btnText} <i  className="icofont-double-right"></i></span> </Link>
+                                    <Link to="/" className="default-button reverse-effect"><span>{btnText} <i className="icofont-double-right"></i></span> </Link>
                                 </div>
                             </div>
                         </div>

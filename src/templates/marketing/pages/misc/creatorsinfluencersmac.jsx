@@ -7,7 +7,6 @@ import { Helmet } from "react-helmet";
 class CreatorsInfluencerMacPage extends Component {
 
     render() {
-
         const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
 
         return (
@@ -40,22 +39,21 @@ class CreatorsInfluencerMacPage extends Component {
                         </div>
                     </section>
 
-
                     <div className="container padding-bottom pt-5 rounded mt-5" key={'key3'}>
                         <div className="section-wrapper">
                             <div className="row g-4 justify-content-center"></div>
 
-                            <div class="d-flex justify-content-center align-items-center mb-2" >
-                                <h2 class="w-50 text-center">Create Gaming Content For A Variety Of Platforms</h2>
+                            <div className="d-flex justify-content-center align-items-center mb-2" >
+                                <h2 className="w-50 text-center">Create Gaming Content For A Variety Of Platforms</h2>
 
                             </div>
 
                             <div className="col-12 d-flex justify-content-center">
-                                <img src={'/assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
-                                <img src={'/assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
-                                <img src={'/assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
-                                <img src={'/assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
-                                <img src={'/assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 m-2" style={{  width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
+                                <img src={'/assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 m-2" style={{ width: '4rem', height: '4rem' }} />
 
                                 <img src="/assets/images/creators/tiktok.png" alt="TikTok" className="m-2" style={{ width: '4rem', height: '4rem' }} />
                                 <img src="/assets/images/creators/reddit.png" alt="Reddit" className="m-2" style={{ width: '4rem', height: '4rem' }} />
@@ -90,8 +88,6 @@ class CreatorsInfluencerMacPage extends Component {
                         </div>
                     </section>
 
-
-
                     <div className="container padding-bottom mt-5" key={'key2'}>
                         <div className="section-wrapper">
                             <div className="row g-4 justify-content-center"></div>
@@ -99,15 +95,12 @@ class CreatorsInfluencerMacPage extends Component {
                                 <div className="blog-item">
                                     <div className="blog-inner d-flex flex-wrap align-items-center">
                                         <div className="blog-thumb w-xl-50 w-100">
-
                                             <img src={`/assets/images/creators/creators_banner_1.png`} alt={`Earnings Based On Engagement`} className="w-100" />
-
                                         </div>
                                         <div className="blog-content p-4 w-xl-50 w-100">
                                             <h3>Earnings Are Based On Engagement</h3>
                                             <br />
                                             <p className="lead">The more engagement you create, the more you make. Game publishers and indie developers will pay you based on:</p>
-
                                             <ul className="indent small">
                                                 <li><h5><small>Hours streamed</small></h5></li>
                                                 <li><h5><small>Post shared on social media</small></h5></li>
@@ -127,12 +120,10 @@ class CreatorsInfluencerMacPage extends Component {
                             <div className="col-12">
                                 <div className="blog-item-1">
                                     <div className="blog-inner d-flex flex-wrap align-items-center">
-
                                         <div className="blog-content p-4 w-xl-50 w-100">
                                             <h3>We Support All Content Types, Not Just Streaming</h3>
                                             <br />
                                             <p className="lead">As a creator, you wil be rewarded for creating a variety of content types that include:.</p>
-
                                             <ul className="indent small">
                                                 <li><h5><small>Highlight Clips</small></h5></li>
                                                 <li><h5><small>Memes</small></h5></li>
@@ -140,12 +131,9 @@ class CreatorsInfluencerMacPage extends Component {
                                                 <li><h5><small>Artwork</small></h5></li>
                                                 <li><h5><small>And more!!!</small></h5></li>
                                             </ul>
-
                                         </div>
                                         <div className="blog-thumb w-xl-50 w-100">
-
                                             <img src={`/assets/images/creators/content_types_1.png`} alt={`Create Variety Of Content`} className="w-100" />
-
                                         </div>
                                     </div>
                                 </div>
@@ -154,9 +142,7 @@ class CreatorsInfluencerMacPage extends Component {
                     </div>
 
                     <WaitlistInfluencer />
-
                 </Fragment>
-
             </>
         )
     }
