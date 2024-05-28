@@ -1,24 +1,18 @@
-
-
-
-
-// import Footer from "./component/layout/footer";
-// import Header from "./component/layout/header";
-// import PageHeader from './component/layout/pageheader';
-// import GameList from './component/section/gamelist';
-
+import React from 'react';
 
 function Template() {
-  
-	return (
-	
-      <>
-        <h1>No Template was found.</h1>
-        ${process.env.REACT_APP_SITE_DOMAIN}
-        ${process.env}
-      </>
-		
-	);
+  const envVars = Object.keys(process.env).map((key) => (
+    <p key={key}>
+      {key}: {process.env[key]}
+    </p>
+  ));
+
+  return (
+    <>
+      <h1>No Template was found.</h1>
+      {envVars}
+    </>
+  );
 }
 
 export default Template;
