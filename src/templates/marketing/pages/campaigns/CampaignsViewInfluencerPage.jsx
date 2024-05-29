@@ -6,6 +6,7 @@ import { faInstagram, faTiktok, faYoutube, faReddit, faTwitter, faFacebook, faTw
 import PublisherHeader from '../../component/layout/publisherheader';
 import Navigate from '../../../../util/Navigate';
 import Breadcrumbs from '../../component/layout/breadcrumb';
+import { getInfluencerImage } from '../../../../util/InfluencerUtils';
 
 const DEFAULT_IMAGE = 'https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png';
 
@@ -69,15 +70,6 @@ const CampaignsViewInfluencerPage = () => {
         });
     };
 
-    const getInfluencerImage = (influencer) => {
-        return influencer.instagram_image ||
-            influencer.tiktok_image ||
-            influencer.youtube_image ||
-            influencer.twitter_image ||
-            influencer.reddit_image ||
-            influencer.facebook_image ||
-            DEFAULT_IMAGE;
-    };
 
     const formatNumber = (num) => {
         return num ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0';
@@ -240,11 +232,15 @@ const SocialMediaLink = ({ icon, data, platform }) => {
         return num ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0';
     };
 
+    const biographyField = `${platform}_biography`;
+    const biography = data[biographyField];
+
     return (
         <div className="mb-3">
-            <FontAwesomeIcon icon={icon} /> <Link to={data[`${platform}_link`]} target="_blank">{data[`${platform}_username`]}</Link>
-            <p>Followers: {formatNumber(data[`${platform}_follower_count`])}</p>
-            <p>Engagement: {data[`${platform}_engagement_percent`]}%</p>
+            <h6><FontAwesomeIcon icon={icon} className='text-black' /> <Link to={data[`${platform}_link`]} target="_blank">{data[`${platform}_username`]}</Link></h6>
+            <p><strong>Followers:</strong> {formatNumber(data[`${platform}_follower_count`])}</p>
+            <p><strong>Engagement:</strong> {data[`${platform}_engagement_percent`]}%</p>
+            {biography && <p><strong>Biography:</strong> {biography}</p>}
         </div>
     );
 };

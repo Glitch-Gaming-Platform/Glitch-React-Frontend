@@ -8,6 +8,7 @@ import Navigate from '../../../../util/Navigate';
 import Breadcrumbs from '../../component/layout/breadcrumb';
 import Calculator from '../../../../util/Calculator';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { getInfluencerImage } from '../../../../util/InfluencerUtils';
 
 const CampaignsFindInfluencersPage = () => {
     const [influencers, setInfluencers] = useState([]);
@@ -31,6 +32,7 @@ const CampaignsFindInfluencersPage = () => {
     const [showErrorModal, setShowErrorModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [subscriptions, setSubscriptions] = useState([]);
+    const [showMore, setShowMore] = useState(false);
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -57,7 +59,7 @@ const CampaignsFindInfluencersPage = () => {
         try {
             const response = await Glitch.api.Influencers.listInfluencers({ ...filters, page: currentPage, campaign_id: id });
             setInfluencers(response.data.data);
-            setTotalPages(response.data.last_page);
+            setTotalPages(response.data.meta.last_page);
         } catch (error) {
             console.error('Error fetching influencers', error);
         } finally {
@@ -149,6 +151,30 @@ const CampaignsFindInfluencersPage = () => {
     };
 
     const handleCloseModal = () => setShowModal(false);
+
+    const renderPaginationLinks = () => {
+        const links = [];
+        const start = currentPage - 5 > 0 ? currentPage - 5 : 1;
+        const end = showMore ? Math.min(currentPage + 10, totalPages) : Math.min(start + 9, totalPages);
+
+        for (let i = start; i <= end; i++) {
+            links.push(
+                <li key={i} className={`page-item ${i === currentPage ? 'active' : ''}`}>
+                    <button className="page-link" onClick={() => handlePageChange(i)}>{i}</button>
+                </li>
+            );
+        }
+
+        if (end < totalPages) {
+            links.push(
+                <li key="show-more" className="page-item">
+                    <button className="page-link" onClick={() => setShowMore(true)}>Show More</button>
+                </li>
+            );
+        }
+
+        return links;
+    };
 
     return (
         <>
@@ -297,7 +323,7 @@ const CampaignsFindInfluencersPage = () => {
                             <div key={influencer.id} className="card mb-3 w-100">
                                 <div className="row g-0">
                                     <div className="col-md-4 pt-2">
-                                        <img src={influencer.main_image || defaultAvatar} className="img-fluid rounded-start" alt={influencer.first_name} />
+                                        <img src={getInfluencerImage(influencer)} className="img-fluid rounded-start" alt={influencer.first_name} />
                                     </div>
                                     <div className="col-md-8">
                                         <div className="card-body">
@@ -357,12 +383,8 @@ const CampaignsFindInfluencersPage = () => {
                         ))}
                     </div>
                     <nav aria-label="Page navigation example">
-                        <ul className="pagination">
-                            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                                <li key={page} className={`page-item ${page === currentPage ? 'active' : ''}`}>
-                                    <button className="page-link" onClick={() => handlePageChange(page)}>{page}</button>
-                                </li>
-                            ))}
+                        <ul className="pagination justify-content-center">
+                            {renderPaginationLinks()}
                         </ul>
                     </nav>
                 </div>
@@ -401,3 +423,4 @@ const CampaignsFindInfluencersPage = () => {
 };
 
 export default CampaignsFindInfluencersPage;
+
