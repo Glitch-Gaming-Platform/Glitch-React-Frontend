@@ -121,7 +121,7 @@ class InfluencerHeader extends Component {
                                             <span><u><h5>Creator Dashboard</h5></u></span>
                                         </li>
                                         <li>
-                                            <span><Link className="btn btn-primary btn-sm" to={Navigate.influencersFindCampaignPage()}>Influencer Dashboard</Link></span>
+                                            <span><Link className="btn btn-primary btn-sm" to={Navigate.influencersMyCampaignsPage()}>Influencer Dashboard</Link></span>
                                         </li>
                                         <li>
                                             <span><Link className="btn btn-primary btn-sm" to={Navigate.campaignsPage()}>Publishers Dashboard</Link></span>
@@ -147,14 +147,15 @@ class InfluencerHeader extends Component {
                                     <div className="menu-area">
                                         <ul className="menu">
                                             <li >
+                                                <Link to={Navigate.influencersMyCampaignsPage()} >My Campaigns</Link>
+                                            </li>
+                                            <li >
                                                 <Link to={Navigate.influencersFindCampaignPage()} >Find Campaigns</Link>
                                             </li>
                                             <li >
                                                 <Link to={Navigate.influencersMessagesListPage()} >Messages</Link>
                                             </li>
-                                            <li >
-                                                <Link to={Navigate.influencersMyCampaignsPage()} >My Campaigns</Link>
-                                            </li>
+                                            
                                             <li >
                                                 <Link to={Navigate.usersInvitesPage()} >Invites</Link>
                                             </li>

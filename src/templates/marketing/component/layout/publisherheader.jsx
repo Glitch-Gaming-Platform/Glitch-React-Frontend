@@ -125,7 +125,7 @@ class PublisherHeader extends Component {
                                             <span><u><h5>Publisher Dashboard</h5></u></span>
                                         </li>
                                         <li>
-                                            <span><Link className="btn btn-primary btn-sm" to={Navigate.influencersFindCampaignPage()}>Influencer Dashboard</Link></span>
+                                            <span><Link className="btn btn-primary btn-sm" to={Navigate.influencersMyCampaignsPage()}>Influencer Dashboard</Link></span>
                                         </li>
                                         <li>
                                             <span><Link className="btn btn-primary btn-sm" to={Navigate.campaignsPage()}>Publishers Dashboard</Link></span>

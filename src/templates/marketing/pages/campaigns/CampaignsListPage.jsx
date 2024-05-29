@@ -3,7 +3,7 @@ import Glitch from 'glitch-javascript-sdk';
 import { Component, Fragment } from 'react';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import axios from 'axios';
 import Switch from "react-switch";
@@ -14,7 +14,14 @@ const CampaignsListPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
+
+        if(!Glitch.util.Session.isLoggedIn()){
+            navigate(Navigate.publishersOnboardingStep1Page());
+        }
+
         // Replace with your API endpoint
         const fetchCampaigns = async () => {
             try {

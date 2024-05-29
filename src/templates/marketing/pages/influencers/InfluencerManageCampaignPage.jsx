@@ -229,6 +229,8 @@ const InfluencerManageCampaignPage = () => {
                     <CreatorLinksCharts user={user} linkData={links} darkMode={true} />
 
                     <CreatorLinksList user={user} linkData={links} darkMode={true} />
+                    <br />
+                    <br />
                 </div>
 
 

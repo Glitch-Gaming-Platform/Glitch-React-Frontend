@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const CreatorEarningsBreakdown = ({ campaign }) => {
-    const [fakeCampaign, setFakeCampaign] = useState(null);
+    const [fakeCampaign, setCampaign] = useState(null);
 
     const platforms = [
         { name: 'Facebook', prefix: 'facebook' },
@@ -35,11 +35,12 @@ const CreatorEarningsBreakdown = ({ campaign }) => {
             fakeData[`total_earned_clicks_${prefix}`] = (Math.random() * 300).toFixed(2);
             fakeData[`total_earned_installs_${prefix}`] = (Math.random() * 100).toFixed(2);
         });
-        setFakeCampaign(fakeData);
+        setCampaign(fakeData);
     };
 
     useEffect(() => {
-        generateFakeData();
+        setCampaign(campaign)
+        //generateFakeData();
       }, []);
 
     return (

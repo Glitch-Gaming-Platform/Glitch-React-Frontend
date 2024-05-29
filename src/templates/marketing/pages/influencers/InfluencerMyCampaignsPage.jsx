@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import Glitch from 'glitch-javascript-sdk';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import CampaignRateCard from '../../component/section/campaigns/campaign_rate_card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,6 +28,8 @@ const InfluencerMyCampaignsPage = () => {
     const [me, setMe] = useState({});
     const [viewCompleted, setViewCompleted] = useState(false);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (Glitch.util.Session.isLoggedIn()) {
             Glitch.api.Users.me().then(response => {
@@ -35,6 +37,8 @@ const InfluencerMyCampaignsPage = () => {
             }).catch(error => {
                 console.error('Error fetching user data', error);
             });
+        } else {
+            
         }
 
         const fetchCampaigns = async () => {
@@ -79,8 +83,10 @@ const InfluencerMyCampaignsPage = () => {
 
                 <div className="container">
                     {campaigns.length === 0 ? (
-                        <div className="d-flex justify-content-center align-items-center card card-body bg-light" style={{ height: '50vh' }}>
-                            <h2 className="text-center text-black">You currently do not have any campaigns. Please start by applying to a few campaigns.</h2>
+                        <div className="d-flex justify-content-center align-items-center card card-body bg-light" style={{ height: '20vh' }}>
+                            <h4 className="text-center text-black mt-3">You currently do not have any campaigns. Please start by applying to a few campaigns.</h4>
+
+                            <p className='mt-2'><Link className='btn btn-info btn-lg' to={Navigate.influencersFindCampaignPage()}>Find A Game To Promote</Link></p>
                         </div>
                     ) : (
                         <>

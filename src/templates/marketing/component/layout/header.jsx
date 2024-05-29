@@ -139,16 +139,24 @@ class Header extends Component {
                                             <li >
                                                 <Link to={Navigate.homePage()} >Home</Link>
                                             </li>
-                                            <li >
-                                                <Link to={Navigate.creatorsPage()} >Streaming App</Link>
+                                            <li className="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Influencers</a>
+                                                <ul className="submenu dropdown-menu" aria-labelledby="dropdown">
+                                                    <li><Link className="" to={Navigate.creatorsInfluencersPage()}>Play and Earn</Link></li>
+                                                    <li><Link className="" to={Navigate.creatorsPage()}>Streaming App</Link></li>
+                                                    <li><Link className="" to={Navigate.creatorsCalculator()}>Earnins Calculator</Link></li>
+                                                    <li><Link className="" to={Navigate.creatorsOnboardingStep1Page()}>Register</Link></li>
+                                                    <li><Link className="" to={Navigate.influencersFindCampaignPage()}>Dashboard</Link></li>
+                                                </ul>
                                             </li>
-
                                             <li className="menu-item-has-children"><a href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-bs-offset="0,0">Publishers & Developers</a>
                                                 <ul className="submenu dropdown-menu" aria-labelledby="dropdown">
                                                     <li><Link className="" to={Navigate.publishersBenefitsPage()}>Influencer Marketing</Link></li>
                                                     <li><Link className="" to={Navigate.publishersAcquisitionPage()}>User Acquisition Cost</Link></li>
                                                     <li><Link className="" to={Navigate.publishersGamificationPage()}>Gamify Marketing</Link></li>
                                                     <li><Link className="" to={Navigate.publishersOptimizationPage()}>Marketing Optimizatiton</Link></li>
+                                                    <li><Link className="" to={Navigate.publishersOptimizationPage()}>Marketing Optimizatiton</Link></li>
+                                                    <li><Link className="" to={Navigate.publishersOnboardingStep1Page()}>Register</Link></li>
+                                                    <li><Link className="" to={Navigate.campaignsPage()}>Dashboard</Link></li>
                                                 </ul>
                                             </li>
 

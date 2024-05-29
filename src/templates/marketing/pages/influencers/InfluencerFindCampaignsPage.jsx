@@ -7,7 +7,7 @@ import CampaignRateCard from '../../component/section/campaigns/campaign_rate_ca
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 import Navigate from '../../../../util/Navigate';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
 import InfluencerHeader from '../../component/layout/infuencerheader';
 import Calculator from '../../../../util/Calculator';
@@ -18,8 +18,15 @@ const InfluencerFindCampaignsPage = () => {
     const [totalPages, setTotalPages] = useState(0);
     const [me, setMe] = useState({});
 
+    const navigate = useNavigate();
+
 
     useEffect(() => {
+
+        if(!Glitch.util.Session.isLoggedIn()){
+            navigate(Navigate.creatorsOnboardingStep1Page());
+        }
+
         const fetchCampaigns = async () => {
             try {
 
@@ -65,7 +72,7 @@ const InfluencerFindCampaignsPage = () => {
                             <div className="pageheader-thumb mb-4">
                             </div>
                             <h2 className="pageheader-title">Find Campaigns</h2>
-                            <p className="lead">Find Games You Want To Promote</p>
+                            <p className="lead">Find Games You Want To Play And Promote</p>
                         </div>
                     </div>
                 </section>
