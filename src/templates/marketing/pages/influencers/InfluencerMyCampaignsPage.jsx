@@ -1,8 +1,8 @@
 import React, { useState, useEffect, Fragment } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Glitch from 'glitch-javascript-sdk';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
-import { Link, useNavigate } from 'react-router-dom';
 import Navigate from '../../../../util/Navigate';
 import CampaignRateCard from '../../component/section/campaigns/campaign_rate_card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,6 +29,7 @@ const InfluencerMyCampaignsPage = () => {
     const [viewCompleted, setViewCompleted] = useState(false);
 
     const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         if (Glitch.util.Session.isLoggedIn()) {
@@ -37,28 +38,30 @@ const InfluencerMyCampaignsPage = () => {
             }).catch(error => {
                 console.error('Error fetching user data', error);
             });
-        } else {
-            
         }
 
-        const fetchCampaigns = async () => {
-            try {
-                Glitch.api.Campaigns.listInfluencerCampaigns({ page: currentPage, user_id: Glitch.util.Session.getID() }).then(response => {
-                    setCampaigns(response.data.data);
-                    setTotalPages(response.data.last_page);
-                }).catch(error => {
-                    console.error('Error fetching campaigns', error);
-                });
-            } catch (error) {
-                console.error('Error fetching campaigns', error);
-            }
-        };
+        const queryParams = new URLSearchParams(location.search);
+        const page = parseInt(queryParams.get('page'), 10);
+        if (page) {
+            setCurrentPage(page);
+        }
 
-        fetchCampaigns();
+        fetchCampaigns(page || currentPage);
     }, [currentPage]);
+
+    const fetchCampaigns = (page) => {
+        Glitch.api.Campaigns.listInfluencerCampaigns({ page: page, user_id: Glitch.util.Session.getID() }).then(response => {
+            setCampaigns(response.data.data);
+            setTotalPages(response.data.meta.last_page); // Assuming 'meta' contains pagination info
+        }).catch(error => {
+            console.error('Error fetching campaigns', error);
+        });
+    };
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
+        navigate(`${location.pathname}?page=${newPage}`);
+        window.scrollTo(0, 0); // Scroll to top when page changes
     };
 
     const createMarkup = (htmlContent) => {
@@ -147,17 +150,19 @@ const InfluencerMyCampaignsPage = () => {
                                     </div>
                                 ))}
                             </div>
-                            <nav aria-label="Page navigation example">
-                                <ul className="pagination">
-                                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                                        <li key={page} className={`page-item ${page === currentPage ? 'active' : ''}`}>
-                                            <button className="page-link" onClick={() => handlePageChange(page)}>
-                                                {page}
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </nav>
+                            {totalPages > 1 && (
+                                <nav aria-label="Page navigation example">
+                                    <ul className="pagination justify-content-center">
+                                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                                            <li key={page} className={`page-item ${page === currentPage ? 'active' : ''}`}>
+                                                <button className="page-link" onClick={() => handlePageChange(page)}>
+                                                    {page}
+                                                </button>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </nav>
+                            )}
                         </>
                     )}
                 </div>

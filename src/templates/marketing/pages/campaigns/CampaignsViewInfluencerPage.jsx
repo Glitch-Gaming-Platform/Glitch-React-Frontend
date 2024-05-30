@@ -70,7 +70,6 @@ const CampaignsViewInfluencerPage = () => {
         });
     };
 
-
     const formatNumber = (num) => {
         return num ? num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0';
     };
@@ -224,7 +223,7 @@ const CampaignsViewInfluencerPage = () => {
 };
 
 const SocialMediaLink = ({ icon, data, platform }) => {
-    if (!data[`${platform}_username`]) {
+    if (!data[`${platform}_username`] && platform !== "youtube") {
         return null;
     }
 
@@ -237,10 +236,27 @@ const SocialMediaLink = ({ icon, data, platform }) => {
 
     return (
         <div className="mb-3">
-            <h6><FontAwesomeIcon icon={icon} className='text-black' /> <Link to={data[`${platform}_link`]} target="_blank">{data[`${platform}_username`]}</Link></h6>
-            <p><strong>Followers:</strong> {formatNumber(data[`${platform}_follower_count`])}</p>
-            <p><strong>Engagement:</strong> {data[`${platform}_engagement_percent`]}%</p>
+            <h6><FontAwesomeIcon icon={icon} className='text-black' /> 
+                {platform === "youtube" ? (
+                    <Link to={data[`youtube_link`]} target="_blank">{data[`youtube_custom_url`] || data[`youtube_title`]}</Link>
+                ) : (
+                    <Link to={data[`${platform}_link`]} target="_blank">{data[`${platform}_username`]}</Link>
+                )}
+            </h6>
+            <p><strong>Followers:</strong> {formatNumber(data[`${platform}_follower_count`] || data[`youtube_subscriber_count`])}</p>
+            <p><strong>Engagement:</strong> {data[`${platform}_engagement_percent`] || data[`youtube_engagement_percent`]}%</p>
             {biography && <p><strong>Biography:</strong> {biography}</p>}
+            {platform === "youtube" && (
+                <>
+                    <p><strong>Video Count:</strong> {data[`youtube_video_count`]}</p>
+                    <p><strong>Average Views:</strong> {data[`youtube_avg_views`]}</p>
+                    <p><strong>Average Views (Shorts):</strong> {data[`youtube_avg_views_shorts`]}</p>
+                    <p><strong>Average Views (Long):</strong> {data[`youtube_avg_views_long`]}</p>
+                    <p><strong>Has Shorts:</strong> {data[`youtube_has_shorts`] ? 'Yes' : 'No'}</p>
+                    <p><strong>Posting Frequency:</strong> {data[`youtube_posting_frequency`]} times per week</p>
+                    <p><strong>Topics:</strong> {data[`youtube_topic_details`]?.join(', ')}</p>
+                </>
+            )}
         </div>
     );
 };

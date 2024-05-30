@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import Glitch from 'glitch-javascript-sdk';
-import { Fragment } from 'react';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
 import CampaignRateCard from '../../component/section/campaigns/campaign_rate_card';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 import Navigate from '../../../../util/Navigate';
-import { Link, useNavigate } from 'react-router-dom';
 import Moment from 'react-moment';
 import InfluencerHeader from '../../component/layout/infuencerheader';
 import Calculator from '../../../../util/Calculator';
@@ -19,17 +18,21 @@ const InfluencerFindCampaignsPage = () => {
     const [me, setMe] = useState({});
 
     const navigate = useNavigate();
-
+    const location = useLocation();
 
     useEffect(() => {
-
-        if(!Glitch.util.Session.isLoggedIn()){
+        if (!Glitch.util.Session.isLoggedIn()) {
             navigate(Navigate.creatorsOnboardingStep1Page());
+        }
+
+        const queryParams = new URLSearchParams(location.search);
+        const page = parseInt(queryParams.get('page'), 10);
+        if (page) {
+            setCurrentPage(page);
         }
 
         const fetchCampaigns = async () => {
             try {
-
                 if (Glitch.util.Session.isLoggedIn()) {
                     Glitch.api.Users.me().then(response => {
                         setMe(response.data.data);
@@ -38,11 +41,11 @@ const InfluencerFindCampaignsPage = () => {
                     });
                 }
 
-                Glitch.api.Campaigns.list({ page: currentPage }).then((response) => {
+                Glitch.api.Campaigns.list({ page: page || currentPage }).then((response) => {
                     console.log("Finding Campaigns");
                     console.log(response.data.data);
                     setCampaigns(response.data.data);
-                    setTotalPages(response.data.last_page);
+                    setTotalPages(response.data.meta.last_page); // Assuming 'meta' contains pagination info
                 }).catch(error => {
                     console.error('Error fetching campaigns', error);
                 });
@@ -52,10 +55,12 @@ const InfluencerFindCampaignsPage = () => {
         };
 
         fetchCampaigns();
-    }, [currentPage]);
+    }, [currentPage, location.search]);
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
+        navigate(`${location.pathname}?page=${newPage}`);
+        window.scrollTo(0, 0); // Scroll to top when page changes
     };
 
     const createMarkup = (htmlContent) => {
@@ -69,8 +74,7 @@ const InfluencerFindCampaignsPage = () => {
                 <section className="pageheader-section-min">
                     <div className="container">
                         <div className="section-wrapper text-center text-uppercase">
-                            <div className="pageheader-thumb mb-4">
-                            </div>
+                            <div className="pageheader-thumb mb-4"></div>
                             <h2 className="pageheader-title">Find Campaigns</h2>
                             <p className="lead">Find Games You Want To Play And Promote</p>
                         </div>
@@ -94,19 +98,21 @@ const InfluencerFindCampaignsPage = () => {
                                                 <strong> Campaign Period: </strong>
                                                 {(campaign.start_date) ? <Moment format="MM/DD/YYYY">{campaign.start_date}</Moment> : 'TBA'} - {(campaign.end_date) ? <Moment format="MM/DD/YYYY">{campaign.end_date}</Moment> : 'TBA'}
                                             </div>
-                                            {me?.influencer ? <>
-                                                <h6 className='text-black'>Your Estimated Earnings</h6>
-                                                <p>The estimated payout is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
-                                                {(() => {
-                                                    const potentialEarnings = Calculator.calculateEarningPotential(me?.influencer, campaign);
-                                                    return (
-                                                        <>
-                                                            <p><strong>Low Estimated Earnings:</strong> ${potentialEarnings.lowEarnings.toFixed(2)}</p>
-                                                            <p><strong>High Estimated Earnings:</strong> ${potentialEarnings.highEarnings.toFixed(2)}</p>
-                                                        </>
-                                                    );
-                                                })()}
-                                            </> : <></>}
+                                            {me?.influencer ? (
+                                                <>
+                                                    <h6 className='text-black'>Your Estimated Earnings</h6>
+                                                    <p>The estimated payout is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
+                                                    {(() => {
+                                                        const potentialEarnings = Calculator.calculateEarningPotential(me?.influencer, campaign);
+                                                        return (
+                                                            <>
+                                                                <p><strong>Low Estimated Earnings:</strong> ${potentialEarnings.lowEarnings.toFixed(2)}</p>
+                                                                <p><strong>High Estimated Earnings:</strong> ${potentialEarnings.highEarnings.toFixed(2)}</p>
+                                                            </>
+                                                        );
+                                                    })()}
+                                                </>
+                                            ) : null}
                                             <div className="my-2">
                                                 <FontAwesomeIcon icon={faMoneyBillWave} />
                                                 <strong> Max Earnings: </strong>
@@ -123,17 +129,19 @@ const InfluencerFindCampaignsPage = () => {
                             </div>
                         ))}
                     </div>
-                    <nav aria-label="Page navigation example">
-                        <ul className="pagination">
-                            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                                <li key={page} className={`page-item ${page === currentPage ? 'active' : ''}`}>
-                                    <button className="page-link" onClick={() => handlePageChange(page)}>
-                                        {page}
-                                    </button>
-                                </li>
-                            ))}
-                        </ul>
-                    </nav>
+                    {totalPages > 1 && (
+                        <nav aria-label="Page navigation example">
+                            <ul className="pagination justify-content-center">
+                                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                                    <li key={page} className={`page-item ${page === currentPage ? 'active' : ''}`}>
+                                        <button className="page-link" onClick={() => handlePageChange(page)}>
+                                            {page}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    )}
                 </div>
             </Fragment>
         </>

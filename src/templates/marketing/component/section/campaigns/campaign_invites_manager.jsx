@@ -4,6 +4,7 @@ import Navigate from '../../../../../util/Navigate';
 import { Link } from 'react-router-dom';
 import MessageMessagesList from '../messages/message_messages';
 import { Modal, Button } from 'react-bootstrap';
+import { getInfluencerImage } from '../../../../../util/InfluencerUtils';
 
 const CampaignInviteManager = ({ campaignID }) => {
     const [invites, setInvites] = useState([]);
@@ -128,7 +129,7 @@ const CampaignInviteManager = ({ campaignID }) => {
                                 <div className="author-thumb me-3">
                                     <Link to={Navigate.campaignsResearchInfluencer(campaign_id, invite.influencer.id)}>
                                         <img
-                                            src={invite.influencer?.instagram_image ? invite.influencer?.instagram_image : "https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png"}
+                                            src={getInfluencerImage(invite.influencer)}
                                             alt="author"
                                             className="rounded-circle"
                                         />
