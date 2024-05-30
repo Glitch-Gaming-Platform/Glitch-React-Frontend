@@ -50,7 +50,7 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
 
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="manage_content_approval_with" className="form-label"> &nbsp;Creator Approval Management</label>
+                        <label htmlFor="manage_content_approval_with" className="form-label"> &nbsp;Content Approval Management</label>
                         <select className="form-control" name="manage_content_approval_with" onChange={handleInputChange}>
                             <option value="self">Self</option>
                             <option value="ai">A.I.</option>

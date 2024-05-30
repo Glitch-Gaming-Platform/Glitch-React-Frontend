@@ -20,7 +20,7 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
         <div className="container mt-4">
             <div className="card">
                 <div className="card-header bg-secondary">
-                    <h3><i className="fas fa-info-circle mr-2"></i> Infuencer Inforomation</h3>
+                    <h3><i className="fas fa-info-circle mr-2"></i> Influencer Expectations</h3>
                 </div>
                 <div className="card-body">
                     <p className="lead">Expectations and outcomes can be established with the content creators to ensure the messaging and deliverables align with what you desire for your campaign. Use the fields below to specify how you want the content creator to craft content to market and promote your game.</p>
@@ -29,7 +29,7 @@ function CampaignInfluencerForm({ campaignData, setCampaignData, errors }) {
 
                     <form>
 
-                        {createInputField('title_creator', 'Title For Creators', 'This is the title creators and influencer will see when viewing your campaign.', 'text', true, errors)}
+                        {createInputField('title_creator', 'Title For Creators', 'This is the title creators and influencers will see when viewing your campaign.', 'text', true, errors)}
                        
                         {createTextAreaField('brief', 'Brief', 'The brief is an overview about the game and the campaign. It should try to peak the interest in the influencer in why the should work with your game.', errors, true)}
 
