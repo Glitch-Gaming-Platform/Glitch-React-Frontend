@@ -244,7 +244,7 @@ const SocialMediaLink = ({ icon, data, platform }) => {
 
     return (
         <div className="mb-3">
-            <h6><FontAwesomeIcon icon={icon} className='text-black' /> 
+            <h6><FontAwesomeIcon icon={icon} className='text-black me-2' /> 
                 {platform === "youtube" ? (
                     <Link to={data[`youtube_link`]} target="_blank">{data[`youtube_custom_url`] || data[`youtube_title`]}</Link>
                 ) : (
