@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faUsers, faSearch, faSpinner, faTimes } from '@fortawesome/free-solid-svg-icons';
 import PublisherHeader from '../../component/layout/publisherheader';
@@ -36,9 +36,16 @@ const CampaignsFindInfluencersPage = () => {
 
     const { id } = useParams();
     const navigate = useNavigate();
+    const location = useLocation();
     const defaultAvatar = 'https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png';
 
     useEffect(() => {
+        const queryParams = new URLSearchParams(location.search);
+        const page = parseInt(queryParams.get('page'), 10);
+        if (page) {
+            setCurrentPage(page);
+        }
+
         Glitch.api.Campaigns.view(id).then(response => {
             setCampaign(response.data.data);
 
@@ -64,6 +71,12 @@ const CampaignsFindInfluencersPage = () => {
             console.error('Error fetching influencers', error);
         } finally {
             setIsLoading(false);
+            // Calculate 90% of the document's height
+            const scrollToPosition = document.body.scrollHeight * 0.03;
+            window.scrollTo({
+                top: scrollToPosition,
+                behavior: 'smooth'
+            });
         }
     };
 
@@ -73,6 +86,7 @@ const CampaignsFindInfluencersPage = () => {
 
     const handleSearch = () => {
         setCurrentPage(1);
+        navigate(`${location.pathname}?page=1`);
         fetchInfluencers();
     };
 
@@ -89,11 +103,13 @@ const CampaignsFindInfluencersPage = () => {
             tiktok_follower_count_lt: '',
         });
         setCurrentPage(1);
+        navigate(`${location.pathname}?page=1`);
         fetchInfluencers();
     };
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
+        navigate(`${location.pathname}?page=${newPage}`);
     };
 
     const calculateAverageMetrics = (influencer) => {
