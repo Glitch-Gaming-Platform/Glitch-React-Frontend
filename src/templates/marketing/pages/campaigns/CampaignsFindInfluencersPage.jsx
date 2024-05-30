@@ -339,7 +339,7 @@ const CampaignsFindInfluencersPage = () => {
                             <div key={influencer.id} className="card mb-3 w-100">
                                 <div className="row g-0">
                                     <div className="col-md-3 pt-2">
-                                        <img src={getInfluencerImage(influencer)} className="img-fluid rounded-start" alt={influencer.first_name} />
+                                        <img src={getInfluencerImage(influencer)} style={{width : '100%'}} className="img-fluid rounded-start" alt={influencer.first_name} />
                                     </div>
                                     <div className="col-md-9">
                                         <div className="card-body">

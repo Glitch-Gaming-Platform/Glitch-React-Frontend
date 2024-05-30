@@ -696,6 +696,9 @@ input, textarea, select, .player-item, .player-item-2, .product-item .product-in
   content: '';
   display: table; }
 
+  .list-group-item + .list-group-item {
+    border-top-width: 1px;
+}
 /**
  * Main content containers
  * 1. Make the container full-width with a maximum width

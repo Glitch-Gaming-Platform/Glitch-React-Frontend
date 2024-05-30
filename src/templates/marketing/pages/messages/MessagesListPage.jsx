@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Glitch from 'glitch-javascript-sdk';
 import MessageThreads from '../../component/section/messages/message_threads';
 import Header from '../../component/layout/header';
@@ -7,9 +8,17 @@ const MessagesListPage = () => {
   const [threads, setThreads] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    fetchThreads(currentPage);
+    const queryParams = new URLSearchParams(location.search);
+    const page = parseInt(queryParams.get('page'), 10);
+    if (page) {
+      setCurrentPage(page);
+    }
+
+    fetchThreads(page || currentPage);
   }, [currentPage]);
 
   const fetchThreads = (page) => {
@@ -23,6 +32,24 @@ const MessagesListPage = () => {
 
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
+    navigate(`${location.pathname}?page=${newPage}`);
+    window.scrollTo(0, 0); // Scroll to top when page changes
+  };
+
+  const renderPaginationLinks = () => {
+    const links = [];
+    const start = currentPage - 5 > 0 ? currentPage - 5 : 1;
+    const end = Math.min(start + 9, totalPages);
+
+    for (let i = start; i <= end; i++) {
+      links.push(
+        <li key={i} className={`page-item ${i === currentPage ? 'active' : ''}`}>
+          <button className="page-link" onClick={() => handlePageChange(i)}>{i}</button>
+        </li>
+      );
+    }
+
+    return links;
   };
 
   return (
@@ -33,12 +60,8 @@ const MessagesListPage = () => {
         <MessageThreads threads={threads} />
         {totalPages > 1 && (
           <nav aria-label="Page navigation example">
-            <ul className="pagination">
-              {[...Array(totalPages).keys()].map(number => (
-                <li key={number} className={`page-item ${currentPage === number + 1 ? 'active' : ''}`}>
-                  <a className="page-link" href="#" onClick={() => handlePageChange(number + 1)}>{number + 1}</a>
-                </li>
-              ))}
+            <ul className="pagination justify-content-center">
+              {renderPaginationLinks()}
             </ul>
           </nav>
         )}
