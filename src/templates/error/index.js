@@ -10,7 +10,6 @@ function Template() {
   return (
     <>
       <h1>No Template was found.</h1>
-      {envVars}
     </>
   );
 }

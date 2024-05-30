@@ -364,6 +364,7 @@ const CampaignsFindInfluencersPage = () => {
                                                 const { estimatedReach, linkClicks } = calculateAverageMetrics(influencer);
                                                 return (
                                                     <>
+                                                        <h6 className='text-black'>Estimated Results For Your Game</h6>
                                                         <p><strong>Estimated Reach:</strong> {Math.floor(estimatedReach).toLocaleString()}</p>
                                                         <p><strong>Estimated Link Clicks:</strong> {Math.floor(linkClicks).toLocaleString()}</p>
                                                     </>

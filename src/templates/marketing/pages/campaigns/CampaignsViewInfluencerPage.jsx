@@ -87,6 +87,8 @@ const CampaignsViewInfluencerPage = () => {
 
     const externalUrls = formatExternalUrls(influencer.external_urls);
 
+    const hasYouTubeData = influencer.youtube_link || influencer.youtube_custom_url || influencer.youtube_title || influencer.youtube_subscriber_count || influencer.youtube_video_count;
+
     return (
         <>
             <PublisherHeader position={"relative"} />
@@ -136,7 +138,7 @@ const CampaignsViewInfluencerPage = () => {
                     <div className="card-body">
                         <SocialMediaLink icon={faInstagram} data={influencer} platform="instagram" />
                         <SocialMediaLink icon={faTiktok} data={influencer} platform="tiktok" />
-                        <SocialMediaLink icon={faYoutube} data={influencer} platform="youtube" />
+                        {hasYouTubeData && <SocialMediaLink icon={faYoutube} data={influencer} platform="youtube" />}
                         <SocialMediaLink icon={faTwitter} data={influencer} platform="twitter" />
                         <SocialMediaLink icon={faFacebook} data={influencer} platform="facebook" />
                         <SocialMediaLink icon={faReddit} data={influencer} platform="reddit" />
@@ -234,6 +236,12 @@ const SocialMediaLink = ({ icon, data, platform }) => {
     const biographyField = `${platform}_biography`;
     const biography = data[biographyField];
 
+    const hasYouTubeData = platform === "youtube" && (data.youtube_link || data.youtube_custom_url || data.youtube_title || data.youtube_subscriber_count || data.youtube_video_count);
+
+    if (platform === "youtube" && !hasYouTubeData) {
+        return null;
+    }
+
     return (
         <div className="mb-3">
             <h6><FontAwesomeIcon icon={icon} className='text-black' /> 
@@ -246,7 +254,7 @@ const SocialMediaLink = ({ icon, data, platform }) => {
             <p><strong>Followers:</strong> {formatNumber(data[`${platform}_follower_count`] || data[`youtube_subscriber_count`])}</p>
             <p><strong>Engagement:</strong> {data[`${platform}_engagement_percent`] || data[`youtube_engagement_percent`]}%</p>
             {biography && <p><strong>Biography:</strong> {biography}</p>}
-            {platform === "youtube" && (
+            {platform === "youtube" && hasYouTubeData && (
                 <>
                     <p><strong>Video Count:</strong> {data[`youtube_video_count`]}</p>
                     <p><strong>Average Views:</strong> {data[`youtube_avg_views`]}</p>
