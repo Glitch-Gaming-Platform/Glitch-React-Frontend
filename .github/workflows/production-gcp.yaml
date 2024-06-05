@@ -57,7 +57,6 @@ jobs:
           project_id: invirtu
           region: us-central1
           service: production-glitch-react
-          service_name: production-glitch-react
           platform: managed
           env_vars_file: .env
           allow_unauthenticated: true

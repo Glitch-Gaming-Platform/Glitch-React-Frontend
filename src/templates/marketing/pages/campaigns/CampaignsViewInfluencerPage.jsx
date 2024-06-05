@@ -124,7 +124,7 @@ const CampaignsViewInfluencerPage = () => {
                             style={{ width: '150px', height: '150px', objectFit: 'cover' }}
                         />
                         <div>
-                            <p><strong>Name:</strong> {influencer.first_name}</p>
+                            <p><strong>Name:</strong> {influencer.first_name || influencer.instagram_username || influencer.youtube_title}</p>
                             <p><strong>Location:</strong> {influencer.location}</p>
                             <p><strong>Speaking Language:</strong> {influencer.speaking_language}</p>
                         </div>

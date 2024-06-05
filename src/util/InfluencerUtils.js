@@ -8,5 +8,6 @@ export const getInfluencerImage = (influencer) => {
         influencer.twitter_image ||
         influencer.reddit_image ||
         influencer.facebook_image ||
+        influencer.twitch_image ||
         DEFAULT_IMAGE;
 };

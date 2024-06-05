@@ -343,7 +343,7 @@ const CampaignsFindInfluencersPage = () => {
                                     </div>
                                     <div className="col-md-9">
                                         <div className="card-body">
-                                            <h4 className="card-title">{influencer.first_name}</h4>
+                                            <h4 className="card-title">{influencer.first_name || influencer.instagram_username || influencer.youtube_title}</h4>
                                             <div>
                                                 {['instagram', 'tiktok', 'youtube', 'twitch', 'twitter', 'reddit', 'facebook'].map(platform => {
                                                     const followers = influencer[`${platform}_follower_count`] || influencer[`${platform}_subscriber_count`];
