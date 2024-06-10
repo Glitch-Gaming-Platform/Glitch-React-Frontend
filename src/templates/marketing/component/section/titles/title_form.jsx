@@ -1,4 +1,3 @@
-// GameTitleForm.jsx
 import React, { useState, useCallback } from 'react';
 import Glitch from 'glitch-javascript-sdk';
 import Danger from '../../alerts/Danger';
@@ -7,6 +6,7 @@ import Cropper from 'react-easy-crop';
 import getCroppedImg from './getCroppedImg'; // You'll create this helper function
 import RequiredAsterisk from '../../form/required_asterisk';
 import Wysiwyg from '../../form/wysiwyg';
+import _ from 'lodash';
 
 const cropperContainerStyle = {
     position: 'relative', // Contain the cropper
@@ -31,9 +31,11 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     const [croppedImageSrc, setCroppedImageSrc] = useState(null);
     const [croppedBannerImageSrc, setBannerCroppedImageSrc] = useState(null);
 
-    const handleWysiwigInputChange = (name, value) => {
+    const handleWysiwigInputChange = useCallback(_.debounce((name, value) => {
+        console.log("Name", name);
+        console.log("Value", value);
         onUpdate({ [name]: value });
-    };
+    }, 300), []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -99,9 +101,7 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
             const blob = Data.dataURItoBlob(bannerImage);
             Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, blob).catch(error => { });
         } else if (!gameTitle.id && name == "mainImage") {
-            const blob
-
-                = Data.dataURItoBlob(mainImage);
+            const blob = Data.dataURItoBlob(mainImage);
             setMainImageBlob(blob);
         } else if (!gameTitle.id && name == "bannerImage") {
             const blob = Data.dataURItoBlob(bannerImage);

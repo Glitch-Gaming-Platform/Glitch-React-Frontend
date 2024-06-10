@@ -16,7 +16,6 @@ function CampaignTargetingForm({ campaignData, setCampaignData,setCountries, set
 
   useEffect(() => {
 
-    console.log("campaignData", campaignData);
     Glitch.api.Utility.listCountries().then(response => {
       setAvailableCountries(response.data.data);
     }).catch(error => {

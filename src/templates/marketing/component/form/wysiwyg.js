@@ -11,11 +11,11 @@ export default function Wysiwyg({ children, name, placeholder, className, value,
                 theme="snow"
                 style={{ backgroundColor : "white", color : "black"}}
                 name={name}
-                placeholder={placeholder}
+                placeholder={placeholder || ''}
                 className={className}
                 id={id}
                 //editorState={children}
-                value={children}
+                value={children || ''}
                 onChange={onChange}
             />
         </>
