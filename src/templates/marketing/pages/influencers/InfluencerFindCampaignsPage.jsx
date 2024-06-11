@@ -88,7 +88,7 @@ const InfluencerFindCampaignsPage = () => {
                                 <div className="card-body">
                                     <div className="row">
                                         <div className="col-lg-4">
-                                            <img src={campaign.title.image_main || "/assets/images/titles/no_image_2.png"} alt={campaign.title.name} className="img-fluid" />
+                                            <img src={campaign.title.image_main || "/assets/images/titles/no_image_2.png"} alt={campaign.title.name} className="img-fluid" style={{width : "100%"}} />
                                         </div>
                                         <div className="col-lg-8">
                                             <h3 className="card-title">{campaign.title.name}</h3>

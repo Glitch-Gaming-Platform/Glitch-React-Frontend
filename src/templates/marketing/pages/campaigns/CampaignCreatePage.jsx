@@ -33,6 +33,8 @@ function CampaignCreatePage() {
     const [games, setGames] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedGameId, setSelectedGameId] = useState(null);
+    const [loadingMessage, setLoadingMessage] = useState('Searching for game data...');
+    const [loadError, setLoadError] = useState(false);
 
     const [gameMainImageBlob, setMainImageBlob] = useState(null);
     const [gameBannerImageBlob, setBannerImageBlob] = useState(null);
@@ -52,6 +54,28 @@ function CampaignCreatePage() {
     ];
 
     const navigate = useNavigate();
+
+    const loadingMessages = [
+        'Searching for game data...',
+        'Data Found, parsing...',
+        'Understanding game info...',
+        'Generating optimized campaign...',
+        'Downloading media assets...',
+        'Calibrating targeting...',
+        'Setting parameters...',
+        'Configuring management tools...',
+        'Setting rates for influencers...',
+        'Raising power levels...',
+        'Checking thrusters...',
+        'Lift off!!!'
+    ];
+
+    const changeLoadingMessage = (index) => {
+        if (index < loadingMessages.length) {
+            setLoadingMessage(loadingMessages[index]);
+            setTimeout(() => changeLoadingMessage(index + 1), 10000);
+        }
+    };
 
     const nextStep = () => {
         setCurrentStep(currentStep => Math.min(currentStep + 1, totalSteps));
@@ -76,6 +100,8 @@ function CampaignCreatePage() {
     const generateCampaignData = async (game_id) => {
         setIsLoading(true);
         setSelectedGameId(game_id);
+        setLoadError(false);
+        changeLoadingMessage(0);
 
         try {
             await Glitch.api.Games.viewGame(game_id);
@@ -87,7 +113,6 @@ function CampaignCreatePage() {
             const campaign = response.data.data.campaign;
             const title = response.data.data.title;
             const externalGame = response.data.data.game;
-
 
             try {
                 campaign.hashtags = `<ul>${campaign.hashtags.map((hashtag, index) => `<li key=${index}>${hashtag}</li>`).join('')}</ul>`;
@@ -139,6 +164,7 @@ function CampaignCreatePage() {
             setCurrentStep(1);
         }).catch(error => {
             console.error(error);
+            setLoadError(true);
         }).finally(() => {
             setIsLoading(false);
             setSelectedGameId(null);
@@ -327,6 +353,12 @@ function CampaignCreatePage() {
                                 ))}
                             </div>
                             {isLoading && <Loading />}
+                            {isLoading && <p>{loadingMessage}</p>}
+                            {loadError && (
+                                <div className="alert alert-danger mt-4">
+                                    An error has occurred, it happens. Please try to select your game again.
+                                </div>
+                            )}
                         </div>
                     )}
 
@@ -433,7 +465,7 @@ function CampaignCreatePage() {
                                             Next <FontAwesomeIcon icon={faArrowRight} />
                                         </button>
                                     ) : (
-                                        <button type="submit" className="btn btn-primary btn-lg">{isLoading ? <Loading /> : 'Create Campaign'}</button>
+                                        <button type="button" onClick={handleSubmit} className="btn btn-primary btn-lg">{isLoading ? <Loading /> : 'Create Campaign'}</button>
                                     )}
                                 </div>
                             </form>

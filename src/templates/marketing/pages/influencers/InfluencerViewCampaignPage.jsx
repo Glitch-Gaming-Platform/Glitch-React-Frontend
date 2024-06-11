@@ -142,7 +142,7 @@ const InfluencerViewCampaignPage = () => {
                 <hr />
                 <section className="mb-4">
                     <h3 className="text-black">Targeting Criteria</h3>
-                    <p className='lead'>Below is information on the ideal audience that this campain is tareting.</p>
+                    <p className='lead'>Below is information on the ideal audience that this campain is targeting.</p>
                     {target_audience && <p><strong>Target Audience:</strong> <span dangerouslySetInnerHTML={createMarkup(target_audience)} /></p>}
                     {countries?.length > 0 && (
                         <p><strong>Countries:</strong> {countries.map(country => country.name).join(', ')}</p>
