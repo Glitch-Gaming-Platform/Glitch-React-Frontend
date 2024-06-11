@@ -1,4 +1,6 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
+import Navigate from "../../../../util/Navigate";
 
 
 const subtitle = "For Publishers and Indie Developers";
@@ -63,6 +65,11 @@ class AboutSectionPublishers extends Component {
                                                 </li>
                                             ))}
                                         </ul>
+                                        <div className="text-start mt-4">
+                                            <Link to={Navigate.publishersBenefitsPage()} class="default-button reverse-effect mr-2" data-rel="lightcase"><span>Learn More <i class="icofont-play-alt-1"></i></span> </Link>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <Link to={Navigate.publishersOnboardingStep1Page()} class="default-button"><span>Register <i class="icofont-circled-right"></i></span> </Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
