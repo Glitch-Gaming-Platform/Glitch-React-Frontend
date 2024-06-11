@@ -158,6 +158,9 @@ function CampaignCreatePage() {
                 campaign.community_id = communities[0].id;
             }
 
+            //Set default price
+            title.pricing = title.pricing || 0;
+            
             setCampaignData(campaign);
             setGameTitle(title);
             setExternalGameTitle(externalGame);
@@ -346,9 +349,15 @@ function CampaignCreatePage() {
                                 {games.map(game => (
                                     <div key={game.id} className="game-item">
                                         <p>{game.name} - {game.store}</p>
-                                        <button className="btn btn-primary" onClick={() => generateCampaignData(game.id)} disabled={selectedGameId !== null}>
-                                            {selectedGameId === game.id && isLoading ? <Loading /> : 'Select Game'}
+                                        <button className="btn btn-primary btn-sm" onClick={() => generateCampaignData(game.id)} disabled={selectedGameId !== null}>
+                                            {selectedGameId === game.id && isLoading ? <><Loading /> {loadingMessage}</>: 'Select Game'}
                                         </button>
+                                        {loadError && (
+                                            <div className="alert alert-danger mt-4">
+                                                An error has occurred, it happens. Please try to select your game again.
+                                            </div>
+                                        )}
+                                        
                                     </div>
                                 ))}
                             </div>
@@ -527,7 +536,7 @@ function CampaignCreatePage() {
                     justify-content: space-between;
                     align-items: center;
                     color: black;
-                    height: 50px;
+                    height: 65px;
                 }
                 .ai-selection .game-item:hover {
                     background-color: #f9f9f9;
