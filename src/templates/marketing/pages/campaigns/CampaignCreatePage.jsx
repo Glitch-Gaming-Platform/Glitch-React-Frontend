@@ -23,6 +23,7 @@ import Breadcrumbs from '../../component/layout/breadcrumb';
 function CampaignCreatePage() {
     const [campaignData, setCampaignData] = useState({});
     const [gameTitle, setGameTitle] = useState({});
+    const [externalGameTitle, setExternalGameTitle] = useState({});
     const [errors, setErrors] = useState({});
     const [titleErrors, setTitleErrors] = useState({});
     const [communities, setCommunities] = useState([]);
@@ -72,12 +73,21 @@ function CampaignCreatePage() {
         setCurrentStep(stepNumber);
     };
 
-    const generateCampaignData = (game_id) => {
+    const generateCampaignData = async (game_id) => {
         setIsLoading(true);
         setSelectedGameId(game_id);
+
+        try {
+            await Glitch.api.Games.viewGame(game_id);
+        } catch (error) {
+            console.error(error);
+        }
+
         Glitch.api.Games.createCampaignData(game_id).then(response => {
             const campaign = response.data.data.campaign;
             const title = response.data.data.title;
+            const externalGame = response.data.data.game;
+
 
             try {
                 campaign.hashtags = `<ul>${campaign.hashtags.map((hashtag, index) => `<li key=${index}>${hashtag}</li>`).join('')}</ul>`;
@@ -125,6 +135,7 @@ function CampaignCreatePage() {
 
             setCampaignData(campaign);
             setGameTitle(title);
+            setExternalGameTitle(externalGame);
             setCurrentStep(1);
         }).catch(error => {
             console.error(error);
@@ -352,7 +363,7 @@ function CampaignCreatePage() {
                             <form onSubmit={handleSubmit}>
                                 {currentStep === 1 && <CampaignBasicInfoForm campaignData={campaignData} setCampaignData={setCampaignData} communities={communities} errors={errors} />}
                                 {currentStep === 2 && <CampaignTargetingForm campaignData={campaignData} setCampaignData={setCampaignData} setCountries={setCountries} setGenders={setGenders} setTypes={setTypes} communities={communities} errors={errors} />}
-                                {currentStep === 3 && <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} setMainImageBlob={setMainImageBlob} setBannerImageBlob={setBannerImageBlob} errors={titleErrors} />}
+                                {currentStep === 3 && <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} setMainImageBlob={setMainImageBlob} setBannerImageBlob={setBannerImageBlob} errors={titleErrors} externalGameData={externalGameTitle} />}
                                 {currentStep === 4 && <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />}
                                 {currentStep === 5 && <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />}
                                 {currentStep === 6 && <CampaignInfluencerForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />}

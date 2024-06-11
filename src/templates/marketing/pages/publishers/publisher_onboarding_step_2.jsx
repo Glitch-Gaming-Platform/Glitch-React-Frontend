@@ -28,6 +28,12 @@ const PublisherOnboardinStep2Page = (props) => {
         });
     }, []);
 
+    const handleNameChange = (e) => {
+        const name = e.target.value;
+        const subdomain = name.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-');
+        setData({ ...data, name, subdomain });
+    };
+
     const createCommunity = (event) => {
         event.preventDefault();
 
@@ -63,17 +69,16 @@ const PublisherOnboardinStep2Page = (props) => {
 
     return (
         <Fragment>
-           
-            <div className=" padding-top padding-bottom">
-                <div className=" container">
+            <div className="padding-top padding-bottom">
+                <div className="container">
                     <div className="stream-wrapper">
-                        <h3 className="title">Create A Organization</h3>
+                        <h3 className="title">Create A Business Account</h3>
                         
                         <form className="text-left" style={{ textAlign: "left" }} onSubmit={createCommunity}>
-                        <p className='lead'>Before you can create any campaigns, you must first create an organizational account to manage them. Create one below.</p>
+                            <p className='lead text-center'>Before you can create any campaigns, you must first create an business account to manage them. Create one below.</p>
                             <CommunityFormBasic
                                 nameValue={data.name}
-                                nameOnChange={(e) => setData({ ...data, name: e.target.value })}
+                                nameOnChange={handleNameChange}
                                 taglineValue={data.tagline}
                                 taglineOnChange={(e) => setData({ ...data, tagline: e.target.value })}
                                 descriptionValue={data.description}
@@ -89,7 +94,7 @@ const PublisherOnboardinStep2Page = (props) => {
                             {Object.keys(errors).length > 0 && <Danger message={"There are error(s) in creating the organization. Please check the form above."} />}
 
                             <div className="form-group text-center">
-                                <button type="submit" className="d-block default-button"><span>{isLoading ? <Loading /> : ''} Create Organization</span></button>
+                                <button type="submit" className="d-block default-button"><span>{isLoading ? <Loading /> : ''} Create Business Account</span></button>
                             </div>
                         </form>
                     </div>

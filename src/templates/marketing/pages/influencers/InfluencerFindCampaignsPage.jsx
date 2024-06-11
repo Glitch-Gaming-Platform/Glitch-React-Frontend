@@ -101,7 +101,7 @@ const InfluencerFindCampaignsPage = () => {
                                             {me?.influencer ? (
                                                 <>
                                                     <h6 className='text-black'>Your Estimated Earnings</h6>
-                                                    <p>The estimated payout is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
+                                                    <p className="small">The estimated payout is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
                                                     {(() => {
                                                         const potentialEarnings = Calculator.calculateEarningPotential(me?.influencer, campaign);
                                                         return (
@@ -117,9 +117,8 @@ const InfluencerFindCampaignsPage = () => {
                                                 <FontAwesomeIcon icon={faMoneyBillWave} />
                                                 <strong> Max Earnings: </strong>
                                                 ${campaign.spend_limit_per_influencer || 'No Cap'}
-                                            </div>
-                                            <p className="card-text"><small className="text-muted">Campaign Details: <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></small></p>
-                                            <Link to={Navigate.influencersViewCampaignPage(campaign.id)} className="btn btn-primary">View More</Link>
+                                            </div><br />
+                                            <Link to={Navigate.influencersViewCampaignPage(campaign.id)} className="btn btn-primary btn-lg">View More</Link>
                                         </div>
                                     </div>
                                 </div>

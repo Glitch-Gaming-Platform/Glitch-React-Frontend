@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Glitch from 'glitch-javascript-sdk';
 import Danger from '../../alerts/Danger';
 import Data from '../../../../../util/Data';
@@ -15,7 +15,7 @@ const cropperContainerStyle = {
     zIndex: 10, // Ensure this is lower than other interactive elements
 };
 
-const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUpdate, setMainImageBlob, setBannerImageBlob, errors }) => {
+const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUpdate, setMainImageBlob, setBannerImageBlob, externalGameData, errors }) => {
 
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
     const [mainImage, setMainImage] = useState(null);
@@ -31,9 +31,19 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     const [croppedImageSrc, setCroppedImageSrc] = useState(null);
     const [croppedBannerImageSrc, setBannerCroppedImageSrc] = useState(null);
 
+    useEffect(() => {
+
+        console.log('externalGameData', externalGameData);
+        
+        if (externalGameData.header_image) {
+            fetchImage(externalGameData.header_image, setMainImage, setCropMain, setZoomMain);
+        }
+        if (externalGameData.capsule_image) {
+            fetchImage(externalGameData.capsule_image, setBannerImage, setCropBanner, setZoomBanner);
+        }
+    }, []);
+
     const handleWysiwigInputChange = useCallback(_.debounce((name, value) => {
-        console.log("Name", name);
-        console.log("Value", value);
         onUpdate({ [name]: value });
     }, 300), []);
 
@@ -55,26 +65,24 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     }, []);
 
     const showCroppedImage = async (imageSrc, croppedAreaPixels, setImage, name) => {
-        console.log("Show Cropped Image");
         try {
             const croppedImageBlob = await getCroppedImg(imageSrc, croppedAreaPixels);
             const croppedImageUrl = URL.createObjectURL(croppedImageBlob);
 
-            if (gameTitle.id && name == "mainImage") {
+            if (gameTitle.id && name === "mainImage") {
                 setCroppedImageSrc(croppedImageUrl);
-                Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, croppedImageBlob).catch(error => { });
-            } else if (gameTitle.id && name == "bannerImage") {
+                await Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, croppedImageBlob);
+            } else if (gameTitle.id && name === "bannerImage") {
                 setBannerCroppedImageSrc(croppedImageUrl);
-                Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, croppedImageBlob).catch(error => { });
-            } else if (!gameTitle.id && name == "mainImage") {
+                await Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, croppedImageBlob);
+            } else if (!gameTitle.id && name === "mainImage") {
                 setCroppedImageSrc(croppedImageUrl);
                 setMainImageBlob(croppedImageBlob);
-            } else if (!gameTitle.id && name == "bannerImage") {
+            } else if (!gameTitle.id && name === "bannerImage") {
                 setBannerCroppedImageSrc(croppedImageUrl);
                 setBannerImageBlob(croppedImageBlob);
             }
             setImage(null);
-            console.log("Cropped Image Url", croppedImageUrl);
         } catch (e) {
             console.error(e);
         }
@@ -86,6 +94,7 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
             const reader = new FileReader();
             reader.readAsDataURL(file);
             reader.onloadend = () => {
+                console.log(reader.result);
                 imageSetter(reader.result);
                 cropSetter({ x: 0, y: 0 });
                 zoomSetter(1);
@@ -93,22 +102,23 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
         }
     };
 
-    const uploadImage = async (image, name) => {
-        if (gameTitle.id && name == "mainImage") {
-            const blob = Data.dataURItoBlob(mainImage);
-            Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, blob).catch(error => { });
-        } else if (gameTitle.id && name == "bannerImage") {
-            const blob = Data.dataURItoBlob(bannerImage);
-            Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, blob).catch(error => { });
-        } else if (!gameTitle.id && name == "mainImage") {
-            const blob = Data.dataURItoBlob(mainImage);
-            setMainImageBlob(blob);
-        } else if (!gameTitle.id && name == "bannerImage") {
-            const blob = Data.dataURItoBlob(bannerImage);
-            setBannerImageBlob(blob);
+    const fetchImage = async (url, imageSetter, cropSetter, zoomSetter) => {
+        const proxyUrl = `https://api.glitch.fun/api/images/proxy?url=${encodeURIComponent(url)}`;
+        try {
+            const response = await fetch(proxyUrl);
+            const blob = await response.blob();
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            reader.onloadend = () => {
+                console.log(reader.result); // This should now show the complete data URL
+                imageSetter(reader.result);
+                cropSetter({ x: 0, y: 0 });
+                zoomSetter(1);
+            };
+        } catch (error) {
+            console.error("Failed to fetch image:", error);
         }
     };
-
     const handleMainImageUpload = () => {
         if (mainImage) {
             uploadImage(mainImage, 'mainImage');
@@ -118,6 +128,19 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     const handleBannerImageUpload = () => {
         if (bannerImage) {
             uploadImage(bannerImage, 'bannerImage');
+        }
+    };
+
+    const uploadImage = async (image, name) => {
+        const blob = Data.dataURItoBlob(image);
+        if (gameTitle.id && name === "mainImage") {
+            await Glitch.api.Titles.uploadMainImageBlob(gameTitle.id, blob);
+        } else if (gameTitle.id && name === "bannerImage") {
+            await Glitch.api.Titles.uploadBannerImageFile(gameTitle.id, blob);
+        } else if (!gameTitle.id && name === "mainImage") {
+            setMainImageBlob(blob);
+        } else if (!gameTitle.id && name === "bannerImage") {
+            setBannerImageBlob(blob);
         }
     };
 
@@ -181,23 +204,21 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                                         onCropComplete={onCropCompleteMain}
                                     />
                                 </div>
-                                <button type="button" className="btn btn-primary mt-2"
-
-                                    onClick={() => showCroppedImage(mainImage, croppedAreaPixelsMain, setMainImage, "mainImage")}>Crop Image</button>
+                                <button type="button" className="btn btn-primary mt-2" onClick={() => showCroppedImage(mainImage, croppedAreaPixelsMain, setMainImage, "mainImage")}>Crop Image</button>
                             </>
                             )}
-                            {(croppedImageSrc) ?
+                            {croppedImageSrc && (
                                 <div>
                                     <p>Cropped Image:</p>
                                     <img src={croppedImageSrc} alt="Cropped" />
                                 </div>
-                                : ''}
-                            {(gameTitle.image_main) ?
+                            )}
+                            {gameTitle.image_main && (
                                 <div>
                                     <p>Current Main Image:</p>
                                     <img src={gameTitle.image_main} alt="Current Main Image" />
                                 </div>
-                                : ''}
+                            )}
                         </div>
                         <div className="form-group">
                             <label htmlFor="bannerImage">Banner Image</label>
@@ -217,19 +238,18 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                                 <button type="button" className="btn btn-primary mt-2" onClick={() => showCroppedImage(bannerImage, croppedAreaPixelsBanner, setBannerImage, "bannerImage")}>Crop Image</button>
                             </>
                             )}
-                            {(croppedBannerImageSrc) ?
+                            {croppedBannerImageSrc && (
                                 <div>
                                     <p>Cropped Image:</p>
                                     <img src={croppedBannerImageSrc} alt="Cropped" />
                                 </div>
-                                : ''}
-
-                            {(gameTitle.image_banner) ?
+                            )}
+                            {gameTitle.image_banner && (
                                 <div>
                                     <p>Current Banner Image:</p>
                                     <img src={gameTitle.image_banner} alt="Current Banner Image" />
                                 </div>
-                                : ''}
+                            )}
                         </div>
                     </div>
 
@@ -264,9 +284,9 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                     <input type={type} className="form-control" id={name} name={name} value={value || ''} onChange={handleChange} />
                     <p className="small">{description}</p>
                 </div>
-                {errors && errors[name] && errors[name].map(function (name, index) {
-                    return <Danger message={name} key={index} />;
-                })}
+                {errors && errors[name] && errors[name].map((name, index) => (
+                    <Danger message={name} key={index} />
+                ))}
             </div>
         );
     }
@@ -275,13 +295,13 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
         return (
             <div className="col-md-12">
                 <div className="mb-3">
-                    <label htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
+                    <label htmlFor={name}>{label} {required && <RequiredAsterisk />}</label>
                     <Wysiwyg children={value || ''} name={name} id={name} onChange={(value) => { handleWysiwigInputChange(name, value) }} />
                     <p className="small">{description}</p>
                 </div>
-                {errors && errors[name] && errors[name].map(function (name, index) {
-                    return <Danger message={name} key={index} />;
-                })}
+                {errors && errors[name] && errors[name].map((name, index) => (
+                    <Danger message={name} key={index} />
+                ))}
             </div>
         );
     }
