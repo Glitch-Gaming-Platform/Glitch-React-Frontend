@@ -181,6 +181,13 @@ const PublisherSubscribePage = () => {
       )}
 
       <Footer />
+      <style jsx>{`
+        .stripe-card-element {
+          border: 1px solid #000;
+          padding: 10px;
+          border-radius: 4px;
+        }
+      `}</style>
     </>
   );
 };
@@ -188,6 +195,7 @@ const PublisherSubscribePage = () => {
 const SelectedPlanInfo = ({ plan, communityId, currentSubscriptions, handleCancel, handleChangePlan }) => {
   const stripe = useStripe();
   const elements = useElements();
+  const [couponCode, setCouponCode] = useState('');
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -216,6 +224,7 @@ const SelectedPlanInfo = ({ plan, communityId, currentSubscriptions, handleCance
     Glitch.api.Subscriptions.createCommunityInfluencerSubscription(communityId, {
       priceId: plan.id,
       paymentMethod: paymentMethod.id,
+      couponCode: couponCode, // Pass the coupon code to the API
     }).then(response => {
       setLoading(false);
       alert('Subscription successful!');
@@ -229,6 +238,23 @@ const SelectedPlanInfo = ({ plan, communityId, currentSubscriptions, handleCance
   const activeSubscription = currentSubscriptions.find(subscription => 
     plans.some(p => p.id === subscription.stripe_price)
   );
+
+  const cardElementOptions = {
+    style: {
+      base: {
+        color: '#000',
+        fontSize: '16px',
+        '::placeholder': {
+          color: '#aab7c4',
+        },
+        border: '1px solid #000',
+      },
+      invalid: {
+        color: '#fa755a',
+        iconColor: '#fa755a',
+      },
+    },
+  };
 
   return (
     <div className="container mb-4">
@@ -250,9 +276,20 @@ const SelectedPlanInfo = ({ plan, communityId, currentSubscriptions, handleCance
               )}
             </>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} >
+              <div className="mb-3" style={{ margin: '10px 0 10px', border: 'solid', padding: "10px" }}>
+                <CardElement theme="night" options={cardElementOptions} />
+              </div>
               <div className="mb-3">
-                <CardElement />
+                <label htmlFor="couponCode" className="form-label">Coupon Code</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="couponCode"
+                  value={couponCode}
+                  onChange={(e) => setCouponCode(e.target.value)}
+                  placeholder="Enter your coupon code"
+                />
               </div>
               {error && <div className="alert alert-danger">{error}</div>}
               <button className="btn btn-primary" type="submit" disabled={!stripe || loading}>

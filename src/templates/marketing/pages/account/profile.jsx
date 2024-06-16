@@ -35,6 +35,16 @@ class AccountUpdatePage extends Component {
         };
     }
 
+    OAuthLinks = {
+        facebook: Navigate.authFacebook() + '?redirect=' + Navigate.authFacebookComplete(),
+        //instagram: Navigate.authInstagram() + '?redirect=' + Navigate.authInstagramComplete(),
+        tiktok: Navigate.authTikTok() + '?redirect=' + Navigate.authTikTokComplete(),
+        youtube: Navigate.authGoogle() + '?redirect=' + Navigate.authGoogleComplete(),
+        twitch: Navigate.authTwitch() + '?redirect=' + Navigate.authTwitchComplete(),
+        twitter: Navigate.authTwitter() + '?redirect=' + Navigate.authTwitterComplete(),
+        reddit: Navigate.authReddit() + '?redirect=' + Navigate.authRedditComplete(),
+    };
+
     componentDidMount() {
 
 
@@ -145,6 +155,40 @@ class AccountUpdatePage extends Component {
         }).catch(error => console.log(error));
     }
 
+    handleOAuthLogin = (platform) => {
+        // Implement OAuth login logic for the platform
+        console.log(this.OAuthLinks);
+        window.open(this.OAuthLinks[platform], 'OAuthWindow', 'height=600,width=400');
+        console.log(`Logging in to ${platform}`);
+    }
+
+    handleOAuthLogout = (platform) => {
+        // Implement OAuth logout logic for the platform
+        console.log(`Logging out of ${platform}`);
+    }
+
+    renderOAuthButton = (platform, authToken, brandColor, iconClass) => {
+        return authToken ? (
+            <div className="d-flex justify-content-between align-items-center">
+                <button
+                    className={`btn btn-${brandColor} mb-2`}
+                    onClick={() => this.handleOAuthLogout(platform)}
+                >
+                    <i className={`fas fa-trash`}></i> Disconnect {platform}
+                </button>
+            </div>
+        ) : (
+            <div className="d-flex justify-content-between align-items-center">
+                <button
+                    className={`btn btn-${brandColor} mb-2`}
+                    onClick={() => this.handleOAuthLogin(platform)}
+                >
+                    <i className={`fab fa-${iconClass}`}></i> Authenticate {platform}
+                </button>
+            </div>
+        );
+    }
+
 
     render() {
 
@@ -185,6 +229,9 @@ class AccountUpdatePage extends Component {
                         </li>
                         <li className="nav-item" role="presentation">
                             <button className="nav-link" id="influencer-profile-tab" data-bs-toggle="tab" data-bs-target="#influencerprofile" type="button" role="tab" aria-controls="influencerprofile" aria-selected="false">Influnecer Profile</button>
+                        </li>
+                        <li className="nav-item" role="presentation">
+                            <button className="nav-link" id="oauth-tab" data-bs-toggle="tab" data-bs-target="#oauth" type="button" role="tab" aria-controls="oauth" aria-selected="false">Social Accounts</button>
                         </li>
                     </ul>
                     <div className="tab-content mt-3" id="myTabContent">
@@ -410,6 +457,26 @@ class AccountUpdatePage extends Component {
                                         <button className="btn btn-primary" type="button" onClick={this.handleUpdateInfluencer}><i className="fas fa-save"></i> Update Profile {this.state.isLoading ? <Loading /> : ''}</button>
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+
+                        {/* Synced Social Media Accounts */}
+                        <div className="tab-pane fade mt-3 mb-3" id="oauth" role="tabpanel" aria-labelledby="oauth-tab">
+                            <div className="row g-4 match-grid GameListStyleTwo">
+                                <h2>Synced Social Media Accounts</h2>
+
+                                <p className="lead">Below are synced social media that can be used by influencers to post on various other social media accounts.</p>
+
+                                <div className="col-md-12">
+                                    {this.renderOAuthButton('Twitch', this.state.me.twitch_auth_token, 'primary', 'twitch')}
+                                    {this.renderOAuthButton('Facebook', this.state.me.facebook_auth_token, 'primary', 'facebook-f')}
+                                    {this.renderOAuthButton('YouTube', this.state.me.youtube_auth_token, 'danger', 'youtube')}
+                                    {this.renderOAuthButton('TikTok', this.state.me.tiktok_auth_token, 'info', 'tiktok')}
+                                    {this.renderOAuthButton('Reddit', this.state.me.reddit_auth_token, 'danger', 'reddit')}
+                                    {this.renderOAuthButton('Twitter', this.state.me.twitter_auth1_token, 'info', 'twitter')}
+                                </div>
+
                             </div>
                         </div>
 

@@ -765,6 +765,11 @@ const Navigate = {
         return app_routes.publishers_pilots;
 
     },
+    publishersDatabasePage : () => {
+
+        return app_routes.publishers_database;
+
+    },
     publishersOptimizationPage : () => {
 
         return app_routes.publishers_optimization;

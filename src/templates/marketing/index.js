@@ -138,6 +138,7 @@ import InfluencerPayoutsPage from './pages/influencers/InfluencerPayoutsPage';
 import InfluencerInvitesPage from './pages/influencers/InfluencerInvitesPage';
 import CampaignUpdateInfluencerPage from './pages/campaigns/CampaignUpdateInfluencerPage';
 import CampaignsLedgerPage from './pages/campaigns/CampaignsLedgerPage';
+import PublishersDatabasePage from './pages/publishers/publishers_database';
 
 
 function Template() {
@@ -263,6 +264,7 @@ function Template() {
           <Route path={Navigate.publishersRegisterPage()} element={<PublisherRegisterPage />} />
           <Route path={Navigate.publishersPilotPage()} element={<PublisherPilotsPage />} />
           <Route path={Navigate.publishersPricingPage()} element={<PublisherPricingPage />} />
+          <Route path={Navigate.publishersDatabasePage()} element={<PublishersDatabasePage />} />
 
           <Route path={Navigate.publishersOnboardingStep1Page()} element={<PublisherOnboardinStep1Page />} />
           <Route path={Navigate.publishersOnboardingStep2Page()} element={<PublisherOnboardinStep2Page />} />

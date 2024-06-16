@@ -153,6 +153,7 @@
     publishers_acquisition : '/publishers/acquisition',
     publishers_register : '/publishers/register',
     publishers_pricing : '/publishers/pricing',
+    publishers_database : '/publishers/database',
 
     publishers_onboarding_step_1 : '/publishers/onboarding/step1',
     publishers_onboarding_step_2 : '/publishers/onboarding/step2',
