@@ -35,10 +35,10 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
 
         console.log('externalGameData', externalGameData);
         
-        if (externalGameData.header_image) {
+        if (externalGameData && externalGameData?.header_image) {
             fetchImage(externalGameData.header_image, setMainImage, setCropMain, setZoomMain);
         }
-        if (externalGameData.capsule_image) {
+        if (externalGameData && externalGameData?.capsule_image) {
             fetchImage(externalGameData.capsule_image, setBannerImage, setCropBanner, setZoomBanner);
         }
     }, []);
