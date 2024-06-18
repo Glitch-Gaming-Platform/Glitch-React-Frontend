@@ -23,7 +23,7 @@ import Breadcrumbs from '../../component/layout/breadcrumb';
 function CampaignCreatePage() {
     const [campaignData, setCampaignData] = useState({});
     const [gameTitle, setGameTitle] = useState({});
-    const [externalGameTitle, setExternalGameTitle] = useState({});
+    const [externalGameTitle, setExternalGameTitle] = useState(null);
     const [errors, setErrors] = useState({});
     const [titleErrors, setTitleErrors] = useState({});
     const [communities, setCommunities] = useState([]);
