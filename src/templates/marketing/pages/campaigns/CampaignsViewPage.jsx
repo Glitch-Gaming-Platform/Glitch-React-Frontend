@@ -114,22 +114,29 @@ const CampaignsViewPage = () => {
                         <h2>{campaign?.name}</h2>
                     </div>
                     <div className="card-body text-dark text-black">
-                        <section className="mb-4">
-                            <h3 className="text-black">General Information</h3>
-                            <p><strong>Description:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.description)} /></p>
-                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
-                            <p><strong>Status:</strong> {campaign.is_active ? 'Active' : 'Inactive'}</p>
-                            <p><strong>Type:</strong> {campaign.type}</p>
-                            <p><strong>Objective:</strong> {campaign.objective}</p>
-                            <p><strong>Community:</strong>{campaign?.community?.name}</p>
+                        <section className="mb-4 row">
+
+
+                            <div className="col-md-4">
+                                <img src={(campaign?.title.image_main) ? campaign?.title.image_main : '/assets/images/titles/no_image_2.png'} className="img-fluid" style={{ width: "100%" }} />
+                            </div>
+                            <div className="col-md-8">
+                                <h3 className="text-black">General Information</h3>
+                                <p><strong>Description:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.description)} /></p>
+                                <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
+                                <p><strong>Status:</strong> {campaign.is_active ? 'Active' : 'Inactive'}</p>
+                                <p><strong>Type:</strong> {campaign.type}</p>
+                                <p><strong>Objective:</strong> {campaign.objective}</p>
+                                <p><strong>Community:</strong>{campaign?.community?.name}</p>
+                            </div>
                         </section>
 
-                        {campaign.social_platforms ? <>
+                        {campaign.social_platforms && campaign.social_platforms.map ? <>
                             <hr />
 
                             <section className="mb-4">
                                 <h3 className="text-black">Social Platforms</h3>
-                                {campaign.social_platforms && <ul>{campaign.social_platforms.map(platform => <li key={platform}>{platform}</li>)}</ul>}
+                                {campaign.social_platforms && <ul>{campaign?.social_platforms && campaign?.social_platforms?.map && campaign?.social_platforms?.map(platform => <li key={platform}>{platform}</li>)}</ul>}
                             </section>
                         </> : ''}
                         <hr />

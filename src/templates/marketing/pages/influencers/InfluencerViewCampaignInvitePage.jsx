@@ -11,6 +11,7 @@ import Moment from 'react-moment';
 import timeouts from '../../../../constants/timeouts';
 import Danger from '../../component/alerts/Danger';
 import InfluencerHeader from '../../component/layout/infuencerheader';
+import Calculator from '../../../../util/Calculator';
 
 const InfluencerViewCampaignInvitePage = () => {
     const [campaign, setCampaign] = useState({});
@@ -71,7 +72,7 @@ const InfluencerViewCampaignInvitePage = () => {
 
             setCampaign(updatedCampaign);
             setInfluencer(response.data.data.influencer);
-            
+
         }).catch(error => {
             console.error('Error fetching campaign invite', error);
         });
@@ -104,11 +105,10 @@ const InfluencerViewCampaignInvitePage = () => {
     return (
         <>
             <InfluencerHeader position={"relative"} />
-            <section className="pageheader-section" style={{ backgroundImage: "url(/assets/images/pageheader/bg.jpg)" }}>
+            <section className="pageheader-section-min">
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
-                            <img style={{ maxHeight: '160px' }} src="/assets/images/campaigns/campaign_icon.png" alt="team" />
                         </div>
                         <h2 className="pageheader-title">View Campaign</h2>
                         <p className="lead">View the information for this campaign.</p>
@@ -121,12 +121,34 @@ const InfluencerViewCampaignInvitePage = () => {
                     <section className="mb-4 card-body">
                         <GameTitle gameInfo={campaign?.title} />
                     </section>
-                    <hr />
+                    <hr className='mb-4 mt-2'  />
                     <div className="card-body text-dark text-black">
+                        {influencer ? (
+                            <>
+                                <h3 className='text-black'>Your Estimated Earnings</h3>
+                                <p className="small">The estimated earnings is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
+
+                                <p><strong>Spend Limit Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
+
+                                {(() => {
+                                    const potentialEarnings = Calculator.calculateEarningPotential(influencer, campaign);
+                                    return (
+                                        <>
+                                            <p><strong>Low Estimated Earnings:</strong> ${potentialEarnings.lowEarnings.toFixed(2)}</p>
+                                            <p><strong>High Estimated Earnings:</strong> ${potentialEarnings.highEarnings.toFixed(2)}</p>
+                                            <hr className='mb-4 mt-2' />
+                                        </>
+                                    );
+                                })()}
+                            </>
+                        ) : null}
+                        <CampaignRateCard campaign={campaign} user={me} />
+                        <hr className='mb-4 mt-2' />
                         <section className="mb-4">
-                            <h3 className="text-black">General Information</h3>
-                            <p><strong>Spend Limit Per Influencer:</strong> {(campaign.spend_limit_per_influencer) ? '$' + campaign.spend_limit_per_influencer + ' is maximun amount you can make from this campaign.' : 'There no cap on how much you make for this campaign.'}</p>
-                            <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
+                            <h3 className="text-black">Campaign Information</h3>
+                            {campaign.brief ? <>
+                                <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
+                            </> : ''}
                             {campaign.start_date ? <>
                                 <p><strong>Start Date:</strong>  <Moment format="MM-DD-YYYY A">{campaign.start_date}</Moment> </p>
                             </> : ''}
@@ -138,15 +160,6 @@ const InfluencerViewCampaignInvitePage = () => {
                             </> : ''}
                             {campaign.requirements ? <>
                                 <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.requirements)} /></p>
-                            </> : ''}
-                        </section>
-                        <hr />
-                        <CampaignRateCard campaign={campaign} user={me} />
-                        <hr />
-                        <section className="mb-4">
-                            <h3 className="text-black">Requirements</h3>
-                            {campaign.brief ? <>
-                                <p><strong>Brief:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.brief)} /></p>
                             </> : ''}
                             {campaign.hashtags ? <>
                                 <p><strong>Hashtags:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.hashtags)} /></p>

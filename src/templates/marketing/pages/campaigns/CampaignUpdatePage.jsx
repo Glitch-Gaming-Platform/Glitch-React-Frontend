@@ -209,7 +209,7 @@ function CampaignUpdatePage() {
                             Object.keys(campaignData).length > 0 && (
                                 <>
                                     <CampaignBasicInfoForm campaignData={campaignData} setCampaignData={setCampaignData} communities={communities} errors={errors} />
-                                    <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} errors={titleErrors} />
+                                    <GameTitleForm gameTitle={gameTitle} setGameTitle={setGameTitle} onUpdate={handleGameTitleUpdate} errors={titleErrors} />
                                     <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
                                     <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />
                                     <CampaignTargetingForm campaignData={campaignData} setCampaignData={setCampaignData} setCountries={setCountries} setGenders={setGenders} setTypes={setTypes} errors={errors} />

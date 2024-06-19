@@ -12,7 +12,7 @@ const GameTitle = ({ gameInfo }) => {
     return (
       <div className="mb-3">
         <h5 className="text-black">{title}</h5>
-        <p className="text-black">{content}</p>
+        <p className="text-black"><span dangerouslySetInnerHTML={createMarkup(content)}></span></p>
       </div>
     );
   };
@@ -26,10 +26,12 @@ const GameTitle = ({ gameInfo }) => {
     {(gameInfo ) ? 
     <div >
       <div className="row">
-        <div className="col-md-4">
-          <img src={(gameInfo.image_main) ? gameInfo.image_main : '/assets/images/titles/no_image_2.png'} className="img-fluid" style={{width: "100%"}} />
-        </div>
-        <div className="col-md-8 mb-4 text-black">
+        {gameInfo.image_banner ?
+          <div className="col-md-12">
+            <img src={(gameInfo.image_banner) ? gameInfo.image_banner : '/assets/images/titles/no_image_2.png'} className="img-fluid" style={{width: "100%"}} />
+          </div>
+        : ''}
+        <div className="col-md-12 mb-4 text-black">
           <h2 className="text-black">{gameInfo.name}</h2>
           <p className="lead text-black"><span dangerouslySetInnerHTML={createMarkup(gameInfo.long_description || gameInfo.short_description)} /></p>
         </div>
