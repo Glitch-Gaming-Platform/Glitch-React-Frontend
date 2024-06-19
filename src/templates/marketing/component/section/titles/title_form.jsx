@@ -15,11 +15,13 @@ const cropperContainerStyle = {
     zIndex: 10, // Ensure this is lower than other interactive elements
 };
 
-const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUpdate, setMainImageBlob, setBannerImageBlob, externalGameData, errors }) => {
+const GameTitleForm = ({ gameTitle, onUpdate, setGameTitle, onMainImageUpdate, onBannerImageUpdate, setMainImageBlob, setBannerImageBlob, externalGameData, errors }) => {
 
     const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
     const [mainImage, setMainImage] = useState(null);
     const [bannerImage, setBannerImage] = useState(null);
+    
+    const [gameData, setGameData] = useState(null);
 
     const [cropMain, setCropMain] = useState({ x: 0, y: 0 });
     const [cropBanner, setCropBanner] = useState({ x: 0, y: 0 });
@@ -34,22 +36,30 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
     useEffect(() => {
 
         console.log('externalGameData', externalGameData);
+        console.log('gameTitle', gameTitle);
         
+        setGameData(gameTitle);
+
         if (externalGameData && externalGameData?.header_image) {
             fetchImage(externalGameData.header_image, setMainImage, setCropMain, setZoomMain);
         }
         if (externalGameData && externalGameData?.capsule_image) {
             fetchImage(externalGameData.capsule_image, setBannerImage, setCropBanner, setZoomBanner);
         }
+
+        
     }, []);
 
-    const handleWysiwigInputChange = useCallback(_.debounce((name, value) => {
-        onUpdate({ [name]: value });
-    }, 300), []);
+    const handleWysiwigInputChange = (name, value) => {
+        //onUpdate({ [name]: value });
+        //setGameTitle({ ...gameTitle, [name]: value });
+        setGameTitle(gameTitle => ({ ...gameTitle, [name]: value }));
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        onUpdate({ [name]: value });
+        //onUpdate({ [name]: value });
+        setGameTitle({ ...gameTitle, [name]: value });
     };
 
     const toggleAdditionalInfo = () => {
@@ -155,34 +165,34 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                         <p className="lead">Enter information about the game title you want influencers to promote. Please fill out as much information as possible to excite the potential creator(s) you might be working with.</p>
                         <hr />
                         <div className="row">
-                            {createInput('Name', 'name', gameTitle.name, handleChange, 'text', 'fas fa-signature', errors, 'Enter the name of the game.')}
-                            {createInput('Platform Compatibility', 'platform_compatibility', gameTitle.platform_compatibility, handleChange, 'text', 'fab fa-steam-symbol', errors, 'Enter what platforms this game is for, ie: Playstation 5, PC, Xbox, etc')}
+                            {createInput('Name', 'name', gameTitle?.name, handleChange, 'text', 'fas fa-signature', errors, 'Enter the name of the game.')}
+                            {createInput('Platform Compatibility', 'platform_compatibility', gameTitle?.platform_compatibility, handleChange, 'text', 'fab fa-steam-symbol', errors, 'Enter what platforms this game is for, ie: Playstation 5, PC, Xbox, etc')}
                         </div>
                         <div className="row">
-                            {createInput('Age Rating', 'age_rating', gameTitle.age_rating, handleChange, 'text', 'fas fa-child', errors, 'Enter domestic and/or global age ratings for the game.')}
-                            {createInput('Developer', 'developer', gameTitle.developer, handleChange, 'text', 'fas fa-code-branch', errors)}
+                            {createInput('Age Rating', 'age_rating', gameTitle?.age_rating, handleChange, 'text', 'fas fa-child', errors, 'Enter domestic and/or global age ratings for the game.')}
+                            {createInput('Developer', 'developer', gameTitle?.developer, handleChange, 'text', 'fas fa-code-branch', errors)}
                         </div>
                         <div className="row">
-                            {createInput('Publisher', 'publisher', gameTitle.publisher, handleChange, 'text', 'fas fa-briefcase', errors)}
-                            {createInput('Release Date', 'release_date', gameTitle.release_date, handleChange, 'date', 'fas fa-calendar-alt', errors)}
+                            {createInput('Publisher', 'publisher', gameTitle?.publisher, handleChange, 'text', 'fas fa-briefcase', errors)}
+                            {createInput('Release Date', 'release_date', gameTitle?.release_date, handleChange, 'date', 'fas fa-calendar-alt', errors)}
                         </div>
                         <div className="row">
-                            {createInput('Pricing', 'pricing', gameTitle.pricing, handleChange, 'number', 'fas fa-tag', errors)}
-                            {createInput('Pricing Currency', 'pricing_currency', gameTitle.pricing_currency || 'USD', handleChange, 'text', 'fas fa-dollar-sign', errors)}
+                            {createInput('Pricing', 'pricing', gameTitle?.pricing, handleChange, 'number', 'fas fa-tag', errors)}
+                            {createInput('Pricing Currency', 'pricing_currency', gameTitle?.pricing_currency || 'USD', handleChange, 'text', 'fas fa-dollar-sign', errors)}
                         </div>
                         <div className="row">
-                            {createInput('Multiplayer Options', 'multiplayer_options', gameTitle.multiplayer_options, handleChange, 'text', 'fas fa-users', errors)}
-                            {createInput('Availability', 'availability', gameTitle.availability, handleChange, 'text', 'fas fa-store', errors)}
+                            {createInput('Multiplayer Options', 'multiplayer_options', gameTitle?.multiplayer_options, handleChange, 'text', 'fas fa-users', errors)}
+                            {createInput('Availability', 'availability', gameTitle?.availability, handleChange, 'text', 'fas fa-store', errors)}
                         </div>
                         <div className="row">
-                            {createInput('Website URL', 'website_url', gameTitle.website_url, handleChange, 'url', 'fas fa-globe', errors)}
-                            {createInput('Steam URL', 'steam_url', gameTitle.steam_url, handleChange, 'url', 'fab fa-steam', errors)}
+                            {createInput('Website URL', 'website_url', gameTitle?.website_url, handleChange, 'url', 'fas fa-globe', errors)}
+                            {createInput('Steam URL', 'steam_url', gameTitle?.steam_url, handleChange, 'url', 'fab fa-steam', errors)}
                         </div>
                         <div className="row">
-                            {createInput('Itch.io URL', 'itch_url', gameTitle.itch_url, handleChange, 'url', 'fas fa-link', errors)}
+                            {createInput('Itch.io URL', 'itch_url', gameTitle?.itch_url, handleChange, 'url', 'fas fa-link', errors)}
                         </div>
-                        {createTextarea('Short Description', 'short_description', gameTitle.short_description, handleChange, errors, 'Enter a 1 paragraph brief short description about the game.')}
-                        {createTextarea('Long Description', 'long_description', gameTitle.long_description, handleChange, errors, 'Enter a longer more in-depth description about the game that can be multiple paragraphs.')}
+                        {createTextarea('Short Description', 'short_description', gameTitle?.short_description, handleChange, errors, 'Enter a 1 paragraph brief short description about the game.')}
+                        {createTextarea('Long Description', 'long_description', gameTitle?.long_description, handleChange, errors, 'Enter a longer more in-depth description about the game that can be multiple paragraphs.')}
                     </div>
 
                     <div className="card-header bg-secondary text-white">
@@ -263,12 +273,12 @@ const GameTitleForm = ({ gameTitle, onUpdate, onMainImageUpdate, onBannerImageUp
                     </div>
                     {showAdditionalInfo && (
                         <div className="card-body">
-                            {createTextarea('Gameplay Mechanics', 'gameplay_mechanics', gameTitle.gameplay_mechanics, handleChange, errors)}
-                            {createTextarea('Narrative Setting', 'narrative_setting', gameTitle.narrative_setting, handleChange, errors)}
-                            {createTextarea('Visual & Audio Style', 'visual_audio_style', gameTitle.visual_audio_style, handleChange, errors)}
-                            {createTextarea('DLC & Expansion Info', 'dlc_expansion_info', gameTitle.dlc_expansion_info, handleChange, errors)}
-                            {createTextarea('System Requirements', 'system_requirements', gameTitle.system_requirements, handleChange, errors)}
-                            {createTextarea('Critical Reception', 'critical_reception', gameTitle.critical_reception, handleChange, errors)}
+                            {createTextarea('Gameplay Mechanics', 'gameplay_mechanics', gameTitle?.gameplay_mechanics, handleChange, errors)}
+                            {createTextarea('Narrative Setting', 'narrative_setting', gameTitle?.narrative_setting, handleChange, errors)}
+                            {createTextarea('Visual & Audio Style', 'visual_audio_style', gameTitle?.visual_audio_style, handleChange, errors)}
+                            {createTextarea('DLC & Expansion Info', 'dlc_expansion_info', gameTitle?.dlc_expansion_info, handleChange, errors)}
+                            {createTextarea('System Requirements', 'system_requirements', gameTitle?.system_requirements, handleChange, errors)}
+                            {createTextarea('Critical Reception', 'critical_reception', gameTitle?.critical_reception, handleChange, errors)}
                         </div>
                     )}
                 </div>

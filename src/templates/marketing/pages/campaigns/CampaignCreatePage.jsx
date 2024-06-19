@@ -301,7 +301,7 @@ function CampaignCreatePage() {
     };
 
     const handleGameTitleUpdate = (updatedFields) => {
-        setGameTitle({ ...gameTitle, ...updatedFields });
+        //setGameTitle({ ...gameTitle, ...updatedFields });
     };
 
     const getButtonClass = (platform) => {
@@ -404,7 +404,7 @@ function CampaignCreatePage() {
                             <form onSubmit={handleSubmit}>
                                 {currentStep === 1 && <CampaignBasicInfoForm campaignData={campaignData} setCampaignData={setCampaignData} communities={communities} errors={errors} />}
                                 {currentStep === 2 && <CampaignTargetingForm campaignData={campaignData} setCampaignData={setCampaignData} setCountries={setCountries} setGenders={setGenders} setTypes={setTypes} communities={communities} errors={errors} />}
-                                {currentStep === 3 && <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} setMainImageBlob={setMainImageBlob} setBannerImageBlob={setBannerImageBlob} errors={titleErrors} externalGameData={externalGameTitle} />}
+                                {currentStep === 3 && <GameTitleForm gameTitle={gameTitle} onUpdate={handleGameTitleUpdate} setGameTitle={setGameTitle} setMainImageBlob={setMainImageBlob} setBannerImageBlob={setBannerImageBlob} errors={titleErrors} externalGameData={externalGameTitle} />}
                                 {currentStep === 4 && <CampaignSpendingLimitsForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />}
                                 {currentStep === 5 && <CampaignDateForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />}
                                 {currentStep === 6 && <CampaignInfluencerForm campaignData={campaignData} setCampaignData={setCampaignData} errors={errors} />}
