@@ -23,6 +23,7 @@ const CampaignsFindInfluencersPage = () => {
         tiktok_username: '',
         tiktok_follower_count_gt: '',
         tiktok_follower_count_lt: '',
+        keyword: ''
     });
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
@@ -101,6 +102,7 @@ const CampaignsFindInfluencersPage = () => {
             tiktok_username: '',
             tiktok_follower_count_gt: '',
             tiktok_follower_count_lt: '',
+            keyword: ''
         });
         setCurrentPage(1);
         navigate(`${location.pathname}?page=1`);
@@ -208,6 +210,18 @@ const CampaignsFindInfluencersPage = () => {
                     <Form>
                         <div className="row mb-4">
                             <div className="col-md-6">
+                                <Form.Group controlId="formKeyword">
+                                    <Form.Label>Keywords</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="keyword"
+                                        value={filters.keyword}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter keyword"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
                                 <Form.Group controlId="formFirstName">
                                     <Form.Label>First Name</Form.Label>
                                     <Form.Control
@@ -216,18 +230,6 @@ const CampaignsFindInfluencersPage = () => {
                                         value={filters.first_name}
                                         onChange={handleInputChange}
                                         placeholder="Enter first name"
-                                    />
-                                </Form.Group>
-                            </div>
-                            <div className="col-md-6">
-                                <Form.Group controlId="formLocation">
-                                    <Form.Label>Location</Form.Label>
-                                    <Form.Control
-                                        type="text"
-                                        name="location"
-                                        value={filters.location}
-                                        onChange={handleInputChange}
-                                        placeholder="Enter location"
                                     />
                                 </Form.Group>
                             </div>
@@ -318,6 +320,18 @@ const CampaignsFindInfluencersPage = () => {
                                         value={filters.tiktok_follower_count_lt}
                                         onChange={handleInputChange}
                                         placeholder="Enter maximum followers"
+                                    />
+                                </Form.Group>
+                            </div>
+                            <div className="col-md-6">
+                                <Form.Group controlId="formLocation">
+                                    <Form.Label>Location</Form.Label>
+                                    <Form.Control
+                                        type="text"
+                                        name="location"
+                                        value={filters.location}
+                                        onChange={handleInputChange}
+                                        placeholder="Enter location"
                                     />
                                 </Form.Group>
                             </div>

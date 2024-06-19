@@ -101,13 +101,13 @@ const InfluencerFindCampaignsPage = () => {
                                             {me?.influencer ? (
                                                 <>
                                                     <h6 className='text-black'>Your Estimated Earnings</h6>
-                                                    <p className="small">The estimated payout is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
+                                                    <p className="small">The estimated earnings is what you may earn based on the pricing in the rate card, your following size, and your engagement rate. If your potential earnings are showing as $0, make sure your social accounts are connected so we can analyze your earning potential.</p>
                                                     {(() => {
                                                         const potentialEarnings = Calculator.calculateEarningPotential(me?.influencer, campaign);
                                                         return (
                                                             <>
                                                                 <p><strong>Low Estimated Earnings:</strong> ${potentialEarnings.lowEarnings.toFixed(2)}</p>
-                                                                <p><strong>High Estimated Earnings:</strong> ${potentialEarnings.highEarnings.toFixed(2)}</p>
+                                                                <p><strong>High Estimated Earnings:</strong> ${(potentialEarnings.highEarnings * 1.5).toFixed(2)}</p>
                                                             </>
                                                         );
                                                     })()}

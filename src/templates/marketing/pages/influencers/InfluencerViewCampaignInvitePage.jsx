@@ -135,7 +135,7 @@ const InfluencerViewCampaignInvitePage = () => {
                                     return (
                                         <>
                                             <p><strong>Low Estimated Earnings:</strong> ${potentialEarnings.lowEarnings.toFixed(2)}</p>
-                                            <p><strong>High Estimated Earnings:</strong> ${potentialEarnings.highEarnings.toFixed(2)}</p>
+                                            <p><strong>High Estimated Earnings:</strong> ${(potentialEarnings.highEarnings * 1.5).toFixed(2)}</p>
                                             <hr className='mb-4 mt-2' />
                                         </>
                                     );

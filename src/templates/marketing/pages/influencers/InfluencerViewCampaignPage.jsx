@@ -204,7 +204,7 @@ const InfluencerViewCampaignPage = () => {
                                     return (
                                         <>
                                             <p><strong>Low Estimated Earnings:</strong> ${potentialEarnings.lowEarnings.toFixed(2)}</p>
-                                            <p><strong>High Estimated Earnings:</strong> ${potentialEarnings.highEarnings.toFixed(2)}</p>
+                                            <p><strong>High Estimated Earnings:</strong> ${(potentialEarnings.highEarnings * 1.5).toFixed(2)}</p>
                                             {!potentialEarnings.lowEarnings && !potentialEarnings.highEarnings && <p>Connect your social media to update your earnings <Link to={Navigate.creatorsOnboardingStep4Page()}>here</Link>.</p>}
                                         </>
                                     );
