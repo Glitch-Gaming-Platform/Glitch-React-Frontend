@@ -118,7 +118,7 @@ const CampaignsViewPage = () => {
 
 
                             <div className="col-md-4">
-                                <img src={(campaign?.title.image_main) ? campaign?.title.image_main : '/assets/images/titles/no_image_2.png'} className="img-fluid" style={{ width: "100%" }} />
+                                <img src={(campaign?.title?.image_main) ? campaign?.title?.image_main : '/assets/images/titles/no_image_2.png'} className="img-fluid" style={{ width: "100%" }} />
                             </div>
                             <div className="col-md-8">
                                 <h3 className="text-black">General Information</h3>
