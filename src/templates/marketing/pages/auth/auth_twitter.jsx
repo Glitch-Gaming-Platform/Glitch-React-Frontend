@@ -58,12 +58,18 @@ class AuthTwitter extends Component {
        
         let token = params.loginToken;
 
+        let redirectParam = params.redirect;
+
+        if (redirectParam) {
+            redirect += `?redirect=${encodeURIComponent(redirectParam)}`;
+        }
+
         if (Glitch.util.Session.isLoggedIn() && token) {
 
             Glitch.api.Auth.oneTimeLogin( token ).then(response => {
 
                 if (response.data.data.one_time_login_token) {
-                    redirect += '?token=' + response.data.data.one_time_login_token;
+                    redirect += (redirectParam ? '&' : '?') + 'token=' + response.data.data.one_time_login_token;
                 }
 
                 window.location = redirect;

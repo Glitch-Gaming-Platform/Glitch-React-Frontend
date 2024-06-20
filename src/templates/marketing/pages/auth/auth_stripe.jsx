@@ -52,12 +52,24 @@ class AuthStripe extends Component {
 
         let redirect = process.env.REACT_APP_OAUTH_STRIPE_URL;
 
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+       
+        let token = params.loginToken;
+
+        let redirectParam = params.redirect;
+
+        if (redirectParam) {
+            redirect += `?redirect=${encodeURIComponent(redirectParam)}`;
+        }
+
         if (Glitch.util.Session.isLoggedIn()) {
 
             Glitch.api.Auth.oneTimeLogin().then((response) => {
 
                 if (response.data.data.one_time_login_token) {
-                    redirect += '?token=' + response.data.data.one_time_login_token;
+                    redirect += (redirectParam ? '&' : '?') +'token=' + response.data.data.one_time_login_token;
                 }
 
                 window.location = redirect;

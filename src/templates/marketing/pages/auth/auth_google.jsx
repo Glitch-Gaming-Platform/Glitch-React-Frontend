@@ -52,15 +52,26 @@ class AuthGoogle extends Component {
 
         let redirect = process.env.REACT_APP_OAUTH_GOOGLE_URL;
 
-        if (Glitch.util.Session.isLoggedIn()) {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+       
+        let token = params.loginToken;
 
+        let redirectParam = params.redirect;
+
+        if (redirectParam) {
+            redirect += `?redirect=${encodeURIComponent(redirectParam)}`;
+        }
+
+        if (Glitch.util.Session.isLoggedIn()) {
 
            Glitch.api.Users.oneTimeLoginToken().then(response => {
 
                 console.log(response);
 
                 if (response.data.data.one_time_login_token) {
-                    redirect += '?token=' + response.data.data.one_time_login_token;
+                    redirect += (redirectParam ? '&' : '?') + 'token=' + response.data.data.one_time_login_token;
                 }
 
                 window.location = redirect;

@@ -13,13 +13,13 @@ const CreatorOnboardingStep4Page = () => {
     const navigate = useNavigate();
 
     const OAuthLinks = {
-        facebook: Navigate.authFacebook() + '?redirect=' + Navigate.authFacebookComplete(),
-        //instagram: Navigate.authInstagram() + '?redirect=' + Navigate.authInstagramComplete(),
-        tiktok: Navigate.authTikTok() + '?redirect=' + Navigate.authTikTokComplete(),
-        youtube: Navigate.authGoogle() + '?redirect=' + Navigate.authGoogleComplete(),
-        twitch: Navigate.authTwitch() + '?redirect=' + Navigate.authTwitchComplete(),
-        twitter: Navigate.authTwitter() + '?redirect=' + Navigate.authTwitterComplete(),
-        reddit: Navigate.authReddit() + '?redirect=' + Navigate.authRedditComplete(),
+        facebook: `${window.location.origin}${Navigate.authFacebook()}?redirect=${window.location.origin}${Navigate.authFacebookComplete()}`,
+        //instagram: `${window.location.origin}${Navigate.authInstagram()}?redirect=${window.location.origin}${Navigate.authInstagramComplete()}`,
+        tiktok: `${window.location.origin}${Navigate.authTikTok()}?redirect=${window.location.origin}${Navigate.authTikTokComplete()}`,
+        youtube: `${window.location.origin}${Navigate.authGoogle()}?redirect=${window.location.origin}${Navigate.authGoogleComplete()}`,
+        twitch: `${window.location.origin}${Navigate.authTwitch()}?redirect=${window.location.origin}${Navigate.authTwitchComplete()}`,
+        twitter: `${window.location.origin}${Navigate.authTwitter()}?redirect=${window.location.origin}${Navigate.authTwitterComplete()}`,
+        reddit: `${window.location.origin}${Navigate.authReddit()}?redirect=${window.location.origin}${Navigate.authRedditComplete()}`,
     };
 
     useEffect(() => {
