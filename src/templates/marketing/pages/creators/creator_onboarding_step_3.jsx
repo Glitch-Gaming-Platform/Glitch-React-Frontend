@@ -42,7 +42,7 @@ const CreatorOnboardinStep3Page = (props) => {
             <div className="login-section padding-top padding-bottom">
                 <div className="container">
                     <div className="account-wrapper">
-                        <h3 className="title">Step 3 of 4: Favorite Game Types</h3>
+                        <h3 className="title">Step 3 of 5: Favorite Game Types</h3>
                         <p>To better match you wth games you want to play, select your favorite game types below.</p>
                         <hr />
                         <form className="account-form">
