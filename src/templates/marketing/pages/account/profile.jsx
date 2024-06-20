@@ -403,7 +403,7 @@ class AccountUpdatePage extends Component {
                                 <div className="col-md-12">
                                     {this.renderOAuthButton('Twitch', this.state.me.twitch_auth_token, 'primary', 'twitch')}
                                     {this.renderOAuthButton('Facebook', this.state.me.facebook_auth_token, 'primary', 'facebook-f')}
-                                    {this.renderOAuthButton('YouTube', this.state.me.youtube_auth_token, 'danger', 'youtube')}
+                                    {this.renderOAuthButton('YouTube', this.state.me.google_auth_token, 'danger', 'youtube')}
                                     {this.renderOAuthButton('TikTok', this.state.me.tiktok_auth_token, 'info', 'tiktok')}
                                     {this.renderOAuthButton('Reddit', this.state.me.reddit_auth_token, 'danger', 'reddit')}
                                     {this.renderOAuthButton('Twitter', this.state.me.twitter_auth1_token, 'info', 'twitter')}
