@@ -7,7 +7,7 @@ import PageHeader from "../../component/layout/pageheader";
 import Glitch from 'glitch-javascript-sdk';
 import Navigate from "../../../../util/Navigate";
 
-const title = "Authenticate With Facebook";
+const title = "Authenticate Glitch With Facebook";
 
 class AuthFacebook extends Component {
 
@@ -86,8 +86,7 @@ class AuthFacebook extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
-                <PageHeader title={'Authenticate With Facebook'} curPage={'Sign Up'} />
+                
                 <div className="login-section padding-top padding-bottom">
                     <div className=" container">
                         <div className="account-wrapper">
@@ -103,7 +102,6 @@ class AuthFacebook extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </Fragment>
         );
     }

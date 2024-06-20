@@ -8,7 +8,7 @@ import PageHeader from "../../component/layout/pageheader";
 import Glitch from 'glitch-javascript-sdk';
 
 
-const title = "Authenticate With Reddit";
+const title = "Authenticate Glitch With Reddit";
 
 class AuthReddit extends Component {
 
@@ -86,9 +86,7 @@ class AuthReddit extends Component {
 
     render() {
         return (
-            <Fragment>
-                <Header />
-                <PageHeader title={'Authenticate With Reddit'} curPage={'Sign Up'} />
+            <Fragment>         
                 <div className="login-section padding-top padding-bottom">
                     <div className=" container">
                         <div className="account-wrapper">
@@ -104,7 +102,6 @@ class AuthReddit extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </Fragment>
         );
     }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Wysiwyg from '../../form/wysiwyg';
 import Glitch from 'glitch-javascript-sdk';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faRobot} from '@fortawesome/free-solid-svg-icons';
 
 function CreatorProfileQuestionForm({ profile, user, handleWysiwygChange }) {
     const fieldDetails = {
@@ -76,8 +76,8 @@ function CreatorProfileQuestionForm({ profile, user, handleWysiwygChange }) {
     return (
         <div className='text-start'>
             <div className='text-center'>
-                <button type="button" className="btn btn-primary" onClick={generateProfile} disabled={loading}>
-                    Auto Generate With AI
+                <button type="button" className="btn btn-primary btn-lg" onClick={generateProfile} disabled={loading}>
+                    <FontAwesomeIcon icon={faRobot} /> Auto Generate With AI
                 </button>
                 <p className='small'>Have AI automatically fill out your answers.</p>
                 {loading && (

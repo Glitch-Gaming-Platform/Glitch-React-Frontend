@@ -8,7 +8,7 @@ import PageHeader from "../../component/layout/pageheader";
 import Glitch from 'glitch-javascript-sdk';
 
 
-const title = "Authenticate With Youtube";
+const title = "Authenticate Glitch With Youtube";
 
 class AuthYoutube extends Component {
 
@@ -87,8 +87,7 @@ class AuthYoutube extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
-                <PageHeader title={'Authenticate With Youtube'} curPage={'Sign Up'} />
+            
                 <div className="login-section padding-top padding-bottom">
                     <div className=" container">
                         <div className="account-wrapper">
@@ -104,7 +103,6 @@ class AuthYoutube extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </Fragment>
         );
     }

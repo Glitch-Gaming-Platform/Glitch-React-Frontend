@@ -84,8 +84,6 @@ class AuthGoogle extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
-                <PageHeader title={'Authenticate With Google'} curPage={'Sign Up'} />
                 <div className="login-section padding-top padding-bottom">
                     <div className=" container">
                         <div className="account-wrapper">
@@ -101,7 +99,6 @@ class AuthGoogle extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </Fragment>
         );
     }

@@ -8,7 +8,7 @@ import PageHeader from "../../component/layout/pageheader";
 import Glitch from 'glitch-javascript-sdk';
 
 
-const title = "Authenticate With Twitter";
+const title = "Authenticate Glitch With Twitter";
 
 class AuthTwitter extends Component {
 
@@ -87,8 +87,6 @@ class AuthTwitter extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
-                <PageHeader title={'Authenticate With Twitter'} curPage={'Sign Up'} />
                 <div className="login-section padding-top padding-bottom">
                     <div className=" container">
                         <div className="account-wrapper">
@@ -104,7 +102,6 @@ class AuthTwitter extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </Fragment>
         );
     }

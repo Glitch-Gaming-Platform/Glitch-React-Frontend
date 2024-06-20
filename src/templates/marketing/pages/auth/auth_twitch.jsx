@@ -7,7 +7,7 @@ import Header from "../../component/layout/header";
 import PageHeader from "../../component/layout/pageheader";
 import Glitch from 'glitch-javascript-sdk';
 
-const title = "Authenticate With Twitch";
+const title = "Authenticate Glitch With Twitch";
 
 class AuthTwitch extends Component {
 
@@ -81,8 +81,7 @@ class AuthTwitch extends Component {
     render() {
         return (
             <Fragment>
-                <Header />
-                <PageHeader title={'Authenticate With Twitch'} curPage={'Sign Up'} />
+               
                 <div className="login-section padding-top padding-bottom">
                     <div className=" container">
                         <div className="account-wrapper">
@@ -98,7 +97,6 @@ class AuthTwitch extends Component {
                         </div>
                     </div>
                 </div>
-                <Footer />
             </Fragment>
         );
     }
