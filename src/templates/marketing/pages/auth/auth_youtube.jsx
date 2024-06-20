@@ -50,7 +50,7 @@ class AuthYoutube extends Component {
 
         event.preventDefault();
 
-        let redirect = process.env.REACT_APP_OAUTH_YOUTUBE_URL;
+        let redirect = process.env.REACT_APP_OAUTH_YOUTUBE_URL ?? 'https://api.glitch.fun/auth/youtube/redirect';
 
         const params = new Proxy(new URLSearchParams(window.location.search), {
             get: (searchParams, prop) => searchParams.get(prop),
@@ -97,7 +97,7 @@ class AuthYoutube extends Component {
 
                                 <p>Authenticating with Youtube will allow you restream your game directly to Youtube.</p>
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
+                                    <button type="button" className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
                                 </div>
                             </form>
 

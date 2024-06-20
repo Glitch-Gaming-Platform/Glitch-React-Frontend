@@ -49,7 +49,7 @@ class AuthTwitch extends Component {
 
         event.preventDefault();
 
-        let redirect = process.env.REACT_APP_OAUTH_TWITCH_URL;
+        let redirect = process.env.REACT_APP_OAUTH_TWITCH_URL ?? 'https://api.glitch.fun/auth/twitch/redirect';
 
         if (Glitch.util.Session.isLoggedIn()) {
             
@@ -91,7 +91,7 @@ class AuthTwitch extends Component {
 
                                 <p>Authenticating with Twitch will allow you restream your game directly to Twitch.</p>
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
+                                    <button type="button" className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
                                 </div>
                             </form>
 

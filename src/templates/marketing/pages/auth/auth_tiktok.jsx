@@ -49,7 +49,7 @@ class AuthTikTok extends Component {
 
         event.preventDefault();
 
-        let redirect = process.env.REACT_APP_OAUTH_TIKTOK_URL;
+        let redirect = process.env.REACT_APP_OAUTH_TIKTOK_URL ?? 'https://api.glitch.fun/auth/tiktok/redirect';
 
         if (Glitch.util.Session.isLoggedIn()) {
             
@@ -91,7 +91,7 @@ class AuthTikTok extends Component {
 
                                 <p>Authenticating with TikTok will allow you to post your content directly to TikTok.</p>
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
+                                    <button type="button" className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
                                 </div>
                             </form>
 

@@ -91,7 +91,7 @@ class AuthStripe extends Component {
 
                                 <p>Connect with Stripe in order to receive payments and donations.</p>
                                 <div className="form-group">
-                                    <button className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
+                                    <button type="button" className="d-block default-button" onClick={(e => { this.authenticate(e) })}><span>Authenticate</span></button>
                                 </div>
                             </form>
 
