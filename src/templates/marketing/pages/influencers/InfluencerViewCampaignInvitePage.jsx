@@ -110,8 +110,8 @@ const InfluencerViewCampaignInvitePage = () => {
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
                         </div>
-                        <h2 className="pageheader-title">View Campaign</h2>
-                        <p className="lead">View the information for this campaign.</p>
+                        <h2 className="pageheader-title">Get Paid To Play and Promote {campaign?.title}</h2>
+                        <p className="lead">Learn more about {campaign?.title} below and the options for getting paid to promote this game.</p>
                     </div>
                 </div>
             </section>
