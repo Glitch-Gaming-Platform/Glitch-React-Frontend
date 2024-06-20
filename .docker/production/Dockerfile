@@ -49,9 +49,7 @@ ENV REACT_APP_STRIPE_SUBSCRIPTION_INFLUENCER_PLAN2=$REACT_APP_STRIPE_SUBSCRIPTIO
 ENV REACT_APP_STRIPE_SUBSCRIPTION_INFLUENCER_PLAN3=$REACT_APP_STRIPE_SUBSCRIPTION_INFLUENCER_PLAN3
 
 RUN apt-get update && apt-get install -y \
-    libx11-xcb1
-
-RUN apt-get update && apt-get install -y \
+    libx11-xcb1 \
     gconf-service \
     libasound2 \
     libatk1.0-0 \
@@ -94,6 +92,7 @@ RUN apt-get update && apt-get install -y \
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 RUN apt-get update && apt-get install -y google-chrome-stable
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set the working directory
 WORKDIR /app
