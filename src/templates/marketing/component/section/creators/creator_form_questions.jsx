@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Wysiwyg from '../../form/wysiwyg';
+import Glitch from 'glitch-javascript-sdk';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 function CreatorProfileQuestionForm({ profile, user, handleWysiwygChange }) {
     const fieldDetails = {
@@ -25,10 +28,65 @@ function CreatorProfileQuestionForm({ profile, user, handleWysiwygChange }) {
         },
     };
 
+    const [loading, setLoading] = useState(false);
+    const [loadingText, setLoadingText] = useState('Gathering Data....');
+    const loadingTexts = [
+        'Gathering Data....',
+        'Processing Information....',
+        'Analyzing Profile.....',
+        'Reviewing Social Media Posts......',
+        'Generating Profile....'
+    ];
+
+    useEffect(() => {
+        let interval;
+        if (loading) {
+            interval = setInterval(() => {
+                setLoadingText(prevText => {
+                    const currentIndex = loadingTexts.indexOf(prevText);
+                    const nextIndex = (currentIndex + 1) % loadingTexts.length;
+                    return loadingTexts[nextIndex];
+                });
+            }, 10000);
+        }
+        return () => clearInterval(interval);
+    }, [loading]);
+
+    const generateProfile = () => {
+        setLoading(true);
+
+        Glitch.api.Users.generateInfluencerProfile().then(response => {
+            let content = response.data.data;
+
+            handleWysiwygChange(content.influencer_brand_approach, 'influencer_brand_approach');
+            handleWysiwygChange(content.influencer_content_theme , 'influencer_content_theme');
+            handleWysiwygChange(content.influencer_content_type, 'influencer_content_type');
+            handleWysiwygChange(content.influencer_content_unique, 'influencer_content_unique');
+            handleWysiwygChange(content.influencer_games_why, 'influencer_games_why');
+            setLoading(false);
+        }).catch(error => {
+            setLoading(false);
+        });
+    };
+
+    useEffect(() => {
+        // This effect will trigger when the profile prop changes
+    }, [profile]);
+
     return (
         <div className='text-start'>
+            <div className='text-center'>
+                <button type="button" className="btn btn-primary" onClick={generateProfile} disabled={loading}>
+                    Auto Generate With AI
+                </button>
+                <p className='small'>Have AI automatically fill out your answers.</p>
+                {loading && (
+                    <div className="mt-3">
+                        <FontAwesomeIcon icon={faSpinner} spin /> {loadingText}
+                    </div>
+                )}
+            </div>
             {Object.entries(profile).map(([field, content]) => (
-                
                 <div key={field} className="mb-3">
                     <label htmlFor={field} className="form-label">{fieldDetails[field].label}</label>
                     <div className="text-white">{fieldDetails[field].description}</div>

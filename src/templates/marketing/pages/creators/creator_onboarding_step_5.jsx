@@ -30,7 +30,7 @@ const CreatorOnboardingStep5Page = () => {
     }, []);
 
     const handleWysiwygChange = (content, field) => {
-        setProfile({ ...profile, [field]: content });
+        setProfile(prevProfile => ({ ...prevProfile, [field]: content }));
     };
 
     const goToNextScreen = () => {
