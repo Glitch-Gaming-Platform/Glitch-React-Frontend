@@ -110,6 +110,8 @@
     "typescript": "^4.9.5"
   },
   "reactSnap": {
+    "skipThirdPartyRequests": true,
+    "preconnectThirdParty": false,
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"
