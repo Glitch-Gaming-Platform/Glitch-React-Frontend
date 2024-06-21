@@ -2,10 +2,17 @@ import React from 'react';
 import Danger from '../../alerts/Danger';
 import { InputGroup, FormControl } from 'react-bootstrap'; // make sure to import these
 import Switch from "react-switch";
+import Select from '../../form/select';
 
 function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
+
     const handleInputChange = (e) => {
         setCampaignData({ ...campaignData, [e.target.name]: e.target.value });
+    };
+
+    const handleObjectiveSelectChange = (selectedValue) => {
+       
+        setCampaignData({ ...campaignData, [selectedValue.target.name]: selectedValue.target.value });
     };
 
     // Function to toggle campaign active status
@@ -27,13 +34,14 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                     <hr />
                     <div className="mb-3">
                         <label htmlFor="manage_creator_approval_with" className="form-label"> &nbsp;Creator Approval Management</label>
-                        <select className="form-control" name="manage_creator_approval_with" onChange={handleInputChange}>
-                            <option value="self">Self</option>
-                            <option value="ai">A.I.</option>
-                            <option value="agency">Agency</option>
-                        </select>
 
-                        <small className="form-text text-muted">Choose how the process of selecting relevant creators will be managed.</small>
+                        <Select name="manage_creator_approval_with" className="form-select" onChange={handleObjectiveSelectChange} value={campaignData.manage_creator_approval_with}>
+                            <option value="self">Self ( You will manage this yourself)</option>
+                            <option value="ai">A.I. ( A.I. will automatically manage this process)</option>
+                            <option value="agency">Agency ( A third party agency you've invited will manage this)</option>
+                        </Select>
+
+                        <small className="form-text text-muted">Finding creators will involve searching through a list of influencers and inviting them to the campaign. Choose how the process of selecting relevant creators will be managed.</small>
                         {errors && errors['manage_creator_approval_with'] && errors['manage_creator_approval_with'].map(function (name, index) {
                             return <Danger message={name} key={index} />;
                         })}
@@ -51,13 +59,14 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                     </div>
                     <div className="mb-3">
                         <label htmlFor="manage_content_approval_with" className="form-label"> &nbsp;Content Approval Management</label>
-                        <select className="form-control" name="manage_content_approval_with" onChange={handleInputChange}>
-                            <option value="self">Self</option>
-                            <option value="ai">A.I.</option>
-                            <option value="agency">Agency</option>
-                        </select>
 
-                        <small className="form-text text-muted">Select how the creators' content will be approved if the approval process is active.</small>
+                        <Select name="manage_content_approval_with" className="form-select" onChange={handleObjectiveSelectChange} value={campaignData.manage_content_approval_with}>
+                            <option value="self">Self ( You will manage this yourself)</option>
+                            <option value="ai">A.I. ( A.I. will automatically manage this process)</option>
+                            <option value="agency">Agency ( A third party agency you've invited will manage this)</option>
+                        </Select>
+
+                        <small className="form-text text-muted">One a creator uploads content, it might require review to make sure the content meets the expectations set. Select how the creators' content will be approved if the approval process is active.</small>
                         {errors && errors['manage_content_approval_with'] && errors['manage_content_approval_with'].map(function (name, index) {
                             return <Danger message={name} key={index} />;
                         })}

@@ -1,6 +1,6 @@
 import Glitch from 'glitch-javascript-sdk';
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import CampaignLinksManager from '../../component/section/campaigns/campaign_links_manager';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
@@ -71,6 +71,8 @@ const InfluencerManageCampaignPage = () => {
         7: 'Probation',
     };
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         if (Glitch.util.Session.isLoggedIn()) {
             Glitch.api.Users.me().then(response => {
@@ -139,7 +141,7 @@ const InfluencerManageCampaignPage = () => {
                 }
             });
         } else {
-            alert("Please Login To Sign-Up For A Campaign");
+            navigate(Navigate.creatorsOnboardingStep1Page());
         }
     }
 

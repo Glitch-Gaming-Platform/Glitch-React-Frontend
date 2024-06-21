@@ -126,7 +126,7 @@ const InfluencerViewCampaignPage = () => {
                 }
             });
         } else {
-            navigate(Navigate.creatorsOnboardingStep1Page);
+            navigate(Navigate.creatorsOnboardingStep1Page());
         }
     };
 

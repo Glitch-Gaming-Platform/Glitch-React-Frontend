@@ -99,6 +99,7 @@ function CampaignSpendingLimitsForm({ campaignData, setCampaignData, errors }) {
 
                     {createInputField('spend_limit', 'fa-money-bill-wave', 'Campaign Total Budget', 'Set a maximum budget for the campaign. Campaign stops when this limit is reached. Enter zero for unlimited.')}
                     {createInputField('spend_limit_per_influencer', 'fa-user-tie', 'Max Budget Per Influencer', 'Set a maximum budget for each influencer. Influencer\'s campaign stops when this limit is reached. Enter zero for unlimited.')}
+                    {createInputField('influencer_limit', 'fa-tachometer-alt', 'Max Number Of Influencers', 'Set a maximum that can register for this campaign.')}
                 </div>
             </div>
         </div>
