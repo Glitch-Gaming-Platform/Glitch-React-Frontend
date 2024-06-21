@@ -13,6 +13,7 @@ import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
 import Breadcrumbs from '../../component/layout/breadcrumb';
 import CampaignInviteManager from '../../component/section/campaigns/campaign_invites_manager';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 const CampaignsViewPage = () => {
 
@@ -82,6 +83,7 @@ const CampaignsViewPage = () => {
     return (
         <>
             <PublisherHeader position={"relative"} />
+            
             <section className="pageheader-section-min">
                 <div className="container mt-4">
                     <Breadcrumbs items={[
@@ -101,13 +103,22 @@ const CampaignsViewPage = () => {
                 </div>
             </section>
 
+            
+
+            
+
             <div className="container mt-5 mb-2" >
                 <div className="section-wrapper">
                     <Link className={"btn btn-success"} to={Navigate.campaignsUpdatePage(campaign.id)} >Update Campaign</Link>
                 </div>
             </div>
 
-            <div className="container my-5">
+        
+            <div className="container mt-5">
+                <CampaignNavbar campaignId={id} />
+            </div>
+
+            <div className="container">
 
                 <div className="card">
                     <div className="card-header bg-secondary">

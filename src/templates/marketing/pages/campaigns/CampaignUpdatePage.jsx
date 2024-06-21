@@ -18,6 +18,7 @@ import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignManagementForm from '../../component/section/campaigns/campaign_management';
 import CampaignTargetingForm from '../../component/section/campaigns/campaign_targeting';
 import Breadcrumbs from '../../component/layout/breadcrumb';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 
 function CampaignUpdatePage() {
@@ -202,6 +203,10 @@ function CampaignUpdatePage() {
                         <h2>Update Campaign</h2>
 
                         <p className="lead">Use the form below to update an influencer campaign for your game. After the campaign is created, influencers can register and start creating content.</p>
+                    </div>
+
+                    <div className="container mt-5">
+                        <CampaignNavbar campaignId={id} />
                     </div>
 
                     <form onSubmit={handleSubmit}>

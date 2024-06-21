@@ -9,6 +9,7 @@ import Breadcrumbs from '../../component/layout/breadcrumb';
 import Calculator from '../../../../util/Calculator';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { getInfluencerImage } from '../../../../util/InfluencerUtils';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 const CampaignsFindInfluencersPage = () => {
     const [influencers, setInfluencers] = useState([]);
@@ -34,6 +35,7 @@ const CampaignsFindInfluencersPage = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [subscriptions, setSubscriptions] = useState([]);
     const [showMore, setShowMore] = useState(false);
+    const [inviteStatus, setInviteStatus] = useState({});
 
     const { id } = useParams();
     const navigate = useNavigate();
@@ -147,6 +149,10 @@ const CampaignsFindInfluencersPage = () => {
             await Glitch.api.Campaigns.sendInfluencerInvite(id, { influencer_id: influencer_id });
             setModalMessage('Invite Sent Successfully');
             setShowModal(true);
+            setInviteStatus((prevStatus) => ({
+                ...prevStatus,
+                [influencer_id]: 'sent'
+            }));
         } catch (error) {
             if (error.response && error.response.status === 402) {
                 if (subscriptions.length === 0) {
@@ -198,6 +204,7 @@ const CampaignsFindInfluencersPage = () => {
         <>
             <Fragment>
                 <PublisherHeader position={"relative"} />
+
                 <div className="container mt-4">
                     <Breadcrumbs items={[
                         { name: 'Campaigns', link: Navigate.campaignsPage() },
@@ -207,6 +214,12 @@ const CampaignsFindInfluencersPage = () => {
 
                     <h2><FontAwesomeIcon icon={faUsers} /> Search Influencers</h2>
                     <p className='lead'>Search for the right influencer(s) for your campaign.</p>
+                </div>
+                <div className="container mt-5">
+                    <CampaignNavbar campaignId={id} />
+                </div>
+                <div className="container mt-4">
+
                     <Form>
                         <div className="row mb-4">
                             <div className="col-md-6">
@@ -353,7 +366,7 @@ const CampaignsFindInfluencersPage = () => {
                             <div key={influencer.id} className="card mb-3 w-100">
                                 <div className="row g-0">
                                     <div className="col-md-3 pt-2">
-                                        <img src={getInfluencerImage(influencer)} style={{width : '100%'}} className="img-fluid rounded-start" alt={influencer.first_name} />
+                                        <img src={getInfluencerImage(influencer)} style={{ width: '100%' }} className="img-fluid rounded-start" alt={influencer.first_name} />
                                     </div>
                                     <div className="col-md-9">
                                         <div className="card-body">
@@ -402,8 +415,8 @@ const CampaignsFindInfluencersPage = () => {
                                                     Invited on {new Date(influencer.invite.invite_created_at).toLocaleDateString()}
                                                 </button>
                                             ) : (
-                                                <button type="button" className="btn btn-success" onClick={() => sendInvite(influencer.id)} disabled={isLoading}>
-                                                    {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : 'Invite'}
+                                                <button type="button" className="btn btn-success" onClick={() => sendInvite(influencer.id)} disabled={isLoading || inviteStatus[influencer.id] === 'sent'}>
+                                                    {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : inviteStatus[influencer.id] === 'sent' ? 'Invite Just Sent' : 'Invite'}
                                                 </button>
                                             )}
                                             <Link to={Navigate.campaignsViewInfluencer(id, influencer.id)} type="button" className="btn btn-primary ms-2">View More</Link>
@@ -454,4 +467,3 @@ const CampaignsFindInfluencersPage = () => {
 };
 
 export default CampaignsFindInfluencersPage;
-

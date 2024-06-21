@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import MessageMessagesList from '../messages/message_messages';
 import { Modal, Button } from 'react-bootstrap';
 import { getInfluencerImage } from '../../../../../util/InfluencerUtils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 const CampaignInviteManager = ({ campaignID }) => {
     const [invites, setInvites] = useState([]);
@@ -14,6 +16,7 @@ const CampaignInviteManager = ({ campaignID }) => {
     const [newMessage, setNewMessage] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredInvites, setFilteredInvites] = useState([]);
+    const [inviteStatus, setInviteStatus] = useState({});
 
     useEffect(() => {
         setCampaignID(campaignID);
@@ -62,11 +65,24 @@ const CampaignInviteManager = ({ campaignID }) => {
     };
 
     const resendInvite = async (influencerID) => {
-        Glitch.api.Campaigns.sendInfluencerInvite(campaign_id, { influencer_id: influencerID }).then(response => {
+        setInviteStatus(prevStatus => ({
+            ...prevStatus,
+            [influencerID]: 'sending'
+        }));
+        try {
+            await Glitch.api.Campaigns.sendInfluencerInvite(campaign_id, { influencer_id: influencerID });
+            setInviteStatus(prevStatus => ({
+                ...prevStatus,
+                [influencerID]: 'resent'
+            }));
             fetchInvites(campaign_id);
-        }).catch(error => {
+        } catch (error) {
             console.error("Failed to resend invite:", error);
-        });
+            setInviteStatus(prevStatus => ({
+                ...prevStatus,
+                [influencerID]: 'error'
+            }));
+        }
     };
 
     const showMessages = async (userID) => {
@@ -136,7 +152,7 @@ const CampaignInviteManager = ({ campaignID }) => {
                                     </Link>
                                 </div>
                                 <div className="author-content text-white">
-                                    <h6 className="mb-2">{invite.influencer.first_name} {getStatusBadge(invite)}</h6>
+                                    <h6 className="mb-2">{invite.influencer.first_name || invite.influencer.instagram_username || invite.influencer.youtube_title} {getStatusBadge(invite)}</h6>
 
                                     <Link className="btn btn-info me-2 btn-sm" to={Navigate.campaignsViewInfluencer(campaign_id, invite.influencer.id)}>
                                         <i className="fas fa-user"></i> Profile
@@ -144,8 +160,20 @@ const CampaignInviteManager = ({ campaignID }) => {
 
                                     {!invite.accepted && !invite.rejected ?
                                         <>
-                                            <button className="btn btn-success btn-sm me-2" onClick={() => resendInvite(invite.influencer.id)}>
-                                                <i className="fas fa-redo"></i> Resend Invite
+                                            <button
+                                                className="btn btn-success btn-sm me-2"
+                                                onClick={() => resendInvite(invite.influencer.id)}
+                                                disabled={inviteStatus[invite.influencer.id] === 'sending' || inviteStatus[invite.influencer.id] === 'resent'}
+                                            >
+                                                {inviteStatus[invite.influencer.id] === 'sending' ? (
+                                                    <FontAwesomeIcon icon={faSpinner} spin />
+                                                ) : inviteStatus[invite.influencer.id] === 'resent' ? (
+                                                    'Resent'
+                                                ) : (
+                                                    <>
+                                                        <i className="fas fa-redo"></i> Resend Invite
+                                                    </>
+                                                )}
                                             </button>
                                             <button className="btn btn-danger btn-sm me-2" onClick={() => withdrawInfluencer(invite.influencer.id)}>
                                                 <i className="fas fa-times"></i> Withdraw Invite

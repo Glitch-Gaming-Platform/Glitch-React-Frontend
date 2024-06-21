@@ -13,6 +13,7 @@ import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignMentionsManager from '../../component/section/campaigns/campaign_mentions_manager';
 import Breadcrumbs from '../../component/layout/breadcrumb';
 import CampaignInviteManager from '../../component/section/campaigns/campaign_invites_manager';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 const CampaignsInvitePage = () => {
 
@@ -102,6 +103,10 @@ const CampaignsInvitePage = () => {
                     </div>
                 </section>
             </Fragment>
+
+            <div className="container mt-5">
+                <CampaignNavbar campaignId={id} />
+            </div>
 
 
             <CampaignInviteManager campaignID={id}/>

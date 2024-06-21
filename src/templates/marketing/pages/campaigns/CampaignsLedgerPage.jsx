@@ -7,6 +7,7 @@ import Breadcrumbs from '../../component/layout/breadcrumb';
 import PublisherHeader from '../../component/layout/publisherheader';
 import CampaignLedger from '../../component/section/campaigns/campaign_ledger';
 import Navigate from '../../../../util/Navigate';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 const CampaignsLedgerPage = () => {
     const [campaign, setCampaign] = useState({});
@@ -45,6 +46,10 @@ const CampaignsLedgerPage = () => {
                         </div>
                     </div>
                 </section>
+
+                <div className="container mt-5">
+                    <CampaignNavbar campaignId={id} />
+                </div>
 
                 <section className="campaign-ledger-section">
                     <div className="container mt-4">
