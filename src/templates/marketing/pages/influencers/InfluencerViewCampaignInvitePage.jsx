@@ -98,7 +98,7 @@ const InfluencerViewCampaignInvitePage = () => {
                 }
             });
         } else {
-            alert("Please Login To Sign-Up For A Campaign");
+            navigate(Navigate.creatorsOnboardingStep1Page());
         }
     };
 
