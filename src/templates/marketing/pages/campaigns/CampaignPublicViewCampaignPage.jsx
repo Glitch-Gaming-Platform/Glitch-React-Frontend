@@ -14,7 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import InfluencerHeader from '../../component/layout/infuencerheader';
 import Calculator from '../../../../util/Calculator';
 
-const InfluencerViewCampaignPage = () => {
+const CampaignPublicViewCampaignPage = () => {
     const [campaign, setCampaign] = useState({});
     const [current, setCurrent] = useState(null);
     const [invite, setInvite] = useState(null);
@@ -283,4 +283,4 @@ const InfluencerViewCampaignPage = () => {
     );
 };
 
-export default InfluencerViewCampaignPage;
+export default CampaignPublicViewCampaignPage;
