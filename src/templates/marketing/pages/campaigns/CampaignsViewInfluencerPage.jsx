@@ -7,6 +7,7 @@ import PublisherHeader from '../../component/layout/publisherheader';
 import Navigate from '../../../../util/Navigate';
 import Breadcrumbs from '../../component/layout/breadcrumb';
 import { getInfluencerImage } from '../../../../util/InfluencerUtils';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 const DEFAULT_IMAGE = 'https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png';
 
@@ -110,6 +111,10 @@ const CampaignsViewInfluencerPage = () => {
                     </div>
                 </div>
             </section>
+
+            <div className="container mt-5">
+                <CampaignNavbar campaignId={id} />
+            </div>
 
             <div className="container mt-4">
                 <div className="card mb-4">

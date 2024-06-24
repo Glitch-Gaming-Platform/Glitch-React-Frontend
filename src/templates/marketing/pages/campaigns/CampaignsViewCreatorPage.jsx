@@ -14,6 +14,7 @@ import CreatorFollowerCountDisplay from '../../component/section/creators/creato
 import CreatorPostingAnalytics from '../../component/section/creators/creator_posting_analytics';
 import PublisherHeader from '../../component/layout/publisherheader';
 import CreatorHeader from '../../component/section/creators/creator_header';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 const CampaignsViewCreatorPage = () => {
 
@@ -50,6 +51,8 @@ const CampaignsViewCreatorPage = () => {
     return (
         <>
             <PublisherHeader position={"relative"} />
+            
+            
             <section className="pageheader-section-min">
                 <div className="container">
                     <div className="section-wrapper text-center text-uppercase">
@@ -62,6 +65,10 @@ const CampaignsViewCreatorPage = () => {
                     </div>
                 </div>
             </section>
+
+            <div className="container mt-5">
+                <CampaignNavbar campaignId={id} />
+            </div>
 
             <div className="container mt-5 mb-2" >
                 <CreatorHeader user={user} />

@@ -10,6 +10,7 @@ import PublisherHeader from '../../component/layout/publisherheader';
 import Danger from '../../component/alerts/Danger';
 import CampaignPaymentForm from '../../component/section/campaigns/campaign_payment';
 import Breadcrumbs from '../../component/layout/breadcrumb';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 const CampaignUpdateInfluencerPage = () => {
     const [campaign, setCampaign] = useState({});
@@ -100,6 +101,10 @@ const CampaignUpdateInfluencerPage = () => {
                     </div>
                 </div>
             </section>
+
+            <div className="container mt-5">
+                <CampaignNavbar campaignId={id} />
+            </div>
 
             <div className="container my-5">
                 <div className="card text-black">

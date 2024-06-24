@@ -19,6 +19,7 @@ import CreatorLinksCharts from '../../component/section/creators/creator_links_c
 import CreatorLinksList from '../../component/section/creators/creator_links_list';
 import CreatorHeader from '../../component/section/creators/creator_header';
 import Breadcrumbs from '../../component/layout/breadcrumb';
+import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
 
 const CampaignsViewCreatorPerformancePage = () => {
 
@@ -90,6 +91,10 @@ const CampaignsViewCreatorPerformancePage = () => {
                     </div>
                 </div>
             </section>
+
+            <div className="container mt-5">
+                <CampaignNavbar campaignId={id} />
+            </div>
 
             <div className='container mt-4'>
                 <h2>{user.username}</h2>
