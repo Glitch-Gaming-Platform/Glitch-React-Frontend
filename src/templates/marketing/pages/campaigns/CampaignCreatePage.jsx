@@ -33,6 +33,7 @@ function CampaignCreatePage() {
     const [games, setGames] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [selectedGameId, setSelectedGameId] = useState(null);
+    const [errordGameId, setErrorGameId] = useState(null);
     const [loadingMessage, setLoadingMessage] = useState('Searching for game data...');
     const [loadError, setLoadError] = useState(false);
 
@@ -171,6 +172,7 @@ function CampaignCreatePage() {
         }).finally(() => {
             setIsLoading(false);
             setSelectedGameId(null);
+            setErrorGameId(game_id);
         });
     };
 
@@ -352,7 +354,7 @@ function CampaignCreatePage() {
                                         <button className="btn btn-primary btn-sm" onClick={() => generateCampaignData(game.id)} disabled={selectedGameId !== null}>
                                             {selectedGameId === game.id && isLoading ? <><Loading /> {loadingMessage}</>: 'Select Game'}
                                         </button>
-                                        {loadError && (
+                                        {loadError && errordGameId === game.id && (
                                             <div className="alert alert-danger mt-4">
                                                 An error has occurred, it happens. Please try to select your game again.
                                             </div>

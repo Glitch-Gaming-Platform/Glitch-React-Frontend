@@ -19,6 +19,7 @@ const CampaignsViewInfluencerPage = () => {
     const [showErrorModal, setShowErrorModal] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [subscriptions, setSubscriptions] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -49,9 +50,10 @@ const CampaignsViewInfluencerPage = () => {
     };
 
     const sendInvite = () => {
+        setIsLoading(true);
         Glitch.api.Campaigns.sendInfluencerInvite(id, { influencer_id: influencer_id }).then(response => {
-            setShowSuccessModal(true); // Show the modal on successful invite
-            fetchInfluencer(); // Refresh the influencer data to update the invite status
+            setShowSuccessModal(true);
+            fetchInfluencer();
         }).catch((error) => {
             if (error.response && error.response.status === 402) {
                 if (subscriptions.length === 0) {
@@ -68,6 +70,8 @@ const CampaignsViewInfluencerPage = () => {
             } else {
                 console.error('Error sending invite', error);
             }
+        }).finally(() => {
+            setIsLoading(false);
         });
     };
 
@@ -173,8 +177,8 @@ const CampaignsViewInfluencerPage = () => {
 
                 <div className='text-center'>
                     {influencer.invite && (!influencer.invite.accepted && !influencer.invite.rejected)? (
-                        <button className='btn btn-warning btn-lg' type='button' onClick={sendInvite}>
-                            Resend Invite (Sent on {new Date(influencer.invite.invite_created_at).toLocaleDateString()})
+                        <button className='btn btn-warning btn-lg' type='button' onClick={sendInvite} disabled={isLoading}>
+                            {isLoading ? <><FontAwesomeIcon icon="spinner" spin /> Sending Invite.... </> : `Resend Invite (Sent on ${new Date(influencer.invite.invite_created_at).toLocaleDateString()})`}
                         </button>
                     ) : influencer.invite ?
                     <>
@@ -182,8 +186,8 @@ const CampaignsViewInfluencerPage = () => {
                     </>
                     
                     : (
-                        <button className='btn btn-success btn-lg' type='button' onClick={sendInvite}>
-                            Invite To Campaign
+                        <button className='btn btn-success btn-lg' type='button' onClick={sendInvite} disabled={isLoading}>
+                            {isLoading ? <><FontAwesomeIcon icon="spinner" spin /> Sending Invite.... </> : 'Invite To Campaign'}
                         </button>
                     )}
                 </div>
