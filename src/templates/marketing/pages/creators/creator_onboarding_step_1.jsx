@@ -142,6 +142,15 @@ const CreatorOnboardinStep1Page = (props) => {
                                     placeholder="Confirm Password *"
                                 />
                             </div>
+                            <div className="form-group-1">
+                                <label className="form-label">Receive Email Upates</label> &nbsp;&nbsp;&nbsp;
+                                <input
+                                    type="checkbox"
+                                    className='form-check-input'
+                                    placeholder="Recieve Email Updates"
+                                    checked={true}
+                                />
+                            </div>
                             <div className="form-group">
                                 <button type="submit" className="d-block default-button"><span>{isLoading ? <Loading /> : ''} Get Started Now</span></button>
                             </div>
