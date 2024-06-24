@@ -143,7 +143,7 @@ const CreatorOnboardinStep1Page = (props) => {
                                 />
                             </div>
                             <div className="form-group-1">
-                                <label className="form-label">Receive Email Upates</label> &nbsp;&nbsp;&nbsp;
+                                <label className="form-label">Opt-In To Receive Emails</label> &nbsp;&nbsp;&nbsp;
                                 <input
                                     type="checkbox"
                                     className='form-check-input'
