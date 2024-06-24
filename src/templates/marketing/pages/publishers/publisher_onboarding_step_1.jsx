@@ -147,8 +147,7 @@ const PublisherOnboardinStep1Page = (props) => {
                                 <input
                                     type="checkbox"
                                     className='form-check-input'
-                                    placeholder="Recieve Email Updates"
-                                    checked={true}
+                                    placeholder="Receive Email Updates"
                                 />
                             </div>
                             <div className="form-group">
