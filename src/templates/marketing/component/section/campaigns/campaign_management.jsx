@@ -63,16 +63,7 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                         })}
                     </div>
 
-                    <div className="mb-3">
-                        <label htmlFor="require_approval" className="form-label"> &nbsp;Require Content Approval</label>
-                        <br />
-                        <Switch
-                            checked={campaignData.require_approval}
-                            onChange={() => toggleCampaignStatus(campaignData.id, !campaignData.require_approval)}
-                            className='text-right'
-                        /> &nbsp;&nbsp;&nbsp;{(campaignData.require_approval) ? 'Content Requires Approval' : 'Content Auto Approved'}
-
-                    </div>
+              
                     <div className="mb-3">
                         <label htmlFor="manage_content_approval_with" className="form-label"> &nbsp;Content Approval Management</label>
 
@@ -86,6 +77,21 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                         {errors && errors['manage_content_approval_with'] && errors['manage_content_approval_with'].map(function (name, index) {
                             return <Danger message={name} key={index} />;
                         })}
+                    </div>
+
+                    <div className="mb-3">
+                        <label htmlFor="require_approval" className="form-label"> &nbsp;Require Content Approval</label>
+                        <br />
+                        <Switch
+                            checked={campaignData.require_approval}
+                            onChange={() => toggleCampaignStatus(campaignData.id, !campaignData.require_approval)}
+                            className='text-right'
+                        /> &nbsp;&nbsp;&nbsp;{(campaignData.require_approval) ? 'Content Requires Approval' : 'Content Auto Approved'}
+
+                        <br />
+                        <small className="form-text text-muted">If content approval process is set to Self ( You will manage this yourself), you can choose to have content auto approved or approve it manually.</small>
+
+
                     </div>
 
                     {/* Other spending limit fields */}
