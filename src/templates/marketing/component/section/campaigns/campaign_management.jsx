@@ -32,6 +32,22 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                     <p className="lead">Various aspects of the campaign can be managed by different entities. Please select below how you would like different processes to be managed.</p>
 
                     <hr />
+
+                    <div className="mb-3">
+                        <label htmlFor="manage_creator_sourcing_with" className="form-label"> &nbsp;Creator Sourcing Management</label>
+
+                        <Select name="manage_creator_sourcing_with" className="form-select" onChange={handleObjectiveSelectChange} value={campaignData.manage_creator_sourcing_with}>
+                            <option value="self">Self ( You will manage this yourself)</option>
+                            <option value="ai">A.I. ( A.I. will automatically manage this process)</option>
+                            <option value="agency">Agency ( A third party agency you've invited will manage this)</option>
+                        </Select>
+
+                        <small className="form-text text-muted">Finding creators will involve searching through a list of influencers and inviting them to the campaign. Choose how the process of selecting relevant creators will be managed.</small>
+                        {errors && errors['manage_creator_sourcing_with'] && errors['manage_creator_sourcing_with'].map(function (name, index) {
+                            return <Danger message={name} key={index} />;
+                        })}
+                    </div>
+
                     <div className="mb-3">
                         <label htmlFor="manage_creator_approval_with" className="form-label"> &nbsp;Creator Approval Management</label>
 
@@ -41,7 +57,7 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                             <option value="agency">Agency ( A third party agency you've invited will manage this)</option>
                         </Select>
 
-                        <small className="form-text text-muted">Finding creators will involve searching through a list of influencers and inviting them to the campaign. Choose how the process of selecting relevant creators will be managed.</small>
+                        <small className="form-text text-muted">When creators apply to your campaign, they should be researched before approving. Choose how you want creators to be approved for the campaign.</small>
                         {errors && errors['manage_creator_approval_with'] && errors['manage_creator_approval_with'].map(function (name, index) {
                             return <Danger message={name} key={index} />;
                         })}

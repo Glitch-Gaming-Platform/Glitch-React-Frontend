@@ -139,6 +139,7 @@ import InfluencerInvitesPage from './pages/influencers/InfluencerInvitesPage';
 import CampaignUpdateInfluencerPage from './pages/campaigns/CampaignUpdateInfluencerPage';
 import CampaignsLedgerPage from './pages/campaigns/CampaignsLedgerPage';
 import PublishersDatabasePage from './pages/publishers/publishers_database';
+import CampaignsRecommendedInfluencersPage from './pages/campaigns/CampaignsRecommendedInfluencersPage';
 
 
 function Template() {
@@ -188,6 +189,7 @@ function Template() {
           <Route path={Navigate.campaignsUpdatePage()} element={<CampaignUpdatePage />} />
           <Route path={Navigate.campaignsViewPage()} element={<CampaignsViewPage />} />
           <Route path={Navigate.campaignsFindInfluencers()} element={<CampaignsFindInfluencersPage />} />
+          <Route path={Navigate.campaignsRecommendedInfluencers()} element={<CampaignsRecommendedInfluencersPage />} />
           <Route path={Navigate.campaignsResearchInfluencer()} element={<CampaignsViewCreatorPage />} />
           <Route path={Navigate.campaignsPerformanceInfluencer()} element={<CampaignsViewCreatorPerformancePage />} />
           <Route path={Navigate.campaignsMessageInfluencer()} element={<CampaignsMessageInfluencerPage />} />

@@ -256,6 +256,16 @@ const Navigate = {
 
         return path;
     },
+    campaignsRecommendedInfluencers : (campaign_id) => {
+
+        let path = app_routes.campaigns_recommended_influencers;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        return path;
+    },
     campaignsViewInfluencer : (campaign_id, influencer_id) => {
 
         let path = app_routes.campaigns_view_influencer;

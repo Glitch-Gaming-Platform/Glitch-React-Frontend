@@ -30,6 +30,11 @@ const CampaignNavbar = ({ campaignId }) => {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" to={Navigate.campaignsRecommendedInfluencers(campaignId)}>
+                                <i className="fas fa-thumbs-up"></i> Recommended Influencers
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" to={Navigate.campaignsInvitesPage(campaignId)}>
                                 <i className="fas fa-envelope"></i> Invites
                             </Link>
