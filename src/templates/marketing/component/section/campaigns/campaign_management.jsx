@@ -3,6 +3,7 @@ import Danger from '../../alerts/Danger';
 import { InputGroup, FormControl } from 'react-bootstrap'; // make sure to import these
 import Switch from "react-switch";
 import Select from '../../form/select';
+import RequiredAsterisk from '../../form/required_asterisk';
 
 function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
 
@@ -89,9 +90,17 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
                         /> &nbsp;&nbsp;&nbsp;{(campaignData.require_approval) ? 'Content Requires Approval' : 'Content Auto Approved'}
 
                         <br />
-                        <small className="form-text text-muted">If content approval process is set to Self ( You will manage this yourself), you can choose to have content auto approved or approve it manually.</small>
+                        <small className="form-text text-muted">If content approval process is set to Self ( You will manage this yourself), you can choose to have content an influencer creates be auto approved or approve it manually.</small>
 
 
+                    </div>
+
+                    <div className="mb-3">
+                        {createInputField('meeting_link', 'Meeting Link', 'An optional meeting link in which influencers can use to book a meeting with you.', 'text', false, errors)}
+                    </div>
+
+                    <div className="mb-3">
+                        {createInputField('reply_emails', 'Reply Email(s)', 'If the influencer wishes to contact you directly, enter a comma seperate list of emails they can contact.', 'text', false, errors)}
                     </div>
 
                     {/* Other spending limit fields */}
@@ -100,19 +109,19 @@ function CampaignManagementForm({ campaignData, setCampaignData, errors }) {
         </div>
     );
 
-    function createInputField(field, icon, label, description) {
+    function createInputField(name, label, description, type = 'text', required = false, errors) {
         return (
-            <div className="mb-3">
-                <label htmlFor={field} className="form-label"><i className={`fas ${icon} mr-2`}></i> &nbsp;{label}</label>
-                <InputGroup>
-                    <InputGroup.Text>$</InputGroup.Text>
-                    <FormControl type="number" min="0" id={field} name={field} value={campaignData[field] || ''} onChange={handleInputChange} placeholder={label} />
-                </InputGroup>
-                <small className="form-text text-muted">{description}</small>
-                {errors && errors[field] && errors[field].map(function (name, index) {
+            <>
+                <div className="mb-3">
+                    <label className="form-label" htmlFor={name}>{label} {required ? <RequiredAsterisk /> : ''}</label>
+                    
+                    <input type={type} className="form-control" name={name} value={campaignData[name] || ''} onChange={handleInputChange} />
+                    <p className="small">{description}</p>
+                </div>
+                {errors && errors[name] && errors[name].map(function (name, index) {
                     return <Danger message={name} key={index} />;
                 })}
-            </div>
+            </>
         );
     }
 }
