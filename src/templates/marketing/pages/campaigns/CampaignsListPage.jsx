@@ -152,6 +152,9 @@ const CampaignsListPage = () => {
                                             <Link className={"btn btn-primary me-2"} to={Navigate.campaignsFindInfluencers(campaign.id)} >
                                                 <i className="fas fa-search"></i> Find Influencers
                                             </Link>
+                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsRecommendedInfluencers(campaign.id)} >
+                                                <i className="fas fa-thumbs-up"></i> Recommended Influencers
+                                            </Link>
                                             <Link className={"btn btn-primary me-2"} to={Navigate.campaignsInvitesPage(campaign.id)} >
                                                 <i className="fas fa-envelope"></i> Invites
                                             </Link>
