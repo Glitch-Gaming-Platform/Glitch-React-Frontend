@@ -106,7 +106,7 @@ const CampaignsStartPage = () => {
 
 
                             <div className='text-center'>
-                                <button className="btn btn-2x btn-success" type="button" onClick={startSourcing}>Begin Sourcing</button>
+                                <button className="btn btn-lg btn-success" type="button" onClick={startSourcing}>Begin Sourcing</button>
                             </div>
 
                         </section>
