@@ -29,6 +29,7 @@ const CampaignsRecommendedInfluencersPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
+    const [inviteLoading, setInviteLoading] = useState({});
     const [showModal, setShowModal] = useState(false);
     const [modalMessage, setModalMessage] = useState('');
     const [showErrorModal, setShowErrorModal] = useState(false);
@@ -148,7 +149,10 @@ const CampaignsRecommendedInfluencersPage = () => {
     };
 
     const sendInvite = async (influencer_id) => {
-        setIsLoading(true);
+        setInviteLoading((prevState) => ({
+            ...prevState,
+            [influencer_id]: true
+        }));
         try {
             await Glitch.api.Campaigns.sendInfluencerInvite(id, { influencer_id: influencer_id });
             setModalMessage('Invite Sent Successfully');
@@ -174,7 +178,10 @@ const CampaignsRecommendedInfluencersPage = () => {
                 console.error('Error sending invite', error);
             }
         } finally {
-            setIsLoading(false);
+            setInviteLoading((prevState) => ({
+                ...prevState,
+                [influencer_id]: false
+            }));
         }
     };
 
@@ -296,8 +303,8 @@ const CampaignsRecommendedInfluencersPage = () => {
                                                         Invited on {new Date(influencer.invite.invite_created_at).toLocaleDateString()}
                                                     </button>
                                                 ) : (
-                                                    <button type="button" className="btn btn-success" onClick={() => sendInvite(influencer.id)} disabled={isLoading || inviteStatus[influencer.id] === 'sent'}>
-                                                        {isLoading ? <FontAwesomeIcon icon={faSpinner} spin /> : inviteStatus[influencer.id] === 'sent' ? 'Invite Just Sent' : 'Invite'}
+                                                    <button type="button" className="btn btn-success" onClick={() => sendInvite(influencer.id)} disabled={inviteLoading[influencer.id] || inviteStatus[influencer.id] === 'sent'}>
+                                                        {inviteLoading[influencer.id] ? <FontAwesomeIcon icon={faSpinner} spin /> : inviteStatus[influencer.id] === 'sent' ? 'Invite Just Sent' : 'Invite'}
                                                     </button>
                                                 )}
                                                 <Link to={Navigate.campaignsViewInfluencer(id, influencer.id)} type="button" className="btn btn-primary ms-2">View More</Link>
@@ -350,5 +357,3 @@ const CampaignsRecommendedInfluencersPage = () => {
 };
 
 export default CampaignsRecommendedInfluencersPage;
-
-
