@@ -41,9 +41,8 @@ const InfluencerFindCampaignsPage = () => {
                     });
                 }
 
-                Glitch.api.Campaigns.list({ page: page || currentPage }).then((response) => {
-                    console.log("Finding Campaigns");
-                    console.log(response.data.data);
+                Glitch.api.Campaigns.list({ page: page || currentPage, is_active: true }).then((response) => {
+
                     setCampaigns(response.data.data);
                     setTotalPages(response.data.meta.last_page); // Assuming 'meta' contains pagination info
                 }).catch(error => {
