@@ -143,22 +143,25 @@ const CampaignsListPage = () => {
                                         {/* Add other basic info as needed */}
 
                                         <div className="d-flex justify-content-start mt-4">
-                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsViewPage(campaign.id)} >
-                                                <i className="fas fa-eye"></i> View Campaign
+                                            <Link className={"btn btn-primary btn-sm me-2"} to={Navigate.campaignsViewPage(campaign.id)} >
+                                                <i className="fas fa-eye"></i> View
                                             </Link>
-                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >
-                                                <i className="fas fa-edit"></i> Edit Campaign
+                                            <Link className={"btn btn-primary btn-sm  me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >
+                                                <i className="fas fa-edit"></i> Edit
                                             </Link>
-                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsFindInfluencers(campaign.id)} >
+                                            <Link className={"btn btn-primary btn-sm me-2"} to={Navigate.campaignsFindInfluencers(campaign.id)} >
                                                 <i className="fas fa-search"></i> Find Influencers
                                             </Link>
-                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsRecommendedInfluencers(campaign.id)} >
+                                            <Link className={"btn btn-primary btn-sm  me-2"} to={Navigate.campaignsRecommendedInfluencers(campaign.id)} >
                                                 <i className="fas fa-thumbs-up"></i> Recommended Influencers
                                             </Link>
-                                            <Link className={"btn btn-primary me-2"} to={Navigate.campaignsInvitesPage(campaign.id)} >
+                                            <Link className={"btn btn-primary btn-sm me-2"} to={Navigate.campaignsInvitesPage(campaign.id)} >
                                                 <i className="fas fa-envelope"></i> Invites
                                             </Link>
-                                            <Link className={"btn btn-primary"} to={Navigate.campaignsLedgerPage(campaign.id)} >
+                                            <Link className="btn btn-primary btn-sm me-2" to={Navigate.campaignsContentPage(campaign.id)}>
+                                                <i className="fas fa-file-alt"></i> Content
+                                            </Link>
+                                            <Link className={"btn btn-primary btn-sm "} to={Navigate.campaignsLedgerPage(campaign.id)} >
                                                 <i className="fas fa-dollar-sign"></i> Ledger
                                             </Link>
 
