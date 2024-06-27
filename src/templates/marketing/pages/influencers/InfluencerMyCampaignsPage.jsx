@@ -145,7 +145,7 @@ const InfluencerMyCampaignsPage = () => {
                                         </div>
                                         <div className="card-footer text-black">
                                             <h5 className='text-black'>Total Earnings</h5>
-                                            <p>${campaign.total_earned} (Views: ${campaign.total_earned_views}, Comments: ${campaign.total_earned_comments}, Shares: ${campaign.total_earned_shares}, Engagements: ${campaign.total_earned_engagements}, Clicks: ${campaign.total_earned_clicks}, Installs: ${campaign.total_earned_installs})</p>
+                                            <p>${campaign.total_earned ?? 0} (Views: ${campaign.total_earned_views ?? 0}, Comments: ${campaign.total_earned_comments ?? 0}, Shares: ${campaign.total_earned_shares ?? 0}, Engagements: ${campaign.total_earned_engagement ?? 0}, Clicks: ${campaign.total_earned_clicks ?? 0}, Installs: ${campaign.total_earned_installs ?? 0})</p>
                                         </div>
                                     </div>
                                 ))}

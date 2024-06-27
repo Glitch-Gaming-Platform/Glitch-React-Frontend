@@ -74,7 +74,7 @@ const CampaignInviteManager = ({ campaignID }) => {
     const updateInvite = async (influencerID, data) => {
         setSaving(true);
         try {
-            await Glitch.api.Campaigns.updateInfluencerInvite(campaign_id, data, influencerID);
+            await Glitch.api.Campaigns.updateInfluencerInvite(campaign_id,influencerID, data);
             fetchInvites(campaign_id);
         } catch (error) {
             console.error(error);

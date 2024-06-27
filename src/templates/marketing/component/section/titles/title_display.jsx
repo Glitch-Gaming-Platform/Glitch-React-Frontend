@@ -60,9 +60,9 @@ const GameTitle = ({ gameInfo }) => {
         <div className="col-12 mt-1">
           <h5>Links</h5>
           <p>
-            {gameInfo.website_url && <a href={gameInfo.website_url} className="btn btn-primary me-2"><i className="fas fa-globe"></i> Website</a>}
-            {gameInfo.steam_url && <a href={gameInfo.steam_url} className="btn btn-success me-2"><i className="fab fa-steam"></i> Steam</a>}
-            {gameInfo.itch_url && <a href={gameInfo.itch_url} className="btn btn-warning"><i className="fas fa-gamepad"></i> Itch.io</a>}
+            {gameInfo.website_url && <a href={gameInfo.website_url} target='_blank' className="btn btn-primary me-2"><i className="fas fa-globe"></i> Website</a>}
+            {gameInfo.steam_url && <a href={gameInfo.steam_url} target='_blank' className="btn btn-success me-2"><i className="fab fa-steam"></i> Steam</a>}
+            {gameInfo.itch_url && <a href={gameInfo.itch_url} target='_blank' className="btn btn-warning"><i className="fas fa-gamepad"></i> Itch.io</a>}
           </p>
         </div>
         : ''}
