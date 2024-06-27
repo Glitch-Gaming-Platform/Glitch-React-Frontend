@@ -40,6 +40,11 @@ const CampaignNavbar = ({ campaignId }) => {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link className="nav-link" to={Navigate.campaignsContentPage(campaignId)}>
+                                <i className="fas fa-file-alt"></i> Content
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className="nav-link" to={Navigate.campaignsLedgerPage(campaignId)}>
                                 <i className="fas fa-dollar-sign"></i> Ledger
                             </Link>

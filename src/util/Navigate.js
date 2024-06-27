@@ -246,6 +246,16 @@ const Navigate = {
 
         return path;
     },
+    campaignsContentPage : (campaign_id) => {
+
+        let path = app_routes.campaigns_content;
+
+        if(campaign_id){
+            path = path.replace(':id', campaign_id)
+        }
+
+        return path;
+    },
     campaignsFindInfluencers : (campaign_id) => {
 
         let path = app_routes.campaigns_find_influencer;
