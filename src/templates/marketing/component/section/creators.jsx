@@ -326,12 +326,12 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3-arm64.dmg" onClick={trackDownload}>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.5/Glitch-Desktop-App-1.6.5-arm64.dmg" onClick={trackDownload}>
                                             Mac Silicon Version (ARM)
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3.dmg" onClick={trackDownload}>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.5/Glitch-Desktop-App-1.6.5.dmg" onClick={trackDownload}>
                                             Mac Intel Version (x86)
                                         </a>
                                     </li>
@@ -349,7 +349,7 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-Setup-1.6.3.exe" onClick={trackDownload} >
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.5/Glitch-Desktop-App-Setup-1.6.5.exe" onClick={trackDownload} >
                                             Windows Exe
                                         </a>
                                     </li>
@@ -366,12 +366,12 @@ const Creators = () => {
                             <div>
                                 <ul style={{ listStyleType: 'none' }}>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3-arm64.AppImage" onClick={trackDownload}>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.5/Glitch-Desktop-App-1.6.5-arm64.AppImage" onClick={trackDownload}>
                                             Linux ARM App Image (AMD)
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.3/Glitch-Desktop-App-1.6.3.AppImage" onClick={trackDownload}>
+                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.5/Glitch-Desktop-App-1.6.5.AppImage" onClick={trackDownload}>
                                             Linux Intel App Image (x86)
                                         </a>
                                     </li>
