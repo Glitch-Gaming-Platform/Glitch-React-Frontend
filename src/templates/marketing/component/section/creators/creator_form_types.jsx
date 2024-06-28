@@ -52,7 +52,7 @@ function CreatorTypesForm({currentTypes}) {
             <div className="mt-3">
                 <div className="input-group w-auto">
                     <select className="form-select" value={selectedType} onChange={handleTypeChange}>
-                        <option value="">Select Type</option>
+                        <option value="">Select Type(s)</option>
                         {availableTypes.map((type) => (
                             <option key={type.id} value={type.id}>{type.name}</option>
                         ))}

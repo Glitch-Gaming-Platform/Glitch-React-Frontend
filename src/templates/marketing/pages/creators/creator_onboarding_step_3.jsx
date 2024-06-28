@@ -43,7 +43,7 @@ const CreatorOnboardinStep3Page = (props) => {
                 <div className="container">
                     <div className="account-wrapper">
                         <h3 className="title">Step 3 of 5: Favorite Game Types</h3>
-                        <p>To better match you wth games you want to play, select your favorite game types below.</p>
+                        <p>To better match you with games you want to play, select your favorite game types below.</p>
                         <hr />
                         <form className="account-form">
                             {(types) ?  <CreatorTypesForm currentTypes={types} /> : 'Loading Types'}

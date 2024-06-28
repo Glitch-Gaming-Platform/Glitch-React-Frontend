@@ -21,6 +21,7 @@ import CreatorLinksCharts from '../../component/section/creators/creator_links_c
 import CreatorLinksList from '../../component/section/creators/creator_links_list';
 import UserItem from '../../component/section/user/detail_user_item';
 import Breadcrumbs from '../../component/layout/breadcrumb';
+import CampaignLinksList from '../../component/section/campaigns/campaign_links_list';
 
 const InfluencerManageCampaignPage = () => {
     const [campaign, setCampaign] = useState({});
@@ -192,6 +193,15 @@ const InfluencerManageCampaignPage = () => {
                             <h3 className="text-black">Earnings Breakdown</h3>
                             <CreatorEarningsBreakdown campaign={campaign} />
                         </section>
+
+                        {campaign?.links?.length > 0 && (
+                            <section className="my-4">
+                                <h3 className="text-black">Links To Share</h3>
+                                <p>Here is a list of links the campaign manager has assigned to give out. You will be compensated for every link click.</p>
+                                <CampaignLinksList links={campaign?.links} />
+                            </section>
+                        )}
+
 
 
                         <hr />
