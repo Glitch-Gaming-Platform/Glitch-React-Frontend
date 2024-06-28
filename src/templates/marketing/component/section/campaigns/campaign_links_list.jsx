@@ -23,12 +23,13 @@ const CampaignLinksList = ({ links }) => {
                         <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
                             <div>
                             
-                                    {link.referral_url}
+                                    <strong>{link.name}</strong> {link.referral_url}
+                                    <p className='small'>{link.description}</p>
                                 
                             </div>
                             <div className="d-flex align-items-center">
                                
-                            <button className="btn btn-link" onClick={() => handleCopy(link.referral_url)}>
+                                <button className="btn btn-link" onClick={() => handleCopy(link.referral_url)}>
                                     <FontAwesomeIcon icon={faCopy} />
                                 </button>
                             </div>
