@@ -16,12 +16,12 @@ const CampaignNavbar = ({ campaignId }) => {
                     <ul className="navbar-nav">
                         <li className="nav-item">
                             <Link className="nav-link" to={Navigate.campaignsViewPage(campaignId)}>
-                                <i className="fas fa-eye"></i> View Campaign
+                                <i className="fas fa-eye"></i> Manage
                             </Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to={Navigate.campaignsUpdatePage(campaignId)}>
-                                <i className="fas fa-edit"></i> Edit Campaign
+                                <i className="fas fa-edit"></i> Edit
                             </Link>
                         </li>
                         <li className="nav-item">

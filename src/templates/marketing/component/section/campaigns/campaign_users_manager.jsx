@@ -134,6 +134,7 @@ const CampaignUserManager = ({ campaignID, userID }) => {
                                             src={influencer?.user?.avatar ? influencer?.user?.avatar : "https://storage.googleapis.com/glitch-production-images/template1-images/gamer.png"}
                                             alt="author"
                                             className="rounded-circle"
+                                            style={{ width: '100%' }}
                                         />
                                     </Link>
                                 </div>

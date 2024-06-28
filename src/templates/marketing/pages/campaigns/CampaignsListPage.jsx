@@ -144,7 +144,7 @@ const CampaignsListPage = () => {
 
                                         <div className="d-flex justify-content-start mt-4">
                                             <Link className={"btn btn-primary btn-sm me-2"} to={Navigate.campaignsViewPage(campaign.id)} >
-                                                <i className="fas fa-eye"></i> View
+                                                <i className="fas fa-eye"></i> Manage
                                             </Link>
                                             <Link className={"btn btn-primary btn-sm  me-2"} to={Navigate.campaignsUpdatePage(campaign.id)} >
                                                 <i className="fas fa-edit"></i> Edit
