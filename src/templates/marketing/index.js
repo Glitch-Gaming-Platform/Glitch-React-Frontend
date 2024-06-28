@@ -141,6 +141,7 @@ import CampaignsLedgerPage from './pages/campaigns/CampaignsLedgerPage';
 import PublishersDatabasePage from './pages/publishers/publishers_database';
 import CampaignsRecommendedInfluencersPage from './pages/campaigns/CampaignsRecommendedInfluencersPage';
 import CampaignsContentPage from './pages/campaigns/CampaignsContentPage';
+import InfluencerBeginCampaignPage from './pages/influencers/InfluencerBeginCampaignPage';
 
 
 function Template() {
@@ -231,10 +232,12 @@ function Template() {
           <Route path={Navigate.influencersMyCampaignsPage()} element={<InfluencerMyCampaignsPage />} />
           <Route path={Navigate.influencersCampaignInvitePage()} element={<InfluencerViewCampaignInvitePage />} />
           <Route path={Navigate.influencersPayoutsCampaignPage()} element={<InfluencerPayoutsPage />} />
+          <Route path={Navigate.influencersBeginCampaignPage()} element={<InfluencerBeginCampaignPage />} />
 
           <Route path={Navigate.influencersMessagesCreatePage()} element={<InfluencerMessagesCreatePage />} />
           <Route path={Navigate.influencersMessagesListPage()} element={<InfluencerMessagesListPage />} />
           <Route path={Navigate.influencersMessagesThreadPage()} element={<InfluencerMessagesReadPage />} />
+
 
           <Route path={Navigate.tipsEmojiOnly()} element={<EmojisPage />} />
           <Route path={Navigate.tipsEmojiAndWatch()} element={<EmojisWatchPage />} />

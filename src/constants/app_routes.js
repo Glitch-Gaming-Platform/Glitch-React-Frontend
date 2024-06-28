@@ -128,7 +128,8 @@
     influencer_manage_campaign : '/influencers/:campaign_id/campaign/:user_id',  
     influencer_campaign_invite : '/influencers/:campaign_id/invite/:influencer_id', 
     influencer_campaing_payouts : '/influencers/:campaign_id/payouts',  
-
+    influencer_campaing_begin : '/influencers/:campaign_id/begin',  
+    
     influencer_messages : '/influencers/messages',
     influencer_message_thread : '/influencers/messages/thread/:id',
     influencer_message_create : '/influencers/messages/create',

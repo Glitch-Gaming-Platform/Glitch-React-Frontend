@@ -135,7 +135,7 @@ class HeaderTwo extends Component {
                                                 <ul className="submenu dropdown-menu" aria-labelledby="dropdown">
                                                     <li><Link className="" to={Navigate.creatorsInfluencersPage()}>Play and Earn</Link></li>
                                                     <li><Link className="" to={Navigate.creatorsPage()}>Streaming App</Link></li>
-                                                    <li><Link className="" to={Navigate.creatorsCalculator()}>Earnins Calculator</Link></li>
+                                                    <li><Link className="" to={Navigate.creatorsCalculator()}>Earnings Calculator</Link></li>
                                                     <li><Link className="" to={Navigate.creatorsOnboardingStep1Page()}>Register</Link></li>
                                                     <li><Link className="" to={Navigate.influencersMyCampaignsPage()}>Dashboard</Link></li>
                                                 </ul>

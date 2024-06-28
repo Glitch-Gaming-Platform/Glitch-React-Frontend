@@ -656,6 +656,16 @@ const Navigate = {
 
         return path;
     },
+    influencersBeginCampaignPage : (campaign_id) => {
+
+        let path = app_routes.influencer_campaing_begin;
+
+        if(campaign_id){
+            path = path.replace(':campaign_id', campaign_id)
+        }
+
+        return path;
+    },
 
     influencersManageCampaignPage : (campaign_id, user_id) => {
 
