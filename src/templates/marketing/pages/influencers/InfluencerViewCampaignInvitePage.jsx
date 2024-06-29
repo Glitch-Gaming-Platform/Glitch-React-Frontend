@@ -98,7 +98,9 @@ const InfluencerViewCampaignInvitePage = () => {
                 }
             });
         } else {
-            navigate(Navigate.creatorsOnboardingStep1Page());
+            const redirectUrl = `${window.location.pathname}${window.location.search}`;
+            const onboardingUrl = Navigate.creatorsOnboardingStep1Page();
+            navigate(`${onboardingUrl}?redirect=${encodeURIComponent(redirectUrl)}`);
         }
     };
 

@@ -23,7 +23,9 @@ const InfluencerFindCampaignsPage = () => {
 
     useEffect(() => {
         if (!Glitch.util.Session.isLoggedIn()) {
-            navigate(Navigate.creatorsOnboardingStep1Page());
+            const redirectUrl = `${window.location.pathname}${window.location.search}`;
+            const onboardingUrl = Navigate.creatorsOnboardingStep1Page();
+            navigate(`${onboardingUrl}?redirect=${encodeURIComponent(redirectUrl)}`);
         }
 
         const queryParams = new URLSearchParams(location.search);

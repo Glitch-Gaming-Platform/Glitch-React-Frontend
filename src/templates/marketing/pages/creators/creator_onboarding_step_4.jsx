@@ -42,7 +42,15 @@ const CreatorOnboardingStep4Page = () => {
 
         });
 
-        navigate(Navigate.creatorsOnboardingStep5Page());
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect');
+
+        let nextPageUrl = Navigate.creatorsOnboardingStep5Page();
+        if (redirect) {
+            nextPageUrl += `?redirect=${encodeURIComponent(redirect)}`;
+        }
+
+        navigate(nextPageUrl);
     };
 
     return (

@@ -34,7 +34,16 @@ const CreatorOnboardinStep3Page = (props) => {
 
 
     const goToNextScreen = () => {
-        navigate(Navigate.creatorsOnboardingStep4Page());
+
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect');
+
+        let nextPageUrl = Navigate.creatorsOnboardingStep4Page();
+        if (redirect) {
+            nextPageUrl += `?redirect=${encodeURIComponent(redirect)}`;
+        }
+
+        navigate(nextPageUrl);
     };
 
     return (

@@ -21,6 +21,7 @@ const InfluencerViewCampaignPage = () => {
     const { id, campaign_id } = useParams();
     const [me, setMe] = useState({});
     const [errors, setErrors] = useState({});
+    const [signingUp, setSigningUp] = useState(false); // State to track sign-up loading
 
     const navigate = useNavigate();
 
@@ -113,6 +114,7 @@ const InfluencerViewCampaignPage = () => {
 
     const register = () => {
         if (Glitch.util.Session.isLoggedIn()) {
+            setSigningUp(true); // Start signing up loading state
             Glitch.api.Campaigns.createInfluencerCampaign(campaign_id, me.id).then(response => {
                 navigate(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
             }).catch(error => {
@@ -124,9 +126,13 @@ const InfluencerViewCampaignPage = () => {
                         setErrors({});
                     }, timeouts.error_message_timeout);
                 }
+            }).finally(() => {
+                setSigningUp(false); // Stop signing up loading state
             });
         } else {
-            navigate(Navigate.creatorsOnboardingStep1Page());
+            const redirectUrl = `${window.location.pathname}${window.location.search}`;
+            const onboardingUrl = Navigate.creatorsOnboardingStep1Page();
+            navigate(`${onboardingUrl}?redirect=${encodeURIComponent(redirectUrl)}`);
         }
     };
 
@@ -234,9 +240,9 @@ const InfluencerViewCampaignPage = () => {
                         <div className="container my-5">
                         {!current && !invite ? <>
                             <h3 className="text-black">How To Sign Up</h3>
-                            <p className="lead">To sign up as an influencer and promote the game {campaign?.title?.name}, please follow these steps:</p>
+                            <p className="lead">To {current ? 'view' : 'apply for'} this campaign, follow these steps:</p>
                             <ol>
-                                <li>Click the sign-up link below. Once you register, the campaign manager will be notified.</li>
+                                <li>Click the {current ? 'view' : 'sign-up'} link below. Once you register, the campaign manager will be notified.</li>
                                 <li>If the campaign is auto-approved, you'll automatically be authorized to start promoting. If it's not, a campaign manager will review your application and may ask questions, reject, or approve you.</li>
                                 <li>Once approved, you'll gain access to the campaign's assets, referral links, access codes, and other information needed to promote the game.</li>
                                 <li>Download the Glitch Streaming application and begin streaming and creating content. All content must be created through the app as it will track your progress, which is tied to your compensation.</li>
@@ -268,8 +274,11 @@ const InfluencerViewCampaignPage = () => {
                                         </button>
                                     </>
                                 ) : (
-                                    <button className="btn btn-lg btn-success" onClick={register}>
-                                        <i className="fas fa-sign-in-alt"></i> Sign Up
+                                    <button className={`btn btn-lg btn-success ${signingUp ? 'disabled' : ''}`} onClick={register} disabled={signingUp}>
+                                        {signingUp && (
+                                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        )}
+                                        {me?.id ? 'Apply Now!' : 'Sign Up'}
                                     </button>
                                 )}
                             </div>

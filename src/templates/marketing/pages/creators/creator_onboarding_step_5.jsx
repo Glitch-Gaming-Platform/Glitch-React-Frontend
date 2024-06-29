@@ -37,7 +37,18 @@ const CreatorOnboardingStep5Page = () => {
         setIsLoading(true);
 
         Glitch.api.Users.update(profile).then(response => {
-            navigate(Navigate.influencersFindCampaignPage());
+
+            const params = new URLSearchParams(window.location.search);
+            const redirect = params.get('redirect');
+
+            let nextPageUrl = '';
+            if (redirect) {
+                nextPageUrl = redirect;
+            } else {
+                nextPageUrl = Navigate.influencersFindCampaignPage();
+            }
+
+            navigate(nextPageUrl);
         }).catch(error => {
             console.error('Error updating user data', error);
             setIsLoading(false);

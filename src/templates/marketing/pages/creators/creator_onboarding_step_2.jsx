@@ -37,13 +37,21 @@ function CreatorOnboardinStep2Page() {
     setIsLoading(true);
     let data = { bio };
     data.is_influencer = 1;
-    
+
+    const params = new URLSearchParams(window.location.search);
+    const redirect = params.get('redirect');
+
+    let nextPageUrl = Navigate.creatorsOnboardingStep3Page();
+    if (redirect) {
+      nextPageUrl += `?redirect=${encodeURIComponent(redirect)}`;
+    }
+
     Glitch.api.Users.update(data).then(response => {
       setIsLoading(false);
-      navigate(Navigate.creatorsOnboardingStep3Page());
+      navigate(nextPageUrl);
     }).catch(error => {
       setIsLoading(false);
-      navigate(Navigate.creatorsOnboardingStep3Page());
+      navigate(nextPageUrl);
     });
   };
 

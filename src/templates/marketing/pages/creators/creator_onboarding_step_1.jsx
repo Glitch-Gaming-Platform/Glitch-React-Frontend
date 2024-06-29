@@ -65,7 +65,15 @@ const CreatorOnboardinStep1Page = (props) => {
     };
 
     const goToNextScreen = () => {
-         navigate(Navigate.creatorsOnboardingStep2Page());
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect');
+
+        let nextPageUrl = Navigate.creatorsOnboardingStep2Page();
+        if (redirect) {
+            nextPageUrl += `?redirect=${encodeURIComponent(redirect)}`;
+        }
+
+        navigate(nextPageUrl);
     };
 
     return (
