@@ -1,38 +1,16 @@
 import React, { useState, useEffect } from 'react';
 
-const generateFakeData = () => {
-  const platforms = ['twitter', 'facebook', 'instagram', 'reddit', 'tiktok'];
-  const browsers = ['chrome', 'firefox', 'safari', 'edge'];
-  const data = [];
-  const linksCount = Math.floor(Math.random() * 6) + 5; // generate between 5 to 10 links
-
-  for (let i = 0; i < linksCount; i++) {
-    const platform = platforms[Math.floor(Math.random() * platforms.length)];
-    const browser = browsers[Math.floor(Math.random() * browsers.length)];
-    const date = new Date(2024, 2, Math.floor(Math.random() * 30) + 1); // Random date in March 2024
-    const dateFormatted = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
-
-    data.push({
-      ip_address: `192.168.${Math.floor(Math.random() * 255)}.${Math.floor(Math.random() * 255)}`, // Simulate IP address
-      browser: browser,
-      social_platform: platform,
-      referrer_url: `http://www.example.com?utm=${Math.floor(Math.random() * 1000000)}`, // Simulate referrer URL
-      date_created: dateFormatted,
-    });
-  }
-  return data;
-};
-
 const CreatorLinksList = ({ linkData = [], darkMode = false }) => {
-  const [links, setLinks] = useState([]);
+  // Initialize links state with the initial linkData prop
+  const [links, setLinks] = useState(linkData);
 
   useEffect(() => {
+    // Update links state when linkData prop changes
     setLinks(linkData);
-    //setLinks(generateFakeData())
-  }, []);
+  }, [linkData]); // Add linkData as a dependency to useEffect
 
   const containerStyle = darkMode ? { backgroundColor: 'white', color: 'black' } : {};
-  const textStyle = darkMode ? { color: 'black' } : {color: 'black'};
+  const textStyle = darkMode ? { color: 'black' } : { color: 'black' };
 
   return (
     <div className="container mt-5" style={containerStyle}>
@@ -51,9 +29,10 @@ const CreatorLinksList = ({ linkData = [], darkMode = false }) => {
               style={{ width: '100%', padding: '10px', borderRadius: '5px', color: 'black' }}
             >
               <div className="px-2" style={{ minWidth: '150px' }}>
-                <h5 className="mb-0 text-capitalize" style={textStyle}>
+                <strong className="mb-0 text-capitalize" style={textStyle}>
                   {link.social_platform} - {link.browser}
-                </h5>
+                </strong>
+                <br />
                 <a
                   href={link.referrer_url}
                   target="_blank"

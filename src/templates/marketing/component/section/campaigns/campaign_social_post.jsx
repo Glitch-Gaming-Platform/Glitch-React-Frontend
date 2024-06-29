@@ -11,60 +11,60 @@ const calculateEarnings = (post) => {
 
   switch (social_platform) {
     case 'reddit':
-      earnings += influencer_campaign.payment_per_view_reddit * total_views;
-      earnings += influencer_campaign.payment_per_comment_reddit * total_comments;
-      earnings += influencer_campaign.payment_per_share_reddit * total_shares;
-      earnings += influencer_campaign.payment_per_engagement_reddit * total_engagements;
-      earnings += influencer_campaign.payment_per_click_reddit * total_reactions;
-      earnings += influencer_campaign.payment_per_install_reddit * total_bookmarks;
+      earnings += (influencer_campaign.payment_per_view_reddit ?? influencer_campaign.payment_per_view) * total_views;
+      earnings += (influencer_campaign.payment_per_comment_reddit ?? influencer_campaign.payment_per_comment) * total_comments;
+      earnings += (influencer_campaign.payment_per_share_reddit ?? influencer_campaign.payment_per_share)* total_shares;
+      earnings += (influencer_campaign.payment_per_engagement_reddit ?? influencer_campaign.payment_per_engagement) * total_engagements;
+      earnings += (influencer_campaign.payment_per_click_reddit ?? influencer_campaign.payment_per_click) * total_reactions;
+      earnings += (influencer_campaign.payment_per_install_reddit ?? influencer_campaign.payment_per_install) * total_bookmarks;
       break;
     case 'twitch':
-      earnings += influencer_campaign.payment_per_view_twitch * total_views;
-      earnings += influencer_campaign.payment_per_comment_twitch * total_comments;
-      earnings += influencer_campaign.payment_per_share_twitch * total_shares;
-      earnings += influencer_campaign.payment_per_engagement_twitch * total_engagements;
-      earnings += influencer_campaign.payment_per_click_twitch * total_reactions;
-      earnings += influencer_campaign.payment_per_install_twitch * total_bookmarks;
+      earnings += (influencer_campaign.payment_per_view_twitch ?? influencer_campaign.payment_per_view) * total_views;
+      earnings += (influencer_campaign.payment_per_comment_twitch ?? influencer_campaign.payment_per_comment) * total_comments;
+      earnings += (influencer_campaign.payment_per_share_twitch ?? influencer_campaign.payment_per_share ) * total_shares;
+      earnings += (influencer_campaign.payment_per_engagement_twitch ?? influencer_campaign.payment_per_engagement ) * total_engagements;
+      earnings += (influencer_campaign.payment_per_click_twitch ?? influencer_campaign.payment_per_click) * total_reactions;
+      earnings += (influencer_campaign.payment_per_install_twitch ?? influencer_campaign.payment_per_install )* total_bookmarks;
       break;
     case 'facebook':
-      earnings += influencer_campaign.payment_per_view_facebook * total_views;
-      earnings += influencer_campaign.payment_per_comment_facebook * total_comments;
-      earnings += influencer_campaign.payment_per_share_facebook * total_shares;
-      earnings += influencer_campaign.payment_per_engagement_facebook * total_engagements;
-      earnings += influencer_campaign.payment_per_click_facebook * total_reactions;
-      earnings += influencer_campaign.payment_per_install_facebook * total_bookmarks;
+      earnings += (influencer_campaign.payment_per_view_facebook ?? influencer_campaign.payment_per_view ) * total_views;
+      earnings += (influencer_campaign.payment_per_comment_facebook ?? influencer_campaign.payment_per_comment) * total_comments;
+      earnings += (influencer_campaign.payment_per_share_facebook ?? influencer_campaign.payment_per_share )* total_shares;
+      earnings += (influencer_campaign.payment_per_engagement_facebook ?? influencer_campaign.payment_per_engagement) * total_engagements;
+      earnings += (influencer_campaign.payment_per_click_facebook ?? influencer_campaign.payment_per_click) * total_reactions;
+      earnings += (influencer_campaign.payment_per_install_facebook ?? influencer_campaign.payment_per_install) * total_bookmarks;
       break;
     case 'youtube':
-      earnings += influencer_campaign.payment_per_view_youtube * total_views;
-      earnings += influencer_campaign.payment_per_comment_youtube * total_comments;
-      earnings += influencer_campaign.payment_per_share_youtube * total_shares;
-      earnings += influencer_campaign.payment_per_engagement_youtube * total_engagements;
-      earnings += influencer_campaign.payment_per_click_youtube * total_reactions;
-      earnings += influencer_campaign.payment_per_install_youtube * total_bookmarks;
+      earnings += (influencer_campaign.payment_per_view_youtube ?? influencer_campaign.payment_per_view) * total_views;
+      earnings += (influencer_campaign.payment_per_comment_youtube ?? influencer_campaign.payment_per_comment) * total_comments;
+      earnings += (influencer_campaign.payment_per_share_youtube ?? influencer_campaign.payment_per_share )* total_shares;
+      earnings += (influencer_campaign.payment_per_engagement_youtube ?? influencer_campaign.payment_per_engagement) * total_engagements;
+      earnings += (influencer_campaign.payment_per_click_youtube ?? influencer_campaign.payment_per_click) * total_reactions;
+      earnings += (influencer_campaign.payment_per_install_youtube ?? influencer_campaign.payment_per_install) * total_bookmarks;
       break;
     case 'tiktok':
-      earnings += influencer_campaign.payment_per_view_tiktok * total_views;
-      earnings += influencer_campaign.payment_per_comment_tiktok * total_comments;
-      earnings += influencer_campaign.payment_per_share_tiktok * total_shares;
-      earnings += influencer_campaign.payment_per_engagement_tiktok * total_engagements;
-      earnings += influencer_campaign.payment_per_click_tiktok * total_reactions;
-      earnings += influencer_campaign.payment_per_install_tiktok * total_bookmarks;
+      earnings += (influencer_campaign.payment_per_view_tiktok ?? influencer_campaign.payment_per_view) * total_views;
+      earnings += (influencer_campaign.payment_per_comment_tiktok ?? influencer_campaign.payment_per_comment) * total_comments;
+      earnings += (influencer_campaign.payment_per_share_tiktok ?? influencer_campaign.payment_per_share )* total_shares;
+      earnings += (influencer_campaign.payment_per_engagement_tiktok ?? influencer_campaign.payment_per_engagement) * total_engagements;
+      earnings += (influencer_campaign.payment_per_click_tiktok ?? influencer_campaign.payment_per_click)  * total_reactions;
+      earnings += (influencer_campaign.payment_per_install_tiktok  ?? influencer_campaign.payment_per_install) * total_bookmarks;
       break;
     case 'twitter':
-      earnings += influencer_campaign.payment_per_view_twitter * total_views;
-      earnings += influencer_campaign.payment_per_comment_twitter * total_comments;
-      earnings += influencer_campaign.payment_per_share_twitter * total_shares;
-      earnings += influencer_campaign.payment_per_engagement_twitter * total_engagements;
-      earnings += influencer_campaign.payment_per_click_twitter * total_reactions;
-      earnings += influencer_campaign.payment_per_install_twitter * total_bookmarks;
+      earnings += (influencer_campaign.payment_per_view_twitter ?? influencer_campaign.payment_per_view) * total_views;
+      earnings += (influencer_campaign.payment_per_comment_twitter ?? influencer_campaign.payment_per_comment) * total_comments;
+      earnings += (influencer_campaign.payment_per_share_twitter ?? influencer_campaign.payment_per_share ) * total_shares;
+      earnings += (influencer_campaign.payment_per_engagement_twitter ?? influencer_campaign.payment_per_engagement) * total_engagements;
+      earnings += (influencer_campaign.payment_per_click_twitter ?? influencer_campaign.payment_per_click) * total_reactions;
+      earnings += (influencer_campaign.payment_per_install_twitter ?? influencer_campaign.payment_per_install) * total_bookmarks;
       break;
     case 'kick':
-      earnings += influencer_campaign.payment_per_view_kick * total_views;
-      earnings += influencer_campaign.payment_per_comment_kick * total_comments;
-      earnings += influencer_campaign.payment_per_share_kick * total_shares;
-      earnings += influencer_campaign.payment_per_engagement_kick * total_engagements;
-      earnings += influencer_campaign.payment_per_click_kick * total_reactions;
-      earnings += influencer_campaign.payment_per_install_kick * total_bookmarks;
+      earnings += (influencer_campaign.payment_per_view_kick ?? influencer_campaign.payment_per_view) * total_views;
+      earnings += (influencer_campaign.payment_per_comment_kick ?? influencer_campaign.payment_per_comment) * total_comments;
+      earnings += (influencer_campaign.payment_per_share_kick ?? influencer_campaign.payment_per_share ) * total_shares;
+      earnings += (influencer_campaign.payment_per_engagement_kick ?? influencer_campaign.payment_per_engagement) * total_engagements;
+      earnings += (influencer_campaign.payment_per_click_kick  ?? influencer_campaign.payment_per_click) * total_reactions;
+      earnings += (influencer_campaign.payment_per_install_kick ?? influencer_campaign.payment_per_install) * total_bookmarks;
       break;
     default:
       break;
