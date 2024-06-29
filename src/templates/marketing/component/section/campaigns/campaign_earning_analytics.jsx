@@ -2,15 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 
 const CampaignAnalytics = ({ data, darkMode = false }) => {
-  // State to hold processed data
   const [chartData, setChartData] = useState([]);
   const [chartWidth, setChartWidth] = useState(window.innerWidth - 400); // Default width minus some margin
 
   useEffect(() => {
-    // Process data from the prop to fit charting requirements
     const processData = () => {
       // Initialize an object to hold our totals
       const totals = {
+        name: 'Total',
         views: 0,
         comments: 0,
         shares: 0,
@@ -20,23 +19,25 @@ const CampaignAnalytics = ({ data, darkMode = false }) => {
         earnings: 0,
       };
 
-      // Platforms to loop through
-      const platforms = ['facebook', 'tiktok', 'reddit', 'youtube', 'twitter', 'kick', 'twitch'];
-
-      // Calculate totals for each metric
-      platforms.forEach(platform => {
-        totals.views += data[`total_views_${platform}`];
-        totals.comments += data[`total_comments_${platform}`];
-        totals.shares += data[`total_shares_${platform}`];
-        totals.engagements += data[`total_engagements_${platform}`];
-        totals.clicks += data[`total_clicks_${platform}`];
-        totals.installs += data[`total_installs_${platform}`];
-        totals.earnings += data[`total_earned_${platform}`];
+      // Aggregate data for each social post
+      data.forEach(post => {
+        totals.views += post.total_views || 0;
+        totals.comments += post.total_comments || 0;
+        totals.shares += post.total_shares || 0;
+        totals.engagements += post.total_engagements || 0;
+        totals.clicks += post.total_clicks || 0;
+        totals.installs += post.total_installs || 0;
+        // Assuming each post has earnings related fields, otherwise adjust accordingly
+        totals.earnings += (post.payment_per_view * post.total_views) || 0;
+        totals.earnings += (post.payment_per_comment * post.total_comments) || 0;
+        totals.earnings += (post.payment_per_share * post.total_shares) || 0;
+        totals.earnings += (post.payment_per_engagement * post.total_engagements) || 0;
+        totals.earnings += (post.payment_per_click * post.total_clicks) || 0;
+        totals.earnings += (post.payment_per_install * post.total_installs) || 0;
       });
 
       setChartData([totals]);
     };
-
 
     processData();
 
@@ -51,31 +52,11 @@ const CampaignAnalytics = ({ data, darkMode = false }) => {
     // Call the handler right away so state gets updated with initial window size
     handleResize();
 
-   
-    generateFakeData();
     // Remove event listener on cleanup
     return () => window.removeEventListener('resize', handleResize);
-  }, [data]); // Run this effect when `data` changes
+  }, [data]);
 
-  const generateFakeData = () => {
-    const fakeData = {};
-    const platforms = ['facebook', 'tiktok', 'reddit', 'youtube', 'twitter', 'kick', 'twitch'];
-
-    platforms.forEach(platform => {
-      fakeData[`total_views_${platform}`] = Math.floor(Math.random() * 1000);
-      fakeData[`total_comments_${platform}`] = Math.floor(Math.random() * 500);
-      fakeData[`total_shares_${platform}`] = Math.floor(Math.random() * 200);
-      fakeData[`total_engagements_${platform}`] = Math.floor(Math.random() * 1500);
-      fakeData[`total_clicks_${platform}`] = Math.floor(Math.random() * 300);
-      fakeData[`total_installs_${platform}`] = Math.floor(Math.random() * 100);
-      fakeData[`total_earned_${platform}`] = parseFloat((Math.random() * 1000).toFixed(2));
-    });
-
-    setChartData([fakeData]);
-    return fakeData;
-  };
-
-  const textStyle = darkMode ? { color: 'black' } : {};
+  const textStyle = darkMode ? { color: 'white' } : {};
 
   return (
     <div className="container mt-5" style={textStyle}>

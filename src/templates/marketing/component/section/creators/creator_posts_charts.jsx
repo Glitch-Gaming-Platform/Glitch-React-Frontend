@@ -1,30 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const generateFakeData = () => {
-  const platforms = ['twitter', 'facebook', 'instagram', 'reddit', 'tiktok'];
-  const data = [];
-  const startDate = new Date(2024, 2, 1); // March 1, 2024
-  const endDate = new Date(2024, 2, 31); // March 31, 2024
-
-  for (let i = 0; i < Math.floor(Math.random() * 6) + 5; i++) {
-    const randomDate = new Date(startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime()));
-    const formattedDate = `${randomDate.getFullYear()}-${String(randomDate.getMonth() + 1).padStart(2, '0')}-${String(randomDate.getDate()).padStart(2, '0')}`;
-
-    data.push({
-      social_platform: platforms[Math.floor(Math.random() * platforms.length)],
-      total_views: Math.floor(Math.random() * 1000),
-      total_comments: Math.floor(Math.random() * 100),
-      total_engagements: Math.floor(Math.random() * 500),
-      total_shares: Math.floor(Math.random() * 100),
-      total_reactions: Math.floor(Math.random() * 100),
-      total_bookmarks: Math.floor(Math.random() * 50),
-      date_created: formattedDate,
-    });
-  }
-  return data;
-};
-
 const aggregateDataByDate = (posts) => {
   const aggregatedData = {};
 
@@ -55,11 +31,9 @@ const CreatorPostingCharts = ({ postData = [], darkMode = false }) => {
   });
 
   useEffect(() => {
-    //const fakeData = generateFakeData();
-    //const aggregatedData = aggregateDataByDate(fakeData);
     const aggregatedData = aggregateDataByDate(postData);
     setPosts(aggregatedData);
-  }, []);
+  }, [postData]);
 
   const handleMetricVisibilityChange = (metric) => {
     setVisibleMetrics(prevMetrics => ({
@@ -68,7 +42,7 @@ const CreatorPostingCharts = ({ postData = [], darkMode = false }) => {
     }));
   };
 
-  const textStyle = darkMode ? { color: 'black' } : {};
+  const textStyle = darkMode ? { color: 'white' } : { color: 'black' };
 
   return (
     <div className="container mt-5">

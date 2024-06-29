@@ -231,7 +231,7 @@ const InfluencerManageCampaignPage = () => {
 
                     <section className="my-4">
                         <h3 >Campaign Analytics</h3>
-                        <CampaignAnalytics data={campaign} darkMode={true} />
+                        <CampaignAnalytics data={posts} darkMode={true} />
                     </section>
 
                     <CreatorPostingStatistics user={user} postData={posts} darkMode={true} />
