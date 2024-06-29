@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const CreatorEarningsBreakdown = ({ campaign }) => {
-    const [fakeCampaign, setCampaign] = useState(null);
-
+const CreatorEarningsBreakdown = ({ campaign, posts }) => {
     const platforms = [
         { name: 'Facebook', prefix: 'facebook' },
         { name: 'Tiktok', prefix: 'tiktok' },
@@ -13,35 +11,59 @@ const CreatorEarningsBreakdown = ({ campaign }) => {
         { name: 'Twitch', prefix: 'twitch' }
     ];
 
-    const renderEarnings = (platform, prefix, data) => (
-        <tr key={platform}>
-            <th scope="row">{platform}</th>
-            <td>${data[`total_earned_views_${prefix}`]}</td>
-            <td>${data[`total_earned_comments_${prefix}`]}</td>
-            <td>${data[`total_earned_shares_${prefix}`]}</td>
-            <td>${data[`total_earned_engagements_${prefix}`]}</td>
-            <td>${data[`total_earned_clicks_${prefix}`]}</td>
-            <td>${data[`total_earned_installs_${prefix}`]}</td>
-        </tr>
-    );
+    const calculateEarnings = (post, prefix) => {
+        const { influencer_campaign, total_views, total_comments, total_shares, total_engagements, total_reactions, total_bookmarks } = post;
+        if (!influencer_campaign) return 0;
 
-    const generateFakeData = () => {
-        const fakeData = {};
-        platforms.forEach(({ prefix }) => {
-            fakeData[`total_earned_views_${prefix}`] = (Math.random() * 1000).toFixed(2);
-            fakeData[`total_earned_comments_${prefix}`] = (Math.random() * 500).toFixed(2);
-            fakeData[`total_earned_shares_${prefix}`] = (Math.random() * 200).toFixed(2);
-            fakeData[`total_earned_engagements_${prefix}`] = (Math.random() * 1500).toFixed(2);
-            fakeData[`total_earned_clicks_${prefix}`] = (Math.random() * 300).toFixed(2);
-            fakeData[`total_earned_installs_${prefix}`] = (Math.random() * 100).toFixed(2);
-        });
-        setCampaign(fakeData);
+        let earnings = 0;
+
+        const getPayment = (specific, general) => (specific !== undefined && specific !== null && specific != 0 ? specific : general);
+
+        earnings += getPayment(influencer_campaign[`payment_per_view_${prefix}`], influencer_campaign.payment_per_view) * total_views;
+        earnings += getPayment(influencer_campaign[`payment_per_comment_${prefix}`], influencer_campaign.payment_per_comment) * total_comments;
+        earnings += getPayment(influencer_campaign[`payment_per_share_${prefix}`], influencer_campaign.payment_per_share) * total_shares;
+        earnings += getPayment(influencer_campaign[`payment_per_engagement_${prefix}`], influencer_campaign.payment_per_engagement) * total_engagements;
+        earnings += getPayment(influencer_campaign[`payment_per_click_${prefix}`], influencer_campaign.payment_per_click) * total_reactions;
+        earnings += getPayment(influencer_campaign[`payment_per_install_${prefix}`], influencer_campaign.payment_per_install) * total_bookmarks;
+
+        return earnings.toFixed(2);
     };
 
-    useEffect(() => {
-        setCampaign(campaign)
-        //generateFakeData();
-      }, []);
+    const calculateTotalEarningsByPlatform = (prefix) => {
+        return posts.reduce((acc, post) => {
+            if (post.social_platform === prefix) {
+                acc.views += calculateEarnings(post, 'views');
+                acc.comments += calculateEarnings(post, 'comments');
+                acc.shares += calculateEarnings(post, 'shares');
+                acc.engagements += calculateEarnings(post, 'engagements');
+                acc.clicks += calculateEarnings(post, 'clicks');
+                acc.installs += calculateEarnings(post, 'installs');
+            }
+            return acc;
+        }, {
+            views: 0,
+            comments: 0,
+            shares: 0,
+            engagements: 0,
+            clicks: 0,
+            installs: 0
+        });
+    };
+
+    const renderEarnings = (platform, prefix) => {
+        const earnings = calculateTotalEarningsByPlatform(prefix);
+        return (
+            <tr key={platform}>
+                <th scope="row">{platform}</th>
+                <td>${earnings.views}</td>
+                <td>${earnings.comments}</td>
+                <td>${earnings.shares}</td>
+                <td>${earnings.engagements}</td>
+                <td>${earnings.clicks}</td>
+                <td>${earnings.installs}</td>
+            </tr>
+        );
+    };
 
     return (
         <div>
@@ -59,7 +81,7 @@ const CreatorEarningsBreakdown = ({ campaign }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {platforms.map(({ name, prefix }) => renderEarnings(name, prefix, fakeCampaign || campaign))}
+                        {platforms.map(({ name, prefix }) => renderEarnings(name, prefix))}
                     </tbody>
                 </table>
             </div>
