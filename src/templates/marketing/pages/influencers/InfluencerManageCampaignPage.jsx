@@ -234,8 +234,6 @@ const InfluencerManageCampaignPage = () => {
                         <CampaignAnalytics data={posts} darkMode={true} />
                     </section>
 
-                    <CreatorPostingStatistics user={user} postData={posts} darkMode={true} />
-
                     <CreatorPostingCharts user={user} postData={posts} darkMode={true} />
 
                     <CreatorLinksCharts user={user} linkData={links} darkMode={true} />
