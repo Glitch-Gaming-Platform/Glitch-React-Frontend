@@ -38,28 +38,30 @@ const CampaignRateCard = ({ campaign, user }) => {
             <div className="container">
                 <div className="row">
                     <div className="col-md-12">
-                        <table className="table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Platform</th>
-                                    {paymentTypes.map((payment, index) => (
-                                        <th scope="col" key={index}>{payment.type}</th>
-                                    ))}
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {platforms.map((platform, index) => (
-                                    <tr key={index}>
-                                        <th scope="row">{platform}</th>
-                                        {paymentTypes.map((payment, pIndex) => (
-                                            <td key={pIndex}>
-                                                {checkMultiplier(platform, payment.key, campaign)}
-                                            </td>
+                        <div className="table-responsive">
+                            <table className="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Platform</th>
+                                        {paymentTypes.map((payment, index) => (
+                                            <th scope="col" key={index}>{payment.type}</th>
                                         ))}
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {platforms.map((platform, index) => (
+                                        <tr key={index}>
+                                            <th scope="row">{platform}</th>
+                                            {paymentTypes.map((payment, pIndex) => (
+                                                <td key={pIndex}>
+                                                    {checkMultiplier(platform, payment.key, campaign)}
+                                                </td>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const CreatorEarningsBreakdown = ({ campaign, posts }) => {
+const CreatorEarningsBreakdown = ({ campaign, posts = [] }) => {
     const platforms = [
         { name: 'Facebook', prefix: 'facebook' },
         { name: 'Tiktok', prefix: 'tiktok' },
@@ -32,12 +32,12 @@ const CreatorEarningsBreakdown = ({ campaign, posts }) => {
     const calculateTotalEarningsByPlatform = (prefix) => {
         return posts.reduce((acc, post) => {
             if (post.social_platform === prefix) {
-                acc.views += calculateEarnings(post, 'views');
-                acc.comments += calculateEarnings(post, 'comments');
-                acc.shares += calculateEarnings(post, 'shares');
-                acc.engagements += calculateEarnings(post, 'engagements');
-                acc.clicks += calculateEarnings(post, 'clicks');
-                acc.installs += calculateEarnings(post, 'installs');
+                acc.views += parseFloat(calculateEarnings(post, 'views'));
+                acc.comments += parseFloat(calculateEarnings(post, 'comments'));
+                acc.shares += parseFloat(calculateEarnings(post, 'shares'));
+                acc.engagements += parseFloat(calculateEarnings(post, 'engagements'));
+                acc.clicks += parseFloat(calculateEarnings(post, 'clicks'));
+                acc.installs += parseFloat(calculateEarnings(post, 'installs'));
             }
             return acc;
         }, {
