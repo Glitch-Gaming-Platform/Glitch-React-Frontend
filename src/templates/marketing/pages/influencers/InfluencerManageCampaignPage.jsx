@@ -193,7 +193,7 @@ const InfluencerManageCampaignPage = () => {
 
                         <section className="my-4">
                             <h3 className="text-black">Earnings Breakdown</h3>
-                            <CreatorEarningsBreakdown campaign={campaign} />
+                            <CreatorEarningsBreakdown campaign={campaign} posts={posts} />
                         </section>
 
                         {campaign?.links?.length > 0 && (
