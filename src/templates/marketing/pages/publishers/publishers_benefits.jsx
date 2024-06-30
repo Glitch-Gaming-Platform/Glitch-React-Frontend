@@ -159,7 +159,7 @@ function PublisherBenefitPage() {
           <div className="text-center my-5">
             <h2 className="text-danger mb-4">Join Glitch for Performance-Based Marketing</h2>
             <p className="lead">Revolutionize your game marketing strategy with Glitch. Embrace a new era of influencer marketing and see the difference in performance and cost.</p>
-            <a href={Navigate.publishersRegisterPage()} className="btn btn-lg btn-danger text-white">Sign Up Now</a>
+            <a href={Navigate.publishersOnboardingStep1Page()} className="btn btn-lg btn-danger text-white">Sign Up Now</a>
           </div>
 
           {/* Link to Full Article */}

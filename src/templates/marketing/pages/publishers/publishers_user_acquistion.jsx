@@ -130,7 +130,7 @@ function PublisherUserAcquistion() {
                     <div className="text-center my-5">
                         <h2>Revolutionize Your Marketing with Glitch</h2>
                         <p>Join Glitch now for an innovative approach to influencer marketing. Reduce costs and boost your game's success.</p>
-                        <a href={Navigate.publishersRegisterPage()} className="btn btn-primary">Get Started</a>
+                        <a href={Navigate.publishersOnboardingStep1Page()} className="btn btn-primary">Get Started</a>
                     </div>
 
                     {/* Link to Full Article */}

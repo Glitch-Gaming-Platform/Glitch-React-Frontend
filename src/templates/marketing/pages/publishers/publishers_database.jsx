@@ -119,7 +119,7 @@ function PublishersDatabasePage() {
           <div className="text-center my-5">
             <h2 className="text-white">Join the Revolution in Influencer Marketing</h2>
             <p className="text-white">Join Glitch to embrace innovative strategies in influencer marketing. Sign up now and revolutionize your approach.</p>
-            <a href={Navigate.publishersRegisterPage()} className="btn btn-lg btn-warning">Sign Up Now</a>
+            <a href={Navigate.publishersOnboardingStep1Page()} className="btn btn-lg btn-warning">Sign Up Now</a>
           </div>
 
           {/* Link to Article Section */}

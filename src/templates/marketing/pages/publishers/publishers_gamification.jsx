@@ -117,7 +117,7 @@ function PublishersGamificationPage() {
           <div className="text-center mb-5">
             <h2 className="fw-bold text-warning">Join the Revolution in Influencer Marketing</h2>
             <p>Embrace the future with Glitch's data-driven, performance-based marketing strategies. Sign up now and transform your approach.</p>
-            <a href={Navigate.publishersRegisterPage()} className="btn btn-lg btn-warning text-white fw-bold shadow">Get Started</a>
+            <a href={Navigate.publishersOnboardingStep1Page()} className="btn btn-lg btn-warning text-white fw-bold shadow">Get Started</a>
           </div>
 
           <div className="text-center mb-5">

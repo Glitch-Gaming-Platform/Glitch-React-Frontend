@@ -127,18 +127,20 @@ const InfluencerMyCampaignsPage = () => {
                                                 <div className="col-lg-8">
                                                     <h3 className="card-title">{campaign?.campaign?.title?.name}</h3>
                                                     <p className="card-text"><span dangerouslySetInnerHTML={createMarkup(campaign?.campaign?.title?.short_description)} /></p>
+                                                    {campaign?.start_date || campaign?.end_date && (
                                                     <div className="my-2">
                                                         <FontAwesomeIcon icon={faCalendarAlt} />
                                                         <strong> Campaign Period: </strong>
-                                                        {campaign.start_date ? <Moment format="MM/DD/YYYY">{campaign.start_date}</Moment> : 'TBA'} - {campaign.campaign?.end_date ? <Moment format="MM/DD/YYYY">{campaign.campaign?.end_date}</Moment> : 'TBA'}
+                                                        {campaign.start_date ? <Moment format="MM/DD/YYYY">{campaign.start_date}</Moment> : 'TBA'} - {campaign?.end_date ? <Moment format="MM/DD/YYYY">{campaign?.end_date}</Moment> : 'TBA'}
                                                     </div>
+                                                    )}
                                                     <div className="my-2">
                                                         <FontAwesomeIcon icon={faMoneyBillWave} />
                                                         <strong> Max Earnings: </strong>
                                                         ${campaign.campaign?.spend_limit_per_influencer || 'No Cap'}
                                                     </div>
                                                     <p className="card-text"><small className="text-muted">Campaign Details: <span dangerouslySetInnerHTML={createMarkup(campaign.campaign?.brief)} /></small></p>
-                                                    <Link to={Navigate.influencersManageCampaignPage(campaign.campaign?.id, me?.id)} className="btn btn-primary me-2">View More</Link>
+                                                    <Link to={Navigate.influencersManageCampaignPage(campaign.campaign?.id, me?.id)} className="btn btn-primary me-2">Manage Campaign</Link>
                                                     <Link to={Navigate.influencersPayoutsCampaignPage(campaign.campaign?.id)} className="btn btn-primary">Payouts</Link>
                                                 </div>
                                             </div>

@@ -5,6 +5,7 @@ import WaitlistInfluencer from "../../component/section/waitlistinfluencer";
 import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGamepad, faMoneyBillWave, faBroadcastTower, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import SignUpCreators from "../../component/section/signup_creators";
 
 class CreatorsRewardsPage extends Component {
 
@@ -230,7 +231,7 @@ class CreatorsRewardsPage extends Component {
                         </div>
                     </div>
 
-                    <WaitlistInfluencer />
+                    <SignUpCreators />
 
                 </Fragment>
 

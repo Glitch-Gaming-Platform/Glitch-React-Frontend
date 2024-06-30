@@ -7,6 +7,7 @@ import Benefits from "../../component/section/benefits";
 import Creators from "../../component/section/creators";
 import { Helmet } from 'react-helmet';
 import PerformanceMarketingCalculator from "../../component/tools/performance_marketing_calculator";
+import SignUpCreators from "../../component/section/signup_creators";
 
 class CreatorsCalculator extends Component {
     render() {
@@ -40,6 +41,8 @@ class CreatorsCalculator extends Component {
                         </div>
                     </section>
                     <PerformanceMarketingCalculator />
+                    <br /><br />
+                    <SignUpCreators />
                     <Footer />
                 </Fragment>
             </>
