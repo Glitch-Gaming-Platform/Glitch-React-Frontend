@@ -115,6 +115,13 @@ const InfluencerBeginCampaignPage = () => {
 
                 <CreatorGettingStarted />
 
+                <hr />
+
+                <div className='text-center mt-3'>
+                    <button type='button' onClick={(e) => { navigate(Navigate.influencersManageCampaignPage(campaign_id, Glitch.util.Session.getID()))}} className='btn btn-success btn-lg'>Go To Campaign</button>
+
+                </div>
+
             </div>
 
             <Footer />
