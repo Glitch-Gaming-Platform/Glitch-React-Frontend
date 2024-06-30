@@ -193,8 +193,6 @@ const CampaignManageInfluencerPage = () => {
                             <hr />
 
                             <section className="my-4">
-                                <h3 className="text-black">Campaign Analytics</h3>
-
                                 <CampaignAnalytics data={campaign} />
                             </section>
                         </div>

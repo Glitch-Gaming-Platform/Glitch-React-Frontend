@@ -42,7 +42,7 @@ const CreatorPostingCharts = ({ postData = [], darkMode = false }) => {
     }));
   };
 
-  const textStyle = darkMode ? { color: 'white' } : { color: 'black' };
+  const textStyle = darkMode ? { color: 'black' } : { color: 'white' };
 
   return (
     <div className="container mt-5">

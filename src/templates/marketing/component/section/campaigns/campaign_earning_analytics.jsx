@@ -56,7 +56,7 @@ const CampaignAnalytics = ({ data, darkMode = false }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, [data]);
 
-  const textStyle = darkMode ? { color: 'white' } : {};
+  const textStyle = darkMode ? { color: 'black' } : {color: 'white'};
 
   return (
     <div className="container mt-5" style={textStyle}>

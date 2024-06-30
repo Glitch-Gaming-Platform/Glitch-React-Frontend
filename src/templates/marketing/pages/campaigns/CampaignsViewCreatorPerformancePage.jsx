@@ -20,6 +20,7 @@ import CreatorLinksList from '../../component/section/creators/creator_links_lis
 import CreatorHeader from '../../component/section/creators/creator_header';
 import Breadcrumbs from '../../component/layout/breadcrumb';
 import CampaignNavbar from '../../component/section/campaigns/campaign_navbar';
+import SocialPostMetrics from '../../component/section/campaigns/campaign_social_post';
 
 const CampaignsViewCreatorPerformancePage = () => {
 
@@ -54,8 +55,8 @@ const CampaignsViewCreatorPerformancePage = () => {
 
         });
 
-        Glitch.api.SocialPosts.list({user_id : user_id, campaign_id : id}).then(response => {
-                setPosts(response.data.data);
+        Glitch.api.SocialPosts.list({ user_id: user_id, campaign_id: id }).then(response => {
+            setPosts(response.data.data);
         }).catch(error => {
 
         });
@@ -71,15 +72,15 @@ const CampaignsViewCreatorPerformancePage = () => {
 
     return (
         <>
-            <PublisherHeader position={"relative"}  />
+            <PublisherHeader position={"relative"} />
             <section className="pageheader-section-min">
                 <div className="container mt-4">
-                <Breadcrumbs items={[
-                    {name : 'Campaigns', link : Navigate.campaignsPage()}, 
-                    {name : campaign.name, link : Navigate.campaignsViewPage(campaign.id)}, 
-                    {name : 'Influencers Performance', link : Navigate.campaignsPerformanceInfluencer(campaign.id,user_id)}, 
+                    <Breadcrumbs items={[
+                        { name: 'Campaigns', link: Navigate.campaignsPage() },
+                        { name: campaign.name, link: Navigate.campaignsViewPage(campaign.id) },
+                        { name: 'Influencers Performance', link: Navigate.campaignsPerformanceInfluencer(campaign.id, user_id) },
                     ]}
-                />
+                    />
 
                     <div className="section-wrapper text-center text-uppercase">
                         <div className="pageheader-thumb mb-4">
@@ -102,15 +103,26 @@ const CampaignsViewCreatorPerformancePage = () => {
                 <CreatorHeader user={user} />
             </div>
 
-            <CreatorPostingStatistics  user={user}  />
+            <CreatorPostingStatistics user={user} />
 
-            <CreatorPostingCharts  user={user} postData={posts} />
+            <section className="container mt-4">
+                <h3>Social Posts</h3>
+                {posts.length > 0 ? (
+                    posts.map((post, index) => (
+                        <SocialPostMetrics key={index} post={post} />
+                    ))
+                ) : (
+                    <p className="lead text-center">No post have been created yet.</p>
+                )}
+            </section>
 
-            <CreatorLinksCharts  user={user}  linkData={links} />
+            <CreatorPostingCharts user={user} postData={posts} />
 
-            <CreatorLinksList  user={user} linkData={links} />
-    
-           
+            <CreatorLinksCharts user={user} linkData={links} />
+
+            <CreatorLinksList user={user} linkData={links} />
+
+
 
             <Footer />
         </>
