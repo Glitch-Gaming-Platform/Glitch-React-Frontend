@@ -19,18 +19,43 @@ const GameTitle = ({ gameInfo }) => {
 
   const createMarkup = (htmlContent) => {
     return {__html: htmlContent};
-};
+  };
+
+  const getVideoEmbedUrl = (url) => {
+    const youtubeMatch = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    const vimeoMatch = url.match(/(?:https?:\/\/)?(?:www\.)?vimeo.com\/(?:channels\/(?:\w+\/)?|groups\/(?:[^\/]*)\/videos\/|album\/(\d+)\/video\/|)(\d+)(?:$|\/|\?)/);
+    if (youtubeMatch && youtubeMatch[1]) {
+      return `https://www.youtube.com/embed/${youtubeMatch[1]}`;
+    } else if (vimeoMatch && vimeoMatch[2]) {
+      return `https://player.vimeo.com/video/${vimeoMatch[2]}`;
+    }
+    return null;
+  };
+
+  const videoEmbedUrl = gameInfo.video_url ? getVideoEmbedUrl(gameInfo.video_url) : null;
 
   return (
     <>
-    {(gameInfo ) ? 
+    {gameInfo ? 
     <div >
       <div className="row">
-        {gameInfo.image_banner ?
+        {videoEmbedUrl ? (
           <div className="col-md-12">
-            <img src={(gameInfo.image_banner) ? gameInfo.image_banner : '/assets/images/titles/no_image_2.png'} className="img-fluid" style={{width: "100%"}} />
+            <iframe 
+              src={videoEmbedUrl} 
+              frameBorder="0" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowFullScreen 
+              style={{ width: "100%", height: "400px" }}>
+            </iframe>
           </div>
-        : ''}
+        ) : (
+          gameInfo.image_banner && (
+            <div className="col-md-12">
+              <img src={gameInfo.image_banner ? gameInfo.image_banner : '/assets/images/titles/no_image_2.png'} className="img-fluid" style={{ width: "100%" }} />
+            </div>
+          )
+        )}
         <div className="col-md-12 mb-4 text-black">
           <h2 className="text-black">{gameInfo.name}</h2>
           <p className="text-black"><span dangerouslySetInnerHTML={createMarkup(gameInfo.long_description || gameInfo.short_description)} /></p>

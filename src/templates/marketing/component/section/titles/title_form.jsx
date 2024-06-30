@@ -263,6 +263,13 @@ const GameTitleForm = ({ gameTitle, onUpdate, setGameTitle, onMainImageUpdate, o
                         </div>
                     </div>
 
+                    <div className="card-header bg-secondary text-white">
+                        Product Videos
+                    </div>
+                    <div className="card-body">
+                        {createInput('Youtube/Vimeo Video Url', 'video_url', gameTitle?.video_url, handleChange, 'url', 'fas fa-file-video', errors, "Enter a Youtube or Vimeo video url to use that as a promo video.")}
+                    </div>
+
                     <div className="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
                         <span>
                             <i className="fas fa-book-open mr-2"></i>Additional Game Information
