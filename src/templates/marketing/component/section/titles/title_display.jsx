@@ -32,7 +32,7 @@ const GameTitle = ({ gameInfo }) => {
     return null;
   };
 
-  const videoEmbedUrl = gameInfo.video_url ? getVideoEmbedUrl(gameInfo.video_url) : null;
+  const videoEmbedUrl = gameInfo?.video_url ? getVideoEmbedUrl(gameInfo?.video_url) : null;
 
   return (
     <>
