@@ -800,6 +800,11 @@ const Navigate = {
         return app_routes.publishers_database;
 
     },
+    publishersAIPage : () => {
+
+        return app_routes.publishers_ai;
+
+    },
     publishersOptimizationPage : () => {
 
         return app_routes.publishers_optimization;

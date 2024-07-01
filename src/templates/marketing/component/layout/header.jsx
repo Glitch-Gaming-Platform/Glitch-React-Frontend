@@ -154,6 +154,7 @@ class Header extends Component {
                                                     <li><Link className="" to={Navigate.publishersAcquisitionPage()}>User Acquisition Cost</Link></li>
                                                     <li><Link className="" to={Navigate.publishersGamificationPage()}>Gamify Marketing</Link></li>
                                                     <li><Link className="" to={Navigate.publishersOptimizationPage()}>Marketing Optimizatiton</Link></li>
+                                                    <li><Link className="" to={Navigate.publishersDatabasePage()}>Database</Link></li>
                                                     <li><Link className="" to={Navigate.publishersOnboardingStep1Page()}>Register</Link></li>
                                                     <li><Link className="" to={Navigate.campaignsPage()}>Dashboard</Link></li>
                                                 </ul>
