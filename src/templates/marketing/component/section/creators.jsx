@@ -2,219 +2,158 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGamepad, faMoneyBillWave, faBroadcastTower, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import Navigate from '../../../../util/Navigate';
 
 const Creators = () => {
 
     const trackDownload = () => {
-        // Check if fbq function exists
         if (window.fbq) {
-            // Track custom event, you can change 'Download' to any event name relevant to your tracking strategy
             window.fbq('track', 'Download');
         }
-
         if (window.ttq) {
             window.ttq.track('Download', {
                 "contents": [
                     {
-                        "content_id": "1.6.3", // string. ID of the product. Example: "1077218".
-                        "content_type": "product", // string. Either product or product_group.
-                        "content_name": "Glitch App" // string. The name of the page or product. Example: "shirt".
+                        "content_id": "1.6.3",
+                        "content_type": "product",
+                        "content_name": "Glitch App"
                     }
                 ],
-                "value": 0, // number. Value of the order or items sold. Example: 100.
-                "currency": "USD" // string. The 4217 currency code. Example: "USD".
+                "value": 0,
+                "currency": "USD"
             });
         }
     };
 
     return (
         <>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Earn Money Playing Games and Creating Content</title>
+                <meta name="description" content="Become a content creator and get paid for playing games and creating content." />
+                <meta name="robots" content="index, follow" />
+                <meta property="og:title" content="Earn Money Playing Games and Creating Content" />
+                <meta property="og:description" content="Become a content creator and get paid for playing games and creating content." />
+                <meta property="og:type" content="website" />
+                <meta property="og:url" content={window.location.href} />
+                <meta property="og:image" content="https://www.glitch.fun/assets/images/creators/creators_3.png" />
+            </Helmet>
+
             <a id="goal"></a>
-            <div className="container-fluid" style={bannerStyle}>
-                The #1 Workflow App <br />For Gaming Content Creators
+            <div className="container-fluid text-center text-white" style={bannerStyle}>
+                <h1 className="display-4">The #1 Workflow App For <br /><br />Gaming Content Creators</h1>
             </div>
 
-
-
-            <section className="about-section">
+            <section className="about-section py-5">
                 <div className="container">
-                    <div className="section-wrapper padding-top">
-                        <div className="row">
-                            
-                            <div className="col-lg-6 col-md-10 mb-5">
-                                <div className="about-wrapper">
-                                    <div className="section-header">
-                                        <p>Earn Cash For Playing Games</p>
-                                        <h2>The Streaming Workflow Tool That Pays</h2>
-                                    </div>
-                                    <div className="about-content">
-                                        <p>Glitch is a workflow tool that makes streaming and creating content easy, and also pays you for promoting the latest games. Help game makers market their games by sharing your gameplay content on Twitch, YouTube, TikTok, Reddit, Facebook, Twitter, and Instagram. Get paid for the results you generate.</p>
-                                        <div className='text-center'>
-                                            <Link to={Navigate.creatorsInfluencersPage()} className='btn btn-lg btn-success'>Learn More</Link>
-
-                                        </div>
+                    <div className="row align-items-center">
+                        <div className="col-lg-6 mb-4 mb-lg-0">
+                            <div className="about-wrapper">
+                                <div className="section-header">
+                                    <h2 className="text-uppercase">Earn Cash for Playing Games</h2>
+                                    <p className="lead">The Streaming Workflow Tool That Pays</p>
+                                </div>
+                                <div className="about-content">
+                                    <p>Glitch is a workflow tool that makes streaming and creating content easy. Get paid for promoting the latest games by sharing your gameplay content on Twitch, YouTube, TikTok, Reddit, Facebook, Twitter, and Instagram.</p>
+                                    <div className="text-center">
+                                        <Link to={Navigate.creatorsInfluencersPage()} className="btn btn-lg btn-success">Learn More</Link>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-lg-6">
-                                <div className="about-image">
-                                    <img src={"/assets/images/creators/connecting_2.webp"} alt="about-image rounded" />
-                                </div>
+                        </div>
+                        <div className="col-lg-6">
+                            <img src="/assets/images/creators/connecting_2.webp" alt="About Glitch" className="img-fluid rounded" />
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-5 bg-dark text-white">
+                <div className="container text-center">
+                    <h2>Stream Live in a Few Clicks!</h2>
+                    <p className="lead">Our app makes going live as easy as 1, 2, 3! Follow these simple steps:</p>
+                    <div className="row text-center mt-4">
+                        <div className="col-md-4 mb-4">
+                            <div className="card bg-transparent border-0">
+                                <button className="btn btn-primary w-100 mb-3"><strong>1:</strong> Pick Your Game</button>
+                                <img src="/assets/images/creators/list_of_games.jpeg" alt="Select a Game" className="img-fluid rounded" />
+                            </div>
+                        </div>
+                        <div className="col-md-4 mb-4">
+                            <div className="card bg-transparent border-0">
+                                <button className="btn btn-primary w-100 mb-3"><strong>2:</strong> Set Up Your Webcam</button>
+                                <img src="/assets/images/creators/webcam.jpg" alt="Set Up Webcam" className="img-fluid rounded" />
+                            </div>
+                        </div>
+                        <div className="col-md-4 mb-4">
+                            <div className="card bg-transparent border-0">
+                                <button className="btn btn-primary w-100 mb-3"><strong>3:</strong> Hit 'Go Live' and Shine!</button>
+                                <img src="/assets/images/creators/gaming_3.jpg" alt="Go Live" className="img-fluid rounded" />
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#download" className="btn btn-success btn-lg mt-4">Get Started Now <i className="icofont-circled-right"></i></a>
+                </div>
+            </section>
+
+            <section className="py-5 bg-gradient text-white">
+                <div className="container text-center">
+                    <h2>One Click Multicasting!</h2>
+                    <p className="lead">Stream to multiple platforms with just a single click! Set up a custom RTMP URL with ease.</p>
+                    <a href="#download" className="btn btn-primary mt-3">Start Multicasting Now <i className="icofont-circled-right"></i></a>
+                    <div className="mt-4">
+                        <img src="/assets/images/creators/twitch.png" alt="Twitch" className="img-fluid mb-2 mx-2" style={{ maxWidth: '50px' }} />
+                        <img src="/assets/images/creators/facebook.png" alt="Facebook" className="img-fluid mb-2 mx-2" style={{ maxWidth: '50px' }} />
+                        <img src="/assets/images/creators/youtube.png" alt="YouTube" className="img-fluid mb-2 mx-2" style={{ maxWidth: '50px' }} />
+                        <img src="/assets/images/creators/trovo.png" alt="Trovo" className="img-fluid mb-2 mx-2" style={{ maxWidth: '50px' }} />
+                        <img src="/assets/images/creators/kick.png" alt="Kick" className="img-fluid mb-2 mx-2" style={{ maxWidth: '50px' }} />
+                        <img src="/assets/images/creators/rtmp.png" alt="RTMP" className="img-fluid mb-2 mx-2" style={{ maxWidth: '50px' }} />
+                        <small className="d-block mt-2">...and many more!</small>
+                    </div>
+                </div>
+            </section>
+
+            <section className="py-5 bg-dark text-white">
+                <div className="container">
+                    <div className="row align-items-center">
+                        <div className="col-lg-6">
+                            <img src="/assets/images/creators/video_editing_2.jpg" alt="Video Editing" className="img-fluid rounded" />
+                        </div>
+                        <div className="col-lg-6">
+                            <div className="p-4">
+                                <h2>Create & Edit Epic Clips Instantly!</h2>
+                                <p className="lead">Slice and dice your epic gameplay moments in mere seconds! Your gameplay is automatically recorded on your computer, so there are no storage fees. Various editing tools include:</p>
+                                <ul className="list-unstyled">
+                                    <li>Combining clips</li>
+                                    <li>Adding text overlays</li>
+                                    <li>Incorporating voice-overs</li>
+                                    <li>Changing video speeds</li>
+                                    <li>Utilizing text-to-speech</li>
+                                    <li>Applying transitions</li>
+                                    <li>And more!</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-
-
-
-            <div className="container padding-bottom mt-2" key={'key2'}>
-                <div className="section-wrapper">
-                    <div className="row g-4 justify-content-center"></div>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-12 text-center">
-                                <h2>Stream Live in a few clicks!</h2>
-                                <p className="lead">Our app makes going live as easy as 1, 2, 3! There is no complexity in our setup. Just follow these super simple steps:</p>
-                            </div>
-                        </div>
-
-                        <div className="row text-center">
-                            <div className="col-md-4">
-                                <button className="btn btn-primary w-100 mb-3"><strong>1:</strong> Pick Your Game</button>
-                                <img src={'/assets/images/creators/list_of_games.jpeg'} alt="Selecting a game" className="img-fluid rounded" />
-                            </div>
-                            <div className="col-md-4">
-                                <button className="btn btn-primary w-100 mb-3"><strong>2:</strong> Set Up Your Webcam</button>
-                                <img src={'/assets/images/creators/webcam.jpg'} alt="Choosing a webcam" className="img-fluid rounded" />
-                            </div>
-                            <div className="col-md-4">
-                                <button className="btn btn-primary w-100 mb-3"><strong>3:</strong> Hit 'Go Live' and Shine!</button>
-                                <img src={'/assets/images/creators/gaming_3.jpg'} alt="Going live" className="img-fluid rounded" />
-                            </div>
-                        </div>
-
-                        <div className="row mt-4">
-                            <div className="col-12 text-center">
-                                <a href="#download" className="default-button"><span>{'Get Started Now'} <i className="icofont-circled-right"></i></span></a>
-
-                            </div>
-                        </div>
+            <section className="py-5 bg-gradient text-white">
+                <div className="container text-center">
+                    <h2>Boost Your Social Presence!</h2>
+                    <p className="lead">Share your epic moments across multiple platforms and skyrocket your following with just a single click.</p>
+                    <div className="d-flex justify-content-center">
+                        <img src="/assets/images/creators/tiktok.png" alt="TikTok" className="m-2" style={{ width: '4rem', height: '4rem' }} />
+                        <img src="/assets/images/creators/reddit.png" alt="Reddit" className="m-2" style={{ width: '4rem', height: '4rem' }} />
+                        <img src="/assets/images/creators/facebook.png" alt="Facebook" className="m-2" style={{ width: '4rem', height: '4rem' }} />
+                        <img src="/assets/images/creators/twitter.png" alt="Twitter" className="m-2" style={{ width: '4rem', height: '4rem' }} />
+                        <img src="/assets/images/creators/youtube.png" alt="YouTube" className="m-2" style={{ width: '4rem', height: '4rem' }} />
+                        <img src="/assets/images/creators/instagram.png" alt="Instagram" className="m-2" style={{ width: '4rem', height: '4rem' }} />
                     </div>
                 </div>
-
-                <hr className='mt-5' />
-            </div>
-
-
-
-            <div className="container padding-bottom pl-4" key={'key-multicast'} >
-                <div className="section-wrapper">
-                    <div className="row align-items-center justify-content-center">
-
-                        <div className="col-5 text-center pl-4">
-                            <h2>One Click Multicasting!</h2>
-                            <p>Stream to multiple platforms with just a <strong>single click</strong>! Want more control? Set up a custom RTMP URL with ease.</p>
-                            <a href="#download" className="btn btn-primary mt-3">
-                                Start Multicasting Now <i className="icofont-circled-right"></i>
-                            </a>
-                        </div>
-
-                        <div className="col-5">
-                            <div className="d-flex flex-column align-items-center justify-content-center">
-                                <div>
-                                    <img src={'/assets/images/creators/twitch.png'} alt="Twitch Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'/assets/images/creators/facebook.png'} alt="Facebook Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'/assets/images/creators/youtube.png'} alt="YouTube Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-
-                                </div>
-                                <div>
-                                    <img src={'/assets/images/creators/trovo.png'} alt="Trovo Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'/assets/images/creators/kick.png'} alt="Kick Icon" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                    <img src={'/assets/images/creators/rtmp.png'} alt="RTMP" className="img-fluid mb-2 m-2" style={{ maxWidth: '50px' }} />
-                                </div>
-
-
-                                <small className="text-white mt-2">...and many more!</small>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div className="container py-5" key={'key3'} style={{ background: 'linear-gradient(45deg, #0a103d, #1c2a5e)', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
-                <div className="section-wrapper">
-                    <div className="row g-4 justify-content-center"></div>
-                    <div className="col-12">
-                        <div className="blog-item-1">
-                            <div className="blog-inner d-flex flex-wrap align-items-center">
-                                <div className="blog-thumb w-xl-50 w-100">
-                                    <img src={`/assets/images/creators/video_editing_2.jpg`} alt="Action-packed Gameplay Clip" className="w-100 rounded" />
-                                </div>
-                                <div className="blog-content p-4 w-xl-50 w-100">
-                                    <h2>Create & Edit Epic Clips Instantly!</h2>
-                                    <p className='lead'>Ditch the hassle of complex software. Slice and dice your epic gameplay moments in mere seconds! Your gameplay is automatically <strong>recorded</strong> on your computer so there are no storage fees. Various editing tools include:</p>
-                                    <ul>
-                                        <li>Combining clips</li>
-                                        <li>Adding text overlays</li>
-                                        <li>Incorporating voice-overs</li>
-                                        <li>Changing video speeds</li>
-                                        <li>Utilizing text-to-speech</li>
-                                        <li>Applying transitions</li>
-                                        <li>And more!</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div className="container py-5" key={'key3'} >
-
-                {/* Micro-Influencers Section */}
-                <div className="mb-5 p-5 rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
-                    <h2 className="mb-4 text-center">Livestream With Others In Real-Time!</h2>
-                    <div className="text-center">
-
-                        <p className="lead">Invite co-hosts to join your stream and engage in real-time conversations, with up to 60 FPS and as low as 1-second latency. Watch your gameplay together as you restream to multiple platforms simultaneously.</p>
-                        <img src="/assets/images/creators/co_hosts.png" alt="Micro Influencers" className="img-fluid rounded shadow mb-2" />
-                    </div>
-                </div>
-
-            </div>
-
-            <div className="container py-5" style={{ background: 'linear-gradient(45deg, #0a103d, #2a3a6e)', borderRadius: '10px', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
-                <div className="section-wrapper">
-                    <div className="row g-4 justify-content-center">
-                        <div className="col-12 text-center">
-                            <h2>Boost Your Social Presence!</h2>
-                            <p className='lead'>With just a single click, use our built-in social sharing tools to share your epic moments across multiple platforms and skyrocket your following.</p>
-                        </div>
-                        <div className="col-12 d-flex justify-content-center">
-                            <img src="/assets/images/creators/tiktok.png" alt="TikTok" className="m-2" style={{ width: '4rem', height: '4rem' }} />
-                            <img src="/assets/images/creators/reddit.png" alt="Reddit" className="m-2" style={{ width: '4rem', height: '4rem' }} />
-                            <img src="/assets/images/creators/facebook.png" alt="Facebook" className="m-2" style={{ width: '4rem', height: '4rem' }} />
-                            <img src="/assets/images/creators/twitter.png" alt="Twitter" className="m-2" style={{ width: '4rem', height: '4rem' }} />
-                            <img src="/assets/images/creators/youtube.png" alt="YouTube" className="m-2" style={{ width: '4rem', height: '4rem' }} />
-                            <img src="/assets/images/creators/instagram.png" alt="Instagram" className="m-2" style={{ width: '4rem', height: '4rem' }} />
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-            <br /><br />
-
-
+            </section>
 
             <section className="cta-section padding-bottom">
                 <div className="container">
@@ -223,16 +162,14 @@ const Creators = () => {
                             <div className="row align-items-center">
                                 <div className="col-lg-6">
                                     <div className="cta-content">
-                                        <p className="theme-color text-uppercase ls-2">{"Tip & Thrive!"}</p>
-                                        <h2 className="mb-3">Earn Tips Directly From Your Fans</h2>
-                                        <p className="mb-4">{'Embrace our game-changing tipping system! Let your fans shower you with tips as they enjoy your content. And guess what? You pocket 100% of the revenue from those tips! No cuts, no fees.'}</p>
-                                        <a target="_blank" href="#download" className="default-button"><span>{'Start Earning Now'} <i className="icofont-circled-right"></i></span></a>
+                                        <p className="theme-color text-uppercase ls-2">Tip & Thrive!</p>
+                                        <h2 className="mb-3">Earn Tips Directly from Your Fans</h2>
+                                        <p className="mb-4">Embrace our game-changing tipping system! Let your fans shower you with tips as they enjoy your content. And guess what? You pocket 100% of the revenue from those tips! No cuts, no fees.</p>
+                                        <a href="#download" className="btn btn-primary btn-lg">Start Earning Now <i className="icofont-circled-right"></i></a>
                                     </div>
                                 </div>
-                                <div className="col-lg-6">
-                                    <div className="cta-thumb text-end">
-                                        <img src={'/assets/images/creators/black_female.jpeg'} alt="gamer receiving tips" />
-                                    </div>
+                                <div className="col-lg-6 text-end">
+                                    <img src="/assets/images/creators/black_female.jpeg" alt="Gamer Receiving Tips" className="img-fluid" />
                                 </div>
                             </div>
                         </div>
@@ -240,166 +177,104 @@ const Creators = () => {
                 </div>
             </section>
 
-            <div className="container padding-bottom" key={'key-features'}>
-                <div className="section-wrapper">
-                    <div className="row">
-                        <div className="col-12 text-center">
-                            <h2>Feature-Packed Streaming with Glitch!</h2>
-                            <p>Power up your streaming with the best of tools and integrations.</p>
-                        </div>
+            <section className="py-5 bg-dark text-white">
+                <div className="container">
+                    <div className="section-header text-center">
+                        <h2>Feature-Packed Streaming with Glitch!</h2>
+                        <p className="lead">Power up your streaming with the best tools and integrations.</p>
                     </div>
-
-                    <div className="row text-center mt-5">
+                    <div className="row text-center mt-4">
                         <div className="col-md-4 mb-4">
-                            <img src={'/assets/images/creators/streamelements.jpg'} alt="Stream Elements" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src="/assets/images/creators/streamelements.jpg" alt="Stream Elements" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Stream Elements Integration</h4>
                             <p>Integrate with Stream Elements for a seamless streaming experience.</p>
                         </div>
-
                         <div className="col-md-4 mb-4">
-                            <img src={'/assets/images/creators/layers.png'} alt="Overlays" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src="/assets/images/creators/layers.png" alt="Overlays" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Custom Overlays</h4>
                             <p>Enhance your stream visuals with customizable overlays.</p>
                         </div>
-
                         <div className="col-md-4 mb-4">
-                            <img src={'/assets/images/creators/alerts.png'} alt="Alert Boxes" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src="/assets/images/creators/alerts.png" alt="Alert Boxes" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Alert Boxes</h4>
                             <p>Engage your audience with real-time alerts and notifications.</p>
                         </div>
-
                         <div className="col-md-4 mb-4">
-                            <img src={'/assets/images/creators/ai.png'} alt="A.I Chat Assistant" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src="/assets/images/creators/ai.png" alt="A.I Chat Assistant" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>A.I Co-Host</h4>
-                            <p>Interact A.I co-host to banter with you and yours followers.</p>
+                            <p>Interact with an A.I co-host to banter with you and your followers.</p>
                         </div>
-
                         <div className="col-md-4 mb-4">
-                            <img src={'/assets/images/creators/chat.png'} alt="Chat" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <img src="/assets/images/creators/chat.png" alt="Chat" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
                             <h4>Interactive Chat</h4>
                             <p>Engage with your viewers in real-time chat.</p>
                         </div>
-
                         <div className="col-md-4 mb-4">
-                            <img src={'/assets/images/creators/emoji_2.png'} alt="Emojies" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
-                            <h4>Fun Emojies</h4>
-                            <p>Express more with a wide range of emojies.</p>
+                            <img src="/assets/images/creators/emoji_2.png" alt="Emojis" className="img-fluid mb-3" style={{ maxWidth: '50px' }} />
+                            <h4>Fun Emojis</h4>
+                            <p>Express more with a wide range of emojis.</p>
                         </div>
                     </div>
-
-                    <div className="row mt-5">
-                        <div className="col-12 text-center">
-                            <p>...and a whole lot more to explore! Dive into Glitch and supercharge your streaming.</p>
-                        </div>
+                    <div className="text-center mt-4">
+                        <p>...and a whole lot more to explore! Dive into Glitch and supercharge your streaming.</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
-
-
-
-
-            <a id="download"></a>
-            <div className="about-team  padding-bottom padding-top-2" key={'key1'}>
+            <section className="about-team py-5 bg-gradient text-white" id="download">
                 <div className="container">
-                    <div className="section-header">
-                        <p>Availabe On Mulitple Platforms</p>
-                        <h2 className="mb-3">Download For Windows and Mac</h2>
-                        <p className="desc">Stream and record your games from your desktop with up to 120 FPS to capture every moment in vivid detail. Also, use our other online streaming features.</p>
+                    <div className="section-header text-center">
+                        <h2>Download Glitch for Multiple Platforms</h2>
+                        <p className="lead">Stream and record your games from your desktop with up to 120 FPS to capture every moment in vivid detail.</p>
                     </div>
-
-                    <ul className="d-flex flex-wrap justify-content-center player-meta mb-0">
-                        <li className="d-flex align-items-center text-center" key={1}>
+                    <div className="d-flex flex-wrap justify-content-center">
+                        <div className="text-center m-3">
                             <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App">
-                                <span className="left me-3"><img src={`/assets/images/creators/github.png`} alt={`Earn Donations`} style={{ width: '100px' }} /></span>
-                                <br /><br />
-                                <span className="right">{"Github Downloads"}</span>
+                                <img src="/assets/images/creators/github.png" alt="Github Downloads" style={{ width: '100px' }} />
+                                <p className="mt-2">Github Downloads</p>
                             </a>
-                        </li>
-                        <li className="d-flex flex-column align-items-center" key={1}>
-                            <div className="d-flex align-items-center mb-2">
-                                <span className="left me-3">
-                                    <img src={`/assets/images/creators/apple.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
-                                </span>
-                                <span className="right"></span>
-                            </div>
-                            <div>
-                                <ul style={{ listStyleType: 'none' }}>
-                                    <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-1.6.6-arm64.dmg" onClick={trackDownload}>
-                                            Mac Silicon Version (ARM)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-1.6.6.dmg" onClick={trackDownload}>
-                                            Mac Intel Version (x86)
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                        <li className="d-flex flex-column align-items-center" key={1}>
-                            <div className="d-flex align-items-center mb-2">
-                                <span className="left me-3">
-                                    <img src={`/assets/images/creators/windows.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
-                                </span>
-                                <span className="right"></span>
-                            </div>
-                            <div>
-                                <ul style={{ listStyleType: 'none' }}>
-                                    <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-Setup-1.6.6.exe" onClick={trackDownload} >
-                                            Windows Exe
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li className="d-flex flex-column align-items-center" key={1}>
-                            <div className="d-flex align-items-center mb-2">
-                                <span className="left me-3">
-                                    <img src={`/assets/images/creators/linux.png`} alt={`Earn Donations`} style={{ width: '100px' }} />
-                                </span>
-                                <span className="right"></span>
-                            </div>
-                            <div>
-                                <ul style={{ listStyleType: 'none' }}>
-                                    <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-1.6.6-arm64.AppImage" onClick={trackDownload}>
-                                            Linux ARM App Image (AMD)
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-1.6.6.AppImage" onClick={trackDownload}>
-                                            Linux Intel App Image (x86)
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-
-                    </ul>
+                        </div>
+                        <div className="text-center m-3">
+                            <img src="/assets/images/creators/apple.png" alt="Mac Downloads" style={{ width: '100px' }} />
+                            <ul className="list-unstyled mt-2">
+                                <li><a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-1.6.6-arm64.dmg" onClick={trackDownload}>Mac Silicon Version (ARM)</a></li>
+                                <li><a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-1.6.6.dmg" onClick={trackDownload}>Mac Intel Version (x86)</a></li>
+                            </ul>
+                        </div>
+                        <div className="text-center m-3">
+                            <img src="/assets/images/creators/windows.png" alt="Windows Downloads" style={{ width: '100px' }} />
+                            <ul className="list-unstyled mt-2">
+                                <li><a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-Setup-1.6.6.exe" onClick={trackDownload}>Windows Exe</a></li>
+                            </ul>
+                        </div>
+                        <div className="text-center m-3">
+                            <img src="/assets/images/creators/linux.png" alt="Linux Downloads" style={{ width: '100px' }} />
+                            <ul className="list-unstyled mt-2">
+                                <li><a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-1.6.6-arm64.AppImage" onClick={trackDownload}>Linux ARM App Image (AMD)</a></li>
+                                <li><a href="https://github.com/Glitch-Gaming-Platform/Glitch-Desktop-App/releases/download/v1.6.6/Glitch-Desktop-App-1.6.6.AppImage" onClick={trackDownload}>Linux Intel App Image (x86)</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </section>
         </>
     );
 };
 
 const bannerStyle = {
-    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/images/creators/image_11.jpeg")`, // Replace 'path_to_your_image.jpg' with your image path
-    height: '500px', // Adjust as needed
+    backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/images/creators/image_11.jpeg")',
+    height: '500px',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    color: 'white', // Text color
-    fontSize: '2.5rem', // Increased font size for better visibility
-    fontWeight: 'bold', // Bold text to make it stand out more
+    color: 'white',
+    fontSize: '2.5rem',
+    fontWeight: 'bold',
     textAlign: 'center',
-    textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)' // Increased text shadow for enhanced readability
+    textShadow: '3px 3px 6px rgba(0, 0, 0, 0.9)'
 };
 
 export default Creators;
