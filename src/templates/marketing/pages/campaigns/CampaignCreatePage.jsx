@@ -457,11 +457,12 @@ function CampaignCreatePage() {
                                                 <Danger key={`${errorKey}-${index}`} message={message} />
                                             ))
                                         ))}
-                                        {Object.keys(titleErrors).length > 0 && Object.keys(titleErrors).map((errorKey) => (
-                                            titleErrors[errorKey].map((message, index) => (
+                                        {Object.keys(titleErrors).length > 0 && Object.keys(titleErrors).map((errorKey) => {
+                                            const messages = Array.isArray(titleErrors[errorKey]) ? titleErrors[errorKey] : [titleErrors[errorKey]];
+                                            return messages.map((message, index) => (
                                                 <Danger key={`title-${errorKey}-${index}`} message={message} />
-                                            ))
-                                        ))}
+                                            ));
+                                        })}
                                     </div>
                                 </>}
 

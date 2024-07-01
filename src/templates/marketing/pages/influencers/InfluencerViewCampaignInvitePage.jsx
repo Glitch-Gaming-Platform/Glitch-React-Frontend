@@ -16,11 +16,13 @@ import Calculator from '../../../../util/Calculator';
 const InfluencerViewCampaignInvitePage = () => {
     const [campaign, setCampaign] = useState({});
     const [influencer, setInfluencer] = useState({});
+    const [current, setCurrent] = useState(null);
     const { campaign_id, influencer_id } = useParams();
     const [me, setMe] = useState({});
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
     const location = useLocation();
+    const [signingUp, setSigningUp] = useState(false);
 
     // Map the numeric values to string representations for Campaign Objectives and Influencer Campaign Types
     const campaignObjectiveMap = {
@@ -61,6 +63,12 @@ const InfluencerViewCampaignInvitePage = () => {
             }).catch(error => {
                 console.error('Error fetching me', error);
             });
+
+            Glitch.api.Campaigns.viewInfluencerCampaign(campaign_id, Glitch.util.Session.getID()).then(response => {
+                setCurrent(response.data.data);
+            }).catch(error => {
+                console.error('Error fetching current campaign', error);
+            });
         }
 
         Glitch.api.Campaigns.viewInfluencerInvite(campaign_id, influencer_id, token).then(response => {
@@ -82,8 +90,25 @@ const InfluencerViewCampaignInvitePage = () => {
         return { __html: htmlContent };
     };
 
+    const acceptInvite = async () => {
+        Glitch.api.Campaigns.acceptInfluencerInvite(campaign_id, me?.influencer.id).then(response => {
+            navigate(Navigate.influencersManageCampaignPage(campaign.id, me.id));
+        }).catch(error => {
+            console.error(error);
+        });
+    };
+
+    const declineInvite = async () => {
+        Glitch.api.Campaigns.declineInfluencerInvite(campaign_id, me?.influencer.id).then(response => {
+            setCampaign(response.data.data);
+        }).catch(error => {
+            console.error(error);
+        });
+    };
+
     const register = () => {
         if (Glitch.util.Session.isLoggedIn()) {
+            setSigningUp(true); 
             Glitch.api.Campaigns.createInfluencerCampaign(campaign_id, me.id).then(response => {
                 navigate(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
             }).catch(error => {
@@ -96,6 +121,8 @@ const InfluencerViewCampaignInvitePage = () => {
                         setErrors({});
                     }, timeouts.error_message_timeout);
                 }
+            }).finally(() => {
+                setSigningUp(false); // Stop signing up loading state
             });
         } else {
             const redirectUrl = `${window.location.pathname}${window.location.search}`;
@@ -188,7 +215,33 @@ const InfluencerViewCampaignInvitePage = () => {
                                 {(errors && errors.error) ?
                                     <Danger message={errors.error} key={0} /> : ''
                                 }
-                                <button className="btn btn-lg btn-success" onClick={register}>Sign Up</button>
+                                {current ? (
+                                    <>
+                                        <p>You have already signed up for this campaign.</p>
+                                        <button className="btn btn-lg btn-primary" onClick={() => navigate(Navigate.influencersManageCampaignPage(campaign_id, me.id))}>
+                                            <i className="fas fa-eye"></i> View Your Campaign
+                                        </button>
+                                    </>
+                                ) : Glitch.util.Session.isLoggedIn() && influencer && me?.influencer?.id == influencer.id ? (
+                                    <>
+
+                                        {campaign.rejected ? <p className='text-danger'>You have rejected this campaign</p> : <p>You have been invited to this campaign.</p> }
+                                        
+                                        <button className="btn btn-lg btn-success me-2" onClick={acceptInvite}>
+                                            <i className="fas fa-check"></i> Accept Invite
+                                        </button>
+                                        <button className="btn btn-lg btn-danger" onClick={declineInvite}>
+                                            <i className="fas fa-times"></i> Reject Invite
+                                        </button>
+                                    </>
+                                ) : (
+                                    <button className={`btn btn-lg btn-success ${signingUp ? 'disabled' : ''}`} onClick={register} disabled={signingUp}>
+                                        {signingUp && (
+                                            <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                        )}
+                                        {me?.id ? 'Apply Now!' : 'Sign Up'}
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
