@@ -23,6 +23,8 @@ const InfluencerViewCampaignInvitePage = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [signingUp, setSigningUp] = useState(false);
+    const [acceptingInvite, setAcceptingInvite] = useState(false);
+    const [rejectingInvite, setRejectingInvite] = useState(false);
 
     // Map the numeric values to string representations for Campaign Objectives and Influencer Campaign Types
     const campaignObjectiveMap = {
@@ -91,24 +93,30 @@ const InfluencerViewCampaignInvitePage = () => {
     };
 
     const acceptInvite = async () => {
+        setAcceptingInvite(true);
         Glitch.api.Campaigns.acceptInfluencerInvite(campaign_id, me?.influencer.id).then(response => {
             navigate(Navigate.influencersManageCampaignPage(campaign.id, me.id));
         }).catch(error => {
             console.error(error);
+        }).finally(() => {
+            setAcceptingInvite(false);
         });
     };
 
     const declineInvite = async () => {
+        setRejectingInvite(true);
         Glitch.api.Campaigns.declineInfluencerInvite(campaign_id, me?.influencer.id).then(response => {
             setCampaign(response.data.data);
         }).catch(error => {
             console.error(error);
+        }).finally(() => {
+            setRejectingInvite(false);
         });
     };
 
     const register = () => {
         if (Glitch.util.Session.isLoggedIn()) {
-            setSigningUp(true); 
+            setSigningUp(true);
             Glitch.api.Campaigns.createInfluencerCampaign(campaign_id, me.id).then(response => {
                 navigate(Navigate.influencersManageCampaignPage(response.data.data.campaign_id, response.data.data.user_id));
             }).catch(error => {
@@ -122,7 +130,7 @@ const InfluencerViewCampaignInvitePage = () => {
                     }, timeouts.error_message_timeout);
                 }
             }).finally(() => {
-                setSigningUp(false); // Stop signing up loading state
+                setSigningUp(false);
             });
         } else {
             const redirectUrl = `${window.location.pathname}${window.location.search}`;
@@ -224,13 +232,18 @@ const InfluencerViewCampaignInvitePage = () => {
                                     </>
                                 ) : Glitch.util.Session.isLoggedIn() && influencer && me?.influencer?.id == influencer.id ? (
                                     <>
-
                                         {campaign.rejected ? <p className='text-danger'>You have rejected this campaign</p> : <p>You have been invited to this campaign.</p> }
                                         
-                                        <button className="btn btn-lg btn-success me-2" onClick={acceptInvite}>
+                                        <button className="btn btn-lg btn-success me-2" onClick={acceptInvite} disabled={acceptingInvite}>
+                                            {acceptingInvite && (
+                                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                            )}
                                             <i className="fas fa-check"></i> Accept Invite
                                         </button>
-                                        <button className="btn btn-lg btn-danger" onClick={declineInvite}>
+                                        <button className="btn btn-lg btn-danger" onClick={declineInvite} disabled={rejectingInvite}>
+                                            {rejectingInvite && (
+                                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                            )}
                                             <i className="fas fa-times"></i> Reject Invite
                                         </button>
                                     </>

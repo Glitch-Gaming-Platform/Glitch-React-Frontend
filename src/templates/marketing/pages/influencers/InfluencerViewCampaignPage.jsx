@@ -22,6 +22,8 @@ const InfluencerViewCampaignPage = () => {
     const [me, setMe] = useState({});
     const [errors, setErrors] = useState({});
     const [signingUp, setSigningUp] = useState(false); // State to track sign-up loading
+    const [acceptingInvite, setAcceptingInvite] = useState(false); // State to track accept invite loading
+    const [rejectingInvite, setRejectingInvite] = useState(false); // State to track reject invite loading
 
     const navigate = useNavigate();
 
@@ -65,13 +67,10 @@ const InfluencerViewCampaignPage = () => {
                 });
 
                 if(response.data.data.influencer) {
-
                     Glitch.api.Campaigns.viewInfluencerInvite(campaign_id, response.data.data.influencer.id).then(response => {
-                        setInvite(response.data.data)
-                    }).then(response => {
-
+                        setInvite(response.data.data);
                     }).catch(error => {
-
+                        console.error('Error fetching influencer invite', error);
                     });
                 }
 
@@ -97,18 +96,24 @@ const InfluencerViewCampaignPage = () => {
     };
 
     const acceptInvite = async () => {
+        setAcceptingInvite(true);
         Glitch.api.Campaigns.acceptInfluencerInvite(campaign_id, me?.influencer.id).then(response => {
             navigate(Navigate.influencersManageCampaignPage(campaign.id, me.id));
         }).catch(error => {
             console.error(error);
+        }).finally(() => {
+            setAcceptingInvite(false);
         });
     };
 
     const declineInvite = async () => {
+        setRejectingInvite(true);
         Glitch.api.Campaigns.declineInfluencerInvite(campaign_id, me?.influencer.id).then(response => {
             setInvite(response.data.data);
         }).catch(error => {
             console.error(error);
+        }).finally(() => {
+            setRejectingInvite(false);
         });
     };
 
@@ -199,7 +204,6 @@ const InfluencerViewCampaignPage = () => {
                             {campaign.requirements && <p><strong>Requirements:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.requirements)} /></p>}
                         </section>
 
-
                         {me?.influencer && (
                             <>
                                 <hr />
@@ -232,25 +236,24 @@ const InfluencerViewCampaignPage = () => {
                             {campaign.prohibited_content && <p><strong>Prohibited Content:</strong> <span dangerouslySetInnerHTML={createMarkup(campaign.prohibited_content)} /></p>}
                         </section>
 
-
                         {renderTargetingCriteria()}
 
                         <hr />
 
                         <div className="container my-5">
-                        {!current && !invite ? <>
-                            <h3 className="text-black">How To Sign Up</h3>
-                            <p className="lead">To {current ? 'view' : 'apply for'} this campaign, follow these steps:</p>
-                            <ol>
-                                <li>Click the {current ? 'view' : 'sign-up'} link below. Once you register, the campaign manager will be notified.</li>
-                                <li>If the campaign is auto-approved, you'll automatically be authorized to start promoting. If it's not, a campaign manager will review your application and may ask questions, reject, or approve you.</li>
-                                <li>Once approved, you'll gain access to the campaign's assets, referral links, access codes, and other information needed to promote the game.</li>
-                                <li>Download the Glitch Streaming application and begin streaming and creating content. All content must be created through the app as it will track your progress, which is tied to your compensation.</li>
-                                <li>After you've finished promoting, mark the campaign as complete. The brand will then have one week to review your content before distributing payment.</li>
-                            </ol>
-                            </>
-                            : <></> 
-                        }
+                            {!current && !invite ? (
+                                <>
+                                    <h3 className="text-black">How To Sign Up</h3>
+                                    <p className="lead">To {current ? 'view' : 'apply for'} this campaign, follow these steps:</p>
+                                    <ol>
+                                        <li>Click the {current ? 'view' : 'sign-up'} link below. Once you register, the campaign manager will be notified.</li>
+                                        <li>If the campaign is auto-approved, you'll automatically be authorized to start promoting. If it's not, a campaign manager will review your application and may ask questions, reject, or approve you.</li>
+                                        <li>Once approved, you'll gain access to the campaign's assets, referral links, access codes, and other information needed to promote the game.</li>
+                                        <li>Download the Glitch Streaming application and begin streaming and creating content. All content must be created through the app as it will track your progress, which is tied to your compensation.</li>
+                                        <li>After you've finished promoting, mark the campaign as complete. The brand will then have one week to review your content before distributing payment.</li>
+                                    </ol>
+                                </>
+                            ) : <></>}
 
                             <div className="text-center">
                                 {errors && errors.error ? <Danger message={errors.error} key={0} /> : ''}
@@ -263,13 +266,17 @@ const InfluencerViewCampaignPage = () => {
                                     </>
                                 ) : invite ? (
                                     <>
-
-                                        {invite.rejected ? <p className='text-danger'>You have rejected this campaign</p> : <p>You have been invited to this campaign.</p> }
-                                        
-                                        <button className="btn btn-lg btn-success me-2" onClick={acceptInvite}>
+                                        {invite.rejected ? <p className='text-danger'>You have rejected this campaign</p> : <p>You have been invited to this campaign.</p>}
+                                        <button className="btn btn-lg btn-success me-2" onClick={acceptInvite} disabled={acceptingInvite}>
+                                            {acceptingInvite && (
+                                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                            )}
                                             <i className="fas fa-check"></i> Accept Invite
                                         </button>
-                                        <button className="btn btn-lg btn-danger" onClick={declineInvite}>
+                                        <button className="btn btn-lg btn-danger" onClick={declineInvite} disabled={rejectingInvite}>
+                                            {rejectingInvite && (
+                                                <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                                            )}
                                             <i className="fas fa-times"></i> Reject Invite
                                         </button>
                                     </>
