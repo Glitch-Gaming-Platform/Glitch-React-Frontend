@@ -148,6 +148,7 @@ const SocialPostMetrics = ({ post }) => {
         <div className="text-center">
           <h5 className="mb-1">Earnings</h5>
           <p className="card-text mb-1">${calculateEarnings(post)}</p>
+          <p><strong>Fraud Status Check</strong></p>
           <p className={`mb-0 ${getFraudStatusClass(post.fraud_check_status)}`}>
             {['passed', 'review'].includes(post.fraud_check_status) ? (
               <span onClick={toggleExplanation} className="text-decoration-underline" role="button">

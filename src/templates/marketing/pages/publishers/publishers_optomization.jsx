@@ -64,7 +64,7 @@ function PublishersOptimizationPage() {
             <FontAwesomeIcon icon={faYoutube} size="2x" style={{ color: '#FF0000' }} className="mx-2" />
             <FontAwesomeIcon icon={faTiktok} size="2x" style={{ color: '#000000' }} className="mx-2" />
           </div>
-          <img src="/assets/images/publishers/objectives_1.png" alt="Social Platforms" className="img-fluid rounded my-3" />
+          <img src="/assets/images/publishers/build_rate_card.gif" alt="Social Platforms" className="img-fluid rounded my-3" />
         </div>
 
         {/* Performance-Based Influencer Marketing Section */}
@@ -84,7 +84,7 @@ function PublishersOptimizationPage() {
         <div className='pt-4 pb-2 mb-5 rounded text-center' style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
           <h2 className="text-white">Hybrid Marketing Model</h2>
           <p className="text-white lead">The hybrid model combines guaranteed upfront payments with performance-based incentives, creating a balanced approach that motivates influencers while ensuring campaign goals are met.</p>
-          <img src="/assets/images/publishers/hybrid.png" alt="Hybrid Model" className="img-fluid rounded my-3" /><br />
+          <img src="/assets/images/publishers/hybrid_model.gif" alt="Hybrid Model" className="img-fluid rounded my-3" /><br />
           <FontAwesomeIcon icon={faHandshake} size="3x" className="text-white" />
         </div>
         
