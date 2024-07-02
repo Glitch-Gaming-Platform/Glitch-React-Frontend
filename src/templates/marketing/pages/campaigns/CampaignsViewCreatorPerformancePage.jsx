@@ -103,8 +103,6 @@ const CampaignsViewCreatorPerformancePage = () => {
                 <CreatorHeader user={user} />
             </div>
 
-            <CreatorPostingStatistics user={user} />
-
             <section className="container mt-4">
                 <h3>Social Posts</h3>
                 {posts.length > 0 ? (
@@ -120,7 +118,7 @@ const CampaignsViewCreatorPerformancePage = () => {
 
             <CreatorLinksCharts user={user} linkData={links} />
 
-            <CreatorLinksList user={user} linkData={links} />
+            <CreatorLinksList user={user} linkData={links} darkMode={false} />
 
 
 

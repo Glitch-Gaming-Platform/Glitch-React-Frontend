@@ -127,22 +127,22 @@ const SocialPostMetrics = ({ post }) => {
         </div>
         <ul className="list-inline mb-0">
           <li className="list-inline-item me-3">
-            <strong>Views:</strong> {post.total_views}
+            <strong>Views:</strong> {post?.total_views?.toLocaleString() || 0}
           </li>
           <li className="list-inline-item me-3">
-            <strong>Comments:</strong> {post.total_comments}
+            <strong>Comments:</strong> {post?.total_comments?.toLocaleString() || 0}
           </li>
           <li className="list-inline-item me-3">
-            <strong>Engagements:</strong> {post.total_engagements}
+            <strong>Engagements:</strong> {post?.total_engagements?.toLocaleString() || 0}
           </li>
           <li className="list-inline-item me-3">
-            <strong>Shares:</strong> {post.total_shares}
+            <strong>Shares:</strong> {post?.total_shares?.toLocaleString() || 0}
           </li>
           <li className="list-inline-item me-3">
-            <strong>Reactions:</strong> {post.total_reactions}
+            <strong>Reactions:</strong> {post?.total_reactions?.toLocaleString() || 0}
           </li>
           <li className="list-inline-item me-3">
-            <strong>Bookmarks:</strong> {post.total_bookmarks}
+            <strong>Bookmarks:</strong> {post?.total_bookmarks?.toLocaleString() || 0}
           </li>
         </ul>
         <div className="text-center">

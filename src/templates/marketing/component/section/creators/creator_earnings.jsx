@@ -11,33 +11,24 @@ const CreatorEarningsBreakdown = ({ campaign, posts = [] }) => {
         { name: 'Twitch', prefix: 'twitch' }
     ];
 
-    const calculateEarnings = (post, prefix) => {
-        const { influencer_campaign, total_views, total_comments, total_shares, total_engagements, total_reactions, total_bookmarks } = post;
+    const calculateEarnings = (post, metric, prefix) => {
+        const { influencer_campaign } = post;
         if (!influencer_campaign) return 0;
 
-        let earnings = 0;
-
-        const getPayment = (specific, general) => (specific !== undefined && specific !== null && specific != 0 ? specific : general);
-
-        earnings += getPayment(influencer_campaign[`payment_per_view_${prefix}`], influencer_campaign.payment_per_view) * total_views;
-        earnings += getPayment(influencer_campaign[`payment_per_comment_${prefix}`], influencer_campaign.payment_per_comment) * total_comments;
-        earnings += getPayment(influencer_campaign[`payment_per_share_${prefix}`], influencer_campaign.payment_per_share) * total_shares;
-        earnings += getPayment(influencer_campaign[`payment_per_engagement_${prefix}`], influencer_campaign.payment_per_engagement) * total_engagements;
-        earnings += getPayment(influencer_campaign[`payment_per_click_${prefix}`], influencer_campaign.payment_per_click) * total_reactions;
-        earnings += getPayment(influencer_campaign[`payment_per_install_${prefix}`], influencer_campaign.payment_per_install) * total_bookmarks;
-
-        return earnings.toFixed(2);
+        const getPayment = (specific, general) => (specific !== undefined && specific !== null && specific !== 0 ? specific : general);
+        const rate = getPayment(influencer_campaign[`payment_per_${metric}_${prefix}`], influencer_campaign[`payment_per_${metric}`]);
+        return rate * post[`total_${metric}`];
     };
 
     const calculateTotalEarningsByPlatform = (prefix) => {
         return posts.reduce((acc, post) => {
             if (post.social_platform === prefix) {
-                acc.views += parseFloat(calculateEarnings(post, 'views'));
-                acc.comments += parseFloat(calculateEarnings(post, 'comments'));
-                acc.shares += parseFloat(calculateEarnings(post, 'shares'));
-                acc.engagements += parseFloat(calculateEarnings(post, 'engagements'));
-                acc.clicks += parseFloat(calculateEarnings(post, 'clicks'));
-                acc.installs += parseFloat(calculateEarnings(post, 'installs'));
+                acc.views += parseFloat(calculateEarnings(post, 'views', prefix));
+                acc.comments += parseFloat(calculateEarnings(post, 'comments', prefix));
+                acc.shares += parseFloat(calculateEarnings(post, 'shares', prefix));
+                acc.engagements += parseFloat(calculateEarnings(post, 'engagements', prefix));
+                acc.clicks += parseFloat(calculateEarnings(post, 'clicks', prefix));
+                acc.installs += parseFloat(calculateEarnings(post, 'installs', prefix));
             }
             return acc;
         }, {
@@ -55,12 +46,12 @@ const CreatorEarningsBreakdown = ({ campaign, posts = [] }) => {
         return (
             <tr key={platform}>
                 <th scope="row">{platform}</th>
-                <td>${earnings.views}</td>
-                <td>${earnings.comments}</td>
-                <td>${earnings.shares}</td>
-                <td>${earnings.engagements}</td>
-                <td>${earnings.clicks}</td>
-                <td>${earnings.installs}</td>
+                <td>${earnings.views.toFixed(2)}</td>
+                <td>${earnings.comments.toFixed(2)}</td>
+                <td>${earnings.shares.toFixed(2)}</td>
+                <td>${earnings.engagements.toFixed(2)}</td>
+                <td>${earnings.clicks.toFixed(2)}</td>
+                <td>${earnings.installs.toFixed(2)}</td>
             </tr>
         );
     };

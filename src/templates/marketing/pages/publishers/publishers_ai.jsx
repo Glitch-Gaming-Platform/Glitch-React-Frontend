@@ -16,27 +16,27 @@ function PublishersAIPage() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Use AI To Create And Manage Influencer Campaigns | Glitch</title>
-        <meta name="description" content="Easily manage influencer campaigns through AI, making your job easier and faster than ever.." />
+        <meta name="description" content="Easily manage influencer campaigns through AI, making your job easier and faster than ever." />
         <meta name="robots" content="index, follow" />
         <meta property="og:title" content="Use AI To Create And Manage Influencer Campaigns | Glitch" />
-        <meta property="og:description" content="Easily manage influencer campaigns through AI, making your job easier and faster than ever.." />
+        <meta property="og:description" content="Easily manage influencer campaigns through AI, making your job easier and faster than ever." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={currentUrl} />
         <meta property="og:image" content="https://www.glitch.fun/assets/images/publishers/banner_1.png" />
       </Helmet>
       <Header />
       <section className="container-fluid text-center text-white py-5" style={bannerStyle}>
-        <h1 className="display-4"><br /><br />Use AI On Influencer Campaigns <br />To Complelty Optomize Your Workflow</h1>
+        <h1 className="display-4"><br /><br />Use AI On Influencer Campaigns <br />To Completely Optimize Your Workflow</h1>
       </section>
 
       <section className="py-5">
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-lg-6">
-              <img src="/assets/images/publishers/influencer_database.gif" alt="Search Database" className="img-fluid rounded shadow" />
+              <img src="/assets/images/publishers/ai_creates_campaign.gif" alt="AI Creates Campaign" className="img-fluid rounded shadow" />
             </div>
             <div className="col-lg-6">
-              <h2 className="mb-4">Create Campaigns With AI Instansanoutly</h2>
+              <h2 className="mb-4">Create Campaigns With AI Instantly</h2>
               <p className="lead">We connect to gaming stores to automatically pull your information in and automatically create campaigns using AI.</p>
             </div>
           </div>
@@ -47,11 +47,11 @@ function PublishersAIPage() {
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-lg-6 order-lg-2">
-              <img src="/assets/images/publishers/filter_influencers.gif" alt="Sort Influencers" className="img-fluid rounded shadow" />
+              <img src="/assets/images/publishers/ai_outreach.gif" alt="AI Filter Influencers" className="img-fluid rounded shadow" />
             </div>
             <div className="col-lg-6 order-lg-1">
-              <h2 className="mb-4 text-black">Sort Influencers by Various Criteria</h2>
-              <p className="lead">Our advanced sorting options allow you to filter influencers based on platform, follower count, country, and other criteria. Find influencers on TikTok, Instagram, YouTube, Twitch, and more with ease.</p>
+              <h2 className="mb-4 text-black">AI Generated Outreach</h2>
+              <p className="lead">Influencers have to be contacted multiple times to get a response. Have AI automatically write your outreach emails and send them for you at the appropriate times.</p>
             </div>
           </div>
         </div>
@@ -61,11 +61,40 @@ function PublishersAIPage() {
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-lg-6">
-              <img src="/assets/images/publishers/ai-outreach.webp" alt="AI Generated Emails" className="img-fluid rounded shadow" />
+              <img src="/assets/images/publishers/ai-outreach.webp" alt="AI Fraud Detection" className="img-fluid rounded shadow" />
             </div>
             <div className="col-lg-6">
-              <h2 className="mb-4">AI-Generated Email Outreach</h2>
-              <p className="lead">We handle the outreach process for you. Our AI-generated email sequences ensure effective and personalized communication with influencers, saving you time and effort.</p>
+              <h2 className="mb-4">AI Fraud Detection</h2>
+              <p className="lead">AI can automatically detect if an influencer's post might be fraudulent, tag it, and provide reasoning for why the content needs to be reviewed.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-5 bg-light text-black">
+        <div className="container">
+          <div className="row align-items-center mb-5">
+            <div className="col-lg-6">
+              <h2 className="mb-4 text-black">AI Sourcing</h2>
+              <p className="lead">Have AI automatically source relevant influencers that match your campaign objectives.</p>
+            </div>
+            <div className="col-lg-6">
+              <img src="/assets/images/publishers/ai_sourcing.gif" alt="AI Sourcing" className="img-fluid rounded shadow" />
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section className="py-5">
+        <div className="container">
+          <div className="row align-items-center mb-5">
+            <div className="col-lg-6 order-lg-2">
+              <img src="/assets/images/publishers/ai_contracting.gif" alt="AI Contracting" className="img-fluid rounded shadow" />
+            </div>
+            <div className="col-lg-6 order-lg-1">
+              <h2 className="mb-4">AI Contracting</h2>
+              <p className="lead">Let AI automatically manage contracts, making it easy to rewrite custom contracts based on negotiation changes.</p>
             </div>
           </div>
         </div>
