@@ -78,19 +78,19 @@ const Creators = () => {
                         <div className="col-md-4 mb-4">
                             <div className="card bg-transparent border-0">
                                 <button className="btn btn-primary w-100 mb-3"><strong>1:</strong> Pick Your Game</button>
-                                <img src="/assets/images/creators/list_of_games.jpeg" alt="Select a Game" className="img-fluid rounded" />
+                                <img src="/assets/images/creators/select_game.gif" alt="Select a Game" className="img-fluid rounded" />
                             </div>
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card bg-transparent border-0">
                                 <button className="btn btn-primary w-100 mb-3"><strong>2:</strong> Set Up Your Webcam</button>
-                                <img src="/assets/images/creators/webcam.jpg" alt="Set Up Webcam" className="img-fluid rounded" />
+                                <img src="/assets/images/creators/webcam.gif" alt="Set Up Webcam" className="img-fluid rounded" />
                             </div>
                         </div>
                         <div className="col-md-4 mb-4">
                             <div className="card bg-transparent border-0">
                                 <button className="btn btn-primary w-100 mb-3"><strong>3:</strong> Hit 'Go Live' and Shine!</button>
-                                <img src="/assets/images/creators/gaming_3.jpg" alt="Go Live" className="img-fluid rounded" />
+                                <img src="/assets/images/creators/go_live.gif" alt="Go Live" className="img-fluid rounded" />
                             </div>
                         </div>
                     </div>
@@ -103,6 +103,7 @@ const Creators = () => {
                     <h2>One Click Multicasting!</h2>
                     <p className="lead">Stream to multiple platforms with just a single click! Set up a custom RTMP URL with ease.</p>
                     <a href="#download" className="btn btn-primary mt-3">Start Multicasting Now <i className="icofont-circled-right"></i></a>
+                    <img src="/assets/images/creators/mutlicast_youtube_twitch.gif" alt="Go Live" className="img-fluid rounded mt-3" />
                     <div className="mt-4">
                         <img src="/assets/images/creators/twitch.png" alt="Twitch" className="img-fluid mb-2 mx-2" style={{ maxWidth: '50px' }} />
                         <img src="/assets/images/creators/facebook.png" alt="Facebook" className="img-fluid mb-2 mx-2" style={{ maxWidth: '50px' }} />

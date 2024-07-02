@@ -59,7 +59,7 @@ function PublisherUserAcquisition() {
         {/* Section 3: Targeted Audience */}
         <div className="row mb-5 align-items-center">
           <div className="col-md-6 order-md-2">
-            <img src="/assets/images/publishers/target_1.png" alt="Targeted Audience" className="img-fluid rounded mb-3" />
+            <img src="/assets/images/publishers/targeting.gif" alt="Targeted Audience" className="img-fluid rounded mb-3" />
           </div>
           <div className="col-md-6 order-md-1">
             <h2>Reach Your Target Audience</h2>

@@ -33,7 +33,7 @@ function PublishersDatabasePage() {
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-lg-6">
-              <img src="/assets/images/publishers/search.webp" alt="Search Database" className="img-fluid rounded shadow" />
+              <img src="/assets/images/publishers/influencer_database.gif" alt="Search Database" className="img-fluid rounded shadow" />
             </div>
             <div className="col-lg-6">
               <h2 className="mb-4">Search Thousands of Influencers for Free</h2>
@@ -47,7 +47,7 @@ function PublishersDatabasePage() {
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-lg-6 order-lg-2">
-              <img src="/assets/images/publishers/sort-1.webp" alt="Sort Influencers" className="img-fluid rounded shadow" />
+              <img src="/assets/images/publishers/filter_influencers.gif" alt="Sort Influencers" className="img-fluid rounded shadow" />
             </div>
             <div className="col-lg-6 order-lg-1">
               <h2 className="mb-4 text-black">Sort Influencers by Various Criteria</h2>
