@@ -35,12 +35,12 @@ function PublisherBenefitPage() {
             <div className="row align-items-center">
               <div className="col-lg-6">
                 <div className="cta-content">
-                  <p  style={{fontSize : "2rem"}} className="theme-color text-uppercase ls-2">What Is Performance-Based Marketing?</p>
+                  <p  style={{fontSize : "1.5rem"}} className="theme-color text-uppercase ls-2">What Is Performance-Based Marketing?</p>
                   <p className="mb-3 lead">Performance-Based Influencer Marketing is when content creators are rewarded based on the results they produce for promoting your game.</p>
                 </div>
               </div>
               <div className="col-lg-6 text-end">
-                <img src='/assets/images/publishers/influencer_1.png' alt="gamer receiving tips" className="img-fluid rounded shadow" />
+                <img src='/assets/images/publishers/performance_based.gif' alt="gamer receiving tips" className="img-fluid rounded shadow" />
               </div>
             </div>
           </div>
@@ -65,13 +65,6 @@ function PublisherBenefitPage() {
               <a href={Navigate.publishersOnboardingStep1Page()} className="btn btn-primary mt-4">Risk Free Try <FontAwesomeIcon icon={faArrowRight} /></a>
             </div>
           </div>
-        </div>
-
-        <div className="mb-5 p-5 text-center bg-light rounded" style={{ backgroundImage: "url(/assets/images/cta/bg.jpg)" }}>
-          <h2 className="mb-4">Empowering Micro-Influencers</h2>
-          <FontAwesomeIcon icon={faUserCheck} size="3x" className="mb-3 text-primary" />
-          <p className="lead">Micro-influencers gain a level playing field, with an emphasis on their impact rather than follower count, fostering a diverse and vibrant influencer ecosystem.</p>
-          <img src="/assets/images/publishers/micro_1.png" alt="Micro Influencers" className="img-fluid rounded shadow" />
         </div>
 
         <div className="mb-5 py-4 px-3 bg-dark text-white rounded">

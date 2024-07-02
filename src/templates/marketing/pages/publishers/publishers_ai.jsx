@@ -61,7 +61,7 @@ function PublishersAIPage() {
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-lg-6">
-              <img src="/assets/images/publishers/ai-outreach.webp" alt="AI Fraud Detection" className="img-fluid rounded shadow" />
+              <img src="/assets/images/publishers/fraud_status.gif" alt="AI Fraud Detection" className="img-fluid rounded shadow" />
             </div>
             <div className="col-lg-6">
               <h2 className="mb-4">AI Fraud Detection</h2>

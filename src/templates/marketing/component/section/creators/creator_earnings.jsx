@@ -15,20 +15,27 @@ const CreatorEarningsBreakdown = ({ campaign, posts = [] }) => {
         const { influencer_campaign } = post;
         if (!influencer_campaign) return 0;
 
-        const getPayment = (specific, general) => (specific !== undefined && specific !== null && specific !== 0 ? specific : general);
+        const getPayment = (specific, general) => {
+            const specificRate = specific !== undefined && specific !== null ? specific : 0;
+            const generalRate = general !== undefined && general !== null ? general : 0;
+            return specificRate !== 0 ? specificRate : generalRate;
+        };
+
         const rate = getPayment(influencer_campaign[`payment_per_${metric}_${prefix}`], influencer_campaign[`payment_per_${metric}`]);
-        return rate * post[`total_${metric}`];
+        const totalMetric = post[`total_${metric}`] !== undefined && post[`total_${metric}`] !== null ? post[`total_${metric}`] : 0;
+        
+        return rate * totalMetric;
     };
 
     const calculateTotalEarningsByPlatform = (prefix) => {
         return posts.reduce((acc, post) => {
             if (post.social_platform === prefix) {
-                acc.views += parseFloat(calculateEarnings(post, 'views', prefix));
-                acc.comments += parseFloat(calculateEarnings(post, 'comments', prefix));
-                acc.shares += parseFloat(calculateEarnings(post, 'shares', prefix));
-                acc.engagements += parseFloat(calculateEarnings(post, 'engagements', prefix));
-                acc.clicks += parseFloat(calculateEarnings(post, 'clicks', prefix));
-                acc.installs += parseFloat(calculateEarnings(post, 'installs', prefix));
+                acc.views += calculateEarnings(post, 'views', prefix);
+                acc.comments += calculateEarnings(post, 'comments', prefix);
+                acc.shares += calculateEarnings(post, 'shares', prefix);
+                acc.engagements += calculateEarnings(post, 'engagements', prefix);
+                acc.clicks += calculateEarnings(post, 'clicks', prefix);
+                acc.installs += calculateEarnings(post, 'installs', prefix);
             }
             return acc;
         }, {
