@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBullhorn, faUsers, faChartLine, faHandshake, faTools, faGamepad, faDollarSign, faThumbsUp, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faBullhorn, faUsers, faChartLine, faHandshake, faTools, faGamepad, faDollarSign, faThumbsUp, faArrowRight, faDatabase, faRobot } from '@fortawesome/free-solid-svg-icons';
 import { faRedditAlien, faTwitter, faFacebook, faTwitch, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons';
 
 import Header from '../../component/layout/header';
@@ -91,6 +91,12 @@ function PublishersOptimizationPage() {
         <div className="container lead text-center mb-4">
           <h4>Learn More About Performance-Based Influencer Marketing</h4>
           <div className="d-flex justify-content-center align-items-center flex-wrap">
+            <a href={Navigate.publishersAIPage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faRobot} className="me-1" /> AI
+            </a>
+            <a href={Navigate.publishersDatabasePage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faDatabase} className="me-1" /> Database
+            </a>
             <a href={Navigate.publishersBenefitsPage()} className="btn btn-outline-primary mx-2 mb-2">
               <span><FontAwesomeIcon icon={faThumbsUp} className="me-1" /> Benefits</span>
             </a>

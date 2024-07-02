@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBullhorn, faUsers, faChartLine, faHandshake, faTools, faGamepad, faDollarSign, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faBullhorn, faUsers, faChartLine, faHandshake, faTools, faGamepad, faDollarSign, faThumbsUp, faRobot, faDatabase } from '@fortawesome/free-solid-svg-icons';
 import { faRedditAlien, faTwitter, faFacebook, faTwitch, faYoutube, faTiktok } from '@fortawesome/free-brands-svg-icons';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
@@ -90,7 +90,7 @@ function PublishersAIPage() {
         <div className="container">
           <div className="row align-items-center mb-5">
             <div className="col-lg-6 order-lg-2">
-              <img src="/assets/images/publishers/ai_contracting.gif" alt="AI Contracting" className="img-fluid rounded shadow" />
+              <img src="/assets/images/publishers/ai_contracts.webp" alt="AI Contracting" className="img-fluid rounded shadow" />
             </div>
             <div className="col-lg-6 order-lg-1">
               <h2 className="mb-4">AI Contracting</h2>
@@ -99,6 +99,30 @@ function PublishersAIPage() {
           </div>
         </div>
       </section>
+
+      <div className="container text-center mb-4">
+          <h4>Learn More About Performance-Based Influencer Marketing</h4>
+          <div className="d-flex justify-content-center align-items-center flex-wrap">
+            <a href={Navigate.publishersAIPage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faRobot} className="me-1" /> AI
+            </a>
+            <a href={Navigate.publishersDatabasePage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faDatabase} className="me-1" /> Database
+            </a>
+            <a href={Navigate.publishersBenefitsPage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faThumbsUp} className="me-1" /> Benefits
+            </a>
+            <a href={Navigate.publishersOptimizationPage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faTools} className="me-1" /> Optimization
+            </a>
+            <a href={Navigate.publishersGamificationPage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faGamepad} className="me-1" /> Gamification
+            </a>
+            <a href={Navigate.publishersAcquisitionPage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faDollarSign} className="me-1" /> Acquisition Costs
+            </a>
+          </div>
+        </div>
 
       <section className="py-5 bg-dark text-white">
         <div className="container text-center">

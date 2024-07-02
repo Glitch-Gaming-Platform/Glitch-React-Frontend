@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBillWave, faUserFriends, faBullhorn, faChartLine, faUsers, faRocket, faPercentage, faThumbsUp, faTools, faGamepad, faDollarSign, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillWave, faUserFriends, faBullhorn, faChartLine, faUsers, faRocket, faPercentage, faThumbsUp, faTools, faGamepad, faDollarSign, faArrowRight, faRobot, faDatabase } from '@fortawesome/free-solid-svg-icons';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from '../../component/layout/header';
 import Footer from '../../component/layout/footer';
@@ -84,6 +84,12 @@ function PublisherUserAcquisition() {
         <div className="container lead text-center mb-4">
           <h4>Learn More About Performance-Based Influencer Marketing</h4>
           <div className="d-flex justify-content-center align-items-center flex-wrap">
+            <a href={Navigate.publishersAIPage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faRobot} className="me-1" /> AI
+            </a>
+            <a href={Navigate.publishersDatabasePage()} className="btn btn-outline-primary mx-2 mb-2">
+              <FontAwesomeIcon icon={faDatabase} className="me-1" /> Database
+            </a>
             <a href={Navigate.publishersBenefitsPage()} className="btn btn-outline-primary mx-2 mb-2">
               <span><FontAwesomeIcon icon={faThumbsUp} className="me-1" /> Benefits</span>
             </a>
