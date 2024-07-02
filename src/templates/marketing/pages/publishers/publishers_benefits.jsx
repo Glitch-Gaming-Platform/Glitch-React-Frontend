@@ -69,12 +69,12 @@ function PublisherBenefitPage() {
 
         <div className="mb-5 py-4 px-3 bg-dark text-white rounded">
           <div className="row align-items-center">
-            <div className="col-md-8">
+            <div className="col-md-6">
               <h2 className="mb-4">Ensuring Quality and Authenticity</h2>
-              <p className="lead"><FontAwesomeIcon icon={faBullhorn} className="me-2" /> Content creators are motivated to align with games that resonate with their audience, promoting genuine and high-quality content.</p>
+              <p className="lead"><FontAwesomeIcon icon={faBullhorn} className="me-2" /> We use AI combined with your campaign objectives to help influencers create content that aligns your game and that resonate with their audience, producing genuine and high-quality results.</p>
             </div>
-            <div className="col-md-4 text-end">
-              <img src="/assets/images/publishers/authenticity_1.png" alt="Quality and Authenticity" className="img-fluid rounded shadow" />
+            <div className="col-md-6 text-end">
+              <img src="/assets/images/publishers/reddit_ai_assist.gif" alt="Quality and Authenticity" className="img-fluid rounded shadow" />
             </div>
           </div>
         </div>
